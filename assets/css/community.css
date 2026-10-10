@@ -1,0 +1,133 @@
+/* Community — feed, profiles, composer */
+.community-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: var(--space-3);
+}
+.community-tabs .btn[aria-selected="true"] {
+  border-color: var(--red);
+  color: #fff;
+  background: rgba(230, 36, 41, 0.15);
+}
+
+.feed { display: grid; gap: var(--space-4); max-width: 640px; }
+
+.post {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  overflow: clip;
+}
+.post-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #fff;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+.post-author { font-weight: 700; font-size: 0.92rem; background: none; border: none; color: var(--ink); cursor: pointer; padding: 0; text-align: left; }
+.post-author:hover { text-decoration: underline; }
+.post-time { font-size: 0.75rem; color: var(--muted); }
+.post-head .follow-btn { margin-left: auto; }
+
+.post-photo {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  text-align: center;
+  padding: var(--space-4);
+}
+.post-photo img { width: 100%; height: 100%; object-fit: cover; }
+.post-photo:has(img) { padding: 0; display: block; }
+
+.post-body { padding: var(--space-3) var(--space-4); }
+.post-caption { font-size: 0.95rem; margin-bottom: var(--space-2); }
+.post-caption .hashtag { color: var(--blue); }
+.figure-tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: var(--space-2); }
+.figure-tags .badge { cursor: pointer; background: var(--panel-2); }
+.figure-tags .badge:hover { border-color: var(--gold); color: var(--gold); }
+
+.post-actions {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0 var(--space-4) var(--space-3);
+  align-items: center;
+}
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: none;
+  border: none;
+  color: var(--ink-dim);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-s);
+}
+.like-btn:hover { color: var(--red); }
+.like-btn[aria-pressed="true"] { color: var(--red); }
+.comment-count { font-size: 0.85rem; color: var(--muted); }
+
+.comments { border-top: 1px solid var(--line-soft); padding: var(--space-3) var(--space-4); display: grid; gap: var(--space-2); }
+.comment { font-size: 0.88rem; }
+.comment strong { margin-right: var(--space-2); }
+.comment-form { display: flex; gap: var(--space-2); margin-top: var(--space-2); }
+.comment-form .input { font-size: 0.88rem; }
+
+.composer {
+  max-width: 640px;
+  margin-bottom: var(--space-6);
+}
+.composer-preview { margin-top: var(--space-3); border-radius: var(--radius-m); overflow: clip; border: 1px solid var(--line); }
+.composer-preview img { max-height: 320px; width: 100%; object-fit: cover; }
+.tag-picks { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: var(--space-2); }
+.tag-search-results { max-height: 180px; overflow: auto; border: 1px solid var(--line); border-radius: var(--radius-m); margin-top: var(--space-2); }
+.tag-search-results button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--panel);
+  border: none;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--ink);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+.tag-search-results button:hover { background: var(--panel-2); }
+
+.profile-head {
+  display: flex;
+  gap: var(--space-5);
+  align-items: center;
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+.profile-head .avatar { width: 84px; height: 84px; font-size: 2rem; }
+.profile-stats { display: flex; gap: var(--space-5); }
+.profile-stats .num { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; display: block; }
+.profile-stats .lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-3);
+}
+.profile-grid .post-photo { aspect-ratio: 1; border-radius: var(--radius-m); font-size: 0.8rem; cursor: pointer; border: none; }

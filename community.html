@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community — Marvel Legends Chronicle</title>
+  <meta name="description" content="The Marvel Legends fan community: share shelf photos, follow collectors, like and discuss hauls, customs, and grails. A client-side demo — all data stays in your browser.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/community.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to community</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="community.html" aria-current="page">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container page-head">
+      <span class="hero-kicker">Fan community</span>
+      <h1>The Collector Network</h1>
+      <p class="lede">Shelfies, hauls, customs, and chase reports from fellow collectors. Post your own shelf, tag the figures, follow the hunters.</p>
+      <p class="mock-note" role="note">Demo community — profiles and posts are seeded samples; everything you add is stored only in this browser.</p>
+      <div class="community-tabs" id="community-tabs" role="tablist" aria-label="Community views"></div>
+    </div>
+    <div class="container" id="community-main" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/community-page.js"></script>
+</body>
+</html>

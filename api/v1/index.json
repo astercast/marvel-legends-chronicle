@@ -1,0 +1,17 @@
+{
+  "name": "Marvel Legends Chronicle API",
+  "version": "1.0.0",
+  "observed": "2026-10-10",
+  "provenance": "Fan-compiled archive. Within-year ordering is year-accurate but not audited to the month; some BAF pieces and disputed wave numbers are flagged in notes.",
+  "endpoints": {
+    "index": "api/v1/index.json",
+    "stats": "api/v1/stats.json",
+    "waves": "api/v1/waves.json",
+    "figures": "api/v1/figures.json",
+    "encyclopedia": "api/v1/encyclopedia.json",
+    "schemas": {
+      "wave": "api/v1/schema/wave.json",
+      "figure": "api/v1/schema/figure.json"
+    }
+  }
+}

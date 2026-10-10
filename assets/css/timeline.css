@@ -1,0 +1,139 @@
+/* Timeline — year sections, waves, figure cards */
+.timeline-controls {
+  position: sticky;
+  top: 73px;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(10px);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: var(--space-5);
+}
+.year-rail {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+  scrollbar-width: thin;
+}
+.year-rail a {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-s);
+  text-decoration: none;
+}
+.year-rail a:hover { color: var(--ink); background: var(--panel-2); text-decoration: none; }
+
+.year-section {
+  margin-bottom: var(--space-7);
+  scroll-margin-top: 150px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+.year-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  border-bottom: 2px solid var(--red);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.year-head h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+  color: var(--ink);
+}
+.year-count { color: var(--muted); font-size: 0.85rem; }
+
+.wave {
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  background: var(--bg-soft);
+  overflow: clip;
+}
+.wave-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--line-soft);
+}
+.wave-title { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; margin: 0; }
+.wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-left: auto; }
+.wave-baf {
+  font-size: 0.85rem;
+  color: var(--gold);
+  padding-inline: var(--space-5);
+  padding-top: var(--space-3);
+}
+.wave-baf strong { color: var(--gold); }
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.figure-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: border-color 0.15s var(--ease), transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  text-align: left;
+  color: var(--ink);
+  width: 100%;
+}
+.figure-card:hover, .figure-card:focus-visible {
+  border-color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+.figure-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+  line-height: 1.3;
+}
+.figure-card .sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: var(--space-3);
+  min-height: 2.4em;
+}
+.figure-card .tag-row { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: var(--space-3); }
+.figure-card .owned-dot {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(93, 255, 143, 0.8);
+}
+.figure-card .wanted-dot {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(245, 179, 1, 0.8);
+}
+
+.search-results-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-4);
+}

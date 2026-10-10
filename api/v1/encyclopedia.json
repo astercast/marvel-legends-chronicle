@@ -1,0 +1,372 @@
+{
+  "bootlegGuide": {
+    "sections": [
+      {
+        "id": "packaging",
+        "items": [
+          "Blurry printing or off-color logos on the card/box",
+          "Missing Hasbro or Marvel markings and legal text",
+          "Flimsy cardstock or thin, cloudy blisters"
+        ],
+        "title": "Packaging first"
+      },
+      {
+        "id": "paint",
+        "items": [
+          "Rough edges and sloppy or missing paint applications",
+          "Misshapen parts or wrong accessory details",
+          "Authentic Legends have crisp, consistent deco throughout"
+        ],
+        "title": "Paint & sculpt"
+      },
+      {
+        "id": "joints",
+        "items": [
+          "KOs differ at the neck ball peg, elbow/knee pegs and hand pegs",
+          "Visible gaps at elbows and knees",
+          "Example: KO Carnage has silver eyes vs. the authentic paint"
+        ],
+        "title": "Joints are the fingerprint"
+      },
+      {
+        "id": "targets",
+        "items": [
+          "Dragon Man, Ronan, and the Juggernaut BAF recast are known KO targets",
+          "If a rare figure sells at a common price, be suspicious"
+        ],
+        "title": "Known KO targets"
+      },
+      {
+        "id": "listings",
+        "items": [
+          "Seller located in China/Hong Kong with $10–40 pricing on a $25+ figure",
+          "Stock photos only, no brand named in the description",
+          "\"No box\" offers on supposedly mint exclusives"
+        ],
+        "title": "Listing red flags"
+      },
+      {
+        "id": "price-logic",
+        "items": [
+          "If it is far below retail or secondary market for a popular wave or variant, investigate before buying"
+        ],
+        "title": "Price logic"
+      }
+    ]
+  },
+  "hallOfFame": [
+    {
+      "era": "Toy Biz",
+      "name": "Toad (Series 1, 2002)",
+      "price": null,
+      "priceNote": "Historical note — initial assortment only",
+      "verified": true,
+      "why": "Last-minute Doctor Doom stand-in, shipped only in the initial assortment. The line's first grail."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Stealth Iron Man (Series 1 variant)",
+      "price": null,
+      "priceNote": "Community rarity lists",
+      "verified": false,
+      "why": "Rare first-wave variant topping community rarest lists."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Red Skull (Series 5 chase)",
+      "price": "$59.99 listing",
+      "priceNote": "ToyWiz listing",
+      "verified": true,
+      "why": "Chase figure never pictured on the box back — the template for ML chase culture."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Deadpool (Series 6)",
+      "price": "~$350",
+      "priceNote": "Claimed; tabloid source",
+      "verified": false,
+      "why": "One of the three most-desired Toy Biz figures; peak-nostalgia wave."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Phoenix / Dark Phoenix (Series 6)",
+      "price": null,
+      "priceNote": "Community claim",
+      "verified": false,
+      "why": "Fan-favorite sculpt with rare variants; Hasbro later revisited her in the Queen Brood wave."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Galactus BAF (Series 9, 2005)",
+      "price": "~$183 avg complete",
+      "priceNote": "Range $35–$372, PicClick",
+      "verified": true,
+      "why": "The first Build-A-Figure — the marketing innovation that defined the line."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Sentinel BAF (Series 10, 2005)",
+      "price": "~$552.50 est.",
+      "priceNote": "Coleka estimate",
+      "verified": true,
+      "why": "Iconic X-Men BAF; still the centerpiece of many collections."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Apocalypse BAF (Series 12, 2006)",
+      "price": null,
+      "priceNote": "Community claim",
+      "verified": false,
+      "why": "~14.5\" tall; collectors rank it above later Hasbro versions for sculpt and detail."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Giant-Man BAF (2006)",
+      "price": "~$200 complete",
+      "priceNote": "Claimed; tabloid source",
+      "verified": false,
+      "why": "Late-line BAF; hard to complete as loose parts go missing."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Onslaught BAF (2006)",
+      "price": null,
+      "priceNote": "Catalogued",
+      "verified": true,
+      "why": "Final Toy Biz BAF; massive villain centerpiece."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Destroyer & Arachne (Series 15)",
+      "price": null,
+      "priceNote": "Community claim",
+      "verified": false,
+      "why": "Notoriously short-packed wave-mates; rarest of the regular waves."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Crimson Dawn Psylocke + Silver Luke Cage",
+      "price": "$25,000 pair claimed",
+      "priceNote": "Single tabloid source — treat as lore",
+      "verified": false,
+      "why": "Unreleased Mojo-wave prototypes sold after the Hasbro takeover; legendary holy grails."
+    },
+    {
+      "era": "Toy Biz",
+      "name": "Marvel Monsters box set (2006)",
+      "price": null,
+      "priceNote": "Catalogued",
+      "verified": true,
+      "why": "Dracula, Frankenstein's Monster, Werewolf by Night, Zombie — beloved horror box set."
+    },
+    {
+      "era": "Hasbro",
+      "name": "SDCC 2007: She-Hulk + Stan Lee",
+      "price": null,
+      "priceNote": "Catalogued",
+      "verified": true,
+      "why": "Hasbro's first SDCC Marvel Legends exclusive."
+    },
+    {
+      "era": "Hasbro",
+      "name": "SDCC 2008: Savage Land 3-pack",
+      "price": null,
+      "priceNote": "Catalogued",
+      "verified": true,
+      "why": "Ka-Zar, Shanna the She-Devil, Zabu — early con-exclusive box set."
+    },
+    {
+      "era": "Hasbro",
+      "name": "SDCC 2012: Uncanny X-Force 3-pack",
+      "price": "$49.99 retail",
+      "priceNote": "Retail at release",
+      "verified": true,
+      "why": "Archangel, Wolverine, Psylocke with Clayton Crain box art; insanely hard to acquire."
+    },
+    {
+      "era": "Hasbro",
+      "name": "SDCC 2013: Thunderbolts 5-pack",
+      "price": "$130–$300 sold",
+      "priceNote": "eBay sold listings 2025–26",
+      "verified": true,
+      "why": "First-ever figures of several characters; $89.99 at the Hasbro booth."
+    },
+    {
+      "era": "Hasbro",
+      "name": "SDCC 2014: Thanos Imperative set",
+      "price": null,
+      "priceNote": "Catalogued",
+      "verified": true,
+      "why": "Star-Lord, Blastaar, Medusa, Gladiator, Black Bolt box set."
+    },
+    {
+      "era": "Hasbro",
+      "name": "Black Widow + Winter Soldier TRU variant 2-pack",
+      "price": "~$300",
+      "priceNote": "Claimed; tabloid source",
+      "verified": false,
+      "why": "Comic-costume variant of the movie 2-pack; store-exclusive rarity."
+    },
+    {
+      "era": "Hasbro",
+      "name": "Ares BAF (Gladiator Hulk wave)",
+      "price": "~$50",
+      "priceNote": "Claimed; tabloid source",
+      "verified": false,
+      "why": "Walmart-exclusive BAF wave; lesser-known character, rarely reprinted."
+    },
+    {
+      "era": "Hasbro",
+      "name": "Black Suit Spider-Man (Red Hulk wave)",
+      "price": "~$150",
+      "priceNote": "Claimed; tabloid source",
+      "verified": false,
+      "why": "Target-exclusive wave figure; the definitive Black Suit ML for years."
+    },
+    {
+      "era": "Hasbro",
+      "name": "HasLab Sentinel (2020)",
+      "price": "$349.99 crowdfund",
+      "priceNote": "Funded in ~24 hours",
+      "verified": true,
+      "why": "First ML HasLab; the BAF concept taken to its 26.3\" logical extreme."
+    },
+    {
+      "era": "Hasbro",
+      "name": "HasLab Galactus (2021)",
+      "price": "$399.99 crowdfund",
+      "priceNote": "14,000 backers",
+      "verified": true,
+      "why": "32\" — the biggest Marvel Legends ever; LEDs, 70 points of articulation."
+    }
+  ],
+  "history": [
+    {
+      "detail": "Isaac Perlmutter's Toy Biz, successor to Charan/Chantex, holds the Marvel master toy license from 1990.",
+      "era": "Origins",
+      "year": 1988
+    },
+    {
+      "detail": "Marvel files for bankruptcy; Toy Biz merges with Marvel Entertainment Group to form Marvel Enterprises, Toy Biz becoming its toy division.",
+      "era": "Origins",
+      "year": 1996
+    },
+    {
+      "detail": "Marvel Legends launches as a Spider-Man Classics spin-off: clamshell packaging plus a 32-page reprint comic. Wave 1: Iron Man, Captain America, Hulk, Toad — aimed at adult collectors with best-in-class sculpt and articulation.",
+      "era": "Toy Biz",
+      "year": 2002
+    },
+    {
+      "detail": "Series 9 (Galactus series) packs one piece of an 18\" Galactus per figure — the Build-A-Figure is born. Followed by the Sentinel, Apocalypse, Giant-Man, Onslaught, Mojo and M.O.D.O.K.",
+      "era": "Toy Biz",
+      "year": 2005
+    },
+    {
+      "detail": "Marvel terminates the Toy Biz Worldwide license a year early, paying a $13–16M penalty.",
+      "era": "Transition",
+      "year": 2005
+    },
+    {
+      "detail": "Marvel grants Hasbro a 5-year master toy license: $205M guaranteed royalties, $100M non-refundable advance. Retail sales begin Jan 1, 2007 with Ghost Rider and Spider-Man 3 lines.",
+      "era": "Transition",
+      "year": 2006
+    },
+    {
+      "detail": "New packaging drops the comic pack-in; new molds drop Toy Biz's signature finger joints. BAF continues with Annihilus, Brood Queen and others.",
+      "era": "Hasbro",
+      "year": 2007
+    },
+    {
+      "detail": "Announced at SDCC 2010 after fan demand and MCU momentum; all-new sculpts return January 2012.",
+      "era": "Hasbro",
+      "year": 2010
+    },
+    {
+      "detail": "Retooled as Marvel Legends: Infinite Series at $19.99 MSRP — box packaging, bigger BAFs, more accessories.",
+      "era": "Hasbro",
+      "year": 2014
+    },
+    {
+      "detail": "Photo-real face-printing for MCU likenesses; butterfly joints; pinless joints debut ~2020 and become standard.",
+      "era": "Hasbro",
+      "year": 2016
+    },
+    {
+      "detail": "First ML HasLab: 26.3\" Sentinel at $349.99, funded in ~24 hours.",
+      "era": "HasLab",
+      "year": 2020
+    },
+    {
+      "detail": "32\" Galactus at $399.99 draws 14,000 backers — the biggest ML ever.",
+      "era": "HasLab",
+      "year": 2021
+    },
+    {
+      "detail": "24\" Giant-Man at $199.99 finishes with 13,876 backers. Ghost Rider's Engine of Vengeance becomes the line's only failed HasLab.",
+      "era": "HasLab",
+      "year": 2023
+    },
+    {
+      "detail": "Standard MSRP reaches $24.99; deluxe $30–50; box sets $40–90; HasLab $200–400.",
+      "era": "Hasbro",
+      "year": 2024
+    }
+  ],
+  "resources": [
+    {
+      "bestFor": "Visual guides, checklists, eBay sold-price histories — best-in-class price tracking",
+      "name": "Action Figure 411",
+      "url": "https://www.actionfigure411.com/"
+    },
+    {
+      "bestFor": "Complete checklist PDF, Toy Biz to modern — print-and-check collecting",
+      "name": "MarvelLegends.info",
+      "url": "http://marvellegends.info/ChecklistPDF.pdf"
+    },
+    {
+      "bestFor": "Checklists, galleries, customizing tutorials, collector community",
+      "name": "Figure Realm",
+      "url": "https://FigureRealm.com"
+    },
+    {
+      "bestFor": "Collection management, rarity rankings, price estimates",
+      "name": "Coleka",
+      "url": "https://www.coleka.com/"
+    },
+    {
+      "bestFor": "Live price discovery across eBay listings",
+      "name": "PicClick",
+      "url": "https://picclick.com/"
+    },
+    {
+      "bestFor": "News, case ratios, preorder alerts",
+      "name": "Marvel Toy News",
+      "url": "http://marveltoynews.com/"
+    },
+    {
+      "bestFor": "News, reviews, leak discussion, the giant appreciation thread",
+      "name": "The Toyark",
+      "url": "https://www.toyark.com/"
+    },
+    {
+      "bestFor": "Longest-running ML community, forums since the 2002 era",
+      "name": "TheFwoosh",
+      "url": "https://thefwoosh.com/"
+    },
+    {
+      "bestFor": "Figure discussion, beginner guides, buy/sell threads",
+      "name": "MarvelousNews forums",
+      "url": "https://forums.marvelousnews.com/"
+    },
+    {
+      "bestFor": "Official drops, Pulse exclusives, HasLab campaigns",
+      "name": "Hasbro Pulse",
+      "url": "https://hasbropulse.com/"
+    },
+    {
+      "bestFor": "Preorders with combined shipping",
+      "name": "BigBadToyStore",
+      "url": "https://www.bigbadtoystore.com/"
+    }
+  ]
+}

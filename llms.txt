@@ -1,0 +1,52 @@
+# Marvel Legends Chronicle
+
+The complete chronological archive of every Marvel Legends action figure, 2002–2026.
+Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
+
+## What this is
+
+- Timeline of 1,904 figures across 158 waves, Toy Biz (2002–2006) through Hasbro (2007–2026)
+- Collector encyclopedia: line history, 23-entry hall of fame, bootleg-spotting guide, resources
+- Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts
+- Collection tracker: mark figures Owned / Wanted (browser-local)
+
+## API (static JSON, versioned)
+
+Base: `api/v1/`
+
+- `api/v1/index.json` — manifest: version, endpoints, observation date, provenance
+- `api/v1/stats.json` — totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies
+- `api/v1/waves.json` — 158 wave summaries (id, year, manufacturer, series, baf, figureCount)
+- `api/v1/figures.json` — flat list of all 1,904 figures with wave context
+- `api/v1/encyclopedia.json` — history timeline, hall of fame, bootleg guide, resources directory
+- `api/v1/schema/wave.json`, `api/v1/schema/figure.json` — JSON Schema (draft-07)
+
+## Stable ids
+
+Figure ids are `<waveId>::<figureName>`, e.g. `toybiz-2002-series-1::Hulk`.
+Wave ids are kebab-case slugs. Ids are stable; new figures get new ids, never recycled.
+Unknown or disputed values are explicit `null` with a `notes` field — never invented.
+
+## Known limitations
+
+- Within-year ordering is year-accurate but not audited to the month.
+- Some BAF pieces and disputed wave numbers are flagged unverified in notes.
+- Hall-of-fame prices are secondary-market observations; entries from single or
+  tabloid sources carry `verified: false`.
+- Marketplace links on the site are pre-filled search links (mock integration),
+  not live inventory.
+
+## Regenerating the API
+
+`python3 scripts/build_api.py` rebuilds `api/v1/` from `data/figures.json`
+and `data/encyclopedia.json`. Commit the outputs.
+
+## Site structure
+
+- `index.html` — chronological timeline with search, filters, year rail, tracker
+- `encyclopedia.html` — history, hall of fame, bootleg guide, resources
+- `community.html` — fan social (localStorage demo)
+- `api.html` — human-readable API docs
+- `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community
+- `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
+  timeline, encyclopedia, community, community-page (ES modules)

@@ -1,54 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvel Legends Chronicle — Every Figure Ever, In Order</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marvel Legends Chronicle — Every Figure, 2002–2026</title>
+  <meta name="description" content="The complete chronological archive of every Marvel Legends action figure from the 2002 Toy Biz launch to the present Hasbro era. Track your collection, spot grails, and explore the collector encyclopedia.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/timeline.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to timeline</a>
 
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo">ML<span>CHRONICLE</span></div>
-    <p class="tagline">Every Marvel Legends figure ever released — Toy Biz to Hasbro — in chronological order.</p>
-    <div class="mock-banner">MOCK-UP — collection tracking &amp; marketplace links are client-side demos. Nothing is deployed.</div>
-  </div>
-  <div class="controls">
-    <input id="search" type="search" placeholder="Search figures, waves, characters…" autocomplete="off">
-    <select id="filter-mfr">
-      <option value="">All manufacturers</option>
-      <option value="Toy Biz">Toy Biz</option>
-      <option value="Hasbro">Hasbro</option>
-    </select>
-    <select id="filter-era">
-      <option value="">All years</option>
-    </select>
-    <select id="filter-collection">
-      <option value="">All figures</option>
-      <option value="owned">In my collection</option>
-      <option value="wanted">On my wishlist</option>
-    </select>
-    <div class="collection-stats"><span id="stat-owned">0</span> owned · <span id="stat-wanted">0</span> wanted</div>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Timeline</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
 
-<nav id="year-rail" aria-label="Jump to year"></nav>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">The complete archive · 2002–2026</span>
+        <h1 id="hero-title">Every Marvel Legend.<br><span class="accent">In order.</span></h1>
+        <p class="lede">From Toy Biz's 2002 Series 1 to the latest Hasbro waves — 1,904 figures across 158 waves, chronologically archived. Track what you own, hunt what you want, and dig into the collector encyclopedia.</p>
+        <div class="stat-strip" id="stat-strip" aria-label="Collection statistics"></div>
+        <p class="mock-note" role="note">Collection tracking and marketplace links are client-side mock-ups — nothing here is a live store or a real order.</p>
+      </div>
+    </section>
 
-<main id="timeline"></main>
+    <div class="timeline-controls">
+      <div class="container">
+        <div class="toolbar" role="search" aria-label="Filter the timeline">
+          <div class="field grow">
+            <label for="f-search">Search figures</label>
+            <input class="input" id="f-search" type="search" placeholder="Deadpool, Sentinel, Galactus wave…" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="f-mfr">Manufacturer</label>
+            <select class="input" id="f-mfr">
+              <option value="all">All</option>
+              <option value="Toy Biz">Toy Biz</option>
+              <option value="Hasbro">Hasbro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-baf">Build-A-Figure</label>
+            <select class="input" id="f-baf">
+              <option value="all">All waves</option>
+              <option value="baf">BAF waves only</option>
+              <option value="nobaf">Non-BAF waves</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-tracked">My tracking</label>
+            <select class="input" id="f-tracked">
+              <option value="all">Everything</option>
+              <option value="owned">Owned</option>
+              <option value="wanted">Wanted</option>
+            </select>
+          </div>
+          <div class="field" style="flex:0 0 auto;">
+            <label aria-hidden="true">&nbsp;</label>
+            <button type="button" class="btn" id="f-reset">Reset</button>
+          </div>
+        </div>
+        <nav class="year-rail" id="year-rail" aria-label="Jump to year"></nav>
+      </div>
+    </div>
 
-<div id="figure-modal" class="modal hidden">
-  <div class="modal-card">
-    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
-    <div class="modal-body" id="modal-body"></div>
-  </div>
-</div>
+    <div class="container" id="timeline" aria-live="polite"></div>
+  </main>
 
-<footer>
-  <p>Marvel Legends Chronicle — a fan research project. Not affiliated with Marvel, Hasbro, or Toy Biz.<br>
-  Data: <code>data/figures.json</code> · Collection stored locally in your browser only.</p>
-</footer>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
 
-<script src="app.js"></script>
+  <script type="module" src="assets/js/timeline.js"></script>
 </body>
 </html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API — Marvel Legends Chronicle</title>
+  <meta name="description" content="Machine-readable Marvel Legends data: versioned JSON endpoints for waves, figures, statistics, and the collector encyclopedia, with JSON schemas and an LLM index.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to API docs</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="community.html">Community</a>
+        <a href="api.html" aria-current="page">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container page-head">
+      <span class="hero-kicker">Machine-readable</span>
+      <h1>The API</h1>
+      <p class="lede">Versioned static JSON for agents and tools. Stable ids, explicit years, and provenance notes. Start at <code>api/v1/index.json</code>; full reference lives in <code>API.md</code>.</p>
+    </div>
+
+    <div class="container">
+      <section aria-labelledby="endpoints-h">
+        <h2 id="endpoints-h">Endpoints</h2>
+        <div class="guide-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-3);margin-bottom:var(--space-6);">
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/index.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Manifest: version, endpoints, observation date.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/stats.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/waves.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">158 waves with series, year, manufacturer, BAF, and figure counts.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/figures.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Flat list of all 1,904 figures with wave context and stable ids.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/encyclopedia.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">History timeline, hall of fame, bootleg guide, resources directory.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/schema/</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">JSON Schema for waves and figures.</p></article>
+        </div>
+      </section>
+
+      <section aria-labelledby="ids-h">
+        <h2 id="ids-h">Stable ids</h2>
+        <div class="card" style="margin-bottom:var(--space-6);">
+          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0 0 var(--space-3);">Figure ids are <code>&lt;waveId&gt;::&lt;figureName&gt;</code>, e.g. <code>toybiz-2002-series-1::Hulk</code>. Wave ids are kebab-case slugs like <code>hasbro-2012-return-1</code>. Ids are stable across releases of the dataset; new figures get new ids, never recycled ones.</p>
+          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0;">Unknown or disputed values are explicit <code>null</code> with a <code>notes</code> field — never invented. Some BAF pieces and within-year ordering are flagged unverified in the source data.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="llm-h">
+        <h2 id="llm-h">For language models</h2>
+        <div class="card">
+          <p style="font-size:0.92rem;color:var(--ink-dim);">Agents should start with <code>llms.txt</code> (index) and <code>API.md</code> (reference). Both sit at the repository root.</p>
+          <div class="btn-row">
+            <a class="btn btn-sm" href="llms.txt" download>llms.txt</a>
+            <a class="btn btn-sm" href="API.md" download>API.md</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="community.html">Community</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
