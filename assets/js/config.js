@@ -3,6 +3,7 @@ export const PATHS = {
   figures: "data/figures.json",
   encyclopedia: "data/encyclopedia.json",
   communitySeed: "data/community.json",
+  preorders: "data/preorders.json",
 };
 
 export const STORE_KEYS = {
@@ -17,6 +18,7 @@ export const STORE_KEYS = {
   exploreSeen: "mlc_explore_seen_v1", // [figId] — figures already surfaced by "Surprise me"
   showcase: "mlc_showcase_v1", // { order: [figId], notes: { figId: text } } — the top-10 Shelfie Showcase
   hunt: "mlc_hunt_v1", // { selected: [figId], maxPrices: { figId: number } } — toy-show hunt planner
+  preorders: "mlc_preorders_v1", // { <preorderItemId>: "watching"|"ordered"|"skipped" } — pre-order tracker personal calls
 };
 
 export const MARKETPLACES = [

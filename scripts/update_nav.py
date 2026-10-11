@@ -30,6 +30,8 @@ NAV = [
     ("exclusives.html", "Exclusives"),
     ("watchlist.html", "Watchlist"),
     ("radar.html", "Radar"),
+    ("preorders.html", "Pre-orders"),
+    ("calendar.html", "Release Calendar"),
     ("compare.html", "Compare"),
     ("grails.html", "Grails"),
     ("variants.html", "Variants"),

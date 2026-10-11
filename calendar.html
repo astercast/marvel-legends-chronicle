@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Release Calendar — Marvel Legends Chronicle</title>
+  <meta name="description" content="A 12-month calendar of Marvel Legends pre-order and release dates, October 2026 through September 2027. Keyboard navigable, with dated releases and a no-exact-date list.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .cal-hero { padding-block: var(--space-7); }
+    .cal-toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-bottom: var(--space-5); }
+    .cal-toolbar label { font-size: 0.85rem; color: var(--ink-dim); }
+    .cal-toolbar select { font: inherit; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius, 8px); padding: 6px 10px; }
+    .cal-months { display: grid; gap: var(--space-4); margin-bottom: var(--space-6); }
+    @media (min-width: 720px) { .cal-months { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1180px) { .cal-months { grid-template-columns: repeat(3, 1fr); } }
+    .cal-month { padding: var(--space-4); }
+    .cal-month-title { font-size: 1.05rem; margin: 0 0 var(--space-3); display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+    .cal-grid { width: 100%; border-collapse: collapse; }
+    .cal-grid th { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-dim); padding: 4px 0; }
+    .cal-grid td { padding: 2px; text-align: center; }
+    .cal-day { font: inherit; width: 100%; min-height: 38px; border: 1px solid transparent; border-radius: var(--radius, 8px); background: transparent; color: var(--ink-dim); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+    .cal-day:hover { border-color: var(--gold); color: var(--ink); }
+    .cal-day:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .cal-day.has-items { color: var(--ink); border-color: var(--line); }
+    .cal-today .cal-day { border-color: var(--gold); }
+    .cal-today .cal-day::after { content: "today"; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
+    .cal-dots { font-size: 0.55rem; color: #7db4ff; letter-spacing: 2px; line-height: 1; }
+    .cal-pad { min-height: 38px; }
+    .cal-detail { padding: var(--space-5); margin-bottom: var(--space-6); }
+    .cal-detail h2 { font-size: 1.1rem; margin: 0 0 var(--space-3); }
+    .cal-item { border-top: 1px solid var(--line); padding: var(--space-3) 0; }
+    .cal-item:first-child { border-top: 0; padding-top: 0; }
+    .cal-item h3 { font-size: 1rem; margin: 0 0 var(--space-1); }
+    .cal-item p { font-size: 0.9rem; color: var(--ink-dim); margin: var(--space-1) 0; }
+    .cal-item .price { font-family: var(--font-mono); color: var(--gold); }
+    .status { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+    .status-revealed { color: var(--gold); border-color: rgba(245, 179, 1, 0.5); background: rgba(245, 179, 1, 0.08); }
+    .status-preorder { color: #7db4ff; border-color: rgba(125, 180, 255, 0.45); background: rgba(125, 180, 255, 0.08); }
+    .status-available { color: var(--green); border-color: rgba(93, 255, 143, 0.4); background: rgba(93, 255, 143, 0.07); }
+    .cal-undated { padding: var(--space-5); margin-bottom: var(--space-7); }
+    .cal-undated h2 { font-size: 1.05rem; margin: 0 0 var(--space-2); }
+    .cal-undated ul { margin: var(--space-3) 0 0; padding-left: var(--space-5); }
+    .cal-undated li { font-size: 0.9rem; color: var(--ink-dim); margin-bottom: var(--space-2); }
+    .cal-undated .venue { font-size: 0.82rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .cal-day, .cal-day:hover, .cal-day:focus-visible { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to release calendar</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="market-briefing.html">Market Briefing</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html">Gift Finder</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="preorders.html">Pre-orders</a>
+        <a href="calendar.html" aria-current="page">Release Calendar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero cal-hero" aria-labelledby="cal-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker" id="cal-range">October 2026 – September 2027</span>
+        <h1 id="cal-title">Release <span class="accent">calendar.</span></h1>
+        <p class="lede">Twelve months of known pre-order and release dates, straight from the research — no invented dates. Days with ● carry releases; pick a day (or use arrow keys in any month grid) for details. Releases dated only to a season are listed below, not plotted.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="cal-toolbar">
+        <label for="cal-jump">Jump to a dated release</label>
+        <select id="cal-jump"></select>
+        <a class="btn btn-sm" href="preorders.html">Open the pre-order tracker →</a>
+      </div>
+
+      <section class="card cal-detail" id="cal-detail" aria-labelledby="cal-detail-title" hidden>
+        <h2 id="cal-detail-title">Release details</h2>
+        <div class="cal-detail-body" role="status" aria-live="polite"></div>
+      </section>
+
+      <div class="cal-months" id="cal-months" aria-label="Twelve month grids"></div>
+
+      <section class="card cal-undated" aria-labelledby="cal-undated-h">
+        <h2 id="cal-undated-h">Announced, no exact date yet</h2>
+        <div id="cal-undated-body"><p>Loading…</p></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/calendar.js"></script>
+</body>
+</html>

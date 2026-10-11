@@ -13,3 +13,14 @@ One line per wave, so a fresh mind can reconstruct the history.
 - Nav synced in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on all pages; `llms.txt` + `README.md` updated.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (51/51 tests, 9 suites).
 - **Commit:** 706e233 (local) → pushed as GitHub commit `30cc5f1` on `main`
+
+## Wave 13 — interactive tools: pre-order tracker + release calendar (2026-10-11)
+
+- `data/preorders.json` (NEW): 15 wave-12-researched items only (no invented figures/dates/prices/retailers) — Mini Comics Wave 3 (pre-order 2026-10-06), X-Men '97 retro wave (pre-order 2026-10-21), TAS retro wave (pre-order 2026-09-29), Doomsday wave, MTG Wave 2, Bastion & Bolivar Trask 2-pack (Fall 2027), Prof X hoverchair, 60s 3-pack, 3× Doomsday FF Walmart items, 3× Target exclusives, TAS VHS reissues. Each: status (preorder/revealed/available), exact preorderDate or null, releaseWindow, announced MSRP, retailer ids (research-named only), hobby-press source links.
+- `preorders.html` (NEW): data-driven checklist — live status/countdown per item ("Pre-order opens in N days", computed from dates), status + personal-state filters, retailer search links (generic search pages via config MARKETPLACES patterns + Target/Walmart same-shape patterns — no product URLs), personal ordered/watching/skipped persisted in new `mlc_preorders_v1` (registered in `assets/js/config.js` STORE_KEYS).
+- `calendar.html` (NEW): 12-month forward calendar Oct 2026 → Sep 2027, fed by the same data; only exact-date items plotted, season-only releases listed below; day click/Enter/Space detail panel, arrow-key grid navigation, ARIA-labeled grids, `prefers-reduced-motion` safe, month jump `<select>`.
+- `assets/js/preorders.js` (NEW): shared pure date/status/calendar logic (exported for tests) + tracker wiring. `assets/js/calendar.js` (NEW): calendar rendering + keyboard nav.
+- API: `api/v1/preorders.json` (new endpoint, built from `data/preorders.json` by `scripts/build_api.py`) + `api/v1/schema/preorder.json`; documented in `api.html` and `API.md`.
+- Nav: `preorders.html` + `calendar.html` added to canonical list in `scripts/update_nav.py` (also `build_waves.py`/`build_characters.py` parity), rebuilt on all 30 root pages; `llms.txt` + `README.md` updated.
+- **Validation:** `scripts/validate.sh` — VALIDATION PASSED (73/73 tests, 14 suites — +22 new `tests/test-preorders.js` tests for date/status/calendar logic); link check 0 broken.
+- **Fix (2026-10-11):** `scripts/build_api.py` used to `shutil.rmtree` all of `api/v1`, which wiped the hand-maintained `radar-candidates.json` + `radar-seen.json` — caught and restored from git before committing; the builder now only writes its own generated outputs and leaves hand-maintained files alone.

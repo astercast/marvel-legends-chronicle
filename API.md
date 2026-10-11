@@ -13,8 +13,10 @@ Base path: `api/v1/`
 | `waves.json` | Array of 158 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `figureCount` |
 | `figures.json` | Array of 1,904 figures, flat. Each figure carries its wave context |
 | `encyclopedia.json` | `history` (timeline events), `packagingGuide` (packaging evolution, sourced), `variantsGuide` (variant taxonomy, chase/case ratios, exclusives, international), `hallOfFame` (23 entries, each with a `reissueRadar` flag), `gradingGuide` (AFA/CGA, CAS, UKG, grading-premium caveat), `priceMethod` (sold-listings methodology, dated price history, reissue effect), `bootlegGuide` (sections), `resources` (directory) |
+| `preorders.json` | 15 researched upcoming releases (wave 12): `id`, `name`, `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact `YYYY-MM-DD`, null when unreported — never invented), `releaseWindow` (e.g. `"Fall 2026"`), `price` (announced MSRP, never a market price), `query` (retailer search query), `venue`, `details`, `retailers` (retailer search-pattern ids the research names), `sources` (hobby-press links) |
 | `schema/wave.json` | JSON Schema (draft-07) for wave summaries |
 | `schema/figure.json` | JSON Schema (draft-07) for figures |
+| `schema/preorder.json` | JSON Schema (draft-07) for pre-order items |
 
 ## Figure object
 

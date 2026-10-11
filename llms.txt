@@ -97,6 +97,10 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `auth-wizard.html` — interactive bootleg authentication wizard
 - `shelf.html` — "your shelf" dashboard: read-only completion stats (overall/year/era/top characters/BAF) aggregated from the localStorage tracker
 - `radar.html` — release radar: revealed-but-unreleased figures with source links, maintained from hobby press
+- `preorders.html` — pre-order tracker: researched upcoming releases with live status countdowns, retailer search links, personal ordered/watching/skipped calls
+- `calendar.html` — 12-month release calendar: exact pre-order dates on a month grid, keyboard navigable, season-only releases listed below
+- `preorders.html` — pre-order tracker: status, live countdowns, retailer search links, your ordered/watching/skipped calls (localStorage `mlc_preorders_v1`), fed by `data/preorders.json`
+- `calendar.html` — 12-month release calendar (Oct 2026 → Sep 2027): exact pre-order dates plotted, keyboard-navigable, ARIA-labeled, reduced-motion safe; season-only releases listed below
 - `compare.html` — figure compare: 2–4 figures side-by-side with a verdict-free difference-highlighted table
 - `community.html` — fan social (localStorage demo)
 - `api.html` — human-readable API docs

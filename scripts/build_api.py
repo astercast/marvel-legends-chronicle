@@ -5,9 +5,7 @@ Regenerate after any data change:  python3 scripts/build_api.py
 Outputs are committed to the repo so the API is static and versioned.
 """
 import json
-import shutil
 from pathlib import Path
-
 ROOT = Path(__file__).resolve().parent.parent
 API = ROOT / "api" / "v1"
 VERSION = "1.0.0"
@@ -19,11 +17,14 @@ def load_json(path):
 
 
 def main():
-    shutil.rmtree(API, ignore_errors=True)
-    (API / "schema").mkdir(parents=True)
+    # NEVER rmtree api/v1 wholesale: hand-maintained files (radar-candidates.json,
+    # radar-seen.json, anything else not in `outputs`) must survive a rebuild.
+    # Only write/replace the files this script generates.
+    (API / "schema").mkdir(parents=True, exist_ok=True)
 
     raw = load_json(ROOT / "data" / "figures.json")
     encyc = load_json(ROOT / "data" / "encyclopedia.json")
+    preorders_raw = load_json(ROOT / "data" / "preorders.json")
     waves = raw["waves"]
 
     figures = []
@@ -78,9 +79,11 @@ def main():
         "waves": "api/v1/waves.json",
         "figures": "api/v1/figures.json",
         "encyclopedia": "api/v1/encyclopedia.json",
+        "preorders": "api/v1/preorders.json",
         "schemas": {
             "wave": "api/v1/schema/wave.json",
             "figure": "api/v1/schema/figure.json",
+            "preorder": "api/v1/schema/preorder.json",
         },
     }
     skills_index = {}
@@ -138,14 +141,43 @@ def main():
         },
     }
 
+    preorder_schema = {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "PreorderItem",
+        "type": "object",
+        "required": ["id", "name", "status"],
+        "properties": {
+            "id": {"type": "string", "description": "Stable kebab-case item id"},
+            "name": {"type": "string"},
+            "status": {"type": "string", "enum": ["preorder", "revealed", "available"]},
+            "preorderDate": {"type": ["string", "null"], "description": "Exact pre-order date YYYY-MM-DD, null when unreported"},
+            "releaseWindow": {"type": ["string", "null"], "description": "Season/year label from research, e.g. 'Fall 2026'"},
+            "price": {"type": ["number", "null"], "description": "Announced MSRP at reveal, never a market price"},
+            "query": {"type": "string", "description": "Search query used for retailer search links"},
+            "venue": {"type": ["string", "null"]},
+            "details": {"type": ["string", "null"]},
+            "retailers": {"type": "array", "items": {"type": "string"}},
+            "sources": {"type": "array", "items": {"type": "object"}},
+        },
+    }
+
     outputs = {
         "index.json": index,
         "stats.json": stats,
         "waves.json": wave_summaries,
         "figures.json": figures,
         "encyclopedia.json": encyc,
+        "preorders.json": {
+            "version": VERSION,
+            "observed": OBSERVED,
+            "source": preorders_raw.get("source"),
+            "note": preorders_raw.get("note"),
+            "count": len(preorders_raw["items"]),
+            "items": preorders_raw["items"],
+        },
         "schema/wave.json": wave_schema,
         "schema/figure.json": figure_schema,
+        "schema/preorder.json": preorder_schema,
     }
     for name, payload in outputs.items():
         # Minified on the wire: api/v1/figures.json is 732KB pretty-printed.

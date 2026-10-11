@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pre-order Tracker — Marvel Legends Chronicle</title>
+  <meta name="description" content="Track upcoming Marvel Legends pre-orders and releases: status, countdowns, retailer links, and your own ordered / watching / skipped calls, stored in this browser only.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .po-hero { padding-block: var(--space-7); }
+    .po-summary { color: var(--ink-dim); font-size: 0.95rem; margin-bottom: var(--space-4); }
+    .po-filters { display: flex; flex-wrap: wrap; gap: var(--space-5); margin-bottom: var(--space-5); }
+    .po-filter-group { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+    .po-filter-group .filter-label { font-size: 0.85rem; color: var(--ink-dim); margin-right: var(--space-1); }
+    .chip { font: inherit; font-size: 0.85rem; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink-dim); cursor: pointer; }
+    .chip:hover { border-color: var(--gold); color: var(--ink); }
+    .chip[aria-pressed="true"] { background: rgba(245, 179, 1, 0.12); border-color: var(--gold); color: var(--gold); }
+    .po-list { display: grid; gap: var(--space-4); margin-bottom: var(--space-7); }
+    .po-card { padding: var(--space-5); }
+    .po-card h2 { font-size: 1.15rem; margin: 0 0 var(--space-2); }
+    .status { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+    .status-revealed { color: var(--gold); border-color: rgba(245, 179, 1, 0.5); background: rgba(245, 179, 1, 0.08); }
+    .status-preorder { color: #7db4ff; border-color: rgba(125, 180, 255, 0.45); background: rgba(125, 180, 255, 0.08); }
+    .status-available { color: var(--green); border-color: rgba(93, 255, 143, 0.4); background: rgba(93, 255, 143, 0.07); }
+    .po-card .venue { color: var(--ink-dim); font-size: 0.9rem; }
+    .po-card .price { font-family: var(--font-mono); color: var(--gold); font-size: 0.9rem; }
+    .po-card p { color: var(--ink-dim); font-size: 0.92rem; margin: var(--space-2) 0; }
+    .po-detail { font-weight: 600; color: var(--ink) !important; }
+    .po-retailers { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-3) 0; }
+    .po-state { border: 1px solid var(--line); border-radius: var(--radius, 8px); padding: var(--space-2) var(--space-3); margin: var(--space-3) 0; display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .po-state legend { font-size: 0.82rem; color: var(--ink-dim); padding: 0 var(--space-1); }
+    .state-opt { display: inline-flex; align-items: center; gap: 6px; font-size: 0.88rem; cursor: pointer; }
+    .po-sources .src { font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to pre-order tracker</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="market-briefing.html">Market Briefing</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html">Gift Finder</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="preorders.html" aria-current="page">Pre-orders</a>
+        <a href="calendar.html">Release Calendar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero po-hero" aria-labelledby="po-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Watch · Order · Skip</span>
+        <h1 id="po-title">Pre-order <span class="accent">tracker.</span></h1>
+        <p class="lede">Every upcoming release the radar has researched, with its status, a live countdown, retailer search links, and your own call — ordered, watching, or skipped. Last updated <time datetime="2026-10-11">October 11, 2026</time>.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="po-summary" id="po-summary" role="status" aria-live="polite">Loading releases…</p>
+      <div class="po-filters">
+        <div class="po-filter-group">
+          <span class="filter-label" id="po-status-label">Status</span>
+          <div id="po-status-filter" role="group" aria-labelledby="po-status-label"></div>
+        </div>
+        <div class="po-filter-group">
+          <span class="filter-label" id="po-personal-label">Your call</span>
+          <div id="po-personal-filter" role="group" aria-labelledby="po-personal-label"></div>
+        </div>
+      </div>
+
+      <p class="chart-sub" id="po-error" hidden>The release list couldn't be loaded. Check that <code>data/preorders.json</code> is present and try again.</p>
+      <div class="po-list" id="po-list"></div>
+
+      <div class="card radar-note" style="padding:var(--space-5);margin-bottom:var(--space-7)">
+        <h2 style="font-size:1.05rem;margin-bottom:var(--space-2)">How this works</h2>
+        <p class="chart-sub" style="margin-bottom:var(--space-2)">Statuses are computed from the research at <a href="radar.html">the radar</a> — announced MSRP, never market prices; retailer buttons open that retailer's own search for the wave, not a product page. Your ordered/watching/skipped calls live in this browser only (<code>mlc_preorders_v1</code>). Pair with the <a href="calendar.html">release calendar</a> for the date grid.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/preorders.js"></script>
+</body>
+</html>
