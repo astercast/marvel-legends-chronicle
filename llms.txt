@@ -93,6 +93,7 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `baf-planner.html` — "complete my BAF" planner (browser-local, syncs with tracker)
 - `characters/index.html` + `characters/<slug>.html` — 66 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character; every release row carries a `data-fig-id` and a per-figure "Research" affordance (eBay solds / YouTube reviews / web search links); each page shows your run-completion progress bar ("N of M owned") with a missing-figure complete-the-run checklist, read live from the localStorage tracker via `assets/js/char-run.js`
 - `price-guide.html` — transparent sold-listings methodology, dated price history, reissue effect
+- `market-briefing.html` — 2026 market briefing: the death of modern chase figures, reported solds (white Dr. Doom $115–$200, $7.5K Wasp prototype ask), reissue-cooling of aftermarket premiums, KO buyer-beware, reported-listings-only methodology
 - `auth-wizard.html` — interactive bootleg authentication wizard
 - `shelf.html` — "your shelf" dashboard: read-only completion stats (overall/year/era/top characters/BAF) aggregated from the localStorage tracker
 - `radar.html` — release radar: revealed-but-unreleased figures with source links, maintained from hobby press
