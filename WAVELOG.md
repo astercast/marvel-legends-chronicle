@@ -24,3 +24,4 @@ One line per wave, so a fresh mind can reconstruct the history.
 - Nav: `preorders.html` + `calendar.html` added to canonical list in `scripts/update_nav.py` (also `build_waves.py`/`build_characters.py` parity), rebuilt on all 30 root pages; `llms.txt` + `README.md` updated.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (73/73 tests, 14 suites — +22 new `tests/test-preorders.js` tests for date/status/calendar logic); link check 0 broken.
 - **Fix (2026-10-11):** `scripts/build_api.py` used to `shutil.rmtree` all of `api/v1`, which wiped the hand-maintained `radar-candidates.json` + `radar-seen.json` — caught and restored from git before committing; the builder now only writes its own generated outputs and leaves hand-maintained files alone.
+- **Commit:** 75ea9da (local) → pushed as GitHub commit `8474b75` on `main`
