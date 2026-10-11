@@ -1,30 +1,59 @@
-/* Design tokens — Marvel Legends Chronicle */
+/* ============================================================
+   Design tokens — Marvel Legends Chronicle, "The Archive" v2
+   Art direction: museum-grade collector archive. Deep ink blacks,
+   archival paper tones, one signature red used with discipline.
+   Christie's lot catalog meets Marvel — never a fan wiki.
+   ============================================================ */
 :root {
-  --bg: #0b0b10;
-  --bg-soft: #101018;
-  --panel: #15151f;
-  --panel-2: #1c1c28;
-  --line: #262633;
-  --line-soft: #1e1e2a;
+  /* --- Ink & paper --- */
+  --bg: #0b0b10;            /* gallery black */
+  --bg-soft: #101016;       /* panel wash */
+  --bg-deep: #070709;       /* deepest recess */
+  --panel: #14141b;         /* card ground */
+  --panel-2: #1a1a23;       /* raised card */
+  --panel-3: #20202b;       /* hover raise */
+  --line: #262631;          /* hairline */
+  --line-soft: #1c1c25;     /* faint hairline */
+  --line-bright: #343442;   /* emphasized hairline */
 
-  --ink: #f4f4f7;
-  --ink-dim: #b9b9c7;
-  --muted: #8a8a9c;
+  /* --- Type --- */
+  --ink: #f5f1e8;           /* archival paper white */
+  --ink-dim: #cfc9bb;       /* secondary paper */
+  --muted: #8e8a7e;         /* tertiary, captions */
 
-  --red: #e62429;
+  /* --- Signature accents (discipline: red = action/identity only) --- */
+  --red: #e62429;           /* signature red — brand, primary actions, active states */
   --red-deep: #a31218;
-  --gold: #f5b301;
-  --blue: #7fd4ff;
-  --green: #5dff8f;
+  --red-ink: #ff6b6f;       /* red safe for small text on black */
+  --gold: #e8b32a;          /* brass — provenance, BAF, milestones */
+  --gold-deep: #9a7414;
+  --blue: #8fd6ff;          /* informational links */
+  --green: #6fe3a1;
+  --violet: #c9a7ff;
+  --amber: #ffb37f;
 
-  --radius-s: 6px;
-  --radius-m: 10px;
-  --radius-l: 16px;
+  /* --- Radii --- */
+  --radius-s: 5px;
+  --radius-m: 9px;
+  --radius-l: 14px;
+  --radius-pill: 999px;
 
+  /* --- Type system --- */
   --font-display: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-cond: "Arial Narrow", "HelveticaNeue-CondensedBold", "Archivo",
+    "Helvetica Neue", Arial, system-ui, sans-serif;
   --font-body: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
+  --text-xs: 0.72rem;
+  --text-sm: 0.82rem;
+  --text-base: 0.95rem;
+  --text-lg: 1.12rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.7rem;
+  --text-3xl: 2.2rem;
+
+  /* --- Spacing --- */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -33,9 +62,21 @@
   --space-6: 32px;
   --space-7: 48px;
   --space-8: 64px;
+  --space-9: 96px;
 
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-2: 0 8px 28px rgba(0, 0, 0, 0.45);
+  /* --- Elevation (gallery spots, not glows) --- */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 10px 32px rgba(0, 0, 0, 0.5);
+  --shadow-3: 0 18px 56px rgba(0, 0, 0, 0.55);
+  --edge-light: inset 0 1px 0 rgba(245, 241, 232, 0.06);
 
+  /* --- Motion --- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-swift: cubic-bezier(0.3, 0.9, 0.25, 1);
+  --dur-1: 0.12s;
+  --dur-2: 0.2s;
+  --dur-3: 0.32s;
+
+  /* --- Focus --- */
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--gold);
 }

@@ -143,3 +143,30 @@
 .radar-res { color: var(--green); font-weight: 700; }
 .radar-vul { color: var(--gold); font-weight: 700; }
 .radar-note { color: var(--muted); }
+
+/* --- "The Archive" v2 refinements (appended) --- */
+.history-year {
+  font-family: var(--font-cond);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.encyc-section > h2 {
+  font-family: var(--font-cond);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.badge-conf {
+  font-family: var(--font-cond);
+  letter-spacing: 0.12em;
+}
+.hof-card, .guide-card, .doc-card {
+  box-shadow: var(--edge-light), var(--shadow-1);
+  transition: transform var(--dur-2) var(--ease-swift), border-color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease);
+}
+.hof-card:hover, .guide-card:hover, .doc-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-bright);
+  box-shadow: var(--edge-light), var(--shadow-2);
+}

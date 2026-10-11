@@ -1,13 +1,14 @@
-/* Timeline — year sections, waves, figure cards */
+/* Timeline — year sections, waves, figure cards ("The Archive" v2) */
 .timeline-controls {
   position: sticky;
-  top: 73px;
+  top: 66px;
   z-index: 50;
   background: color-mix(in srgb, var(--bg) 94%, transparent);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding-block: var(--space-3);
   border-bottom: 1px solid var(--line-soft);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 .year-rail {
   display: flex;
@@ -18,12 +19,15 @@
 }
 .year-rail a {
   flex: 0 0 auto;
-  font-size: 0.8rem;
+  font-family: var(--font-cond);
+  font-size: 0.82rem;
   font-weight: 700;
+  letter-spacing: 0.06em;
   color: var(--muted);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-s);
   text-decoration: none;
+  transition: color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
 }
 .year-rail a:hover { color: var(--ink); background: var(--panel-2); text-decoration: none; }
 
@@ -36,26 +40,46 @@
 }
 
 .year-section {
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--space-8);
   scroll-margin-top: 150px;
   content-visibility: auto;
   contain-intrinsic-size: auto 900px;
 }
+/* Year as a gallery placard */
 .year-head {
   display: flex;
   align-items: baseline;
   gap: var(--space-4);
-  border-bottom: 2px solid var(--red);
-  padding-bottom: var(--space-2);
-  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line-bright);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-5);
+  position: relative;
+}
+.year-head::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 72px;
+  height: 3px;
+  background: var(--red);
 }
 .year-head h2 {
-  font-size: 2rem;
-  font-weight: 900;
+  font-family: var(--font-cond);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
   margin: 0;
   color: var(--ink);
 }
-.year-count { color: var(--muted); font-size: 0.85rem; }
+.year-count {
+  font-family: var(--font-cond);
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
 .wave {
   margin-bottom: var(--space-5);
@@ -63,6 +87,7 @@
   border-radius: var(--radius-l);
   background: var(--bg-soft);
   overflow: clip;
+  box-shadow: var(--edge-light), var(--shadow-1);
 }
 .wave-head {
   display: flex;
@@ -71,8 +96,9 @@
   gap: var(--space-3);
   padding: var(--space-4) var(--space-5);
   border-bottom: 1px solid var(--line-soft);
+  background: rgba(245, 241, 232, 0.012);
 }
-.wave-title { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; margin: 0; }
+.wave-title { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; margin: 0; letter-spacing: 0; }
 .wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-left: auto; }
 .wave-baf {
   font-size: 0.85rem;
@@ -84,39 +110,61 @@
 
 .figure-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   gap: var(--space-3);
   padding: var(--space-4) var(--space-5) var(--space-5);
 }
 
+/* Lot-catalog figure cards: tactile, numbered, disciplined */
 .figure-card {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-m);
   padding: var(--space-4);
+  padding-top: calc(var(--space-4) + 2px);
   cursor: pointer;
-  transition: border-color 0.15s var(--ease), transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  box-shadow: var(--edge-light), var(--shadow-1);
+  transition: border-color var(--dur-2) var(--ease), transform var(--dur-2) var(--ease-swift),
+    box-shadow var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
   text-align: left;
   color: var(--ink);
   width: 100%;
 }
+.figure-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  border-radius: var(--radius-m) var(--radius-m) 0 0;
+  background: var(--line-bright);
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
+}
 .figure-card:hover, .figure-card:focus-visible {
-  border-color: var(--red);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
+  border-color: var(--line-bright);
+  transform: translateY(-3px);
+  background: var(--panel-2);
+  box-shadow: var(--edge-light), var(--shadow-2);
+}
+.figure-card:hover::before, .figure-card:focus-visible::before {
+  opacity: 1;
+  background: var(--red);
 }
 .figure-card h3 {
   font-size: 0.95rem;
   font-weight: 700;
   margin: 0 0 var(--space-2);
   line-height: 1.3;
+  letter-spacing: 0.005em;
+  padding-right: var(--space-4);
 }
 .figure-card .sub {
   font-size: 0.8rem;
   color: var(--muted);
   margin-bottom: var(--space-3);
   min-height: 2.4em;
+  font-variant-numeric: tabular-nums;
 }
 .figure-card .tag-row { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: var(--space-3); }
 .figure-card .owned-dot {
@@ -127,7 +175,7 @@
   height: 10px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 8px rgba(93, 255, 143, 0.8);
+  box-shadow: 0 0 8px rgba(111, 227, 161, 0.8);
 }
 .figure-card .wanted-dot {
   position: absolute;
@@ -137,7 +185,7 @@
   height: 10px;
   border-radius: 50%;
   background: var(--gold);
-  box-shadow: 0 0 8px rgba(245, 179, 1, 0.8);
+  box-shadow: 0 0 8px rgba(232, 179, 42, 0.8);
 }
 
 .search-results-meta {
@@ -145,16 +193,18 @@
   font-size: 0.9rem;
   margin-bottom: var(--space-4);
 }
+.search-results-meta strong { color: var(--ink); }
 
 /* Milestone-anniversaries strip */
-.history-strip { border-block: 1px solid var(--line-soft); background: var(--bg-soft); }.history-inner { display: flex; gap: var(--space-3); align-items: baseline; padding-block: var(--space-3); }
+.history-strip { border-block: 1px solid var(--line-soft); background: var(--bg-soft); }
+.history-inner { display: flex; gap: var(--space-3); align-items: baseline; padding-block: var(--space-3); }
 .history-inner p { margin: 0; font-size: 0.9rem; color: var(--ink-dim); }
 .history-kicker { font-size: 1rem; }
 .history-item strong { color: var(--gold); }
 .history-sep { color: var(--muted); }
 .history-note { display: block; font-size: 0.78rem; color: var(--muted); margin-top: var(--space-1); }
 
-/* --- Packaging era bands --- */
+/* --- Packaging era bands: gallery placards --- */
 .era-legend {
   display: flex;
   flex-wrap: wrap;
@@ -175,37 +225,41 @@
   background: var(--panel);
   text-decoration: none;
   font-size: 0.8rem;
+  transition: border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
 }
-.era-chip:hover { border-color: var(--gold); text-decoration: none; }
-.era-chip-years { font-weight: 800; color: var(--gold); white-space: nowrap; }
+.era-chip:hover { border-color: var(--gold); text-decoration: none; transform: translateY(-1px); }
+.era-chip-years { font-weight: 700; color: var(--gold); white-space: nowrap; font-family: var(--font-cond); letter-spacing: 0.06em; }
 .era-chip-title { color: var(--ink-dim); }
 
 .era-band {
   border: 1px solid var(--line-soft);
-  border-left: 4px solid var(--gold);
+  border-left: 3px solid var(--gold);
   border-radius: var(--radius-m);
   background: var(--bg-soft);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-5) var(--space-6);
   margin: var(--space-7) 0 var(--space-5);
   scroll-margin-top: 150px;
+  box-shadow: var(--edge-light), var(--shadow-1);
 }
 .era-kicker {
-  margin: 0 0 var(--space-1);
-  font-size: 0.72rem;
-  font-weight: 800;
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-cond);
+  font-size: var(--text-xs);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.24em;
   color: var(--gold);
 }
-.era-title { margin: 0 0 var(--space-1); font-size: 1.35rem; font-weight: 900; }
-.era-note { margin: 0; font-size: 0.9rem; color: var(--ink-dim); max-width: 80ch; }
+.era-title { margin: 0 0 var(--space-2); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.01em; }
+.era-note { margin: 0; font-size: 0.92rem; color: var(--ink-dim); max-width: 80ch; }
 .era-note a { color: var(--gold); font-weight: 600; }
 
 .era-tag {
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-family: var(--font-cond);
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
   color: var(--gold);
   border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
   border-radius: var(--radius-s);

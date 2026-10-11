@@ -1,4 +1,4 @@
-/* Base — reset, typography, accessibility */
+/* Base — reset, typography, accessibility ("The Archive" v2) */
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -12,33 +12,60 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
   margin: 0 0 var(--space-3);
+  text-wrap: balance;
 }
 
 p { margin: 0 0 var(--space-4); }
 
+/* Archival kickers: wide-tracked uppercase labels */
+.kicker {
+  display: inline-block;
+  font-family: var(--font-cond);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-3);
+}
+
+/* Tabular numerals for every data surface */
+.tnum, .stat-value, .data-table td, .value-table td, .price-table td,
+.year-head h2, .era-chip-years {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
 a { color: var(--blue); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 img { max-width: 100%; display: block; }
 
-button, input, select, textarea { font: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: var(--focus-ring);
   border-radius: var(--radius-s);
 }
 
 ::selection { background: var(--red); color: #fff; }
+
+/* Hairline rule used between gallery sections */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line-soft);
+  margin: var(--space-6) 0;
+}
 
 .visually-hidden {
   position: absolute !important;
@@ -51,21 +78,33 @@ button, input, select, textarea { font: inherit; }
 .skip-link {
   position: absolute;
   left: var(--space-4);
-  top: -48px;
+  top: -56px;
   z-index: 200;
   background: var(--gold);
-  color: #111;
-  font-weight: 700;
+  color: #141005;
+  font-weight: 800;
+  font-size: 0.85rem;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-s);
-  transition: top 0.15s var(--ease);
+  transition: top var(--dur-1) var(--ease);
 }
 .skip-link:focus { top: var(--space-3); }
+
+/* Entrance: restrained fade-rise for hero content */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise-in var(--dur-3) var(--ease) both; }
+.rise-1 { animation-delay: 0.05s; }
+.rise-2 { animation-delay: 0.12s; }
+.rise-3 { animation-delay: 0.2s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
 }
