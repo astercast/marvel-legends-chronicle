@@ -28,6 +28,9 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - Variant & chase identifier: spotter's guide + wave-by-wave index of all 83 documented variants
 - Variant spotlight (`variant-spotlight.html`): 15 of the most interesting documented variants — why each matters, how to spot it (15 of 83, coverage stated)
 - Printable checklist: your tracker as a paper checklist grouped by wave, with print stylesheet (also applied to the timeline)
+- Archive explorer (`explore.html`): "Surprise me" seeded random-figure engine (no repeats until the deck is exhausted) + curated rabbit holes — variant oddities, deepest Toy Biz cuts, one-figure characters, the ten oldest BAFs — every result links its figure dialog and wave page (browser-local)
+- Retro line browser (`retro.html`): all retro-carded figures identified from the archive's own notes (Marvel Retro waves, Retro fan channel, retro singles), grouped by retro line with coverage stated — retro status never guessed (browser-local)
+- Shelfie showcase (`showcase.html`): curate your top 10 from owned figures, reorder by drag-and-drop or keyboard, one "why it made the cut" line per slot, printable layout (browser-local)
 
 ## API (static JSON, versioned)
 
@@ -97,4 +100,4 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `api.html` — human-readable API docs
 - `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community, print (print.css: paper-friendly timeline + checklist output)
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page, explore, retro, showcase (ES modules)

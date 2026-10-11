@@ -38,7 +38,9 @@ NAV_LINKS = [
     ("exclusives.html", "Exclusives"), ("watchlist.html", "Watchlist"),
     ("radar.html", "Radar"), ("compare.html", "Compare"),
     ("grails.html", "Grails"), ("variants.html", "Variants"),
-    ("checklist.html", "Checklist"), ("skills.html", "Skills"),
+    ("checklist.html", "Checklist"),
+    ("explore.html", "Explore"), ("retro.html", "Retro"), ("showcase.html", "Showcase"),
+    ("skills.html", "Skills"),
     ("community.html", "Community"), ("api.html", "API"),
 ]
 

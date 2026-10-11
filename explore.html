@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Archive Explorer — Marvel Legends Chronicle</title>
+  <meta name="description" content="Serendipitous discovery across all 1,904 Marvel Legends figures: a surprise-me engine plus curated rabbit holes — variant oddities, deep Toy Biz cuts, one-figure characters, forgotten BAFs.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .exp-hero { padding-block: var(--space-7); }
+    .surprise { border: 1px solid var(--gold); border-radius: var(--radius);
+      padding: var(--space-5); margin-bottom: var(--space-7); background: var(--panel); }
+    .surprise h2 { margin-top: 0; }
+    .surprise-card { border-left: 4px solid var(--gold); padding: var(--space-4);
+      margin: var(--space-4) 0; background: var(--bg); border-radius: 0 var(--radius) var(--radius) 0; }
+    .surprise-card h3 { margin: 0 0 0.25rem; font-size: 1.4rem; }
+    .surprise-card .sub { color: var(--muted); margin-bottom: var(--space-2); }
+    .surprise-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+    .rabbit-hole { margin-bottom: var(--space-7); }
+    .rabbit-hole > h2 { margin-bottom: 0.25rem; }
+    .rabbit-hole > p.method { color: var(--muted); font-size: 0.9rem; max-width: 70ch; margin-top: 0; }
+    .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3); }
+    .exp-card { padding: var(--space-4); position: relative; }
+    .exp-card h3 { font-size: 1rem; margin: 0 0 0.25rem; padding-right: 1.2rem; }
+    .exp-card .sub { color: var(--muted); font-size: 0.82rem; margin-bottom: var(--space-2); }
+    .exp-card .card-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+    .owned-dot, .wanted-dot { position: absolute; top: var(--space-3); right: var(--space-3); }
+    .overflow-note { color: var(--muted); font-size: 0.85rem; }
+    @media print { .site-header, .site-footer, .surprise-actions, .card-actions, .tracker-btns { display: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to explorer</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html" aria-current="page">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero exp-hero" aria-labelledby="exp-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Serendipity engine</span>
+        <h1 id="exp-title">The Archive <span class="accent">Explorer.</span></h1>
+        <p class="lede">1,904 figures is too many to browse on purpose. Roll the dice — or fall down a curated rabbit hole and find the grail you didn't know existed.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="surprise" aria-labelledby="surprise-title">
+        <h2 id="surprise-title">🎲 Surprise me</h2>
+        <p class="chart-sub">A seeded shuffle through the whole archive. No repeats until you've seen every figure — then the deck reshuffles.</p>
+        <div class="surprise-card" id="surprise-card" aria-live="polite">
+          <p class="chart-sub">Loading the archive…</p>
+        </div>
+        <div class="surprise-actions">
+          <button type="button" class="btn" id="btn-surprise">Surprise me</button>
+          <button type="button" class="btn btn-sm" id="btn-reshuffle">Reshuffle the deck</button>
+          <p class="chart-sub" id="surprise-progress" style="margin:0;align-self:center"></p>
+        </div>
+      </section>
+
+      <section class="rabbit-hole" aria-labelledby="rh-variants">
+        <h2 id="rh-variants">Variant oddities</h2>
+        <p class="method">Variants the archive's own notes flag as unusual — chase-style, translucent, unmasked, stealth and the like. No editorializing; the notes said it, we list it.</p>
+        <div class="exp-grid" id="grid-variants"></div>
+      </section>
+
+      <section class="rabbit-hole" aria-labelledby="rh-toybiz">
+        <h2 id="rh-toybiz">Deepest Toy Biz cuts</h2>
+        <p class="method">Toy Biz-era figures (2002–2006) of characters who have two or fewer figures in the entire 1,904-figure archive. The ones even longtime collectors forget.</p>
+        <div class="exp-grid" id="grid-toybiz"></div>
+      </section>
+
+      <section class="rabbit-hole" aria-labelledby="rh-onefig">
+        <h2 id="rh-onefig">One-figure characters</h2>
+        <p class="method"><span id="onefig-count"></span> characters appear exactly once in the whole archive. A few of them, below — search the timeline for the rest.</p>
+        <div class="exp-grid" id="grid-onefig"></div>
+        <p class="overflow-note" id="onefig-more"></p>
+      </section>
+
+      <section class="rabbit-hole" aria-labelledby="rh-bafs">
+        <h2 id="rh-bafs">Forgotten BAFs</h2>
+        <p class="method">The ten oldest Build-A-Figures in the archive (2005–2007) — the ones that started the whole BAF ritual.</p>
+        <div class="exp-grid" id="grid-bafs"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/explore.js"></script>
+</body>
+</html>

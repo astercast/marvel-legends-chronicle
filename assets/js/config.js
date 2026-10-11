@@ -13,6 +13,9 @@ export const STORE_KEYS = {
   buys: "mlc_buys_v1", // [{ id, figId, name, wave, condition, price, date, where, note }] — purchases the user made
   watchlist: "mlc_watchlist_v1", // [{ id, figId, name, wave, target, note, created, sightings: [{id, date, where, price, sold, url, note}] }]
   shelfHistory: "mlc_shelf_history_v1", // [{ d: "YYYY-MM-DD", owned, wanted, bafDone }] — snapshots for the growth trend
+  exploreSeed: "mlc_explore_seed_v1", // integer seed for the explorer's shuffle
+  exploreSeen: "mlc_explore_seen_v1", // [figId] — figures already surfaced by "Surprise me"
+  showcase: "mlc_showcase_v1", // { order: [figId], notes: { figId: text } } — the top-10 Shelfie Showcase
 };
 
 export const MARKETPLACES = [

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shelfie Showcase — Marvel Legends Chronicle</title>
+  <meta name="description" content="Curate your top 10 from your owned Marvel Legends figures into a styled, printable showcase — with a line on why each one made the cut.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .show-hero { padding-block: var(--space-7); }
+    .show-layout { display: grid; grid-template-columns: minmax(280px, 360px) 1fr; gap: var(--space-5); margin-bottom: var(--space-7); }
+    @media (max-width: 900px) { .show-layout { grid-template-columns: 1fr; } }
+    .picker { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-4);
+      background: var(--panel); align-self: start; position: sticky; top: var(--space-4); }
+    .showcase-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+    .show-slot { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-4);
+      background: var(--panel); display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); }
+    .show-slot.dragging { opacity: 0.5; }
+    .rank { font-family: var(--font-display); font-weight: 900; font-size: 1.6rem; color: var(--gold);
+      min-width: 2.2rem; text-align: center; }
+    .show-slot h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+    .show-slot .sub { color: var(--muted); font-size: 0.82rem; margin-bottom: var(--space-2); }
+    .show-slot textarea { width: 100%; min-height: 3.2rem; margin-top: var(--space-2); }
+    .slot-actions { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: var(--space-2); align-items: center; }
+    .drag-handle { cursor: grab; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--bg); padding: 0.3rem 0.6rem; font-size: 0.8rem; color: var(--muted); }
+    .empty-slot { border-style: dashed; color: var(--muted); }
+    @media print {
+      .site-header, .site-footer, .picker, .slot-actions, .show-actions { display: none !important; }
+      .show-layout { display: block; }
+      .show-slot textarea { border: none; resize: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to showcase</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html" aria-current="page">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero show-hero" aria-labelledby="show-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Your hall of fame</span>
+        <h1 id="show-title">The <span class="accent">Shelfie</span> Showcase.</h1>
+        <p class="lede">Ten figures. Your ten. Curate the best of your shelf, say why each one made the cut, print it, frame it.</p>
+        <p class="chart-sub" id="show-count" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="container show-layout">
+      <aside class="picker" aria-labelledby="picker-title">
+        <h2 id="picker-title" style="margin-top:0">Add from your shelf</h2>
+        <div class="field">
+          <label for="show-search">Owned figure</label>
+          <input class="input" id="show-search" list="show-owned-list" autocomplete="off" placeholder="Start typing a figure name…">
+          <datalist id="show-owned-list"></datalist>
+        </div>
+        <button type="button" class="btn" id="btn-add">Add to showcase</button>
+        <p class="chart-sub" id="picker-note"></p>
+        <div class="empty-state" id="picker-empty" hidden>
+          <p>No owned figures tracked yet. Mark figures <strong>Owned</strong> on the <a href="index.html">timeline</a> and they'll appear here.</p>
+        </div>
+      </aside>
+
+      <section aria-labelledby="showcase-title">
+        <div class="show-actions" style="display:flex;gap:var(--space-2);margin-bottom:var(--space-4);flex-wrap:wrap">
+          <h2 id="showcase-title" style="margin:0;flex:1;min-width:200px">Your top 10</h2>
+          <button type="button" class="btn btn-sm" id="btn-print">Print showcase</button>
+          <button type="button" class="btn btn-sm" id="btn-clear">Clear showcase</button>
+        </div>
+        <ol class="showcase-list" id="showcase-list"></ol>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/showcase.js"></script>
+</body>
+</html>

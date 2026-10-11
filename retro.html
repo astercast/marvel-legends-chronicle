@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retro Line Browser — Marvel Legends Chronicle</title>
+  <meta name="description" content="Every retro-carded Marvel Legends figure in one place: Marvel Retro waves, Retro fan channel releases, and retro singles — identified from the archive's own notes.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .retro-hero { padding-block: var(--space-7); }
+    .chip-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+    .chip { border: 1px solid var(--line); background: var(--panel); color: var(--text);
+      border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.82rem; cursor: pointer; }
+    .chip:hover { border-color: var(--gold); }
+    .chip-on { background: var(--gold); border-color: var(--gold); color: #1a1408; font-weight: 700; }
+    .chip-n { opacity: 0.75; font-family: var(--font-mono); font-size: 0.75rem; }
+    .retro-toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; margin-bottom: var(--space-4); }
+    .retro-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-6); }
+    .retro-card { padding: var(--space-4); position: relative; }
+    .retro-card h3 { font-size: 1rem; margin: 0 0 0.25rem; padding-right: 1.2rem; }
+    .retro-card .sub { color: var(--muted); font-size: 0.82rem; margin-bottom: var(--space-2); }
+    .retro-card .line-tag { font-size: 0.8rem; color: var(--gold); font-weight: 600; margin-bottom: var(--space-2); }
+    .owned-dot, .wanted-dot { position: absolute; top: var(--space-3); right: var(--space-3); }
+    .tracker-btns { display: flex; gap: var(--space-1); margin-top: var(--space-3); }
+    .research { margin-top: var(--space-2); font-size: 0.85rem; }
+    .research summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    @media print { .site-header, .site-footer, .retro-toolbar, .tracker-btns, .research { display: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to retro browser</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html" aria-current="page">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero retro-hero" aria-labelledby="retro-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">The nostalgia lane</span>
+        <h1 id="retro-title">The <span class="accent">Retro</span> line.</h1>
+        <p class="lede">Classic costumes on vintage-style cards — every retro-carded figure the archive can identify, in one place.</p>
+        <p class="chart-sub" id="retro-coverage" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="retro-toolbar">
+        <div class="field" style="flex:1;min-width:240px;max-width:420px">
+          <label for="retro-search">Search retro figures</label>
+          <input class="input" id="retro-search" type="search" autocomplete="off" placeholder="Figure or wave…">
+        </div>
+        <p class="chart-sub" id="retro-count" aria-live="polite" style="margin:0"></p>
+      </div>
+      <div class="chip-row" id="retro-chips" role="group" aria-label="Filter by retro line"></div>
+      <div class="empty-state" id="retro-empty" hidden>
+        <h2>No retro figures match</h2>
+        <p>Try a different line or clear the search.</p>
+      </div>
+      <div class="retro-grid" id="retro-grid"></div>
+      <p class="chart-sub" style="margin-bottom:var(--space-7)">Retro status comes from the archive's own figure notes — never guessed. Era context (the windowless years, the retro-card revival) lives in the <a href="encyclopedia.html#packaging">encyclopedia's packaging guide</a>. Owned/Wanted toggles share your timeline tracker.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/retro.js"></script>
+</body>
+</html>
