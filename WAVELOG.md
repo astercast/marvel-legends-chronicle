@@ -35,3 +35,4 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Tests:** new `tests/test-agents.js` (7 tests: index lists exactly the 6 skills, files + frontmatter, API-references-only section, refs point at `api/v1`/skills, all 6 playbook sections present, API count consistency, agents.html links) registered in `tests/run.js` — 80/80 passing (15 suites).
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (80/80 tests, 15 suites; 8,753 relative refs, 0 broken; JSON/schema/ids/storage/perf green).
 - Nav: `agents.html` added to canonical lists in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on 31 pages.
+- **Commit:** c77a421 (local) → pushed as GitHub commit `8c6be0c` on `main`
