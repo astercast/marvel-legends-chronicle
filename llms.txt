@@ -42,11 +42,12 @@ Base: `api/v1/`
 - `api/v1/waves.json` — 158 wave summaries (id, year, manufacturer, series, baf, source, figureCount)
 - `api/v1/figures.json` — flat list of all 1,904 figures with wave context (incl. `source`)
 - `api/v1/encyclopedia.json` — history timeline, packaging evolution, variant/chase/exclusive taxonomy, hall of fame (with reissue radar), grading guide, transparent price methodology, bootleg guide, resources directory
-- `api/v1/schema/wave.json`, `api/v1/schema/figure.json` — JSON Schema (draft-07)
+- `api/v1/preorders.json` — 15 researched upcoming releases: status, exact pre-order dates where reported (null when unreported — never invented), release windows, announced MSRP, retailer search patterns, hobby-press sources; powers the pre-order tracker + release calendar
+- `api/v1/schema/wave.json`, `api/v1/schema/figure.json`, `api/v1/schema/preorder.json` — JSON Schema (draft-07)
 
 ## Skills (agentic task procedures)
 
-212 skills in `skills/` — rebuild with `python3 scripts/build_skills.py`
+218 skills in `skills/` — rebuild with `python3 scripts/build_skills.py`
 (generates from `data/*.json` + authored procedures; outputs committed).
 `skills/index.json` is the manifest: id, title, description, path per skill.
 
@@ -54,9 +55,17 @@ For agents: load the skill whose task matches the request — skills are the
 primary interface for *doing* work; the JSON endpoints are the data layer.
 `api/v1/index.json` points here (`repository`, `skills`, `for_agents`).
 
-Categories: baf (101 completion checklists), characters (66 collector guides),
+Categories: agents (6 playbooks: preorder-hunter, market-brief-reader,
+ko-spotter, grail-evaluator, baf-strategist, collection-auditor),
+baf (101 completion checklists), characters (46 collector guides),
 grails (24 dossiers), bootleg (8), eras (5), collection (5), marketplace (4),
 community (4), variants (4), hunts (11).
+
+The agents category uses an "API references" section (pointing at
+`api/v1` endpoints) instead of "Data references"; see the agents
+landing page (`agents.html`) for the endpoint table, data-freshness
+rules (preorder dates, radar, observed 2026-10-11), and 3 worked
+agent workflows.
 
 ## Stable ids
 

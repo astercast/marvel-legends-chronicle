@@ -41,6 +41,7 @@ NAV = [
     ("retro.html", "Retro"),
     ("showcase.html", "Showcase"),
     ("skills.html", "Skills"),
+    ("agents.html", "Agents"),
     ("community.html", "Community"),
     ("api.html", "API"),
 ]

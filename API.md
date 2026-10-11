@@ -81,14 +81,25 @@ Base path: `api/v1/`
 
 ## Skills
 
-212 task procedures in `skills/`, indexed by `skills/index.json`
+218 task procedures in `skills/`, indexed by `skills/index.json`
 (id, title, description, path). Each skill file has frontmatter
 (`name`, `description`) followed by: Use when, Inputs, Procedure,
 Worked example, Data references, Pitfalls.
 
+The `agents` category (6 cross-cutting playbooks) uses an
+**API references** section pointing at `api/v1` endpoints instead of
+`Data references`: `preorder-hunter` (upcoming pre-orders from
+`preorders.json` + radar), `market-brief-reader` (market briefing +
+price-trend data, reported solds only), `ko-spotter` (bootleg risk
+from KO intel + auth-wizard logic), `grail-evaluator` (rarity signals
++ reissue radar), `baf-strategist` (cheapest-first BAF completion),
+`collection-auditor` (shelf gaps, era splits, next acquisitions).
+
 Agents: `api/v1/index.json` carries `repository`, `skills` (directory,
 index, count, usage), and `for_agents` routing. Load the skill matching
 the task; use the JSON endpoints as the data layer behind it.
+The human-readable agents surface is `agents.html` (endpoint table,
+`llms.txt`, skills directory, data freshness, worked workflows).
 Regenerate with `python3 scripts/build_skills.py` after data changes.
 
 ## Provenance and limitations

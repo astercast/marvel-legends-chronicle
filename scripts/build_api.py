@@ -102,7 +102,7 @@ def main():
             "directory": "skills/",
             "index": "skills/index.json",
             "count": skills_index.get("count", 0),
-            "usage": "Each skill is a markdown file with frontmatter (name, description), then: Use when, Inputs, Procedure, Worked example, Data references, Pitfalls. Load the skill whose task matches the user's request.",
+            "usage": "Each skill is a markdown file with frontmatter (name, description), then: Use when, Inputs, Procedure, Worked example, Data/API references, Pitfalls. Agent-playbook skills (skills/agents/) use an 'API references' section pointing at api/v1 endpoints; the rest use 'Data references' pointing at data/*.json. Load the skill whose task matches the user's request.",
         },
         "endpoints": endpoints,
     }

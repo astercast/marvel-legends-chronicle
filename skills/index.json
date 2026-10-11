@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "count": 212,
+  "count": 218,
   "skills": [
     {
       "id": "baf-galactus",
@@ -1273,6 +1273,42 @@
       "title": "Understand the counterfeit market",
       "description": "The KO economy: where bootlegs sell, what they cost, and who buys them knowingly.",
       "path": "skills/bootleg/bootleg-counterfeit-market.md"
+    },
+    {
+      "id": "preorder-hunter",
+      "title": "Hunt upcoming pre-orders (what's coming, when, where)",
+      "description": "Turn the pre-order tracker and radar into a timed hunt plan: what's dropping, exact dates, and retailer search links.",
+      "path": "skills/agents/preorder-hunter.md"
+    },
+    {
+      "id": "market-brief-reader",
+      "title": "Read the market briefing honestly (reported solds, never an index)",
+      "description": "Interpret the 2026 market briefing and price-trend data without turning reported listings into a market index.",
+      "path": "skills/agents/market-brief-reader.md"
+    },
+    {
+      "id": "ko-spotter",
+      "title": "Spot a likely bootleg (KO market intel + auth-wizard logic)",
+      "description": "Run the KO risk pass: market vectors, price logic, photo tells, and the authentication-wizard flow.",
+      "path": "skills/agents/ko-spotter.md"
+    },
+    {
+      "id": "grail-evaluator",
+      "title": "Evaluate a grail candidate (rarity signals, reissue radar)",
+      "description": "Assess whether a figure deserves grail money: hall-of-fame signals, variant/chase data, and what the archive does and doesn't know.",
+      "path": "skills/agents/grail-evaluator.md"
+    },
+    {
+      "id": "baf-strategist",
+      "title": "Plan Build-A-Figure completion from your owned state",
+      "description": "Turn a wave's piece checklist and your owned figures into a cheapest-first BAF completion plan.",
+      "path": "skills/agents/baf-strategist.md"
+    },
+    {
+      "id": "collection-auditor",
+      "title": "Audit a collection shelf (gaps, era splits, next acquisitions)",
+      "description": "Summarize a shelf from owned/wanted state: era coverage, near-complete wins, gaps, and the smartest next pickups.",
+      "path": "skills/agents/collection-auditor.md"
     }
   ]
 }

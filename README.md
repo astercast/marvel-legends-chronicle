@@ -49,14 +49,17 @@ Static site. GitHub only — nothing is deployed anywhere.
 
 ## Skills
 
-`skills/` — 212 agentic task procedures (`python3 scripts/build_skills.py`
+`skills/` — 218 agentic task procedures (`python3 scripts/build_skills.py`
 regenerates from `data/*.json` + authored procedures). `skills/index.json`
 is the manifest agents should load first; `api/v1/index.json` points at it.
-101 BAF completion checklists, 66 character collector guides (with run completion), 24 grail
+101 BAF completion checklists, 46 character collector guides (with run completion), 24 grail
 dossiers (incl. reissue-radar), bootleg authentication + counterfeit-market
 awareness, packaging-era ID, chase/case-ratio decoding, exclusive-hunting
 playbook, grading decisions, era guides, hunt tactics, marketplace and
-community procedures.
+community procedures, plus 6 cross-cutting agent playbooks (`skills/agents/`:
+preorder-hunter, market-brief-reader, ko-spotter, grail-evaluator,
+baf-strategist, collection-auditor) — see the agents landing page
+(`agents.html`).
 
 ## Data status
 
