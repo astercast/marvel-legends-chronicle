@@ -40,6 +40,12 @@
     .missing-list { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: grid; gap: var(--space-2); font-size: 0.88rem; }
     .missing-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); justify-content: space-between; border-bottom: 1px solid var(--line-soft); padding-bottom: var(--space-2); }
     .missing-list .miss-meta { color: var(--muted); font-size: 0.78rem; }
+    .spark { width: 100%; max-width: 520px; height: 90px; display: block; margin-bottom: var(--space-2); }
+    .month-bars { display: flex; align-items: end; gap: 6px; min-height: 120px; margin: var(--space-3) 0; overflow-x: auto; padding-bottom: var(--space-2); }
+    .month-bar { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 34px; }
+    .month-fill { width: 26px; background: var(--gold); border-radius: 3px 3px 0 0; min-height: 3px; }
+    .month-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); }
+    @media print { .site-header, .site-footer { display: none !important; } }
   </style>
 </head>
 <body>
@@ -51,9 +57,7 @@
         <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
       </a>
       <nav class="site-nav" aria-label="Primary">
-        <a href="index.html">Timeline</a>
-        <a href="start.html">Start</a>
-        <a href="waves/index.html">Waves</a>
+                <a href="index.html">Timeline</a>
         <a href="start.html">Start</a>
         <a href="waves/index.html">Waves</a>
         <a href="stats.html">Stats</a>
@@ -64,6 +68,8 @@
         <a href="auth-wizard.html">Auth Wizard</a>
         <a href="shelf.html" aria-current="page">Your Shelf</a>
         <a href="journal.html">Journal</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
         <a href="radar.html">Radar</a>
         <a href="compare.html">Compare</a>
         <a href="grails.html">Grails</a>
@@ -106,7 +112,17 @@
 
         <section class="card shelf-panel" id="shelf-complete" aria-label="Almost finished" style="padding:var(--space-5)"></section>
 
-        <p class="chart-sub" style="margin-bottom:var(--space-7);">All data is local to this browser (keys <code>mlc_owned_v1</code> / <code>mlc_wanted_v1</code>). Clearing site data resets your shelf. Figure totals: api/v1/stats.json.</p>
+        <section class="card shelf-panel" id="shelf-mfr" aria-label="Collection by manufacturer" style="padding:var(--space-5)"></section>
+
+        <section class="card shelf-panel" id="shelf-peak" aria-label="Peak collecting years" style="padding:var(--space-5)"></section>
+
+        <section class="card shelf-panel" id="shelf-trend" aria-label="Collection growth trend" style="padding:var(--space-5)"></section>
+
+        <section class="card shelf-panel" id="shelf-jval" aria-label="Journal value over time" style="padding:var(--space-5)"></section>
+
+        <section class="card shelf-panel" id="shelf-rarity" aria-label="Shelf versus archive by packaging era" style="padding:var(--space-5)"></section>
+
+        <p class="chart-sub" style="margin-bottom:var(--space-7);">All data is local to this browser (keys <code>mlc_owned_v1</code> / <code>mlc_wanted_v1</code> / <code>mlc_journal_v1</code> / <code>mlc_watchlist_v1</code> / <code>mlc_shelf_history_v1</code>). Clearing site data resets your shelf. Figure totals: api/v1/stats.json.</p>
       </div>
     </div>
   </main>
@@ -115,26 +131,11 @@
     <div class="container footer-grid">
       <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
       <nav aria-label="Footer">
-        <a href="index.html">Timeline</a>
-        <a href="stats.html">Stats</a>
-        <a href="encyclopedia.html">Encyclopedia</a>
-        <a href="baf-planner.html">BAF Planner</a>
-        <a href="characters/index.html">Characters</a>
-        <a href="price-guide.html">Price Guide</a>
-        <a href="auth-wizard.html">Auth Wizard</a>
-        <a href="shelf.html">Your Shelf</a>
-        <a href="journal.html">Journal</a>
-        <a href="radar.html">Radar</a>
-        <a href="compare.html">Compare</a>
-        <a href="grails.html">Grails</a>
-        <a href="variants.html">Variants</a>
-        <a href="checklist.html">Checklist</a>
-        <a href="skills.html">Skills</a>
-        <a href="community.html">Community</a>
-        <a href="api.html">API</a>
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="checklist.html">Checklist</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
       </nav>
     </div>
   </footer>
   <script type="module" src="assets/js/shelf.js"></script>
+  <script type="module" src="assets/js/shelf-v2.js"></script>
 </body>
 </html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grail Watchlist — Marvel Legends Chronicle</title>
+  <meta name="description" content="Track the figures you're hunting: set your own max price, log sightings, and get an honest deal-or-no-deal against your target.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .wl-hero { padding-block: var(--space-7); }
+    .wl-grid { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: var(--space-5); margin-bottom: var(--space-6); align-items: start; }
+    @media (max-width: 900px) { .wl-grid { grid-template-columns: 1fr; } }
+    .wl-form { display: grid; gap: var(--space-3); }
+    .form-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .form-error { color: #ff8a8a; font-size: 0.85rem; min-height: 1.2em; margin: 0; }
+    .hunt-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+    .hunt .entry-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); }
+    .entry-name { font-weight: 700; }
+    .entry-wave { color: var(--muted); font-size: 0.82rem; }
+    .entry-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; font-size: 0.85rem; margin-top: var(--space-1); }
+    .entry-price { font-family: var(--font-mono); color: var(--gold); font-weight: 700; }
+    .entry-note { color: var(--muted); font-size: 0.85rem; margin: var(--space-1) 0 0; }
+    .entry-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+    .sight-list { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: grid; gap: var(--space-2); }
+    .sight { border-top: 1px solid var(--line-soft); padding-top: var(--space-2); display: grid; gap: var(--space-1); }
+    .sight-head { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: baseline; font-size: 0.85rem; }
+    .sight-where { font-weight: 700; }
+    .sight-date { font-family: var(--font-mono); color: var(--muted); font-size: 0.78rem; }
+    .sight-price { font-family: var(--font-mono); font-weight: 700; }
+    .sight-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; font-size: 0.8rem; }
+    .deal { margin: 0; font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 6px; display: inline-block; }
+    .deal-good { background: rgba(74, 222, 128, 0.12); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.4); }
+    .deal-bad { background: rgba(248, 113, 113, 0.1); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.35); }
+    .deal-inline { font-size: 0.78rem; padding: 0.15rem 0.5rem; }
+    .sight-form-wrap { margin-top: var(--space-3); }
+    .sight-form-wrap summary { cursor: pointer; color: var(--gold); font-weight: 600; font-size: 0.88rem; }
+    .sight-form { display: grid; gap: var(--space-2); margin-top: var(--space-2); padding: var(--space-3); border: 1px dashed var(--line); border-radius: 8px; }
+    .check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; margin-bottom: var(--space-4); }
+    .method-note { font-size: 0.82rem; color: var(--muted); max-width: 70ch; }
+    @media print {
+      .site-header, .site-footer, .wl-form-wrap, .entry-actions, .sight-form-wrap, .toolbar .btn-row { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to watchlist</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html" aria-current="page">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wl-hero" aria-labelledby="wl-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Your grail hunt</span>
+        <h1 id="wl-title">Grail <span class="accent">watchlist.</span></h1>
+        <p class="lede">Add the figures you're hunting, set <em>your</em> max price, log every sighting. When a price beats your target, you'll know — deal or no deal, judged against your number, not anyone's index.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="stat-strip" id="wl-summary" aria-label="Watchlist summary" style="margin-bottom:var(--space-5)"></div>
+
+      <div class="wl-grid">
+        <section class="card wl-form-wrap" style="padding:var(--space-5)" aria-labelledby="hunt-heading">
+          <h2 id="hunt-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Start a hunt</h2>
+          <form id="wl-form" class="wl-form" novalidate>
+            <div class="field">
+              <label for="wl-figure">Figure</label>
+              <input class="input" id="wl-figure" name="figure" list="wl-figures" autocomplete="off"
+                     placeholder="Start typing a figure name…" required>
+              <datalist id="wl-figures"></datalist>
+              <datalist id="wl-where"></datalist>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="wl-target">Your max price (USD)</label>
+                <input class="input" id="wl-target" name="target" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="60.00" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="wl-note">Note <span class="muted">(optional)</span></label>
+              <input class="input" id="wl-note" name="note" maxlength="140" placeholder="e.g. loose is fine, must have BAF piece">
+            </div>
+            <p class="form-error" id="wl-error" role="alert"></p>
+            <div class="btn-row" style="margin-top:0">
+              <button type="submit" class="btn btn-gold">Add to watchlist</button>
+            </div>
+          </form>
+          <p class="method-note" style="margin-top:var(--space-4)">Your max is your business. We never suggest a target, never show "market value" — a sighting is a deal only if it beats <em>your</em> number.</p>
+        </section>
+
+        <section aria-labelledby="hunts-heading">
+          <div class="toolbar">
+            <h2 id="hunts-heading" style="font-size:1.15rem;margin:0">Open hunts</h2>
+            <div class="btn-row" style="margin:0 0 0 auto">
+              <button type="button" class="btn btn-sm" id="watchlist-export">Export JSON</button>
+              <label class="btn btn-sm" id="watchlist-import-label" for="watchlist-import" style="cursor:pointer;margin:0">Import JSON</label>
+              <input type="file" id="watchlist-import" accept="application/json" hidden>
+            </div>
+          </div>
+          <div class="empty-state" id="wl-empty" hidden>
+            <h2>No hunts yet</h2>
+            <p>Name the grail, set the price you'd actually pay, and start logging sightings. The patient collector wins.</p>
+          </div>
+          <ul class="hunt-list" id="wl-list"></ul>
+        </section>
+      </div>
+
+      <p class="chart-sub" style="margin-bottom:var(--space-7)">Watchlist data lives in this browser only (<code>mlc_watchlist_v1</code>). Export it before clearing site data. Sightings are yours — asking prices are not sale prices; see the <a href="price-guide.html">price guide</a> for reading eBay honestly.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="checklist.html">Checklist</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/watchlist.js"></script>
+</body>
+</html>

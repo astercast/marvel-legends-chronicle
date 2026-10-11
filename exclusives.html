@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exclusives Browser — Marvel Legends Chronicle</title>
+  <meta name="description" content="Browse all 587 Marvel Legends exclusives by retailer: Target, Walmart, Walgreens, Amazon, Hasbro Pulse, SDCC and more.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .exc-hero { padding-block: var(--space-7); }
+    .chip-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+    .chip { border: 1px solid var(--line); background: var(--panel); color: var(--text);
+      border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.82rem; cursor: pointer; }
+    .chip:hover { border-color: var(--gold); }
+    .chip-on { background: var(--gold); border-color: var(--gold); color: #1a1408; font-weight: 700; }
+    .chip-n { opacity: 0.75; font-family: var(--font-mono); font-size: 0.75rem; }
+    .exc-toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; margin-bottom: var(--space-4); }
+    .exc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-6); }
+    .exc-card { padding: var(--space-4); position: relative; }
+    .exc-card h3 { font-size: 1rem; margin: 0 0 0.25rem; padding-right: 1.2rem; }
+    .exc-card .sub { color: var(--muted); font-size: 0.82rem; margin-bottom: var(--space-2); }
+    .badge-exc { border-color: var(--gold); color: var(--gold); }
+    .owned-dot, .wanted-dot { position: absolute; top: var(--space-3); right: var(--space-3); }
+    .tracker-btns { display: flex; gap: var(--space-1); margin-top: var(--space-3); }
+    .research { margin-top: var(--space-2); font-size: 0.85rem; }
+    .research summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    @media print { .site-header, .site-footer, .exc-toolbar, .tracker-btns, .research { display: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to exclusives</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="exclusives.html" aria-current="page">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero exc-hero" aria-labelledby="exc-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Retailer exclusives</span>
+        <h1 id="exc-title">Every <span class="accent">exclusive.</span></h1>
+        <p class="lede">The 587 figures you couldn't just walk into any store and buy — browsable by the retailer that actually sold them.</p>
+        <p class="chart-sub" id="exc-coverage" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="exc-toolbar">
+        <div class="field" style="flex:1;min-width:240px;max-width:420px">
+          <label for="exc-search">Search exclusives</label>
+          <input class="input" id="exc-search" type="search" autocomplete="off" placeholder="Figure, variant, or wave…">
+        </div>
+        <p class="chart-sub" id="exc-count" aria-live="polite" style="margin:0"></p>
+      </div>
+      <div class="chip-row" id="exc-chips" role="group" aria-label="Filter by retailer"></div>
+      <div class="empty-state" id="exc-empty" hidden>
+        <h2>No exclusives match</h2>
+        <p>Try a different retailer or clear the search.</p>
+      </div>
+      <div class="exc-grid" id="exc-grid"></div>
+      <p class="chart-sub" style="margin-bottom:var(--space-7)">Retailer names come from the archive's <code>exclusive</code> field — never guessed. The full taxonomy (chase ratios, case mixes, retailer histories) lives in the <a href="encyclopedia.html#variants">encyclopedia's variants &amp; exclusives section</a>. Owned/Wanted toggles share your timeline tracker.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="checklist.html">Checklist</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/exclusives.js"></script>
+</body>
+</html>

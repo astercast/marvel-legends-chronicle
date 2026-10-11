@@ -13,6 +13,9 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - BAF planner: mark owned figures, see missing Build-A-Figure pieces + acquisition guidance (browser-local)
 - 66 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
 - Price journal: log eBay sold listings yourself; your collection's tracked value computed from your entries only (browser-local)
+- Grail watchlist: track the figures you hunt, set your own max price, log sightings — deal-or-no-deal judged against your target (browser-local)
+- Exclusives browser: all 587 exclusives by retailer (Target, Walmart, Walgreens, Amazon, Hasbro Pulse, SDCC, TRU, Fan Channel…), with inline Owned/Wanted toggles and research links; 20 non-retailer entries grouped as "retailer unconfirmed" rather than guessed
+- Your Shelf v2 analytics: manufacturer split (owned + wanted), peak collecting years, collection growth trend (daily snapshots), journal value over time (from your own entries), shelf-vs-archive rarity per packaging era
 - Bootleg authentication wizard: step-by-step pass/fail flow with verdict
 - Price guide page: the sold-listings method, aggregator limits, dated price history, reissue effect
 - Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts

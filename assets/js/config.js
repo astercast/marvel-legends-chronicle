@@ -10,6 +10,8 @@ export const STORE_KEYS = {
   wanted: "mlc_wanted_v1",
   social: "mlc_social_v1", // { profile, posts, likes, follows, comments }
   journal: "mlc_journal_v1", // [{ id, figId, name, condition, price, date, url, note }]
+  watchlist: "mlc_watchlist_v1", // [{ id, figId, name, wave, target, note, created, sightings: [{id, date, where, price, sold, url, note}] }]
+  shelfHistory: "mlc_shelf_history_v1", // [{ d: "YYYY-MM-DD", owned, wanted, bafDone }] — snapshots for the growth trend
 };
 
 export const MARKETPLACES = [
