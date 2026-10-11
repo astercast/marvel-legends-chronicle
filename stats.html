@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stats Dashboard — Marvel Legends Chronicle</title>
+  <meta name="description" content="Marvel Legends by the numbers: figures per year 2002–2026, manufacturer split, BAF waves, exclusives, and variants.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .stats-hero { padding-block: var(--space-7); }
+    .stats-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-6); }
+    .chart-card { padding: var(--space-5); margin-bottom: var(--space-6); }
+    .chart-card h2 { font-size: 1.2rem; margin-bottom: var(--space-1); }
+    .chart-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: var(--space-4); }
+    #stats-chart svg { width: 100%; height: auto; display: block; }
+    #stats-chart .grid { stroke: var(--line-soft); stroke-width: 1; }
+    #stats-chart .axis { fill: var(--muted); font-size: 11px; font-family: var(--font-body); }
+    #stats-chart rect { transition: opacity 0.15s var(--ease); }
+    #stats-chart rect:hover { opacity: 0.75; }
+    .legend { display: flex; gap: var(--space-4); font-size: 0.85rem; color: var(--ink-dim); margin-top: var(--space-3); }
+    .legend span { display: inline-flex; align-items: center; gap: var(--space-2); }
+    .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .data-table-wrap { margin-bottom: var(--space-7); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .data-table th, .data-table td { border: 1px solid var(--line-soft); padding: var(--space-2) var(--space-3); text-align: left; }
+    .data-table thead th { background: var(--panel-2); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dim); }
+    .data-table tbody tr:hover { background: rgba(230, 36, 41, 0.05); }
+    details.data-table-wrap summary { cursor: pointer; font-weight: 700; margin-bottom: var(--space-3); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to stats</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html" aria-current="page">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero stats-hero" aria-labelledby="stats-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">By the numbers</span>
+        <h1 id="stats-title">The line, <span class="accent">quantified.</span></h1>
+        <p class="lede">Twenty-four years of Marvel Legends in charts — release volume, eras, and the shape of the archive.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="stats-kpis" id="stats-kpis" aria-label="Key statistics"></div>
+
+      <section class="card chart-card" aria-labelledby="chart-h">
+        <h2 id="chart-h">Figures per year, 2002–2026</h2>
+        <p class="chart-sub">Every figure in the archive, counted by release year. Bar color marks the era.</p>
+        <div id="stats-chart" role="img" aria-label="Loading chart"></div>
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:#ffb37f"></i>Toy Biz era (2002–2006)</span>
+          <span><i style="background:#e62429"></i>Hasbro era (2007–2026)</span>
+        </div>
+      </section>
+
+      <details class="data-table-wrap">
+        <summary>View the underlying data</summary>
+        <table class="data-table">
+          <thead><tr><th scope="col">Year</th><th scope="col">Figures</th><th scope="col">Era</th></tr></thead>
+          <tbody id="stats-table-body"></tbody>
+        </table>
+        <p class="chart-sub" id="stats-note"></p>
+      </details>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer"><a href="index.html">Timeline</a><a href="api.html">API</a></nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/stats.js"></script>
+</body>
+</html>
