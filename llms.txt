@@ -12,17 +12,18 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - Collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue-radar flags), grading guide, transparent price methodology, bootleg-spotting guide, resources
 - BAF planner: mark owned figures, see missing Build-A-Figure pieces + acquisition guidance (browser-local)
 - 66 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
-- Price journal: log eBay sold listings yourself; your collection's tracked value computed from your entries only (browser-local)
+- Price journal: log eBay sold listings yourself; your collection's tracked value computed from your entries only; per-figure price trends (3+ logged sales) with SVG sparklines on the figure dialog + a ranked trends section — all from your own data, never a market index (browser-local)
 - BAF economics (`baf-economics.html`): cost-to-complete per Build-A-Figure from your own journal sold sightings — ranked cheapest-first, pieces with no data flagged, owned pieces excludable (browser-local)
 - Hunt planner (`hunt.html`): toy-show trip planner — targets from watchlist hunts + wanted list, per-figure max prices (prefilled from watchlist targets), printable hunt sheet with deal math from your journal medians (browser-local)
 - Collection ledger (`collection-value.html`): log what you paid per figure; cost basis vs tracked value = unrealized gain/loss per figure and total (browser-local, `mlc_buys_v1`; values from your own entries only)
 - Grail watchlist: track the figures you hunt, set your own max price, log sightings — deal-or-no-deal judged against your target (browser-local)
 - Exclusives browser: all 587 exclusives by retailer (Target, Walmart, Walgreens, Amazon, Hasbro Pulse, SDCC, TRU, Fan Channel…), with inline Owned/Wanted toggles and research links; 20 non-retailer entries grouped as "retailer unconfirmed" rather than guessed
-- Your Shelf v2 analytics: manufacturer split (owned + wanted), peak collecting years, collection growth trend (daily snapshots), journal value over time (from your own entries), shelf-vs-archive rarity per packaging era
+- Your Shelf v2 analytics: manufacturer split (owned + wanted), peak collecting years, collection growth trend (daily snapshots), journal value over time (from your own entries), shelf-vs-archive rarity per packaging era, one-click shareable text summary for forums/Discord (browser-local)
 - Bootleg authentication wizard: step-by-step pass/fail flow with verdict
 - Price guide page: the sold-listings method, aggregator limits, dated price history, reissue effect
 - Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts
 - Collection tracker: mark figures Owned / Wanted (browser-local)
+- Gift finder (`gift.html`): budget band + favorite character → honest suggestions from the archive (budget filters by figure type as a price proxy, every card links eBay solds for real price verification — no invented prices)
 - "Almost there" on your shelf: BAFs missing 1–2 pieces, waves past 50%, characters nearly complete — computed from your tracker
 - Grail stories: 20 sourced narratives expanding the hall of fame (legend, hunt, reissue saga, honest prices)
 - Variant & chase identifier: spotter's guide + wave-by-wave index of all 83 documented variants
@@ -100,4 +101,4 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `api.html` — human-readable API docs
 - `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community, print (print.css: paper-friendly timeline + checklist output)
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page, explore, retro, showcase (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page, explore, retro, showcase, gift, shelf-share, price-trends (ES modules)

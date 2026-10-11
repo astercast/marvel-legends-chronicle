@@ -24,6 +24,7 @@ NAV = [
     ("journal.html", "Journal"),
     ("baf-economics.html", "BAF Economics"),
     ("hunt.html", "Hunt Planner"),
+    ("gift.html", "Gift Finder"),
     ("collection-value.html", "Ledger"),
     ("exclusives.html", "Exclusives"),
     ("watchlist.html", "Watchlist"),

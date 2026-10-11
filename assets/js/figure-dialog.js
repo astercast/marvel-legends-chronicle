@@ -2,6 +2,9 @@
 import { openModal } from "./modal.js";
 import { trackerButtons, owned, wanted } from "./tracker.js";
 import { renderMarketplaceLinks, renderResearchLinks } from "./listings.js";
+import { STORE_KEYS } from "./config.js";
+import { load } from "./store.js";
+import { entriesForFigure, trendStats, sparklineSVG, directionBadge } from "./price-trends.js";
 
 export function badgeFor(fig) {
   const badges = [];
@@ -83,5 +86,28 @@ export function openFigureDialog(fig) {
     bodyEl.appendChild(trackerButtons(fig.id));
     bodyEl.appendChild(renderMarketplaceLinks(fig));
     bodyEl.appendChild(renderResearchLinks(fig));
+
+    /* Your logged prices — from the user's own journal entries only. */
+    try {
+      const entries = entriesForFigure(load(STORE_KEYS.journal, []), fig.id, fig.name);
+      if (entries.length) {
+        const wrap = document.createElement("div");
+        wrap.className = "logged-prices";
+        const head = document.createElement("h3");
+        head.className = "dialog-subhead";
+        head.textContent = "Your logged prices";
+        wrap.appendChild(head);
+        const trend = trendStats(entries);
+        const dated = entries.filter((e) => e && Number.isFinite(Number(e.price)));
+        const med = dated.length
+          ? (() => { const s = dated.map((e) => Number(e.price)).sort((a, b) => a - b); const m = Math.floor(s.length / 2); return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; })()
+          : 0;
+        wrap.insertAdjacentHTML("beforeend",
+          `<p class="link-note">${entries.length} logged ${entries.length === 1 ? "sale" : "sales"} · median $${med.toFixed(2)}${trend ? ` · ${directionBadge(trend.direction)} <span class="muted">(${trend.changePct >= 0 ? "+" : ""}${trend.changePct.toFixed(0)}% first→last)</span>` : ""}</p>` +
+          (sparklineSVG(entries) || "") +
+          `<p class="link-note">From sales you logged — <a href="journal.html">open the journal</a>.</p>`);
+        bodyEl.appendChild(wrap);
+      }
+    } catch { /* journal unreadable — skip silently */ }
   });
 }

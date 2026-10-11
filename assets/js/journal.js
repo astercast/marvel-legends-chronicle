@@ -7,6 +7,7 @@ import { loadData } from "./data.js";
 import { load, save } from "./store.js";
 import { escapeHtml } from "./figure-dialog.js";
 import { soldSearchUrl } from "./listings.js";
+import { entriesForFigure, trendStats, sparklineSVG, directionBadge } from "./price-trends.js";
 
 const CONDITIONS = {
   "loose-complete": "Loose — complete",
@@ -39,6 +40,7 @@ const els = {
   valueNote: document.getElementById("j-value-note"),
   breakdown: document.querySelector("#j-breakdown tbody"),
   unpriced: document.getElementById("j-unpriced"),
+  trends: document.getElementById("j-trends"),
 };
 
 let labelToFig = new Map(); // datalist label -> figure
@@ -185,6 +187,57 @@ function renderValue(figures) {
     : "";
 }
 
+/* ---------- price trends ----------
+   Figures with 3+ logged sales, ranked by absolute movement. Every number
+   comes from the user's own entries — labeled as such, never a market index. */
+function renderTrends(figures) {
+  const entries = getEntries();
+  // Group entries per figure: matched archive figures by id, free-text names by name.
+  const groups = new Map();
+  for (const f of figures) {
+    const matched = entriesForFigure(entries, f.id, f.name);
+    if (matched.length >= 3) groups.set(f.id, { fig: f, entries: matched });
+  }
+  const seenFree = new Set();
+  for (const e of entries) {
+    if (e.figId) continue;
+    const nm = String(e.name ?? "").trim().toLowerCase();
+    if (!nm || seenFree.has(nm)) continue;
+    seenFree.add(nm);
+    const matched = entries.filter((x) => !x.figId && String(x.name ?? "").trim().toLowerCase() === nm);
+    const alreadyCovered = [...groups.values()].some((g) =>
+      String(g.fig.name ?? "").trim().toLowerCase() === nm);
+    if (matched.length >= 3 && !alreadyCovered) {
+      groups.set(`name:${nm}`, {
+        fig: { id: `name:${nm}`, name: e.name, waveSeries: e.wave || "", year: "" },
+        entries: matched,
+      });
+    }
+  }
+  const rows = [...groups.values()]
+    .map((v) => ({ ...v, trend: trendStats(v.entries) }))
+    .filter((r) => r.trend)
+    .sort((a, b) => Math.abs(b.trend.changePct) - Math.abs(a.trend.changePct));
+  if (!rows.length) {
+    els.trends.innerHTML = `<p class="chart-sub">No figure has 3+ logged sales yet. Log a few sales per figure and the movers will show up here.</p>`;
+    return;
+  }
+  els.trends.innerHTML = `<ul class="entry-list">` + rows.map((r) => `
+    <li class="card entry" style="padding:var(--space-4)">
+      <div class="entry-head">
+        <span class="entry-name">${escapeHtml(r.fig.name)}</span>
+        ${r.fig.waveSeries ? `<span class="entry-wave">${escapeHtml(r.fig.waveSeries)}${r.fig.year ? ` (${r.fig.year})` : ""}</span>` : ""}
+        ${directionBadge(r.trend.direction)}
+      </div>
+      <div class="entry-meta">
+        ${sparklineSVG(r.entries, { width: 200, height: 52 })}
+        <span class="entry-date">${r.trend.n} logged sales · ${escapeHtml(r.trend.from)} → ${escapeHtml(r.trend.to)}</span>
+        <span class="entry-price">${r.trend.changePct >= 0 ? "+" : ""}${r.trend.changePct.toFixed(0)}%</span>
+      </div>
+      <p class="link-note" style="margin:0">From your ${r.trend.n} logged sales — not a market index.</p>
+    </li>`).join("") + `</ul>`;
+}
+
 /* ---------- import / export ---------- */
 
 function exportJson() {
@@ -219,6 +272,7 @@ function importJson(file) {
       setEntries(merged);
       renderList();
       renderValue(window.__figures);
+      renderTrends(window.__figures);
       els.error.textContent = "";
     } catch {
       els.error.textContent = "Import failed — that file isn't a valid journal export.";
@@ -265,6 +319,7 @@ async function main() {
     resetForm();
     renderList();
     renderValue(figures);
+    renderTrends(figures);
   });
 
   els.cancelEdit.addEventListener("click", resetForm);
@@ -316,6 +371,7 @@ async function main() {
 
   renderList();
   renderValue(figures);
+  renderTrends(figures);
 }
 
 main();

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gift Finder — Marvel Legends Chronicle</title>
+  <meta name="description" content="Find the right Marvel Legends figure as a gift: pick a budget and a favorite character, get honest suggestions with real research links.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .gift-hero { padding-block: var(--space-7); }
+    .gift-form { display: grid; gap: var(--space-4); }
+    .gift-grid { display: grid; grid-template-columns: minmax(300px, 360px) 1fr; gap: var(--space-5); margin-bottom: var(--space-6); align-items: start; }
+    @media (max-width: 900px) { .gift-grid { grid-template-columns: 1fr; } }
+    .gift-results { display: grid; gap: var(--space-3); }
+    .gift-card { display: grid; gap: var(--space-2); }
+    .gift-why { color: var(--muted); font-size: 0.88rem; margin: 0; }
+    .checkline { display: flex; align-items: center; gap: var(--space-2); font-size: 0.9rem; }
+    .checkline input { width: 1.1rem; height: 1.1rem; accent-color: var(--gold); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to gift finder</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html" aria-current="page">Gift Finder</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero gift-hero" aria-labelledby="gift-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Never gift blind again</span>
+        <h1 id="gift-title">Gift <span class="accent">finder.</span></h1>
+        <p class="lede">Pick a budget and their favorite character — get honest suggestions from the archive, each with real research links so you can check the actual price before you buy.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="gift-grid">
+        <section class="card" style="padding:var(--space-5)" aria-labelledby="gift-form-heading">
+          <h2 id="gift-form-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Who's it for?</h2>
+          <form id="gift-form" class="gift-form">
+            <div class="field">
+              <label for="g-budget">Budget</label>
+              <select class="input" id="g-budget" name="budget">
+                <option value="under25">Under $25 — stocking stuffer</option>
+                <option value="under50" selected>Up to $50 — solid gift</option>
+                <option value="splurge">Splurge — no limit</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="g-character">Favorite character</label>
+              <input class="input" id="g-character" name="character" list="g-characters" autocomplete="off"
+                     placeholder="e.g. Spider-Man, Storm, Doctor Doom…">
+              <datalist id="g-characters"></datalist>
+            </div>
+            <div class="field">
+              <label for="g-source">Universe <span class="muted">(optional)</span></label>
+              <select class="input" id="g-source" name="source">
+                <option value="all">Any universe</option>
+                <option value="mcu">MCU (films &amp; streaming)</option>
+                <option value="animated">Animated series &amp; films</option>
+                <option value="videogame">Video games</option>
+              </select>
+            </div>
+            <label class="checkline">
+              <input type="checkbox" id="g-hide-owned" checked>
+              Hide figures I already own
+            </label>
+            <button type="submit" class="btn btn-gold">Find gifts</button>
+          </form>
+          <p class="method-note" style="margin-top:var(--space-4)">Budget bands filter by <strong>figure type as a price proxy</strong> — the archive has no MSRP data, so these are guidance, not price claims. Under $25 favors standard mainline singles; up to $50 adds variants and exclusives; splurge leads with the impressive stuff. Every suggestion links eBay solds so you can verify the real price before buying.</p>
+        </section>
+
+        <section aria-labelledby="gift-results-heading" aria-live="polite">
+          <h2 id="gift-results-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Suggestions</h2>
+          <div class="empty-state" id="g-empty">
+            <h2>Pick a budget, name a character</h2>
+            <p>Hit <strong>Find gifts</strong> and we'll pull honest suggestions from the 1,904-figure archive.</p>
+          </div>
+          <div class="gift-results" id="g-results"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/gift.js"></script>
+</body>
+</html>
