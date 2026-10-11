@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Shelf — Marvel Legends Chronicle</title>
+  <meta name="description" content="Your collection at a glance: completion stats by year and era, top characters, and Build-A-Figure progress — from your local tracker data.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .shelf-hero { padding-block: var(--space-7); }
+    .shelf-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-6); }
+    .shelf-cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-bottom: var(--space-6); }
+    @media (max-width: 900px) { .shelf-cols { grid-template-columns: 1fr; } }
+    .shelf-panel { margin-bottom: var(--space-6); }
+    .shelf-panel h2 { font-size: 1.15rem; margin-bottom: var(--space-3); }
+    .era-row { margin-bottom: var(--space-4); }
+    .era-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-2); font-size: 0.92rem; }
+    .era-head span { color: var(--muted); font-family: var(--font-mono); font-size: 0.8rem; }
+    .progress-bar { height: 10px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
+    .progress-bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.35s var(--ease); }
+    @media (prefers-reduced-motion: reduce) { .progress-bar > span { transition: none; } }
+    .year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-2) var(--space-4); }
+    .year-row { display: grid; grid-template-columns: 44px 1fr 64px; gap: var(--space-2); align-items: center; font-size: 0.82rem; }
+    .year-label { font-family: var(--font-mono); color: var(--ink-dim); }
+    .year-count { font-family: var(--font-mono); color: var(--muted); text-align: right; }
+    .char-list, .baf-mini { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+    .char-list li, .baf-mini li { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line-soft); padding-bottom: var(--space-2); font-size: 0.92rem; }
+    .char-list .count, .baf-mini .count { font-family: var(--font-mono); color: var(--gold); }
+    .baf-mini .muted, .muted { color: var(--muted); }
+    .baf-summary { font-size: 1rem; margin-bottom: var(--space-3); }
+    .baf-summary strong { color: var(--gold); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to shelf</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html" aria-current="page">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shelf-hero" aria-labelledby="shelf-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Your collection, aggregated</span>
+        <h1 id="shelf-title">Your <span class="accent">shelf.</span></h1>
+        <p class="lede">Everything you've marked Owned or Wanted on the timeline, rolled up into completion stats. Read-only — your data stays in this browser.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="empty-state" id="shelf-empty" hidden>
+        <h2>Your shelf is empty</h2>
+        <p>You haven't marked any figures as Owned or Wanted yet. Head to the timeline, open any figure, and hit <strong>Owned</strong> or <strong>Wanted</strong> — your shelf builds itself from there.</p>
+        <p><a class="btn" href="index.html">Open the timeline</a></p>
+      </div>
+
+      <div id="shelf-dash">
+        <div class="shelf-kpis stat-strip" id="shelf-kpis" aria-label="Collection totals"></div>
+
+        <div class="shelf-cols">
+          <section class="card shelf-panel" id="shelf-era" aria-label="Completion by era" style="padding:var(--space-5)"></section>
+          <section class="card shelf-panel" id="shelf-chars" aria-label="Top characters" style="padding:var(--space-5)"></section>
+        </div>
+
+        <section class="card shelf-panel" id="shelf-years" aria-label="Completion by year" style="padding:var(--space-5)"></section>
+
+        <section class="card shelf-panel" id="shelf-bafs" aria-label="Build-A-Figure completion" style="padding:var(--space-5)"></section>
+
+        <p class="chart-sub" style="margin-bottom:var(--space-7);">All data is local to this browser (keys <code>mlc_owned_v1</code> / <code>mlc_wanted_v1</code>). Clearing site data resets your shelf. Figure totals: api/v1/stats.json.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/shelf.js"></script>
+</body>
+</html>

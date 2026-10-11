@@ -30,7 +30,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 - **Marketplace links:** per-figure pre-filled searches on eBay, Amazon, BigBadToyStore, Hasbro Pulse — constructed search URLs (mock), not live inventory
 - **Encyclopedia:** history timeline, packaging evolution, searchable hall of fame with verified/unverified price flags and reissue-radar (resilient vs vulnerable premiums), grading guide (AFA/CGA, CAS, UKG, no-premium caveat), bootleg guide, resources
 - **Community:** seeded collector profiles; photo composer with client-side downscaling; chronological + following feeds; likes, comments, follows, hashtags; figure tags open the figure dialog
-- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 46 chronological character pages, bootleg authentication wizard, transparent price-methodology page
+- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 46 chronological character pages, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard, release radar, figure compare, milestone-anniversary strip on the timeline
 
 ## Skills
 

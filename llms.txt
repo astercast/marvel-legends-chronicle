@@ -63,14 +63,17 @@ and `data/encyclopedia.json`. Commit the outputs.
 
 ## Site structure
 
-- `index.html` — chronological timeline with search, filters, year rail, tracker
+- `index.html` — chronological timeline with search, filters, year rail, tracker, milestone-anniversary strip
 - `encyclopedia.html` — history, packaging evolution, variants/chases/exclusives, hall of fame, grading guide, bootleg guide, resources
 - `baf-planner.html` — "complete my BAF" planner (browser-local, syncs with tracker)
 - `characters/index.html` + `characters/<slug>.html` — 46 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character
 - `price-guide.html` — transparent sold-listings methodology, dated price history, reissue effect
 - `auth-wizard.html` — interactive bootleg authentication wizard
+- `shelf.html` — "your shelf" dashboard: read-only completion stats (overall/year/era/top characters/BAF) aggregated from the localStorage tracker
+- `radar.html` — release radar: revealed-but-unreleased figures with source links, maintained from hobby press
+- `compare.html` — figure compare: 2–4 figures side-by-side with a verdict-free difference-highlighted table
 - `community.html` — fan social (localStorage demo)
 - `api.html` — human-readable API docs
 - `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, community, community-page (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, history-strip, community, community-page (ES modules)

@@ -137,3 +137,12 @@
   font-size: 0.9rem;
   margin-bottom: var(--space-4);
 }
+
+/* Milestone-anniversaries strip */
+.history-strip { border-block: 1px solid var(--line-soft); background: var(--bg-soft); }
+.history-inner { display: flex; gap: var(--space-3); align-items: baseline; padding-block: var(--space-3); }
+.history-inner p { margin: 0; font-size: 0.9rem; color: var(--ink-dim); }
+.history-kicker { font-size: 1rem; }
+.history-item strong { color: var(--gold); }
+.history-sep { color: var(--muted); }
+.history-note { display: block; font-size: 0.78rem; color: var(--muted); margin-top: var(--space-1); }

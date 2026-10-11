@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Figure Compare — Marvel Legends Chronicle</title>
+  <meta name="description" content="Settle the debate: pick 2–4 Marvel Legends figures and compare them side-by-side — wave, year, BAF pieces, exclusives, variants.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .cmp-hero { padding-block: var(--space-7); }
+    .cmp-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-5); }
+    .cmp-slot { border: 1px dashed var(--line); border-radius: var(--radius-m); padding: var(--space-4); min-height: 92px; display: flex; flex-direction: column; justify-content: center; gap: var(--space-1); }
+    .cmp-slot.filled { border-style: solid; border-color: var(--gold); background: var(--panel); }
+    .cmp-slot .slot-name { font-weight: 800; }
+    .cmp-slot .slot-wave { font-size: 0.8rem; color: var(--muted); }
+    .cmp-slot .slot-empty { color: var(--muted); font-size: 0.85rem; }
+    .cmp-slot .btn { align-self: flex-start; margin-top: var(--space-2); }
+    .cmp-search-row { display: flex; gap: var(--space-3); align-items: flex-end; margin-bottom: var(--space-3); flex-wrap: wrap; }
+    .cmp-search-row .field { flex: 1 1 280px; }
+    #cmp-results { list-style: none; margin: 0 0 var(--space-6); padding: 0; display: grid; gap: var(--space-2); }
+    #cmp-results li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); border: 1px solid var(--line-soft); border-radius: var(--radius-m); padding: var(--space-3) var(--space-4); background: var(--panel); }
+    #cmp-results .res-sub { display: block; font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .cmp-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .cmp-card { padding: var(--space-5); }
+    .cmp-card h3 { margin: 0 0 var(--space-1); font-size: 1.1rem; }
+    .cmp-wave { color: var(--muted); font-size: 0.85rem; margin-bottom: var(--space-3); }
+    .cmp-badges { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-3); }
+    .cmp-notes { font-size: 0.88rem; color: var(--ink-dim); }
+    .cmp-table-wrap { overflow-x: auto; margin-bottom: var(--space-7); }
+    table.cmp-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 560px; }
+    table.cmp-table caption { text-align: left; color: var(--muted); font-size: 0.85rem; margin-bottom: var(--space-3); }
+    table.cmp-table th, table.cmp-table td { border: 1px solid var(--line-soft); padding: var(--space-2) var(--space-3); text-align: left; vertical-align: top; }
+    table.cmp-table thead th { background: var(--panel-2); }
+    table.cmp-table tbody th { background: var(--panel); width: 140px; color: var(--ink-dim); font-weight: 600; }
+    table.cmp-table tr.differs td { background: rgba(245, 179, 1, 0.06); }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to compare</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html" aria-current="page">Compare</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero cmp-hero" aria-labelledby="cmp-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Settle the debate</span>
+        <h1 id="cmp-title">Figure <span class="accent">compare.</span></h1>
+        <p class="lede">Which Doom is best? Pick up to four figures and put them side-by-side — wave, year, BAF pieces, exclusives, variants. The data is the verdict; we declare no winner.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="cmp-slots" id="cmp-slots" aria-label="Comparison slots"></div>
+
+      <div class="cmp-search-row">
+        <div class="field">
+          <label for="cmp-search">Search figures to compare</label>
+          <input class="input" id="cmp-search" type="search" placeholder="Doctor Doom, Sentinel wave, Haslab…" autocomplete="off">
+        </div>
+        <button type="button" class="btn btn-sm btn-ghost" id="cmp-clear" hidden>Clear all</button>
+      </div>
+      <ul id="cmp-results" aria-label="Search results"></ul>
+
+      <div class="empty-state" id="cmp-empty">
+        <p>Search above and add 2–4 figures to start comparing.</p>
+      </div>
+
+      <div class="cmp-cards" id="cmp-cards" hidden></div>
+      <div class="cmp-table-wrap"><div id="cmp-table" hidden></div></div>
+
+      <p class="chart-sub" style="margin-bottom:var(--space-7);">No photos: figure imagery isn't hotlinked. Compare on the facts — sculpt and paint notes live in each figure's archive notes. Open any figure on the <a href="index.html">timeline</a> for full details.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/compare.js"></script>
+</body>
+</html>
