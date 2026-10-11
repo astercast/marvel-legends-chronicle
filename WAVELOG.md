@@ -12,4 +12,4 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Packaging** (`encyclopedia.html`, data-driven): new `retro-blisters-2026` section in `data/encyclopedia.json` + `api/v1/encyclopedia.json` — 2026 = retro blister cards + mini-comic pack-ins, no new overhaul; plastic-free reversal (Apr 2023, bioPET windows) verified already covered.
 - Nav synced in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on all pages; `llms.txt` + `README.md` updated.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (51/51 tests, 9 suites).
-- **Commit:** 706e233
+- **Commit:** 706e233 (local) → pushed as GitHub commit `30cc5f1` on `main`
