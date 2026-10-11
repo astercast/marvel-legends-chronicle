@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Characters — Marvel Legends Chronicle</title>
+  <meta name="description" content="Every release of Marvel Legends&#x27; most-collected characters, chronological.">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    .char-hero { padding-block: var(--space-7); }
+    .char-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
+    .release-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
+    .release-year { font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
+      color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
+    .release { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3);
+      padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
+    .release-name { font-weight: 700; }
+    .release-wave { color: var(--muted); font-size: 0.85rem; }
+    .release .tag-row { display: inline-flex; gap: var(--space-1); }
+    .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-3); margin-bottom: var(--space-7); }
+    .char-card { display: block; }
+    .char-card:hover { text-decoration: none; border-color: var(--red); }
+    .char-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
+    .char-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="../index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html">Timeline</a>
+        <a href="../stats.html">Stats</a>
+        <a href="../encyclopedia.html">Encyclopedia</a>
+        <a href="../baf-planner.html">BAF Planner</a>
+        <a href="../characters/index.html" aria-current="page">Characters</a>
+        <a href="../price-guide.html">Price Guide</a>
+        <a href="../auth-wizard.html">Auth Wizard</a>
+        <a href="../skills.html">Skills</a>
+        <a href="../community.html">Community</a>
+        <a href="../api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero char-hero" aria-labelledby="chars-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Browse by character</span>
+        <h1 id="chars-title">Characters, <span class="accent">complete.</span></h1>
+        <p class="lede">Every release of the line's most-collected characters, in chronological order — the "every Spider-Man ever" view. Generated from the figure database.</p>
+      </div>
+    </section>
+    <div class="container">
+      <div class="char-grid">
+      <a class="card char-card" href="spider-man.html"><h3>Spider-Man</h3><p>86 releases · 2003–2026</p></a>
+      <a class="card char-card" href="iron-man.html"><h3>Iron Man</h3><p>75 releases · 2002–2026</p></a>
+      <a class="card char-card" href="wolverine.html"><h3>Wolverine</h3><p>53 releases · 2002–2026</p></a>
+      <a class="card char-card" href="captain-america.html"><h3>Captain America</h3><p>52 releases · 2002–2026</p></a>
+      <a class="card char-card" href="thor.html"><h3>Thor</h3><p>28 releases · 2002–2026</p></a>
+      <a class="card char-card" href="hulk.html"><h3>Hulk</h3><p>27 releases · 2002–2026</p></a>
+      <a class="card char-card" href="deadpool.html"><h3>Deadpool</h3><p>22 releases · 2010–2026</p></a>
+      <a class="card char-card" href="black-widow.html"><h3>Black Widow</h3><p>21 releases · 2004–2026</p></a>
+      <a class="card char-card" href="daredevil.html"><h3>Daredevil</h3><p>20 releases · 2002–2026</p></a>
+      <a class="card char-card" href="punisher.html"><h3>Punisher</h3><p>20 releases · 2003–2026</p></a>
+      <a class="card char-card" href="cyclops.html"><h3>Cyclops</h3><p>18 releases · 2005–2026</p></a>
+      <a class="card char-card" href="jean-grey.html"><h3>Jean Grey</h3><p>17 releases · 2004–2025</p></a>
+      <a class="card char-card" href="black-panther.html"><h3>Black Panther</h3><p>17 releases · 2005–2026</p></a>
+      <a class="card char-card" href="human-torch.html"><h3>Human Torch</h3><p>14 releases · 2002–2026</p></a>
+      <a class="card char-card" href="venom.html"><h3>Venom</h3><p>14 releases · 2004–2026</p></a>
+      <a class="card char-card" href="storm.html"><h3>Storm</h3><p>13 releases · 2004–2025</p></a>
+      <a class="card char-card" href="war-machine.html"><h3>War Machine</h3><p>13 releases · 2005–2025</p></a>
+      <a class="card char-card" href="doctor-doom.html"><h3>Doctor Doom</h3><p>12 releases · 2002–2026</p></a>
+      <a class="card char-card" href="hawkeye.html"><h3>Hawkeye</h3><p>12 releases · 2004–2026</p></a>
+      <a class="card char-card" href="ghost-rider.html"><h3>Ghost Rider</h3><p>11 releases · 2002–2026</p></a>
+      <a class="card char-card" href="magneto.html"><h3>Magneto</h3><p>11 releases · 2002–2026</p></a>
+      <a class="card char-card" href="vision.html"><h3>Vision</h3><p>11 releases · 2004–2026</p></a>
+      <a class="card char-card" href="doctor-strange.html"><h3>Doctor Strange</h3><p>11 releases · 2005–2024</p></a>
+      <a class="card char-card" href="ant-man.html"><h3>Ant-Man</h3><p>11 releases · 2006–2023</p></a>
+      <a class="card char-card" href="captain-marvel.html"><h3>Captain Marvel</h3><p>11 releases · 2006–2023</p></a>
+      <a class="card char-card" href="star-lord.html"><h3>Star-Lord</h3><p>11 releases · 2014–2023</p></a>
+      <a class="card char-card" href="beast.html"><h3>Beast</h3><p>10 releases · 2003–2026</p></a>
+      <a class="card char-card" href="rogue.html"><h3>Rogue</h3><p>10 releases · 2003–2025</p></a>
+      <a class="card char-card" href="invisible-woman.html"><h3>Invisible Woman</h3><p>10 releases · 2004–2026</p></a>
+      <a class="card char-card" href="scarlet-witch.html"><h3>Scarlet Witch</h3><p>10 releases · 2005–2026</p></a>
+      <a class="card char-card" href="she-hulk.html"><h3>She-Hulk</h3><p>10 releases · 2007–2025</p></a>
+      <a class="card char-card" href="gambit.html"><h3>Gambit</h3><p>9 releases · 2003–2026</p></a>
+      <a class="card char-card" href="mister-fantastic.html"><h3>Mister Fantastic</h3><p>9 releases · 2003–2026</p></a>
+      <a class="card char-card" href="green-goblin.html"><h3>Green Goblin</h3><p>9 releases · 2004–2026</p></a>
+      <a class="card char-card" href="loki.html"><h3>Loki</h3><p>9 releases · 2006–2022</p></a>
+      <a class="card char-card" href="psylocke.html"><h3>Psylocke</h3><p>9 releases · 2006–2026</p></a>
+      <a class="card char-card" href="moon-knight.html"><h3>Moon Knight</h3><p>9 releases · 2006–2026</p></a>
+      <a class="card char-card" href="spider-woman.html"><h3>Spider-Woman</h3><p>9 releases · 2006–2025</p></a>
+      <a class="card char-card" href="winter-soldier.html"><h3>Winter Soldier</h3><p>9 releases · 2010–2022</p></a>
+      <a class="card char-card" href="red-skull.html"><h3>Red Skull</h3><p>8 releases · 2003–2022</p></a>
+      <a class="card char-card" href="sabretooth.html"><h3>Sabretooth</h3><p>8 releases · 2003–2024</p></a>
+      <a class="card char-card" href="cable.html"><h3>Cable</h3><p>8 releases · 2004–2025</p></a>
+      <a class="card char-card" href="professor-x.html"><h3>Professor X</h3><p>8 releases · 2005–2026</p></a>
+      <a class="card char-card" href="ultron.html"><h3>Ultron</h3><p>8 releases · 2005–2023</p></a>
+      <a class="card char-card" href="emma-frost.html"><h3>Emma Frost</h3><p>8 releases · 2007–2026</p></a>
+      <a class="card char-card" href="iron-spider.html"><h3>Iron Spider</h3><p>8 releases · 2018–2026</p></a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../characters/index.html">Characters</a><a href="../api.html">API</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

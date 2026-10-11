@@ -1,0 +1,324 @@
+[
+  {
+    "slug": "spider-man",
+    "name": "Spider-Man",
+    "count": 86,
+    "first": 2003,
+    "last": 2026
+  },
+  {
+    "slug": "iron-man",
+    "name": "Iron Man",
+    "count": 75,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "wolverine",
+    "name": "Wolverine",
+    "count": 53,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "captain-america",
+    "name": "Captain America",
+    "count": 52,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "thor",
+    "name": "Thor",
+    "count": 28,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "hulk",
+    "name": "Hulk",
+    "count": 27,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "deadpool",
+    "name": "Deadpool",
+    "count": 22,
+    "first": 2010,
+    "last": 2026
+  },
+  {
+    "slug": "black-widow",
+    "name": "Black Widow",
+    "count": 21,
+    "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "daredevil",
+    "name": "Daredevil",
+    "count": 20,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "punisher",
+    "name": "Punisher",
+    "count": 20,
+    "first": 2003,
+    "last": 2026
+  },
+  {
+    "slug": "cyclops",
+    "name": "Cyclops",
+    "count": 18,
+    "first": 2005,
+    "last": 2026
+  },
+  {
+    "slug": "jean-grey",
+    "name": "Jean Grey",
+    "count": 17,
+    "first": 2004,
+    "last": 2025
+  },
+  {
+    "slug": "black-panther",
+    "name": "Black Panther",
+    "count": 17,
+    "first": 2005,
+    "last": 2026
+  },
+  {
+    "slug": "human-torch",
+    "name": "Human Torch",
+    "count": 14,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "venom",
+    "name": "Venom",
+    "count": 14,
+    "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "storm",
+    "name": "Storm",
+    "count": 13,
+    "first": 2004,
+    "last": 2025
+  },
+  {
+    "slug": "war-machine",
+    "name": "War Machine",
+    "count": 13,
+    "first": 2005,
+    "last": 2025
+  },
+  {
+    "slug": "doctor-doom",
+    "name": "Doctor Doom",
+    "count": 12,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "hawkeye",
+    "name": "Hawkeye",
+    "count": 12,
+    "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "ghost-rider",
+    "name": "Ghost Rider",
+    "count": 11,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "magneto",
+    "name": "Magneto",
+    "count": 11,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "vision",
+    "name": "Vision",
+    "count": 11,
+    "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "doctor-strange",
+    "name": "Doctor Strange",
+    "count": 11,
+    "first": 2005,
+    "last": 2024
+  },
+  {
+    "slug": "ant-man",
+    "name": "Ant-Man",
+    "count": 11,
+    "first": 2006,
+    "last": 2023
+  },
+  {
+    "slug": "captain-marvel",
+    "name": "Captain Marvel",
+    "count": 11,
+    "first": 2006,
+    "last": 2023
+  },
+  {
+    "slug": "star-lord",
+    "name": "Star-Lord",
+    "count": 11,
+    "first": 2014,
+    "last": 2023
+  },
+  {
+    "slug": "beast",
+    "name": "Beast",
+    "count": 10,
+    "first": 2003,
+    "last": 2026
+  },
+  {
+    "slug": "rogue",
+    "name": "Rogue",
+    "count": 10,
+    "first": 2003,
+    "last": 2025
+  },
+  {
+    "slug": "invisible-woman",
+    "name": "Invisible Woman",
+    "count": 10,
+    "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "scarlet-witch",
+    "name": "Scarlet Witch",
+    "count": 10,
+    "first": 2005,
+    "last": 2026
+  },
+  {
+    "slug": "she-hulk",
+    "name": "She-Hulk",
+    "count": 10,
+    "first": 2007,
+    "last": 2025
+  },
+  {
+    "slug": "gambit",
+    "name": "Gambit",
+    "count": 9,
+    "first": 2003,
+    "last": 2026
+  },
+  {
+    "slug": "mister-fantastic",
+    "name": "Mister Fantastic",
+    "count": 9,
+    "first": 2003,
+    "last": 2026
+  },
+  {
+    "slug": "green-goblin",
+    "name": "Green Goblin",
+    "count": 9,
+    "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "loki",
+    "name": "Loki",
+    "count": 9,
+    "first": 2006,
+    "last": 2022
+  },
+  {
+    "slug": "psylocke",
+    "name": "Psylocke",
+    "count": 9,
+    "first": 2006,
+    "last": 2026
+  },
+  {
+    "slug": "moon-knight",
+    "name": "Moon Knight",
+    "count": 9,
+    "first": 2006,
+    "last": 2026
+  },
+  {
+    "slug": "spider-woman",
+    "name": "Spider-Woman",
+    "count": 9,
+    "first": 2006,
+    "last": 2025
+  },
+  {
+    "slug": "winter-soldier",
+    "name": "Winter Soldier",
+    "count": 9,
+    "first": 2010,
+    "last": 2022
+  },
+  {
+    "slug": "red-skull",
+    "name": "Red Skull",
+    "count": 8,
+    "first": 2003,
+    "last": 2022
+  },
+  {
+    "slug": "sabretooth",
+    "name": "Sabretooth",
+    "count": 8,
+    "first": 2003,
+    "last": 2024
+  },
+  {
+    "slug": "cable",
+    "name": "Cable",
+    "count": 8,
+    "first": 2004,
+    "last": 2025
+  },
+  {
+    "slug": "professor-x",
+    "name": "Professor X",
+    "count": 8,
+    "first": 2005,
+    "last": 2026
+  },
+  {
+    "slug": "ultron",
+    "name": "Ultron",
+    "count": 8,
+    "first": 2005,
+    "last": 2023
+  },
+  {
+    "slug": "emma-frost",
+    "name": "Emma Frost",
+    "count": 8,
+    "first": 2007,
+    "last": 2026
+  },
+  {
+    "slug": "iron-spider",
+    "name": "Iron Spider",
+    "count": 8,
+    "first": 2018,
+    "last": 2026
+  }
+]

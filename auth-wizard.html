@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootleg Authentication Wizard — Marvel Legends Chronicle</title>
+  <meta name="description" content="Step-by-step interactive bootleg authentication: packaging, paint, joints, listing, and price logic — a pass/fail flow with a verdict.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .wizard-hero { padding-block: var(--space-7); }
+    .wizard { max-width: 720px; margin: 0 auto var(--space-7); }
+    .wizard-progress { height: 8px; background: var(--panel-2); border-radius: 999px; overflow: hidden; margin-bottom: var(--space-2); }
+    .wizard-progress > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.3s var(--ease); }
+    @media (prefers-reduced-motion: reduce) { .wizard-progress > span { transition: none; } }
+    .wizard-step-label { font-size: 0.8rem; color: var(--muted); margin-bottom: var(--space-5); }
+    .check-card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius-m); padding: var(--space-4); margin-bottom: var(--space-3); }
+    .check-card.answered-pass { border-color: rgba(93, 255, 143, 0.5); }
+    .check-card.answered-fail { border-color: rgba(230, 36, 41, 0.6); }
+    .check-q { font-weight: 700; margin: 0 0 var(--space-1); }
+    .check-hint { font-size: 0.85rem; color: var(--muted); margin: 0 0 var(--space-3); }
+    .verdict { text-align: center; padding: var(--space-6); }
+    .verdict h2 { font-size: 1.6rem; margin-bottom: var(--space-2); }
+    .verdict-auth { border-color: rgba(93, 255, 143, 0.5); }
+    .verdict-auth h2 { color: var(--green); }
+    .verdict-warn { border-color: rgba(245, 179, 1, 0.6); }
+    .verdict-warn h2 { color: var(--gold); }
+    .verdict-fail { border-color: rgba(230, 36, 41, 0.7); }
+    .verdict-fail h2 { color: var(--red); }
+    .verdict ul { text-align: left; max-width: 560px; margin: var(--space-4) auto 0; padding-left: var(--space-4); color: var(--ink-dim); font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to wizard</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html" aria-current="page">Auth Wizard</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wizard-hero" aria-labelledby="wizard-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Interactive tool</span>
+        <h1 id="wizard-title">Is it <span class="accent">authentic?</span></h1>
+        <p class="lede">Five steps — packaging, paint, joints, listing, price logic. Answer each check honestly; one fail doesn't convict, two corroborating fails do.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="wizard" id="wizard" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/auth-wizard.js"></script>
+</body>
+</html>

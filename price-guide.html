@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Price Guide &amp; Methodology — Marvel Legends Chronicle</title>
+  <meta name="description" content="How Marvel Legends prices are honestly measured: the 90-day sold-listings method, asking-vs-sold rules, aggregator limits, dated price history, and the reissue effect.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/encyclopedia.css">
+  <style>
+    .pg-hero { padding-block: var(--space-7); }
+    .pg-section { margin-bottom: var(--space-7); }
+    .pg-section > h2 { font-size: 1.4rem; margin-bottom: var(--space-3); }
+    .pg-section > p, .pg-section li { color: var(--ink-dim); }
+    .pg-section ol, .pg-section ul { max-width: 75ch; }
+    .pg-section li { margin-bottom: var(--space-2); }
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-3); }
+    .agg-card h3 { margin: 0 0 var(--space-2); font-size: 1rem; }
+    .agg-card p { margin: 0; font-size: 0.88rem; color: var(--ink-dim); }
+    .price-table-wrap { overflow-x: auto; margin-bottom: var(--space-5); }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 640px; }
+    .price-table th, .price-table td { border: 1px solid var(--line-soft); padding: var(--space-2) var(--space-3); text-align: left; vertical-align: top; }
+    .price-table thead th { background: var(--panel-2); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dim); }
+    .price-table td.obs { font-family: var(--font-mono); color: var(--gold); white-space: nowrap; }
+    .gap-list li { font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to price guide</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html" aria-current="page">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero pg-hero" aria-labelledby="pg-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Transparent methodology</span>
+        <h1 id="pg-title">Prices, <span class="accent">honestly.</span></h1>
+        <p class="lede" id="pg-principle">Loading methodology…</p>
+      </div>
+    </section>
+
+    <div class="container" id="pg-main">
+      <section class="pg-section" aria-labelledby="method-h">
+        <h2 id="method-h">The method</h2>
+        <ol id="pg-steps"></ol>
+      </section>
+
+      <section class="pg-section" aria-labelledby="rules-h">
+        <h2 id="rules-h">Honest presentation rules</h2>
+        <ul id="pg-rules"></ul>
+      </section>
+
+      <section class="pg-section" aria-labelledby="agg-h">
+        <h2 id="agg-h">Aggregators and their limits</h2>
+        <div class="method-grid" id="pg-aggs"></div>
+      </section>
+
+      <section class="pg-section" aria-labelledby="hist-h">
+        <h2 id="hist-h">Dated price observations</h2>
+        <p style="max-width:75ch;">Every row is a dated observation with its source and confidence — <strong>none</strong> of these is presented as a current price. "Asking" vs "sold" is labeled every time.</p>
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th scope="col">Figure</th><th scope="col">Observation</th><th scope="col">Source / date</th><th scope="col">Confidence</th></tr></thead>
+            <tbody id="pg-history"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="pg-section" aria-labelledby="reissue-h">
+        <h2 id="reissue-h">The reissue effect</h2>
+        <p id="pg-reissue-mech" style="max-width:75ch;"></p>
+        <ul id="pg-reissue-cases"></ul>
+      </section>
+
+      <section class="pg-section" aria-labelledby="gaps-h">
+        <h2 id="gaps-h">What we don't know</h2>
+        <p style="max-width:75ch;">Prices are the most lied-about numbers in collecting. These are stated plainly rather than papered over:</p>
+        <ul class="gap-list" id="pg-gaps"></ul>
+      </section>
+
+      <section class="pg-section" aria-labelledby="disc-h">
+        <div class="card">
+          <h2 id="disc-h" style="font-size:1.1rem;">Fan-made disclaimer</h2>
+          <p style="font-size:0.9rem;margin:0;">The Chronicle is a fan archive, not a price guide service. Methodology above is how serious collectors measure value — run it yourself before any buy or sell. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/price-guide.js"></script>
+</body>
+</html>

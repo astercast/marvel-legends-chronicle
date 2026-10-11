@@ -1,6 +1,6 @@
 # Marvel Legends Chronicle — API Reference
 
-Version **1.0.0** · Observed **2026-10-10** · Static JSON, no auth, no rate limits.
+Version **1.0.0** · Observed **2026-10-11** · Static JSON, no auth, no rate limits.
 
 Base path: `api/v1/`
 
@@ -12,7 +12,7 @@ Base path: `api/v1/`
 | `stats.json` | Totals: waves, figures, year range, BAF waves, exclusive/variant counts, per-year and per-manufacturer breakdowns |
 | `waves.json` | Array of 158 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `figureCount` |
 | `figures.json` | Array of 1,904 figures, flat. Each figure carries its wave context |
-| `encyclopedia.json` | `history` (timeline events), `hallOfFame` (23 entries), `bootlegGuide` (sections), `resources` (directory) |
+| `encyclopedia.json` | `history` (timeline events), `packagingGuide` (packaging evolution, sourced), `variantsGuide` (variant taxonomy, chase/case ratios, exclusives, international), `hallOfFame` (23 entries, each with a `reissueRadar` flag), `gradingGuide` (AFA/CGA, CAS, UKG, grading-premium caveat), `priceMethod` (sold-listings methodology, dated price history, reissue effect), `bootlegGuide` (sections), `resources` (directory) |
 | `schema/wave.json` | JSON Schema (draft-07) for wave summaries |
 | `schema/figure.json` | JSON Schema (draft-07) for figures |
 
@@ -60,11 +60,15 @@ Base path: `api/v1/`
   "why": "Iconic X-Men BAF; still the centerpiece of many collections.",
   "price": "~$552.50 est.",
   "priceNote": "Coleka estimate",
-  "verified": true
+  "verified": true,
+  "reissueRadar": {
+    "level": "vulnerable",
+    "note": "HasLab Sentinel (2020) exists; availability-driven premium."
+  }
 }
 ```
 
-`verified: false` marks entries sourced from a single or tabloid source — treat prices as lore, not data.
+`verified: false` marks entries sourced from a single or tabloid source — treat prices as lore, not data. `reissueRadar.level` is Chronicle editorial analysis: `resilient` premiums rest on true rarity (prototypes, true chases, pre-2020 con exclusives, crowdfund caps); `vulnerable` ones rest on availability and can collapse when Hasbro reissues.
 
 ## Usage notes
 
@@ -75,7 +79,7 @@ Base path: `api/v1/`
 
 ## Skills
 
-206 task procedures in `skills/`, indexed by `skills/index.json`
+212 task procedures in `skills/`, indexed by `skills/index.json`
 (id, title, description, path). Each skill file has frontmatter
 (`name`, `description`) followed by: Use when, Inputs, Procedure,
 Worked example, Data references, Pitfalls.
@@ -87,4 +91,4 @@ Regenerate with `python3 scripts/build_skills.py` after data changes.
 
 ## Provenance and limitations
 
-Fan-compiled archive. Within-year ordering is year-accurate but not audited to the month. Some BAF pieces and disputed wave numbers are flagged in `notes`. Hall-of-fame prices are secondary-market observations, not guarantees. Regenerate with `python3 scripts/build_api.py` after data changes.
+Fan-compiled archive. Within-year ordering is year-accurate but not audited to the month. Some BAF pieces and disputed wave numbers are flagged in `notes`. Hall-of-fame prices are secondary-market observations, not guarantees. Every encyclopedia claim added 2026-10-11 carries a `source` and `confidence` field (`verified` / `single-source` / `anecdote` / `unverified` / `analysis`). Regenerate with `python3 scripts/build_api.py` after data changes; regenerate character pages with `python3 scripts/build_characters.py`.

@@ -61,7 +61,11 @@
       "price": null,
       "priceNote": "Historical note — initial assortment only",
       "verified": true,
-      "why": "Last-minute Doctor Doom stand-in, shipped only in the initial assortment. The line's first grail."
+      "why": "Last-minute Doctor Doom stand-in, shipped only in the initial assortment. The line's first grail.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Short-packed in the initial assortment; rarity is structural, not availability-driven."
+      }
     },
     {
       "era": "Toy Biz",
@@ -69,7 +73,11 @@
       "price": null,
       "priceNote": "Community rarity lists",
       "verified": false,
-      "why": "Rare first-wave variant topping community rarest lists."
+      "why": "Rare first-wave variant topping community rarest lists.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Deco variant of a first-wave mold — a reissue would collapse the premium."
+      }
     },
     {
       "era": "Toy Biz",
@@ -77,7 +85,11 @@
       "price": "$59.99 listing",
       "priceNote": "ToyWiz listing",
       "verified": true,
-      "why": "Chase figure never pictured on the box back — the template for ML chase culture."
+      "why": "Chase figure never pictured on the box back — the template for ML chase culture.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "True short-pack chase; Toy Biz-era chases were never reissued."
+      }
     },
     {
       "era": "Toy Biz",
@@ -85,7 +97,11 @@
       "price": "~$350",
       "priceNote": "Claimed; tabloid source",
       "verified": false,
-      "why": "One of the three most-desired Toy Biz figures; peak-nostalgia wave."
+      "why": "One of the three most-desired Toy Biz figures; peak-nostalgia wave.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Demand-based premium; Hasbro has revisited this character repeatedly."
+      }
     },
     {
       "era": "Toy Biz",
@@ -93,7 +109,11 @@
       "price": null,
       "priceNote": "Community claim",
       "verified": false,
-      "why": "Fan-favorite sculpt with rare variants; Hasbro later revisited her in the Queen Brood wave."
+      "why": "Fan-favorite sculpt with rare variants; Hasbro later revisited her in the Queen Brood wave.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Hasbro revisited her in the Queen Brood wave; availability-based premium."
+      }
     },
     {
       "era": "Toy Biz",
@@ -101,7 +121,11 @@
       "price": "~$183 avg complete",
       "priceNote": "Range $35–$372, PicClick",
       "verified": true,
-      "why": "The first Build-A-Figure — the marketing innovation that defined the line."
+      "why": "The first Build-A-Figure — the marketing innovation that defined the line.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Remade at larger scale by HasLab; availability-driven."
+      }
     },
     {
       "era": "Toy Biz",
@@ -109,7 +133,11 @@
       "price": "~$552.50 est.",
       "priceNote": "Coleka estimate",
       "verified": true,
-      "why": "Iconic X-Men BAF; still the centerpiece of many collections."
+      "why": "Iconic X-Men BAF; still the centerpiece of many collections.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "HasLab Sentinel (2020) exists; availability-driven premium."
+      }
     },
     {
       "era": "Toy Biz",
@@ -117,7 +145,11 @@
       "price": null,
       "priceNote": "Community claim",
       "verified": false,
-      "why": "~14.5\" tall; collectors rank it above later Hasbro versions for sculpt and detail."
+      "why": "~14.5\" tall; collectors rank it above later Hasbro versions for sculpt and detail.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Later Hasbro versions exist; availability-driven."
+      }
     },
     {
       "era": "Toy Biz",
@@ -125,7 +157,11 @@
       "price": "~$200 complete",
       "priceNote": "Claimed; tabloid source",
       "verified": false,
-      "why": "Late-line BAF; hard to complete as loose parts go missing."
+      "why": "Late-line BAF; hard to complete as loose parts go missing.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "HasLab Giant-Man (2023) supersedes it."
+      }
     },
     {
       "era": "Toy Biz",
@@ -133,7 +169,11 @@
       "price": null,
       "priceNote": "Catalogued",
       "verified": true,
-      "why": "Final Toy Biz BAF; massive villain centerpiece."
+      "why": "Final Toy Biz BAF; massive villain centerpiece.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Remade in the modern line; availability-driven."
+      }
     },
     {
       "era": "Toy Biz",
@@ -141,7 +181,11 @@
       "price": null,
       "priceNote": "Community claim",
       "verified": false,
-      "why": "Notoriously short-packed wave-mates; rarest of the regular waves."
+      "why": "Notoriously short-packed wave-mates; rarest of the regular waves.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Short-packed wave-mates; never reissued as a pair."
+      }
     },
     {
       "era": "Toy Biz",
@@ -149,7 +193,11 @@
       "price": "$25,000 pair claimed",
       "priceNote": "Single tabloid source — treat as lore",
       "verified": false,
-      "why": "Unreleased Mojo-wave prototypes sold after the Hasbro takeover; legendary holy grails."
+      "why": "Unreleased Mojo-wave prototypes sold after the Hasbro takeover; legendary holy grails.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Unreleased prototypes; rarity is absolute, not availability."
+      }
     },
     {
       "era": "Toy Biz",
@@ -157,7 +205,11 @@
       "price": null,
       "priceNote": "Catalogued",
       "verified": true,
-      "why": "Dracula, Frankenstein's Monster, Werewolf by Night, Zombie — beloved horror box set."
+      "why": "Dracula, Frankenstein's Monster, Werewolf by Night, Zombie — beloved horror box set.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Limited horror box set; never reissued."
+      }
     },
     {
       "era": "Hasbro",
@@ -165,7 +217,11 @@
       "price": null,
       "priceNote": "Catalogued",
       "verified": true,
-      "why": "Hasbro's first SDCC Marvel Legends exclusive."
+      "why": "Hasbro's first SDCC Marvel Legends exclusive.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "First con exclusive; pre-Pulse era, never reissued."
+      }
     },
     {
       "era": "Hasbro",
@@ -173,7 +229,11 @@
       "price": null,
       "priceNote": "Catalogued",
       "verified": true,
-      "why": "Ka-Zar, Shanna the She-Devil, Zabu — early con-exclusive box set."
+      "why": "Ka-Zar, Shanna the She-Devil, Zabu — early con-exclusive box set.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Pre-Pulse con set; never reissued."
+      }
     },
     {
       "era": "Hasbro",
@@ -181,7 +241,11 @@
       "price": "$49.99 retail",
       "priceNote": "Retail at release",
       "verified": true,
-      "why": "Archangel, Wolverine, Psylocke with Clayton Crain box art; insanely hard to acquire."
+      "why": "Archangel, Wolverine, Psylocke with Clayton Crain box art; insanely hard to acquire.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Got a Fan Channel reissue in 2026 — the radar working as intended."
+      }
     },
     {
       "era": "Hasbro",
@@ -189,7 +253,11 @@
       "price": "$130–$300 sold",
       "priceNote": "eBay sold listings 2025–26",
       "verified": true,
-      "why": "First-ever figures of several characters; $89.99 at the Hasbro booth."
+      "why": "First-ever figures of several characters; $89.99 at the Hasbro booth.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Pre-Pulse con set with verified aftermarket; never reissued."
+      }
     },
     {
       "era": "Hasbro",
@@ -197,7 +265,11 @@
       "price": null,
       "priceNote": "Catalogued",
       "verified": true,
-      "why": "Star-Lord, Blastaar, Medusa, Gladiator, Black Bolt box set."
+      "why": "Star-Lord, Blastaar, Medusa, Gladiator, Black Bolt box set.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Pre-Pulse con set; never reissued."
+      }
     },
     {
       "era": "Hasbro",
@@ -205,7 +277,11 @@
       "price": "~$300",
       "priceNote": "Claimed; tabloid source",
       "verified": false,
-      "why": "Comic-costume variant of the movie 2-pack; store-exclusive rarity."
+      "why": "Comic-costume variant of the movie 2-pack; store-exclusive rarity.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Store-exclusive deco; reissuable at any time."
+      }
     },
     {
       "era": "Hasbro",
@@ -213,7 +289,11 @@
       "price": "~$50",
       "priceNote": "Claimed; tabloid source",
       "verified": false,
-      "why": "Walmart-exclusive BAF wave; lesser-known character, rarely reprinted."
+      "why": "Walmart-exclusive BAF wave; lesser-known character, rarely reprinted.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Walmart-exclusive BAF wave; lesser-known character, rarely reprinted — obscurity is its moat."
+      }
     },
     {
       "era": "Hasbro",
@@ -221,7 +301,11 @@
       "price": "~$150",
       "priceNote": "Claimed; tabloid source",
       "verified": false,
-      "why": "Target-exclusive wave figure; the definitive Black Suit ML for years."
+      "why": "Target-exclusive wave figure; the definitive Black Suit ML for years.",
+      "reissueRadar": {
+        "level": "vulnerable",
+        "note": "Definitive until the next reissue; availability-driven."
+      }
     },
     {
       "era": "Hasbro",
@@ -229,7 +313,11 @@
       "price": "$349.99 crowdfund",
       "priceNote": "Funded in ~24 hours",
       "verified": true,
-      "why": "First ML HasLab; the BAF concept taken to its 26.3\" logical extreme."
+      "why": "First ML HasLab; the BAF concept taken to its 26.3\" logical extreme.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "Backer-count scarcity; limited by crowdfund, not retail."
+      }
     },
     {
       "era": "Hasbro",
@@ -237,7 +325,11 @@
       "price": "$399.99 crowdfund",
       "priceNote": "14,000 backers",
       "verified": true,
-      "why": "32\" — the biggest Marvel Legends ever; LEDs, 70 points of articulation."
+      "why": "32\" — the biggest Marvel Legends ever; LEDs, 70 points of articulation.",
+      "reissueRadar": {
+        "level": "resilient",
+        "note": "14,000 backers; crowdfund-limited."
+      }
     }
   ],
   "history": [
@@ -367,6 +459,699 @@
       "bestFor": "Preorders with combined shipping",
       "name": "BigBadToyStore",
       "url": "https://www.bigbadtoystore.com/"
+    },
+    {
+      "name": "StockX",
+      "url": "https://stockx.com/",
+      "bestFor": "Verified last-sale data for covered Legends — thin toy coverage, but transaction-based."
+    },
+    {
+      "name": "hobbyDB",
+      "url": "https://hobbydb.com/",
+      "bestFor": "Catalog + variant taxonomy; treat \"Estimated Value\" as a hint, not market data."
+    },
+    {
+      "name": "Collectible Grading Authority (CGA)",
+      "url": "https://collectiblegradingauthority.com/",
+      "bestFor": "AFA's current home: carded-figure grading, 0–100 scale."
+    },
+    {
+      "name": "Collector Archive Services (CAS)",
+      "url": "https://collectorarchive.com/",
+      "bestFor": "Independent grading + authentication; BBTS's grading partner since Nov 2025."
     }
-  ]
+  ],
+  "packagingGuide": {
+    "sections": [
+      {
+        "id": "toy-biz-clamshell",
+        "title": "Toy Biz clamshell + comic pack-in",
+        "timeframe": "2002–2006",
+        "items": [
+          {
+            "text": "The line inherited clamshell packaging and a 32-page reprint comic from Toy Biz's Spider-Man Classics line. Wave 1 (Iron Man, Captain America, Hulk, Toad) shipped this way.",
+            "source": "Wikipedia — Marvel Legends",
+            "url": "https://en.wikipedia.org/wiki/Marvel_Legends",
+            "confidence": "verified"
+          },
+          {
+            "text": "Each package included a display stand (wall-mountable for all but Toad's) and a comic reprinting a significant issue for that character. The box back listed the four figures with short bios — the gold-variant Iron Man was notably absent from the box back, an early example of variant omission.",
+            "source": "RTM ToyMania (contemporary 2002 review)",
+            "url": "http://www.toymania.com/columns/spotlight/mlegends.shtml",
+            "confidence": "single-source"
+          },
+          {
+            "text": "International versions substituted posters for the 32-page comic pack-in.",
+            "source": "RTM ToyMania + marvellegends.info checklist",
+            "url": "http://marvellegends.info/ChecklistPDF.pdf",
+            "confidence": "verified"
+          },
+          {
+            "text": "UK and Canada releases are documented with \"Gold Poster\" pack-ins across Series 1–3 (e.g. Captain America w/ Gold Poster UK/CA).",
+            "source": "marvellegends.info Complete Checklist PDF",
+            "url": "http://marvellegends.info/ChecklistPDF.pdf",
+            "confidence": "single-source"
+          }
+        ]
+      },
+      {
+        "id": "hasbro-takeover",
+        "title": "Hasbro takeover: the comic is dropped",
+        "timeframe": "2007",
+        "items": [
+          {
+            "text": "Hasbro's packaging dropped the comic book pack-in; new molds also dropped Toy Biz's signature finger joints. The Build-A-Figure program continued.",
+            "source": "Wikipedia — Marvel Legends",
+            "url": "https://en.wikipedia.org/wiki/Marvel_Legends",
+            "confidence": "verified"
+          }
+        ]
+      },
+      {
+        "id": "window-box",
+        "title": "Infinite Series window box",
+        "timeframe": "2014",
+        "items": [
+          {
+            "text": "The 2013/14 relaunch moved carded figures to a scooped-side window box format. The Winter Soldier wave (2014) featured blue highlight side art with the character name; the wave checklist and BAF info printed on the back.",
+            "source": "Mephitsu (hands-on review)",
+            "url": "https://www.mephitsu.co.uk/post/review-marvel-legends-infinite-series-the-winter-soldier-2014",
+            "confidence": "single-source"
+          },
+          {
+            "text": "The move also folded MCU characters into the main line rather than per-movie waves.",
+            "source": "Mephitsu",
+            "url": "https://www.mephitsu.co.uk/post/review-marvel-legends-infinite-series-the-winter-soldier-2014",
+            "confidence": "single-source"
+          }
+        ]
+      },
+      {
+        "id": "windowless",
+        "title": "Windowless / plastic-free era",
+        "timeframe": "2022–2023",
+        "items": [
+          {
+            "text": "Hasbro removed plastic windows as part of a sustainability push; new boxes used printed images of the figure instead of a window, with comic-art-themed designs. Collector complaints centered on not being able to inspect the actual figure (figure-swapping risk). The Retro line and most Star Wars Vintage Collection were exempt.",
+            "source": "Bleeding Cool (trade press)",
+            "url": "https://bleedingcool.com/collectibles/hasbro-changes-marvel-legends-packaging-with-windowless-design/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Hasbro responded by commissioning real comic artists for box art: Ryan Stegman on the Venom: Separation Anxiety 3-pack; Dan Vessenmeyer on the X-Men: The Animated Series VHS-style boxes.",
+            "source": "Bleeding Cool",
+            "url": "https://bleedingcool.com/collectibles/hasbro-reveals-new-marvel-legends-packaging-with-ryan-stegman-art/",
+            "confidence": "single-source"
+          }
+        ]
+      },
+      {
+        "id": "windows-return",
+        "title": "Windows return",
+        "timeframe": "late 2023 → 2024",
+        "items": [
+          {
+            "text": "Following collector feedback, Hasbro announced the re-introduction of windows/blisters for 6-inch fan figures (Marvel Legends, Black Series, G.I. Joe Classified, Lightning Collection), made from bio-PET or recycled PET, rolling out late 2023 into 2024.",
+            "source": "Hasbro PR via Toyark",
+            "url": "https://www.toyark.com/2023/04/06/hasbro-bringing-back-window-packaging-for-collector-items-498408",
+            "confidence": "verified"
+          }
+        ]
+      },
+      {
+        "id": "retro-cards",
+        "title": "Retro-carded nostalgia lines",
+        "timeframe": "2022–2023",
+        "items": [
+          {
+            "text": "Marvel Legends 20th Anniversary (2022): premium updates of the 2002 Wave 1 characters (Cap, Iron Man, Hulk, Toad) in retro-style packaging, sold as Fan Channel exclusives.",
+            "source": "Wikipedia — Marvel Legends",
+            "url": "https://en.wikipedia.org/wiki/Marvel_Legends",
+            "confidence": "verified"
+          },
+          {
+            "text": "Spider-Man: The Animated Series retro cards (2023): figures on Toy Biz 1990s-style cardbacks; sold via Entertainment Earth, BBTS, Zavvi UK/US/CA, and Amazon at $24.99–$25.99.",
+            "source": "ToyHypeUSA (retail news)",
+            "url": "https://toyhypeusa.com/2023/03/09/hasbro-marvel-legends-series-spider-man-retro-card-figure-pre-orders-for-march-9-2023/",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Iron Man animated retro wave (revealed at WonderCon): Model 9, Model 20, Model 1 (gold repaint), Count Nefaria, comic Whiplash, and on-model She-Hulk — an homage to the 90s Toy Biz Iron Man cartoon line (whose vac-metalized interchangeable armor Hasbro did not reproduce).",
+            "source": "SuperHeroHype",
+            "url": "https://www.superherohype.com/geek-culture/571993-marvel-legends-retro-carded-iron-man-wave-unveiled",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Maximum Carnage packaging homage: the 90s video-game/comic packaging recreated for a Retro Spider-Man Carnage reissue — \"a delight for packaged collectors.\"",
+            "source": "Marvel Toy News (editorial)",
+            "url": "https://marveltoynews.com/marvel-legends-mary-jane-aunt-may-smythe-carnage-reissues/",
+            "confidence": "single-source"
+          }
+        ]
+      }
+    ]
+  },
+  "variantsGuide": {
+    "sections": [
+      {
+        "id": "variant-taxonomy",
+        "title": "Deco vs. sculpt vs. packaging vs. label",
+        "timeframe": "Ongoing",
+        "items": [
+          {
+            "text": "Deco variants (repaints) are the dominant modern chase form. Example: the ML1 Iron Man mold reused as gold armor with horned face mask, Walmart-exclusive Stealth Iron Man, Silver Centurion, and War Machine — same sculpt, different deco. The ML1 Iron Man was sculpted by Dave Cortez.",
+            "source": "The Fwoosh (veteran collector site)",
+            "url": "https://thefwoosh.com/2013/05/top-5-marvel-legends-iron-man-figures/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Sculpt variants are rarer and more valuable — e.g. Weapon X Wolverine vs. Damaged Weapon X (Giant Man series, Toy Biz), distinct sculpts.",
+            "source": "Coleka",
+            "url": "https://www.coleka.com/en/collector-action-figures/marvel-action-figures-and-collectible-toys/marvel-legends-series/marvel-legends-toy-biz-2002-2012/weapon-x-variant_i903212",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Label variants: Stealth Iron Man exists with and without \"Stealth\" on the package label.",
+            "source": "marvellegends.info checklist",
+            "url": "http://marvellegends.info/ChecklistPDF.pdf",
+            "confidence": "single-source"
+          },
+          {
+            "text": "First Appearance variants: Iron Man First Appearance in gold and grey deco variants (2002/2005).",
+            "source": "Coleka",
+            "url": "https://www.coleka.com/en/collector-action-figures/marvel-action-figures-and-collectible-toys/marvel-legends-series/marvel-legends-toy-biz-2002-2012_r11404",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Packaging variants: same figure, different card — e.g. the Gold Poster UK/CA releases, and modern Retro-carded reissues of existing sculpts (Spider-Man: The Animated Series cards, Maximum Carnage packaging).",
+            "source": "marvellegends.info + Marvel Toy News",
+            "url": "http://marvellegends.info/ChecklistPDF.pdf",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Collector guidance (Chronicle analysis): deco variants — buy the look you like; premiums fade on reissue. Sculpt variants and true short-packs (1× per case or revision-only) hold value better. Packaging variants matter mainly to carded collectors. Unreleased prototypes: verify provenance before believing any price.",
+            "source": "Chronicle editorial synthesis",
+            "url": "",
+            "confidence": "analysis"
+          }
+        ]
+      },
+      {
+        "id": "chase-case-ratios",
+        "title": "Chases & case ratios",
+        "timeframe": "Ongoing",
+        "items": [
+          {
+            "text": "Marvel Legends \"initially used the 'chase' concept to introduce figures based on less popular characters,\" shipping them in fewer quantities; over time the concept evolved into variants (alternate head or deco) of a same-series figure, which stayed sought-after.",
+            "source": "Wikipedia — Marvel Legends",
+            "url": "https://en.wikipedia.org/wiki/Marvel_Legends",
+            "confidence": "verified"
+          },
+          {
+            "text": "Case ratios are set by the assortment number printed on the shipping case, not by the wave. One wave can span multiple assortments, and \"revision cases\" swap variants in/out mid-wave.",
+            "source": "Toyark forums (long-tenured collector)",
+            "url": "https://www.toyark.com/forums/avengers-checklist-85563/",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Modern standard case: 8 figures. Examples from retailer listings: X-Men Wave 1 (Ch'od BAF) — 2× Cyclops, 1× each of Fang, Monet, Corsair, Kid Omega, Chamber, Emma Frost; Super Villains Wave 1 (Xemnu BAF) — 2× Dr. Doom, 1× each of 6 others; Cassie Lang wave — 2× Ant-Man, 1× each of 6 others; Gilgamesh wave — 2× Ikaris, 1× each of 6 others. Retailer mixes are \"subject to change.\"",
+            "source": "Entertainment Earth / ActivePowerSports / BBCW (primary retail data)",
+            "url": "https://www.entertainmentearth.com/product/hsf6473a",
+            "confidence": "verified"
+          },
+          {
+            "text": "Historical: the 2007 Brood Queen wave shipped an initial case (1× Bucky, 1× each of Cap, Marvel Girl, Hydra Soldier, Colossus, Cyclops, Danger, Black Knight) and a \"revision\" case adding the Marvel Girl variant and Hydra Soldier variant at 1× each; BBTS sold a dedicated variant case.",
+            "source": "MarvelousNews forums (2007, contemporary)",
+            "url": "https://marvelousnews.com/23-11106",
+            "confidence": "single-source"
+          },
+          {
+            "text": "2006 MODOK series: collectors debated whether its Wasp variants (black/red/blue), Moon Knights, Spider-Women, and Destroyer-as-Thorbuster were packed 1-per-case. No authoritative ratio was ever published — treat 1-per-case claims as rumor.",
+            "source": "StatueForum (2006)",
+            "url": "https://www.statueforum.com/showthread.php?t=38095",
+            "confidence": "unverified"
+          },
+          {
+            "text": "Hasbro prints 5-digit SKU codes on figures (G/F prefix in recent years; older were all-numeric). The code matches the product number on the cardback; older QA/batch codes also appear on legs/feet.",
+            "source": "Galactic Hunter (hobby press)",
+            "url": "http://www.galactichunter.com/GH/story/qa-star-wars-figures-hasbros-secret-messages-you-and-fast-food-toys",
+            "confidence": "single-source"
+          },
+          {
+            "text": "For Target exclusives, collectors use Target DCPIs (internal item numbers) to locate stock via scanners and employee pulls.",
+            "source": "Toyark forums",
+            "url": "https://www.toyark.com/forums/marvel-legends-target-dcpis-87714/",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Practical rule (collector consensus): a figure is a \"chase\" if it appears 1× per case while the rest are 1–2×, or only in revision assortments. No official \"chase ratio\" is published by Hasbro — all ratios are reverse-engineered from case mixes.",
+            "source": "Negative claim verified across all sources above",
+            "url": "",
+            "confidence": "verified"
+          }
+        ]
+      },
+      {
+        "id": "exclusives",
+        "title": "Store & convention exclusives",
+        "timeframe": "2007–2026",
+        "items": [
+          {
+            "text": "SDCC 2007: She-Hulk + Stan Lee — Hasbro's first ML SDCC exclusive.",
+            "source": "Chronicle hall of fame (verified)",
+            "url": "",
+            "confidence": "verified"
+          },
+          {
+            "text": "SDCC 2008: Savage Land 3-pack (Ka-Zar, Shanna, Zabu).",
+            "source": "Chronicle hall of fame (verified)",
+            "url": "",
+            "confidence": "verified"
+          },
+          {
+            "text": "SDCC 2012: Uncanny X-Force 3-pack (Archangel, Wolverine, Psylocke; Clayton Crain box art) — $49.99 retail; \"insanely hard to acquire.\"",
+            "source": "Chronicle hall of fame (verified)",
+            "url": "",
+            "confidence": "verified"
+          },
+          {
+            "text": "SDCC 2013: Thunderbolts 5-pack — $89.99 at booth; $130–$300 sold later.",
+            "source": "Chronicle hall of fame (verified)",
+            "url": "",
+            "confidence": "verified"
+          },
+          {
+            "text": "SDCC 2014: Thanos Imperative set.",
+            "source": "Chronicle hall of fame (verified)",
+            "url": "",
+            "confidence": "verified"
+          },
+          {
+            "text": "SDCC 2018: Red Skull with Tesseract; Defenders box set.",
+            "source": "Toyark SDCC 2018 gallery",
+            "url": "https://www.toyark.com/2018/07/18/sdcc-2018-gallery-hasbro-marvel-legends-preview-night-display-306562",
+            "confidence": "verified"
+          },
+          {
+            "text": "SDCC 2024: X-Men arcade Sentinels; Kang the Conqueror — shown at SDCC as PulseCon exclusives.",
+            "source": "AIPT",
+            "url": "https://aiptcomics.com/2024/07/26/sdcc-24-hasbro-star-wars-gi-joe-marvel/",
+            "confidence": "verified"
+          },
+          {
+            "text": "SDCC 2026: Professor X & Hoverchair (X-Men '97); Spider-Man 60s cartoon 3-pack (Spider-Man, Lizard, Electro; $84.99) — booth first, then Hasbro Pulse online.",
+            "source": "Bleeding Cool",
+            "url": "https://bleedingcool.com/collectibles/here-are-all-the-sdcc-2026-exclusives-coming-soon-from-hasbro-pulse/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Pattern (verified across 2024/2026 coverage): modern SDCC exclusives are booth-first, then Hasbro Pulse online — genuinely limited at the show but given a wider online release, which tempers aftermarket spikes.",
+            "source": "Chronicle editorial synthesis",
+            "url": "",
+            "confidence": "analysis"
+          },
+          {
+            "text": "PulseCon 2020: Hellfire Club box set + Hellfire Club Guard ($14.99) army-builder; Silk (2020 Fan Vote winner, $19.99).",
+            "source": "Inside Pulse / LaughingPlace",
+            "url": "https://insidepulse.com/2020/09/29/hasbro-pulsecon-2020-marvel-legends/",
+            "confidence": "verified"
+          },
+          {
+            "text": "PulseCon 2021: retro-carded Venom ($31.99) and M.O.D.O.K. World Domination Tour set ($73.99, with The Captain) — Pulse exclusive in US/Canada/UK.",
+            "source": "Bleeding Cool",
+            "url": "https://bleedingcool.com/collectibles/marvel-legends-pulse-con-spidey-no-way-home-venom-modok-nextwave/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Target: Hasbro Wave 7 was the Red Hulk Series, a Target-exclusive wave. The modern program runs through Target Geek-Out/Geek Fest events: 2026 brought a No Way Home \"Final Swing\" Spider-Man ($27.99) and the first-ever Cypher figure; X-Men Onslaught ($39.99) was \"extremely hit or miss in stores.\" Target also cancelled many confirmed 2026 preorders, angering collectors.",
+            "source": "Marvel Toys Wiki / Marvel Toy News / Bleeding Cool",
+            "url": "https://marveltoynews.com/marvel-legends-cypher-no-way-home-spider-man-target-exclusives/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Walmart: Toy Biz Giant Man Series was a Walmart exclusive; Hasbro Ares and Nemesis BAF waves were Walmart-exclusive waves. Modern: Walmart Collector Con events — 2026 brought Avengers: Doomsday FF figures (Mister Fantastic + H.E.R.B.I.E. $39.97; Invisible Woman + Human Torch $55; The Thing $69.95).",
+            "source": "Marvel Toys Wiki / LaughingPlace",
+            "url": "https://www.laughingplace.com/disney-merchandise/marvel-legends-avengers-doomsday-walmart-exclusives/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Walgreens became the de facto Fantastic Four/Inhumans destination — Invisible Woman (2017), Human Torch, Mr. Fantastic, Thing, Namor, Medusa, Silver Surfer, Quasar, Binary, Sentry, Baron Zemo (Thunderbolts). The Fwoosh called it \"the church of Marvel Legends.\" Limited store quantities; many also sold on walgreens.com.",
+            "source": "The Fwoosh / Toyark",
+            "url": "https://thefwoosh.com/2017/04/hasbro-marvel-legends-walgreens-exclusive-fantastic-four-invisible-woman/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Toys'R'Us (defunct): Emma Frost (Diamond) 2007, Black Queen 2007, Valkyrie 2010; TRU variant 2-pack Black Widow + Winter Soldier (comic-costume variant).",
+            "source": "Marvel Toys Wiki",
+            "url": "https://marveltoys.fandom.com/wiki/Marvel_Legends",
+            "confidence": "verified"
+          },
+          {
+            "text": "Amazon: 2025 Marvel vs. Capcom box sets — Wolverine vs. Silver Samurai, Psylocke vs. Thanos (Target), War Machine vs. Omega Red (Walmart), Shuma-Gorath/Gargantos, Juggernaut.",
+            "source": "Wikipedia — Marvel Legends",
+            "url": "https://en.wikipedia.org/wiki/Marvel_Legends",
+            "confidence": "verified"
+          },
+          {
+            "text": "Previews (comic shops): Wolverine (Ultimate) 2008, Sunfire (Age of Apocalypse) 2008 Fan's Choice.",
+            "source": "Marvel Toys Wiki",
+            "url": "https://marveltoys.fandom.com/wiki/Marvel_Legends",
+            "confidence": "verified"
+          },
+          {
+            "text": "Fan Channel (online specialty retailers): 20th Anniversary line (2022), Malice, Rictor/Domino/Cannonball X-Force 3-pack reissues.",
+            "source": "Wikipedia / Marvel Toy News",
+            "url": "http://marveltoynews.com/tag/exclusives/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Truly limited vs. widely restocked (Chronicle analysis): truly limited — SDCC booth quantities before the Pulse online release, the 2012 X-Force and 2013 Thunderbolts con sets (both carry verified aftermarket premiums), and the Toy Biz Walmart Giant Man series. Restocked — the X-Force 3-pack and Retro Animated Spider-Man got Fan Channel reissues in 2026; Target Onslaught restocked sporadically. Rule of thumb: Pulse-era (2020+) exclusives are produced to meet demand and often return; pre-2020 con exclusives generally were not.",
+            "source": "Chronicle editorial synthesis",
+            "url": "",
+            "confidence": "analysis"
+          }
+        ]
+      },
+      {
+        "id": "international",
+        "title": "International releases",
+        "timeframe": "2002–2026",
+        "items": [
+          {
+            "text": "Toy Biz-era international releases substituted posters for the 32-page comic pack-in; UK and Canada additionally got documented \"Gold Poster\" variants across Series 1–3.",
+            "source": "RTM ToyMania + marvellegends.info checklist",
+            "url": "http://marvellegends.info/ChecklistPDF.pdf",
+            "confidence": "verified"
+          },
+          {
+            "text": "UK Tesco re-issues: a wave of MCU figure re-issues appeared at Tesco UK in basic cardback packaging with no BAF pieces — a stripped-down international assortment (Spider-Man FFH, Stealth Suit, Endgame Cap, IW Iron Man, IW Black Panther).",
+            "source": "MarvelousNews",
+            "url": "https://marvelousnews.com/252-25645",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Disney Stores UK: the Avengers 5-pack (Thor, Hulk, Iron Man, Cap, Ultron) at £99.95 was a European/UK exclusive.",
+            "source": "Toyark",
+            "url": "https://www.toyark.com/2015/08/27/marvel-legends-avengers-5-pack-released-to-disney-stores-in-uk-174227",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Hasbro product data sheets list EUROPE / AMERICAS packaging regions, confirming distinct regional packaging runs (e.g. Icecat product data for The Spot, G08305L0).",
+            "source": "Icecat (primary product data)",
+            "url": "https://icecat.lu/rest/product-pdf?productId=132276773&lang=he",
+            "confidence": "single-source"
+          },
+          {
+            "text": "PulseCon exclusives (e.g. the 2021 Venom) were sold on Hasbro Pulse in the US, Canada & UK.",
+            "source": "Bleeding Cool",
+            "url": "https://bleedingcool.com/collectibles/marvel-legends-pulse-con-spidey-no-way-home-venom-modok-nextwave/",
+            "confidence": "verified"
+          },
+          {
+            "text": "UK sellers (e.g. BigBrandToys) actively trade Toy Biz variants like the Series 1 Stealth Iron Man, indicating healthy UK collector circulation of US releases.",
+            "source": "BigBrandToys (retail listing)",
+            "url": "https://www.bigbrandtoys.co.uk/products/toybiz-marvel-legends-6-inch-series-1-stealth-armor-iron-man-variant-70193",
+            "confidence": "single-source"
+          },
+          {
+            "text": "Research gap: no authoritative source was found for dedicated Asian-market Marvel Legends variants; most \"international\" product is US product with regional packaging. Do not invent any.",
+            "source": "Chronicle research note (2026-10-11)",
+            "url": "",
+            "confidence": "verified"
+          }
+        ]
+      }
+    ]
+  },
+  "gradingGuide": {
+    "sections": [
+      {
+        "id": "afa-cga",
+        "title": "AFA / CGA",
+        "timeframe": "Current (Oct 2026)",
+        "items": [
+          {
+            "text": "AFA (Action Figure Authority) now operates as a division of Collectible Grading Authority (CGA), Roswell, Georgia. On Sept 22, 2026 CGA opened a New York drop-off office (grading still performed in Georgia). Tom Derby (founder, ex-Cloud City Collectibles) is a Partner at CGA. CGA also runs VGA (video games) and MGA (media, newly launched); it claims 25+ years via AFA/VGA.",
+            "source": "veve.me blog / mediatrainingforceos",
+            "url": "https://www.veve.me/blog/news/collectible-grading-authority-opens-new-york-office/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Scale: 0–100 in increments of 5; the modern scale is the original ÷ 10 (85 = 8.5). Sub-grades: card (C), blister/bubble (B), figure (F). \"Y\" = yellowed bubble. \"U\" = uncirculated (submitted in a sealed factory case — divisive; critics call it destroying a vintage item to preserve it).",
+            "source": "CGA documentation via sources above",
+            "url": "https://www.veve.me/blog/news/collectible-grading-authority-opens-new-york-office/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Historic costs (dated forum anecdotes — verify current before relying on them): ~$16 standard / $28 express (3-day) per jedidefender.com (old); ~$45+ with shipping for a modern figure (2008 forum); up to ~$90–100 all-in for large items (2012 forum). Turnaround 30–40 working days on the cheapest tier (old). No current CGA price list was found.",
+            "source": "Forum sources via research notes",
+            "url": "",
+            "confidence": "anecdote"
+          },
+          {
+            "text": "AFA trains graders to reject recards, reseals, and repros; forum anecdotes allege fakes have been graded — contested.",
+            "source": "Research notes",
+            "url": "",
+            "confidence": "anecdote"
+          }
+        ]
+      },
+      {
+        "id": "cas",
+        "title": "CAS (Collector Archive Services)",
+        "timeframe": "Current (Oct 2026)",
+        "items": [
+          {
+            "text": "Independent grading/authentication (collectorarchive.com). Anti-\"U\"-grade stance; offers a \"preservation grade\" for damaged-but-rare items.",
+            "source": "collectorarchive.com",
+            "url": "https://collectorarchive.com",
+            "confidence": "verified"
+          },
+          {
+            "text": "Nov 17, 2025: BigBadToyStore partnered with CAS — sells CAS Graded & Cased items with tamper-proof acrylic blocking up to 85% UV and a digital certificate per item.",
+            "source": "Allspark forums",
+            "url": "https://www.allspark.com/home/threads/bbts-levels-up-new-cas-graded-items-relaunched-mint-mint-pro-grades-now-live.3657/",
+            "confidence": "verified"
+          },
+          {
+            "text": "Cost anecdote: ~$100 all-in including return shipping for one baggie figure; turnaround quoted ~90 days, actual ~4 months (2023–24).",
+            "source": "Collector forum anecdote",
+            "url": "",
+            "confidence": "anecdote"
+          }
+        ]
+      },
+      {
+        "id": "ukg",
+        "title": "UKG (UK Graders)",
+        "timeframe": "Current",
+        "items": [
+          {
+            "text": "UK-based grader; ~£23–26 per MOC all-in (2012-era anecdote); grades like Y85; known for fast personal communication.",
+            "source": "Collector forum anecdote",
+            "url": "",
+            "confidence": "anecdote"
+          }
+        ]
+      },
+      {
+        "id": "tga-closed",
+        "title": "TGA — closed",
+        "timeframe": "Observed 2026-10-11",
+        "items": [
+          {
+            "text": "TGA (tgacards.com): \"Due to slow sales... TGA is no longer accepting submissions.\" Do not send figures there.",
+            "source": "tgacards.com (observed 2026-10-11)",
+            "url": "https://tgacards.com",
+            "confidence": "verified"
+          }
+        ]
+      },
+      {
+        "id": "premium-caveat",
+        "title": "Do graded Legends sell at premiums?",
+        "timeframe": "Honest answer",
+        "items": [
+          {
+            "text": "No Marvel-Legends-specific graded-vs-ungraded sale premium was found in any source. One Star Wars forum anecdote claims graded items change hands for 1/3 to 2× ungraded; a counter-anecdote (UKG thread) reports graded MOCs resold for less than the pre-grading purchase price.",
+            "source": "Research notes",
+            "url": "",
+            "confidence": "analysis"
+          },
+          {
+            "text": "The Chronicle will NOT claim a grading premium for Marvel Legends — no documented Legends-specific evidence exists. Present grading as authentication + preservation + buyer confidence, with any premium unproven.",
+            "source": "Chronicle editorial policy",
+            "url": "",
+            "confidence": "verified"
+          }
+        ]
+      }
+    ]
+  },
+  "priceMethod": {
+    "principle": "Sold listings, not active listings. Active listings show what sellers hope to get; sold/completed listings show what buyers actually paid.",
+    "principleSources": [
+      "The Spruce Crafts — Guide to Pricing Action Figures (https://www.thesprucecrafts.com/guide-to-pricing-action-figures-17887)",
+      "ThriftBrain reseller guide (https://www.thriftbrain.com/guides/vintage-he-man-motu-action-figures)"
+    ],
+    "steps": [
+      "eBay → advanced search → SOLD listings, last 90 days.",
+      "Filter to your exact condition tier: loose complete / boxed / graded.",
+      "Take the median of the last 10–15 solds, drop outliers.",
+      "Asking prices are irrelevant — only solds count."
+    ],
+    "rules": [
+      "Every price carries: amount, condition tier, source, date observed.",
+      "\"Asking\" vs \"sold\" is labeled every time — never mixed.",
+      "`verified:false` on single-source/tabloid claims (existing convention).",
+      "No price presented as current without an observation date."
+    ],
+    "aggregators": [
+      {
+        "name": "hobbyDB",
+        "note": "Collector database + marketplace with per-item \"Estimated Value.\" Values are member-curated and many entries show \"Help Wanted\" (no value yet) — NOT transaction-derived. Treat as a catalog/starting hint, never as market data. Member listings exist (e.g. HasLab Galactus all-tiers listed at $569 by a member, observed Oct 2026 — a listing, not a sale).",
+        "confidence": "single-source",
+        "url": "https://hobbydb.com"
+      },
+      {
+        "name": "StockX",
+        "note": "Lists some Legends with verified \"last sale\" data (e.g. Retro Ben Reilly Spider-Man: release 04/01/2022, retail $23, last sale $35 — observed Oct 2026). Transaction-based but thin toy coverage.",
+        "confidence": "verified",
+        "url": "https://stockx.com/hasbro-marvel-legends-retro-spider-man-ben-reilly-spider-man-action-figure"
+      },
+      {
+        "name": "PriceCharting equivalent",
+        "note": "NONE EXISTS for action figures as of 2026-10-11 — no transaction-aggregating guide was found. The Chronicle states this rather than implying otherwise.",
+        "confidence": "verified",
+        "url": ""
+      }
+    ],
+    "priceHistory": [
+      {
+        "figure": "Blue Wasp variant (Series 15, unproduced)",
+        "observation": "$7,500 eBay ASKING (unpainted prototype)",
+        "source": "comicbook.com, July 2026",
+        "confidence": "single-source",
+        "note": "Asking, not sold"
+      },
+      {
+        "figure": "Blue Wasp variant",
+        "observation": "\"$3,500 or more\" in-box; claimed $15K eBay sale",
+        "source": "rarest.org, ~2021",
+        "confidence": "anecdote",
+        "note": "Treat the $15K as lore"
+      },
+      {
+        "figure": "Deadpool (Toy Biz Series 6)",
+        "observation": "~$400; \"most valuable Marvel Legends\" pre-movie",
+        "source": "thegamer.com via CBR, 2015",
+        "confidence": "single-source",
+        "note": "Dated"
+      },
+      {
+        "figure": "Giant-Man BAF complete (unboxed)",
+        "observation": "$200",
+        "source": "thegamer.com, ~2018",
+        "confidence": "single-source",
+        "note": "Dated"
+      },
+      {
+        "figure": "Black Suit Spider-Man (Red Hulk wave, Target excl.)",
+        "observation": "$150",
+        "source": "thegamer.com, ~2018",
+        "confidence": "single-source",
+        "note": "Dated"
+      },
+      {
+        "figure": "Black Widow + Winter Soldier TRU variant 2-pack",
+        "observation": "$300",
+        "source": "thegamer.com, ~2018",
+        "confidence": "single-source",
+        "note": "Dated"
+      },
+      {
+        "figure": "Galactus BAF complete",
+        "observation": "~$183 avg, range $35–$372",
+        "source": "PicClick",
+        "confidence": "verified",
+        "note": "Already in Chronicle data"
+      },
+      {
+        "figure": "Sentinel BAF complete",
+        "observation": "~$552.50 est.",
+        "source": "Coleka",
+        "confidence": "verified",
+        "note": "Already in Chronicle data"
+      },
+      {
+        "figure": "SDCC 2013 Thunderbolts 5-pack",
+        "observation": "$49.99 retail → $130–$300 sold",
+        "source": "eBay solds 2025–26",
+        "confidence": "verified",
+        "note": "Already in Chronicle data"
+      },
+      {
+        "figure": "HasLab Sentinel",
+        "observation": "$349.99 crowdfund, funded ~24h",
+        "source": "Hasbro",
+        "confidence": "verified",
+        "note": "Crowdfund price, not aftermarket"
+      },
+      {
+        "figure": "HasLab Galactus",
+        "observation": "$399.99 crowdfund, 14,000 backers",
+        "source": "Hasbro",
+        "confidence": "verified",
+        "note": "Crowdfund price, not aftermarket"
+      },
+      {
+        "figure": "HasLab Galactus all-tiers",
+        "observation": "$569 member LISTING",
+        "source": "hobbyDB, Oct 2026",
+        "confidence": "single-source",
+        "note": "Listing, not sold"
+      },
+      {
+        "figure": "Retail baseline (Oct 2026)",
+        "observation": "Basic Legends MSRP $27.99 (was $24.99; ~40% above 2020)",
+        "source": "Galactic Hunter",
+        "confidence": "single-source",
+        "note": "Retail, not secondary"
+      }
+    ],
+    "reissueEffect": {
+      "mechanism": "Reissue announced → speculative listings undercut each other → asking prices fall within days. Originals keep a premium only when the value driver is rarity/provenance (prototypes, true limited runs), not mere availability.",
+      "cases": [
+        {
+          "case": "VHS → Retro reissues (Sept 2026)",
+          "detail": "Aftermarket was \"escalating quite a bit\" on sold-out Pulse VHS Animated Series exclusives (MarvelToyNews) → Hasbro reissued four (Mary Jane, Aunt May, Smythe, Maximum Carnage) on Retro cards at $27.99. Clean documented sellout → spike → reissue. Before/after price numbers were not published.",
+          "confidence": "verified"
+        },
+        {
+          "case": "Super-Skrull (Sept 2026)",
+          "detail": "\"Back by popular demand... previously an exclusive,\" reissued at $46.99–$47.99.",
+          "confidence": "verified",
+          "source": "ToyHypeUSA"
+        },
+        {
+          "case": "X-Force 3-pack",
+          "detail": "A $250 listing met a reissue announcement (ToyFarce satire — documents sentiment, not a transaction).",
+          "confidence": "anecdote",
+          "note": "Satire — flag as such"
+        },
+        {
+          "case": "Counter-example: 2018 Blue Wasp retro tribute",
+          "detail": "\"A middling seller, lingering on store shelves\" (comicbook.com). Rarity-based grails (~10 known prototypes) are immune to reissues; demand-based premiums are not.",
+          "confidence": "single-source"
+        }
+      ]
+    },
+    "honestGaps": [
+      "No Marvel-Legends-specific graded-vs-ungraded sale premium found.",
+      "No current AFA/CGA price list found (only historic forum figures).",
+      "No before/after price numbers for the VHS → Retro reissues (spike documented, figures not published).",
+      "No exact production numbers for any Toy Biz chase variant (\"~10 known\" Blue Wasp is comicbook.com's estimate).",
+      "The rarest.org \"$15,000 eBay sale\" Blue Wasp claim is a single rarity-list anecdote."
+    ]
+  }
 }

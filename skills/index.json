@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "count": 206,
+  "count": 212,
   "skills": [
     {
       "id": "baf-galactus",
@@ -1237,6 +1237,42 @@
       "title": "Grade card condition",
       "description": "Assess carded figure condition like a grader.",
       "path": "skills/hunts/hunt-grade-card.md"
+    },
+    {
+      "id": "variants-packaging-era-id",
+      "title": "Identify the packaging era",
+      "description": "Date a figure's packaging: clamshell, window box, windowless, or retro card.",
+      "path": "skills/variants/variants-packaging-era-id.md"
+    },
+    {
+      "id": "variants-chase-case-decode",
+      "title": "Decode chase figures and case ratios",
+      "description": "Tell real chases from variants using assortment codes and case math.",
+      "path": "skills/variants/variants-chase-case-decode.md"
+    },
+    {
+      "id": "hunt-exclusive-playbook",
+      "title": "Hunt store and convention exclusives",
+      "description": "The full exclusive map: SDCC, PulseCon, Target, Walmart, Walgreens, Amazon, Fan Channel.",
+      "path": "skills/hunts/hunt-exclusive-playbook.md"
+    },
+    {
+      "id": "marketplace-should-you-grade",
+      "title": "Decide whether to grade a figure",
+      "description": "The should-you-grade decision: costs, turnaround, and the no-premium caveat.",
+      "path": "skills/marketplace/marketplace-should-you-grade.md"
+    },
+    {
+      "id": "grails-reissue-radar",
+      "title": "Run the reissue radar on a grail",
+      "description": "Availability-based vs rarity-based premiums: which grails survive a reissue.",
+      "path": "skills/grails/grails-reissue-radar.md"
+    },
+    {
+      "id": "bootleg-counterfeit-market",
+      "title": "Understand the counterfeit market",
+      "description": "The KO economy: where bootlegs sell, what they cost, and who buys them knowingly.",
+      "path": "skills/bootleg/bootleg-counterfeit-market.md"
     }
   ]
 }

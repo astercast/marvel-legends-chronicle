@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BAF Planner — Marvel Legends Chronicle</title>
+  <meta name="description" content="Complete my BAF: mark the figures you own and see exactly which Build-A-Figure pieces you're missing, with acquisition guidance.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .planner-hero { padding-block: var(--space-7); }
+    .planner-layout { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-5); margin-bottom: var(--space-7); }
+    @media (max-width: 900px) { .planner-layout { grid-template-columns: 1fr; } }
+    .baf-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); max-height: 70vh; overflow-y: auto; }
+    .baf-item { width: 100%; text-align: left; color: var(--ink); cursor: pointer; }
+    .baf-item:hover { border-color: var(--red); }
+    .baf-item[aria-current="true"] { border-color: var(--gold); }
+    .baf-item .baf-name { font-weight: 800; display: block; }
+    .baf-item .baf-sub { font-size: 0.78rem; color: var(--muted); display: block; margin-top: 2px; }
+    .baf-item .baf-prog { font-size: 0.75rem; color: var(--gold); font-family: var(--font-mono); }
+    .progress-wrap { margin-bottom: var(--space-5); }
+    .progress-bar { height: 10px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
+    .progress-bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.35s var(--ease); }
+    @media (prefers-reduced-motion: reduce) { .progress-bar > span { transition: none; } }
+    .piece { border: 1px solid var(--line-soft); border-radius: var(--radius-m); padding: var(--space-4); margin-bottom: var(--space-3); background: var(--panel); }
+    .piece.done { border-color: rgba(93, 255, 143, 0.45); }
+    .piece-head { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-3); }
+    .piece-name { font-weight: 800; font-size: 1.05rem; }
+    .carrier { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; padding: var(--space-2) 0; border-top: 1px solid var(--line-soft); font-size: 0.9rem; }
+    .carrier .c-name { font-weight: 600; }
+    .carrier .c-wave { color: var(--muted); font-size: 0.8rem; }
+    .acquire { background: var(--bg-soft); border: 1px dashed var(--line); border-radius: var(--radius-m); padding: var(--space-4); margin-top: var(--space-5); }
+    .acquire h3 { font-size: 1rem; margin: 0 0 var(--space-2); }
+    .acquire ul { margin: 0; padding-left: var(--space-4); color: var(--ink-dim); font-size: 0.9rem; }
+    .acquire li { margin-bottom: var(--space-1); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to planner</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html" aria-current="page">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero planner-hero" aria-labelledby="planner-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Build-A-Figure planner</span>
+        <h1 id="planner-title">Complete my <span class="accent">BAF.</span></h1>
+        <p class="lede">Pick a Build-A-Figure, mark the figures you own, and see exactly which pieces you're missing — with acquisition guidance. Ownership syncs with the timeline tracker (stored in your browser only).</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="planner-layout">
+        <div>
+          <h2 style="font-size:1rem;margin-bottom:var(--space-3);">Build-A-Figures</h2>
+          <ul class="baf-list" id="baf-list" aria-label="Build-A-Figure list"></ul>
+        </div>
+        <div id="baf-detail" aria-live="polite">
+          <div class="empty-state"><p>Select a Build-A-Figure to plan it.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/baf-planner.js"></script>
+</body>
+</html>

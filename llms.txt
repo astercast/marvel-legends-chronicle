@@ -6,7 +6,11 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 ## What this is
 
 - Timeline of 1,904 figures across 158 waves, Toy Biz (2002–2006) through Hasbro (2007–2026)
-- Collector encyclopedia: line history, 23-entry hall of fame, bootleg-spotting guide, resources
+- Collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue-radar flags), grading guide, transparent price methodology, bootleg-spotting guide, resources
+- BAF planner: mark owned figures, see missing Build-A-Figure pieces + acquisition guidance (browser-local)
+- 46 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
+- Bootleg authentication wizard: step-by-step pass/fail flow with verdict
+- Price guide page: the sold-listings method, aggregator limits, dated price history, reissue effect
 - Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts
 - Collection tracker: mark figures Owned / Wanted (browser-local)
 
@@ -18,12 +22,12 @@ Base: `api/v1/`
 - `api/v1/stats.json` — totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies
 - `api/v1/waves.json` — 158 wave summaries (id, year, manufacturer, series, baf, figureCount)
 - `api/v1/figures.json` — flat list of all 1,904 figures with wave context
-- `api/v1/encyclopedia.json` — history timeline, hall of fame, bootleg guide, resources directory
+- `api/v1/encyclopedia.json` — history timeline, packaging evolution, variant/chase/exclusive taxonomy, hall of fame (with reissue radar), grading guide, transparent price methodology, bootleg guide, resources directory
 - `api/v1/schema/wave.json`, `api/v1/schema/figure.json` — JSON Schema (draft-07)
 
 ## Skills (agentic task procedures)
 
-206 skills in `skills/` — rebuild with `python3 scripts/build_skills.py`
+212 skills in `skills/` — rebuild with `python3 scripts/build_skills.py`
 (generates from `data/*.json` + authored procedures; outputs committed).
 `skills/index.json` is the manifest: id, title, description, path per skill.
 
@@ -32,8 +36,8 @@ primary interface for *doing* work; the JSON endpoints are the data layer.
 `api/v1/index.json` points here (`repository`, `skills`, `for_agents`).
 
 Categories: baf (101 completion checklists), characters (46 collector guides),
-grails (23 dossiers), bootleg (7), eras (5), collection (5), marketplace (3),
-community (4), variants (2), hunts (10).
+grails (24 dossiers), bootleg (8), eras (5), collection (5), marketplace (4),
+community (4), variants (4), hunts (11).
 
 ## Stable ids
 
@@ -47,6 +51,8 @@ Unknown or disputed values are explicit `null` with a `notes` field — never in
 - Some BAF pieces and disputed wave numbers are flagged unverified in notes.
 - Hall-of-fame prices are secondary-market observations; entries from single or
   tabloid sources carry `verified: false`.
+- Encyclopedia claims added 2026-10-11 carry `source` + `confidence`
+  (`verified` / `single-source` / `anecdote` / `unverified` / `analysis`).
 - Marketplace links on the site are pre-filled search links (mock integration),
   not live inventory.
 
@@ -58,9 +64,13 @@ and `data/encyclopedia.json`. Commit the outputs.
 ## Site structure
 
 - `index.html` — chronological timeline with search, filters, year rail, tracker
-- `encyclopedia.html` — history, hall of fame, bootleg guide, resources
+- `encyclopedia.html` — history, packaging evolution, variants/chases/exclusives, hall of fame, grading guide, bootleg guide, resources
+- `baf-planner.html` — "complete my BAF" planner (browser-local, syncs with tracker)
+- `characters/index.html` + `characters/<slug>.html` — 46 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character
+- `price-guide.html` — transparent sold-listings methodology, dated price history, reissue effect
+- `auth-wizard.html` — interactive bootleg authentication wizard
 - `community.html` — fan social (localStorage demo)
 - `api.html` — human-readable API docs
 - `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, community, community-page (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, community, community-page (ES modules)

@@ -97,3 +97,49 @@
 .resource-card h3 { font-size: 0.95rem; margin: 0 0 var(--space-1); }
 .resource-card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
 .resource-card .ext { font-size: 0.75rem; color: var(--blue); }
+
+/* Round-2 guides: packaging, variants, grading (provenance-rich) */
+.doc-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-4);
+}
+.doc-card h3 { font-size: 1rem; margin: 0 0 var(--space-1); }
+.doc-card .doc-time {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-3);
+}
+.doc-card ul { margin: 0; padding: 0; list-style: none; }
+.doc-card li { margin-bottom: var(--space-3); font-size: 0.9rem; color: var(--ink-dim); }
+.doc-card li:last-child { margin-bottom: 0; }
+.provenance {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.provenance a { color: var(--blue); }
+.badge-conf {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 1px 6px;
+  margin-left: var(--space-1);
+  vertical-align: middle;
+}
+.badge-conf.single { color: var(--gold); border-color: rgba(245, 179, 1, 0.5); }
+.badge-conf.anecdote { color: #ffb37f; border-color: rgba(255, 179, 127, 0.5); }
+.badge-conf.unverified { color: var(--red); border-color: rgba(230, 36, 41, 0.5); }
+.badge-conf.analysis { color: #c9a7ff; border-color: rgba(201, 167, 255, 0.4); }
+.radar-line { font-size: 0.78rem; margin: 0; }
+.radar-res { color: var(--green); font-weight: 700; }
+.radar-vul { color: var(--gold); font-weight: 700; }
+.radar-note { color: var(--muted); }

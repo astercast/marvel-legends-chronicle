@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 API = ROOT / "api" / "v1"
 VERSION = "1.0.0"
-OBSERVED = "2026-10-10"  # observation date for the dataset
+OBSERVED = "2026-10-11"  # observation date for the dataset
 
 
 def load_json(path):

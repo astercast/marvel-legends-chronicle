@@ -9,7 +9,44 @@ const els = {
   hofEra: document.getElementById("hof-era"),
   guides: document.getElementById("guide-grid"),
   resources: document.getElementById("resource-grid"),
+  packaging: document.getElementById("packaging-grid"),
+  variants: document.getElementById("variants-grid"),
+  grading: document.getElementById("grading-grid"),
 };
+
+const CONF_LABEL = {
+  "single-source": "Single source",
+  anecdote: "Anecdote",
+  unverified: "Unverified",
+  analysis: "Chronicle analysis",
+};
+
+function provenance(it) {
+  const src = it.url
+    ? `<a href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(it.source)}</a>`
+    : escapeHtml(it.source);
+  const badge = CONF_LABEL[it.confidence]
+    ? `<span class="badge-conf ${escapeHtml(it.confidence)}">${CONF_LABEL[it.confidence]}</span>`
+    : "";
+  return `<span class="provenance">Source: ${src}${badge}</span>`;
+}
+
+function renderDocGuide(el, sections) {
+  if (!el) return;
+  el.innerHTML = "";
+  for (const s of sections) {
+    const card = document.createElement("article");
+    card.className = "card doc-card";
+    const items = s.items
+      .map((it) => `<li>${escapeHtml(it.text)}${provenance(it)}</li>`)
+      .join("");
+    card.innerHTML = `
+      <h3>${escapeHtml(s.title)}</h3>
+      <div class="doc-time">${escapeHtml(s.timeframe)}</div>
+      <ul>${items}</ul>`;
+    el.appendChild(card);
+  }
+}
 
 function renderHistory(events) {
   els.history.innerHTML = "";
@@ -27,6 +64,9 @@ function renderHistory(events) {
 function hofCard(h) {
   const card = document.createElement("article");
   card.className = "card hof-card";
+  const radar = h.reissueRadar
+    ? `<p class="radar-line">Reissue radar: <span class="${h.reissueRadar.level === "resilient" ? "radar-res" : "radar-vul"}">${escapeHtml(h.reissueRadar.level)}</span> <span class="radar-note">— ${escapeHtml(h.reissueRadar.note)}</span></p>`
+    : "";
   card.innerHTML = `
     <h3>${escapeHtml(h.name)}</h3>
     <div class="tag-row">
@@ -35,6 +75,7 @@ function hofCard(h) {
     </div>
     ${h.price ? `<div class="hof-price">${escapeHtml(h.price)}</div>` : ""}
     <p>${escapeHtml(h.why)}</p>
+    ${radar}
     <p style="font-size:0.78rem;color:var(--muted);margin:0;">${escapeHtml(h.priceNote ?? "")}</p>`;
   return card;
 }
@@ -90,6 +131,9 @@ async function init() {
     renderHof(data.hallOfFame);
     renderGuides(data.bootlegGuide.sections);
     renderResources(data.resources);
+    renderDocGuide(els.packaging, (data.packagingGuide || {}).sections);
+    renderDocGuide(els.variants, (data.variantsGuide || {}).sections);
+    renderDocGuide(els.grading, (data.gradingGuide || {}).sections);
     let debounce;
     els.hofSearch.addEventListener("input", () => {
       clearTimeout(debounce);
