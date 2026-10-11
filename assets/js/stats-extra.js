@@ -154,6 +154,11 @@ function render() {
     }
   }).catch(function (err) {
     console.error(err);
+    var msg = '<div class="empty-state"><p>Could not load chart data. Check your connection and reload.</p></div>';
+    if (bafEl) bafEl.innerHTML = msg;
+    if (charsEl) charsEl.innerHTML = msg;
+    if (exclEl) exclEl.innerHTML = msg;
+    if (sizeEl) sizeEl.innerHTML = msg;
   });
 }
 
