@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Price Journal — Marvel Legends Chronicle</title>
+  <meta name="description" content="Your personal sold-price log: paste eBay sold listings, track what your collection is actually worth — from your own entries only.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .journal-hero { padding-block: var(--space-7); }
+    .journal-grid { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: var(--space-5); margin-bottom: var(--space-6); align-items: start; }
+    @media (max-width: 900px) { .journal-grid { grid-template-columns: 1fr; } }
+    .journal-form { display: grid; gap: var(--space-3); }
+    .form-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .form-error { color: #ff8a8a; font-size: 0.85rem; min-height: 1.2em; margin: 0; }
+    .entry-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+    .entry { display: grid; gap: var(--space-1); }
+    .entry-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); }
+    .entry-name { font-weight: 700; }
+    .entry-wave { color: var(--muted); font-size: 0.82rem; }
+    .entry-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; font-size: 0.85rem; }
+    .entry-price { font-family: var(--font-mono); color: var(--gold); font-weight: 700; font-size: 1rem; }
+    .entry-date { font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; }
+    .entry-note { color: var(--muted); font-size: 0.85rem; margin: 0; }
+    .entry-actions { display: flex; gap: var(--space-2); margin-top: var(--space-1); }
+    .value-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .value-table th, .value-table td { text-align: left; padding: var(--space-2); border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+    .value-table th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .value-table td.num { font-family: var(--font-mono); white-space: nowrap; }
+    .value-total { font-size: 1.6rem; font-weight: 900; font-family: var(--font-display); color: var(--gold); }
+    .src-links { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+    .src-links a { font-size: 0.78rem; }
+    .method-note { font-size: 0.82rem; color: var(--muted); max-width: 70ch; }
+    .panel { margin-bottom: var(--space-6); }
+    .panel h2 { font-size: 1.15rem; margin-bottom: var(--space-3); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; margin-bottom: var(--space-4); }
+    @media print {
+      .site-header, .site-footer, .journal-form-wrap, .entry-actions, .toolbar .field, #journal-export, #journal-import-label { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to journal</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html" aria-current="page">Journal</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero journal-hero" aria-labelledby="journal-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Your sold-price log</span>
+        <h1 id="journal-title">Price <span class="accent">journal.</span></h1>
+        <p class="lede">Paste eBay sold listings as you find them. Your collection's tracked value is computed from <em>your</em> entries only — every dollar traces to a listing you logged.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="journal-grid">
+        <section class="card journal-form-wrap" style="padding:var(--space-5)" aria-labelledby="log-heading">
+          <h2 id="log-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Log a sold listing</h2>
+          <form id="journal-form" class="journal-form" novalidate>
+            <div class="field">
+              <label for="j-figure">Figure</label>
+              <input class="input" id="j-figure" name="figure" list="j-figures" autocomplete="off"
+                     placeholder="Start typing a figure name…" required>
+              <datalist id="j-figures"></datalist>
+              <p class="method-note" style="margin:0"><a href="#" id="j-sold-search">Open eBay solds for this figure ↗</a> — copy a real sold price back here.</p>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="j-condition">Condition</label>
+                <select class="input" id="j-condition" name="condition">
+                  <option value="loose-complete">Loose — complete</option>
+                  <option value="loose-incomplete">Loose — incomplete</option>
+                  <option value="mib">Mint in box</option>
+                  <option value="moc">Mint on card</option>
+                  <option value="graded">Graded</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="j-price">Sold price (USD)</label>
+                <input class="input" id="j-price" name="price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="42.50" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="j-date">Sold date</label>
+                <input class="input" id="j-date" name="date" type="date" required>
+              </div>
+              <div class="field">
+                <label for="j-url">Listing URL <span class="muted">(optional)</span></label>
+                <input class="input" id="j-url" name="url" type="url" inputmode="url" placeholder="https://www.ebay.com/itm/…">
+              </div>
+            </div>
+            <div class="field">
+              <label for="j-note">Note <span class="muted">(optional)</span></label>
+              <input class="input" id="j-note" name="note" maxlength="140" placeholder="e.g. best offer accepted, box crease">
+            </div>
+            <p class="form-error" id="j-error" role="alert"></p>
+            <div class="btn-row" style="margin-top:0">
+              <button type="submit" class="btn btn-gold" id="j-submit">Log entry</button>
+              <button type="button" class="btn btn-ghost" id="j-cancel-edit" hidden>Cancel edit</button>
+            </div>
+          </form>
+        </section>
+
+        <section aria-labelledby="entries-heading">
+          <div class="toolbar">
+            <h2 id="entries-heading" style="font-size:1.15rem;margin:0">Logged entries <span class="muted" id="j-count"></span></h2>
+            <div class="btn-row" style="margin:0 0 0 auto">
+              <button type="button" class="btn btn-sm" id="journal-export">Export JSON</button>
+              <label class="btn btn-sm" id="journal-import-label" for="journal-import" style="cursor:pointer;margin:0">Import JSON</label>
+              <input type="file" id="journal-import" accept="application/json" hidden>
+            </div>
+          </div>
+          <div class="empty-state" id="j-empty" hidden>
+            <h2>No entries yet</h2>
+            <p>Find a figure above, open its eBay solds, and log the first real sale. Three honest entries beat a hundred guessed prices.</p>
+          </div>
+          <ul class="entry-list" id="j-list"></ul>
+        </section>
+      </div>
+
+      <section class="card panel" style="padding:var(--space-5)" aria-labelledby="value-heading">
+        <h2 id="value-heading">Your collection's tracked value</h2>
+        <div class="toolbar">
+          <div class="field" style="max-width:260px">
+            <label for="j-cond-filter">Condition filter</label>
+            <select class="input" id="j-cond-filter">
+              <option value="all">All conditions</option>
+              <option value="loose-complete">Loose — complete</option>
+              <option value="loose-incomplete">Loose — incomplete</option>
+              <option value="mib">Mint in box</option>
+              <option value="moc">Mint on card</option>
+              <option value="graded">Graded</option>
+            </select>
+          </div>
+        </div>
+        <p class="value-total" id="j-total" aria-live="polite">$0.00</p>
+        <p class="method-note" id="j-value-note"></p>
+        <div style="overflow-x:auto">
+          <table class="value-table" id="j-breakdown">
+            <thead><tr><th scope="col">Figure</th><th scope="col">Entries</th><th scope="col">Median</th><th scope="col">Range</th><th scope="col">Sources</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="method-note" style="margin-top:var(--space-4)">Method: for each figure you marked <strong>Owned</strong> on the timeline, we take the median of your logged sold prices (matching the condition filter). Figures with no logged sales are valued at $0 and listed below — log a sale to price them. This is your log, not a market index: no scraped data, no estimates, no invented prices.</p>
+        <p class="method-note" id="j-unpriced"></p>
+      </section>
+
+      <p class="chart-sub" style="margin-bottom:var(--space-7)">Journal data lives in this browser only (<code>mlc_journal_v1</code>). Export it before clearing site data. Sold prices come from listings you paste — see the <a href="price-guide.html">price guide</a> for how to read eBay solds honestly.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/journal.js"></script>
+</body>
+</html>

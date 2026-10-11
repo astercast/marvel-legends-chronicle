@@ -34,14 +34,14 @@ Static site. GitHub only — nothing is deployed anywhere.
 - **Research links:** per-figure "Research" affordance in the figure dialog and on every character-page release — eBay *sold* listings (actual sale prices, same pattern as the BAF planner), YouTube review search, general web search; external third-party content, clearly labeled
 - **Encyclopedia:** history timeline, packaging evolution, searchable hall of fame with verified/unverified price flags and reissue-radar (resilient vs vulnerable premiums), grading guide (AFA/CGA, CAS, UKG, no-premium caveat), bootleg guide, resources
 - **Community:** seeded collector profiles; photo composer with client-side downscaling; chronological + following feeds; likes, comments, follows, hashtags; figure tags open the figure dialog
-- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 46 chronological character pages, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard, release radar, figure compare, milestone-anniversary strip on the timeline
+- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 66 chronological character pages, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard (with "almost there" completion recommendations), price journal (personal sold-listing log + tracked collection value), release radar, figure compare, milestone-anniversary strip on the timeline
 
 ## Skills
 
 `skills/` — 212 agentic task procedures (`python3 scripts/build_skills.py`
 regenerates from `data/*.json` + authored procedures). `skills/index.json`
 is the manifest agents should load first; `api/v1/index.json` points at it.
-101 BAF completion checklists, 46 character collector guides, 24 grail
+101 BAF completion checklists, 66 character collector guides, 24 grail
 dossiers (incl. reissue-radar), bootleg authentication + counterfeit-market
 awareness, packaging-era ID, chase/case-ratio decoding, exclusive-hunting
 playbook, grading decisions, era guides, hunt tactics, marketplace and

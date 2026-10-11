@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Generate static character pages: characters/<slug>.html for every character
-with 8+ releases (same threshold as the character collector skills), plus
-characters/index.html and characters/manifest.json.
+"""Generate static character pages: characters/<slug>.html for the top 66
+characters by release count, plus characters/index.html and
+characters/manifest.json.
 
 Usage: python3 scripts/build_characters.py
 Regenerate after data/figures.json changes; commit the outputs.
@@ -16,7 +16,7 @@ from urllib.parse import quote_plus
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = ROOT / "characters"
-MIN_RELEASES = 8
+TOP_N = 66  # top 66 characters by release count (was: 8+ releases = 46 pages)
 
 
 def base_name(n):
@@ -32,6 +32,7 @@ NAV_LINKS = [
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
+    ("journal.html", "Journal"),
     ("radar.html", "Radar"), ("compare.html", "Compare"),
     ("grails.html", "Grails"), ("variants.html", "Variants"),
     ("checklist.html", "Checklist"), ("skills.html", "Skills"),
@@ -109,7 +110,7 @@ def page(title, desc, current, body):
   <footer class="site-footer">
     <div class="container footer-grid">
       <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
-      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
+      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
     </div>
   </footer>
 </body>
@@ -167,7 +168,7 @@ def main():
                 "manufacturer": w["manufacturer"],
             })
 
-    chars = [(c, n) for c, n in counts.most_common() if n >= MIN_RELEASES]
+    chars = list(counts.most_common(TOP_N))
 
     OUT.mkdir(parents=True, exist_ok=True)
     for f in OUT.glob("*.html"):

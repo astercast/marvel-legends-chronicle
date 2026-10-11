@@ -8,11 +8,13 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - Timeline of 1,904 figures across 158 waves, Toy Biz (2002–2006) through Hasbro (2007–2026)
 - Collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue-radar flags), grading guide, transparent price methodology, bootleg-spotting guide, resources
 - BAF planner: mark owned figures, see missing Build-A-Figure pieces + acquisition guidance (browser-local)
-- 46 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
+- 66 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
+- Price journal: log eBay sold listings yourself; your collection's tracked value computed from your entries only (browser-local)
 - Bootleg authentication wizard: step-by-step pass/fail flow with verdict
 - Price guide page: the sold-listings method, aggregator limits, dated price history, reissue effect
 - Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts
 - Collection tracker: mark figures Owned / Wanted (browser-local)
+- "Almost there" on your shelf: BAFs missing 1–2 pieces, waves past 50%, characters nearly complete — computed from your tracker
 - Grail stories: 10 sourced narratives expanding the hall of fame (legend, hunt, reissue saga, honest prices)
 - Variant & chase identifier: spotter's guide + wave-by-wave index of all 83 documented variants
 - Printable checklist: your tracker as a paper checklist grouped by wave, with print stylesheet (also applied to the timeline)

@@ -5,6 +5,7 @@ import { PATHS, STORE_KEYS } from "./config.js";
 import { loadData } from "./data.js";
 import { load } from "./store.js";
 import { escapeHtml } from "./figure-dialog.js";
+import { soldSearchUrl, marketplaceQuery } from "./listings.js";
 
 const els = {
   empty: document.getElementById("shelf-empty"),
@@ -14,6 +15,7 @@ const els = {
   years: document.getElementById("shelf-years"),
   chars: document.getElementById("shelf-chars"),
   bafs: document.getElementById("shelf-bafs"),
+  complete: document.getElementById("shelf-complete"),
 };
 
 function bar(pct) {
@@ -124,6 +126,104 @@ async function main() {
     ${bar(bafPct)}
     ${topBafs.length ? `<ul class="baf-mini">${topBafs.map((b) => `<li><span>${escapeHtml(b.name)} <span class="muted">${b.year}</span></span><span class="count">${b.got}/${b.total}</span></li>`).join("")}</ul>
     <p class="chart-sub">Finish them in the <a href="baf-planner.html">BAF Planner</a>.</p>` : `<p class="chart-sub">No BAF pieces owned yet — the <a href="baf-planner.html">BAF Planner</a> shows what you're missing.</p>`}`;
+
+  /* Almost-there recommendations */
+  renderComplete(figures, waves, ownedIds, byId);
+}
+
+/* ---------- "Almost there" recommendations ----------
+   Read-only over the user's tracker data: BAFs missing 1–2 pieces, waves
+   past 50%, characters nearly complete. Missing pieces link out to eBay
+   solds via listings.js — no prices shown, just the search. */
+function baseName(n) {
+  return n.replace(/\s*\(.*?\)\s*/g, "").trim();
+}
+
+function missRow(fig) {
+  const q = marketplaceQuery(fig);
+  return `<li><span>${escapeHtml(fig.name)}${fig.variant ? ` <span class="badge badge-variant">${escapeHtml(fig.variant)}</span>` : ""}<br><span class="miss-meta">${escapeHtml(fig.waveSeries)} (${fig.year})</span></span><a class="btn btn-sm" href="${soldSearchUrl(q)}" target="_blank" rel="noopener noreferrer">eBay solds</a></li>`;
+}
+
+function renderComplete(figures, waves, ownedIds, byId) {
+  const cards = [];
+
+  /* BAFs missing 1–2 pieces (and at least one piece already owned) */
+  const bafCards = [];
+  for (const w of waves) {
+    if (!w.baf) continue;
+    const pieces = new Map(); // piece -> Set<figId>
+    for (const f of w.figures) {
+      if (!f.bafPiece) continue;
+      const id = `${w.id}::${f.name}`;
+      if (!pieces.has(f.bafPiece)) pieces.set(f.bafPiece, new Set());
+      pieces.get(f.bafPiece).add(id);
+    }
+    if (!pieces.size) continue;
+    const missing = [];
+    let got = 0;
+    for (const [piece, carriers] of pieces) {
+      if ([...carriers].some((id) => ownedIds.has(id))) got++;
+      else missing.push({ piece, rep: byId.get([...carriers][0]) });
+    }
+    const total = pieces.size;
+    if (got > 0 && missing.length >= 1 && missing.length <= 2 && got < total) {
+      bafCards.push({ w, got, total, missing });
+    }
+  }
+  bafCards.sort((a, b) => (a.total - a.got) - (b.total - b.got) || b.got - a.got);
+  for (const b of bafCards.slice(0, 6)) {
+    const n = b.total - b.got;
+    cards.push(`<article class="card complete-card">
+      <span class="complete-kicker">Build-A-Figure · ${b.w.year}</span>
+      <h3>You're ${n} ${n === 1 ? "piece" : "pieces"} from finishing <strong>${escapeHtml(b.w.baf)}</strong></h3>
+      <ul class="missing-list">${b.missing.map((m) => missRow(m.rep)).join("")}</ul>
+      <a class="btn btn-sm" href="baf-planner.html">Open in BAF Planner</a>
+    </article>`);
+  }
+
+  /* Waves past 50% */
+  const waveRows = waves.map((w) => {
+    const total = w.figures.length;
+    const got = w.figures.filter((f) => ownedIds.has(`${w.id}::${f.name}`)).length;
+    return { w, got, total, pct: total ? got / total : 0 };
+  }).filter((r) => r.pct >= 0.5 && r.pct < 1 && r.got > 0)
+    .sort((a, b) => b.pct - a.pct).slice(0, 6);
+  for (const r of waveRows) {
+    cards.push(`<article class="card complete-card">
+      <span class="complete-kicker">Wave · ${r.w.year} · ${escapeHtml(r.w.manufacturer)}</span>
+      <h3><strong>${Math.round(r.pct * 100)}%</strong> of ${escapeHtml(r.w.series)}</h3>
+      <p class="miss-meta" style="margin:0 0 var(--space-3)">${r.got} of ${r.total} owned — ${r.total - r.got} to go.</p>
+      <a class="btn btn-sm" href="checklist.html">Checklist it</a>
+    </article>`);
+  }
+
+  /* Characters nearly complete */
+  const byChar = new Map();
+  for (const f of figures) {
+    const b = baseName(f.name);
+    if (!b) continue;
+    if (!byChar.has(b)) byChar.set(b, { total: 0, got: 0 });
+    const e = byChar.get(b);
+    e.total++;
+    if (ownedIds.has(f.id)) e.got++;
+  }
+  const charRows = [...byChar.entries()]
+    .map(([name, e]) => ({ name, ...e, pct: e.total ? e.got / e.total : 0 }))
+    .filter((r) => r.got >= 1 && r.pct >= 0.5 && r.pct < 1)
+    .sort((a, b) => b.pct - a.pct || b.got - a.got).slice(0, 6);
+  for (const r of charRows) {
+    cards.push(`<article class="card complete-card">
+      <span class="complete-kicker">Character run</span>
+      <h3><strong>${Math.round(r.pct * 100)}%</strong> of every ${escapeHtml(r.name)}</h3>
+      <p class="miss-meta" style="margin:0 0 var(--space-3)">${r.got} of ${r.total} owned — ${r.total - r.got} to go.</p>
+      <a class="btn btn-sm" href="index.html">Hunt on the timeline</a>
+    </article>`);
+  }
+
+  els.complete.innerHTML = `<h2>Almost there</h2>
+    ${cards.length
+      ? `<p class="chart-sub">The closest finishes in your tracker — knock these out next.</p><div class="complete-grid">${cards.join("")}</div>`
+      : `<p class="chart-sub">Nothing close yet. Mark more figures <strong>Owned</strong> on the timeline and your nearest completions will appear here.</p>`}`;
 }
 
 main();

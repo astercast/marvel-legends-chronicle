@@ -320,5 +320,145 @@
     "count": 8,
     "first": 2018,
     "last": 2026
+  },
+  {
+    "slug": "elektra",
+    "name": "Elektra",
+    "count": 7,
+    "first": 2003,
+    "last": 2023
+  },
+  {
+    "slug": "doctor-octopus",
+    "name": "Doctor Octopus",
+    "count": 7,
+    "first": 2004,
+    "last": 2023
+  },
+  {
+    "slug": "iceman",
+    "name": "Iceman",
+    "count": 7,
+    "first": 2004,
+    "last": 2025
+  },
+  {
+    "slug": "electro",
+    "name": "Electro",
+    "count": 7,
+    "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "carnage",
+    "name": "Carnage",
+    "count": 7,
+    "first": 2005,
+    "last": 2024
+  },
+  {
+    "slug": "wasp",
+    "name": "Wasp",
+    "count": 7,
+    "first": 2006,
+    "last": 2024
+  },
+  {
+    "slug": "silver-surfer",
+    "name": "Silver Surfer",
+    "count": 7,
+    "first": 2007,
+    "last": 2025
+  },
+  {
+    "slug": "ms-marvel",
+    "name": "Ms. Marvel",
+    "count": 7,
+    "first": 2014,
+    "last": 2025
+  },
+  {
+    "slug": "logan",
+    "name": "Logan",
+    "count": 7,
+    "first": 2018,
+    "last": 2025
+  },
+  {
+    "slug": "thing",
+    "name": "Thing",
+    "count": 6,
+    "first": 2002,
+    "last": 2008
+  },
+  {
+    "slug": "nick-fury",
+    "name": "Nick Fury",
+    "count": 6,
+    "first": 2003,
+    "last": 2025
+  },
+  {
+    "slug": "mystique",
+    "name": "Mystique",
+    "count": 6,
+    "first": 2005,
+    "last": 2025
+  },
+  {
+    "slug": "iron-fist",
+    "name": "Iron Fist",
+    "count": 6,
+    "first": 2005,
+    "last": 2024
+  },
+  {
+    "slug": "sentry",
+    "name": "Sentry",
+    "count": 6,
+    "first": 2006,
+    "last": 2025
+  },
+  {
+    "slug": "luke-cage",
+    "name": "Luke Cage",
+    "count": 6,
+    "first": 2006,
+    "last": 2024
+  },
+  {
+    "slug": "quicksilver",
+    "name": "Quicksilver",
+    "count": 6,
+    "first": 2007,
+    "last": 2026
+  },
+  {
+    "slug": "spider-man-2099",
+    "name": "Spider-Man 2099",
+    "count": 6,
+    "first": 2015,
+    "last": 2026
+  },
+  {
+    "slug": "falcon",
+    "name": "Falcon",
+    "count": 6,
+    "first": 2016,
+    "last": 2025
+  },
+  {
+    "slug": "the-thing",
+    "name": "The Thing",
+    "count": 6,
+    "first": 2018,
+    "last": 2026
+  },
+  {
+    "slug": "namor",
+    "name": "Namor",
+    "count": 5,
+    "first": 2002,
+    "last": 2024
   }
 ]

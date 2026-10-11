@@ -9,6 +9,7 @@ export const STORE_KEYS = {
   owned: "mlc_owned_v1",
   wanted: "mlc_wanted_v1",
   social: "mlc_social_v1", // { profile, posts, likes, follows, comments }
+  journal: "mlc_journal_v1", // [{ id, figId, name, condition, price, date, url, note }]
 };
 
 export const MARKETPLACES = [

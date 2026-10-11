@@ -32,6 +32,14 @@
     .baf-mini .muted, .muted { color: var(--muted); }
     .baf-summary { font-size: 1rem; margin-bottom: var(--space-3); }
     .baf-summary strong { color: var(--gold); }
+    .complete-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3); margin-top: var(--space-4); }
+    .complete-card { padding: var(--space-4); }
+    .complete-kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .complete-card h3 { font-size: 1rem; margin: var(--space-2) 0; }
+    .complete-card h3 strong { color: var(--gold); }
+    .missing-list { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: grid; gap: var(--space-2); font-size: 0.88rem; }
+    .missing-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); justify-content: space-between; border-bottom: 1px solid var(--line-soft); padding-bottom: var(--space-2); }
+    .missing-list .miss-meta { color: var(--muted); font-size: 0.78rem; }
   </style>
 </head>
 <body>
@@ -51,6 +59,7 @@
         <a href="price-guide.html">Price Guide</a>
         <a href="auth-wizard.html">Auth Wizard</a>
         <a href="shelf.html" aria-current="page">Your Shelf</a>
+        <a href="journal.html">Journal</a>
         <a href="radar.html">Radar</a>
         <a href="compare.html">Compare</a>
         <a href="grails.html">Grails</a>
@@ -91,6 +100,8 @@
 
         <section class="card shelf-panel" id="shelf-bafs" aria-label="Build-A-Figure completion" style="padding:var(--space-5)"></section>
 
+        <section class="card shelf-panel" id="shelf-complete" aria-label="Almost finished" style="padding:var(--space-5)"></section>
+
         <p class="chart-sub" style="margin-bottom:var(--space-7);">All data is local to this browser (keys <code>mlc_owned_v1</code> / <code>mlc_wanted_v1</code>). Clearing site data resets your shelf. Figure totals: api/v1/stats.json.</p>
       </div>
     </div>
@@ -108,6 +119,7 @@
         <a href="price-guide.html">Price Guide</a>
         <a href="auth-wizard.html">Auth Wizard</a>
         <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
         <a href="radar.html">Radar</a>
         <a href="compare.html">Compare</a>
         <a href="grails.html">Grails</a>
