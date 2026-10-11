@@ -99,3 +99,12 @@ a { color: #111; text-decoration: none; }
 .check-item .meta { color: #555; }
 .check-item input[type="checkbox"] { accent-color: #111; }
 .check-item.is-wanted .nm::after { content: " ★"; color: #111; }
+
+/* --- Era bands (index.html) --- */
+.era-legend { border: 1px solid #999; background: #fff !important; }
+.era-chip { border-color: #999; background: #fff !important; }
+.era-chip-years, .era-chip-title { color: #111; }
+.era-band { break-inside: avoid; border-color: #999; background: #fff !important; }
+.era-kicker, .era-note a { color: #111; }
+.era-note { color: #333; }
+.era-tag { color: #111; border-color: #999; }

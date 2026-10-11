@@ -1,6 +1,7 @@
 /* Timeline page — chronological waves, figure cards, search, filters. */
 import { loadData, searchFigures, computeStats, sourceLabel, sourceCoverage } from "./data.js";
 import { openFigureDialog, badgeFor, escapeHtml } from "./figure-dialog.js";
+import { eraForYear, renderEraLegend, eraDivider } from "./era-bands.js";
 import { owned, wanted } from "./tracker.js";
 
 const els = {
@@ -103,6 +104,8 @@ function renderTimeline(waves, figures) {
 
   const years = [...new Set(waves.map((w) => w.year))].sort((a, b) => a - b);
   let totalWaves = 0, totalFigs = 0;
+  els.timeline.appendChild(renderEraLegend());
+  let prevEra = null;
   for (const year of years) {
     const rail = document.createElement("a");
     rail.href = `#year-${year}`;
@@ -113,6 +116,13 @@ function renderTimeline(waves, figures) {
     const blocks = yearWaves.map((w) => waveBlock(w, s)).filter(Boolean);
     if (!blocks.length) continue;
 
+    /* Insert a packaging-era band whenever the era changes between rendered years. */
+    const era = eraForYear(year);
+    if (era && era !== prevEra) {
+      els.timeline.appendChild(eraDivider(era));
+    }
+    prevEra = era;
+
     const section = document.createElement("section");
     section.className = "year-section";
     section.id = `year-${year}`;
@@ -120,6 +130,7 @@ function renderTimeline(waves, figures) {
     section.innerHTML = `
       <div class="year-head">
         <h2>${year}</h2>
+        ${era ? `<span class="era-tag">${escapeHtml(era.title)}</span>` : ""}
         <span class="year-count">${blocks.length} wave${blocks.length === 1 ? "" : "s"} · ${count} figures</span>
       </div>`;
     for (const b of blocks) section.appendChild(b);

@@ -178,3 +178,18 @@ textarea.input { resize: vertical; min-height: 84px; }
   background: var(--panel-2);
   box-shadow: inset 0 -2px 0 var(--red);
 }
+
+/* --- Figure dialog: research links --- */
+.dialog-subhead {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: var(--space-5) 0 var(--space-1);
+  color: var(--ink);
+}
+.link-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0 0 var(--space-2);
+  max-width: 60ch;
+}
+.research-links .btn-row { margin-top: var(--space-2); }

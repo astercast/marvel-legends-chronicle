@@ -11,6 +11,7 @@ import re
 from collections import Counter, defaultdict
 from html import escape
 from pathlib import Path
+from urllib.parse import quote_plus
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -56,6 +57,12 @@ PAGE_CSS = """    .char-hero { padding-block: var(--space-7); }
     .release-name { font-weight: 700; }
     .release-wave { color: var(--muted); font-size: 0.85rem; }
     .release .tag-row { display: inline-flex; gap: var(--space-1); }
+    .research { margin-left: auto; font-size: 0.8rem; }
+    .research summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .research summary:hover { text-decoration: underline; }
+    .research-list { list-style: none; margin: var(--space-2) 0; padding: 0;
+      display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .research-note { color: var(--muted); font-size: 0.75rem; margin: 0; max-width: 60ch; }
     .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: var(--space-3); margin-bottom: var(--space-7); }
     .char-card { display: block; }
@@ -119,6 +126,30 @@ def badges(variant, exclusive):
     return f'<span class="tag-row">{"".join(out)}</span>' if out else ""
 
 
+def research_details(name, variant):
+    """Per-release research affordance: three pre-filled external searches.
+    Same URL patterns as assets/js/listings.js — no prices scraped, no reviews
+    invented."""
+    q = " ".join(["Marvel Legends", name] + ([variant] if variant else []))
+    links = [
+        ("eBay sold listings",
+         f"https://www.ebay.com/sch/i.html?_nkw={quote_plus(q)}&LH_Sold=1&LH_Complete=1"),
+        ("YouTube reviews",
+         f"https://www.youtube.com/results?search_query={quote_plus(q + ' review')}"),
+        ("Web search",
+         f"https://www.google.com/search?q={quote_plus(q)}"),
+    ]
+    items = "".join(
+        f'<li><a href="{url}" target="_blank" rel="noopener noreferrer">{label}</a></li>'
+        for label, url in links)
+    return (
+        '<details class="research"><summary>Research</summary>'
+        f'<ul class="research-list">{items}</ul>'
+        '<p class="research-note">External searches — eBay solds show actual sale prices, '
+        'not asking prices. Reviews and web results are third-party content; unverified.</p>'
+        '</details>')
+
+
 def main():
     figures = json.loads((DATA / "figures.json").read_text())
     counts = Counter()
@@ -161,7 +192,8 @@ def main():
                 rels.append(
                     f'          <li class="release"><span class="release-name">{escape(r["name"])}</span>'
                     f'{badges(r["variant"], r["exclusive"])}'
-                    f'<span class="release-wave">{escape(r["series"])} · <span class="badge {era_cls}">{escape(r["manufacturer"])}</span></span></li>')
+                    f'<span class="release-wave">{escape(r["series"])} · <span class="badge {era_cls}">{escape(r["manufacturer"])}</span></span>'
+                    f'{research_details(r["name"], r["variant"])}</li>')
             sections.append(f'        <h2 class="release-year">{y}</h2>\n        <ul class="release-list">\n' + "\n".join(rels) + "\n        </ul>")
         body = f"""    <section class="hero char-hero" aria-labelledby="char-title">
       <div class="container hero-inner">

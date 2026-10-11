@@ -27,10 +27,11 @@ Static site. GitHub only — nothing is deployed anywhere.
 
 ## Features (mock-up)
 
-- **Chronological timeline:** waves grouped by year, Toy Biz → Hasbro, with Build-A-Figure callouts; year jump rail; `content-visibility` keeps 1,900+ cards fast
+- **Chronological timeline:** waves grouped by year, Toy Biz → Hasbro, with Build-A-Figure callouts; year jump rail; packaging-era bands (Toy Biz → windows return) with one-line notes from the encyclopedia; `content-visibility` keeps 1,900+ cards fast
 - **Search & filters:** by figure, wave, BAF, manufacturer, collection status, and story source ("Featured In": MCU / animated / video game)
 - **Collection tracker:** mark figures Owned / Wanted — localStorage only, no account, no backend; corrupt storage resets safely
 - **Marketplace links:** per-figure pre-filled searches on eBay, Amazon, BigBadToyStore, Hasbro Pulse — constructed search URLs (mock), not live inventory
+- **Research links:** per-figure "Research" affordance in the figure dialog and on every character-page release — eBay *sold* listings (actual sale prices, same pattern as the BAF planner), YouTube review search, general web search; external third-party content, clearly labeled
 - **Encyclopedia:** history timeline, packaging evolution, searchable hall of fame with verified/unverified price flags and reissue-radar (resilient vs vulnerable premiums), grading guide (AFA/CGA, CAS, UKG, no-premium caveat), bootleg guide, resources
 - **Community:** seeded collector profiles; photo composer with client-side downscaling; chronological + following feeds; likes, comments, follows, hashtags; figure tags open the figure dialog
 - **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 46 chronological character pages, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard, release radar, figure compare, milestone-anniversary strip on the timeline

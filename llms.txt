@@ -69,13 +69,13 @@ and `data/encyclopedia.json`. Commit the outputs.
 
 ## Site structure
 
-- `index.html` — chronological timeline with search, filters (incl. "Featured In" story-source facet), year rail, tracker, milestone-anniversary strip
+- `index.html` — chronological timeline with search, filters (incl. "Featured In" story-source facet), year rail, tracker, milestone-anniversary strip, packaging-era bands (5 documented eras from the encyclopedia's packaging guide)
 - `grails.html` — 10 sourced grail stories expanding the hall of fame
 - `variants.html` — variant & chase identifier: spotter's guide + wave-by-wave index of documented variants
 - `checklist.html` — printable owned/wanted checklist from tracker data, grouped by wave
 - `encyclopedia.html` — history, packaging evolution, variants/chases/exclusives, hall of fame, grading guide, bootleg guide, resources
 - `baf-planner.html` — "complete my BAF" planner (browser-local, syncs with tracker)
-- `characters/index.html` + `characters/<slug>.html` — 46 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character
+- `characters/index.html` + `characters/<slug>.html` — 46 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character; every release row carries a per-figure "Research" affordance (eBay solds / YouTube reviews / web search links)
 - `price-guide.html` — transparent sold-listings methodology, dated price history, reissue effect
 - `auth-wizard.html` — interactive bootleg authentication wizard
 - `shelf.html` — "your shelf" dashboard: read-only completion stats (overall/year/era/top characters/BAF) aggregated from the localStorage tracker
@@ -85,4 +85,4 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `api.html` — human-readable API docs
 - `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community, print (print.css: paper-friendly timeline + checklist output)
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, community, community-page (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page (ES modules)

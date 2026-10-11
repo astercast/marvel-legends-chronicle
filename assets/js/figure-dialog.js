@@ -1,7 +1,7 @@
 /* Figure detail dialog — specs, BAF piece, notes, tracker, marketplace links. */
 import { openModal } from "./modal.js";
 import { trackerButtons, owned, wanted } from "./tracker.js";
-import { renderMarketplaceLinks } from "./listings.js";
+import { renderMarketplaceLinks, renderResearchLinks } from "./listings.js";
 
 export function badgeFor(fig) {
   const badges = [];
@@ -82,5 +82,6 @@ export function openFigureDialog(fig) {
 
     bodyEl.appendChild(trackerButtons(fig.id));
     bodyEl.appendChild(renderMarketplaceLinks(fig));
+    bodyEl.appendChild(renderResearchLinks(fig));
   });
 }

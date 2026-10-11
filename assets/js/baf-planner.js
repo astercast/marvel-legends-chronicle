@@ -3,6 +3,7 @@
 import { PATHS, STORE_KEYS } from "./config.js";
 import { makeIdSet } from "./store.js";
 import { escapeHtml } from "./figure-dialog.js";
+import { soldSearchUrl } from "./listings.js";
 
 const owned = makeIdSet(STORE_KEYS.owned);
 const listEl = document.getElementById("baf-list");
@@ -11,9 +12,7 @@ const detailEl = document.getElementById("baf-detail");
 let bafs = [];
 let selected = null;
 
-function soldSearchUrl(query) {
-  return `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(query)}&LH_Sold=1&LH_Complete=1`;
-}
+/* Sold-listings URL shared from listings.js (same pattern, single source). */
 
 /* Build BAF entries from waves — same piece-carrier mapping as the BAF skills. */
 function buildBafs(waves) {
