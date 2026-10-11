@@ -7,12 +7,15 @@ Static site. GitHub only — nothing is deployed anywhere.
 ## What's here
 
 - `index.html` — the chronological timeline (1,904 figures, 158 waves, 2002–2026), with a "Featured In" story-source facet (MCU / animated / video game — 29 waves classified, the rest honestly Unclassified)
+- `start.html` — new collector starter guide: smart first pickups, how to read a wave, spotting fakes, BAF math, tracking your shelf, learning real prices
+- `waves/` — 158 generated wave detail pages (`waves/<wave-id>.html` + index; rebuild with `python3 scripts/build_waves.py`): every figure with inline Owned/Wanted toggles, BAF breakdown, research links, prev/next wave navigation, print checklist
+- `stats.html` — stats dashboard: figures per year, BAF waves over time, top 25 characters, exclusives share, wave-size breakdowns — all computed live from the data
 - `grails.html` — 10 sourced grail stories expanding the hall of fame: the legend, the hunt, the reissue saga, honest prices
 - `variants.html` — variant & chase identifier: how to spot variants in the wild + wave-by-wave index of all 83 documented variants
 - `checklist.html` — printable owned/wanted checklist from your tracker data, grouped by wave (print stylesheet also covers the timeline)
 - `encyclopedia.html` — collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue radar), grading guide, bootleg-spotting guide, resources directory
 - `baf-planner.html` — "complete my BAF" planner: mark owned figures, see missing pieces + acquisition guidance (browser-local, syncs with the timeline tracker)
-- `characters/` — 46 generated character archive pages (`characters/<slug>.html` + index; rebuild with `python3 scripts/build_characters.py`)
+- `characters/` — 66 generated character archive pages (`characters/<slug>.html` + index; rebuild with `python3 scripts/build_characters.py`)
 - `price-guide.html` — transparent sold-listings price methodology, dated price history, reissue effect
 - `auth-wizard.html` — interactive bootleg authentication wizard (step-by-step pass/fail with verdict)
 - `community.html` — fan social: profiles, feed, likes, comments, follows, figure-tagged posts (client-side demo)
@@ -34,7 +37,8 @@ Static site. GitHub only — nothing is deployed anywhere.
 - **Research links:** per-figure "Research" affordance in the figure dialog and on every character-page release — eBay *sold* listings (actual sale prices, same pattern as the BAF planner), YouTube review search, general web search; external third-party content, clearly labeled
 - **Encyclopedia:** history timeline, packaging evolution, searchable hall of fame with verified/unverified price flags and reissue-radar (resilient vs vulnerable premiums), grading guide (AFA/CGA, CAS, UKG, no-premium caveat), bootleg guide, resources
 - **Community:** seeded collector profiles; photo composer with client-side downscaling; chronological + following feeds; likes, comments, follows, hashtags; figure tags open the figure dialog
-- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 66 chronological character pages, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard (with "almost there" completion recommendations), price journal (personal sold-listing log + tracked collection value), release radar, figure compare, milestone-anniversary strip on the timeline
+- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 66 chronological character pages, 158 wave detail pages with inline tracking, new-collector starter guide, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard (with "almost there" completion recommendations), price journal (personal sold-listing log + tracked collection value), release radar, figure compare, milestone-anniversary strip on the timeline
+- **Stats dashboard:** figures per year, BAF waves over time, top 25 characters, exclusives share, average wave size (Toy Biz vs Hasbro) — vanilla SVG, computed live from the archive
 
 ## Skills
 

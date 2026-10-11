@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waves — Marvel Legends Chronicle</title>
+  <meta name="description" content="All 158 Marvel Legends waves 2002–2026, each with its figures and BAF breakdown.">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    .wave-hero { padding-block: var(--space-7); }
+    .wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
+    .wave-baf-callout { border: 1px solid var(--line); border-left: 4px solid var(--gold);
+      padding: var(--space-4); margin: 0 0 var(--space-6); background: var(--panel); }
+    .wave-baf-callout p { margin: 0; }
+    .wave-baf-callout .baf-name { font-weight: 800; }
+    .fig-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
+    .fig { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3);
+      padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
+    .fig-name { font-weight: 700; }
+    .fig-notes { color: var(--muted); font-size: 0.85rem; flex-basis: 100%; }
+    .fig .tag-row { display: inline-flex; gap: var(--space-1); flex-wrap: wrap; }
+    .track-slot { margin-left: auto; display: inline-flex; gap: var(--space-1); }
+    .research { margin-left: auto; font-size: 0.8rem; flex-basis: 100%; }
+    .research summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .research summary:hover { text-decoration: underline; }
+    .research-list { list-style: none; margin: var(--space-2) 0; padding: 0;
+      display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .research-note { color: var(--muted); font-size: 0.75rem; margin: 0; max-width: 60ch; }
+    .wave-nav { display: flex; justify-content: space-between; gap: var(--space-3);
+      margin: var(--space-7) 0; flex-wrap: wrap; }
+    .wave-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-5); }
+    .wave-index-year { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem;
+      color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
+    .wave-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-3); margin-bottom: var(--space-4); }
+    .wave-card { display: block; }
+    .wave-card:hover { text-decoration: none; border-color: var(--red); }
+    .wave-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
+    .wave-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+    @media print {
+      .site-header, .site-footer, .wave-nav, .wave-actions, .research,
+      .track-slot, .skip-link { display: none !important; }
+      .wave-hero { padding-block: 0; }
+      .fig { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="../index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html">Timeline</a>
+        <a href="../start.html">Start</a>
+        <a href="../waves/index.html" aria-current="page">Waves</a>
+        <a href="../stats.html">Stats</a>
+        <a href="../encyclopedia.html">Encyclopedia</a>
+        <a href="../baf-planner.html">BAF Planner</a>
+        <a href="../characters/index.html">Characters</a>
+        <a href="../price-guide.html">Price Guide</a>
+        <a href="../auth-wizard.html">Auth Wizard</a>
+        <a href="../shelf.html">Your Shelf</a>
+        <a href="../journal.html">Journal</a>
+        <a href="../radar.html">Radar</a>
+        <a href="../compare.html">Compare</a>
+        <a href="../grails.html">Grails</a>
+        <a href="../variants.html">Variants</a>
+        <a href="../checklist.html">Checklist</a>
+        <a href="../skills.html">Skills</a>
+        <a href="../community.html">Community</a>
+        <a href="../api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wave-hero" aria-labelledby="waves-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Deep browse</span>
+        <h1 id="waves-title">Every wave, <span class="accent">ever.</span></h1>
+        <p class="lede">All 158 Marvel Legends waves, 2002–2026 — each with its figures, BAF breakdown, and your owned/wanted tracking. Generated from the figure database.</p>
+      </div>
+    </section>
+    <div class="container">
+      <h2 class="wave-index-year">2002</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="toybiz-2002-series-1.html"><h3>Series 1</h3><p>7 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2002-series-2.html"><h3>Series 2</h3><p>7 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2002-series-3.html"><h3>Series 3</h3><p>6 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2002-walmart-exclusives.html"><h3>Walmart Exclusives</h3><p>2 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2003</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="toybiz-2003-series-4.html"><h3>Series 4</h3><p>6 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2003-series-5.html"><h3>Series 5</h3><p>7 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2003-box-x-men-legends.html"><h3>Box Set - X-Men Legends</h3><p>5 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2003-box-urban-legends.html"><h3>Box Set - Urban Legends</h3><p>4 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2004</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="toybiz-2004-series-6.html"><h3>Series 6</h3><p>9 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2004-series-7.html"><h3>Series 7</h3><p>10 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2004-series-8.html"><h3>Series 8</h3><p>11 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2004-box-sinister-6.html"><h3>Box Set - Spider-Man vs. Sinister 6</h3><p>7 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2004-box-fantastic-four.html"><h3>Box Set - Fantastic Four</h3><p>9 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2005</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="toybiz-2005-series-9-galactus.html"><h3>Series 9 - Galactus</h3><p>9 figures · <span class="badge badge-toybiz">Toy Biz</span> · BAF: Galactus</p></a>
+      <a class="card wave-card" href="toybiz-2005-series-10-sentinel.html"><h3>Series 10 - Sentinel</h3><p>9 figures · <span class="badge badge-toybiz">Toy Biz</span> · BAF: Sentinel</p></a>
+      <a class="card wave-card" href="toybiz-2005-legendary-riders.html"><h3>Legendary Riders</h3><p>10 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2005-series-12-apocalypse.html"><h3>Series 12 - Apocalypse</h3><p>11 figures · <span class="badge badge-toybiz">Toy Biz</span> · BAF: Apocalypse (Classic and Black versions)</p></a>
+      <a class="card wave-card" href="toybiz-2005-box-fearsome-foes.html"><h3>Box Set - Spider-Man vs. The Fearsome Foes</h3><p>5 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2006</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="toybiz-2006-giant-man-walmart.html"><h3>Giant-Man (Walmart Exclusive)</h3><p>12 figures · <span class="badge badge-toybiz">Toy Biz</span> · BAF: Giant-Man</p></a>
+      <a class="card wave-card" href="toybiz-2006-series-13-onslaught.html"><h3>Series 13 - Onslaught</h3><p>9 figures · <span class="badge badge-toybiz">Toy Biz</span> · BAF: Onslaught</p></a>
+      <a class="card wave-card" href="toybiz-2006-series-14-mojo.html"><h3>Series 14 - Mojo</h3><p>9 figures · <span class="badge badge-toybiz">Toy Biz</span> · BAF: Mojo</p></a>
+      <a class="card wave-card" href="toybiz-2006-series-15-modok.html"><h3>Series 15 - MODOK</h3><p>12 figures · <span class="badge badge-toybiz">Toy Biz</span> · BAF: MODOK</p></a>
+      <a class="card wave-card" href="toybiz-2006-box-young-avengers.html"><h3>Box Set - Young Avengers</h3><p>4 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2006-box-monsters.html"><h3>Box Set - Monsters</h3><p>4 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2006-box-house-of-m.html"><h3>Box Set - House of M</h3><p>4 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2006-face-off-1.html"><h3>Face-Off Series 1</h3><p>12 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      <a class="card wave-card" href="toybiz-2006-face-off-2.html"><h3>Face-Off Series 2</h3><p>11 figures · <span class="badge badge-toybiz">Toy Biz</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2007</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2007-annihilus.html"><h3>Annihilus Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Annihilus</p></a>
+      <a class="card wave-card" href="hasbro-2007-blob.html"><h3>Blob Wave</h3><p>11 figures · <span class="badge ">Hasbro</span> · BAF: Blob</p></a>
+      <a class="card wave-card" href="hasbro-2007-ronan.html"><h3>Ronan the Accuser Wave</h3><p>8 figures · <span class="badge ">Hasbro</span> · BAF: Ronan the Accuser</p></a>
+      <a class="card wave-card" href="hasbro-2007-brood-queen.html"><h3>Brood Queen Wave</h3><p>10 figures · <span class="badge ">Hasbro</span> · BAF: Brood Queen</p></a>
+      <a class="card wave-card" href="hasbro-2007-sandman.html"><h3>Sandman (Spider-Man 3) Wave</h3><p>8 figures · <span class="badge ">Hasbro</span> · BAF: Sandman (Spider-Man 3)</p></a>
+      <a class="card wave-card" href="hasbro-2007-sdcc.html"><h3>San Diego Comic-Con Exclusives</h3><p>2 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2007-store-exclusives.html"><h3>Store Exclusives</h3><p>8 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2008</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2008-fin-fang-foom.html"><h3>Fin Fang Foom Wave</h3><p>9 figures · <span class="badge ">Hasbro</span> · BAF: Fin Fang Foom</p></a>
+      <a class="card wave-card" href="hasbro-2008-red-hulk.html"><h3>Red Hulk Wave (Target Exclusive)</h3><p>8 figures · <span class="badge ">Hasbro</span> · BAF: Red Hulk</p></a>
+      <a class="card wave-card" href="hasbro-2008-ares.html"><h3>Ares Wave (Walmart Exclusive)</h3><p>9 figures · <span class="badge ">Hasbro</span> · BAF: Ares</p></a>
+      <a class="card wave-card" href="hasbro-2008-2packs-1.html"><h3>2-Packs Series 1</h3><p>9 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2008-sdcc-fff.html"><h3>SDCC Box Set - Fin Fang Foom</h3><p>9 figures · <span class="badge ">Hasbro</span> · BAF: Fin Fang Foom</p></a>
+      <a class="card wave-card" href="hasbro-2008-store-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2009</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2009-nemesis.html"><h3>Nemesis Wave (Walmart Exclusive)</h3><p>8 figures · <span class="badge ">Hasbro</span> · BAF: Holocaust (Nemesis)</p></a>
+      <a class="card wave-card" href="hasbro-2009-2packs-2.html"><h3>2-Packs Series 2</h3><p>12 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2010</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2010-tru-2packs.html"><h3>Toys &quot;R&quot; Us 2-Packs</h3><p>10 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2011</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2011-sdcc-thor.html"><h3>San Diego Comic-Con Exclusives</h3><p>1 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2012</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2012-terrax.html"><h3>Terrax Wave (Return of Marvel Legends)</h3><p>10 figures · <span class="badge ">Hasbro</span> · BAF: Terrax</p></a>
+      <a class="card wave-card" href="hasbro-2012-arnim-zola.html"><h3>Arnim Zola Wave (Return of Marvel Legends)</h3><p>11 figures · <span class="badge ">Hasbro</span> · BAF: Arnim Zola</p></a>
+      <a class="card wave-card" href="hasbro-2012-sdcc-xforce.html"><h3>SDCC Box Set - Uncanny X-Force</h3><p>3 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2013</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2013-epic-heroes.html"><h3>Epic Heroes</h3><p>9 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2013-iron-monger.html"><h3>Iron Monger Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Iron Monger</p></a>
+      <a class="card wave-card" href="hasbro-2013-hit-monkey.html"><h3>Hit-Monkey Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Hit-Monkey</p></a>
+      <a class="card wave-card" href="hasbro-2013-rocket-raccoon.html"><h3>Rocket Raccoon Wave</h3><p>5 figures · <span class="badge ">Hasbro</span> · BAF: Rocket Raccoon</p></a>
+      <a class="card wave-card" href="hasbro-2013-puck.html"><h3>Puck Wave (Hasbro Previews Exclusive)</h3><p>4 figures · <span class="badge ">Hasbro</span> · BAF: Puck</p></a>
+      <a class="card wave-card" href="hasbro-2013-exclusives.html"><h3>Convention &amp; Mail-Away Exclusives</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2014</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2014-mandroid.html"><h3>Mandroid Wave (Infinite Series)</h3><p>9 figures · <span class="badge ">Hasbro</span> · BAF: Mandroid</p></a>
+      <a class="card wave-card" href="hasbro-2014-ultimate-green-goblin.html"><h3>Ultimate Green Goblin Wave</h3><p>9 figures · <span class="badge ">Hasbro</span> · BAF: Ultimate Green Goblin</p></a>
+      <a class="card wave-card" href="hasbro-2014-groot.html"><h3>Groot Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Groot</p></a>
+      <a class="card wave-card" href="hasbro-2014-jubilee-tru.html"><h3>Jubilee Wave (Toys &quot;R&quot; Us Exclusive)</h3><p>5 figures · <span class="badge ">Hasbro</span> · BAF: Jubilee (mini BAF)</p></a>
+      <a class="card wave-card" href="hasbro-2014-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>15 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2015</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2015-allfather.html"><h3>Allfather Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Odin / King Thor (Allfather)</p></a>
+      <a class="card wave-card" href="hasbro-2015-hobgoblin.html"><h3>Hobgoblin Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Hobgoblin (Phil Urich)</p></a>
+      <a class="card wave-card" href="hasbro-2015-thanos.html"><h3>Thanos Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Thanos (Infinity)</p></a>
+      <a class="card wave-card" href="hasbro-2015-hulkbuster.html"><h3>Hulkbuster Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Hulkbuster (Avengers: Age of Ultron)</p></a>
+      <a class="card wave-card" href="hasbro-2015-ultron-prime.html"><h3>Ultron Prime Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Ultron Prime (Avengers: Age of Ultron)</p></a>
+      <a class="card wave-card" href="hasbro-2015-rhino.html"><h3>Rhino Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Rhino</p></a>
+      <a class="card wave-card" href="hasbro-2015-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>32 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2016</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2016-absorbing-man.html"><h3>Absorbing Man Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Absorbing Man</p></a>
+      <a class="card wave-card" href="hasbro-2016-red-onslaught.html"><h3>Red Onslaught Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Red Onslaught</p></a>
+      <a class="card wave-card" href="hasbro-2016-giant-man.html"><h3>Giant-Man Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Giant-Man (Captain America: Civil War)</p></a>
+      <a class="card wave-card" href="hasbro-2016-space-knight-venom.html"><h3>Space Knight Venom Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Space Knight Venom</p></a>
+      <a class="card wave-card" href="hasbro-2016-abomination.html"><h3>Abomination Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Abomination</p></a>
+      <a class="card wave-card" href="hasbro-2016-juggernaut.html"><h3>Juggernaut Wave</h3><p>8 figures · <span class="badge ">Hasbro</span> · BAF: Juggernaut</p></a>
+      <a class="card wave-card" href="hasbro-2016-dormammu.html"><h3>Dormammu Wave</h3><p>8 figures · <span class="badge ">Hasbro</span> · BAF: Dormammu</p></a>
+      <a class="card wave-card" href="hasbro-2016-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>27 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2017</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2017-sandman.html"><h3>Sandman Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Sandman</p></a>
+      <a class="card wave-card" href="hasbro-2017-titus.html"><h3>Titus Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Titus</p></a>
+      <a class="card wave-card" href="hasbro-2017-warlock.html"><h3>Warlock Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Warlock (New Mutants)</p></a>
+      <a class="card wave-card" href="hasbro-2017-vulture.html"><h3>Vulture Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Vulture (Spider-Man: Homecoming)</p></a>
+      <a class="card wave-card" href="hasbro-2017-mantis.html"><h3>Mantis Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Mantis (Guardians of the Galaxy Vol. 2)</p></a>
+      <a class="card wave-card" href="hasbro-2017-man-thing.html"><h3>Man-Thing Wave (Netflix)</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Man-Thing</p></a>
+      <a class="card wave-card" href="hasbro-2017-gladiator-hulk.html"><h3>Gladiator Hulk Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Gladiator Hulk (Thor: Ragnarok)</p></a>
+      <a class="card wave-card" href="hasbro-2017-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>39 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2018</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2018-okoye.html"><h3>Okoye Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Okoye (Black Panther)</p></a>
+      <a class="card wave-card" href="hasbro-2018-lizard.html"><h3>Lizard Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Lizard</p></a>
+      <a class="card wave-card" href="hasbro-2018-thanos.html"><h3>Thanos Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Thanos (Avengers: Infinity War)</p></a>
+      <a class="card wave-card" href="hasbro-2018-sasquatch.html"><h3>Sasquatch Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Sasquatch</p></a>
+      <a class="card wave-card" href="hasbro-2018-cull-obsidian.html"><h3>Cull Obsidian Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Cull Obsidian (Avengers: Infinity War)</p></a>
+      <a class="card wave-card" href="hasbro-2018-apocalypse.html"><h3>Apocalypse Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Apocalypse</p></a>
+      <a class="card wave-card" href="hasbro-2018-spdr.html"><h3>SP//dr Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: SP//dr</p></a>
+      <a class="card wave-card" href="hasbro-2018-monster-venom.html"><h3>Monster Venom Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Monster Venom</p></a>
+      <a class="card wave-card" href="hasbro-2018-sauron.html"><h3>Sauron Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Sauron</p></a>
+      <a class="card wave-card" href="hasbro-2018-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>97 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2019</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2019-mbaku.html"><h3>M&#x27;Baku Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: M&#x27;Baku (Black Panther)</p></a>
+      <a class="card wave-card" href="hasbro-2019-kree-sentry.html"><h3>Kree Sentry Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Kree Sentry</p></a>
+      <a class="card wave-card" href="hasbro-2019-kingpin.html"><h3>Kingpin Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Kingpin</p></a>
+      <a class="card wave-card" href="hasbro-2019-armored-thanos.html"><h3>Armored Thanos Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Armored Thanos (Avengers: Endgame)</p></a>
+      <a class="card wave-card" href="hasbro-2019-caliban.html"><h3>Caliban Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Caliban</p></a>
+      <a class="card wave-card" href="hasbro-2019-smart-hulk.html"><h3>Smart Hulk Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Smart Hulk (Avengers: Endgame)</p></a>
+      <a class="card wave-card" href="hasbro-2019-molten-man.html"><h3>Molten Man Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Molten Man (Spider-Man: Far From Home)</p></a>
+      <a class="card wave-card" href="hasbro-2019-wendigo.html"><h3>Wendigo Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Wendigo</p></a>
+      <a class="card wave-card" href="hasbro-2019-fat-thor.html"><h3>Fat Thor Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Fat Thor (Avengers: Endgame)</p></a>
+      <a class="card wave-card" href="hasbro-2019-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>42 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2020</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2020-super-skrull.html"><h3>Super-Skrull Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Super-Skrull</p></a>
+      <a class="card wave-card" href="hasbro-2020-demogoblin.html"><h3>Demogoblin Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Demogoblin</p></a>
+      <a class="card wave-card" href="hasbro-2020-crimson-dynamo.html"><h3>Crimson Dynamo Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Crimson Dynamo (Gennady Gavrilov)</p></a>
+      <a class="card wave-card" href="hasbro-2020-abomination-gamerverse.html"><h3>Abomination Wave (Gamerverse)</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Abomination (Gamerverse)</p></a>
+      <a class="card wave-card" href="hasbro-2020-sugar-man.html"><h3>Sugar Man Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Sugar Man</p></a>
+      <a class="card wave-card" href="hasbro-2020-strong-guy.html"><h3>Strong Guy Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Strong Guy</p></a>
+      <a class="card wave-card" href="hasbro-2020-venompool.html"><h3>Venompool Wave (Gamerverse)</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Venompool (Gamerverse)</p></a>
+      <a class="card wave-card" href="hasbro-2020-joe-fixit.html"><h3>Joe Fixit Wave (Gamerverse)</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Joe Fixit (Gamerverse)</p></a>
+      <a class="card wave-card" href="hasbro-2020-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>75 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2021</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2021-stilt-man.html"><h3>Stilt-Man Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Stilt-Man</p></a>
+      <a class="card wave-card" href="hasbro-2021-theta-sentinel.html"><h3>Tri-Sentinel Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Theta Sentinel (Powers of X)</p></a>
+      <a class="card wave-card" href="hasbro-2021-mr-hyde.html"><h3>Mr. Hyde Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Mr. Hyde</p></a>
+      <a class="card wave-card" href="hasbro-2021-flight-gear.html"><h3>Captain America&#x27;s Flight Gear Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Captain America&#x27;s Flight Gear</p></a>
+      <a class="card wave-card" href="hasbro-2021-xemnu.html"><h3>Xemnu Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Xemnu</p></a>
+      <a class="card wave-card" href="hasbro-2021-ursa-major.html"><h3>Ursa Major Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Ursa Major</p></a>
+      <a class="card wave-card" href="hasbro-2021-colossus-aoa.html"><h3>Colossus Wave (Age of Apocalypse)</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Colossus (Age of Apocalypse)</p></a>
+      <a class="card wave-card" href="hasbro-2021-watcher.html"><h3>The Watcher Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: The Watcher (What If...?)</p></a>
+      <a class="card wave-card" href="hasbro-2021-gilgamesh.html"><h3>Gilgamesh Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Gilgamesh (Eternals)</p></a>
+      <a class="card wave-card" href="hasbro-2021-armadillo.html"><h3>Armadillo Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Armadillo</p></a>
+      <a class="card wave-card" href="hasbro-2021-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>87 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2022</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2022-rintrah.html"><h3>Rintrah Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Rintrah (Doctor Strange in the Multiverse of Madness)</p></a>
+      <a class="card wave-card" href="hasbro-2022-korg.html"><h3>Korg Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Korg (Thor: Love and Thunder)</p></a>
+      <a class="card wave-card" href="hasbro-2022-bonebreaker.html"><h3>Bonebreaker Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Bonebreaker</p></a>
+      <a class="card wave-card" href="hasbro-2022-controller.html"><h3>The Controller Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: The Controller</p></a>
+      <a class="card wave-card" href="hasbro-2022-infinity-ultron.html"><h3>Infinity Ultron Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Infinity Ultron (What If...?)</p></a>
+      <a class="card wave-card" href="hasbro-2022-attuma.html"><h3>Attuma Wave</h3><p>6 figures · <span class="badge ">Hasbro</span> · BAF: Attuma (Black Panther: Wakanda Forever)</p></a>
+      <a class="card wave-card" href="hasbro-2022-khonshu.html"><h3>Khonshu Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Khonshu (Moon Knight)</p></a>
+      <a class="card wave-card" href="hasbro-2022-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>89 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2023</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2023-puff-adder.html"><h3>Puff Adder Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Puff Adder</p></a>
+      <a class="card wave-card" href="hasbro-2023-cassie-lang.html"><h3>Cassie Lang Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Cassie Lang (Ant-Man and the Wasp: Quantumania)</p></a>
+      <a class="card wave-card" href="hasbro-2023-cosmo.html"><h3>Cosmo the Spacedog Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Cosmo the Spacedog (Guardians of the Galaxy Vol. 3)</p></a>
+      <a class="card wave-card" href="hasbro-2023-chod.html"><h3>Ch&#x27;od Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Ch&#x27;od</p></a>
+      <a class="card wave-card" href="hasbro-2023-hulk-amadeus.html"><h3>Hulk (Amadeus Cho) Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Hulk (Amadeus Cho) (Totally Awesome Hulk)</p></a>
+      <a class="card wave-card" href="hasbro-2023-mindless-one.html"><h3>Mindless One Wave (Marvel Knights)</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Mindless One</p></a>
+      <a class="card wave-card" href="hasbro-2023-hydra-stomper-mk2.html"><h3>Hydra Stomper MK II Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Hydra Stomper MK II (What If...?)</p></a>
+      <a class="card wave-card" href="hasbro-2023-across-spider-verse-1.html"><h3>Across the Spider-Verse Wave 1</h3><p>7 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2023-xmen-97-1.html"><h3>X-Men &#x27;97 Wave 1</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2023-no-way-home.html"><h3>Spider-Man: No Way Home Wave</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2023-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>113 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2024</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2024-the-void.html"><h3>The Void Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: The Void</p></a>
+      <a class="card wave-card" href="hasbro-2024-zabu.html"><h3>Zabu Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Zabu</p></a>
+      <a class="card wave-card" href="hasbro-2024-blackheart.html"><h3>Blackheart Wave (Strange Tales)</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Blackheart</p></a>
+      <a class="card wave-card" href="hasbro-2024-xmen-97-2.html"><h3>X-Men &#x27;97 Wave 2</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2024-deadpool-wolverine-1.html"><h3>Deadpool &amp; Wolverine Wave 1</h3><p>3 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2024-across-spider-verse-2.html"><h3>Across the Spider-Verse Wave 2</h3><p>7 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2024-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>81 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2025</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2025-nemesis.html"><h3>Nemesis Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Nemesis (Uncanny X-Force)</p></a>
+      <a class="card wave-card" href="hasbro-2025-executioner.html"><h3>Executioner Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Executioner</p></a>
+      <a class="card wave-card" href="hasbro-2025-gamerverse-legends.html"><h3>Gamerverse Legends</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2025-fantastic-four-first-steps.html"><h3>Fantastic Four: First Steps Wave</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2025-xmen-97-3.html"><h3>X-Men &#x27;97 Wave 3</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2025-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>100 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+      <h2 class="wave-index-year">2026</h2>
+      <div class="wave-grid">
+      <a class="card wave-card" href="hasbro-2026-box.html"><h3>Box Wave</h3><p>7 figures · <span class="badge ">Hasbro</span> · BAF: Box</p></a>
+      <a class="card wave-card" href="hasbro-2026-deadpool-wolverine-2.html"><h3>Deadpool &amp; Wolverine Wave 2</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2026-deadpool-wolverine-3.html"><h3>Deadpool &amp; Wolverine Wave 3</h3><p>3 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2026-doomsday-1.html"><h3>Avengers: Doomsday Wave 1</h3><p>6 figures · <span class="badge ">Hasbro</span></p></a>
+      <a class="card wave-card" href="hasbro-2026-exclusives.html"><h3>Store &amp; Convention Exclusives</h3><p>92 figures · <span class="badge ">Hasbro</span></p></a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../start.html">Start</a><a href="../waves/index.html">Waves</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../grails.html">Grails</a><a href="../variants.html">Variants</a><a href="../checklist.html">Checklist</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

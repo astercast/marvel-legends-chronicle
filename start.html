@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start Collecting — Marvel Legends Chronicle</title>
+  <meta name="description" content="A new collector's orientation to Marvel Legends: smart first pickups, how to read a wave, spotting fakes, BAF math, tracking your shelf, and learning real prices.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .start-hero { padding-block: var(--space-7); }
+    .start-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-4); margin-bottom: var(--space-7); }
+    .step-num { font-family: var(--font-display); font-weight: 900; font-size: 2rem;
+      color: var(--gold); line-height: 1; }
+    .start-section { margin-bottom: var(--space-7); }
+    .start-section h2 { margin-bottom: var(--space-3); }
+    .start-section p, .start-section li { max-width: 70ch; }
+    .start-section ul { padding-left: var(--space-5); }
+    .start-section li { margin-bottom: var(--space-2); }
+    .pickup { border-left: 4px solid var(--red); padding-left: var(--space-4); }
+    .pickup h3 { margin-bottom: var(--space-1); }
+    .pickup p { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to guide</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="start.html" aria-current="page">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero start-hero" aria-labelledby="start-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">New collector orientation</span>
+        <h1 id="start-title">Start here. <span class="accent">Buy smart.</span></h1>
+        <p class="lede">Twenty-four years, 1,904 figures, and a whole vocabulary of variants, chases, and Build-A-Figures. This is the ten-minute orientation that keeps you from learning it all the expensive way.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="start-section" aria-labelledby="pickups-h">
+        <h2 id="pickups-h">Your first five pickups</h2>
+        <p>Not a shopping list — five <em>kinds</em> of buys that teach you the hobby's mechanics. Every example below is a real release in this archive.</p>
+        <div class="start-grid">
+          <div class="card pickup">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3>A current mainline favorite</h3>
+            <p>Pick your favorite character's most recent mainline release — e.g. the 2024 <em>Deadpool &amp; Wolverine Wave 1</em> Wolverine. Current waves are the cheapest, easiest figures to find, and they teach you what modern articulation feels like.</p>
+          </div>
+          <div class="card pickup">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3>A full BAF wave</h3>
+            <p>Buy every figure in one Build-A-Figure wave — e.g. the 2025 <em>Nemesis Wave</em> (7 figures, builds Nemesis). Assembling the BAF is the line's signature ritual, and buying the wave together is almost always cheaper than hunting pieces later.</p>
+          </div>
+          <div class="card pickup">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3>A retro-card release</h3>
+            <p>Hasbro's retro cards (2024–2026) reissue beloved sculpts on vintage-style packaging. They're affordable, gorgeous on a shelf, and a low-stakes way to learn what "good paint" looks like. See the <a href="encyclopedia.html#packaging">packaging guide</a> for the era breakdown.</p>
+          </div>
+          <div class="card pickup">
+            <div class="step-num" aria-hidden="true">4</div>
+            <h3>One Toy Biz classic, secondhand</h3>
+            <p>A 2002–2006 Toy Biz figure — the line's roots. Buy loose, check the joints in person or ask for photos: 20-year-old plastic can be brittle. The <a href="index.html">timeline's</a> era bands show you exactly which years are Toy Biz.</p>
+          </div>
+          <div class="card pickup">
+            <div class="step-num" aria-hidden="true">5</div>
+            <h3>Something you just love</h3>
+            <p>The hobby runs on joy, not portfolio theory. One figure bought purely because it makes you grin will outlast every "investment" on your shelf. Check it's not a bootleg first — step two, below.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="start-section" aria-labelledby="read-wave-h">
+        <h2 id="read-wave-h">How to read a wave</h2>
+        <p>Every entry in this archive follows the same anatomy. Learn it once and you can read any listing:</p>
+        <ul>
+          <li><strong>Series + year</strong> — the wave's name and release year. Waves are the collecting unit; figures are rarely sold solo at retail.</li>
+          <li><strong>Manufacturer</strong> — Toy Biz (2002–2006) or Hasbro (2007–today). Different eras, different joints, different packaging.</li>
+          <li><strong>BAF piece</strong> — which Build-A-Figure part (if any) comes in the box. No piece, no completion.</li>
+          <li><strong>Variant</strong> — a deco or accessory difference from the standard release in the same wave. Variants ship in the same case, usually one per case.</li>
+          <li><strong>Exclusive</strong> — sold only through one retailer or convention. Harder to find later, and the first thing bootleggers copy.</li>
+        </ul>
+        <p>Browse any wave in full on the <a href="waves/index.html">wave archive</a> — all 158, each with its figures and BAF breakdown.</p>
+      </section>
+
+      <section class="start-section" aria-labelledby="fakes-h">
+        <h2 id="fakes-h">Don't get burned: spotting fakes</h2>
+        <p>Bootlegs target popular characters and exclusives. Before you buy secondhand, run the <a href="auth-wizard.html">authentication wizard</a> — it walks you through packaging tells, paint quality, joint feel, and the price-too-good test. The two rules that catch 90% of fakes:</p>
+        <ul>
+          <li><strong>Compare against a known-good photo</strong> — paint slop around the eyes and wrong plastic sheen are the classic tells.</li>
+          <li><strong>Check sold listings, not asking prices</strong> — if the "deal" is half of what figures actually sold for, it's not a deal.</li>
+        </ul>
+      </section>
+
+      <section class="start-section" aria-labelledby="baf-h">
+        <h2 id="baf-h">BAF math, before you spend</h2>
+        <p>A Build-A-Figure only exists if you own every piece. Before committing to a BAF:</p>
+        <ul>
+          <li>Count the pieces and which waves they're in — the <a href="baf-planner.html">BAF planner</a> maps all 101 BAFs and 614 pieces.</li>
+          <li>Price the <em>pieces you're missing</em>, not the BAF. A "cheap" BAF with two rare pieces is an expensive BAF.</li>
+          <li>Check the <a href="shelf.html">Your Shelf</a> "Almost there" cards — it tells you which BAFs you're already 1–2 pieces from finishing.</li>
+        </ul>
+      </section>
+
+      <section class="start-section" aria-labelledby="track-h">
+        <h2 id="track-h">Track your shelf from day one</h2>
+        <p>Mark figures <strong>Owned</strong> or <strong>Wanted</strong> anywhere on the site — the timeline, wave pages, character pages. It powers everything else:</p>
+        <ul>
+          <li><a href="shelf.html">Your Shelf</a> — completion stats by year, era, and character.</li>
+          <li><a href="checklist.html">Checklist</a> — a printable toy-show list from your tracked figures.</li>
+          <li><a href="compare.html">Compare</a> — side-by-side figure comparisons for the hard choices.</li>
+        </ul>
+      </section>
+
+      <section class="start-section" aria-labelledby="prices-h">
+        <h2 id="prices-h">Learn real prices, not asking prices</h2>
+        <p>The single most expensive beginner mistake is paying an asking price. The fix is mechanical:</p>
+        <ul>
+          <li>Read the <a href="price-guide.html">price guide</a> — it explains the sold-listing method and what the numbers actually mean.</li>
+          <li>Use the <a href="journal.html">price journal</a> — log sold listings you find, and it values your collection from your own entries. Every dollar traces to a real sale.</li>
+          <li>Rule of thumb: a figure is worth what the last 10–15 <em>sold</em> listings say, not what the current listings ask.</li>
+        </ul>
+      </section>
+
+      <section class="start-section" aria-labelledby="next-h">
+        <h2 id="next-h">Where to go next</h2>
+        <ul>
+          <li><a href="index.html">Timeline</a> — browse all 1,904 figures by year, with era bands.</li>
+          <li><a href="encyclopedia.html">Encyclopedia</a> — packaging eras, variant taxonomy, grading, the deep lore.</li>
+          <li><a href="grails.html">Grails</a> — the most-wanted figures and why they're coveted.</li>
+          <li><a href="radar.html">Release radar</a> — what's been revealed and what's coming.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

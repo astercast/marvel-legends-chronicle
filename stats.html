@@ -42,6 +42,10 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
         <a href="stats.html" aria-current="page">Stats</a>
         <a href="encyclopedia.html">Encyclopedia</a>
         <a href="baf-planner.html">BAF Planner</a>
@@ -84,6 +88,30 @@
         </div>
       </section>
 
+      <section class="card chart-card" aria-labelledby="baf-h">
+        <h2 id="baf-h">Build-A-Figure waves over time</h2>
+        <p class="chart-sub">Waves per year that included a Build-A-Figure — the BAF program has driven collecting since Toy Biz invented it.</p>
+        <div id="baf-chart" role="img" aria-label="Loading chart"></div>
+      </section>
+
+      <section class="card chart-card" aria-labelledby="chars-h">
+        <h2 id="chars-h">Top 25 characters by figure count</h2>
+        <p class="chart-sub">Who the line actually makes, counted live from the archive. Variants roll up into their base character.</p>
+        <div id="chars-chart" role="img" aria-label="Loading chart"></div>
+      </section>
+
+      <section class="card chart-card" aria-labelledby="excl-h">
+        <h2 id="excl-h">Exclusives share</h2>
+        <p class="chart-sub">Store and convention exclusives versus mainline releases across the whole archive.</p>
+        <div id="excl-chart" role="img" aria-label="Loading chart"></div>
+      </section>
+
+      <section class="card chart-card" aria-labelledby="wavesize-h">
+        <h2 id="wavesize-h">Wave size</h2>
+        <p class="chart-sub">How many figures a typical wave holds — and how Toy Biz's assortments compare to Hasbro's.</p>
+        <div class="stats-kpis" id="wavesize-kpis" aria-label="Wave size statistics"></div>
+      </section>
+
       <details class="data-table-wrap">
         <summary>View the underlying data</summary>
         <table class="data-table">
@@ -121,5 +149,6 @@
   </footer>
 
   <script src="assets/js/stats.js"></script>
+  <script type="module" src="assets/js/stats-extra.js"></script>
 </body>
 </html>

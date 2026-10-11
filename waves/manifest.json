@@ -1,0 +1,1266 @@
+[
+  {
+    "id": "toybiz-2002-series-1",
+    "series": "Series 1",
+    "year": 2002,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 7
+  },
+  {
+    "id": "toybiz-2002-series-2",
+    "series": "Series 2",
+    "year": 2002,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 7
+  },
+  {
+    "id": "toybiz-2002-series-3",
+    "series": "Series 3",
+    "year": 2002,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "toybiz-2002-walmart-exclusives",
+    "series": "Walmart Exclusives",
+    "year": 2002,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 2
+  },
+  {
+    "id": "toybiz-2003-series-4",
+    "series": "Series 4",
+    "year": 2003,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "toybiz-2003-series-5",
+    "series": "Series 5",
+    "year": 2003,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 7
+  },
+  {
+    "id": "toybiz-2003-box-x-men-legends",
+    "series": "Box Set - X-Men Legends",
+    "year": 2003,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 5
+  },
+  {
+    "id": "toybiz-2003-box-urban-legends",
+    "series": "Box Set - Urban Legends",
+    "year": 2003,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 4
+  },
+  {
+    "id": "toybiz-2004-series-6",
+    "series": "Series 6",
+    "year": 2004,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 9
+  },
+  {
+    "id": "toybiz-2004-series-7",
+    "series": "Series 7",
+    "year": 2004,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 10
+  },
+  {
+    "id": "toybiz-2004-series-8",
+    "series": "Series 8",
+    "year": 2004,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 11
+  },
+  {
+    "id": "toybiz-2004-box-sinister-6",
+    "series": "Box Set - Spider-Man vs. Sinister 6",
+    "year": 2004,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 7
+  },
+  {
+    "id": "toybiz-2004-box-fantastic-four",
+    "series": "Box Set - Fantastic Four",
+    "year": 2004,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 9
+  },
+  {
+    "id": "toybiz-2005-series-9-galactus",
+    "series": "Series 9 - Galactus",
+    "year": 2005,
+    "manufacturer": "Toy Biz",
+    "baf": "Galactus",
+    "figureCount": 9
+  },
+  {
+    "id": "toybiz-2005-series-10-sentinel",
+    "series": "Series 10 - Sentinel",
+    "year": 2005,
+    "manufacturer": "Toy Biz",
+    "baf": "Sentinel",
+    "figureCount": 9
+  },
+  {
+    "id": "toybiz-2005-legendary-riders",
+    "series": "Legendary Riders",
+    "year": 2005,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 10
+  },
+  {
+    "id": "toybiz-2005-series-12-apocalypse",
+    "series": "Series 12 - Apocalypse",
+    "year": 2005,
+    "manufacturer": "Toy Biz",
+    "baf": "Apocalypse (Classic and Black versions)",
+    "figureCount": 11
+  },
+  {
+    "id": "toybiz-2005-box-fearsome-foes",
+    "series": "Box Set - Spider-Man vs. The Fearsome Foes",
+    "year": 2005,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 5
+  },
+  {
+    "id": "toybiz-2006-giant-man-walmart",
+    "series": "Giant-Man (Walmart Exclusive)",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": "Giant-Man",
+    "figureCount": 12
+  },
+  {
+    "id": "toybiz-2006-series-13-onslaught",
+    "series": "Series 13 - Onslaught",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": "Onslaught",
+    "figureCount": 9
+  },
+  {
+    "id": "toybiz-2006-series-14-mojo",
+    "series": "Series 14 - Mojo",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": "Mojo",
+    "figureCount": 9
+  },
+  {
+    "id": "toybiz-2006-series-15-modok",
+    "series": "Series 15 - MODOK",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": "MODOK",
+    "figureCount": 12
+  },
+  {
+    "id": "toybiz-2006-box-young-avengers",
+    "series": "Box Set - Young Avengers",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 4
+  },
+  {
+    "id": "toybiz-2006-box-monsters",
+    "series": "Box Set - Monsters",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 4
+  },
+  {
+    "id": "toybiz-2006-box-house-of-m",
+    "series": "Box Set - House of M",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 4
+  },
+  {
+    "id": "toybiz-2006-face-off-1",
+    "series": "Face-Off Series 1",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 12
+  },
+  {
+    "id": "toybiz-2006-face-off-2",
+    "series": "Face-Off Series 2",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 11
+  },
+  {
+    "id": "hasbro-2007-annihilus",
+    "series": "Annihilus Wave",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": "Annihilus",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2007-blob",
+    "series": "Blob Wave",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": "Blob",
+    "figureCount": 11
+  },
+  {
+    "id": "hasbro-2007-ronan",
+    "series": "Ronan the Accuser Wave",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": "Ronan the Accuser",
+    "figureCount": 8
+  },
+  {
+    "id": "hasbro-2007-brood-queen",
+    "series": "Brood Queen Wave",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": "Brood Queen",
+    "figureCount": 10
+  },
+  {
+    "id": "hasbro-2007-sandman",
+    "series": "Sandman (Spider-Man 3) Wave",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": "Sandman (Spider-Man 3)",
+    "figureCount": 8
+  },
+  {
+    "id": "hasbro-2007-sdcc",
+    "series": "San Diego Comic-Con Exclusives",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 2
+  },
+  {
+    "id": "hasbro-2007-store-exclusives",
+    "series": "Store Exclusives",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 8
+  },
+  {
+    "id": "hasbro-2008-fin-fang-foom",
+    "series": "Fin Fang Foom Wave",
+    "year": 2008,
+    "manufacturer": "Hasbro",
+    "baf": "Fin Fang Foom",
+    "figureCount": 9
+  },
+  {
+    "id": "hasbro-2008-red-hulk",
+    "series": "Red Hulk Wave (Target Exclusive)",
+    "year": 2008,
+    "manufacturer": "Hasbro",
+    "baf": "Red Hulk",
+    "figureCount": 8
+  },
+  {
+    "id": "hasbro-2008-ares",
+    "series": "Ares Wave (Walmart Exclusive)",
+    "year": 2008,
+    "manufacturer": "Hasbro",
+    "baf": "Ares",
+    "figureCount": 9
+  },
+  {
+    "id": "hasbro-2008-2packs-1",
+    "series": "2-Packs Series 1",
+    "year": 2008,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 9
+  },
+  {
+    "id": "hasbro-2008-sdcc-fff",
+    "series": "SDCC Box Set - Fin Fang Foom",
+    "year": 2008,
+    "manufacturer": "Hasbro",
+    "baf": "Fin Fang Foom",
+    "figureCount": 9
+  },
+  {
+    "id": "hasbro-2008-store-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2008,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2009-nemesis",
+    "series": "Nemesis Wave (Walmart Exclusive)",
+    "year": 2009,
+    "manufacturer": "Hasbro",
+    "baf": "Holocaust (Nemesis)",
+    "figureCount": 8
+  },
+  {
+    "id": "hasbro-2009-2packs-2",
+    "series": "2-Packs Series 2",
+    "year": 2009,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 12
+  },
+  {
+    "id": "hasbro-2010-tru-2packs",
+    "series": "Toys \"R\" Us 2-Packs",
+    "year": 2010,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 10
+  },
+  {
+    "id": "hasbro-2011-sdcc-thor",
+    "series": "San Diego Comic-Con Exclusives",
+    "year": 2011,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 1
+  },
+  {
+    "id": "hasbro-2012-terrax",
+    "series": "Terrax Wave (Return of Marvel Legends)",
+    "year": 2012,
+    "manufacturer": "Hasbro",
+    "baf": "Terrax",
+    "figureCount": 10
+  },
+  {
+    "id": "hasbro-2012-arnim-zola",
+    "series": "Arnim Zola Wave (Return of Marvel Legends)",
+    "year": 2012,
+    "manufacturer": "Hasbro",
+    "baf": "Arnim Zola",
+    "figureCount": 11
+  },
+  {
+    "id": "hasbro-2012-sdcc-xforce",
+    "series": "SDCC Box Set - Uncanny X-Force",
+    "year": 2012,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 3
+  },
+  {
+    "id": "hasbro-2013-epic-heroes",
+    "series": "Epic Heroes",
+    "year": 2013,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 9
+  },
+  {
+    "id": "hasbro-2013-iron-monger",
+    "series": "Iron Monger Wave",
+    "year": 2013,
+    "manufacturer": "Hasbro",
+    "baf": "Iron Monger",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2013-hit-monkey",
+    "series": "Hit-Monkey Wave",
+    "year": 2013,
+    "manufacturer": "Hasbro",
+    "baf": "Hit-Monkey",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2013-rocket-raccoon",
+    "series": "Rocket Raccoon Wave",
+    "year": 2013,
+    "manufacturer": "Hasbro",
+    "baf": "Rocket Raccoon",
+    "figureCount": 5
+  },
+  {
+    "id": "hasbro-2013-puck",
+    "series": "Puck Wave (Hasbro Previews Exclusive)",
+    "year": 2013,
+    "manufacturer": "Hasbro",
+    "baf": "Puck",
+    "figureCount": 4
+  },
+  {
+    "id": "hasbro-2013-exclusives",
+    "series": "Convention & Mail-Away Exclusives",
+    "year": 2013,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2014-mandroid",
+    "series": "Mandroid Wave (Infinite Series)",
+    "year": 2014,
+    "manufacturer": "Hasbro",
+    "baf": "Mandroid",
+    "figureCount": 9
+  },
+  {
+    "id": "hasbro-2014-ultimate-green-goblin",
+    "series": "Ultimate Green Goblin Wave",
+    "year": 2014,
+    "manufacturer": "Hasbro",
+    "baf": "Ultimate Green Goblin",
+    "figureCount": 9
+  },
+  {
+    "id": "hasbro-2014-groot",
+    "series": "Groot Wave",
+    "year": 2014,
+    "manufacturer": "Hasbro",
+    "baf": "Groot",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2014-jubilee-tru",
+    "series": "Jubilee Wave (Toys \"R\" Us Exclusive)",
+    "year": 2014,
+    "manufacturer": "Hasbro",
+    "baf": "Jubilee (mini BAF)",
+    "figureCount": 5
+  },
+  {
+    "id": "hasbro-2014-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2014,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 15
+  },
+  {
+    "id": "hasbro-2015-allfather",
+    "series": "Allfather Wave",
+    "year": 2015,
+    "manufacturer": "Hasbro",
+    "baf": "Odin / King Thor (Allfather)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2015-hobgoblin",
+    "series": "Hobgoblin Wave",
+    "year": 2015,
+    "manufacturer": "Hasbro",
+    "baf": "Hobgoblin (Phil Urich)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2015-thanos",
+    "series": "Thanos Wave",
+    "year": 2015,
+    "manufacturer": "Hasbro",
+    "baf": "Thanos (Infinity)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2015-hulkbuster",
+    "series": "Hulkbuster Wave",
+    "year": 2015,
+    "manufacturer": "Hasbro",
+    "baf": "Hulkbuster (Avengers: Age of Ultron)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2015-ultron-prime",
+    "series": "Ultron Prime Wave",
+    "year": 2015,
+    "manufacturer": "Hasbro",
+    "baf": "Ultron Prime (Avengers: Age of Ultron)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2015-rhino",
+    "series": "Rhino Wave",
+    "year": 2015,
+    "manufacturer": "Hasbro",
+    "baf": "Rhino",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2015-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2015,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 32
+  },
+  {
+    "id": "hasbro-2016-absorbing-man",
+    "series": "Absorbing Man Wave",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": "Absorbing Man",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2016-red-onslaught",
+    "series": "Red Onslaught Wave",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": "Red Onslaught",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2016-giant-man",
+    "series": "Giant-Man Wave",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": "Giant-Man (Captain America: Civil War)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2016-space-knight-venom",
+    "series": "Space Knight Venom Wave",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": "Space Knight Venom",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2016-abomination",
+    "series": "Abomination Wave",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": "Abomination",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2016-juggernaut",
+    "series": "Juggernaut Wave",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": "Juggernaut",
+    "figureCount": 8
+  },
+  {
+    "id": "hasbro-2016-dormammu",
+    "series": "Dormammu Wave",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": "Dormammu",
+    "figureCount": 8
+  },
+  {
+    "id": "hasbro-2016-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 27
+  },
+  {
+    "id": "hasbro-2017-sandman",
+    "series": "Sandman Wave",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": "Sandman",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2017-titus",
+    "series": "Titus Wave",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": "Titus",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2017-warlock",
+    "series": "Warlock Wave",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": "Warlock (New Mutants)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2017-vulture",
+    "series": "Vulture Wave",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": "Vulture (Spider-Man: Homecoming)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2017-mantis",
+    "series": "Mantis Wave",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": "Mantis (Guardians of the Galaxy Vol. 2)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2017-man-thing",
+    "series": "Man-Thing Wave (Netflix)",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": "Man-Thing",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2017-gladiator-hulk",
+    "series": "Gladiator Hulk Wave",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": "Gladiator Hulk (Thor: Ragnarok)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2017-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 39
+  },
+  {
+    "id": "hasbro-2018-okoye",
+    "series": "Okoye Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Okoye (Black Panther)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2018-lizard",
+    "series": "Lizard Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Lizard",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2018-thanos",
+    "series": "Thanos Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Thanos (Avengers: Infinity War)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2018-sasquatch",
+    "series": "Sasquatch Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Sasquatch",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2018-cull-obsidian",
+    "series": "Cull Obsidian Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Cull Obsidian (Avengers: Infinity War)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2018-apocalypse",
+    "series": "Apocalypse Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Apocalypse",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2018-spdr",
+    "series": "SP//dr Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "SP//dr",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2018-monster-venom",
+    "series": "Monster Venom Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Monster Venom",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2018-sauron",
+    "series": "Sauron Wave",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": "Sauron",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2018-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 97
+  },
+  {
+    "id": "hasbro-2019-mbaku",
+    "series": "M'Baku Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "M'Baku (Black Panther)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2019-kree-sentry",
+    "series": "Kree Sentry Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Kree Sentry",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2019-kingpin",
+    "series": "Kingpin Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Kingpin",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2019-armored-thanos",
+    "series": "Armored Thanos Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Armored Thanos (Avengers: Endgame)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2019-caliban",
+    "series": "Caliban Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Caliban",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2019-smart-hulk",
+    "series": "Smart Hulk Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Smart Hulk (Avengers: Endgame)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2019-molten-man",
+    "series": "Molten Man Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Molten Man (Spider-Man: Far From Home)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2019-wendigo",
+    "series": "Wendigo Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Wendigo",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2019-fat-thor",
+    "series": "Fat Thor Wave",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": "Fat Thor (Avengers: Endgame)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2019-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2019,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 42
+  },
+  {
+    "id": "hasbro-2020-super-skrull",
+    "series": "Super-Skrull Wave",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Super-Skrull",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2020-demogoblin",
+    "series": "Demogoblin Wave",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Demogoblin",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2020-crimson-dynamo",
+    "series": "Crimson Dynamo Wave",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Crimson Dynamo (Gennady Gavrilov)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2020-abomination-gamerverse",
+    "series": "Abomination Wave (Gamerverse)",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Abomination (Gamerverse)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2020-sugar-man",
+    "series": "Sugar Man Wave",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Sugar Man",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2020-strong-guy",
+    "series": "Strong Guy Wave",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Strong Guy",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2020-venompool",
+    "series": "Venompool Wave (Gamerverse)",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Venompool (Gamerverse)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2020-joe-fixit",
+    "series": "Joe Fixit Wave (Gamerverse)",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": "Joe Fixit (Gamerverse)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2020-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2020,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 75
+  },
+  {
+    "id": "hasbro-2021-stilt-man",
+    "series": "Stilt-Man Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Stilt-Man",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2021-theta-sentinel",
+    "series": "Tri-Sentinel Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Theta Sentinel (Powers of X)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-mr-hyde",
+    "series": "Mr. Hyde Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Mr. Hyde",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2021-flight-gear",
+    "series": "Captain America's Flight Gear Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Captain America's Flight Gear",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-xemnu",
+    "series": "Xemnu Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Xemnu",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-ursa-major",
+    "series": "Ursa Major Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Ursa Major",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-colossus-aoa",
+    "series": "Colossus Wave (Age of Apocalypse)",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Colossus (Age of Apocalypse)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-watcher",
+    "series": "The Watcher Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "The Watcher (What If...?)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-gilgamesh",
+    "series": "Gilgamesh Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Gilgamesh (Eternals)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-armadillo",
+    "series": "Armadillo Wave",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": "Armadillo",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2021-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2021,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 87
+  },
+  {
+    "id": "hasbro-2022-rintrah",
+    "series": "Rintrah Wave",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": "Rintrah (Doctor Strange in the Multiverse of Madness)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2022-korg",
+    "series": "Korg Wave",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": "Korg (Thor: Love and Thunder)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2022-bonebreaker",
+    "series": "Bonebreaker Wave",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": "Bonebreaker",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2022-controller",
+    "series": "The Controller Wave",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": "The Controller",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2022-infinity-ultron",
+    "series": "Infinity Ultron Wave",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": "Infinity Ultron (What If...?)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2022-attuma",
+    "series": "Attuma Wave",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": "Attuma (Black Panther: Wakanda Forever)",
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2022-khonshu",
+    "series": "Khonshu Wave",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": "Khonshu (Moon Knight)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2022-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2022,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 89
+  },
+  {
+    "id": "hasbro-2023-puff-adder",
+    "series": "Puff Adder Wave",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": "Puff Adder",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-cassie-lang",
+    "series": "Cassie Lang Wave",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": "Cassie Lang (Ant-Man and the Wasp: Quantumania)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-cosmo",
+    "series": "Cosmo the Spacedog Wave",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": "Cosmo the Spacedog (Guardians of the Galaxy Vol. 3)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-chod",
+    "series": "Ch'od Wave",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": "Ch'od",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-hulk-amadeus",
+    "series": "Hulk (Amadeus Cho) Wave",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": "Hulk (Amadeus Cho) (Totally Awesome Hulk)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-mindless-one",
+    "series": "Mindless One Wave (Marvel Knights)",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": "Mindless One",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-hydra-stomper-mk2",
+    "series": "Hydra Stomper MK II Wave",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": "Hydra Stomper MK II (What If...?)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-across-spider-verse-1",
+    "series": "Across the Spider-Verse Wave 1",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2023-xmen-97-1",
+    "series": "X-Men '97 Wave 1",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2023-no-way-home",
+    "series": "Spider-Man: No Way Home Wave",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2023-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2023,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 113
+  },
+  {
+    "id": "hasbro-2024-the-void",
+    "series": "The Void Wave",
+    "year": 2024,
+    "manufacturer": "Hasbro",
+    "baf": "The Void",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2024-zabu",
+    "series": "Zabu Wave",
+    "year": 2024,
+    "manufacturer": "Hasbro",
+    "baf": "Zabu",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2024-blackheart",
+    "series": "Blackheart Wave (Strange Tales)",
+    "year": 2024,
+    "manufacturer": "Hasbro",
+    "baf": "Blackheart",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2024-xmen-97-2",
+    "series": "X-Men '97 Wave 2",
+    "year": 2024,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2024-deadpool-wolverine-1",
+    "series": "Deadpool & Wolverine Wave 1",
+    "year": 2024,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 3
+  },
+  {
+    "id": "hasbro-2024-across-spider-verse-2",
+    "series": "Across the Spider-Verse Wave 2",
+    "year": 2024,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2024-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2024,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 81
+  },
+  {
+    "id": "hasbro-2025-nemesis",
+    "series": "Nemesis Wave",
+    "year": 2025,
+    "manufacturer": "Hasbro",
+    "baf": "Nemesis (Uncanny X-Force)",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2025-executioner",
+    "series": "Executioner Wave",
+    "year": 2025,
+    "manufacturer": "Hasbro",
+    "baf": "Executioner",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2025-gamerverse-legends",
+    "series": "Gamerverse Legends",
+    "year": 2025,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2025-fantastic-four-first-steps",
+    "series": "Fantastic Four: First Steps Wave",
+    "year": 2025,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2025-xmen-97-3",
+    "series": "X-Men '97 Wave 3",
+    "year": 2025,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2025-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2025,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 100
+  },
+  {
+    "id": "hasbro-2026-box",
+    "series": "Box Wave",
+    "year": 2026,
+    "manufacturer": "Hasbro",
+    "baf": "Box",
+    "figureCount": 7
+  },
+  {
+    "id": "hasbro-2026-deadpool-wolverine-2",
+    "series": "Deadpool & Wolverine Wave 2",
+    "year": 2026,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2026-deadpool-wolverine-3",
+    "series": "Deadpool & Wolverine Wave 3",
+    "year": 2026,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 3
+  },
+  {
+    "id": "hasbro-2026-doomsday-1",
+    "series": "Avengers: Doomsday Wave 1",
+    "year": 2026,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "hasbro-2026-exclusives",
+    "series": "Store & Convention Exclusives",
+    "year": 2026,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 92
+  }
+]

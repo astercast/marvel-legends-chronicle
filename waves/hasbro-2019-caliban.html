@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caliban Wave (2019) — Marvel Legends Chronicle</title>
+  <meta name="description" content="Every figure in the Caliban Wave Marvel Legends wave (2019, Hasbro).">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    .wave-hero { padding-block: var(--space-7); }
+    .wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
+    .wave-baf-callout { border: 1px solid var(--line); border-left: 4px solid var(--gold);
+      padding: var(--space-4); margin: 0 0 var(--space-6); background: var(--panel); }
+    .wave-baf-callout p { margin: 0; }
+    .wave-baf-callout .baf-name { font-weight: 800; }
+    .fig-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
+    .fig { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3);
+      padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
+    .fig-name { font-weight: 700; }
+    .fig-notes { color: var(--muted); font-size: 0.85rem; flex-basis: 100%; }
+    .fig .tag-row { display: inline-flex; gap: var(--space-1); flex-wrap: wrap; }
+    .track-slot { margin-left: auto; display: inline-flex; gap: var(--space-1); }
+    .research { margin-left: auto; font-size: 0.8rem; flex-basis: 100%; }
+    .research summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .research summary:hover { text-decoration: underline; }
+    .research-list { list-style: none; margin: var(--space-2) 0; padding: 0;
+      display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .research-note { color: var(--muted); font-size: 0.75rem; margin: 0; max-width: 60ch; }
+    .wave-nav { display: flex; justify-content: space-between; gap: var(--space-3);
+      margin: var(--space-7) 0; flex-wrap: wrap; }
+    .wave-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-5); }
+    .wave-index-year { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem;
+      color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
+    .wave-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-3); margin-bottom: var(--space-4); }
+    .wave-card { display: block; }
+    .wave-card:hover { text-decoration: none; border-color: var(--red); }
+    .wave-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
+    .wave-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+    @media print {
+      .site-header, .site-footer, .wave-nav, .wave-actions, .research,
+      .track-slot, .skip-link { display: none !important; }
+      .wave-hero { padding-block: 0; }
+      .fig { break-inside: avoid; }
+    }
+  </style>
+  <script type="module" src="../assets/js/wave-page.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="../index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html">Timeline</a>
+        <a href="../start.html">Start</a>
+        <a href="../waves/index.html" aria-current="page">Waves</a>
+        <a href="../stats.html">Stats</a>
+        <a href="../encyclopedia.html">Encyclopedia</a>
+        <a href="../baf-planner.html">BAF Planner</a>
+        <a href="../characters/index.html">Characters</a>
+        <a href="../price-guide.html">Price Guide</a>
+        <a href="../auth-wizard.html">Auth Wizard</a>
+        <a href="../shelf.html">Your Shelf</a>
+        <a href="../journal.html">Journal</a>
+        <a href="../radar.html">Radar</a>
+        <a href="../compare.html">Compare</a>
+        <a href="../grails.html">Grails</a>
+        <a href="../variants.html">Variants</a>
+        <a href="../checklist.html">Checklist</a>
+        <a href="../skills.html">Skills</a>
+        <a href="../community.html">Community</a>
+        <a href="../api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wave-hero" aria-labelledby="wave-title" data-wave-id="hasbro-2019-caliban">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Wave archive</span>
+        <h1 id="wave-title">Caliban Wave</h1>
+        <p class="lede">2019 · Hasbro · 7 figures</p>
+        <div class="wave-meta">
+          <span class="badge ">Hasbro</span>
+          <span class="badge">2019</span>
+          <span class="badge badge-baf">7 figures</span>
+          <span class="badge">Build-A-Figure wave</span>
+          <span class="badge" id="owned-count" aria-live="polite">You own 0 of 7</span>
+        </div>
+        <div class="wave-actions">
+          <button type="button" class="btn btn-sm" id="print-checklist">Print checklist</button>
+          <a class="btn btn-sm" href="index.html">← All waves</a>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="wave-baf-callout" role="note"><p>Build-A-Figure: <span class="baf-name">Caliban</span> — 6 of 7 figures in this wave include a piece. <a href="../baf-planner.html">Open the BAF planner</a> to track your pieces.</p></div>
+      <ul class="fig-list" aria-label="Figures in this wave">
+          <li class="fig" data-fig-id="hasbro-2019-caliban::Beast"><span class="fig-name">Beast</span><span class="tag-row"><span class="badge badge-baf">Builds: Head</span></span><span class="track-slot" data-track-for="hasbro-2019-caliban::Beast"></span><span class="fig-notes">Jim Lee version</span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Beast&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Beast+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Beast" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="fig" data-fig-id="hasbro-2019-caliban::Skullbuster"><span class="fig-name">Skullbuster</span><span class="tag-row"><span class="badge badge-baf">Builds: Right arm</span></span><span class="track-slot" data-track-for="hasbro-2019-caliban::Skullbuster"></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Skullbuster&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Skullbuster+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Skullbuster" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="fig" data-fig-id="hasbro-2019-caliban::Blink"><span class="fig-name">Blink</span><span class="tag-row"><span class="badge badge-baf">Builds: Left leg</span></span><span class="track-slot" data-track-for="hasbro-2019-caliban::Blink"></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Blink&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Blink+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Blink" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="fig" data-fig-id="hasbro-2019-caliban::Jubilee"><span class="fig-name">Jubilee</span><span class="tag-row"><span class="badge badge-baf">Builds: Torso</span></span><span class="track-slot" data-track-for="hasbro-2019-caliban::Jubilee"></span><span class="fig-notes">Jim Lee version, repaint of 2013 BAF</span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Jubilee&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Jubilee+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Jubilee" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="fig" data-fig-id="hasbro-2019-caliban::Forge"><span class="fig-name">Forge</span><span class="tag-row"><span class="badge badge-baf">Builds: Left arm</span></span><span class="track-slot" data-track-for="hasbro-2019-caliban::Forge"></span><span class="fig-notes">Jim Lee version</span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Forge&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Forge+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Forge" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="fig" data-fig-id="hasbro-2019-caliban::Wolverine"><span class="fig-name">Wolverine</span><span class="tag-row"><span class="badge badge-baf">Builds: Right leg</span></span><span class="track-slot" data-track-for="hasbro-2019-caliban::Wolverine"></span><span class="fig-notes">Weapon X version</span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Wolverine&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Wolverine+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Wolverine" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="fig" data-fig-id="hasbro-2019-caliban::Gambit"><span class="fig-name">Gambit</span><span class="track-slot" data-track-for="hasbro-2019-caliban::Gambit"></span><span class="fig-notes">Jim Lee version; BAF piece unverified</span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Gambit&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Gambit+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Gambit" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+      </ul>
+      <nav class="wave-nav" aria-label="Previous and next wave">
+        <a class="btn" href="hasbro-2019-armored-thanos.html" rel="prev">← Armored Thanos Wave (2019)</a>
+        <a class="btn" href="hasbro-2019-smart-hulk.html" rel="next">Smart Hulk Wave (2019) →</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../start.html">Start</a><a href="../waves/index.html">Waves</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../grails.html">Grails</a><a href="../variants.html">Variants</a><a href="../checklist.html">Checklist</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

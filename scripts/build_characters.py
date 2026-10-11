@@ -28,7 +28,8 @@ def slug(s):
 
 
 NAV_LINKS = [
-    ("index.html", "Timeline"), ("stats.html", "Stats"),
+    ("index.html", "Timeline"), ("start.html", "Start"),
+    ("waves/index.html", "Waves"), ("stats.html", "Stats"),
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),

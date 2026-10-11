@@ -6,6 +6,9 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 ## What this is
 
 - Timeline of 1,904 figures across 158 waves, Toy Biz (2002–2006) through Hasbro (2007–2026)
+- Wave archive: 158 generated wave pages (`waves/<wave-id>.html` + index; rebuild with `python3 scripts/build_waves.py`) — every figure with inline Owned/Wanted toggles, BAF breakdown, research links, prev/next navigation, print checklist
+- New collector starter guide (`start.html`): first pickups, how to read a wave, spotting fakes, BAF math, tracking, learning real prices
+- Stats dashboard: figures per year, BAF waves over time, top 25 characters, exclusives share, wave-size breakdowns — all computed live from the data
 - Collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue-radar flags), grading guide, transparent price methodology, bootleg-spotting guide, resources
 - BAF planner: mark owned figures, see missing Build-A-Figure pieces + acquisition guidance (browser-local)
 - 66 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
