@@ -5,6 +5,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 1",
     "baf": null,
+    "source": null,
     "figureCount": 7
   },
   {
@@ -13,6 +14,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 2",
     "baf": null,
+    "source": null,
     "figureCount": 7
   },
   {
@@ -21,6 +23,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 3",
     "baf": null,
+    "source": null,
     "figureCount": 6
   },
   {
@@ -29,6 +32,7 @@
     "manufacturer": "Toy Biz",
     "series": "Walmart Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 2
   },
   {
@@ -37,6 +41,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 4",
     "baf": null,
+    "source": null,
     "figureCount": 6
   },
   {
@@ -45,6 +50,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 5",
     "baf": null,
+    "source": null,
     "figureCount": 7
   },
   {
@@ -53,6 +59,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - X-Men Legends",
     "baf": null,
+    "source": null,
     "figureCount": 5
   },
   {
@@ -61,6 +68,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - Urban Legends",
     "baf": null,
+    "source": null,
     "figureCount": 4
   },
   {
@@ -69,6 +77,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 6",
     "baf": null,
+    "source": null,
     "figureCount": 9
   },
   {
@@ -77,6 +86,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 7",
     "baf": null,
+    "source": null,
     "figureCount": 10
   },
   {
@@ -85,6 +95,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 8",
     "baf": null,
+    "source": null,
     "figureCount": 11
   },
   {
@@ -93,6 +104,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - Spider-Man vs. Sinister 6",
     "baf": null,
+    "source": null,
     "figureCount": 7
   },
   {
@@ -101,6 +113,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - Fantastic Four",
     "baf": null,
+    "source": null,
     "figureCount": 9
   },
   {
@@ -109,6 +122,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 9 - Galactus",
     "baf": "Galactus",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -117,6 +131,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 10 - Sentinel",
     "baf": "Sentinel",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -125,6 +140,7 @@
     "manufacturer": "Toy Biz",
     "series": "Legendary Riders",
     "baf": null,
+    "source": null,
     "figureCount": 10
   },
   {
@@ -133,6 +149,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 12 - Apocalypse",
     "baf": "Apocalypse (Classic and Black versions)",
+    "source": null,
     "figureCount": 11
   },
   {
@@ -141,6 +158,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - Spider-Man vs. The Fearsome Foes",
     "baf": null,
+    "source": null,
     "figureCount": 5
   },
   {
@@ -149,6 +167,7 @@
     "manufacturer": "Toy Biz",
     "series": "Giant-Man (Walmart Exclusive)",
     "baf": "Giant-Man",
+    "source": null,
     "figureCount": 12
   },
   {
@@ -157,6 +176,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 13 - Onslaught",
     "baf": "Onslaught",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -165,6 +185,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 14 - Mojo",
     "baf": "Mojo",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -173,6 +194,7 @@
     "manufacturer": "Toy Biz",
     "series": "Series 15 - MODOK",
     "baf": "MODOK",
+    "source": null,
     "figureCount": 12
   },
   {
@@ -181,6 +203,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - Young Avengers",
     "baf": null,
+    "source": null,
     "figureCount": 4
   },
   {
@@ -189,6 +212,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - Monsters",
     "baf": null,
+    "source": null,
     "figureCount": 4
   },
   {
@@ -197,6 +221,7 @@
     "manufacturer": "Toy Biz",
     "series": "Box Set - House of M",
     "baf": null,
+    "source": null,
     "figureCount": 4
   },
   {
@@ -205,6 +230,7 @@
     "manufacturer": "Toy Biz",
     "series": "Face-Off Series 1",
     "baf": null,
+    "source": null,
     "figureCount": 12
   },
   {
@@ -213,6 +239,7 @@
     "manufacturer": "Toy Biz",
     "series": "Face-Off Series 2",
     "baf": null,
+    "source": null,
     "figureCount": 11
   },
   {
@@ -221,6 +248,7 @@
     "manufacturer": "Hasbro",
     "series": "Annihilus Wave",
     "baf": "Annihilus",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -229,6 +257,7 @@
     "manufacturer": "Hasbro",
     "series": "Blob Wave",
     "baf": "Blob",
+    "source": null,
     "figureCount": 11
   },
   {
@@ -237,6 +266,7 @@
     "manufacturer": "Hasbro",
     "series": "Ronan the Accuser Wave",
     "baf": "Ronan the Accuser",
+    "source": null,
     "figureCount": 8
   },
   {
@@ -245,6 +275,7 @@
     "manufacturer": "Hasbro",
     "series": "Brood Queen Wave",
     "baf": "Brood Queen",
+    "source": null,
     "figureCount": 10
   },
   {
@@ -253,6 +284,7 @@
     "manufacturer": "Hasbro",
     "series": "Sandman (Spider-Man 3) Wave",
     "baf": "Sandman (Spider-Man 3)",
+    "source": "mcu",
     "figureCount": 8
   },
   {
@@ -261,6 +293,7 @@
     "manufacturer": "Hasbro",
     "series": "San Diego Comic-Con Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 2
   },
   {
@@ -269,6 +302,7 @@
     "manufacturer": "Hasbro",
     "series": "Store Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 8
   },
   {
@@ -277,6 +311,7 @@
     "manufacturer": "Hasbro",
     "series": "Fin Fang Foom Wave",
     "baf": "Fin Fang Foom",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -285,6 +320,7 @@
     "manufacturer": "Hasbro",
     "series": "Red Hulk Wave (Target Exclusive)",
     "baf": "Red Hulk",
+    "source": null,
     "figureCount": 8
   },
   {
@@ -293,6 +329,7 @@
     "manufacturer": "Hasbro",
     "series": "Ares Wave (Walmart Exclusive)",
     "baf": "Ares",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -301,6 +338,7 @@
     "manufacturer": "Hasbro",
     "series": "2-Packs Series 1",
     "baf": null,
+    "source": null,
     "figureCount": 9
   },
   {
@@ -309,6 +347,7 @@
     "manufacturer": "Hasbro",
     "series": "SDCC Box Set - Fin Fang Foom",
     "baf": "Fin Fang Foom",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -317,6 +356,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 6
   },
   {
@@ -325,6 +365,7 @@
     "manufacturer": "Hasbro",
     "series": "Nemesis Wave (Walmart Exclusive)",
     "baf": "Holocaust (Nemesis)",
+    "source": null,
     "figureCount": 8
   },
   {
@@ -333,6 +374,7 @@
     "manufacturer": "Hasbro",
     "series": "2-Packs Series 2",
     "baf": null,
+    "source": null,
     "figureCount": 12
   },
   {
@@ -341,6 +383,7 @@
     "manufacturer": "Hasbro",
     "series": "Toys \"R\" Us 2-Packs",
     "baf": null,
+    "source": null,
     "figureCount": 10
   },
   {
@@ -349,6 +392,7 @@
     "manufacturer": "Hasbro",
     "series": "San Diego Comic-Con Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 1
   },
   {
@@ -357,6 +401,7 @@
     "manufacturer": "Hasbro",
     "series": "Terrax Wave (Return of Marvel Legends)",
     "baf": "Terrax",
+    "source": null,
     "figureCount": 10
   },
   {
@@ -365,6 +410,7 @@
     "manufacturer": "Hasbro",
     "series": "Arnim Zola Wave (Return of Marvel Legends)",
     "baf": "Arnim Zola",
+    "source": null,
     "figureCount": 11
   },
   {
@@ -373,6 +419,7 @@
     "manufacturer": "Hasbro",
     "series": "SDCC Box Set - Uncanny X-Force",
     "baf": null,
+    "source": null,
     "figureCount": 3
   },
   {
@@ -381,6 +428,7 @@
     "manufacturer": "Hasbro",
     "series": "Epic Heroes",
     "baf": null,
+    "source": null,
     "figureCount": 9
   },
   {
@@ -389,6 +437,7 @@
     "manufacturer": "Hasbro",
     "series": "Iron Monger Wave",
     "baf": "Iron Monger",
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -397,6 +446,7 @@
     "manufacturer": "Hasbro",
     "series": "Hit-Monkey Wave",
     "baf": "Hit-Monkey",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -405,6 +455,7 @@
     "manufacturer": "Hasbro",
     "series": "Rocket Raccoon Wave",
     "baf": "Rocket Raccoon",
+    "source": null,
     "figureCount": 5
   },
   {
@@ -413,6 +464,7 @@
     "manufacturer": "Hasbro",
     "series": "Puck Wave (Hasbro Previews Exclusive)",
     "baf": "Puck",
+    "source": null,
     "figureCount": 4
   },
   {
@@ -421,6 +473,7 @@
     "manufacturer": "Hasbro",
     "series": "Convention & Mail-Away Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 6
   },
   {
@@ -429,6 +482,7 @@
     "manufacturer": "Hasbro",
     "series": "Mandroid Wave (Infinite Series)",
     "baf": "Mandroid",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -437,6 +491,7 @@
     "manufacturer": "Hasbro",
     "series": "Ultimate Green Goblin Wave",
     "baf": "Ultimate Green Goblin",
+    "source": null,
     "figureCount": 9
   },
   {
@@ -445,6 +500,7 @@
     "manufacturer": "Hasbro",
     "series": "Groot Wave",
     "baf": "Groot",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -453,6 +509,7 @@
     "manufacturer": "Hasbro",
     "series": "Jubilee Wave (Toys \"R\" Us Exclusive)",
     "baf": "Jubilee (mini BAF)",
+    "source": null,
     "figureCount": 5
   },
   {
@@ -461,6 +518,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 15
   },
   {
@@ -469,6 +527,7 @@
     "manufacturer": "Hasbro",
     "series": "Allfather Wave",
     "baf": "Odin / King Thor (Allfather)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -477,6 +536,7 @@
     "manufacturer": "Hasbro",
     "series": "Hobgoblin Wave",
     "baf": "Hobgoblin (Phil Urich)",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -485,6 +545,7 @@
     "manufacturer": "Hasbro",
     "series": "Thanos Wave",
     "baf": "Thanos (Infinity)",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -493,6 +554,7 @@
     "manufacturer": "Hasbro",
     "series": "Hulkbuster Wave",
     "baf": "Hulkbuster (Avengers: Age of Ultron)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -501,6 +563,7 @@
     "manufacturer": "Hasbro",
     "series": "Ultron Prime Wave",
     "baf": "Ultron Prime (Avengers: Age of Ultron)",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -509,6 +572,7 @@
     "manufacturer": "Hasbro",
     "series": "Rhino Wave",
     "baf": "Rhino",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -517,6 +581,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 32
   },
   {
@@ -525,6 +590,7 @@
     "manufacturer": "Hasbro",
     "series": "Absorbing Man Wave",
     "baf": "Absorbing Man",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -533,6 +599,7 @@
     "manufacturer": "Hasbro",
     "series": "Red Onslaught Wave",
     "baf": "Red Onslaught",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -541,6 +608,7 @@
     "manufacturer": "Hasbro",
     "series": "Giant-Man Wave",
     "baf": "Giant-Man (Captain America: Civil War)",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -549,6 +617,7 @@
     "manufacturer": "Hasbro",
     "series": "Space Knight Venom Wave",
     "baf": "Space Knight Venom",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -557,6 +626,7 @@
     "manufacturer": "Hasbro",
     "series": "Abomination Wave",
     "baf": "Abomination",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -565,6 +635,7 @@
     "manufacturer": "Hasbro",
     "series": "Juggernaut Wave",
     "baf": "Juggernaut",
+    "source": null,
     "figureCount": 8
   },
   {
@@ -573,6 +644,7 @@
     "manufacturer": "Hasbro",
     "series": "Dormammu Wave",
     "baf": "Dormammu",
+    "source": null,
     "figureCount": 8
   },
   {
@@ -581,6 +653,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 27
   },
   {
@@ -589,6 +662,7 @@
     "manufacturer": "Hasbro",
     "series": "Sandman Wave",
     "baf": "Sandman",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -597,6 +671,7 @@
     "manufacturer": "Hasbro",
     "series": "Titus Wave",
     "baf": "Titus",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -605,6 +680,7 @@
     "manufacturer": "Hasbro",
     "series": "Warlock Wave",
     "baf": "Warlock (New Mutants)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -613,6 +689,7 @@
     "manufacturer": "Hasbro",
     "series": "Vulture Wave",
     "baf": "Vulture (Spider-Man: Homecoming)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -621,6 +698,7 @@
     "manufacturer": "Hasbro",
     "series": "Mantis Wave",
     "baf": "Mantis (Guardians of the Galaxy Vol. 2)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -629,6 +707,7 @@
     "manufacturer": "Hasbro",
     "series": "Man-Thing Wave (Netflix)",
     "baf": "Man-Thing",
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -637,6 +716,7 @@
     "manufacturer": "Hasbro",
     "series": "Gladiator Hulk Wave",
     "baf": "Gladiator Hulk (Thor: Ragnarok)",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -645,6 +725,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 39
   },
   {
@@ -653,6 +734,7 @@
     "manufacturer": "Hasbro",
     "series": "Okoye Wave",
     "baf": "Okoye (Black Panther)",
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -661,6 +743,7 @@
     "manufacturer": "Hasbro",
     "series": "Lizard Wave",
     "baf": "Lizard",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -669,6 +752,7 @@
     "manufacturer": "Hasbro",
     "series": "Thanos Wave",
     "baf": "Thanos (Avengers: Infinity War)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -677,6 +761,7 @@
     "manufacturer": "Hasbro",
     "series": "Sasquatch Wave",
     "baf": "Sasquatch",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -685,6 +770,7 @@
     "manufacturer": "Hasbro",
     "series": "Cull Obsidian Wave",
     "baf": "Cull Obsidian (Avengers: Infinity War)",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -693,6 +779,7 @@
     "manufacturer": "Hasbro",
     "series": "Apocalypse Wave",
     "baf": "Apocalypse",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -701,6 +788,7 @@
     "manufacturer": "Hasbro",
     "series": "SP//dr Wave",
     "baf": "SP//dr",
+    "source": "animated",
     "figureCount": 7
   },
   {
@@ -709,6 +797,7 @@
     "manufacturer": "Hasbro",
     "series": "Monster Venom Wave",
     "baf": "Monster Venom",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -717,6 +806,7 @@
     "manufacturer": "Hasbro",
     "series": "Sauron Wave",
     "baf": "Sauron",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -725,6 +815,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 97
   },
   {
@@ -733,6 +824,7 @@
     "manufacturer": "Hasbro",
     "series": "M'Baku Wave",
     "baf": "M'Baku (Black Panther)",
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -741,6 +833,7 @@
     "manufacturer": "Hasbro",
     "series": "Kree Sentry Wave",
     "baf": "Kree Sentry",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -749,6 +842,7 @@
     "manufacturer": "Hasbro",
     "series": "Kingpin Wave",
     "baf": "Kingpin",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -757,6 +851,7 @@
     "manufacturer": "Hasbro",
     "series": "Armored Thanos Wave",
     "baf": "Armored Thanos (Avengers: Endgame)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -765,6 +860,7 @@
     "manufacturer": "Hasbro",
     "series": "Caliban Wave",
     "baf": "Caliban",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -773,6 +869,7 @@
     "manufacturer": "Hasbro",
     "series": "Smart Hulk Wave",
     "baf": "Smart Hulk (Avengers: Endgame)",
+    "source": "mcu",
     "figureCount": 7
   },
   {
@@ -781,6 +878,7 @@
     "manufacturer": "Hasbro",
     "series": "Molten Man Wave",
     "baf": "Molten Man (Spider-Man: Far From Home)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -789,6 +887,7 @@
     "manufacturer": "Hasbro",
     "series": "Wendigo Wave",
     "baf": "Wendigo",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -797,6 +896,7 @@
     "manufacturer": "Hasbro",
     "series": "Fat Thor Wave",
     "baf": "Fat Thor (Avengers: Endgame)",
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -805,6 +905,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 42
   },
   {
@@ -813,6 +914,7 @@
     "manufacturer": "Hasbro",
     "series": "Super-Skrull Wave",
     "baf": "Super-Skrull",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -821,6 +923,7 @@
     "manufacturer": "Hasbro",
     "series": "Demogoblin Wave",
     "baf": "Demogoblin",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -829,6 +932,7 @@
     "manufacturer": "Hasbro",
     "series": "Crimson Dynamo Wave",
     "baf": "Crimson Dynamo (Gennady Gavrilov)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -837,6 +941,7 @@
     "manufacturer": "Hasbro",
     "series": "Abomination Wave (Gamerverse)",
     "baf": "Abomination (Gamerverse)",
+    "source": "videogame",
     "figureCount": 7
   },
   {
@@ -845,6 +950,7 @@
     "manufacturer": "Hasbro",
     "series": "Sugar Man Wave",
     "baf": "Sugar Man",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -853,6 +959,7 @@
     "manufacturer": "Hasbro",
     "series": "Strong Guy Wave",
     "baf": "Strong Guy",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -861,6 +968,7 @@
     "manufacturer": "Hasbro",
     "series": "Venompool Wave (Gamerverse)",
     "baf": "Venompool (Gamerverse)",
+    "source": "videogame",
     "figureCount": 6
   },
   {
@@ -869,6 +977,7 @@
     "manufacturer": "Hasbro",
     "series": "Joe Fixit Wave (Gamerverse)",
     "baf": "Joe Fixit (Gamerverse)",
+    "source": "videogame",
     "figureCount": 6
   },
   {
@@ -877,6 +986,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 75
   },
   {
@@ -885,6 +995,7 @@
     "manufacturer": "Hasbro",
     "series": "Stilt-Man Wave",
     "baf": "Stilt-Man",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -893,6 +1004,7 @@
     "manufacturer": "Hasbro",
     "series": "Tri-Sentinel Wave",
     "baf": "Theta Sentinel (Powers of X)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -901,6 +1013,7 @@
     "manufacturer": "Hasbro",
     "series": "Mr. Hyde Wave",
     "baf": "Mr. Hyde",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -909,6 +1022,7 @@
     "manufacturer": "Hasbro",
     "series": "Captain America's Flight Gear Wave",
     "baf": "Captain America's Flight Gear",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -917,6 +1031,7 @@
     "manufacturer": "Hasbro",
     "series": "Xemnu Wave",
     "baf": "Xemnu",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -925,6 +1040,7 @@
     "manufacturer": "Hasbro",
     "series": "Ursa Major Wave",
     "baf": "Ursa Major",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -933,6 +1049,7 @@
     "manufacturer": "Hasbro",
     "series": "Colossus Wave (Age of Apocalypse)",
     "baf": "Colossus (Age of Apocalypse)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -941,6 +1058,7 @@
     "manufacturer": "Hasbro",
     "series": "The Watcher Wave",
     "baf": "The Watcher (What If...?)",
+    "source": "mcu",
     "figureCount": 7
   },
   {
@@ -949,6 +1067,7 @@
     "manufacturer": "Hasbro",
     "series": "Gilgamesh Wave",
     "baf": "Gilgamesh (Eternals)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -957,6 +1076,7 @@
     "manufacturer": "Hasbro",
     "series": "Armadillo Wave",
     "baf": "Armadillo",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -965,6 +1085,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 87
   },
   {
@@ -973,6 +1094,7 @@
     "manufacturer": "Hasbro",
     "series": "Rintrah Wave",
     "baf": "Rintrah (Doctor Strange in the Multiverse of Madness)",
+    "source": "mcu",
     "figureCount": 7
   },
   {
@@ -981,6 +1103,7 @@
     "manufacturer": "Hasbro",
     "series": "Korg Wave",
     "baf": "Korg (Thor: Love and Thunder)",
+    "source": "mcu",
     "figureCount": 7
   },
   {
@@ -989,6 +1112,7 @@
     "manufacturer": "Hasbro",
     "series": "Bonebreaker Wave",
     "baf": "Bonebreaker",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -997,6 +1121,7 @@
     "manufacturer": "Hasbro",
     "series": "The Controller Wave",
     "baf": "The Controller",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1005,6 +1130,7 @@
     "manufacturer": "Hasbro",
     "series": "Infinity Ultron Wave",
     "baf": "Infinity Ultron (What If...?)",
+    "source": "mcu",
     "figureCount": 7
   },
   {
@@ -1013,6 +1139,7 @@
     "manufacturer": "Hasbro",
     "series": "Attuma Wave",
     "baf": "Attuma (Black Panther: Wakanda Forever)",
+    "source": null,
     "figureCount": 6
   },
   {
@@ -1021,6 +1148,7 @@
     "manufacturer": "Hasbro",
     "series": "Khonshu Wave",
     "baf": "Khonshu (Moon Knight)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1029,6 +1157,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 89
   },
   {
@@ -1037,6 +1166,7 @@
     "manufacturer": "Hasbro",
     "series": "Puff Adder Wave",
     "baf": "Puff Adder",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1045,6 +1175,7 @@
     "manufacturer": "Hasbro",
     "series": "Cassie Lang Wave",
     "baf": "Cassie Lang (Ant-Man and the Wasp: Quantumania)",
+    "source": "mcu",
     "figureCount": 7
   },
   {
@@ -1053,6 +1184,7 @@
     "manufacturer": "Hasbro",
     "series": "Cosmo the Spacedog Wave",
     "baf": "Cosmo the Spacedog (Guardians of the Galaxy Vol. 3)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1061,6 +1193,7 @@
     "manufacturer": "Hasbro",
     "series": "Ch'od Wave",
     "baf": "Ch'od",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1069,6 +1202,7 @@
     "manufacturer": "Hasbro",
     "series": "Hulk (Amadeus Cho) Wave",
     "baf": "Hulk (Amadeus Cho) (Totally Awesome Hulk)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1077,6 +1211,7 @@
     "manufacturer": "Hasbro",
     "series": "Mindless One Wave (Marvel Knights)",
     "baf": "Mindless One",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1085,6 +1220,7 @@
     "manufacturer": "Hasbro",
     "series": "Hydra Stomper MK II Wave",
     "baf": "Hydra Stomper MK II (What If...?)",
+    "source": "mcu",
     "figureCount": 7
   },
   {
@@ -1093,6 +1229,7 @@
     "manufacturer": "Hasbro",
     "series": "Across the Spider-Verse Wave 1",
     "baf": null,
+    "source": "animated",
     "figureCount": 7
   },
   {
@@ -1101,6 +1238,7 @@
     "manufacturer": "Hasbro",
     "series": "X-Men '97 Wave 1",
     "baf": null,
+    "source": "animated",
     "figureCount": 6
   },
   {
@@ -1109,6 +1247,7 @@
     "manufacturer": "Hasbro",
     "series": "Spider-Man: No Way Home Wave",
     "baf": null,
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -1117,6 +1256,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 113
   },
   {
@@ -1125,6 +1265,7 @@
     "manufacturer": "Hasbro",
     "series": "The Void Wave",
     "baf": "The Void",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1133,6 +1274,7 @@
     "manufacturer": "Hasbro",
     "series": "Zabu Wave",
     "baf": "Zabu",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1141,6 +1283,7 @@
     "manufacturer": "Hasbro",
     "series": "Blackheart Wave (Strange Tales)",
     "baf": "Blackheart",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1149,6 +1292,7 @@
     "manufacturer": "Hasbro",
     "series": "X-Men '97 Wave 2",
     "baf": null,
+    "source": "animated",
     "figureCount": 6
   },
   {
@@ -1157,6 +1301,7 @@
     "manufacturer": "Hasbro",
     "series": "Deadpool & Wolverine Wave 1",
     "baf": null,
+    "source": "mcu",
     "figureCount": 3
   },
   {
@@ -1165,6 +1310,7 @@
     "manufacturer": "Hasbro",
     "series": "Across the Spider-Verse Wave 2",
     "baf": null,
+    "source": "animated",
     "figureCount": 7
   },
   {
@@ -1173,6 +1319,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 81
   },
   {
@@ -1181,6 +1328,7 @@
     "manufacturer": "Hasbro",
     "series": "Nemesis Wave",
     "baf": "Nemesis (Uncanny X-Force)",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1189,6 +1337,7 @@
     "manufacturer": "Hasbro",
     "series": "Executioner Wave",
     "baf": "Executioner",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1197,6 +1346,7 @@
     "manufacturer": "Hasbro",
     "series": "Gamerverse Legends",
     "baf": null,
+    "source": "videogame",
     "figureCount": 6
   },
   {
@@ -1205,6 +1355,7 @@
     "manufacturer": "Hasbro",
     "series": "Fantastic Four: First Steps Wave",
     "baf": null,
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -1213,6 +1364,7 @@
     "manufacturer": "Hasbro",
     "series": "X-Men '97 Wave 3",
     "baf": null,
+    "source": "animated",
     "figureCount": 6
   },
   {
@@ -1221,6 +1373,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 100
   },
   {
@@ -1229,6 +1382,7 @@
     "manufacturer": "Hasbro",
     "series": "Box Wave",
     "baf": "Box",
+    "source": null,
     "figureCount": 7
   },
   {
@@ -1237,6 +1391,7 @@
     "manufacturer": "Hasbro",
     "series": "Deadpool & Wolverine Wave 2",
     "baf": null,
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -1245,6 +1400,7 @@
     "manufacturer": "Hasbro",
     "series": "Deadpool & Wolverine Wave 3",
     "baf": null,
+    "source": "mcu",
     "figureCount": 3
   },
   {
@@ -1253,6 +1409,7 @@
     "manufacturer": "Hasbro",
     "series": "Avengers: Doomsday Wave 1",
     "baf": null,
+    "source": "mcu",
     "figureCount": 6
   },
   {
@@ -1261,6 +1418,7 @@
     "manufacturer": "Hasbro",
     "series": "Store & Convention Exclusives",
     "baf": null,
+    "source": null,
     "figureCount": 92
   }
 ]

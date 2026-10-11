@@ -6,7 +6,10 @@ Static site. GitHub only — nothing is deployed anywhere.
 
 ## What's here
 
-- `index.html` — the chronological timeline (1,904 figures, 158 waves, 2002–2026)
+- `index.html` — the chronological timeline (1,904 figures, 158 waves, 2002–2026), with a "Featured In" story-source facet (MCU / animated / video game — 29 waves classified, the rest honestly Unclassified)
+- `grails.html` — 10 sourced grail stories expanding the hall of fame: the legend, the hunt, the reissue saga, honest prices
+- `variants.html` — variant & chase identifier: how to spot variants in the wild + wave-by-wave index of all 83 documented variants
+- `checklist.html` — printable owned/wanted checklist from your tracker data, grouped by wave (print stylesheet also covers the timeline)
 - `encyclopedia.html` — collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue radar), grading guide, bootleg-spotting guide, resources directory
 - `baf-planner.html` — "complete my BAF" planner: mark owned figures, see missing pieces + acquisition guidance (browser-local, syncs with the timeline tracker)
 - `characters/` — 46 generated character archive pages (`characters/<slug>.html` + index; rebuild with `python3 scripts/build_characters.py`)
@@ -25,7 +28,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 ## Features (mock-up)
 
 - **Chronological timeline:** waves grouped by year, Toy Biz → Hasbro, with Build-A-Figure callouts; year jump rail; `content-visibility` keeps 1,900+ cards fast
-- **Search & filters:** by figure, wave, BAF, manufacturer, and collection status
+- **Search & filters:** by figure, wave, BAF, manufacturer, collection status, and story source ("Featured In": MCU / animated / video game)
 - **Collection tracker:** mark figures Owned / Wanted — localStorage only, no account, no backend; corrupt storage resets safely
 - **Marketplace links:** per-figure pre-filled searches on eBay, Amazon, BigBadToyStore, Hasbro Pulse — constructed search URLs (mock), not live inventory
 - **Encyclopedia:** history timeline, packaging evolution, searchable hall of fame with verified/unverified price flags and reissue-radar (resilient vs vulnerable premiums), grading guide (AFA/CGA, CAS, UKG, no-premium caveat), bootleg guide, resources

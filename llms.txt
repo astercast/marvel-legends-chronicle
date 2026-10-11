@@ -13,6 +13,9 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - Price guide page: the sold-listings method, aggregator limits, dated price history, reissue effect
 - Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts
 - Collection tracker: mark figures Owned / Wanted (browser-local)
+- Grail stories: 10 sourced narratives expanding the hall of fame (legend, hunt, reissue saga, honest prices)
+- Variant & chase identifier: spotter's guide + wave-by-wave index of all 83 documented variants
+- Printable checklist: your tracker as a paper checklist grouped by wave, with print stylesheet (also applied to the timeline)
 
 ## API (static JSON, versioned)
 
@@ -20,8 +23,8 @@ Base: `api/v1/`
 
 - `api/v1/index.json` — manifest: version, endpoints, observation date, provenance
 - `api/v1/stats.json` — totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies
-- `api/v1/waves.json` — 158 wave summaries (id, year, manufacturer, series, baf, figureCount)
-- `api/v1/figures.json` — flat list of all 1,904 figures with wave context
+- `api/v1/waves.json` — 158 wave summaries (id, year, manufacturer, series, baf, source, figureCount)
+- `api/v1/figures.json` — flat list of all 1,904 figures with wave context (incl. `source`)
 - `api/v1/encyclopedia.json` — history timeline, packaging evolution, variant/chase/exclusive taxonomy, hall of fame (with reissue radar), grading guide, transparent price methodology, bootleg guide, resources directory
 - `api/v1/schema/wave.json`, `api/v1/schema/figure.json` — JSON Schema (draft-07)
 
@@ -44,6 +47,9 @@ community (4), variants (4), hunts (11).
 Figure ids are `<waveId>::<figureName>`, e.g. `toybiz-2002-series-1::Hulk`.
 Wave ids are kebab-case slugs. Ids are stable; new figures get new ids, never recycled.
 Unknown or disputed values are explicit `null` with a `notes` field — never invented.
+- "Featured In" source facet: 29 of 158 waves (181 figures) classified as MCU / animated /
+  video-game, only where the wave name explicitly names the source; everything else is
+  `source: null` (Unclassified) rather than guessed. Coverage is stated on the page.
 
 ## Known limitations
 
@@ -63,7 +69,10 @@ and `data/encyclopedia.json`. Commit the outputs.
 
 ## Site structure
 
-- `index.html` — chronological timeline with search, filters, year rail, tracker, milestone-anniversary strip
+- `index.html` — chronological timeline with search, filters (incl. "Featured In" story-source facet), year rail, tracker, milestone-anniversary strip
+- `grails.html` — 10 sourced grail stories expanding the hall of fame
+- `variants.html` — variant & chase identifier: spotter's guide + wave-by-wave index of documented variants
+- `checklist.html` — printable owned/wanted checklist from tracker data, grouped by wave
 - `encyclopedia.html` — history, packaging evolution, variants/chases/exclusives, hall of fame, grading guide, bootleg guide, resources
 - `baf-planner.html` — "complete my BAF" planner (browser-local, syncs with tracker)
 - `characters/index.html` + `characters/<slug>.html` — 46 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character
@@ -74,6 +83,6 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `compare.html` — figure compare: 2–4 figures side-by-side with a verdict-free difference-highlighted table
 - `community.html` — fan social (localStorage demo)
 - `api.html` — human-readable API docs
-- `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community
+- `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community, print (print.css: paper-friendly timeline + checklist output)
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, history-strip, community, community-page (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, community, community-page (ES modules)

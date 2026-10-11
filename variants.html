@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Variant &amp; Chase Identifier — Marvel Legends Chronicle</title>
+  <meta name="description" content="Identify Marvel Legends variants and chases: what to look for on the package and the figure, how case ratios actually work, and a wave-by-wave variant index.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .variants-hero { padding-block: var(--space-7); }
+    .id-guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); margin: var(--space-5) 0 var(--space-7); }
+    .id-card { padding: var(--space-4); }
+    .id-card h3 { font-size: 1rem; margin: 0 0 var(--space-2); color: var(--gold); }
+    .id-card p { font-size: 0.9rem; margin: 0 0 var(--space-2); color: var(--ink-dim); }
+    .id-card p:last-child { margin-bottom: 0; }
+    .variant-wave { margin-bottom: var(--space-6); scroll-margin-top: 90px; }
+    .variant-wave > h2 { font-size: 1.1rem; margin-bottom: var(--space-1); }
+    .variant-wave .wave-meta { color: var(--muted); font-size: 0.85rem; margin-bottom: var(--space-3); }
+    .variant-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+    .variant-item { padding: var(--space-3) var(--space-4); }
+    .variant-item .v-name { font-weight: 700; }
+    .variant-item .v-desc { color: var(--ink-dim); font-size: 0.9rem; margin-top: var(--space-1); }
+    .variant-item .v-notes { color: var(--muted); font-size: 0.85rem; margin-top: var(--space-1); }
+    .honesty { font-size: 0.85rem; color: var(--muted); border-left: 3px solid var(--red); padding-left: var(--space-3); margin: var(--space-5) 0; max-width: 75ch; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to variant index</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html" aria-current="page">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="variants-hero">
+      <div class="container">
+        <span class="hero-kicker">Spot it in the wild</span>
+        <h1 id="page-title">Variant &amp; Chase Identifier</h1>
+        <p class="lede">Every documented variant and chase in the archive — what the variant looks like versus the regular release, and how to confirm one with the package in your hands. <span id="variant-count"></span></p>
+        <div class="toolbar" role="search" aria-label="Filter variants">
+          <div class="field grow">
+            <label for="v-search">Search variants</label>
+            <input class="input" id="v-search" type="search" placeholder="Stealth Iron Man, chase, unmasked…" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="v-era">Era</label>
+            <select class="input" id="v-era">
+              <option value="all">All eras</option>
+              <option value="Toy Biz">Toy Biz</option>
+              <option value="Hasbro">Hasbro</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section aria-labelledby="id-guide-h">
+        <h2 id="id-guide-h">How to spot a variant in the wild</h2>
+        <div class="id-guide">
+          <div class="card id-card">
+            <h3>1. Read the deco, not the name</h3>
+            <p>Most modern variants are <strong>deco variants</strong> — same sculpt, different paint. Compare against the regular release: Stealth Iron Man is all-black where the regular is red-and-gold; the "No 4 on chest" Human Torch is missing its chest emblem. If the sculpt differs (different head, different body parts), it's a rarer <strong>sculpt variant</strong> — e.g., Weapon X Wolverine vs. Damaged Weapon X.</p>
+          </div>
+          <div class="card id-card">
+            <h3>2. Check the package codes</h3>
+            <p>Hasbro prints 5-digit SKU codes on figures (G/F prefix in recent years; older were all-numeric) that match the product number on the cardback. A variant has its own SKU. For Target exclusives, collectors use Target <strong>DCPIs</strong> (internal item numbers) to locate stock. Mismatched or missing codes are a red flag — see the <a href="auth-wizard.html">Auth Wizard</a>.</p>
+          </div>
+          <div class="card id-card">
+            <h3>3. Know the case-ratio rule</h3>
+            <p>A figure is a "chase" if it ships <strong>1× per case while the rest run 1–2×</strong>, or only in revision assortments. Modern standard cases hold 8 figures (retailers publish the mixes). <strong>Hasbro publishes no official chase ratios</strong> — every ratio is reverse-engineered from case mixes, so treat any stated ratio as collector analysis, not fact.</p>
+          </div>
+          <div class="card id-card">
+            <h3>4. Watch for revision cases</h3>
+            <p>One wave can span multiple assortments, and <strong>revision cases</strong> swap variants in or out mid-wave. The classic: the 2007 Brood Queen wave's revision case added the Marvel Girl variant and Hydra Soldier variant at 1× each. A "wave 1" box and a "wave 1 revision" box can hold different figures.</p>
+          </div>
+          <div class="card id-card">
+            <h3>5. Label and packaging variants</h3>
+            <p>Sometimes the figure is identical and the <em>package</em> differs: Stealth Iron Man exists with and without "Stealth" on the package label; international releases swapped posters for comics; modern Retro cards rehouse existing sculpts. These matter mainly to carded collectors — loose buyers can ignore them.</p>
+          </div>
+          <div class="card id-card">
+            <h3>6. What holds value</h3>
+            <p>Collector guidance: deco variants — buy the look you like, premiums fade on reissue. Sculpt variants and true short-packs (1× per case or revision-only) hold value better. Unreleased prototypes: verify provenance before believing any price. Full taxonomy in the <a href="encyclopedia.html#variants">encyclopedia</a>.</p>
+          </div>
+        </div>
+        <p class="honesty" role="note"><strong>Honesty box:</strong> variant descriptions below come from the archive's figure data (variant + notes fields). Where the data doesn't record a visual difference, none is stated. Case-ratio figures are reverse-engineered by collectors; Hasbro has never published official chase ratios.</p>
+      </section>
+
+      <section aria-labelledby="index-h">
+        <h2 id="index-h">Wave-by-wave variant index</h2>
+        <div id="variant-index" aria-live="polite"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/variants.js"></script>
+</body>
+</html>

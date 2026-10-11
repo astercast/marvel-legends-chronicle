@@ -1,0 +1,101 @@
+/* Print stylesheet — linked with media="print" from index.html and checklist.html.
+   Turns the timeline and the paper checklist into clean black-on-white documents. */
+
+@page {
+  margin: 14mm;
+}
+
+html, body {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+/* Hide all interactive/screen chrome. */
+.site-header,
+.site-footer,
+.skip-link,
+.no-print,
+.timeline-controls,
+.hero,
+#history-strip,
+.checklist-hero,
+.figure-card .owned-dot,
+.figure-card .wanted-dot {
+  display: none !important;
+}
+
+.container {
+  max-width: none;
+  padding: 0;
+}
+
+a { color: #111; text-decoration: none; }
+
+/* --- Timeline (index.html) --- */
+.year-section {
+  break-inside: auto;
+  margin-bottom: 18px;
+  content-visibility: visible;
+}
+.year-head h2 { color: #111; }
+.year-head { border-bottom: 2px solid #111; }
+.wave { break-inside: avoid; margin-bottom: 12px; }
+.wave-title { color: #111; }
+.wave-meta .badge,
+.tag-row .badge {
+  color: #333 !important;
+  border-color: #999 !important;
+  background: #fff !important;
+}
+.figure-grid {
+  display: block;
+  columns: 3;
+  column-gap: 18px;
+}
+.figure-card {
+  display: block;
+  width: 100%;
+  break-inside: avoid;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff !important;
+  color: #111 !important;
+  text-align: left;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+.figure-card h3 { font-size: 12px; color: #111; margin: 0; }
+.figure-card .sub { color: #555; font-size: 10px; }
+
+/* --- Checklist (checklist.html) --- */
+.print-head {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 3px solid #111;
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+.print-head span { font-size: 11px; color: #555; }
+.check-year { break-inside: auto; margin-bottom: 14px; }
+.check-year > h2 { color: #111; border-bottom-color: #111; }
+.check-wave { break-inside: avoid; }
+.check-wave > h3 { color: #333; }
+.check-list {
+  display: block;
+  columns: 2;
+  column-gap: 20px;
+}
+.check-item {
+  break-inside: avoid;
+  border: 1px solid #bbb;
+  background: #fff !important;
+  margin-bottom: 5px;
+  padding: 3px 7px;
+}
+.check-item .nm { color: #111; }
+.check-item .meta { color: #555; }
+.check-item input[type="checkbox"] { accent-color: #111; }
+.check-item.is-wanted .nm::after { content: " ★"; color: #111; }

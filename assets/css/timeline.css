@@ -27,6 +27,14 @@
 }
 .year-rail a:hover { color: var(--ink); background: var(--panel-2); text-decoration: none; }
 
+/* "Featured In" facet honesty note under the filter toolbar. */
+.facet-note {
+  margin: var(--space-2) 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
 .year-section {
   margin-bottom: var(--space-7);
   scroll-margin-top: 150px;

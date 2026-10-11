@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/timeline.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to timeline</a>
@@ -31,6 +32,9 @@
         <a href="shelf.html">Your Shelf</a>
         <a href="radar.html">Radar</a>
         <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
         <a href="skills.html">Skills</a>
         <a href="community.html">Community</a>
         <a href="api.html">API</a>
@@ -82,11 +86,22 @@
               <option value="wanted">Wanted</option>
             </select>
           </div>
+          <div class="field">
+            <label for="f-source">Featured In</label>
+            <select class="input" id="f-source">
+              <option value="all">All sources</option>
+              <option value="mcu">MCU (films &amp; streaming)</option>
+              <option value="animated">Animated series &amp; films</option>
+              <option value="videogame">Video games</option>
+              <option value="unclassified">Unclassified</option>
+            </select>
+          </div>
           <div class="field" style="flex:0 0 auto;">
             <label aria-hidden="true">&nbsp;</label>
             <button type="button" class="btn" id="f-reset">Reset</button>
           </div>
         </div>
+        <p class="facet-note" id="source-note" role="note"></p>
         <nav class="year-rail" id="year-rail" aria-label="Jump to year"></nav>
       </div>
     </div>
@@ -108,6 +123,9 @@
         <a href="shelf.html">Your Shelf</a>
         <a href="radar.html">Radar</a>
         <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
         <a href="skills.html">Skills</a>
         <a href="community.html">Community</a>
         <a href="api.html">API</a>

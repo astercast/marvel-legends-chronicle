@@ -35,6 +35,7 @@ def main():
             "manufacturer": w["manufacturer"],
             "series": w["series"],
             "baf": w.get("baf"),
+            "source": w.get("source"),  # "mcu" | "animated" | "videogame" | null (unclassified)
             "figureCount": len(w["figures"]),
         })
         for f in w["figures"]:
@@ -50,6 +51,7 @@ def main():
                 "year": w["year"],
                 "manufacturer": w["manufacturer"],
                 "waveBaf": w.get("baf"),
+                "source": w.get("source"),
             })
 
     by_year, by_mfr = {}, {}

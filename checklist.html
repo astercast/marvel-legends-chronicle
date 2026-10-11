@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Printable Checklist — Marvel Legends Chronicle</title>
+  <meta name="description" content="Your owned/wanted collection as a clean printable checklist, grouped by wave — take it to the toy show.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+  <style>
+    .checklist-hero { padding-block: var(--space-7); }
+    .checklist-controls { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; margin-bottom: var(--space-5); }
+    .check-year { margin-bottom: var(--space-6); break-inside: avoid-page; }
+    .check-year > h2 { font-size: 1.2rem; border-bottom: 2px solid var(--red); padding-bottom: var(--space-1); margin-bottom: var(--space-3); }
+    .check-wave { margin-bottom: var(--space-4); }
+    .check-wave > h3 { font-size: 1rem; margin: 0 0 var(--space-2); color: var(--ink-dim); }
+    .check-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-1) var(--space-4); }
+    .check-item { display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-2); border: 1px solid var(--line-soft); border-radius: var(--radius-s); font-size: 0.9rem; }
+    .check-item input[type="checkbox"] { margin-top: 3px; width: 1.05rem; height: 1.05rem; accent-color: var(--gold); flex: 0 0 auto; }
+    .check-item .nm { font-weight: 600; }
+    .check-item .meta { color: var(--muted); font-size: 0.8rem; display: block; }
+    .check-item.is-owned { border-color: rgba(155, 232, 193, 0.5); }
+    .check-item.is-wanted .nm::after { content: " ★"; color: var(--gold); }
+    .check-summary { color: var(--muted); font-size: 0.9rem; margin-bottom: var(--space-4); }
+    .print-head { display: none; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to checklist</a>
+  <header class="site-header no-print">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html" aria-current="page">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="checklist-hero no-print">
+      <div class="container">
+        <span class="hero-kicker">Take it to the toy show</span>
+        <h1 id="page-title">Printable Checklist</h1>
+        <p class="lede">Your tracker data as a clean paper checklist, grouped by wave. Checkboxes sync with the timeline tracker — check a box here and it's checked everywhere.</p>
+        <div class="checklist-controls">
+          <div class="field">
+            <label for="c-show">Show</label>
+            <select class="input" id="c-show">
+              <option value="all">Everything</option>
+              <option value="owned">Owned only</option>
+              <option value="wanted">Wanted only</option>
+              <option value="missing">Missing (neither owned nor wanted)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-era">Era</label>
+            <select class="input" id="c-era">
+              <option value="all">Toy Biz + Hasbro</option>
+              <option value="Toy Biz">Toy Biz</option>
+              <option value="Hasbro">Hasbro</option>
+            </select>
+          </div>
+          <div class="field" style="flex:0 0 auto;">
+            <label aria-hidden="true">&nbsp;</label>
+            <button type="button" class="btn" id="c-print">🖨 Print checklist</button>
+          </div>
+        </div>
+        <p class="check-summary" id="check-summary" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="print-head" aria-hidden="true">
+        <strong>Marvel Legends Chronicle — My Checklist</strong>
+        <span id="print-date"></span>
+      </div>
+      <div id="checklist" aria-live="polite"></div>
+      <p class="no-print" style="color: var(--muted); font-size: 0.85rem;">Tip: ★ marks figures on your wanted list. BAF-piece flags show which Build-A-Figure part each figure carries.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer no-print">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/checklist.js"></script>
+</body>
+</html>

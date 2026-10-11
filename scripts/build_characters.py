@@ -31,7 +31,9 @@ NAV_LINKS = [
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
-    ("radar.html", "Radar"), ("compare.html", "Compare"), ("skills.html", "Skills"),
+    ("radar.html", "Radar"), ("compare.html", "Compare"),
+    ("grails.html", "Grails"), ("variants.html", "Variants"),
+    ("checklist.html", "Checklist"), ("skills.html", "Skills"),
     ("community.html", "Community"), ("api.html", "API"),
 ]
 

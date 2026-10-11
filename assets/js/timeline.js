@@ -1,5 +1,5 @@
 /* Timeline page — chronological waves, figure cards, search, filters. */
-import { loadData, searchFigures, computeStats } from "./data.js";
+import { loadData, searchFigures, computeStats, sourceLabel, sourceCoverage } from "./data.js";
 import { openFigureDialog, badgeFor, escapeHtml } from "./figure-dialog.js";
 import { owned, wanted } from "./tracker.js";
 
@@ -9,6 +9,8 @@ const els = {
   mfr: document.getElementById("f-mfr"),
   baf: document.getElementById("f-baf"),
   tracked: document.getElementById("f-tracked"),
+  source: document.getElementById("f-source"),
+  sourceNote: document.getElementById("source-note"),
   timeline: document.getElementById("timeline"),
   yearRail: document.getElementById("year-rail"),
   reset: document.getElementById("f-reset"),
@@ -20,6 +22,7 @@ function state() {
     mfr: els.mfr.value,
     baf: els.baf.value,
     tracked: els.tracked.value,
+    source: els.source.value,
   };
 }
 
@@ -49,6 +52,7 @@ function waveBlock(wave, s) {
     if (s.baf === "nobaf" && f.waveBaf) return false;
     if (s.tracked === "owned" && !owned.has(f.id)) return false;
     if (s.tracked === "wanted" && !wanted.has(f.id)) return false;
+    if (s.source !== "all" && (f.source ?? "unclassified") !== s.source) return false;
     return true;
   });
   if (!figs.length) return null;
@@ -178,6 +182,15 @@ async function init() {
     const stats = computeStats(waves, figures);
     renderStats(stats);
 
+    /* Honest coverage note for the "Featured In" facet: only waves whose
+       series name explicitly names a screen/game source are classified. */
+    if (els.sourceNote) {
+      const { classified, total } = sourceCoverage(figures);
+      const pct = Math.round((classified / total) * 100);
+      els.sourceNote.textContent =
+        `“Featured In” classifies ${classified.toLocaleString()} of ${total.toLocaleString()} figures (${pct}% of the archive) — only where the wave name itself names the source. Everything else is Unclassified; we don't guess.`;
+    }
+
     let debounce;
     const rerender = () => {
       renderTimeline(waves, figures);
@@ -187,12 +200,13 @@ async function init() {
       clearTimeout(debounce);
       debounce = setTimeout(rerender, 180);
     });
-    for (const el of [els.mfr, els.baf, els.tracked]) el.addEventListener("change", rerender);
+    for (const el of [els.mfr, els.baf, els.tracked, els.source]) el.addEventListener("change", rerender);
     els.reset.addEventListener("click", () => {
       els.search.value = "";
       els.mfr.value = "all";
       els.baf.value = "all";
       els.tracked.value = "all";
+      els.source.value = "all";
       rerender();
     });
     /* Empty-state "clear" buttons delegate to the toolbar reset. */

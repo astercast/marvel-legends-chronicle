@@ -67,6 +67,7 @@ textarea.input { resize: vertical; min-height: 84px; }
 .badge-exclusive { color: var(--blue); border-color: rgba(127, 212, 255, 0.4); background: rgba(127, 212, 255, 0.07); }
 .badge-variant { color: #c9a7ff; border-color: rgba(201, 167, 255, 0.4); background: rgba(201, 167, 255, 0.07); }
 .badge-toybiz { color: #ffb37f; border-color: rgba(255, 179, 127, 0.4); background: rgba(255, 179, 127, 0.07); }
+.badge-source { color: #9be8c1; border-color: rgba(155, 232, 193, 0.4); background: rgba(155, 232, 193, 0.07); }
 .badge-flag { color: var(--gold); border-color: rgba(245, 179, 1, 0.5); background: transparent; }
 
 .card {

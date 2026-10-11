@@ -20,6 +20,7 @@ export async function loadData() {
         year: wave.year,
         manufacturer: wave.manufacturer,
         waveBaf: wave.baf ?? null,
+        source: wave.source ?? null, // "mcu" | "animated" | "videogame" | null (unclassified)
         ...fig,
       });
     }
@@ -41,6 +42,24 @@ export function searchFigures(figures, query) {
 
 export function figureById(figures, id) {
   return figures.find((f) => f.id === id) ?? null;
+}
+
+/* "Featured In" story-source facet. Only waves whose series name explicitly
+   names a screen/game source are classified; everything else is unclassified
+   rather than guessed. */
+export const SOURCE_LABELS = {
+  mcu: "MCU (films & streaming)",
+  animated: "Animated series & films",
+  videogame: "Video games",
+};
+
+export function sourceLabel(source) {
+  return SOURCE_LABELS[source] ?? "Unclassified";
+}
+
+export function sourceCoverage(figures) {
+  const classified = figures.filter((f) => f.source).length;
+  return { classified, total: figures.length };
 }
 
 export function computeStats(waves, figures) {

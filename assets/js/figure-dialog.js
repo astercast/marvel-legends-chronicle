@@ -9,6 +9,10 @@ export function badgeFor(fig) {
   if (fig.exclusive) badges.push(`<span class="badge badge-exclusive">${escapeHtml(fig.exclusive)}</span>`);
   if (fig.variant) badges.push(`<span class="badge badge-variant">${escapeHtml(fig.variant)}</span>`);
   if (fig.bafPiece) badges.push(`<span class="badge">Builds: ${escapeHtml(fig.bafPiece)}</span>`);
+  if (fig.source) {
+    const label = { mcu: "MCU", animated: "Animated", videogame: "Video game" }[fig.source] ?? fig.source;
+    badges.push(`<span class="badge badge-source">${escapeHtml(label)}</span>`);
+  }
   return badges.join("");
 }
 

@@ -35,6 +35,19 @@
     },
     "figureCount": {
       "type": "integer"
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "mcu",
+        "animated",
+        "videogame",
+        null
+      ],
+      "description": "Story source, classified only where the wave name explicitly names a screen/game source; null = unclassified (never guessed)"
     }
   }
 }
