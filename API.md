@@ -73,6 +73,18 @@ Base path: `api/v1/`
 - Join figures to waves on `waveId` ↔ `id`.
 - `encyclopedia.json` is editorial knowledge, not catalog data — cite `priceNote` and `verified` when quoting prices.
 
+## Skills
+
+206 task procedures in `skills/`, indexed by `skills/index.json`
+(id, title, description, path). Each skill file has frontmatter
+(`name`, `description`) followed by: Use when, Inputs, Procedure,
+Worked example, Data references, Pitfalls.
+
+Agents: `api/v1/index.json` carries `repository`, `skills` (directory,
+index, count, usage), and `for_agents` routing. Load the skill matching
+the task; use the JSON endpoints as the data layer behind it.
+Regenerate with `python3 scripts/build_skills.py` after data changes.
+
 ## Provenance and limitations
 
 Fan-compiled archive. Within-year ordering is year-accurate but not audited to the month. Some BAF pieces and disputed wave numbers are flagged in `notes`. Hall-of-fame prices are secondary-market observations, not guarantees. Regenerate with `python3 scripts/build_api.py` after data changes.

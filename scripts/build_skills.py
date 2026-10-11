@@ -1,0 +1,568 @@
+#!/usr/bin/env python3
+"""Generate the skills/ library for the Marvel Legends Chronicle.
+
+Usage: python3 scripts/build_skills.py
+Reads data/*.json, writes skills/<category>/<id>.md + skills/index.json.
+
+Every skill is task-oriented (inputs, procedure, worked example, data refs,
+pitfalls) — generated from the Chronicle's own verified data, never invented.
+"""
+import json
+import re
+from collections import Counter, defaultdict
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+OUT = ROOT / "skills"
+VERSION = "1.0.0"
+
+
+def load(name):
+    return json.loads((DATA / name).read_text())
+
+
+def slug(s):
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
+def render(skill):
+    lines = ["---", f"name: {skill['id']}", f"description: {skill['desc']}",
+             "---", "", f"# {skill['title']}", "", "## Use when", "",
+             skill["use"], "", "## Inputs", ""]
+    lines += [f"- {i}" for i in skill["inputs"]]
+    lines += ["", "## Procedure", ""]
+    lines += [f"{n}. {step}" for n, step in enumerate(skill["steps"], 1)]
+    lines += ["", "## Worked example", "", skill["example"], ""]
+    if skill.get("refs"):
+        lines += ["## Data references", ""]
+        lines += [f"- `{a}`" for a in skill["refs"]]
+        lines += [""]
+    if skill.get("pitfalls"):
+        lines += ["## Pitfalls", ""]
+        lines += [f"- {p}" for p in skill["pitfalls"]]
+        lines += [""]
+    return "\n".join(lines)
+
+
+def base_name(n):
+    return re.sub(r"\s*\(.*?\)\s*", "", n).strip()
+
+
+# ------------------------------------------------------------ data-driven
+
+def baf_skills(figures):
+    out = []
+    for w in figures["waves"]:
+        baf = w.get("baf")
+        if not baf:
+            continue
+        pieces = defaultdict(set)
+        for f in w["figures"]:
+            if f.get("bafPiece"):
+                pieces[f["name"]].add(f["bafPiece"])
+        if not pieces:
+            continue
+        checklist = "\n".join(
+            f"  - [ ] {fig} → {', '.join(sorted(pcs))}" for fig, pcs in sorted(pieces.items()))
+        n_figs = len(pieces)
+        out.append({
+            "id": f"baf-{slug(baf)}",
+            "cat": "baf",
+            "title": f"Complete the {baf} Build-A-Figure",
+            "desc": f"Complete the {baf} BAF: which {w['year']} figures carry which pieces.",
+            "use": f"You want to build the {baf} BAF from the {w['year']} {w.get('series', '')} wave. "
+                   f"{n_figs} figures carry pieces.",
+            "inputs": ["Your current figure inventory", "The BAF piece you still need"],
+            "steps": [
+                f"The BAF: **{baf}** ({w['year']}, {w.get('series', 'assortment')}).",
+                "Checklist — buy the figure, keep the piece:\n" + checklist,
+                "Prioritize: figures you want anyway first, then cheapest piece-carriers.",
+                "Verify each piece against the BAF's assembly (some waves split one piece across variants).",
+                "Keep boxes until the BAF is complete — piece claims need proof.",
+            ],
+            "example": f"Missing the {baf} torso? Find which figure above carries it, "
+                       f"check sold listings for the cheapest loose complete figure.",
+            "refs": ["data/figures.json"],
+            "pitfalls": [
+                "Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.",
+                "Bootleg BAF pieces don't fit right — authenticate the figures first.",
+            ],
+        })
+    return out
+
+
+def character_skills(figures):
+    counts = Counter()
+    by_char = defaultdict(list)
+    for w in figures["waves"]:
+        for f in w["figures"]:
+            b = base_name(f["name"])
+            counts[b] += 1
+            by_char[b].append((w["year"], w.get("series", ""), f["name"],
+                               f.get("variant"), f.get("exclusive")))
+    out = []
+    for char, n in counts.most_common():
+        if n < 8:
+            break
+        rows = sorted(by_char[char], key=lambda r: r[0])
+        listing = "\n".join(
+            f"  - {y} — {series}: {name}"
+            + (f" [{variant}]" if variant else "")
+            + (f" ({excl})" if excl else "")
+            for y, series, name, variant, excl in rows[:14])
+        more = f"\n  - …and {len(rows) - 14} more" if len(rows) > 14 else ""
+        out.append({
+            "id": f"collect-{slug(char)}",
+            "cat": "characters",
+            "title": f"Collect every {char}",
+            "desc": f"Complete a {char} collection: all {n} Marvel Legends releases, chronological.",
+            "use": f"You collect {char}. {n} releases are catalogued from {rows[0][0]} to {rows[-1][0]}.",
+            "inputs": ["Your current holdings", "Budget tier (loose / boxed / graded)"],
+            "steps": [
+                "Work the list chronologically — oldest first, they appreciate fastest:",
+                listing + more,
+                "Mark owned/wanted in the Chronicle tracker as you go.",
+                "Toy Biz-era releases: authenticate hard (bootlegs concentrate here).",
+                "Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).",
+            ],
+            "example": f"Starting a {char} run? Grab the most recent mainline release first (cheapest, in-stock), "
+                       f"then hunt backwards by price.",
+            "refs": ["data/figures.json"],
+            "pitfalls": [
+                "No completion rule = endless spending. Define 'complete' before you start.",
+                "Variant rabbit holes — some characters have 5+ releases of one sculpt.",
+            ],
+        })
+    return out
+
+
+def grail_skills(ency):
+    out = []
+    for g in ency["hallOfFame"]:
+        ver = "verified price data" if g.get("verified") else "UNVERIFIED — treat as collector lore, not market data"
+        price = g.get("price") or g.get("priceNote") or "no price recorded"
+        out.append({
+            "id": f"grail-{slug(g['name'])}",
+            "cat": "grails",
+            "title": f"Research the {g['name']} grail",
+            "desc": f"Why the {g['name']} matters, its price evidence, and how to verify one.",
+            "use": f"You're considering buying, selling, or hunting the {g['name']} ({g.get('era', 'unknown era')}).",
+            "inputs": ["The listing or lead", "Your authentication checklist"],
+            "steps": [
+                f"Why it matters: {g.get('why', 'Hall of Fame entry.')}",
+                f"Price evidence: {price} ({ver}).",
+                "Authenticate before negotiating — grails attract the best bootlegs.",
+                "Compare against 90 days of eBay SOLD listings, not asking prices.",
+                "For boxed grails: grade the card (see the card-grading skill) before paying a premium.",
+            ],
+            "example": f"Listing claims a {g['name']}: run the bootleg checklist, "
+                       f"pull 90-day solds, then negotiate from data, not excitement.",
+            "refs": ["data/encyclopedia.json"],
+            "pitfalls": [
+                "Paying asking-price logic on a grail — solds are the market, asks are wishes.",
+                "Skipping authentication because 'the seller seems nice.'",
+            ],
+        })
+    return out
+
+
+def bootleg_skills(ency):
+    out = []
+    for s in ency["bootlegGuide"]["sections"]:
+        items = "\n".join(f"  - [ ] {it}" for it in s["items"][:8])
+        out.append({
+            "id": f"bootleg-{s['id']}",
+            "cat": "bootleg",
+            "title": f"Spot bootlegs: {s['id'].replace('-', ' ')}",
+            "desc": f"Authenticate a figure via {s['id'].replace('-', ' ')}: the guide's red flags as a checklist.",
+            "use": "Authenticating a figure or listing — run all six bootleg skills, not just one.",
+            "inputs": ["Clear photos (or the figure in hand)"],
+            "steps": [
+                "Work the checklist — one fail doesn't convict, two corroborating fails do:",
+                items,
+                "Cross-check with the listing/price-logic skill — bootlegs cluster at impossible prices.",
+            ],
+            "example": "Blurry card printing + wrong plastic sheen = walk away, no matter the price.",
+            "refs": ["data/encyclopedia.json"],
+            "pitfalls": ["Authenticating from one blurry photo — demand clear shots or pass."],
+        })
+    out.append({
+        "id": "bootleg-authenticate-listing",
+        "cat": "bootleg",
+        "title": "Authenticate a listing end-to-end",
+        "desc": "The full authentication pass: figure, packaging, seller, and price logic.",
+        "use": "Before buying any figure above impulse-buy price.",
+        "inputs": ["Listing URL or photos", "Seller profile"],
+        "steps": [
+            "Run all six bootleg checklists (packaging, paint, joints, targets, listings, price-logic).",
+            "Check the seller: feedback history, other listings, stock-photo vs real-photo.",
+            "Price logic: if it's 40%+ under 90-day solds, assume bootleg until proven otherwise.",
+            "For grails: demand provenance — where did they get it, when, any receipts.",
+            "When in doubt, pass. Another listing always comes.",
+        ],
+        "example": "A $40 'SDCC exclusive' with stock photos and 3 feedback: three fails — pass.",
+        "refs": ["data/encyclopedia.json"],
+        "pitfalls": ["FOMO buying — scarcity pressure is the bootlegger's best tool."],
+    })
+    return out
+
+
+# ------------------------------------------------------------- hand-authored
+
+HAND = [
+ # --- eras (5)
+ dict(id="era-toy-biz", cat="eras", title="Collect the Toy Biz era (2002–2006)",
+      desc="Navigate the founding era: grails, bootlegs, and what holds value.",
+      use="Collecting or evaluating 2002–2006 Toy Biz releases.",
+      inputs=["Era knowledge: 6-inch scale launch, BAF innovation, legendary sculpts"],
+      steps=["Start with the Hall of Fame Toy Biz entries — they define the era's value.",
+             "Authenticate everything: bootleg density is highest here.",
+             "Condition is king — card condition drives Toy Biz premiums.",
+             "Key lines: Series 1–9, Face-Off, X-Men Classics, Marvel Select crossovers."],
+      example="A Series 1 Toad: verify the initial-assortment markers before paying grail money.",
+      refs=["data/encyclopedia.json", "data/figures.json"],
+      pitfalls=["Loose Toy Biz at boxed prices — loose is common, boxed is the premium."]),
+ dict(id="era-transition", cat="eras", title="Collect the Transition years (2007–2009)",
+      desc="The Hasbro takeover era: what changed and what to hunt.",
+      use="Understanding 2007–2009 releases and their quirks.",
+      inputs=["Knowledge of the license handoff"],
+      steps=["Learn the handoff story — it explains packaging and distribution quirks.",
+             "Watch for short-packed waves; some transition figures are sleeper grails.",
+             "Cross-reference waves by year in the Chronicle timeline."],
+      example="Transition-era short-packs often out-appreciate their Hasbro successors.",
+      refs=["data/encyclopedia.json", "data/figures.json"],
+      pitfalls=["Assuming Hasbro-era pricing logic applies — transition supply was chaotic."]),
+ dict(id="era-hasbro-return", cat="eras", title="Collect the Hasbro Return era (2010–2015)",
+      desc="The modern line takes shape: BAF standardization and the collector boom.",
+      use="Collecting 2010–2015 Hasbro releases.",
+      inputs=["Your focus: characters, BAFs, or completism"],
+      steps=["BAF waves become the collecting unit — use the BAF completion skills.",
+             "Track the annual SDCC exclusives; they anchor the era's value.",
+             "Infinite Series branding: learn the wave-numbering to spot gaps."],
+      example="Completing the 2013 wave set? The BAF skills list every piece-carrier.",
+      refs=["data/figures.json"],
+      pitfalls=["Chasing every variant — the Return era varianted aggressively."]),
+ dict(id="era-infinite", cat="eras", title="Collect the Infinite era (2016–2021)",
+      desc="Peak modern Legends: deep cuts, army builders, and the MCU wave machine.",
+      use="Collecting 2016–2021 releases.",
+      inputs=["Your lane: comic, MCU, or X-Men"],
+      steps=["Deep-cut characters debuted here — check character guides for first-appearance figures.",
+             "MCU waves: buy on release; they saturate then climb.",
+             "Army builders: decide your troop count before the aftermarket does it for you."],
+      example="First-appearance deep cuts from this era are the next decade's grails.",
+      refs=["data/figures.json"],
+      pitfalls=["MCU wave FOMO — most restock; patience beats panic."]),
+ dict(id="era-haslab", cat="eras", title="Understand the HasLab era (2020+)",
+      desc="Crowdfunded flagships: how HasLab changed high-end collecting.",
+      use="Evaluating HasLab projects and their aftermarket.",
+      inputs=["The HasLab project list", "Backer counts"],
+      steps=["HasLab = limited by backers, not by retail — scarcity is real.",
+             "Aftermarket peaks 6–12 months post-delivery, then settles.",
+             "Never back what you can't afford to keep — flipping HasLab is a gamble."],
+      example="Galactus: backer-count scarcity drove a 2× aftermarket before settling.",
+      refs=["data/encyclopedia.json"],
+      pitfalls=["Backing for flip profit — the settle hurts."]),
+ # --- collection (5)
+ dict(id="collection-mark-owned", cat="collection", title="Track your collection",
+      desc="Use the Chronicle's owned/wanted tracker properly.",
+      use="Keeping a real inventory instead of a mental one.",
+      inputs=["Your figures, loose and boxed"],
+      steps=["Mark owned per figure — the tracker lives in your browser (localStorage).",
+             "Mark wanted for hunt-list figures; review the list monthly.",
+             "Export or screenshot quarterly — browsers get wiped."],
+      example="Sunday audit: 10 minutes marking the week's pickups, wanted list reprioritized.",
+      refs=[],
+      pitfalls=["No backup — localStorage is not a cloud."]),
+ dict(id="collection-want-list", cat="collection", title="Build a want list that works",
+      desc="A prioritized hunt list with price targets.",
+      use="Turning 'I want everything' into an actionable plan.",
+      inputs=["Your focus characters or eras"],
+      steps=["List wants with a max price each — a want without a price is a wish.",
+             "Rank by: grail risk (buy appreciating assets first) vs availability.",
+             "Review monthly; kill wants you've outgrown."],
+      example="Want: Sentinel BAF — max $180 — priority 1 (appreciating, complete the wave).",
+      refs=["data/figures.json"],
+      pitfalls=["An infinite want list — cap it at 20, finish it, then add more."]),
+ dict(id="collection-value-collection", cat="collection", title="Value your collection",
+      desc="Estimate collection value from sold listings, not asking prices.",
+      use="Insurance, selling, or just knowing.",
+      inputs=["Your owned list"],
+      steps=["Price each figure from 90-day eBay SOLD listings in matching condition.",
+             "Loose complete vs boxed vs graded — match the condition tier exactly.",
+             "Sum, then haircut 15% — that's the realizable number.",
+             "Revisit annually; the market moves."],
+      example="40 figures × average $35 sold = $1,400 gross → ~$1,190 realizable.",
+      refs=["data/figures.json"],
+      pitfalls=["Valuing at asking prices — that's fantasy accounting."]),
+ dict(id="collection-shelf-organize", cat="collection", title="Organize your display",
+      desc="Shelving that shows the collection instead of storing it.",
+      use="Setting up or redoing a display.",
+      inputs=["Shelf space", "Your display goal (era, character, scene)"],
+      steps=["Group by story: waves, teams, or sagas — not by purchase order.",
+             "BAFs get center placement; they're the anchors.",
+             "Leave 20% empty — a full shelf can't grow.",
+             "Dust monthly; sun kills cards and paint."],
+      example="X-Men shelf: Jim Lee team in the center, villains flanking, Sentinel BAF behind.",
+      refs=[],
+      pitfalls=["Direct sunlight — the silent collection killer."]),
+ dict(id="collection-photograph", cat="collection", title="Photograph your figures",
+      desc="Shelfie-grade photos with a phone.",
+      use="Community posts, sale listings, insurance records.",
+      inputs=["Phone", "One lamp", "Neutral background"],
+      steps=["One key light at 45°, neutral background (poster board works).",
+             "Eye-level with the figure — never shoot down at toys.",
+             "For sales: front, back, joints, flaws — honest photos sell faster.",
+             "For shelfies: depth — stagger figures, blur the background."],
+      example="Sale listing: 6 photos (front/back/left/right/joints/flaw close-up) — sells in days, not weeks.",
+      refs=[],
+      pitfalls=["Flash on-camera — flattens everything and blows out paint."]),
+ # --- marketplace (3)
+ dict(id="marketplace-build-search", cat="marketplace", title="Build a marketplace search query",
+      desc="Search strings that find the figure and dodge the bootlegs.",
+      use="Hunting a specific figure on eBay/Mercari/Whatnot.",
+      inputs=["Figure name", "Wave/year", "Variant details"],
+      steps=["Start: `\"Marvel Legends\" + character + wave keyword (e.g. \"Retro Spider-Man\")`.",
+             "Add exclusions: `-bootleg -custom -\"not marvel legends\"` as needed.",
+             "For BAF pieces: search the piece + BAF name (`\"Giant Man\" \"left leg\" BAF piece`).",
+             "Save the search with alerts — grails surface at odd hours."],
+      example="Query: Marvel Legends Moon Knight Fist of Khonshu -custom -bootleg",
+      refs=["data/figures.json"],
+      pitfalls=["Generic searches — 'marvel legends spider-man' returns 10,000 results."]),
+ dict(id="marketplace-price-check", cat="marketplace", title="Price-check via sold listings",
+      desc="The 90-day sold method: the only price that matters.",
+      use="Before buying or selling anything.",
+      inputs=["Figure + condition tier"],
+      steps=["eBay → advanced search → SOLD listings, last 90 days.",
+             "Filter to your condition: loose complete / boxed / graded.",
+             "Take the median of the last 10–15 solds, drop outliers.",
+             "Asking prices are irrelevant — only solds count."],
+      example="Retro Spider-Man boxed: 12 solds, median $28 — that's the price, not the $60 ask.",
+      refs=[],
+      pitfalls=["One high sold = the market. Medians, not peaks."]),
+ dict(id="marketplace-compare-retailers", cat="marketplace", title="Compare retailers",
+      desc="Where to buy: retail vs aftermarket vs community.",
+      use="Deciding where to hunt.",
+      inputs=["Figure", "Urgency"],
+      steps=["New releases: retail first (Hasbro Pulse, BBTS, EE) — aftermarket is for misses.",
+             "Aftermarket: eBay (selection), Mercari (deals), Whatnot (live, risky).",
+             "Community: r/MarvelLegends and Facebook groups — best prices, slowest.",
+             "Factor shipping: a $5 deal with $12 shipping is a $17 figure."],
+      example="Missed a wave? BBTS pile-of-loot first, then eBay solds for the gap figures.",
+      refs=[],
+      pitfalls=["Whatnot hype bidding — set your max before the stream starts."]),
+ # --- community (4)
+ dict(id="community-write-post", cat="community", title="Write a community post",
+      desc="Posts that get engagement in the Chronicle's fan community.",
+      use="Sharing pickups, shelfies, and hot takes.",
+      inputs=["Your photos", "The story behind the figure"],
+      steps=["Lead with the photo — cropped, lit, eye-level.",
+             "One hook line, then the story: why THIS figure.",
+             "Tag the figure so it links to its Chronicle entry.",
+             "Ask one question — posts with questions get 3× the replies."],
+      example="'Finally completed the Sentinel BAF — which piece took you longest?' + build photo.",
+      refs=[],
+      pitfalls=["Photo-dump with no words — the algorithm and the humans both skip it."]),
+ dict(id="community-tag-figures", cat="community", title="Tag figures in posts",
+      desc="Link your posts to Chronicle figure entries.",
+      use="Every figure-related post.",
+      inputs=["Figure name"],
+      steps=["Tag the exact figure — tags link to the entry with wave, year, and price context.",
+             "Tag the BAF too when showing a completed build.",
+             "Hashtags for discovery: #marvellegends + character tag."],
+      example="Post tags: [Retro Spider-Man] #marvellegends #spiderman",
+      refs=["data/figures.json"],
+      pitfalls=["Wrong-variant tags — check the entry before tagging."]),
+ dict(id="community-id-figure", cat="community", title="Identify an unknown figure",
+      desc="ID a figure from photos or a description.",
+      use="Mystery figures, lot finds, childhood toys.",
+      inputs=["Photos (front/back/accessories) or a detailed description"],
+      steps=["Note: costume details, accessories, articulation, base/stand, copyright stamps.",
+             "Search the Chronicle by character, then filter by year.",
+             "Copyright stamp year + sculpt style narrows it to a wave.",
+             "Ask the community with the details you gathered — ID posts get fast answers."],
+      example="'Blue suit, lightning hands, 2003 stamp' → search Thor → 2003 wave identified in minutes.",
+      refs=["data/figures.json"],
+      pitfalls=["'It's Spider-Man, which one?' — details or it didn't happen."]),
+ dict(id="community-find-collectors", cat="community", title="Find your collector people",
+      desc="Discover collectors who share your lane.",
+      use="Building your community circle.",
+      inputs=["Your collecting lane"],
+      steps=["Search hashtags for your lane (#xmenlegends, #spideyshelf).",
+             "Follow 10, engage genuinely for two weeks — comments, not just likes.",
+             "Trade with established members before strangers."],
+      example="X-Men collector: #xmenlegends → 10 follows → first trade in week three.",
+      refs=[],
+      pitfalls=["DMing 'sell me that' as a first message — engage first."]),
+ # --- variants (2)
+ dict(id="variants-chase-hunting", cat="variants", title="Hunt chase variants",
+      desc="Find short-packed chase figures without overpaying.",
+      use="Chasing 1-per-case variants.",
+      inputs=["The chase figure", "Case ratios"],
+      steps=["Learn the case ratio — it sets the fair price ceiling.",
+             "Check retail first: chases surface in restocks.",
+             "Aftermarket: pay the ratio premium, not the hype premium.",
+             "Decide: chase or standard? Most collectors are happy with the standard."],
+      example="1-per-case chase at $25 retail → fair aftermarket $40–60, not $150.",
+      refs=["data/figures.json"],
+      pitfalls=["Launch-week panic buying — chases settle after 60 days."]),
+ dict(id="variants-identify", cat="variants", title="Identify variants",
+      desc="Tell variants apart: deco, sculpt, and packaging differences.",
+      use="Buying, selling, or cataloguing variants.",
+      inputs=["The figure in question"],
+      steps=["Check the Chronicle entry's variant notes first.",
+             "Deco vs sculpt: repaints are common, resculpts are the valuable ones.",
+             "Packaging variants: same figure, different card — decide if you care.",
+             "Photograph the differences for your records."],
+      example="Two Wolverines, different belt paint — deco variant, note it, move on.",
+      refs=["data/figures.json"],
+      pitfalls=["Paying resculpt money for a repaint."]),
+ # --- hunts (10)
+ dict(id="hunt-sdcc-exclusives", cat="hunts", title="Hunt SDCC exclusives",
+      desc="Get Comic-Con exclusives without attending.",
+      use="Every July.",
+      inputs=["The year's exclusive list", "Your max prices"],
+      steps=["Hasbro Pulse usually gets shared stock — watch the drop time.",
+             "Aftermarket day-one is peak hype; prices dip in September.",
+             "Authenticate: exclusives are bootleg magnets (see bootleg skills)."],
+      example="SDCC exclusive at $60 retail → $120 day-one aftermarket → $80 by October.",
+      refs=[],
+      pitfalls=["Day-one aftermarket — patience saves 40%."]),
+ dict(id="hunt-store-exclusives", cat="hunts", title="Hunt store exclusives",
+      desc="Target/Walmart/Amazon exclusives: stock patterns and timing.",
+      use="Chasing retailer exclusives.",
+      inputs=["The exclusive", "Retailer restock patterns"],
+      steps=["Learn the retailer's restock rhythm (Target: Tuesday mornings, etc.).",
+             "Brickseek-style stock checkers for in-store hunts.",
+             "Online: set alerts; exclusives sell out in waves, not once."],
+      example="Target exclusive restocked three times in a month — the patient got it at retail.",
+      refs=[],
+      pitfalls=["Paying scalper prices during wave one — waves two and three exist."]),
+ dict(id="hunt-toy-biz-grails", cat="hunts", title="Hunt Toy Biz grails",
+      desc="Find 2002–2006 grails in the wild.",
+      use="Vintage hunting.",
+      inputs=["Your grail list with max prices"],
+      steps=["Flea markets, estate sales, and lots — grails hide in collections, not listings.",
+             "Learn the era's packaging at a glance (see the Toy Biz era skill).",
+             "Authenticate on the spot — bring the bootleg checklists.",
+             "Negotiate from sold data, loaded on your phone."],
+      example="Flea-market Series 2 lot: $30 for five figures including a $50 grail — knowledge paid.",
+      refs=["data/encyclopedia.json"],
+      pitfalls=["'Vintage' pricing on common Toy Biz — most are $10–15 loose."]),
+ dict(id="hunt-chase-variants", cat="hunts", title="Hunt chase variants in the wild",
+      desc="Retail hunting tactics for short-packed figures.",
+      use="Active retail hunts.",
+      inputs=["Case ratios", "Store stock patterns"],
+      steps=["See variants-chase-hunting for pricing; this is the field tactics.",
+             "Feel the weight? No — check the assortment code on the box.",
+             "Befriend stock staff; ask about truck days.",
+             "Don't be the person who tears cases open in the aisle."],
+      example="Assortment code check found the chase without opening a single box.",
+      refs=[],
+      pitfalls=["Scalper behavior — the community remembers."]),
+ dict(id="hunt-convention-exclusives", cat="hunts", title="Hunt convention exclusives",
+      desc="Beyond SDCC: NYCC, PulseCon, and international exclusives.",
+      use="Convention season.",
+      inputs=["Convention calendar"],
+      steps=["List every convention exclusive at the start of the season.",
+             "PulseCon is the accessible one — no travel needed.",
+             "International exclusives: proxy services or community trades."],
+      example="PulseCon exclusive ordered from the couch — zero travel, retail price.",
+      refs=[],
+      pitfalls=["Forgetting PulseCon — it's the easiest exclusive of the year."]),
+ dict(id="hunt-complete-wave", cat="hunts", title="Complete a wave",
+      desc="Finish a wave efficiently: BAF math and gap-filling.",
+      use="Wave completion projects.",
+      inputs=["The wave", "Your owned list"],
+      steps=["Use the wave's BAF skill — it lists every piece-carrier.",
+             "Buy the BAF pieces first (they appreciate); fill commons last (they don't).",
+             "Lots > singles for commons — wave lots surface constantly.",
+             "Track in the Chronicle as you go."],
+      example="Wave at 5/8: BAF pieces first ($90), commons as a lot ($40) — done under budget.",
+      refs=["data/figures.json"],
+      pitfalls=["Buying commons first — they're always available, BAF pieces aren't."]),
+ dict(id="hunt-track-preorders", cat="hunts", title="Track preorders",
+      desc="Never miss a release: the preorder system.",
+      use="Ongoing.",
+      inputs=["Your want list"],
+      steps=["Preorder day-one at BBTS/EE/Pulse — no deposit, cancel anytime.",
+             "Pile-of-loot (BBTS) batches shipping — saves a fortune.",
+             "Set calendar alerts for known drop windows.",
+             "Review preorders quarterly — kill what you've outgrown."],
+      example="12 preorders in one pile-of-loot shipment: $18 shipping total vs $90 separate.",
+      refs=[],
+      pitfalls=["Preordering everything — the pile becomes a bill."]),
+ dict(id="hunt-buy-ebay-safely", cat="hunts", title="Buy safely on eBay",
+      desc="eBay tactics: filters, offers, and seller reads.",
+      use="Every eBay purchase.",
+      inputs=["Your target + max price from sold data"],
+      steps=["Filter: sold listings for price, then active with 'Buy It Now + Best Offer'.",
+             "Offer 15–20% under ask on stale listings (30+ days).",
+             "Read the seller: feedback, other listings, photo originality.",
+             "Run the authenticate-a-listing skill on anything over $50."],
+      example="Stale $80 listing → $65 offer accepted — sold data said $62.",
+      refs=[],
+      pitfalls=["Bidding wars — set your max from solds and walk away at it."]),
+ dict(id="hunt-buy-whatnot", cat="hunts", title="Buy safely on Whatnot",
+      desc="Live-auction tactics without the hype tax.",
+      use="Whatnot streams.",
+      inputs=["Your max per lot, set BEFORE the stream"],
+      steps=["Set max bids before the stream — hype is the product.",
+             "Watch two streams before bidding in one — learn the sellers.",
+             "Factor shipping per order, not per item.",
+             "Screenshot wins immediately — disputes need evidence."],
+      example="Watched two streams, bid in the third, won a lot at 60% of eBay solds.",
+      refs=[],
+      pitfalls=["The room's energy — it's designed to make you overbid."]),
+ dict(id="hunt-grade-card", cat="hunts", title="Grade card condition",
+      desc="Assess carded figure condition like a grader.",
+      use="Buying or selling carded figures.",
+      inputs=["The carded figure, good light"],
+      steps=["Corners: sharp? Blunt one corner = a full grade down.",
+             "Edges: shelf wear along the bottom is the common flaw.",
+             "Bubble: clear? Yellowed? Cracked? Lifting?",
+             "Card: price stickers, bends, spine stress — photograph all of it.",
+             "Grade honestly: C10 is a myth; most 'mint' is C8."],
+      example="C8.5 assessment: one soft corner, clear bubble — priced as C8, sold fast.",
+      refs=[],
+      pitfalls=["Calling everything mint — buyers distrust perfect grades on imperfect cards."]),
+]
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    for f in OUT.rglob("*.md"):
+        f.unlink()
+
+    figures = load("figures.json")
+    ency = load("encyclopedia.json")
+
+    skills = []
+    skills += baf_skills(figures)
+    skills += character_skills(figures)
+    skills += grail_skills(ency)
+    skills += bootleg_skills(ency)
+    skills += HAND
+
+    index = []
+    for s in skills:
+        cat_dir = OUT / s["cat"]
+        cat_dir.mkdir(exist_ok=True)
+        path = cat_dir / f"{s['id']}.md"
+        path.write_text(render(s))
+        index.append({"id": s["id"], "title": s["title"],
+                      "description": s["desc"], "path": f"skills/{s['cat']}/{s['id']}.md"})
+
+    (OUT / "index.json").write_text(json.dumps(
+        {"version": VERSION, "count": len(index), "skills": index}, indent=2) + "\n")
+
+    cats = {}
+    for s in skills:
+        cats[s["cat"]] = cats.get(s["cat"], 0) + 1
+    print(f"marvel skills: {len(skills)}")
+    for cat, n in sorted(cats.items()):
+        print(f"  {cat}: {n}")
+
+
+if __name__ == "__main__":
+    main()

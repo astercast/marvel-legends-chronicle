@@ -1,4 +1,4 @@
-/* Shared accessible modal (focus trap-lite: focus close on open, restore on close). */
+/* Shared accessible modal: focus trap, Escape to close, focus restore, backdrop dismiss. */
 let lastFocused = null;
 
 export function openModal(buildContent) {
@@ -18,6 +18,18 @@ export function openModal(buildContent) {
   backdrop.addEventListener("click", (e) => { if (e.target === backdrop) close(); });
   backdrop.querySelector(".modal-close").addEventListener("click", close);
   document.addEventListener("keydown", escHandler);
+  /* Full focus trap: Tab cycles within the dialog. */
+  backdrop.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab") return;
+    const focusables = Array.prototype.slice.call(
+      backdrop.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => !el.disabled && el.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   document.body.appendChild(backdrop);
   document.body.style.overflow = "hidden";
   buildContent(backdrop.querySelector("#modal-title"), backdrop.querySelector(".modal-body"), close);

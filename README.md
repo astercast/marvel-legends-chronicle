@@ -27,6 +27,15 @@ Static site. GitHub only — nothing is deployed anywhere.
 - **Encyclopedia:** history timeline, searchable hall of fame with verified/unverified price flags, bootleg guide, resources
 - **Community:** seeded collector profiles; photo composer with client-side downscaling; chronological + following feeds; likes, comments, follows, hashtags; figure tags open the figure dialog
 
+## Skills
+
+`skills/` — 206 agentic task procedures (`python3 scripts/build_skills.py`
+regenerates from `data/*.json` + authored procedures). `skills/index.json`
+is the manifest agents should load first; `api/v1/index.json` points at it.
+101 BAF completion checklists, 46 character collector guides, 23 grail
+dossiers, bootleg authentication, era guides, hunt tactics, marketplace and
+community procedures.
+
 ## Data status
 
 `data/figures.json` holds **1,904 figures across 158 waves** (2002–2026), merged from twelve researched parts. Year ordering is accurate; within-year monthly ordering is not yet audited. Some BAF pieces and disputed wave numbers are flagged `unverified` in notes. Announced-but-unreleased entries should be treated cautiously.

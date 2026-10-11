@@ -81,11 +81,24 @@ def main():
             "figure": "api/v1/schema/figure.json",
         },
     }
+    skills_index = {}
+    skills_idx_path = ROOT / "skills" / "index.json"
+    if skills_idx_path.exists():
+        skills_index = json.loads(skills_idx_path.read_text())
+
     index = {
         "name": "Marvel Legends Chronicle API",
         "version": VERSION,
         "observed": OBSERVED,
+        "repository": "https://github.com/astercast/marvel-legends-chronicle",
+        "for_agents": "Start at api/v1/index.json. For task procedures, read skills/index.json and load the relevant skill file — skills are the primary agentic interface for doing work, the JSON endpoints are the data layer.",
         "provenance": "Fan-compiled archive. Within-year ordering is year-accurate but not audited to the month; some BAF pieces and disputed wave numbers are flagged in notes.",
+        "skills": {
+            "directory": "skills/",
+            "index": "skills/index.json",
+            "count": skills_index.get("count", 0),
+            "usage": "Each skill is a markdown file with frontmatter (name, description), then: Use when, Inputs, Procedure, Worked example, Data references, Pitfalls. Load the skill whose task matches the user's request.",
+        },
         "endpoints": endpoints,
     }
 

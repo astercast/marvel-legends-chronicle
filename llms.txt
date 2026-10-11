@@ -21,6 +21,20 @@ Base: `api/v1/`
 - `api/v1/encyclopedia.json` — history timeline, hall of fame, bootleg guide, resources directory
 - `api/v1/schema/wave.json`, `api/v1/schema/figure.json` — JSON Schema (draft-07)
 
+## Skills (agentic task procedures)
+
+206 skills in `skills/` — rebuild with `python3 scripts/build_skills.py`
+(generates from `data/*.json` + authored procedures; outputs committed).
+`skills/index.json` is the manifest: id, title, description, path per skill.
+
+For agents: load the skill whose task matches the request — skills are the
+primary interface for *doing* work; the JSON endpoints are the data layer.
+`api/v1/index.json` points here (`repository`, `skills`, `for_agents`).
+
+Categories: baf (101 completion checklists), characters (46 collector guides),
+grails (23 dossiers), bootleg (7), eras (5), collection (5), marketplace (3),
+community (4), variants (2), hunts (10).
+
 ## Stable ids
 
 Figure ids are `<waveId>::<figureName>`, e.g. `toybiz-2002-series-1::Hulk`.

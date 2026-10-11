@@ -75,6 +75,7 @@ function renderTimeline(waves, figures) {
   const s = state();
   els.timeline.innerHTML = "";
   els.yearRail.innerHTML = "";
+  if (yearObserver) { yearObserver.disconnect(); yearObserver = null; }
 
   // Search mode: flat results list, capped for DOM sanity
   if (s.q.length >= 2) {
@@ -85,7 +86,7 @@ function renderTimeline(waves, figures) {
     els.timeline.appendChild(meta);
     if (!results.length) {
       els.timeline.insertAdjacentHTML("beforeend",
-        `<div class="empty-state"><p>No figures match that search. Try a character, wave, or BAF name.</p></div>`);
+        `<div class="empty-state"><p>No figures match that search. Try a character, wave, or BAF name.</p><button type="button" class="btn btn-sm" data-reset-filters>Clear search &amp; filters</button></div>`);
       return;
     }
     const grid = document.createElement("div");
@@ -125,8 +126,40 @@ function renderTimeline(waves, figures) {
 
   if (!totalWaves) {
     els.timeline.insertAdjacentHTML("beforeend",
-      `<div class="empty-state"><p>No waves match these filters.</p></div>`);
+      `<div class="empty-state"><p>No waves match these filters.</p><button type="button" class="btn btn-sm" data-reset-filters>Clear filters</button></div>`);
   }
+  setupYearSpy();
+}
+
+let yearObserver = null;
+
+/* Highlight the year-rail link for the year currently in view. */
+function setupYearSpy() {
+  if (yearObserver) { yearObserver.disconnect(); yearObserver = null; }
+  const links = Array.prototype.slice.call(els.yearRail.querySelectorAll("a"));
+  const sections = document.querySelectorAll(".year-section[id]");
+  if (!links.length || !sections.length || !("IntersectionObserver" in window)) return;
+  const byId = {};
+  links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+  let current = null;
+  yearObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      const link = byId[e.target.id];
+      if (!link || link === current) return;
+      if (current) { current.classList.remove("active"); current.removeAttribute("aria-current"); }
+      link.classList.add("active");
+      link.setAttribute("aria-current", "true");
+      current = link;
+      /* Keep the active year visible inside the horizontal rail without moving the page. */
+      const railRect = els.yearRail.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      if (linkRect.left < railRect.left || linkRect.right > railRect.right) {
+        els.yearRail.scrollLeft += linkRect.left - railRect.left - railRect.width / 2 + linkRect.width / 2;
+      }
+    });
+  }, { rootMargin: "-25% 0px -65% 0px" });
+  sections.forEach(function (s) { yearObserver.observe(s); });
 }
 
 function renderStats(stats) {
@@ -161,6 +194,10 @@ async function init() {
       els.baf.value = "all";
       els.tracked.value = "all";
       rerender();
+    });
+    /* Empty-state "clear" buttons delegate to the toolbar reset. */
+    els.timeline.addEventListener("click", (e) => {
+      if (e.target.closest("[data-reset-filters]")) els.reset.click();
     });
     renderTimeline(waves, figures);
   } catch (err) {

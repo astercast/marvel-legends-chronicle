@@ -1,0 +1,1242 @@
+{
+  "version": "1.0.0",
+  "count": 206,
+  "skills": [
+    {
+      "id": "baf-galactus",
+      "title": "Complete the Galactus Build-A-Figure",
+      "description": "Complete the Galactus BAF: which 2005 figures carry which pieces.",
+      "path": "skills/baf/baf-galactus.md"
+    },
+    {
+      "id": "baf-sentinel",
+      "title": "Complete the Sentinel Build-A-Figure",
+      "description": "Complete the Sentinel BAF: which 2005 figures carry which pieces.",
+      "path": "skills/baf/baf-sentinel.md"
+    },
+    {
+      "id": "baf-apocalypse-classic-and-black-versions",
+      "title": "Complete the Apocalypse (Classic and Black versions) Build-A-Figure",
+      "description": "Complete the Apocalypse (Classic and Black versions) BAF: which 2005 figures carry which pieces.",
+      "path": "skills/baf/baf-apocalypse-classic-and-black-versions.md"
+    },
+    {
+      "id": "baf-giant-man",
+      "title": "Complete the Giant-Man Build-A-Figure",
+      "description": "Complete the Giant-Man BAF: which 2006 figures carry which pieces.",
+      "path": "skills/baf/baf-giant-man.md"
+    },
+    {
+      "id": "baf-onslaught",
+      "title": "Complete the Onslaught Build-A-Figure",
+      "description": "Complete the Onslaught BAF: which 2006 figures carry which pieces.",
+      "path": "skills/baf/baf-onslaught.md"
+    },
+    {
+      "id": "baf-mojo",
+      "title": "Complete the Mojo Build-A-Figure",
+      "description": "Complete the Mojo BAF: which 2006 figures carry which pieces.",
+      "path": "skills/baf/baf-mojo.md"
+    },
+    {
+      "id": "baf-modok",
+      "title": "Complete the MODOK Build-A-Figure",
+      "description": "Complete the MODOK BAF: which 2006 figures carry which pieces.",
+      "path": "skills/baf/baf-modok.md"
+    },
+    {
+      "id": "baf-annihilus",
+      "title": "Complete the Annihilus Build-A-Figure",
+      "description": "Complete the Annihilus BAF: which 2007 figures carry which pieces.",
+      "path": "skills/baf/baf-annihilus.md"
+    },
+    {
+      "id": "baf-blob",
+      "title": "Complete the Blob Build-A-Figure",
+      "description": "Complete the Blob BAF: which 2007 figures carry which pieces.",
+      "path": "skills/baf/baf-blob.md"
+    },
+    {
+      "id": "baf-ronan-the-accuser",
+      "title": "Complete the Ronan the Accuser Build-A-Figure",
+      "description": "Complete the Ronan the Accuser BAF: which 2007 figures carry which pieces.",
+      "path": "skills/baf/baf-ronan-the-accuser.md"
+    },
+    {
+      "id": "baf-brood-queen",
+      "title": "Complete the Brood Queen Build-A-Figure",
+      "description": "Complete the Brood Queen BAF: which 2007 figures carry which pieces.",
+      "path": "skills/baf/baf-brood-queen.md"
+    },
+    {
+      "id": "baf-sandman-spider-man-3",
+      "title": "Complete the Sandman (Spider-Man 3) Build-A-Figure",
+      "description": "Complete the Sandman (Spider-Man 3) BAF: which 2007 figures carry which pieces.",
+      "path": "skills/baf/baf-sandman-spider-man-3.md"
+    },
+    {
+      "id": "baf-fin-fang-foom",
+      "title": "Complete the Fin Fang Foom Build-A-Figure",
+      "description": "Complete the Fin Fang Foom BAF: which 2008 figures carry which pieces.",
+      "path": "skills/baf/baf-fin-fang-foom.md"
+    },
+    {
+      "id": "baf-red-hulk",
+      "title": "Complete the Red Hulk Build-A-Figure",
+      "description": "Complete the Red Hulk BAF: which 2008 figures carry which pieces.",
+      "path": "skills/baf/baf-red-hulk.md"
+    },
+    {
+      "id": "baf-ares",
+      "title": "Complete the Ares Build-A-Figure",
+      "description": "Complete the Ares BAF: which 2008 figures carry which pieces.",
+      "path": "skills/baf/baf-ares.md"
+    },
+    {
+      "id": "baf-holocaust-nemesis",
+      "title": "Complete the Holocaust (Nemesis) Build-A-Figure",
+      "description": "Complete the Holocaust (Nemesis) BAF: which 2009 figures carry which pieces.",
+      "path": "skills/baf/baf-holocaust-nemesis.md"
+    },
+    {
+      "id": "baf-terrax",
+      "title": "Complete the Terrax Build-A-Figure",
+      "description": "Complete the Terrax BAF: which 2012 figures carry which pieces.",
+      "path": "skills/baf/baf-terrax.md"
+    },
+    {
+      "id": "baf-arnim-zola",
+      "title": "Complete the Arnim Zola Build-A-Figure",
+      "description": "Complete the Arnim Zola BAF: which 2012 figures carry which pieces.",
+      "path": "skills/baf/baf-arnim-zola.md"
+    },
+    {
+      "id": "baf-iron-monger",
+      "title": "Complete the Iron Monger Build-A-Figure",
+      "description": "Complete the Iron Monger BAF: which 2013 figures carry which pieces.",
+      "path": "skills/baf/baf-iron-monger.md"
+    },
+    {
+      "id": "baf-hit-monkey",
+      "title": "Complete the Hit-Monkey Build-A-Figure",
+      "description": "Complete the Hit-Monkey BAF: which 2013 figures carry which pieces.",
+      "path": "skills/baf/baf-hit-monkey.md"
+    },
+    {
+      "id": "baf-rocket-raccoon",
+      "title": "Complete the Rocket Raccoon Build-A-Figure",
+      "description": "Complete the Rocket Raccoon BAF: which 2013 figures carry which pieces.",
+      "path": "skills/baf/baf-rocket-raccoon.md"
+    },
+    {
+      "id": "baf-puck",
+      "title": "Complete the Puck Build-A-Figure",
+      "description": "Complete the Puck BAF: which 2013 figures carry which pieces.",
+      "path": "skills/baf/baf-puck.md"
+    },
+    {
+      "id": "baf-mandroid",
+      "title": "Complete the Mandroid Build-A-Figure",
+      "description": "Complete the Mandroid BAF: which 2014 figures carry which pieces.",
+      "path": "skills/baf/baf-mandroid.md"
+    },
+    {
+      "id": "baf-ultimate-green-goblin",
+      "title": "Complete the Ultimate Green Goblin Build-A-Figure",
+      "description": "Complete the Ultimate Green Goblin BAF: which 2014 figures carry which pieces.",
+      "path": "skills/baf/baf-ultimate-green-goblin.md"
+    },
+    {
+      "id": "baf-groot",
+      "title": "Complete the Groot Build-A-Figure",
+      "description": "Complete the Groot BAF: which 2014 figures carry which pieces.",
+      "path": "skills/baf/baf-groot.md"
+    },
+    {
+      "id": "baf-jubilee-mini-baf",
+      "title": "Complete the Jubilee (mini BAF) Build-A-Figure",
+      "description": "Complete the Jubilee (mini BAF) BAF: which 2014 figures carry which pieces.",
+      "path": "skills/baf/baf-jubilee-mini-baf.md"
+    },
+    {
+      "id": "baf-odin-king-thor-allfather",
+      "title": "Complete the Odin / King Thor (Allfather) Build-A-Figure",
+      "description": "Complete the Odin / King Thor (Allfather) BAF: which 2015 figures carry which pieces.",
+      "path": "skills/baf/baf-odin-king-thor-allfather.md"
+    },
+    {
+      "id": "baf-hobgoblin-phil-urich",
+      "title": "Complete the Hobgoblin (Phil Urich) Build-A-Figure",
+      "description": "Complete the Hobgoblin (Phil Urich) BAF: which 2015 figures carry which pieces.",
+      "path": "skills/baf/baf-hobgoblin-phil-urich.md"
+    },
+    {
+      "id": "baf-thanos-infinity",
+      "title": "Complete the Thanos (Infinity) Build-A-Figure",
+      "description": "Complete the Thanos (Infinity) BAF: which 2015 figures carry which pieces.",
+      "path": "skills/baf/baf-thanos-infinity.md"
+    },
+    {
+      "id": "baf-hulkbuster-avengers-age-of-ultron",
+      "title": "Complete the Hulkbuster (Avengers: Age of Ultron) Build-A-Figure",
+      "description": "Complete the Hulkbuster (Avengers: Age of Ultron) BAF: which 2015 figures carry which pieces.",
+      "path": "skills/baf/baf-hulkbuster-avengers-age-of-ultron.md"
+    },
+    {
+      "id": "baf-ultron-prime-avengers-age-of-ultron",
+      "title": "Complete the Ultron Prime (Avengers: Age of Ultron) Build-A-Figure",
+      "description": "Complete the Ultron Prime (Avengers: Age of Ultron) BAF: which 2015 figures carry which pieces.",
+      "path": "skills/baf/baf-ultron-prime-avengers-age-of-ultron.md"
+    },
+    {
+      "id": "baf-rhino",
+      "title": "Complete the Rhino Build-A-Figure",
+      "description": "Complete the Rhino BAF: which 2015 figures carry which pieces.",
+      "path": "skills/baf/baf-rhino.md"
+    },
+    {
+      "id": "baf-absorbing-man",
+      "title": "Complete the Absorbing Man Build-A-Figure",
+      "description": "Complete the Absorbing Man BAF: which 2016 figures carry which pieces.",
+      "path": "skills/baf/baf-absorbing-man.md"
+    },
+    {
+      "id": "baf-red-onslaught",
+      "title": "Complete the Red Onslaught Build-A-Figure",
+      "description": "Complete the Red Onslaught BAF: which 2016 figures carry which pieces.",
+      "path": "skills/baf/baf-red-onslaught.md"
+    },
+    {
+      "id": "baf-giant-man-captain-america-civil-war",
+      "title": "Complete the Giant-Man (Captain America: Civil War) Build-A-Figure",
+      "description": "Complete the Giant-Man (Captain America: Civil War) BAF: which 2016 figures carry which pieces.",
+      "path": "skills/baf/baf-giant-man-captain-america-civil-war.md"
+    },
+    {
+      "id": "baf-space-knight-venom",
+      "title": "Complete the Space Knight Venom Build-A-Figure",
+      "description": "Complete the Space Knight Venom BAF: which 2016 figures carry which pieces.",
+      "path": "skills/baf/baf-space-knight-venom.md"
+    },
+    {
+      "id": "baf-abomination",
+      "title": "Complete the Abomination Build-A-Figure",
+      "description": "Complete the Abomination BAF: which 2016 figures carry which pieces.",
+      "path": "skills/baf/baf-abomination.md"
+    },
+    {
+      "id": "baf-juggernaut",
+      "title": "Complete the Juggernaut Build-A-Figure",
+      "description": "Complete the Juggernaut BAF: which 2016 figures carry which pieces.",
+      "path": "skills/baf/baf-juggernaut.md"
+    },
+    {
+      "id": "baf-dormammu",
+      "title": "Complete the Dormammu Build-A-Figure",
+      "description": "Complete the Dormammu BAF: which 2016 figures carry which pieces.",
+      "path": "skills/baf/baf-dormammu.md"
+    },
+    {
+      "id": "baf-sandman",
+      "title": "Complete the Sandman Build-A-Figure",
+      "description": "Complete the Sandman BAF: which 2017 figures carry which pieces.",
+      "path": "skills/baf/baf-sandman.md"
+    },
+    {
+      "id": "baf-titus",
+      "title": "Complete the Titus Build-A-Figure",
+      "description": "Complete the Titus BAF: which 2017 figures carry which pieces.",
+      "path": "skills/baf/baf-titus.md"
+    },
+    {
+      "id": "baf-warlock-new-mutants",
+      "title": "Complete the Warlock (New Mutants) Build-A-Figure",
+      "description": "Complete the Warlock (New Mutants) BAF: which 2017 figures carry which pieces.",
+      "path": "skills/baf/baf-warlock-new-mutants.md"
+    },
+    {
+      "id": "baf-vulture-spider-man-homecoming",
+      "title": "Complete the Vulture (Spider-Man: Homecoming) Build-A-Figure",
+      "description": "Complete the Vulture (Spider-Man: Homecoming) BAF: which 2017 figures carry which pieces.",
+      "path": "skills/baf/baf-vulture-spider-man-homecoming.md"
+    },
+    {
+      "id": "baf-mantis-guardians-of-the-galaxy-vol-2",
+      "title": "Complete the Mantis (Guardians of the Galaxy Vol. 2) Build-A-Figure",
+      "description": "Complete the Mantis (Guardians of the Galaxy Vol. 2) BAF: which 2017 figures carry which pieces.",
+      "path": "skills/baf/baf-mantis-guardians-of-the-galaxy-vol-2.md"
+    },
+    {
+      "id": "baf-man-thing",
+      "title": "Complete the Man-Thing Build-A-Figure",
+      "description": "Complete the Man-Thing BAF: which 2017 figures carry which pieces.",
+      "path": "skills/baf/baf-man-thing.md"
+    },
+    {
+      "id": "baf-gladiator-hulk-thor-ragnarok",
+      "title": "Complete the Gladiator Hulk (Thor: Ragnarok) Build-A-Figure",
+      "description": "Complete the Gladiator Hulk (Thor: Ragnarok) BAF: which 2017 figures carry which pieces.",
+      "path": "skills/baf/baf-gladiator-hulk-thor-ragnarok.md"
+    },
+    {
+      "id": "baf-okoye-black-panther",
+      "title": "Complete the Okoye (Black Panther) Build-A-Figure",
+      "description": "Complete the Okoye (Black Panther) BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-okoye-black-panther.md"
+    },
+    {
+      "id": "baf-lizard",
+      "title": "Complete the Lizard Build-A-Figure",
+      "description": "Complete the Lizard BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-lizard.md"
+    },
+    {
+      "id": "baf-thanos-avengers-infinity-war",
+      "title": "Complete the Thanos (Avengers: Infinity War) Build-A-Figure",
+      "description": "Complete the Thanos (Avengers: Infinity War) BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-thanos-avengers-infinity-war.md"
+    },
+    {
+      "id": "baf-sasquatch",
+      "title": "Complete the Sasquatch Build-A-Figure",
+      "description": "Complete the Sasquatch BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-sasquatch.md"
+    },
+    {
+      "id": "baf-cull-obsidian-avengers-infinity-war",
+      "title": "Complete the Cull Obsidian (Avengers: Infinity War) Build-A-Figure",
+      "description": "Complete the Cull Obsidian (Avengers: Infinity War) BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-cull-obsidian-avengers-infinity-war.md"
+    },
+    {
+      "id": "baf-apocalypse",
+      "title": "Complete the Apocalypse Build-A-Figure",
+      "description": "Complete the Apocalypse BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-apocalypse.md"
+    },
+    {
+      "id": "baf-sp-dr",
+      "title": "Complete the SP//dr Build-A-Figure",
+      "description": "Complete the SP//dr BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-sp-dr.md"
+    },
+    {
+      "id": "baf-monster-venom",
+      "title": "Complete the Monster Venom Build-A-Figure",
+      "description": "Complete the Monster Venom BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-monster-venom.md"
+    },
+    {
+      "id": "baf-sauron",
+      "title": "Complete the Sauron Build-A-Figure",
+      "description": "Complete the Sauron BAF: which 2018 figures carry which pieces.",
+      "path": "skills/baf/baf-sauron.md"
+    },
+    {
+      "id": "baf-m-baku-black-panther",
+      "title": "Complete the M'Baku (Black Panther) Build-A-Figure",
+      "description": "Complete the M'Baku (Black Panther) BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-m-baku-black-panther.md"
+    },
+    {
+      "id": "baf-kree-sentry",
+      "title": "Complete the Kree Sentry Build-A-Figure",
+      "description": "Complete the Kree Sentry BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-kree-sentry.md"
+    },
+    {
+      "id": "baf-kingpin",
+      "title": "Complete the Kingpin Build-A-Figure",
+      "description": "Complete the Kingpin BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-kingpin.md"
+    },
+    {
+      "id": "baf-armored-thanos-avengers-endgame",
+      "title": "Complete the Armored Thanos (Avengers: Endgame) Build-A-Figure",
+      "description": "Complete the Armored Thanos (Avengers: Endgame) BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-armored-thanos-avengers-endgame.md"
+    },
+    {
+      "id": "baf-caliban",
+      "title": "Complete the Caliban Build-A-Figure",
+      "description": "Complete the Caliban BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-caliban.md"
+    },
+    {
+      "id": "baf-smart-hulk-avengers-endgame",
+      "title": "Complete the Smart Hulk (Avengers: Endgame) Build-A-Figure",
+      "description": "Complete the Smart Hulk (Avengers: Endgame) BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-smart-hulk-avengers-endgame.md"
+    },
+    {
+      "id": "baf-molten-man-spider-man-far-from-home",
+      "title": "Complete the Molten Man (Spider-Man: Far From Home) Build-A-Figure",
+      "description": "Complete the Molten Man (Spider-Man: Far From Home) BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-molten-man-spider-man-far-from-home.md"
+    },
+    {
+      "id": "baf-wendigo",
+      "title": "Complete the Wendigo Build-A-Figure",
+      "description": "Complete the Wendigo BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-wendigo.md"
+    },
+    {
+      "id": "baf-fat-thor-avengers-endgame",
+      "title": "Complete the Fat Thor (Avengers: Endgame) Build-A-Figure",
+      "description": "Complete the Fat Thor (Avengers: Endgame) BAF: which 2019 figures carry which pieces.",
+      "path": "skills/baf/baf-fat-thor-avengers-endgame.md"
+    },
+    {
+      "id": "baf-super-skrull",
+      "title": "Complete the Super-Skrull Build-A-Figure",
+      "description": "Complete the Super-Skrull BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-super-skrull.md"
+    },
+    {
+      "id": "baf-demogoblin",
+      "title": "Complete the Demogoblin Build-A-Figure",
+      "description": "Complete the Demogoblin BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-demogoblin.md"
+    },
+    {
+      "id": "baf-crimson-dynamo-gennady-gavrilov",
+      "title": "Complete the Crimson Dynamo (Gennady Gavrilov) Build-A-Figure",
+      "description": "Complete the Crimson Dynamo (Gennady Gavrilov) BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-crimson-dynamo-gennady-gavrilov.md"
+    },
+    {
+      "id": "baf-abomination-gamerverse",
+      "title": "Complete the Abomination (Gamerverse) Build-A-Figure",
+      "description": "Complete the Abomination (Gamerverse) BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-abomination-gamerverse.md"
+    },
+    {
+      "id": "baf-sugar-man",
+      "title": "Complete the Sugar Man Build-A-Figure",
+      "description": "Complete the Sugar Man BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-sugar-man.md"
+    },
+    {
+      "id": "baf-strong-guy",
+      "title": "Complete the Strong Guy Build-A-Figure",
+      "description": "Complete the Strong Guy BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-strong-guy.md"
+    },
+    {
+      "id": "baf-venompool-gamerverse",
+      "title": "Complete the Venompool (Gamerverse) Build-A-Figure",
+      "description": "Complete the Venompool (Gamerverse) BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-venompool-gamerverse.md"
+    },
+    {
+      "id": "baf-joe-fixit-gamerverse",
+      "title": "Complete the Joe Fixit (Gamerverse) Build-A-Figure",
+      "description": "Complete the Joe Fixit (Gamerverse) BAF: which 2020 figures carry which pieces.",
+      "path": "skills/baf/baf-joe-fixit-gamerverse.md"
+    },
+    {
+      "id": "baf-stilt-man",
+      "title": "Complete the Stilt-Man Build-A-Figure",
+      "description": "Complete the Stilt-Man BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-stilt-man.md"
+    },
+    {
+      "id": "baf-theta-sentinel-powers-of-x",
+      "title": "Complete the Theta Sentinel (Powers of X) Build-A-Figure",
+      "description": "Complete the Theta Sentinel (Powers of X) BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-theta-sentinel-powers-of-x.md"
+    },
+    {
+      "id": "baf-mr-hyde",
+      "title": "Complete the Mr. Hyde Build-A-Figure",
+      "description": "Complete the Mr. Hyde BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-mr-hyde.md"
+    },
+    {
+      "id": "baf-captain-america-s-flight-gear",
+      "title": "Complete the Captain America's Flight Gear Build-A-Figure",
+      "description": "Complete the Captain America's Flight Gear BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-captain-america-s-flight-gear.md"
+    },
+    {
+      "id": "baf-xemnu",
+      "title": "Complete the Xemnu Build-A-Figure",
+      "description": "Complete the Xemnu BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-xemnu.md"
+    },
+    {
+      "id": "baf-ursa-major",
+      "title": "Complete the Ursa Major Build-A-Figure",
+      "description": "Complete the Ursa Major BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-ursa-major.md"
+    },
+    {
+      "id": "baf-colossus-age-of-apocalypse",
+      "title": "Complete the Colossus (Age of Apocalypse) Build-A-Figure",
+      "description": "Complete the Colossus (Age of Apocalypse) BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-colossus-age-of-apocalypse.md"
+    },
+    {
+      "id": "baf-the-watcher-what-if",
+      "title": "Complete the The Watcher (What If...?) Build-A-Figure",
+      "description": "Complete the The Watcher (What If...?) BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-the-watcher-what-if.md"
+    },
+    {
+      "id": "baf-gilgamesh-eternals",
+      "title": "Complete the Gilgamesh (Eternals) Build-A-Figure",
+      "description": "Complete the Gilgamesh (Eternals) BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-gilgamesh-eternals.md"
+    },
+    {
+      "id": "baf-armadillo",
+      "title": "Complete the Armadillo Build-A-Figure",
+      "description": "Complete the Armadillo BAF: which 2021 figures carry which pieces.",
+      "path": "skills/baf/baf-armadillo.md"
+    },
+    {
+      "id": "baf-rintrah-doctor-strange-in-the-multiverse-of-madness",
+      "title": "Complete the Rintrah (Doctor Strange in the Multiverse of Madness) Build-A-Figure",
+      "description": "Complete the Rintrah (Doctor Strange in the Multiverse of Madness) BAF: which 2022 figures carry which pieces.",
+      "path": "skills/baf/baf-rintrah-doctor-strange-in-the-multiverse-of-madness.md"
+    },
+    {
+      "id": "baf-korg-thor-love-and-thunder",
+      "title": "Complete the Korg (Thor: Love and Thunder) Build-A-Figure",
+      "description": "Complete the Korg (Thor: Love and Thunder) BAF: which 2022 figures carry which pieces.",
+      "path": "skills/baf/baf-korg-thor-love-and-thunder.md"
+    },
+    {
+      "id": "baf-the-controller",
+      "title": "Complete the The Controller Build-A-Figure",
+      "description": "Complete the The Controller BAF: which 2022 figures carry which pieces.",
+      "path": "skills/baf/baf-the-controller.md"
+    },
+    {
+      "id": "baf-infinity-ultron-what-if",
+      "title": "Complete the Infinity Ultron (What If...?) Build-A-Figure",
+      "description": "Complete the Infinity Ultron (What If...?) BAF: which 2022 figures carry which pieces.",
+      "path": "skills/baf/baf-infinity-ultron-what-if.md"
+    },
+    {
+      "id": "baf-attuma-black-panther-wakanda-forever",
+      "title": "Complete the Attuma (Black Panther: Wakanda Forever) Build-A-Figure",
+      "description": "Complete the Attuma (Black Panther: Wakanda Forever) BAF: which 2022 figures carry which pieces.",
+      "path": "skills/baf/baf-attuma-black-panther-wakanda-forever.md"
+    },
+    {
+      "id": "baf-khonshu-moon-knight",
+      "title": "Complete the Khonshu (Moon Knight) Build-A-Figure",
+      "description": "Complete the Khonshu (Moon Knight) BAF: which 2022 figures carry which pieces.",
+      "path": "skills/baf/baf-khonshu-moon-knight.md"
+    },
+    {
+      "id": "baf-puff-adder",
+      "title": "Complete the Puff Adder Build-A-Figure",
+      "description": "Complete the Puff Adder BAF: which 2023 figures carry which pieces.",
+      "path": "skills/baf/baf-puff-adder.md"
+    },
+    {
+      "id": "baf-cassie-lang-ant-man-and-the-wasp-quantumania",
+      "title": "Complete the Cassie Lang (Ant-Man and the Wasp: Quantumania) Build-A-Figure",
+      "description": "Complete the Cassie Lang (Ant-Man and the Wasp: Quantumania) BAF: which 2023 figures carry which pieces.",
+      "path": "skills/baf/baf-cassie-lang-ant-man-and-the-wasp-quantumania.md"
+    },
+    {
+      "id": "baf-cosmo-the-spacedog-guardians-of-the-galaxy-vol-3",
+      "title": "Complete the Cosmo the Spacedog (Guardians of the Galaxy Vol. 3) Build-A-Figure",
+      "description": "Complete the Cosmo the Spacedog (Guardians of the Galaxy Vol. 3) BAF: which 2023 figures carry which pieces.",
+      "path": "skills/baf/baf-cosmo-the-spacedog-guardians-of-the-galaxy-vol-3.md"
+    },
+    {
+      "id": "baf-ch-od",
+      "title": "Complete the Ch'od Build-A-Figure",
+      "description": "Complete the Ch'od BAF: which 2023 figures carry which pieces.",
+      "path": "skills/baf/baf-ch-od.md"
+    },
+    {
+      "id": "baf-hulk-amadeus-cho-totally-awesome-hulk",
+      "title": "Complete the Hulk (Amadeus Cho) (Totally Awesome Hulk) Build-A-Figure",
+      "description": "Complete the Hulk (Amadeus Cho) (Totally Awesome Hulk) BAF: which 2023 figures carry which pieces.",
+      "path": "skills/baf/baf-hulk-amadeus-cho-totally-awesome-hulk.md"
+    },
+    {
+      "id": "baf-mindless-one",
+      "title": "Complete the Mindless One Build-A-Figure",
+      "description": "Complete the Mindless One BAF: which 2023 figures carry which pieces.",
+      "path": "skills/baf/baf-mindless-one.md"
+    },
+    {
+      "id": "baf-hydra-stomper-mk-ii-what-if",
+      "title": "Complete the Hydra Stomper MK II (What If...?) Build-A-Figure",
+      "description": "Complete the Hydra Stomper MK II (What If...?) BAF: which 2023 figures carry which pieces.",
+      "path": "skills/baf/baf-hydra-stomper-mk-ii-what-if.md"
+    },
+    {
+      "id": "baf-the-void",
+      "title": "Complete the The Void Build-A-Figure",
+      "description": "Complete the The Void BAF: which 2024 figures carry which pieces.",
+      "path": "skills/baf/baf-the-void.md"
+    },
+    {
+      "id": "baf-zabu",
+      "title": "Complete the Zabu Build-A-Figure",
+      "description": "Complete the Zabu BAF: which 2024 figures carry which pieces.",
+      "path": "skills/baf/baf-zabu.md"
+    },
+    {
+      "id": "baf-blackheart",
+      "title": "Complete the Blackheart Build-A-Figure",
+      "description": "Complete the Blackheart BAF: which 2024 figures carry which pieces.",
+      "path": "skills/baf/baf-blackheart.md"
+    },
+    {
+      "id": "baf-nemesis-uncanny-x-force",
+      "title": "Complete the Nemesis (Uncanny X-Force) Build-A-Figure",
+      "description": "Complete the Nemesis (Uncanny X-Force) BAF: which 2025 figures carry which pieces.",
+      "path": "skills/baf/baf-nemesis-uncanny-x-force.md"
+    },
+    {
+      "id": "baf-executioner",
+      "title": "Complete the Executioner Build-A-Figure",
+      "description": "Complete the Executioner BAF: which 2025 figures carry which pieces.",
+      "path": "skills/baf/baf-executioner.md"
+    },
+    {
+      "id": "baf-box",
+      "title": "Complete the Box Build-A-Figure",
+      "description": "Complete the Box BAF: which 2026 figures carry which pieces.",
+      "path": "skills/baf/baf-box.md"
+    },
+    {
+      "id": "collect-spider-man",
+      "title": "Collect every Spider-Man",
+      "description": "Complete a Spider-Man collection: all 86 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-spider-man.md"
+    },
+    {
+      "id": "collect-iron-man",
+      "title": "Collect every Iron Man",
+      "description": "Complete a Iron Man collection: all 75 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-iron-man.md"
+    },
+    {
+      "id": "collect-wolverine",
+      "title": "Collect every Wolverine",
+      "description": "Complete a Wolverine collection: all 53 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-wolverine.md"
+    },
+    {
+      "id": "collect-captain-america",
+      "title": "Collect every Captain America",
+      "description": "Complete a Captain America collection: all 52 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-captain-america.md"
+    },
+    {
+      "id": "collect-thor",
+      "title": "Collect every Thor",
+      "description": "Complete a Thor collection: all 28 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-thor.md"
+    },
+    {
+      "id": "collect-hulk",
+      "title": "Collect every Hulk",
+      "description": "Complete a Hulk collection: all 27 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-hulk.md"
+    },
+    {
+      "id": "collect-deadpool",
+      "title": "Collect every Deadpool",
+      "description": "Complete a Deadpool collection: all 22 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-deadpool.md"
+    },
+    {
+      "id": "collect-black-widow",
+      "title": "Collect every Black Widow",
+      "description": "Complete a Black Widow collection: all 21 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-black-widow.md"
+    },
+    {
+      "id": "collect-daredevil",
+      "title": "Collect every Daredevil",
+      "description": "Complete a Daredevil collection: all 20 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-daredevil.md"
+    },
+    {
+      "id": "collect-punisher",
+      "title": "Collect every Punisher",
+      "description": "Complete a Punisher collection: all 20 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-punisher.md"
+    },
+    {
+      "id": "collect-cyclops",
+      "title": "Collect every Cyclops",
+      "description": "Complete a Cyclops collection: all 18 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-cyclops.md"
+    },
+    {
+      "id": "collect-jean-grey",
+      "title": "Collect every Jean Grey",
+      "description": "Complete a Jean Grey collection: all 17 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-jean-grey.md"
+    },
+    {
+      "id": "collect-black-panther",
+      "title": "Collect every Black Panther",
+      "description": "Complete a Black Panther collection: all 17 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-black-panther.md"
+    },
+    {
+      "id": "collect-human-torch",
+      "title": "Collect every Human Torch",
+      "description": "Complete a Human Torch collection: all 14 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-human-torch.md"
+    },
+    {
+      "id": "collect-venom",
+      "title": "Collect every Venom",
+      "description": "Complete a Venom collection: all 14 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-venom.md"
+    },
+    {
+      "id": "collect-storm",
+      "title": "Collect every Storm",
+      "description": "Complete a Storm collection: all 13 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-storm.md"
+    },
+    {
+      "id": "collect-war-machine",
+      "title": "Collect every War Machine",
+      "description": "Complete a War Machine collection: all 13 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-war-machine.md"
+    },
+    {
+      "id": "collect-doctor-doom",
+      "title": "Collect every Doctor Doom",
+      "description": "Complete a Doctor Doom collection: all 12 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-doctor-doom.md"
+    },
+    {
+      "id": "collect-hawkeye",
+      "title": "Collect every Hawkeye",
+      "description": "Complete a Hawkeye collection: all 12 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-hawkeye.md"
+    },
+    {
+      "id": "collect-ghost-rider",
+      "title": "Collect every Ghost Rider",
+      "description": "Complete a Ghost Rider collection: all 11 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-ghost-rider.md"
+    },
+    {
+      "id": "collect-magneto",
+      "title": "Collect every Magneto",
+      "description": "Complete a Magneto collection: all 11 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-magneto.md"
+    },
+    {
+      "id": "collect-vision",
+      "title": "Collect every Vision",
+      "description": "Complete a Vision collection: all 11 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-vision.md"
+    },
+    {
+      "id": "collect-doctor-strange",
+      "title": "Collect every Doctor Strange",
+      "description": "Complete a Doctor Strange collection: all 11 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-doctor-strange.md"
+    },
+    {
+      "id": "collect-ant-man",
+      "title": "Collect every Ant-Man",
+      "description": "Complete a Ant-Man collection: all 11 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-ant-man.md"
+    },
+    {
+      "id": "collect-captain-marvel",
+      "title": "Collect every Captain Marvel",
+      "description": "Complete a Captain Marvel collection: all 11 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-captain-marvel.md"
+    },
+    {
+      "id": "collect-star-lord",
+      "title": "Collect every Star-Lord",
+      "description": "Complete a Star-Lord collection: all 11 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-star-lord.md"
+    },
+    {
+      "id": "collect-beast",
+      "title": "Collect every Beast",
+      "description": "Complete a Beast collection: all 10 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-beast.md"
+    },
+    {
+      "id": "collect-rogue",
+      "title": "Collect every Rogue",
+      "description": "Complete a Rogue collection: all 10 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-rogue.md"
+    },
+    {
+      "id": "collect-invisible-woman",
+      "title": "Collect every Invisible Woman",
+      "description": "Complete a Invisible Woman collection: all 10 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-invisible-woman.md"
+    },
+    {
+      "id": "collect-scarlet-witch",
+      "title": "Collect every Scarlet Witch",
+      "description": "Complete a Scarlet Witch collection: all 10 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-scarlet-witch.md"
+    },
+    {
+      "id": "collect-she-hulk",
+      "title": "Collect every She-Hulk",
+      "description": "Complete a She-Hulk collection: all 10 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-she-hulk.md"
+    },
+    {
+      "id": "collect-gambit",
+      "title": "Collect every Gambit",
+      "description": "Complete a Gambit collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-gambit.md"
+    },
+    {
+      "id": "collect-mister-fantastic",
+      "title": "Collect every Mister Fantastic",
+      "description": "Complete a Mister Fantastic collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-mister-fantastic.md"
+    },
+    {
+      "id": "collect-green-goblin",
+      "title": "Collect every Green Goblin",
+      "description": "Complete a Green Goblin collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-green-goblin.md"
+    },
+    {
+      "id": "collect-loki",
+      "title": "Collect every Loki",
+      "description": "Complete a Loki collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-loki.md"
+    },
+    {
+      "id": "collect-psylocke",
+      "title": "Collect every Psylocke",
+      "description": "Complete a Psylocke collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-psylocke.md"
+    },
+    {
+      "id": "collect-moon-knight",
+      "title": "Collect every Moon Knight",
+      "description": "Complete a Moon Knight collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-moon-knight.md"
+    },
+    {
+      "id": "collect-spider-woman",
+      "title": "Collect every Spider-Woman",
+      "description": "Complete a Spider-Woman collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-spider-woman.md"
+    },
+    {
+      "id": "collect-winter-soldier",
+      "title": "Collect every Winter Soldier",
+      "description": "Complete a Winter Soldier collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-winter-soldier.md"
+    },
+    {
+      "id": "collect-red-skull",
+      "title": "Collect every Red Skull",
+      "description": "Complete a Red Skull collection: all 8 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-red-skull.md"
+    },
+    {
+      "id": "collect-sabretooth",
+      "title": "Collect every Sabretooth",
+      "description": "Complete a Sabretooth collection: all 8 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-sabretooth.md"
+    },
+    {
+      "id": "collect-cable",
+      "title": "Collect every Cable",
+      "description": "Complete a Cable collection: all 8 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-cable.md"
+    },
+    {
+      "id": "collect-professor-x",
+      "title": "Collect every Professor X",
+      "description": "Complete a Professor X collection: all 8 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-professor-x.md"
+    },
+    {
+      "id": "collect-ultron",
+      "title": "Collect every Ultron",
+      "description": "Complete a Ultron collection: all 8 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-ultron.md"
+    },
+    {
+      "id": "collect-emma-frost",
+      "title": "Collect every Emma Frost",
+      "description": "Complete a Emma Frost collection: all 8 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-emma-frost.md"
+    },
+    {
+      "id": "collect-iron-spider",
+      "title": "Collect every Iron Spider",
+      "description": "Complete a Iron Spider collection: all 8 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-iron-spider.md"
+    },
+    {
+      "id": "grail-toad-series-1-2002",
+      "title": "Research the Toad (Series 1, 2002) grail",
+      "description": "Why the Toad (Series 1, 2002) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-toad-series-1-2002.md"
+    },
+    {
+      "id": "grail-stealth-iron-man-series-1-variant",
+      "title": "Research the Stealth Iron Man (Series 1 variant) grail",
+      "description": "Why the Stealth Iron Man (Series 1 variant) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-stealth-iron-man-series-1-variant.md"
+    },
+    {
+      "id": "grail-red-skull-series-5-chase",
+      "title": "Research the Red Skull (Series 5 chase) grail",
+      "description": "Why the Red Skull (Series 5 chase) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-red-skull-series-5-chase.md"
+    },
+    {
+      "id": "grail-deadpool-series-6",
+      "title": "Research the Deadpool (Series 6) grail",
+      "description": "Why the Deadpool (Series 6) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-deadpool-series-6.md"
+    },
+    {
+      "id": "grail-phoenix-dark-phoenix-series-6",
+      "title": "Research the Phoenix / Dark Phoenix (Series 6) grail",
+      "description": "Why the Phoenix / Dark Phoenix (Series 6) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-phoenix-dark-phoenix-series-6.md"
+    },
+    {
+      "id": "grail-galactus-baf-series-9-2005",
+      "title": "Research the Galactus BAF (Series 9, 2005) grail",
+      "description": "Why the Galactus BAF (Series 9, 2005) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-galactus-baf-series-9-2005.md"
+    },
+    {
+      "id": "grail-sentinel-baf-series-10-2005",
+      "title": "Research the Sentinel BAF (Series 10, 2005) grail",
+      "description": "Why the Sentinel BAF (Series 10, 2005) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-sentinel-baf-series-10-2005.md"
+    },
+    {
+      "id": "grail-apocalypse-baf-series-12-2006",
+      "title": "Research the Apocalypse BAF (Series 12, 2006) grail",
+      "description": "Why the Apocalypse BAF (Series 12, 2006) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-apocalypse-baf-series-12-2006.md"
+    },
+    {
+      "id": "grail-giant-man-baf-2006",
+      "title": "Research the Giant-Man BAF (2006) grail",
+      "description": "Why the Giant-Man BAF (2006) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-giant-man-baf-2006.md"
+    },
+    {
+      "id": "grail-onslaught-baf-2006",
+      "title": "Research the Onslaught BAF (2006) grail",
+      "description": "Why the Onslaught BAF (2006) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-onslaught-baf-2006.md"
+    },
+    {
+      "id": "grail-destroyer-arachne-series-15",
+      "title": "Research the Destroyer & Arachne (Series 15) grail",
+      "description": "Why the Destroyer & Arachne (Series 15) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-destroyer-arachne-series-15.md"
+    },
+    {
+      "id": "grail-crimson-dawn-psylocke-silver-luke-cage",
+      "title": "Research the Crimson Dawn Psylocke + Silver Luke Cage grail",
+      "description": "Why the Crimson Dawn Psylocke + Silver Luke Cage matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-crimson-dawn-psylocke-silver-luke-cage.md"
+    },
+    {
+      "id": "grail-marvel-monsters-box-set-2006",
+      "title": "Research the Marvel Monsters box set (2006) grail",
+      "description": "Why the Marvel Monsters box set (2006) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-marvel-monsters-box-set-2006.md"
+    },
+    {
+      "id": "grail-sdcc-2007-she-hulk-stan-lee",
+      "title": "Research the SDCC 2007: She-Hulk + Stan Lee grail",
+      "description": "Why the SDCC 2007: She-Hulk + Stan Lee matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-sdcc-2007-she-hulk-stan-lee.md"
+    },
+    {
+      "id": "grail-sdcc-2008-savage-land-3-pack",
+      "title": "Research the SDCC 2008: Savage Land 3-pack grail",
+      "description": "Why the SDCC 2008: Savage Land 3-pack matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-sdcc-2008-savage-land-3-pack.md"
+    },
+    {
+      "id": "grail-sdcc-2012-uncanny-x-force-3-pack",
+      "title": "Research the SDCC 2012: Uncanny X-Force 3-pack grail",
+      "description": "Why the SDCC 2012: Uncanny X-Force 3-pack matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-sdcc-2012-uncanny-x-force-3-pack.md"
+    },
+    {
+      "id": "grail-sdcc-2013-thunderbolts-5-pack",
+      "title": "Research the SDCC 2013: Thunderbolts 5-pack grail",
+      "description": "Why the SDCC 2013: Thunderbolts 5-pack matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-sdcc-2013-thunderbolts-5-pack.md"
+    },
+    {
+      "id": "grail-sdcc-2014-thanos-imperative-set",
+      "title": "Research the SDCC 2014: Thanos Imperative set grail",
+      "description": "Why the SDCC 2014: Thanos Imperative set matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-sdcc-2014-thanos-imperative-set.md"
+    },
+    {
+      "id": "grail-black-widow-winter-soldier-tru-variant-2-pack",
+      "title": "Research the Black Widow + Winter Soldier TRU variant 2-pack grail",
+      "description": "Why the Black Widow + Winter Soldier TRU variant 2-pack matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-black-widow-winter-soldier-tru-variant-2-pack.md"
+    },
+    {
+      "id": "grail-ares-baf-gladiator-hulk-wave",
+      "title": "Research the Ares BAF (Gladiator Hulk wave) grail",
+      "description": "Why the Ares BAF (Gladiator Hulk wave) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-ares-baf-gladiator-hulk-wave.md"
+    },
+    {
+      "id": "grail-black-suit-spider-man-red-hulk-wave",
+      "title": "Research the Black Suit Spider-Man (Red Hulk wave) grail",
+      "description": "Why the Black Suit Spider-Man (Red Hulk wave) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-black-suit-spider-man-red-hulk-wave.md"
+    },
+    {
+      "id": "grail-haslab-sentinel-2020",
+      "title": "Research the HasLab Sentinel (2020) grail",
+      "description": "Why the HasLab Sentinel (2020) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-haslab-sentinel-2020.md"
+    },
+    {
+      "id": "grail-haslab-galactus-2021",
+      "title": "Research the HasLab Galactus (2021) grail",
+      "description": "Why the HasLab Galactus (2021) matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-haslab-galactus-2021.md"
+    },
+    {
+      "id": "bootleg-packaging",
+      "title": "Spot bootlegs: packaging",
+      "description": "Authenticate a figure via packaging: the guide's red flags as a checklist.",
+      "path": "skills/bootleg/bootleg-packaging.md"
+    },
+    {
+      "id": "bootleg-paint",
+      "title": "Spot bootlegs: paint",
+      "description": "Authenticate a figure via paint: the guide's red flags as a checklist.",
+      "path": "skills/bootleg/bootleg-paint.md"
+    },
+    {
+      "id": "bootleg-joints",
+      "title": "Spot bootlegs: joints",
+      "description": "Authenticate a figure via joints: the guide's red flags as a checklist.",
+      "path": "skills/bootleg/bootleg-joints.md"
+    },
+    {
+      "id": "bootleg-targets",
+      "title": "Spot bootlegs: targets",
+      "description": "Authenticate a figure via targets: the guide's red flags as a checklist.",
+      "path": "skills/bootleg/bootleg-targets.md"
+    },
+    {
+      "id": "bootleg-listings",
+      "title": "Spot bootlegs: listings",
+      "description": "Authenticate a figure via listings: the guide's red flags as a checklist.",
+      "path": "skills/bootleg/bootleg-listings.md"
+    },
+    {
+      "id": "bootleg-price-logic",
+      "title": "Spot bootlegs: price logic",
+      "description": "Authenticate a figure via price logic: the guide's red flags as a checklist.",
+      "path": "skills/bootleg/bootleg-price-logic.md"
+    },
+    {
+      "id": "bootleg-authenticate-listing",
+      "title": "Authenticate a listing end-to-end",
+      "description": "The full authentication pass: figure, packaging, seller, and price logic.",
+      "path": "skills/bootleg/bootleg-authenticate-listing.md"
+    },
+    {
+      "id": "era-toy-biz",
+      "title": "Collect the Toy Biz era (2002\u20132006)",
+      "description": "Navigate the founding era: grails, bootlegs, and what holds value.",
+      "path": "skills/eras/era-toy-biz.md"
+    },
+    {
+      "id": "era-transition",
+      "title": "Collect the Transition years (2007\u20132009)",
+      "description": "The Hasbro takeover era: what changed and what to hunt.",
+      "path": "skills/eras/era-transition.md"
+    },
+    {
+      "id": "era-hasbro-return",
+      "title": "Collect the Hasbro Return era (2010\u20132015)",
+      "description": "The modern line takes shape: BAF standardization and the collector boom.",
+      "path": "skills/eras/era-hasbro-return.md"
+    },
+    {
+      "id": "era-infinite",
+      "title": "Collect the Infinite era (2016\u20132021)",
+      "description": "Peak modern Legends: deep cuts, army builders, and the MCU wave machine.",
+      "path": "skills/eras/era-infinite.md"
+    },
+    {
+      "id": "era-haslab",
+      "title": "Understand the HasLab era (2020+)",
+      "description": "Crowdfunded flagships: how HasLab changed high-end collecting.",
+      "path": "skills/eras/era-haslab.md"
+    },
+    {
+      "id": "collection-mark-owned",
+      "title": "Track your collection",
+      "description": "Use the Chronicle's owned/wanted tracker properly.",
+      "path": "skills/collection/collection-mark-owned.md"
+    },
+    {
+      "id": "collection-want-list",
+      "title": "Build a want list that works",
+      "description": "A prioritized hunt list with price targets.",
+      "path": "skills/collection/collection-want-list.md"
+    },
+    {
+      "id": "collection-value-collection",
+      "title": "Value your collection",
+      "description": "Estimate collection value from sold listings, not asking prices.",
+      "path": "skills/collection/collection-value-collection.md"
+    },
+    {
+      "id": "collection-shelf-organize",
+      "title": "Organize your display",
+      "description": "Shelving that shows the collection instead of storing it.",
+      "path": "skills/collection/collection-shelf-organize.md"
+    },
+    {
+      "id": "collection-photograph",
+      "title": "Photograph your figures",
+      "description": "Shelfie-grade photos with a phone.",
+      "path": "skills/collection/collection-photograph.md"
+    },
+    {
+      "id": "marketplace-build-search",
+      "title": "Build a marketplace search query",
+      "description": "Search strings that find the figure and dodge the bootlegs.",
+      "path": "skills/marketplace/marketplace-build-search.md"
+    },
+    {
+      "id": "marketplace-price-check",
+      "title": "Price-check via sold listings",
+      "description": "The 90-day sold method: the only price that matters.",
+      "path": "skills/marketplace/marketplace-price-check.md"
+    },
+    {
+      "id": "marketplace-compare-retailers",
+      "title": "Compare retailers",
+      "description": "Where to buy: retail vs aftermarket vs community.",
+      "path": "skills/marketplace/marketplace-compare-retailers.md"
+    },
+    {
+      "id": "community-write-post",
+      "title": "Write a community post",
+      "description": "Posts that get engagement in the Chronicle's fan community.",
+      "path": "skills/community/community-write-post.md"
+    },
+    {
+      "id": "community-tag-figures",
+      "title": "Tag figures in posts",
+      "description": "Link your posts to Chronicle figure entries.",
+      "path": "skills/community/community-tag-figures.md"
+    },
+    {
+      "id": "community-id-figure",
+      "title": "Identify an unknown figure",
+      "description": "ID a figure from photos or a description.",
+      "path": "skills/community/community-id-figure.md"
+    },
+    {
+      "id": "community-find-collectors",
+      "title": "Find your collector people",
+      "description": "Discover collectors who share your lane.",
+      "path": "skills/community/community-find-collectors.md"
+    },
+    {
+      "id": "variants-chase-hunting",
+      "title": "Hunt chase variants",
+      "description": "Find short-packed chase figures without overpaying.",
+      "path": "skills/variants/variants-chase-hunting.md"
+    },
+    {
+      "id": "variants-identify",
+      "title": "Identify variants",
+      "description": "Tell variants apart: deco, sculpt, and packaging differences.",
+      "path": "skills/variants/variants-identify.md"
+    },
+    {
+      "id": "hunt-sdcc-exclusives",
+      "title": "Hunt SDCC exclusives",
+      "description": "Get Comic-Con exclusives without attending.",
+      "path": "skills/hunts/hunt-sdcc-exclusives.md"
+    },
+    {
+      "id": "hunt-store-exclusives",
+      "title": "Hunt store exclusives",
+      "description": "Target/Walmart/Amazon exclusives: stock patterns and timing.",
+      "path": "skills/hunts/hunt-store-exclusives.md"
+    },
+    {
+      "id": "hunt-toy-biz-grails",
+      "title": "Hunt Toy Biz grails",
+      "description": "Find 2002\u20132006 grails in the wild.",
+      "path": "skills/hunts/hunt-toy-biz-grails.md"
+    },
+    {
+      "id": "hunt-chase-variants",
+      "title": "Hunt chase variants in the wild",
+      "description": "Retail hunting tactics for short-packed figures.",
+      "path": "skills/hunts/hunt-chase-variants.md"
+    },
+    {
+      "id": "hunt-convention-exclusives",
+      "title": "Hunt convention exclusives",
+      "description": "Beyond SDCC: NYCC, PulseCon, and international exclusives.",
+      "path": "skills/hunts/hunt-convention-exclusives.md"
+    },
+    {
+      "id": "hunt-complete-wave",
+      "title": "Complete a wave",
+      "description": "Finish a wave efficiently: BAF math and gap-filling.",
+      "path": "skills/hunts/hunt-complete-wave.md"
+    },
+    {
+      "id": "hunt-track-preorders",
+      "title": "Track preorders",
+      "description": "Never miss a release: the preorder system.",
+      "path": "skills/hunts/hunt-track-preorders.md"
+    },
+    {
+      "id": "hunt-buy-ebay-safely",
+      "title": "Buy safely on eBay",
+      "description": "eBay tactics: filters, offers, and seller reads.",
+      "path": "skills/hunts/hunt-buy-ebay-safely.md"
+    },
+    {
+      "id": "hunt-buy-whatnot",
+      "title": "Buy safely on Whatnot",
+      "description": "Live-auction tactics without the hype tax.",
+      "path": "skills/hunts/hunt-buy-whatnot.md"
+    },
+    {
+      "id": "hunt-grade-card",
+      "title": "Grade card condition",
+      "description": "Assess carded figure condition like a grader.",
+      "path": "skills/hunts/hunt-grade-card.md"
+    }
+  ]
+}
