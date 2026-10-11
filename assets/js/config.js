@@ -16,6 +16,7 @@ export const STORE_KEYS = {
   exploreSeed: "mlc_explore_seed_v1", // integer seed for the explorer's shuffle
   exploreSeen: "mlc_explore_seen_v1", // [figId] — figures already surfaced by "Surprise me"
   showcase: "mlc_showcase_v1", // { order: [figId], notes: { figId: text } } — the top-10 Shelfie Showcase
+  hunt: "mlc_hunt_v1", // { selected: [figId], maxPrices: { figId: number } } — toy-show hunt planner
 };
 
 export const MARKETPLACES = [

@@ -67,5 +67,8 @@
     })
     .catch(function () {
       els.chart.innerHTML = '<div class="empty-state"><p>Could not load statistics. Check your connection and reload.</p></div>';
+      if (els.kpis) els.kpis.innerHTML = '<div class="empty-state"><p>Statistics unavailable.</p></div>';
+      if (els.table) els.table.innerHTML = '<tr><td colspan="3">Statistics unavailable.</td></tr>';
+      if (els.note) els.note.textContent = "Statistics could not be loaded.";
     });
 })();

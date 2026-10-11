@@ -14,8 +14,9 @@ let selected = null;
 
 /* Sold-listings URL shared from listings.js (same pattern, single source). */
 
-/* Build BAF entries from waves — same piece-carrier mapping as the BAF skills. */
-function buildBafs(waves) {
+/* Build BAF entries from waves — same piece-carrier mapping as the BAF skills.
+   Exported for tests (tests/test-baf.js). */
+export function buildBafs(waves) {
   const out = [];
   for (const w of waves) {
     if (!w.baf) continue;
@@ -42,11 +43,11 @@ function buildBafs(waves) {
   return out;
 }
 
-function pieceOwned(piece) {
+export function pieceOwned(piece) {
   return piece.carriers.some((c) => owned.has(c.id));
 }
 
-function bafProgress(baf) {
+export function bafProgress(baf) {
   const total = baf.pieces.length;
   const got = baf.pieces.filter(pieceOwned).length;
   return { total, got };

@@ -148,7 +148,9 @@ def main():
         "schema/figure.json": figure_schema,
     }
     for name, payload in outputs.items():
-        (API / name).write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+        # Minified on the wire: api/v1/figures.json is 732KB pretty-printed.
+        # Nulls are KEPT (API contract: absent != null for consumers).
+        (API / name).write_text(json.dumps(payload, separators=(",", ":"), ensure_ascii=False) + "\n")
 
     print(f"API v{VERSION}: {len(wave_summaries)} waves, {len(figures)} figures -> {API}")
 

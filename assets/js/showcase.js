@@ -56,11 +56,21 @@ function refreshPicker() {
     : "";
 }
 
-function move(id, dir) {
-  const i = state.order.indexOf(id);
+/* Pure ordering helper — moves id by dir within a copy of order, returned.
+   Tested in tests/test-showcase.js. */
+export function moveId(order, id, dir) {
+  const next = [...order];
+  const i = next.indexOf(id);
   const j = i + dir;
-  if (i < 0 || j < 0 || j >= state.order.length) return;
-  [state.order[i], state.order[j]] = [state.order[j], state.order[i]];
+  if (i < 0 || j < 0 || j >= next.length) return next;
+  [next[i], next[j]] = [next[j], next[i]];
+  return next;
+}
+
+function move(id, dir) {
+  const next = moveId(state.order, id, dir);
+  if (next.length === state.order.length && next.every((x, i) => x === state.order[i])) return;
+  state.order = next;
   persist();
   render();
 }

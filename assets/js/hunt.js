@@ -9,7 +9,7 @@ import { escapeHtml } from "./figure-dialog.js";
 import { wanted } from "./tracker.js";
 import { soldSearchUrl, marketplaceQuery } from "./listings.js";
 
-const HUNT_KEY = "mlc_hunt_v1";
+const HUNT_KEY = STORE_KEYS.hunt;
 
 const els = {
   search: document.getElementById("hunt-search"),
