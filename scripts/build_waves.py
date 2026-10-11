@@ -34,6 +34,7 @@ NAV_LINKS = [
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
     ("journal.html", "Journal"),
+    ("collection-value.html", "Ledger"),
     ("exclusives.html", "Exclusives"), ("watchlist.html", "Watchlist"),
     ("radar.html", "Radar"), ("compare.html", "Compare"),
     ("grails.html", "Grails"), ("variants.html", "Variants"),

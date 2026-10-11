@@ -13,6 +13,7 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - BAF planner: mark owned figures, see missing Build-A-Figure pieces + acquisition guidance (browser-local)
 - 66 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
 - Price journal: log eBay sold listings yourself; your collection's tracked value computed from your entries only (browser-local)
+- Collection ledger (`collection-value.html`): log what you paid per figure; cost basis vs tracked value = unrealized gain/loss per figure and total (browser-local, `mlc_buys_v1`; values from your own entries only)
 - Grail watchlist: track the figures you hunt, set your own max price, log sightings — deal-or-no-deal judged against your target (browser-local)
 - Exclusives browser: all 587 exclusives by retailer (Target, Walmart, Walgreens, Amazon, Hasbro Pulse, SDCC, TRU, Fan Channel…), with inline Owned/Wanted toggles and research links; 20 non-retailer entries grouped as "retailer unconfirmed" rather than guessed
 - Your Shelf v2 analytics: manufacturer split (owned + wanted), peak collecting years, collection growth trend (daily snapshots), journal value over time (from your own entries), shelf-vs-archive rarity per packaging era
@@ -21,7 +22,7 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts
 - Collection tracker: mark figures Owned / Wanted (browser-local)
 - "Almost there" on your shelf: BAFs missing 1–2 pieces, waves past 50%, characters nearly complete — computed from your tracker
-- Grail stories: 10 sourced narratives expanding the hall of fame (legend, hunt, reissue saga, honest prices)
+- Grail stories: 20 sourced narratives expanding the hall of fame (legend, hunt, reissue saga, honest prices)
 - Variant & chase identifier: spotter's guide + wave-by-wave index of all 83 documented variants
 - Printable checklist: your tracker as a paper checklist grouped by wave, with print stylesheet (also applied to the timeline)
 
@@ -46,7 +47,7 @@ For agents: load the skill whose task matches the request — skills are the
 primary interface for *doing* work; the JSON endpoints are the data layer.
 `api/v1/index.json` points here (`repository`, `skills`, `for_agents`).
 
-Categories: baf (101 completion checklists), characters (46 collector guides),
+Categories: baf (101 completion checklists), characters (66 collector guides),
 grails (24 dossiers), bootleg (8), eras (5), collection (5), marketplace (4),
 community (4), variants (4), hunts (11).
 
@@ -78,12 +79,12 @@ and `data/encyclopedia.json`. Commit the outputs.
 ## Site structure
 
 - `index.html` — chronological timeline with search, filters (incl. "Featured In" story-source facet), year rail, tracker, milestone-anniversary strip, packaging-era bands (5 documented eras from the encyclopedia's packaging guide)
-- `grails.html` — 10 sourced grail stories expanding the hall of fame
+- `grails.html` — 20 sourced grail stories expanding the hall of fame
 - `variants.html` — variant & chase identifier: spotter's guide + wave-by-wave index of documented variants
 - `checklist.html` — printable owned/wanted checklist from tracker data, grouped by wave
 - `encyclopedia.html` — history, packaging evolution, variants/chases/exclusives, hall of fame, grading guide, bootleg guide, resources
 - `baf-planner.html` — "complete my BAF" planner (browser-local, syncs with tracker)
-- `characters/index.html` + `characters/<slug>.html` — 46 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character; every release row carries a per-figure "Research" affordance (eBay solds / YouTube reviews / web search links)
+- `characters/index.html` + `characters/<slug>.html` — 66 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character; every release row carries a `data-fig-id` and a per-figure "Research" affordance (eBay solds / YouTube reviews / web search links); each page shows your run-completion progress bar ("N of M owned") with a missing-figure complete-the-run checklist, read live from the localStorage tracker via `assets/js/char-run.js`
 - `price-guide.html` — transparent sold-listings methodology, dated price history, reissue effect
 - `auth-wizard.html` — interactive bootleg authentication wizard
 - `shelf.html` — "your shelf" dashboard: read-only completion stats (overall/year/era/top characters/BAF) aggregated from the localStorage tracker

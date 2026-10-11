@@ -10,12 +10,12 @@ Static site. GitHub only — nothing is deployed anywhere.
 - `start.html` — new collector starter guide: smart first pickups, how to read a wave, spotting fakes, BAF math, tracking your shelf, learning real prices
 - `waves/` — 158 generated wave detail pages (`waves/<wave-id>.html` + index; rebuild with `python3 scripts/build_waves.py`): every figure with inline Owned/Wanted toggles, BAF breakdown, research links, prev/next wave navigation, print checklist
 - `stats.html` — stats dashboard: figures per year, BAF waves over time, top 25 characters, exclusives share, wave-size breakdowns — all computed live from the data
-- `grails.html` — 10 sourced grail stories expanding the hall of fame: the legend, the hunt, the reissue saga, honest prices
+- `grails.html` — 20 sourced grail stories expanding the hall of fame: the legend, the hunt, the reissue saga, honest prices
 - `variants.html` — variant & chase identifier: how to spot variants in the wild + wave-by-wave index of all 83 documented variants
 - `checklist.html` — printable owned/wanted checklist from your tracker data, grouped by wave (print stylesheet also covers the timeline)
 - `encyclopedia.html` — collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue radar), grading guide, bootleg-spotting guide, resources directory
 - `baf-planner.html` — "complete my BAF" planner: mark owned figures, see missing pieces + acquisition guidance (browser-local, syncs with the timeline tracker)
-- `characters/` — 66 generated character archive pages (`characters/<slug>.html` + index; rebuild with `python3 scripts/build_characters.py`)
+- `characters/` — 66 generated character archive pages (`characters/<slug>.html` + index; rebuild with `python3 scripts/build_characters.py`), each with a run-completion progress bar + missing-figure checklist driven by your tracker
 - `price-guide.html` — transparent sold-listings price methodology, dated price history, reissue effect
 - `auth-wizard.html` — interactive bootleg authentication wizard (step-by-step pass/fail with verdict)
 - `community.html` — fan social: profiles, feed, likes, comments, follows, figure-tagged posts (client-side demo)
@@ -37,7 +37,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 - **Research links:** per-figure "Research" affordance in the figure dialog and on every character-page release — eBay *sold* listings (actual sale prices, same pattern as the BAF planner), YouTube review search, general web search; external third-party content, clearly labeled
 - **Encyclopedia:** history timeline, packaging evolution, searchable hall of fame with verified/unverified price flags and reissue-radar (resilient vs vulnerable premiums), grading guide (AFA/CGA, CAS, UKG, no-premium caveat), bootleg guide, resources
 - **Community:** seeded collector profiles; photo composer with client-side downscaling; chronological + following feeds; likes, comments, follows, hashtags; figure tags open the figure dialog
-- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 66 chronological character pages, 158 wave detail pages with inline tracking, new-collector starter guide, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard (with "almost there" completion recommendations + v2 analytics: manufacturer split, peak years, growth trend, journal value over time, per-era rarity), price journal (personal sold-listing log + tracked collection value), grail watchlist (your hunts, your max prices, deal-or-no-deal sightings), exclusives browser (587 exclusives by retailer), release radar, figure compare, milestone-anniversary strip on the timeline
+- **Collector tools:** BAF planner (owned-sync, missing-piece acquisition plan), 66 chronological character pages, 158 wave detail pages with inline tracking, new-collector starter guide, bootleg authentication wizard, transparent price-methodology page, your-shelf dashboard (with "almost there" completion recommendations + v2 analytics: manufacturer split, peak years, growth trend, journal value over time, per-era rarity), price journal (personal sold-listing log + tracked collection value), collection ledger (cost basis vs tracked value = gain/loss), grail watchlist (your hunts, your max prices, deal-or-no-deal sightings), exclusives browser (587 exclusives by retailer), release radar, figure compare, milestone-anniversary strip on the timeline
 - **Stats dashboard:** figures per year, BAF waves over time, top 25 characters, exclusives share, average wave size (Toy Biz vs Hasbro) — vanilla SVG, computed live from the archive
 
 ## Skills
@@ -45,7 +45,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 `skills/` — 212 agentic task procedures (`python3 scripts/build_skills.py`
 regenerates from `data/*.json` + authored procedures). `skills/index.json`
 is the manifest agents should load first; `api/v1/index.json` points at it.
-101 BAF completion checklists, 66 character collector guides, 24 grail
+101 BAF completion checklists, 66 character collector guides (with run completion), 24 grail
 dossiers (incl. reissue-radar), bootleg authentication + counterfeit-market
 awareness, packaging-era ID, chase/case-ratio decoding, exclusive-hunting
 playbook, grading decisions, era guides, hunt tactics, marketplace and

@@ -34,6 +34,7 @@ NAV_LINKS = [
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
     ("journal.html", "Journal"),
+    ("collection-value.html", "Ledger"),
     ("exclusives.html", "Exclusives"), ("watchlist.html", "Watchlist"),
     ("radar.html", "Radar"), ("compare.html", "Compare"),
     ("grails.html", "Grails"), ("variants.html", "Variants"),
@@ -72,10 +73,28 @@ PAGE_CSS = """    .char-hero { padding-block: var(--space-7); }
     .char-card:hover { text-decoration: none; border-color: var(--red); }
     .char-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
     .char-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+    .run-panel { padding: var(--space-5); margin-bottom: var(--space-6); }
+    .run-title { font-size: 1.15rem; margin: 0 0 var(--space-2); }
+    .run-summary { margin: 0 0 var(--space-3); }
+    .run-bar { height: 10px; border-radius: 999px; background: var(--line-soft);
+      overflow: hidden; margin-bottom: var(--space-3); }
+    .run-fill { height: 100%; background: var(--gold); border-radius: 999px;
+      transition: width 0.4s ease; }
+    @media (prefers-reduced-motion: reduce) { .run-fill { transition: none; } }
+    .run-missing { margin-top: var(--space-3); }
+    .run-missing summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .run-missing summary:hover { text-decoration: underline; }
+    .run-missing-list { list-style: none; margin: var(--space-3) 0 0; padding: 0;
+      display: grid; gap: var(--space-2); }
+    .run-missing-row { display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: var(--space-2);
+      padding: var(--space-2) 0; border-bottom: 1px solid var(--line-soft); }
+    .run-missing-name { font-size: 0.9rem; }
+    .run-complete { color: var(--gold); font-weight: 700; margin: var(--space-3) 0 0; }
 """
 
 
-def page(title, desc, current, body):
+def page(title, desc, current, body, extra_scripts=""):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,10 +131,10 @@ def page(title, desc, current, body):
   <footer class="site-footer">
     <div class="container footer-grid">
       <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
-      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
+      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../collection-value.html">Ledger</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
     </div>
   </footer>
-</body>
+{extra_scripts}</body>
 </html>
 """
 
@@ -164,6 +183,7 @@ def main():
                 continue
             counts[b] += 1
             by_char[b].append({
+                "fid": f"{w['id']}::{f['name']}",
                 "year": w["year"], "series": w.get("series", ""),
                 "name": f["name"], "variant": f.get("variant"),
                 "exclusive": f.get("exclusive"),
@@ -193,7 +213,7 @@ def main():
             for r in by_year[y]:
                 era_cls = "badge-toybiz" if r["manufacturer"] == "Toy Biz" else ""
                 rels.append(
-                    f'          <li class="release"><span class="release-name">{escape(r["name"])}</span>'
+                    f'          <li class="release" data-fig-id="{escape(r["fid"])}"><span class="release-name">{escape(r["name"])}</span>'
                     f'{badges(r["variant"], r["exclusive"])}'
                     f'<span class="release-wave">{escape(r["series"])} · <span class="badge {era_cls}">{escape(r["manufacturer"])}</span></span>'
                     f'{research_details(r["name"], r["variant"])}</li>')
@@ -211,12 +231,18 @@ def main():
       </div>
     </section>
     <div class="container">
+      <section class="card run-panel" id="run-panel" data-char="{escape(char)}" aria-label="Your {escape(char)} run">
+        <h2 class="run-title">Your {escape(char)} run</h2>
+        <p class="run-summary">Reading your tracker…</p>
+        <noscript><p class="method-note">Run progress needs JavaScript — it reads your on-device tracker (nothing is uploaded).</p></noscript>
+      </section>
 {chr(10).join(sections)}
     </div>"""
         (OUT / f"{s}.html").write_text(
             page(f"Every {char} Marvel Legends release",
                  f"All {n} Marvel Legends {char} figures ({min(years)}–{max(years)}) in chronological order.",
-                 "characters/index.html", body))
+                 "characters/index.html", body,
+                 '\n  <script type="module" src="../assets/js/char-run.js"></script>'))
 
     cards = []
     for m in manifest:

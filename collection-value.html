@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collection Ledger — Marvel Legends Chronicle</title>
+  <meta name="description" content="Your collector's ledger: log what you paid for each figure and compare cost basis against tracked sold-listing value — from your own entries only.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .ledger-hero { padding-block: var(--space-7); }
+    .ledger-grid { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: var(--space-5); margin-bottom: var(--space-6); align-items: start; }
+    @media (max-width: 900px) { .ledger-grid { grid-template-columns: 1fr; } }
+    .ledger-form { display: grid; gap: var(--space-3); }
+    .form-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .form-error { color: #ff8a8a; font-size: 0.85rem; min-height: 1.2em; margin: 0; }
+    .entry-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+    .entry { display: grid; gap: var(--space-1); }
+    .entry-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); }
+    .entry-name { font-weight: 700; }
+    .entry-wave { color: var(--muted); font-size: 0.82rem; }
+    .entry-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; font-size: 0.85rem; }
+    .entry-price { font-family: var(--font-mono); color: var(--gold); font-weight: 700; font-size: 1rem; }
+    .entry-date { font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; }
+    .entry-note { color: var(--muted); font-size: 0.85rem; margin: 0; }
+    .entry-actions { display: flex; gap: var(--space-2); margin-top: var(--space-1); }
+    .value-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .value-table th, .value-table td { text-align: left; padding: var(--space-2); border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+    .value-table th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .value-table td.num { font-family: var(--font-mono); white-space: nowrap; }
+    .ledger-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-4); }
+    .kpi { padding: var(--space-4); }
+    .kpi .kpi-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: var(--space-1); }
+    .kpi .kpi-value { font-size: 1.5rem; font-weight: 900; font-family: var(--font-display); }
+    .method-note { font-size: 0.82rem; color: var(--muted); max-width: 70ch; }
+    .panel { margin-bottom: var(--space-6); }
+    .panel h2 { font-size: 1.15rem; margin-bottom: var(--space-3); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; margin-bottom: var(--space-4); }
+    @media print {
+      .site-header, .site-footer, .ledger-form-wrap, .entry-actions, .toolbar .field, #ledger-export, #ledger-import-label { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to ledger</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="collection-value.html" aria-current="page">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero ledger-hero" aria-labelledby="ledger-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Your collector's ledger</span>
+        <h1 id="ledger-title">What you paid vs <span class="accent">what it's worth.</span></h1>
+        <p class="lede">Log every purchase. We pair your cost basis against sold-listing sightings from your <a href="journal.html">price journal</a> — unrealized gain/loss per figure, computed from <em>your</em> entries only.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="ledger-grid">
+        <section class="card ledger-form-wrap" style="padding:var(--space-5)" aria-labelledby="buy-heading">
+          <h2 id="buy-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Log a purchase</h2>
+          <form id="ledger-form" class="ledger-form" novalidate>
+            <div class="field">
+              <label for="l-figure">Figure</label>
+              <input class="input" id="l-figure" name="figure" list="l-figures" autocomplete="off"
+                     placeholder="Start typing a figure name…" required>
+              <datalist id="l-figures"></datalist>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="l-condition">Condition</label>
+                <select class="input" id="l-condition" name="condition">
+                  <option value="loose-complete">Loose — complete</option>
+                  <option value="loose-incomplete">Loose — incomplete</option>
+                  <option value="mib">Mint in box</option>
+                  <option value="moc">Mint on card</option>
+                  <option value="graded">Graded</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="l-price">Price paid (USD)</label>
+                <input class="input" id="l-price" name="price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="24.99" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="l-date">Purchase date</label>
+                <input class="input" id="l-date" name="date" type="date" required>
+              </div>
+              <div class="field">
+                <label for="l-where">Where <span class="muted">(optional)</span></label>
+                <input class="input" id="l-where" name="where" maxlength="80" placeholder="e.g. Target, eBay, toy show">
+              </div>
+            </div>
+            <div class="field">
+              <label for="l-note">Note <span class="muted">(optional)</span></label>
+              <input class="input" id="l-note" name="note" maxlength="140" placeholder="e.g. clearance, bundle deal">
+            </div>
+            <p class="form-error" id="l-error" role="alert"></p>
+            <div class="btn-row" style="margin-top:0">
+              <button type="submit" class="btn btn-gold" id="l-submit">Log purchase</button>
+              <button type="button" class="btn btn-ghost" id="l-cancel-edit" hidden>Cancel edit</button>
+            </div>
+          </form>
+        </section>
+
+        <section aria-labelledby="purchases-heading">
+          <div class="toolbar">
+            <h2 id="purchases-heading" style="font-size:1.15rem;margin:0">Logged purchases <span class="muted" id="l-count"></span></h2>
+            <div class="btn-row" style="margin:0 0 0 auto">
+              <button type="button" class="btn btn-sm" id="ledger-export">Export JSON</button>
+              <label class="btn btn-sm" id="ledger-import-label" for="ledger-import" style="cursor:pointer;margin:0">Import JSON</label>
+              <input type="file" id="ledger-import" accept="application/json" hidden>
+            </div>
+          </div>
+          <div class="empty-state" id="l-empty" hidden>
+            <h2>No purchases yet</h2>
+            <p>Log what you paid — retail, eBay, toy show, all of it. Pair it with sold sightings in the price journal and this page becomes your ledger.</p>
+          </div>
+          <ul class="entry-list" id="l-list"></ul>
+        </section>
+      </div>
+
+      <section class="card panel" style="padding:var(--space-5)" aria-labelledby="ledger-heading">
+        <h2 id="ledger-heading">Cost basis vs tracked value</h2>
+        <div class="ledger-kpis">
+          <div class="card kpi">
+            <div class="kpi-label">Total paid</div>
+            <div class="kpi-value" id="l-total-paid" aria-live="polite">$0.00</div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label">Tracked value</div>
+            <div class="kpi-value" id="l-total-value" aria-live="polite">$0.00</div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label">Unrealized gain/loss</div>
+            <div class="kpi-value" id="l-total-gain" aria-live="polite">$0.00</div>
+          </div>
+        </div>
+        <p class="method-note" id="l-ledger-note"></p>
+        <div style="overflow-x:auto">
+          <table class="value-table" id="l-breakdown">
+            <thead><tr><th scope="col">Figure</th><th scope="col">Paid</th><th scope="col">Tracked value</th><th scope="col">Gain/loss</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="method-note" style="margin-top:var(--space-4)">Method: cost basis is the sum of your logged purchase prices per figure. Tracked value is the median of your price-journal sold sightings for that figure (all conditions). Gain/loss = tracked value − cost basis. Figures with purchases but no sold sightings are listed below and excluded from the tracked total until you log a sale. No scraped data, no estimates, no invented prices — this is your log, not a market index.</p>
+        <p class="method-note" id="l-unvalued"></p>
+      </section>
+
+      <p class="chart-sub" style="margin-bottom:var(--space-7)">Ledger data lives in this browser only (<code>mlc_buys_v1</code>). Export it before clearing site data. Tracked values come from sightings you log in the <a href="journal.html">price journal</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="checklist.html">Checklist</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/ledger.js"></script>
+</body>
+</html>

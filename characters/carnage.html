@@ -32,6 +32,24 @@
     .char-card:hover { text-decoration: none; border-color: var(--red); }
     .char-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
     .char-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+    .run-panel { padding: var(--space-5); margin-bottom: var(--space-6); }
+    .run-title { font-size: 1.15rem; margin: 0 0 var(--space-2); }
+    .run-summary { margin: 0 0 var(--space-3); }
+    .run-bar { height: 10px; border-radius: 999px; background: var(--line-soft);
+      overflow: hidden; margin-bottom: var(--space-3); }
+    .run-fill { height: 100%; background: var(--gold); border-radius: 999px;
+      transition: width 0.4s ease; }
+    @media (prefers-reduced-motion: reduce) { .run-fill { transition: none; } }
+    .run-missing { margin-top: var(--space-3); }
+    .run-missing summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .run-missing summary:hover { text-decoration: underline; }
+    .run-missing-list { list-style: none; margin: var(--space-3) 0 0; padding: 0;
+      display: grid; gap: var(--space-2); }
+    .run-missing-row { display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: var(--space-2);
+      padding: var(--space-2) 0; border-bottom: 1px solid var(--line-soft); }
+    .run-missing-name { font-size: 0.9rem; }
+    .run-complete { color: var(--gold); font-weight: 700; margin: var(--space-3) 0 0; }
   </style>
 </head>
 <body>
@@ -55,6 +73,7 @@
         <a href="../auth-wizard.html">Auth Wizard</a>
         <a href="../shelf.html">Your Shelf</a>
         <a href="../journal.html">Journal</a>
+        <a href="../collection-value.html">Ledger</a>
         <a href="../exclusives.html">Exclusives</a>
         <a href="../watchlist.html">Watchlist</a>
         <a href="../radar.html">Radar</a>
@@ -83,30 +102,35 @@
       </div>
     </section>
     <div class="container">
+      <section class="card run-panel" id="run-panel" data-char="Carnage" aria-label="Your Carnage run">
+        <h2 class="run-title">Your Carnage run</h2>
+        <p class="run-summary">Reading your tracker…</p>
+        <noscript><p class="method-note">Run progress needs JavaScript — it reads your on-device tracker (nothing is uploaded).</p></noscript>
+      </section>
         <h2 class="release-year">2005</h2>
         <ul class="release-list">
-          <li class="release"><span class="release-name">Carnage</span><span class="release-wave">Box Set - Spider-Man vs. The Fearsome Foes · <span class="badge badge-toybiz">Toy Biz</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="release" data-fig-id="toybiz-2005-box-fearsome-foes::Carnage"><span class="release-name">Carnage</span><span class="release-wave">Box Set - Spider-Man vs. The Fearsome Foes · <span class="badge badge-toybiz">Toy Biz</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
         </ul>
         <h2 class="release-year">2014</h2>
         <ul class="release-list">
-          <li class="release"><span class="release-name">Carnage</span><span class="release-wave">Ultimate Green Goblin Wave · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="release" data-fig-id="hasbro-2014-ultimate-green-goblin::Carnage"><span class="release-name">Carnage</span><span class="release-wave">Ultimate Green Goblin Wave · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
         </ul>
         <h2 class="release-year">2018</h2>
         <ul class="release-list">
-          <li class="release"><span class="release-name">Carnage</span><span class="release-wave">Monster Venom Wave · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="release" data-fig-id="hasbro-2018-monster-venom::Carnage"><span class="release-name">Carnage</span><span class="release-wave">Monster Venom Wave · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
         </ul>
         <h2 class="release-year">2020</h2>
         <ul class="release-list">
-          <li class="release"><span class="release-name">Carnage</span><span class="release-wave">Venompool Wave (Gamerverse) · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="release" data-fig-id="hasbro-2020-venompool::Carnage"><span class="release-name">Carnage</span><span class="release-wave">Venompool Wave (Gamerverse) · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
         </ul>
         <h2 class="release-year">2023</h2>
         <ul class="release-list">
-          <li class="release"><span class="release-name">Carnage</span><span class="tag-row"><span class="badge badge-exclusive">Hasbro Pulse</span></span><span class="release-wave">Store &amp; Convention Exclusives · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="release" data-fig-id="hasbro-2023-exclusives::Carnage"><span class="release-name">Carnage</span><span class="tag-row"><span class="badge badge-exclusive">Hasbro Pulse</span></span><span class="release-wave">Store &amp; Convention Exclusives · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
         </ul>
         <h2 class="release-year">2024</h2>
         <ul class="release-list">
-          <li class="release"><span class="release-name">Carnage</span><span class="release-wave">Store &amp; Convention Exclusives · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="release"><span class="release-name">Carnage</span><span class="tag-row"><span class="badge badge-exclusive">Target</span></span><span class="release-wave">Store &amp; Convention Exclusives · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="release" data-fig-id="hasbro-2024-exclusives::Carnage"><span class="release-name">Carnage</span><span class="release-wave">Store &amp; Convention Exclusives · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="release" data-fig-id="hasbro-2024-exclusives::Carnage"><span class="release-name">Carnage</span><span class="tag-row"><span class="badge badge-exclusive">Target</span></span><span class="release-wave">Store &amp; Convention Exclusives · <span class="badge ">Hasbro</span></span><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Carnage&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Carnage+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Carnage" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
         </ul>
     </div>
   </main>
@@ -114,8 +138,9 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
-      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
+      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../collection-value.html">Ledger</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
     </div>
   </footer>
-</body>
+
+  <script type="module" src="../assets/js/char-run.js"></script></body>
 </html>
