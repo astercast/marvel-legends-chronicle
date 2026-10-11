@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skills Browser — Marvel Legends Chronicle</title>
+  <meta name="description" content="Browse all 206 collector skills: BAF checklists, character collector guides, grail dossiers, bootleg authentication, era guides, and hunt procedures.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .skills-hero { padding-block: var(--space-7); }
+    .skills-cat { margin-bottom: var(--space-6); }
+    .skills-cat > h2 { font-size: 1.15rem; margin-bottom: var(--space-3); display: flex; align-items: baseline; gap: var(--space-2); }
+    .skills-cat .count { color: var(--muted); font-size: 0.85rem; font-weight: normal; }
+    .skills-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3); }
+    .skill-card h3 { font-size: 1rem; margin-bottom: var(--space-1); }
+    .skill-card p { font-size: 0.88rem; color: var(--ink-dim); margin-bottom: var(--space-2); }
+    .skill-id code { font-size: 0.75rem; color: var(--muted); }
+    .filter-bar { max-width: 480px; margin-top: var(--space-4); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="skills.html" aria-current="page">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero skills-hero" aria-labelledby="skills-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">For collectors &amp; agents</span>
+        <h1 id="skills-title">Collector <span class="accent">skills.</span></h1>
+        <p class="lede">Every checklist, guide, and procedure in the Chronicle as a loadable skill — <span id="skills-count" aria-live="polite"></span></p>
+        <div class="field filter-bar">
+          <label for="skills-filter">Filter skills</label>
+          <input class="input" id="skills-filter" type="search" placeholder="e.g. Sentinel BAF, bootleg, Apocalypse…" autocomplete="off">
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div id="skills-list"></div>
+      <div class="empty-state" id="skills-empty" hidden><p>No skills match that filter.</p></div>
+      <p class="chart-sub" style="margin-bottom:var(--space-7);">Skills live in <code>skills/</code> and are indexed by <code>skills/index.json</code>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="assets/js/marvel-skills.js"></script>
+</body>
+</html>
