@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BAF Economics — Marvel Legends Chronicle</title>
+  <meta name="description" content="Cost-to-complete for every Build-A-Figure, computed from your own journal sold-sighting entries. Which BAF can you actually finish?">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .econ-hero { padding-block: var(--space-7); }
+    .econ-grid { display: grid; gap: var(--space-4); margin-bottom: var(--space-6); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: end; margin-bottom: var(--space-4); }
+    .check-field { display: flex; align-items: center; gap: var(--space-2); font-size: 0.9rem; }
+    .check-field input { width: 1.1rem; height: 1.1rem; accent-color: var(--gold); }
+    .stat-row { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-5); }
+    .stat { min-width: 150px; }
+    .stat-value { font-size: 1.7rem; font-weight: 900; font-family: var(--font-display); color: var(--gold); }
+    .stat-label { color: var(--muted); font-size: 0.82rem; }
+    .baf-card { padding: var(--space-4); }
+    .baf-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3); }
+    .baf-rank { font-family: var(--font-mono); color: var(--muted); font-size: 0.85rem; }
+    .baf-name { font-weight: 800; font-size: 1.15rem; margin: 0; }
+    .baf-cost { margin-left: auto; text-align: right; }
+    .baf-cost .cost { font-family: var(--font-mono); font-weight: 800; font-size: 1.25rem; color: var(--gold); }
+    .baf-cost .partial { font-size: 0.78rem; color: var(--muted); }
+    .baf-meta { color: var(--muted); font-size: 0.85rem; margin: var(--space-1) 0 0; }
+    .coverage { display: inline-block; font-size: 0.78rem; padding: 0.15rem 0.5rem; border: 1px solid var(--line-soft); border-radius: 999px; }
+    .coverage.full { border-color: var(--gold); color: var(--gold); }
+    .piece-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin-top: var(--space-3); }
+    .piece-table th, .piece-table td { text-align: left; padding: var(--space-2); border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+    .piece-table th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .piece-table td.num { font-family: var(--font-mono); white-space: nowrap; }
+    .no-data { color: var(--muted); font-style: italic; }
+    .method-note { font-size: 0.82rem; color: var(--muted); max-width: 75ch; }
+    details.baf-details { margin-top: var(--space-3); }
+    details.baf-details summary { cursor: pointer; color: var(--gold); font-size: 0.9rem; font-weight: 600; }
+    .empty-state { text-align: center; padding: var(--space-7); }
+    .empty-state p { color: var(--muted); max-width: 60ch; margin: 0 auto var(--space-3); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to BAF economics</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html" aria-current="page">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero econ-hero" aria-labelledby="econ-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Build-A-Figure math</span>
+        <h1 id="econ-title">BAF <span class="accent">economics.</span></h1>
+        <p class="lede">What does it actually cost to finish each Build-A-Figure? Every dollar below comes from sold listings <em>you</em> logged in your journal — no market index, no scraped prices, no guesses.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="stat-row" id="econ-stats" aria-live="polite"></div>
+
+      <div class="toolbar" role="group" aria-label="BAF economics options">
+        <label class="check-field">
+          <input type="checkbox" id="econ-exclude-owned" checked>
+          Exclude pieces you already own
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="econ-complete-only">
+          Only BAFs with complete price data
+        </label>
+        <div class="field" style="max-width:220px">
+          <label for="econ-sort">Sort by</label>
+          <select class="input" id="econ-sort">
+            <option value="cost-asc">Cheapest completion first</option>
+            <option value="cost-desc">Priciest completion first</option>
+            <option value="coverage">Most pieces priced first</option>
+            <option value="name">BAF name A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="econ-grid" id="econ-list"></div>
+
+      <div class="empty-state card" id="econ-empty" hidden>
+        <h2>No journal data yet</h2>
+        <p>BAF economics runs on your sold-sighting log. Head to the <a href="journal.html">price journal</a>, paste a few eBay sold listings for figures whose BAF pieces you need, and this page will rank every Build-A-Figure by what it costs <em>you</em> to finish.</p>
+        <p><a class="btn" href="journal.html">Open the journal</a></p>
+      </div>
+
+      <p class="method-note" style="margin-bottom:var(--space-7)">Method: for each BAF piece figure, we take the median of your journal sold entries matched to that figure (same matching as the journal's tracked value). Completion cost is the sum of piece medians. Pieces with no logged sales are flagged "no data" and contribute $0 — a BAF with unpriced pieces is shown as a partial estimate, never a full price. Owned pieces are subtracted when the toggle is on. This is your log, not a market index.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/baf-economics.js"></script>
+</body>
+</html>

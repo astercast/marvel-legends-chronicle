@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Variant Spotlight — Marvel Legends Chronicle</title>
+  <meta name="description" content="Fifteen of the most interesting documented Marvel Legends variants — what makes each one notable and how to spot it, from archive data.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .spot-hero { padding-block: var(--space-7); }
+    .spot-grid { display: grid; gap: var(--space-4); margin-bottom: var(--space-6); }
+    .spot-card { padding: var(--space-5); }
+    .spot-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3); }
+    .spot-num { font-family: var(--font-mono); color: var(--muted); font-size: 0.85rem; }
+    .spot-name { font-weight: 800; font-size: 1.2rem; margin: 0; }
+    .spot-trait { display: inline-block; margin-top: var(--space-2); }
+    .spot-meta { color: var(--muted); font-size: 0.85rem; margin: var(--space-2) 0 0; }
+    .spot-sec { margin-top: var(--space-3); }
+    .spot-sec h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); margin: 0 0 var(--space-1); }
+    .spot-sec p { margin: 0; font-size: 0.92rem; max-width: 75ch; }
+    .method-note { font-size: 0.82rem; color: var(--muted); max-width: 75ch; }
+    .coverage-note { margin-bottom: var(--space-5); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to variant spotlight</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html" aria-current="page">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero spot-hero" aria-labelledby="spot-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Know it when you see it</span>
+        <h1 id="spot-title">Variant <span class="accent">spotlight.</span></h1>
+        <p class="lede">Fifteen of the most interesting documented variants in the archive — why each one matters and how to spot it. Every detail below comes from the archive's own variant records and the encyclopedia's variant taxonomy.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="method-note coverage-note">Coverage: 15 of the <a href="variants.html">83 documented variants</a> — chosen for chase history, deco oddities, rarity notes, and good stories. The full wave-by-wave identifier index is on the variants page.</p>
+      <div class="spot-grid" id="spot-list"></div>
+      <p class="method-note" style="margin-bottom:var(--space-7)">Spotting guidance is derived from the archive's documented variant traits (deco, sculpt, packaging, case-ratio flags) — see the <a href="encyclopedia.html">encyclopedia's variant taxonomy</a>. We describe only what's documented; unverified seller claims ("rare error!") are exactly what the <a href="auth-wizard.html">auth wizard</a> is for.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/variant-spotlight.js"></script>
+</body>
+</html>

@@ -13,6 +13,8 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - BAF planner: mark owned figures, see missing Build-A-Figure pieces + acquisition guidance (browser-local)
 - 66 character pages (`characters/<slug>.html`): every release of the most-collected characters, chronological
 - Price journal: log eBay sold listings yourself; your collection's tracked value computed from your entries only (browser-local)
+- BAF economics (`baf-economics.html`): cost-to-complete per Build-A-Figure from your own journal sold sightings — ranked cheapest-first, pieces with no data flagged, owned pieces excludable (browser-local)
+- Hunt planner (`hunt.html`): toy-show trip planner — targets from watchlist hunts + wanted list, per-figure max prices (prefilled from watchlist targets), printable hunt sheet with deal math from your journal medians (browser-local)
 - Collection ledger (`collection-value.html`): log what you paid per figure; cost basis vs tracked value = unrealized gain/loss per figure and total (browser-local, `mlc_buys_v1`; values from your own entries only)
 - Grail watchlist: track the figures you hunt, set your own max price, log sightings — deal-or-no-deal judged against your target (browser-local)
 - Exclusives browser: all 587 exclusives by retailer (Target, Walmart, Walgreens, Amazon, Hasbro Pulse, SDCC, TRU, Fan Channel…), with inline Owned/Wanted toggles and research links; 20 non-retailer entries grouped as "retailer unconfirmed" rather than guessed
@@ -24,6 +26,7 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - "Almost there" on your shelf: BAFs missing 1–2 pieces, waves past 50%, characters nearly complete — computed from your tracker
 - Grail stories: 20 sourced narratives expanding the hall of fame (legend, hunt, reissue saga, honest prices)
 - Variant & chase identifier: spotter's guide + wave-by-wave index of all 83 documented variants
+- Variant spotlight (`variant-spotlight.html`): 15 of the most interesting documented variants — why each matters, how to spot it (15 of 83, coverage stated)
 - Printable checklist: your tracker as a paper checklist grouped by wave, with print stylesheet (also applied to the timeline)
 
 ## API (static JSON, versioned)

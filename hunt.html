@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hunt Planner — Marvel Legends Chronicle</title>
+  <meta name="description" content="Toy-show trip planner: pick your targets, set max prices, print a hunt sheet with deal math from your own sold-sighting log.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .hunt-hero { padding-block: var(--space-7); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; margin-bottom: var(--space-4); }
+    .target-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .target-table th, .target-table td { text-align: left; padding: var(--space-2); border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
+    .target-table th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .target-table td.num { font-family: var(--font-mono); white-space: nowrap; }
+    .max-input { width: 7rem; }
+    .row-check { width: 1.2rem; height: 1.2rem; accent-color: var(--gold); }
+    .method-note { font-size: 0.82rem; color: var(--muted); max-width: 75ch; }
+    .sheet { border: 2px dashed var(--line-soft); border-radius: var(--radius, 8px); padding: var(--space-5); margin-top: var(--space-6); }
+    .sheet h2 { margin-top: 0; }
+    .sheet-row { display: grid; grid-template-columns: 2rem 1fr auto; gap: var(--space-3); align-items: start; padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
+    .sheet-check { width: 1.4rem; height: 1.4rem; border: 2px solid var(--muted); border-radius: 4px; margin-top: 0.2rem; }
+    .sheet-name { font-weight: 800; font-size: 1.05rem; }
+    .sheet-wave { color: var(--muted); font-size: 0.85rem; }
+    .sheet-prices { text-align: right; font-family: var(--font-mono); }
+    .sheet-max { font-size: 1.15rem; font-weight: 800; color: var(--gold); }
+    .sheet-ref { font-size: 0.8rem; color: var(--muted); }
+    .sheet-note-line { border-bottom: 1px solid var(--line-soft); height: 1.6rem; margin-top: var(--space-1); }
+    .empty-state { text-align: center; padding: var(--space-6); }
+    .empty-state p { color: var(--muted); max-width: 60ch; margin: 0 auto var(--space-3); }
+    @media print {
+      .site-header, .site-footer, .hunt-hero .lede, .toolbar, #target-panel, .method-note, .no-print { display: none !important; }
+      .sheet { border: none; padding: 0; margin: 0; }
+      .sheet-check { border-color: #000; }
+      body { background: #fff; color: #000; }
+      .sheet-max { color: #000; }
+      .sheet-wave, .sheet-ref { color: #444; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to hunt planner</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html" aria-current="page">Hunt Planner</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="skills.html">Skills</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hunt-hero" aria-labelledby="hunt-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Night before the show</span>
+        <h1 id="hunt-title">Hunt <span class="accent">planner.</span></h1>
+        <p class="lede">Pick your targets from your watchlist hunts and wanted list, set a max price for each, and print a hunt sheet with deal math from your own sold-sighting log.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="card" id="target-panel" style="padding:var(--space-5);margin-bottom:var(--space-5)" aria-labelledby="targets-heading">
+        <h2 id="targets-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Targets <span id="target-count" class="no-print"></span></h2>
+        <div class="toolbar no-print">
+          <div class="field" style="max-width:320px">
+            <label for="hunt-search">Filter targets</label>
+            <input class="input" id="hunt-search" type="search" placeholder="Figure or wave…" autocomplete="off">
+          </div>
+          <button type="button" class="btn btn-sm" id="hunt-select-all">Select all</button>
+          <button type="button" class="btn btn-sm btn-ghost" id="hunt-select-none">Select none</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="target-table" id="hunt-table">
+            <thead><tr>
+              <th scope="col"><span class="visually-hidden">Include</span></th>
+              <th scope="col">Figure</th><th scope="col">Wave</th>
+              <th scope="col">Max price (USD)</th><th scope="col">Your sold median</th><th scope="col">Source</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="hunt-empty" hidden>
+          <p>No targets yet. Add hunts on the <a href="watchlist.html">watchlist</a> (with your max prices) or mark figures <strong>Wanted</strong> on the <a href="index.html">timeline</a> — they'll show up here.</p>
+        </div>
+        <p class="method-note">Deal math: the median of your journal sold entries for each figure — the same numbers the <a href="journal.html">price journal</a> uses. Max prices prefill from your watchlist targets; anything you type is saved in this browser.</p>
+      </section>
+
+      <section class="sheet" id="hunt-sheet" aria-labelledby="sheet-heading" hidden>
+        <h2 id="sheet-heading">Hunt sheet <span id="sheet-date" style="font-weight:400;font-size:1rem"></span></h2>
+        <p class="sheet-ref no-print">Print this page — only the sheet prints. Tick boxes as you hunt.</p>
+        <div id="sheet-rows"></div>
+        <p class="no-print" style="margin-top:var(--space-4)"><button type="button" class="btn" id="hunt-print">Print hunt sheet</button></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="checklist.html">Checklist</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/hunt.js"></script>
+</body>
+</html>

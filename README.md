@@ -12,6 +12,9 @@ Static site. GitHub only — nothing is deployed anywhere.
 - `stats.html` — stats dashboard: figures per year, BAF waves over time, top 25 characters, exclusives share, wave-size breakdowns — all computed live from the data
 - `grails.html` — 20 sourced grail stories expanding the hall of fame: the legend, the hunt, the reissue saga, honest prices
 - `variants.html` — variant & chase identifier: how to spot variants in the wild + wave-by-wave index of all 83 documented variants
+- `baf-economics.html` — BAF economics: cost-to-complete per Build-A-Figure from your own journal sold sightings, ranked cheapest-first (browser-local)
+- `hunt.html` — hunt planner: toy-show trip planner with targets, max prices, printable hunt sheet (browser-local)
+- `variant-spotlight.html` — 15 of the most interesting documented variants: why each matters + how to spot it
 - `checklist.html` — printable owned/wanted checklist from your tracker data, grouped by wave (print stylesheet also covers the timeline)
 - `encyclopedia.html` — collector encyclopedia: line history, packaging evolution, variant/chase/exclusive taxonomy, 23-entry hall of fame (with reissue radar), grading guide, bootleg-spotting guide, resources directory
 - `baf-planner.html` — "complete my BAF" planner: mark owned figures, see missing pieces + acquisition guidance (browser-local, syncs with the timeline tracker)
