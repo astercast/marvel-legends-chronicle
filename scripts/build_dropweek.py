@@ -28,6 +28,8 @@ SCHEMA_DIR = ROOT / "data" / "v1" / "schema"
 KINDS = {"preorder", "sale-day", "deadline"}
 PRICE_KINDS = {"msrp", "unannounced"}
 CHECKLIST_PHASES = {"before", "morning", "at-open", "after"}
+CAPTURE_PHASES = {"before", "at-open", "first-hour", "close"}
+REPORT_FILLS = {"captureLog.listings", "captureLog.sellouts", "priceWatch"}
 POLL_FLAGS = {"confirmed", "reported", "single-source", "uncertain"}
 URL_RE = re.compile(r"^https?://\S+$")
 # dollar amounts the source is allowed to name (announced MSRPs / reported listings /
@@ -145,6 +147,116 @@ def main() -> None:
             if not s.get("label") or not URL_RE.match(s.get("url", "")):
                 fail(f"{where}: source needs a label and an http(s) url: {s!r}")
 
+    # --- drop-day capture protocol (Drop Day readiness, 2026-10-12) ---
+    proto = data.get("captureProtocol")
+    if not isinstance(proto, dict) or proto.get("dropId") != pw.get("dropId"):
+        fail("captureProtocol must be an object for the priceWatch drop")
+    doors = proto.get("retailers")
+    if not isinstance(doors, list) or len(doors) < 3:
+        fail("captureProtocol.retailers must list at least the 3 named capture doors")
+    door_names: list[str] = []
+    for i, r in enumerate(doors):
+        where = f"captureProtocol.retailers[{i}]"
+        if not r.get("name") or not r.get("role"):
+            fail(f"{where}: needs name + role")
+        if r["name"] in door_names:
+            fail(f"{where}: duplicate retailer {r['name']!r}")
+        door_names.append(r["name"])
+        if r.get("order") != i + 1:
+            fail(f"{where}: order must run 1..n in capture order")
+    for named in ("Hasbro Pulse", "BigBadToyStore", "Entertainment Earth"):
+        if named not in door_names:
+            fail(f"captureProtocol.retailers: the named capture door {named!r} is missing")
+    steps = proto.get("steps")
+    if not isinstance(steps, list) or len(steps) < 5:
+        fail("captureProtocol.steps must be a list of at least 5 steps")
+    seen_steps: set[str] = set()
+    for i, st in enumerate(steps):
+        where = f"captureProtocol.steps[{i}]"
+        for key in ("id", "phase", "label", "detail"):
+            if not st.get(key):
+                fail(f"{where}: missing {key!r}")
+        if st["id"] in seen_steps:
+            fail(f"{where}: duplicate step id {st['id']!r}")
+        seen_steps.add(st["id"])
+        if st["phase"] not in CAPTURE_PHASES:
+            fail(f"{where}: bad phase {st['phase']!r}")
+    rules_blob = " ".join(proto.get("rules", [])).lower()
+    if "asking" not in rules_blob or "sold" not in rules_blob:
+        fail("captureProtocol.rules must state the asking/sold lane discipline")
+
+    # --- capture log: asking listings + sellout events, lanes never mixed ---
+    clog = data.get("captureLog")
+    if not isinstance(clog, dict) or clog.get("dropId") != pw.get("dropId"):
+        fail("captureLog must be an object for the priceWatch drop")
+    if clog.get("status") not in {"awaiting-window", "capturing", "closed"}:
+        fail(f"captureLog: bad status {clog.get('status')!r}")
+
+    def _check_stamp(value, where):
+        try:
+            datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        except ValueError:
+            fail(f"{where}: unparseable timestamp {value!r}")
+
+    listings = clog.get("listings")
+    if not isinstance(listings, list):
+        fail("captureLog.listings must be a list (empty before the window)")
+    for i, e in enumerate(listings):
+        where = f"captureLog.listings[{i}]"
+        if e.get("figure") not in drop_names:
+            fail(f"{where}: figure {e.get('figure')!r} is not in the drop lineup")
+        if e.get("retailer") not in door_names:
+            fail(f"{where}: retailer {e.get('retailer')!r} is not a capture door")
+        if not isinstance(e.get("price"), (int, float)) or e["price"] <= 0:
+            fail(f"{where}: a listing entry needs a positive asking price")
+        if not e.get("observedAt"):
+            fail(f"{where}: a listing entry needs a real observedAt timestamp")
+        _check_stamp(e["observedAt"], where)
+    sellouts = clog.get("sellouts")
+    if not isinstance(sellouts, list):
+        fail("captureLog.sellouts must be a list (empty before the window)")
+    for i, e in enumerate(sellouts):
+        where = f"captureLog.sellouts[{i}]"
+        if e.get("figure") not in drop_names:
+            fail(f"{where}: figure {e.get('figure')!r} is not in the drop lineup")
+        if e.get("retailer") not in door_names:
+            fail(f"{where}: retailer {e.get('retailer')!r} is not a capture door")
+        if "price" in e:
+            fail(f"{where}: a sellout is an event, not a price — no price field allowed")
+        if not e.get("observedAt"):
+            fail(f"{where}: a sellout entry needs a real observedAt timestamp")
+        _check_stamp(e["observedAt"], where)
+
+    # --- post-window report scaffold: fills only from the capture lanes ---
+    report = data.get("windowReport")
+    if not isinstance(report, dict) or report.get("dropId") != pw.get("dropId"):
+        fail("windowReport must be an object for the priceWatch drop")
+    if report.get("status") not in {"awaiting-window", "filled"}:
+        fail(f"windowReport: bad status {report.get('status')!r}")
+    msrps = {f["msrp"] for f in pw["figures"]}
+    if len(msrps) != 1 or report.get("announcedMsrp") not in msrps:
+        fail("windowReport.announcedMsrp must equal the priceWatch announced MSRP")
+    sections = report.get("sections")
+    if not isinstance(sections, list) or len(sections) < 3:
+        fail("windowReport.sections must be a list of at least 3 sections")
+    seen_sec: set[str] = set()
+    for i, sec in enumerate(sections):
+        where = f"windowReport.sections[{i}]"
+        for key in ("id", "title", "prompt", "fillsFrom"):
+            if not sec.get(key):
+                fail(f"{where}: missing {key!r}")
+        if sec["id"] in seen_sec:
+            fail(f"{where}: duplicate section id {sec['id']!r}")
+        seen_sec.add(sec["id"])
+        if sec["fillsFrom"] not in REPORT_FILLS:
+            fail(f"{where}: fillsFrom {sec['fillsFrom']!r} is not a capture lane")
+    for need in ("sellouts", "first-spread", "thirty-claim"):
+        if need not in seen_sec:
+            fail(f"windowReport.sections: required section {need!r} is missing")
+    if report.get("verdicts", {}).get("thirtyClaim") not in {
+            "pending", "at-msrp", "above-msrp", "mixed"}:
+        fail("windowReport.verdicts.thirtyClaim must be a known verdict state")
+
     # no invented prices: every $N in the payload must be an allowed amount
     blob = json.dumps(data)
     for m in re.finditer(r"\$(\d[\d,]*(?:\.\d{2})?)", blob):
@@ -167,6 +279,9 @@ def main() -> None:
             "checklist": {"type": "array"},
             "priceWatch": {"type": "object"},
             "radarPoll": {"type": "object"},
+            "captureProtocol": {"type": "object"},
+            "captureLog": {"type": "object"},
+            "windowReport": {"type": "object"},
         },
     }, indent=2) + "\n", encoding="utf-8")
     (SCHEMA_DIR / "drop-week-item.json").write_text(json.dumps({
@@ -202,6 +317,9 @@ def main() -> None:
         "checklist": checklist,
         "priceWatch": pw,
         "radarPoll": poll,
+        "captureProtocol": proto,
+        "captureLog": clog,
+        "windowReport": report,
     }
     OUT.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(f"build_dropweek: wrote {OUT.relative_to(ROOT)} ({len(drops)} drops) + schemas")

@@ -476,5 +476,125 @@
         ]
       }
     ]
+  },
+  "captureProtocol": {
+    "dropId": "doomsday-wave-2",
+    "intro": "When the window opens at 1 PM ET on Wed Oct 14, the first live listings are the record everything else gets judged against \u2014 the spread against the announced price, whether the price-rise chatter was real, and which figure went first. This is the capture procedure: four doors, worked in a fixed order, every listing written down with the time it was actually seen. It runs on the honor system and a clock, the same as the rest of the Chronicle.",
+    "retailers": [
+      {
+        "name": "Hasbro Pulse",
+        "order": 1,
+        "role": "The manufacturer's own door, and the reference price. What Pulse posts at 1 PM is the wave's own asking price \u2014 the number the price-rise question gets settled against."
+      },
+      {
+        "name": "Amazon",
+        "order": 2,
+        "role": "Named alongside Pulse in the Oct 12 coverage as a launch door. If Pulse looks empty at the open, this is the first place to check \u2014 a lagging Pulse listing is a known pattern, not a sellout."
+      },
+      {
+        "name": "BigBadToyStore",
+        "order": 3,
+        "role": "Named in Oct 12 coverage as carrying the wave. Specialist doors sometimes post a few minutes after Pulse; a later timestamp here is normal, not a discrepancy."
+      },
+      {
+        "name": "Entertainment Earth",
+        "order": 4,
+        "role": "Named in Oct 12 coverage as carrying the wave. The fourth door, and the one that often still has stock when the first two flip \u2014 worth the full sweep even late in the hour."
+      }
+    ],
+    "steps": [
+      {
+        "id": "stage-doors",
+        "phase": "before",
+        "label": "Stage the four doors before 1 PM",
+        "detail": "One tab per retailer, in capture order: Pulse, Amazon, BigBadToyStore, Entertainment Earth. Signed in, search pages loaded. The checklist above gets you ready to buy; this staging gets you ready to record."
+      },
+      {
+        "id": "one-clock",
+        "phase": "before",
+        "label": "One clock, real timestamps",
+        "detail": "Every entry takes the time from your clock at the moment you see the listing, recorded to the minute in ET. A listing seen at 1:03 is a 1:03 listing. Never backfill a time from memory, and never round a sellout down to the hour \u2014 the order things happened is the story."
+      },
+      {
+        "id": "pulse-first",
+        "phase": "at-open",
+        "label": "Pulse first, price first, in attack order",
+        "detail": "At 1 PM, start at Pulse and work the figures in attack order \u2014 Lord Doom, then Nightcrawler, then Beast. For each one, write down the asking price exactly as posted and the time. If Pulse shows nothing for a figure, record it as not yet listed and move on; the Pulse-lag rule says check Amazon before calling anything gone."
+      },
+      {
+        "id": "work-the-doors",
+        "phase": "at-open",
+        "label": "Work the doors in order, one full pass",
+        "detail": "Amazon next, then BigBadToyStore, then Entertainment Earth \u2014 the same three figures at each door, price and time for each. Doors post at different minutes and sometimes at different prices; the spread between them is data, so do not average it away or copy one door's price onto another."
+      },
+      {
+        "id": "sellouts-are-events",
+        "phase": "first-hour",
+        "label": "Sellouts are events, not prices",
+        "detail": "When a figure flips to sold out, waitlist, or pre-order closed at a door, log the event: figure, retailer, time. No price attaches to a sellout \u2014 the last asking price it had is already in the log as a listing. A door that never listed the figure is not a sellout either; it is a door that never listed it."
+      },
+      {
+        "id": "resweep-marks",
+        "phase": "first-hour",
+        "label": "Re-sweep on the marks: 1:15, 1:30, 2:00 PM ET",
+        "detail": "Three more passes over the four doors in the same order. New listings and new sellouts get appended with their own timestamps. Nothing already written gets edited \u2014 if an earlier entry was wrong, the correction is a new entry that says so. The log is a record of what was seen, when."
+      },
+      {
+        "id": "close-the-log",
+        "phase": "close",
+        "label": "Close the log, then read it",
+        "detail": "After the 2 PM sweep, the capture closes and the post-window report below is filled from the log alone \u2014 sellouts in the order they happened, the first asking spread against the announced price, and the price-rise verdict. Anything remembered but not logged does not go in the report."
+      }
+    ],
+    "rules": [
+      "Asking prices only in this log. A listing is an asking price; a completed sale belongs in the price tracker's sold lane above, never in the capture log. The two lanes do not touch here either.",
+      "No price, no listing entry. No timestamp, no entry at all. A half-remembered sighting helps nobody and quietly invents data.",
+      "Name the seller when the door is a marketplace. If a listing above the announced price is a third-party seller on a retailer's marketplace rather than the retailer itself, say so in the note \u2014 that distinction is what settles the price-rise claim honestly.",
+      "Not yet listed is a state, not a sellout. Doors post late; the log keeps the difference.",
+      "Pre-window, the log is empty, and empty is correct. Nothing goes in it before a real listing exists to record."
+    ]
+  },
+  "captureLog": {
+    "dropId": "doomsday-wave-2",
+    "status": "awaiting-window",
+    "note": "The published capture record for the Oct 14 window. Empty until the window opens \u2014 the first entries will be the first live listings, recorded with their real timestamps as they appear. Your own capture entries, logged with the form on this page, live in your browser and feed your copy of the post-window report.",
+    "listings": [],
+    "sellouts": []
+  },
+  "windowReport": {
+    "dropId": "doomsday-wave-2",
+    "status": "awaiting-window",
+    "announcedMsrp": 27.99,
+    "sections": [
+      {
+        "id": "sellouts",
+        "title": "What sold out, and when",
+        "fillsFrom": "captureLog.sellouts",
+        "prompt": "Filled from the capture log's sellout events in the order they happened: figure, retailer, time. If this section is still empty at the close of the capture, nothing sold out on the day \u2014 that is a result, not a gap in the report."
+      },
+      {
+        "id": "first-spread",
+        "title": "The first asking-price spread",
+        "fillsFrom": "captureLog.listings",
+        "prompt": "The lowest and highest first asking price for each figure across the four doors, set against the announced $27.99 MSRP: how far the doors opened from the announced price, and which door sat at each end. Asking prices only \u2014 nothing in this section is a sale."
+      },
+      {
+        "id": "thirty-claim",
+        "title": "The price-rise claim, settled by the listings",
+        "fillsFrom": "captureLog.listings",
+        "prompt": "The Oct 12 radar poll flagged one aggregator's claim that standard singles are rising toward $30, and kept the announced $27.99 because nothing else repeated it. The first Pulse listing settles it: if Pulse posts at $27.99, the claim fails on the manufacturer's own price, whatever third-party marketplace sellers ask; if Pulse posts higher, the claim stands. This section records which way the listings decided, with the listing that decided it."
+      },
+      {
+        "id": "sold-lane",
+        "title": "The sold lane opens later",
+        "fillsFrom": "priceWatch",
+        "prompt": "This wave ships Spring 2027, so window day produces asking prices, not solds. Any completed presale sales get logged in the price tracker's sold lane as they are reported, kept separate from the asking record as always \u2014 and Wave 1's curve says the interesting sold story is the cooling, weeks out."
+      }
+    ],
+    "verdicts": {
+      "thirtyClaim": "pending",
+      "firstSpread": null,
+      "firstSellout": null
+    }
   }
 }

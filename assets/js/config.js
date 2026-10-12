@@ -29,6 +29,7 @@ export const STORE_KEYS = {
   dropweek: "mlc_dropweek_v1", // { <dropId>: { <figName>: "want"|"ordered" } } — Drop Week battle plan
   dropweekChecklist: "mlc_dropweek_checklist_v1", // { <checklistItemId>: true } — Drop Week buyer checklist ticks
   dropweekPrices: "mlc_dropweek_prices_v1", // [{ id, figure, kind: "asking"|"sold", price, where, date, note }] — the user's own Drop Week price sightings, lanes never mixed
+  dropweekCapture: "mlc_dropweek_capture_v1", // { listings: [{ id, figure, retailer, price, observedAt, note }], sellouts: [{ id, figure, retailer, observedAt, note }] } — the user's own drop-day capture log: asking listings and sellout events in separate lanes
   motion: "mlc_motion_v1", // "reduce"|"auto" — manual motion preference for the vault identity (wave 33)
 };
 

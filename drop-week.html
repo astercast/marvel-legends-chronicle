@@ -201,6 +201,8 @@
         <li><a href="#dw-section-checklist">Buyer checklist</a></li>
         <li><a href="#dw-section-drops">The drops</a></li>
         <li><a href="#dw-section-prices">Price tracker</a></li>
+        <li><a href="#dw-section-capture">Drop-day capture</a></li>
+        <li><a href="#dw-section-report">Post-window report</a></li>
         <li><a href="#dw-section-intel">Price &amp; scarcity intel</a></li>
         <li><a href="#dw-section-plan">Your battle plan</a></li>
         <li><a href="#dw-section-radar">Reveal Radar poll</a></li>
@@ -292,6 +294,62 @@
       <p class="dw-note">Sightings live in this browser only (<code>mlc_dropweek_prices_v1</code>) — your field notes, not a market index.</p>
       <noscript>
         <p>The tracker's announced prices: Marvel's Beast, Nightcrawler, and Lord Doom (Concept Series) are each $27.99 announced MSRP, pre-orders opening Oct 14 at 1 PM ET, shipping Spring 2027. No sold prices exist yet for an unreleased wave — beware any site that shows you some.</p>
+      </noscript>
+    </section>
+
+    <section class="dw-section" id="dw-section-capture" aria-labelledby="dw-capture-h">
+      <h2 id="dw-capture-h">Drop-day capture — the first-listings record</h2>
+      <p class="dw-note">Tomorrow at 1 PM ET the first live listings appear, and the first hour is the whole record: what each door asked, in what order the doors posted, and what flipped to sold out when. This is the procedure for writing it down as it happens — four doors, worked in a fixed order, every entry carrying the price as posted and the real time it was seen. Asking prices only in this log; a sellout is logged as an event with no price attached; a completed sale belongs in the price tracker's sold lane, never here.</p>
+      <h3>The four doors, in capture order</h3>
+      <ol class="dw-intel-list" id="dw-capture-doors"></ol>
+      <h3>The procedure</h3>
+      <div id="dw-capture-steps"></div>
+      <h3>The rules of the log</h3>
+      <ul class="dw-intel-list" id="dw-capture-rules"></ul>
+      <p class="dw-note" id="dw-capture-published"></p>
+      <h3>Log a capture entry</h3>
+      <p class="dw-note">See a listing post — or a figure flip to sold out — and put it in the log with the time you saw it. Times are shown back in your own timezone; the instant recorded is the instant you entered.</p>
+      <div class="dw-price-form">
+        <label>Figure
+          <select id="dw-cap-fig"></select>
+        </label>
+        <label>Door (retailer)
+          <select id="dw-cap-retailer"></select>
+        </label>
+        <label>What happened
+          <select id="dw-cap-kind">
+            <option value="listing">Listing posted — an asking price</option>
+            <option value="sellout">Sold out — an event, no price</option>
+          </select>
+        </label>
+        <label>Asking price (USD)
+          <input id="dw-cap-amount" type="number" min="0" step="0.01" inputmode="decimal" placeholder="27.99">
+        </label>
+        <label>Time seen
+          <input id="dw-cap-when" type="datetime-local">
+        </label>
+        <label>Note
+          <input id="dw-cap-note" type="text" maxlength="140" placeholder="Marketplace seller, waitlist, …">
+        </label>
+        <button class="dw-btn" id="dw-cap-add" type="button">Log capture entry</button>
+        <p class="dw-copy-status" id="dw-cap-status" role="status"></p>
+      </div>
+      <h3>Your capture log</h3>
+      <ul class="dw-sighting-list" id="dw-cap-list"></ul>
+      <p class="dw-note">Your capture entries live in this browser only (<code>mlc_dropweek_capture_v1</code>) and feed your copy of the post-window report below.</p>
+      <noscript>
+        <p>The capture procedure, in brief: at 1 PM ET work four doors in order — Hasbro Pulse, Amazon, BigBadToyStore, Entertainment Earth — recording each figure's asking price exactly as posted with the time you saw it; log sellouts as timed events with no price; re-sweep at 1:15, 1:30, and 2:00 PM ET; never mix a completed sale into the asking record.</p>
+      </noscript>
+    </section>
+
+    <section class="dw-section" id="dw-section-report" aria-labelledby="dw-report-h">
+      <h2 id="dw-report-h">Post-window report — the scaffold</h2>
+      <p class="dw-note">The report that gets written after the window closes, prepared now so window day is recording, not outlining. Each section names the lane it fills from; a section with nothing behind it says so plainly rather than dressing up an empty record.</p>
+      <div class="dw-poll-list" id="dw-report-sections"></div>
+      <h3>What the log says so far</h3>
+      <div id="dw-report-summary"></div>
+      <noscript>
+        <p>The report covers four things: what sold out and when (from the sellout events), the first asking-price spread per figure against the announced $27.99 MSRP (from the listing lane), the verdict on the unconfirmed claim that singles are rising toward $30 (settled by the first Pulse listing), and the sold lane, which opens later — this wave ships Spring 2027, so window day produces asking prices, not solds.</p>
       </noscript>
     </section>
 

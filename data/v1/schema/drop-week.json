@@ -36,6 +36,15 @@
     },
     "radarPoll": {
       "type": "object"
+    },
+    "captureProtocol": {
+      "type": "object"
+    },
+    "captureLog": {
+      "type": "object"
+    },
+    "windowReport": {
+      "type": "object"
     }
   }
 }

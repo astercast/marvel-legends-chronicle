@@ -15,6 +15,9 @@ import {
   formatWindowLocal, toggleCheck, checklistProgress, CHECKLIST_KEY,
   makeSighting, addSighting, removeSighting, priceLanes, priceVerdict,
   fmtMoney, PRICES_KEY, SIGHTING_KINDS,
+  CAPTURE_KEY, CAPTURE_RETAILERS, CAPTURE_KINDS, newCaptureLog,
+  makeCaptureEntry, addCaptureEntry, removeCaptureEntry, firstListing,
+  captureSpread, selloutTimeline, thirtyClaimVerdict, buildWindowReport,
 } from "../assets/js/drop-command.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -297,6 +300,127 @@ suite("drop-command: reveal radar poll (Oct 12)", () => {
   });
 });
 
+suite("drop-command: drop-day capture protocol + log", () => {
+  const cap = (over = {}) => makeCaptureEntry({
+    id: "c1", figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "listing",
+    price: 27.99, observedAt: "2026-10-14T17:03:00Z", ...over,
+  });
+  test("protocol names the capture doors in worked order", () => {
+    const proto = data.captureProtocol;
+    assert(proto.dropId === "doomsday-wave-2", "protocol is for the Oct 14 drop");
+    const names = proto.retailers.map((r) => r.name);
+    for (const named of ["Hasbro Pulse", "BigBadToyStore", "Entertainment Earth"]) {
+      assert(names.includes(named), `door ${named} present`);
+    }
+    assert(proto.retailers[0].name === "Hasbro Pulse", "Pulse is worked first");
+    assert(proto.retailers.map((r) => r.order).join(",") === proto.retailers.map((_, i) => i + 1).join(","), "orders run 1..n");
+    assert(JSON.stringify(CAPTURE_RETAILERS) === JSON.stringify(names), "JS door list mirrors the protocol data");
+  });
+  test("protocol steps cover the whole capture arc, rules keep the lanes apart", () => {
+    const phases = new Set(data.captureProtocol.steps.map((s) => s.phase));
+    for (const p of ["before", "at-open", "first-hour", "close"]) assert(phases.has(p), `phase ${p}`);
+    const rules = data.captureProtocol.rules.join(" ").toLowerCase();
+    assert(rules.includes("asking") && rules.includes("sold lane"), "lane discipline stated in the rules");
+    assert(data.captureProtocol.steps.some((s) => s.id === "sellouts-are-events"), "sellout-event step present");
+  });
+  test("published capture log is empty before the window — the honest state", () => {
+    assert(data.captureLog.status === "awaiting-window", "awaiting the window");
+    assert(Array.isArray(data.captureLog.listings) && data.captureLog.listings.length === 0, "no listings invented");
+    assert(Array.isArray(data.captureLog.sellouts) && data.captureLog.sellouts.length === 0, "no sellouts invented");
+  });
+  test("makeCaptureEntry validates door, kind, price, and a real timestamp", () => {
+    assert(cap() !== null, "valid listing passes");
+    assert(makeCaptureEntry({ figure: "Nightcrawler", retailer: "A Stall", kind: "listing", price: 27.99, observedAt: "2026-10-14T17:03:00Z" }) === null, "non-capture door rejected");
+    assert(makeCaptureEntry({ figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "listing", price: 27.99, observedAt: "tomorrow-ish" }) === null, "fake timestamp rejected");
+    assert(makeCaptureEntry({ figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "listing", observedAt: "2026-10-14T17:03:00Z" }) === null, "listing without a price rejected");
+    assert(makeCaptureEntry({ figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "sold", price: 27.99, observedAt: "2026-10-14T17:03:00Z" }) === null, "no sold lane exists in the capture log");
+    assert(CAPTURE_KINDS.join(",") === "listing,sellout", "exactly two capture entry kinds");
+  });
+  test("a sellout entry can never carry a price", () => {
+    const s = makeCaptureEntry({ id: "c9", figure: "Lord Doom (Concept Series)", retailer: "Amazon", kind: "sellout", price: 99, observedAt: "2026-10-14T17:41:00Z" });
+    assert(s !== null && s.price === null, "price forced to null — a sellout is an event");
+    let log = newCaptureLog();
+    log = addCaptureEntry(log, { id: "c9", figure: "Lord Doom (Concept Series)", retailer: "Amazon", kind: "sellout", price: 99, observedAt: "2026-10-14T17:41:00Z" });
+    assert(log.sellouts.length === 1 && log.listings.length === 0, "sellout lands in its own lane only");
+    log = removeCaptureEntry(log, "c9");
+    assert(log.sellouts.length === 0, "removal works");
+  });
+  test("captureSpread reads the listing lane only, ends named by door", () => {
+    let log = newCaptureLog();
+    log = addCaptureEntry(log, { id: "a", figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "listing", price: 27.99, observedAt: "2026-10-14T17:01:00Z" });
+    log = addCaptureEntry(log, { id: "b", figure: "Nightcrawler", retailer: "BigBadToyStore", kind: "listing", price: 29.99, observedAt: "2026-10-14T17:09:00Z" });
+    log = addCaptureEntry(log, { id: "c", figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "sellout", observedAt: "2026-10-14T18:02:00Z" });
+    const s = captureSpread(log, "Nightcrawler", 27.99);
+    assert(s.count === 2 && s.low === 27.99 && s.high === 29.99, `spread ${JSON.stringify(s)}`);
+    assert(s.lowDoor === "Hasbro Pulse" && s.highDoor === "BigBadToyStore", "doors at each end");
+    assert(s.lowDelta === 0 && Math.abs(s.highDelta - 2) < 0.001, "deltas against MSRP");
+    const empty = captureSpread(log, "Marvel's Beast", 27.99);
+    assert(empty.count === 0 && empty.low === null && empty.highDoor === null, "empty lane is nulls, not zeroes");
+  });
+  test("firstListing is earliest by timestamp, not by entry order", () => {
+    let log = newCaptureLog();
+    log = addCaptureEntry(log, { id: "late", figure: "Marvel's Beast", retailer: "Amazon", kind: "listing", price: 27.99, observedAt: "2026-10-14T17:12:00Z" });
+    log = addCaptureEntry(log, { id: "early", figure: "Marvel's Beast", retailer: "Hasbro Pulse", kind: "listing", price: 27.99, observedAt: "2026-10-14T17:02:00Z" });
+    assert(firstListing(log, "Marvel's Beast").id === "early", "the 17:02 listing is first");
+    assert(firstListing(log, "Nightcrawler") === null, "no listing → null");
+  });
+  test("selloutTimeline orders events as they happened", () => {
+    let log = newCaptureLog();
+    log = addCaptureEntry(log, { id: "s2", figure: "Nightcrawler", retailer: "Amazon", kind: "sellout", observedAt: "2026-10-14T18:20:00Z" });
+    log = addCaptureEntry(log, { id: "s1", figure: "Lord Doom (Concept Series)", retailer: "Hasbro Pulse", kind: "sellout", observedAt: "2026-10-14T17:41:00Z" });
+    assert(selloutTimeline(log).map((e) => e.id).join(",") === "s1,s2", "chronological");
+  });
+});
+
+suite("drop-command: post-window report scaffold", () => {
+  test("scaffold sections name their lanes and the MSRP matches the tracker", () => {
+    const rep = data.windowReport;
+    assert(rep.status === "awaiting-window", "scaffold awaits the window");
+    assert(rep.announcedMsrp === 27.99, "announced MSRP pinned");
+    const ids = rep.sections.map((s) => s.id);
+    for (const id of ["sellouts", "first-spread", "thirty-claim", "sold-lane"]) {
+      assert(ids.includes(id), `section ${id} present`);
+    }
+    const fills = Object.fromEntries(rep.sections.map((s) => [s.id, s.fillsFrom]));
+    assert(fills["sellouts"] === "captureLog.sellouts", "sellouts fill from sellout events");
+    assert(fills["first-spread"] === "captureLog.listings", "spread fills from the listing lane");
+    assert(fills["thirty-claim"] === "captureLog.listings", "the claim settles from listings");
+    assert(rep.verdicts.thirtyClaim === "pending", "no verdict before listings exist");
+  });
+  test("thirtyClaimVerdict: pending, settled at MSRP, standing, and mixed", () => {
+    assert(thirtyClaimVerdict(newCaptureLog()).status === "pending", "empty log → pending");
+    let atMsrp = newCaptureLog();
+    atMsrp = addCaptureEntry(atMsrp, { id: "a", figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "listing", price: 27.99, observedAt: "2026-10-14T17:01:00Z" });
+    atMsrp = addCaptureEntry(atMsrp, { id: "b", figure: "Nightcrawler", retailer: "Amazon", kind: "listing", price: 34.99, observedAt: "2026-10-14T17:05:00Z", note: "third-party marketplace seller" });
+    const v = thirtyClaimVerdict(atMsrp);
+    assert(v.status === "at-msrp" && v.text.includes("$27.99"), `Pulse decides: ${v.text}`);
+    let above = newCaptureLog();
+    above = addCaptureEntry(above, { id: "a", figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "listing", price: 31.5, observedAt: "2026-10-14T17:01:00Z" });
+    assert(thirtyClaimVerdict(above).status === "above-msrp", "Pulse above $30 → the claim stands");
+    let mixed = newCaptureLog();
+    mixed = addCaptureEntry(mixed, { id: "a", figure: "Nightcrawler", retailer: "Hasbro Pulse", kind: "listing", price: 28.99, observedAt: "2026-10-14T17:01:00Z" });
+    assert(thirtyClaimVerdict(mixed).status === "mixed", "above MSRP but under $30 → mixed");
+  });
+  test("buildWindowReport fills from the log alone and stays honest when empty", () => {
+    const figs = data.priceWatch.figures;
+    const empty = buildWindowReport(newCaptureLog(), figs, 27.99);
+    assert(empty.listingCount === 0 && empty.firstSellout === null, "empty report is empty");
+    assert(empty.thirtyClaim.status === "pending", "empty report has no verdict");
+    let log = newCaptureLog();
+    log = addCaptureEntry(log, { id: "a", figure: "Lord Doom (Concept Series)", retailer: "Hasbro Pulse", kind: "listing", price: 27.99, observedAt: "2026-10-14T17:00:00Z" });
+    log = addCaptureEntry(log, { id: "s", figure: "Lord Doom (Concept Series)", retailer: "Hasbro Pulse", kind: "sellout", observedAt: "2026-10-14T17:41:00Z" });
+    const built = buildWindowReport(log, figs, 27.99);
+    assert(built.firstSellout.retailer === "Hasbro Pulse", "first sellout surfaced");
+    assert(built.spreads["Lord Doom (Concept Series)"].low === 27.99, "spread filled for Doom");
+    assert(built.spreads["Nightcrawler"].count === 0, "other figures stay empty");
+  });
+  test("api payload mirrors the capture payloads", () => {
+    assert(JSON.stringify(api.captureProtocol) === JSON.stringify(data.captureProtocol), "captureProtocol deep-equal");
+    assert(JSON.stringify(api.captureLog) === JSON.stringify(data.captureLog), "captureLog deep-equal");
+    assert(JSON.stringify(api.windowReport) === JSON.stringify(data.windowReport), "windowReport deep-equal");
+  });
+});
+
 suite("drop-command: page + storage", () => {
   test("page has breadcrumb, rail, sections, and plan controls", () => {
     for (const id of ["dw-section-drops", "dw-section-intel", "dw-section-plan",
@@ -307,7 +431,12 @@ suite("drop-command: page + storage", () => {
                       "dw-section-prices", "dw-price-rows", "dw-price-note", "dw-price-msrp-note",
                       "dw-price-context", "dw-price-fig", "dw-price-kind", "dw-price-amount",
                       "dw-price-where", "dw-price-date", "dw-price-add", "dw-price-status",
-                      "dw-price-list", "dw-section-radar", "dw-radar-poll"]) {
+                      "dw-price-list", "dw-section-radar", "dw-radar-poll",
+                      "dw-section-capture", "dw-capture-doors", "dw-capture-steps",
+                      "dw-capture-rules", "dw-capture-published", "dw-cap-fig",
+                      "dw-cap-retailer", "dw-cap-kind", "dw-cap-amount", "dw-cap-when",
+                      "dw-cap-note", "dw-cap-add", "dw-cap-status", "dw-cap-list",
+                      "dw-section-report", "dw-report-sections", "dw-report-summary"]) {
       assert(page.includes(`id="${id}"`), `page has #${id}`);
     }
     assert(page.includes('aria-label="Breadcrumb"'), "breadcrumb nav");
@@ -339,5 +468,7 @@ suite("drop-command: page + storage", () => {
     assert(PRICES_KEY === "mlc_dropweek_prices_v1", `PRICES_KEY is ${PRICES_KEY}`);
     assert(configJs.includes('"mlc_dropweek_checklist_v1"'), "checklist key registered");
     assert(configJs.includes('"mlc_dropweek_prices_v1"'), "prices key registered");
+    assert(CAPTURE_KEY === "mlc_dropweek_capture_v1", `CAPTURE_KEY is ${CAPTURE_KEY}`);
+    assert(configJs.includes('"mlc_dropweek_capture_v1"'), "capture key registered");
   });
 });

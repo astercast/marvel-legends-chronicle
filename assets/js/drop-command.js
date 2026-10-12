@@ -298,6 +298,155 @@ export function priceVerdict(lanes, msrp) {
   return "Nothing logged yet — this lane fills in from your own sightings.";
 }
 
+/* ---- drop-day capture log (user state) ----
+   The Oct 14 window, recorded as it happens. Two lanes again, and they are
+   stricter than the price tracker's: a listing entry is an asking price seen
+   at one retailer at one real moment; a sellout entry is an event and carries
+   NO price. Sold prices never enter this log at all — they belong to the
+   price tracker's sold lane. */
+
+export const CAPTURE_KEY = STORE_KEYS.dropweekCapture;
+
+/** The capture doors, in the order they are worked. Mirrors captureProtocol. */
+export const CAPTURE_RETAILERS = ["Hasbro Pulse", "Amazon", "BigBadToyStore", "Entertainment Earth"];
+
+export const CAPTURE_KINDS = ["listing", "sellout"];
+
+/** An empty capture log: two lanes, both empty until a real listing exists. */
+export function newCaptureLog() {
+  return { listings: [], sellouts: [] };
+}
+
+function validStamp(value) {
+  if (typeof value !== "string" || !value) return "";
+  const t = Date.parse(value);
+  return Number.isNaN(t) ? "" : value;
+}
+
+/**
+ * Validate + normalize one capture entry. A listing needs a figure, a capture
+ * door, a positive asking price, and a real timestamp. A sellout needs the
+ * figure, door, and timestamp — and its price is forced to null: a sellout
+ * is an event, not a price, whatever the caller passed in.
+ */
+export function makeCaptureEntry(raw) {
+  if (!raw || typeof raw !== "object") return null;
+  if (!raw.figure || !CAPTURE_RETAILERS.includes(raw.retailer)) return null;
+  if (!CAPTURE_KINDS.includes(raw.kind)) return null;
+  const observedAt = validStamp(raw.observedAt);
+  if (!observedAt) return null;
+  const base = {
+    id: String(raw.id || ""),
+    figure: String(raw.figure),
+    retailer: String(raw.retailer),
+    observedAt,
+    note: String(raw.note || "").slice(0, 140),
+  };
+  if (raw.kind === "sellout") return { ...base, kind: "sellout", price: null };
+  const price = Number(raw.price);
+  if (!Number.isFinite(price) || price <= 0 || price > 100000) return null;
+  return { ...base, kind: "listing", price: Math.round(price * 100) / 100 };
+}
+
+/** Append an entry to its lane. Invalid entries leave the log untouched. */
+export function addCaptureEntry(log, raw) {
+  const e = makeCaptureEntry(raw);
+  const cur = log && Array.isArray(log.listings) && Array.isArray(log.sellouts)
+    ? log : newCaptureLog();
+  if (!e) return cur;
+  return e.kind === "sellout"
+    ? { listings: [...cur.listings], sellouts: [...cur.sellouts, e] }
+    : { listings: [...cur.listings, e], sellouts: [...cur.sellouts] };
+}
+
+export function removeCaptureEntry(log, id) {
+  const cur = log && Array.isArray(log.listings) && Array.isArray(log.sellouts)
+    ? log : newCaptureLog();
+  return {
+    listings: cur.listings.filter((e) => e.id !== id),
+    sellouts: cur.sellouts.filter((e) => e.id !== id),
+  };
+}
+
+/** The earliest listing seen for one figure (the first asking price), or null. */
+export function firstListing(log, figureName) {
+  const hits = ((log && log.listings) || [])
+    .filter((e) => e.figure === figureName)
+    .sort((a, b) => Date.parse(a.observedAt) - Date.parse(b.observedAt));
+  return hits.length ? hits[0] : null;
+}
+
+/**
+ * First asking-price spread for one figure from the listing lane ONLY:
+ * low/high across the doors, each end's delta against the announced MSRP,
+ * plus the door at each end. Sellouts never touch this — they have no price.
+ * Empty lane = count 0 and nulls, never zeroes.
+ */
+export function captureSpread(log, figureName, msrp) {
+  const hits = ((log && log.listings) || []).filter((e) => e.figure === figureName);
+  if (!hits.length) {
+    return { count: 0, low: null, high: null, lowDoor: null, highDoor: null, lowDelta: null, highDelta: null };
+  }
+  const lowE = hits.reduce((a, b) => (b.price < a.price ? b : a));
+  const highE = hits.reduce((a, b) => (b.price > a.price ? b : a));
+  return {
+    count: hits.length,
+    low: lowE.price,
+    high: highE.price,
+    lowDoor: lowE.retailer,
+    highDoor: highE.retailer,
+    lowDelta: Math.round((lowE.price - msrp) * 100) / 100,
+    highDelta: Math.round((highE.price - msrp) * 100) / 100,
+  };
+}
+
+/** Sellout events in the order they happened (stable for equal stamps). */
+export function selloutTimeline(log) {
+  return [...((log && log.sellouts) || [])]
+    .sort((a, b) => Date.parse(a.observedAt) - Date.parse(b.observedAt));
+}
+
+/**
+ * Settle the flagged price-rise claim from the captured listings alone.
+ * The claim is about Hasbro's own price, so the manufacturer's door decides
+ * it when Pulse has posted; otherwise the captured doors decide together.
+ * Marketplace asks above MSRP at a door are noted, never treated as the
+ * manufacturer's price. No listings yet = pending, honestly.
+ */
+export function thirtyClaimVerdict(log, msrp = 27.99) {
+  const listings = (log && log.listings) || [];
+  if (!listings.length) {
+    return { status: "pending", text: "Pending — no live listings captured yet. The first listings settle this." };
+  }
+  const pulse = listings.filter((e) => e.retailer === "Hasbro Pulse");
+  const deciding = pulse.length ? pulse : listings;
+  const prices = deciding.map((e) => e.price);
+  if (prices.some((p) => p >= 30)) {
+    return { status: "above-msrp", text: `The claim stands at the deciding door: a first listing posted at ${fmtMoney(Math.max(...prices))}, above the announced ${fmtMoney(msrp)} MSRP.` };
+  }
+  if (prices.every((p) => p === msrp)) {
+    return { status: "at-msrp", text: `Settled at the announced price: the deciding door posted at ${fmtMoney(msrp)} — the rise-toward-$30 claim is not borne out by the first listings.` };
+  }
+  return { status: "mixed", text: `Partly settled: first listings at the deciding door run ${fmtMoney(Math.min(...prices))}–${fmtMoney(Math.max(...prices))} against the announced ${fmtMoney(msrp)} — above MSRP somewhere, but nothing at $30.` };
+}
+
+/**
+ * The post-window report, built from a capture log and nothing else.
+ * Sections with no log behind them report their empty state plainly.
+ */
+export function buildWindowReport(log, figures, msrp = 27.99) {
+  const spreads = {};
+  for (const f of figures || []) spreads[f.name || f] = captureSpread(log, f.name || f, msrp);
+  const sellouts = selloutTimeline(log);
+  return {
+    sellouts,
+    firstSellout: sellouts.length ? sellouts[0] : null,
+    spreads,
+    thirtyClaim: thirtyClaimVerdict(log, msrp),
+    listingCount: ((log && log.listings) || []).length,
+  };
+}
+
 /* ---- page wiring ---- */
 
 function el(tag, cls, text) {
@@ -365,6 +514,8 @@ export async function init() {
   renderDrops(drops, plan);
   renderPriceWatch(data.priceWatch || null);
   renderRadarPoll(data.radarPoll || null);
+  renderCapture(data.captureProtocol || null, data.captureLog || null, data.priceWatch || null);
+  renderWindowReport(data.windowReport || null, data.priceWatch || null);
   renderIntel(data.intel || {});
   const mbody = document.getElementById("dw-method-body");
   if (mbody) mbody.textContent = data.methodology || "";
@@ -771,6 +922,229 @@ function renderRadarPoll(poll) {
   more.appendChild(a);
   more.appendChild(document.createTextNode(" — candidates stay candidates until a second source or Hasbro confirms them."));
   wrap.appendChild(more);
+}
+
+let captureCtx = null; // { report, priceWatch, published } — set in init()
+
+function normalizeLog(raw) {
+  const out = newCaptureLog();
+  if (!raw || typeof raw !== "object") return out;
+  for (const e of raw.listings || []) {
+    const n = makeCaptureEntry({ ...e, kind: "listing" });
+    if (n) out.listings.push(n);
+  }
+  for (const e of raw.sellouts || []) {
+    const n = makeCaptureEntry({ ...e, kind: "sellout" });
+    if (n) out.sellouts.push(n);
+  }
+  return out;
+}
+
+function loadCaptureLog() {
+  return normalizeLog(loadJson(CAPTURE_KEY, null));
+}
+
+function combinedCaptureLog() {
+  const pub = captureCtx ? normalizeLog(captureCtx.published) : newCaptureLog();
+  const mine = loadCaptureLog();
+  return {
+    listings: [...pub.listings, ...mine.listings],
+    sellouts: [...pub.sellouts, ...mine.sellouts],
+  };
+}
+
+const CAPTURE_PHASE_LABELS = [
+  ["before", "Before the window"],
+  ["at-open", "At 1 PM ET"],
+  ["first-hour", "The first hour"],
+  ["close", "Close-out"],
+];
+
+function renderCapture(proto, published, pw) {
+  captureCtx = { ...(captureCtx || {}), published, priceWatch: pw };
+  if (!proto) return;
+  const doors = document.getElementById("dw-capture-doors");
+  if (doors) {
+    doors.innerHTML = "";
+    for (const r of proto.retailers || []) {
+      const li = el("li", "dw-cap-door");
+      li.appendChild(el("strong", null, `${r.name} — `));
+      li.appendChild(document.createTextNode(r.role || ""));
+      doors.appendChild(li);
+    }
+  }
+  const stepsWrap = document.getElementById("dw-capture-steps");
+  if (stepsWrap) {
+    stepsWrap.innerHTML = "";
+    for (const [phase, label] of CAPTURE_PHASE_LABELS) {
+      const group = (proto.steps || []).filter((s) => s.phase === phase);
+      if (!group.length) continue;
+      stepsWrap.appendChild(el("h3", "dw-check-phase", label));
+      const ul = el("ul", "dw-intel-list");
+      for (const s of group) {
+        const li = el("li", null, "");
+        li.appendChild(el("strong", null, `${s.label}. `));
+        li.appendChild(document.createTextNode(s.detail || ""));
+        ul.appendChild(li);
+      }
+      stepsWrap.appendChild(ul);
+    }
+  }
+  const rules = document.getElementById("dw-capture-rules");
+  if (rules) {
+    rules.innerHTML = "";
+    for (const r of proto.rules || []) rules.appendChild(el("li", null, r));
+  }
+  const statusNote = document.getElementById("dw-capture-published");
+  if (statusNote) {
+    const pub = normalizeLog(published);
+    statusNote.textContent = pub.listings.length || pub.sellouts.length
+      ? `The published capture record holds ${pub.listings.length} listing(s) and ${pub.sellouts.length} sellout event(s) so far.`
+      : "The published capture log is empty — the window has not opened yet, and empty is the correct state for it. Your own entries below live in this browser only.";
+  }
+
+  const figSelect = document.getElementById("dw-cap-fig");
+  if (figSelect && pw && Array.isArray(pw.figures)) {
+    figSelect.innerHTML = "";
+    for (const f of pw.figures) {
+      const opt = document.createElement("option");
+      opt.value = f.name;
+      opt.textContent = f.name;
+      figSelect.appendChild(opt);
+    }
+  }
+  const retSelect = document.getElementById("dw-cap-retailer");
+  if (retSelect) {
+    retSelect.innerHTML = "";
+    for (const name of CAPTURE_RETAILERS) {
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name;
+      retSelect.appendChild(opt);
+    }
+  }
+  const whenInput = document.getElementById("dw-cap-when");
+  const stampNow = () => {
+    if (!whenInput) return;
+    const n = new Date();
+    const local = new Date(n.getTime() - n.getTimezoneOffset() * 60000);
+    whenInput.value = local.toISOString().slice(0, 16);
+  };
+  stampNow();
+
+  const renderMine = () => {
+    const list = document.getElementById("dw-cap-list");
+    if (!list) return;
+    const mine = loadCaptureLog();
+    const entries = [
+      ...mine.listings.map((e) => ({ ...e, lane: "LISTING" })),
+      ...mine.sellouts.map((e) => ({ ...e, lane: "SELLOUT" })),
+    ].sort((a, b) => Date.parse(a.observedAt) - Date.parse(b.observedAt));
+    list.innerHTML = "";
+    if (!entries.length) {
+      list.appendChild(el("li", "dw-note", "Nothing captured yet. The first listing you see tomorrow becomes the first entry — price, door, and the real time you saw it."));
+    }
+    for (const e of entries) {
+      const li = el("li", "dw-sighting");
+      const text = e.lane === "SELLOUT"
+        ? `SELLOUT · ${e.figure} · ${e.retailer} · ${formatWindowLocal(e.observedAt)}`
+        : `LISTING (asking) · ${e.figure} · ${fmtMoney(e.price)} · ${e.retailer} · ${formatWindowLocal(e.observedAt)}${e.note ? ` · ${e.note}` : ""}`;
+      li.appendChild(el("span", "dw-sighting-text", text));
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "dw-btn dw-btn-ghost dw-sighting-del";
+      del.textContent = "Remove";
+      del.setAttribute("aria-label", `Remove capture entry: ${e.figure} at ${e.retailer}`);
+      del.addEventListener("click", () => {
+        saveJson(CAPTURE_KEY, removeCaptureEntry(loadCaptureLog(), e.id));
+        renderMine();
+        if (captureCtx && captureCtx.report) renderWindowReport(captureCtx.report, captureCtx.priceWatch);
+      });
+      li.appendChild(del);
+      list.appendChild(li);
+    }
+  };
+
+  const addBtn = document.getElementById("dw-cap-add");
+  const status = document.getElementById("dw-cap-status");
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      const kind = document.getElementById("dw-cap-kind");
+      const amount = document.getElementById("dw-cap-amount");
+      const note = document.getElementById("dw-cap-note");
+      const whenRaw = whenInput && whenInput.value ? whenInput.value : "";
+      const observedAt = whenRaw ? new Date(whenRaw).toISOString() : new Date().toISOString();
+      const entry = makeCaptureEntry({
+        id: `c-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`,
+        figure: figSelect ? figSelect.value : "",
+        retailer: retSelect ? retSelect.value : "",
+        kind: kind ? kind.value : "",
+        price: kind && kind.value === "sellout" ? null : amount ? amount.value : "",
+        observedAt,
+        note: note ? note.value : "",
+      });
+      if (!entry) {
+        if (status) status.textContent = "That entry needs a figure, a capture door, a real time, and — for a listing — an asking price above zero. Sellouts need no price; they are events.";
+        return;
+      }
+      saveJson(CAPTURE_KEY, addCaptureEntry(loadCaptureLog(), entry));
+      if (amount) amount.value = "";
+      if (note) note.value = "";
+      if (status) {
+        status.textContent = entry.kind === "sellout"
+          ? `Logged sellout: ${entry.figure} at ${entry.retailer}. No price attached — a sellout is an event.`
+          : `Logged listing: ${entry.figure} asking ${fmtMoney(entry.price)} at ${entry.retailer}. It stays in the asking lane.`;
+      }
+      renderMine();
+      if (captureCtx && captureCtx.report) renderWindowReport(captureCtx.report, captureCtx.priceWatch);
+    });
+  }
+  renderMine();
+}
+
+function renderWindowReport(report, pw) {
+  captureCtx = { ...(captureCtx || {}), report, priceWatch: pw };
+  if (!report) return;
+  const wrap = document.getElementById("dw-report-sections");
+  if (wrap) {
+    wrap.innerHTML = "";
+    const fillsLabels = {
+      "captureLog.listings": "the capture log's listing lane",
+      "captureLog.sellouts": "the capture log's sellout events",
+      "priceWatch": "the price tracker's sold lane",
+    };
+    for (const sec of report.sections || []) {
+      const card = el("article", "dw-poll-card");
+      card.appendChild(el("p", "dw-poll-flag", `Fills from ${fillsLabels[sec.fillsFrom] || sec.fillsFrom}`));
+      card.appendChild(el("h3", "dw-poll-head", sec.title));
+      card.appendChild(el("p", "dw-poll-detail", sec.prompt));
+      wrap.appendChild(card);
+    }
+  }
+  const summary = document.getElementById("dw-report-summary");
+  if (summary && pw && Array.isArray(pw.figures)) {
+    const msrp = typeof report.announcedMsrp === "number" ? report.announcedMsrp : pw.figures[0].msrp;
+    const built = buildWindowReport(combinedCaptureLog(), pw.figures, msrp);
+    summary.innerHTML = "";
+    if (!built.listingCount && !built.sellouts.length) {
+      summary.appendChild(el("p", "dw-note",
+        "Awaiting the window: nothing captured yet, so nothing is filled in. This report is written from the capture log alone after the window — no section is pre-written, and an empty sellout list at close is a finding, not a failure."));
+    } else {
+      const lines = [];
+      lines.push(`${built.listingCount} listing(s) and ${built.sellouts.length} sellout event(s) captured so far.`);
+      if (built.firstSellout) {
+        lines.push(`First sellout: ${built.firstSellout.figure} at ${built.firstSellout.retailer}, ${formatWindowLocal(built.firstSellout.observedAt)}.`);
+      }
+      for (const f of pw.figures) {
+        const s = built.spreads[f.name];
+        if (s.count) {
+          lines.push(`${f.name}: first asking spread ${fmtMoney(s.low)} (${s.lowDoor}) – ${fmtMoney(s.high)} (${s.highDoor}) against the announced ${fmtMoney(msrp)}.`);
+        }
+      }
+      lines.push(built.thirtyClaim.text);
+      for (const line of lines) summary.appendChild(el("p", "dw-note", line));
+    }
+  }
 }
 
 function wirePlan(drops, plan) {
