@@ -19,8 +19,8 @@ Base path: `api/v1/`
 |---|---|
 | `index.json` | Self-describing manifest: every endpoint with `path`, `description`, `schema` + `itemSchema` URLs, ISO-8601 UTC `updated`, `records` count, deprecation `notes` |
 | `stats.json` | Totals: waves, figures, year range, BAF waves, exclusive/variant counts, per-year and per-manufacturer breakdowns |
-| `waves.json` | Array of 158 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `source` (nullable), `figureCount` |
-| `figures.json` | Array of 1,904 figures, flat. Each figure carries its wave context |
+| `waves.json` | Array of 167 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `source` (nullable), `figureCount` |
+| `figures.json` | Array of 1,939 figures, flat. Each figure carries its wave context |
 | `encyclopedia.json` | `history` (timeline events), `packagingGuide` (packaging evolution, sourced), `variantsGuide` (variant taxonomy, chase/case ratios, exclusives, international), `hallOfFame` (23 entries, each with a `reissueRadar` flag), `gradingGuide` (AFA/CGA, CAS, UKG, grading-premium caveat), `priceMethod` (sold-listings methodology, dated price history, reissue effect), `bootlegGuide` (sections), `resources` (directory) |
 | `preorders.json` | Envelope `{version, observed, source, note, count, items}` — 23 researched upcoming releases (waves 12 + 20 + 24 + 28 + 30): `id`, `name`, `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact `YYYY-MM-DD`, null when unreported — never invented), `releaseWindow` (e.g. `"Fall 2026"`), `price` (announced MSRP, never a market price), `query` (retailer search query), `venue`, `details`, `retailers` (retailer search-pattern ids the research names), `windowResult` (past-window outcome: `as-announced`/`retailers-partial`/`delayed`/`missed`/`unscored`), `sources` (hobby-press links) |
 | `characters.json` | Envelope `{version, observed, count, characters}` — 66 character guides: `slug`, `name`, `count`, `first`, `last`, `page` (`characters/<slug>.html`) |
@@ -37,7 +37,7 @@ Base path: `api/v1/`
 
 ## Live server API (marvel-radar) — Vercel functions
 
-Deployed as one Vercel project: static frontend + 4 serverless functions under `/api/*` (zero npm dependencies, `nodejs22.x`). The live endpoints are **unversioned**; behavior changes bump `meta.version`. Every response uses the shared envelope — `{ok, data, meta}` on success, `{ok:false, data:null, meta, error:{code, message}}` on failure — validated against `api/v1/schema/envelope.json` (draft 2020-12). The frontend calls the live endpoint first with a 7-second timeout and falls back to the static twin (`api/v1/...`); the badge next to each widget reports `live` vs `cached · updated HH:MM` honestly.
+Deployed as one Vercel project: static frontend + 4 serverless functions under `/api/*` (zero npm dependencies; Node auto-detected — `functions.*.runtime` is omitted, since Vercel rejects any runtime value for Node functions and the key exists only for community runtimes). The live endpoints are **unversioned**; behavior changes bump `meta.version`. Every response uses the shared envelope — `{ok, data, meta}` on success, `{ok:false, data:null, meta, error:{code, message}}` on failure — validated against `api/v1/schema/envelope.json` (draft 2020-12). The frontend calls the live endpoint first with a 7-second timeout and falls back to the static twin (`api/v1/...`); the badge next to each widget reports `live` vs `cached · updated HH:MM` honestly.
 
 | Method | Path | Function | Inputs | `data` payload | Static twin |
 |---|---|---|---|---|---|

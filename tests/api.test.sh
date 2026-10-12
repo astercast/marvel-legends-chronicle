@@ -151,9 +151,14 @@ for c in crons:
     f=c['schedule'].split()
     assert f[0]!='*' and '*/' not in f[0] and '*/' not in f[1], c
     assert c['path']=='/api/cron/radar', c"
-chk "vercel.json runtime pin" python3 -c "
+chk "vercel.json function paths" python3 -c "
 import json; v=json.load(open('$ROOT/vercel.json'))
-assert v['functions']['api/**/*.js']['runtime']=='nodejs22.x', v['functions']"
+want={'api/health.js','api/reveals.js','api/preorders.js','api/cron/radar.js'}
+assert set(v['functions'].keys())==want, v['functions']
+for k,cfg in v['functions'].items():
+    assert cfg=={'maxDuration':10}, (k,cfg)
+    assert 'runtime' not in cfg, (k,cfg)
+"
 
 # 10. load smoke (§12.5): 30 sequential hits, no 429s, report p95
 chk "smoke no-429" bash -c "

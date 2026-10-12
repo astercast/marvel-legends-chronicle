@@ -5,7 +5,7 @@ The doc a new senior dev reads first. Last updated 2026-10-11.
 ## What it is
 
 A fully static, client-side archive of every Marvel Legends action figure
-(2002–2026): 1,904 figures across 158 waves, plus collector tools (tracker,
+(2002–2026): 1,939 figures across 167 waves, plus collector tools (tracker,
 journal, BAF planner, price tools) and an encyclopedia. No backend, no build
 step for the site itself — pages are hand-written HTML + ES modules, data is
 JSON fetched at runtime. Private repo, GitHub-only.
@@ -14,11 +14,11 @@ JSON fetched at runtime. Private repo, GitHub-only.
 
 ```
 index.html, *.html            27 hand-written root pages (one per feature)
-waves/*.html                  158 generated wave-detail pages (build_waves.py)
+waves/*.html                  167 generated wave-detail pages (build_waves.py)
 characters/*.html             66 generated character pages + index (build_characters.py)
 assets/js/*.js                39 ES modules (type="module", no bundler)
 assets/css/*.css               8 stylesheets (tokens → base → layout → components)
-data/figures.json             SOURCE OF TRUTH: 158 waves, 1904 figures (minified, nulls stripped)
+data/figures.json             SOURCE OF TRUTH: 167 waves, 1939 figures (minified, nulls stripped)
 data/encyclopedia.json        Encyclopedia content (minified)
 data/community.json           Seed posts for the fan-social mock
 api/v1/*.json                 Generated public API (build_api.py): figures, waves,
@@ -39,7 +39,7 @@ data/figures.json (hand-maintained, minified)
     ├──> site pages, via assets/js/data.js loadData()
     │       shapes rows into { id: "<waveId>::<name>", waveId, waveSeries,
     │       year, manufacturer, waveBaf, source, ...fig } — cached in-memory
-    ├──> scripts/build_waves.py      → waves/*.html (158 pages)
+    ├──> scripts/build_waves.py      → waves/*.html (167 pages)
     ├──> scripts/build_characters.py → characters/*.html + manifest.json
     └──> scripts/build_api.py        → api/v1/*.json (+ schemas)
 ```
@@ -96,7 +96,7 @@ empty state; every `JSON.parse` is in try/catch; storage access never throws.
 ## Identity and storage
 
 - **Figure id:** `<waveId>::<figureName>` (stable, derived). Known trade-off:
-  same-name variants in one wave share an id (168 of 1904 rows), so they
+  same-name variants in one wave share an id (411 of 1939 rows), so they
   share owned/wanted state. Rows are always distinguishable by
   `(waveId, name, variant, notes)` — zero fully-identical rows (enforced by
   `tests/test-data-integrity.js`). Changing the id scheme would orphan

@@ -126,6 +126,46 @@
       from { opacity: 0; transform: translateX(48px); }
       to { opacity: 1; transform: none; } }
 
+    /* The drawer index: full-text search across every drawer */
+    .drawer-index { border-top: 1px solid var(--line-soft); padding-block: var(--space-6); }
+    .drawer-index h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem);
+      margin: 0 0 0.4rem; color: var(--ink); }
+    .drawer-index .chart-sub { max-width: 78ch; }
+    .drawer-search { margin-top: var(--space-4); max-width: 720px; }
+    .drawer-search-label { display: block; font-family: var(--font-display); font-size: 0.78rem;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .drawer-search-box { position: relative; }
+    .drawer-search-box::before { /* brass drawer pull, the index is a drawer too */
+      content: ""; position: absolute; left: 12px; top: 50%; translate: 0 -50%; z-index: 2;
+      width: 12px; height: 30px; border-radius: 6px; pointer-events: none;
+      background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
+      box-shadow: inset 0 1px 1px rgba(255, 244, 214, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6); }
+    #drawer-search-input { width: 100%; font-family: var(--font-body); font-size: 1.05rem; color: var(--ink);
+      background: linear-gradient(180deg, rgba(246, 240, 224, 0.06), rgba(246, 240, 224, 0.02));
+      border: 1px solid var(--line-soft); border-radius: var(--radius-m);
+      padding: 0.8rem 1rem 0.8rem 2.6rem; }
+    #drawer-search-input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
+      border-color: var(--gold-deep); }
+    .drawer-search-panel { position: relative; }
+    #drawer-search-results { position: absolute; top: 6px; left: 0; right: 0; z-index: 60;
+      max-height: min(52vh, 380px); overflow-y: auto; padding: 0.35rem;
+      background: var(--panel); border: 1px solid var(--gold-deep); border-radius: var(--radius-m);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55); }
+    #drawer-search-results[hidden] { display: none; }
+    .dsr-option { position: relative; padding: 0.55rem 0.7rem 0.55rem 2.1rem;
+      border-radius: var(--radius-s); cursor: pointer; border: 1px solid transparent; }
+    .dsr-option::before { content: ""; position: absolute; left: 10px; top: 50%; translate: 0 -50%;
+      width: 10px; height: 24px; border-radius: 5px;
+      background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
+      box-shadow: inset 0 1px 1px rgba(255, 244, 214, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6); }
+    .dsr-option:hover { border-color: var(--line-soft);
+      background: linear-gradient(180deg, rgba(246, 240, 224, 0.06), rgba(246, 240, 224, 0.02)); }
+    .dsr-option[aria-selected="true"] { border-color: var(--gold-deep); background: rgba(212, 175, 55, 0.09); }
+    .dsr-name { display: block; font-weight: 600; line-height: 1.25; color: var(--ink); }
+    .dsr-sub { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .drawer-search-status { min-height: 1.5em; font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0 0; }
+
     /* Loading / empty states */
     .room-loading { text-align: center; padding: var(--space-7); color: var(--muted); }
     .room-error { max-width: 60ch; margin: var(--space-5) auto; }
@@ -226,6 +266,31 @@
         <p class="lede">Twenty-five years of Marvel Legends, shelf by shelf. Every figure in the archive has a drawer — pull one open and read its story.</p>
         <p class="accession">Archive № <span class="acc-no">vault-room</span> · 1,939 drawers · 2002–2026</p>
         <p class="chart-sub" id="vault-room-coverage" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="drawer-index" aria-labelledby="drawer-index-h">
+      <div class="container">
+        <h2 id="drawer-index-h">The drawer index</h2>
+        <p class="chart-sub">Every drawer, searchable — name a figure, wave, variant, exclusive, or BAF piece and the index reads all 1,939 drawers at once. <span aria-hidden="true">↑↓</span><span class="visually-hidden">Up and down arrows</span> to browse, Enter to pull a drawer open.</p>
+        <form class="drawer-search" id="drawer-search-form" role="search">
+          <label class="drawer-search-label" for="drawer-search-input">Find a drawer</label>
+          <div class="drawer-search-box">
+            <input type="search" id="drawer-search-input" role="combobox"
+                   aria-expanded="false" aria-controls="drawer-search-results"
+                   aria-autocomplete="list" autocomplete="off" spellcheck="false"
+                   placeholder="Nightcrawler · Galactus BAF · Target exclusive · X-Men ’97">
+            <div class="drawer-search-panel">
+              <div id="drawer-search-results" role="listbox" aria-label="Matching drawers" hidden></div>
+            </div>
+          </div>
+          <p class="drawer-search-status" id="drawer-search-status" role="status"></p>
+        </form>
+        <noscript>
+          <p>Drawer search needs JavaScript. Browse instead:
+            <a href="waves/index.html">all 167 waves</a>, the <a href="timeline.html">2002–2026 timeline</a>,
+            or <a href="explore.html">the archive explorer</a>.</p>
+        </noscript>
       </div>
     </section>
 

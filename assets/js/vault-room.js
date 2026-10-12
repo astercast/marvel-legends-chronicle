@@ -261,6 +261,175 @@ export function openDrawer(fig, yearCtx, spotlightWhy) {
   // Return focus context: the opener stays in the tab order behind the modal.
 }
 
+/* ---------- The drawer index: full-text search across every drawer ----------
+   Pure ranking over the archive (exported for tests). AND semantics across
+   tokens: every token must hit somewhere. Name hits outrank variant/exclusive,
+   which outrank wave/BAF piece, which outrank notes/year/manufacturer. */
+export function searchDrawers(figures, query, limit = 50) {
+  const tokens = String(query).toLowerCase().split(/\s+/).filter(Boolean);
+  if (!tokens.length) return [];
+  const scored = [];
+  for (const fig of figures) {
+    const name = (fig.name || "").toLowerCase();
+    const variant = (fig.variant || "").toLowerCase();
+    const exclusive = (fig.exclusive || "").toLowerCase();
+    const wave = (fig.waveSeries || "").toLowerCase();
+    const baf = (fig.bafPiece || "").toLowerCase();
+    const waveBaf = (fig.waveBaf || "").toLowerCase();
+    const notes = (fig.notes || "").toLowerCase();
+    const year = String(fig.year || "");
+    const manu = (fig.manufacturer || "").toLowerCase();
+    let score = 0;
+    let missed = false;
+    for (const t of tokens) {
+      let hit = 0;
+      if (name.includes(t)) hit = 4;
+      else if (variant.includes(t) || exclusive.includes(t)) hit = 3;
+      else if (wave.includes(t) || baf.includes(t) || waveBaf.includes(t)) hit = 2;
+      else if (notes.includes(t) || year === t || manu.includes(t)) hit = 1;
+      if (!hit) { missed = true; break; }
+      score += hit;
+    }
+    if (!missed) scored.push({ fig, score });
+  }
+  scored.sort((a, b) => b.score - a.score || a.fig.name.localeCompare(b.fig.name));
+  return scored.slice(0, limit).map((s) => s.fig);
+}
+
+function initDrawerSearch(figures, yearByNum) {
+  const form = document.getElementById("drawer-search-form");
+  const input = document.getElementById("drawer-search-input");
+  const results = document.getElementById("drawer-search-results");
+  const status = document.getElementById("drawer-search-status");
+  if (!form || !input || !results || !status) return;
+
+  let active = -1;
+  let current = [];
+  let truncated = false;
+  let debounceT = null;
+  let hideT = null;
+
+  function openResult(fig) {
+    const yearCtx = yearByNum.get(fig.year) ?? null;
+    const why = (yearCtx?.spotlight ?? []).find((s) => s.id === fig.id)?.why ?? null;
+    openDrawer(fig, yearCtx, why);
+  }
+
+  function setActive(i) {
+    const options = results.querySelectorAll('[role="option"]');
+    options.forEach((o, k) => o.setAttribute("aria-selected", String(k === i)));
+    active = i;
+    if (i >= 0 && options[i]) {
+      input.setAttribute("aria-activedescendant", options[i].id);
+      options[i].scrollIntoView({ block: "nearest" });
+    } else {
+      input.removeAttribute("aria-activedescendant");
+    }
+  }
+
+  function render() {
+    results.textContent = "";
+    setActive(-1);
+    if (!current.length) {
+      results.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      return;
+    }
+    const frag = document.createDocumentFragment();
+    current.forEach((fig, i) => {
+      const o = document.createElement("div");
+      o.className = "dsr-option";
+      o.id = `dsr-${i}`;
+      o.setAttribute("role", "option");
+      o.setAttribute("aria-selected", "false");
+      o.innerHTML =
+        `<span class="dsr-name">${escapeHtml(fig.name)}</span>` +
+        `<span class="dsr-sub">${escapeHtml(fig.waveSeries)}` +
+        `${fig.variant ? ` · ${escapeHtml(fig.variant)}` : ""}` +
+        `${fig.exclusive ? ` · ${escapeHtml(fig.exclusive)}` : ""} · ${fig.year}</span>`;
+      // mousedown + preventDefault: the click lands before the input's blur
+      // hides the panel.
+      o.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        openResult(fig);
+      });
+      frag.appendChild(o);
+    });
+    results.appendChild(frag);
+    results.hidden = false;
+    input.setAttribute("aria-expanded", "true");
+  }
+
+  function announce(q) {
+    if (!q) {
+      status.textContent = "";
+    } else if (!current.length) {
+      status.textContent = `No drawers match “${q}”. Try a character, wave, or BAF name.`;
+    } else {
+      const total = truncated ? "50+" : String(current.length);
+      status.textContent =
+        `${total} drawer${current.length === 1 && !truncated ? "" : "s"} match — ` +
+        `↑↓ to browse, Enter to pull one open.`;
+    }
+  }
+
+  function runSearch() {
+    const q = input.value.trim();
+    if (!q) {
+      current = [];
+      truncated = false;
+      render();
+      announce("");
+      return;
+    }
+    const found = searchDrawers(figures, q, 51);
+    truncated = found.length > 50;
+    current = found.slice(0, 50);
+    render();
+    announce(q);
+  }
+
+  input.addEventListener("input", () => {
+    clearTimeout(debounceT);
+    debounceT = setTimeout(runSearch, 120);
+  });
+  input.addEventListener("focus", () => {
+    clearTimeout(hideT);
+    if (current.length && results.hidden) {
+      results.hidden = false;
+      input.setAttribute("aria-expanded", "true");
+    }
+  });
+  input.addEventListener("blur", () => {
+    clearTimeout(hideT);
+    hideT = setTimeout(() => {
+      results.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      input.removeAttribute("aria-activedescendant");
+    }, 150);
+  });
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      if (!current.length) return;
+      e.preventDefault();
+      const d = e.key === "ArrowDown" ? 1 : -1;
+      setActive((active + d + current.length) % current.length);
+    } else if (e.key === "Home" || e.key === "End") {
+      if (!current.length) return;
+      e.preventDefault();
+      setActive(e.key === "Home" ? 0 : current.length - 1);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (active >= 0) openResult(current[active]);
+      else if (current.length) openResult(current[0]);
+    } else if (e.key === "Escape") {
+      input.value = "";
+      runSearch();
+    }
+  });
+  form.addEventListener("submit", (e) => e.preventDefault());
+}
+
 /* The journey rail sticks beneath the sticky site header; measure the
    header so the rail never slides under it (the header wraps on narrow
    screens, so this is done in JS, not a magic CSS number). */
@@ -427,6 +596,7 @@ async function init() {
 
   initParallax();
   stickJourney();
+  initDrawerSearch(figures, yearByNum);
   let stickT = null;
   addEventListener("resize", () => {
     clearTimeout(stickT);

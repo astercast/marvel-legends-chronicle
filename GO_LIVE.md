@@ -30,11 +30,11 @@ locally. Nothing is connected to Vercel yet. Do not run the hookup steps in
 
 One Vercel project containing:
 
-- **Static frontend** — the whole repo root: 276 pages (41 root + 168 waves +
-  67 characters), `assets/`, `data/`, `skills/`, `api/v1/*.json` (static
+- **Static frontend** — the whole repo root: 275 pages (42 root + 167 waves +
+  66 characters), `assets/`, `data/`, `skills/`, `api/v1/*.json` (static
   fallback data).
 - **4 serverless functions** (service `marvel-radar`, zero npm dependencies,
-  `nodejs22.x`, envelope-only responses):
+  Node auto-detected — no `runtime` key, envelope-only responses):
   - `api/health.js` → `GET /api/health` — service health, never 5xx
   - `api/reveals.js` → `GET /api/reveals` — latest reveal detections (`?since=`, `?limit=`)
   - `api/preorders.js` → `GET /api/preorders` — upcoming pre-order dates
@@ -129,7 +129,7 @@ comments, not in test fixtures.
 | Bandwidth | 100 GB/mo | static + small JSON; personal-use sites ≈ MBs |
 | Build minutes | 6,000/mo | ~6s per deploy; daily cron redeploys ≈ negligible |
 | Function invocations | 100k/mo | edge cache absorbs reads (`s-maxage=600`); ~1 cron + trickle |
-| Function duration | 10s default (Hobby) | all functions designed ≤10s; no `maxDuration` overrides |
+| Function duration | 10s default (Hobby) | all functions designed ≤10s; `maxDuration: 10` pinned per function in `vercel.json` (also satisfies the "≥1 valid property" rule) |
 | Cron jobs | daily minimum cadence, UTC, ±60min window, prod only | 1 job, `0 15 * * *` UTC |
 | Overage billing | **none — usage pauses instead of charging** | design stays far under limits; a pause is a visible signal, not a bill |
 

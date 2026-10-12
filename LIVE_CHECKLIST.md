@@ -5,7 +5,7 @@ as of the 2026-10-12 release snapshot. The live repo is a pre-built snapshot
 of the working repo — **no build step runs on Vercel** (vercel.json has no
 `buildCommand`; publish dir = repo root).
 
-## Serverless functions (4/12 used, `nodejs22.x`, zero npm deps)
+## Serverless functions (4/12 used, Node auto-detected, zero npm deps)
 
 | path | route | purpose |
 |---|---|---|
@@ -44,9 +44,11 @@ frontend live timeout and the 10s function budget.
   277 pages (0 broken), all JSON parses, schemas validate.
 - Spot-check on local file server: `/`, `/quest.html`, `/radar.html`,
   `/api/v1/index.json`, `/api/v1/drop-week.json`, character/wave pages → all 200.
-- vercel.json parses; functions glob `api/**/*.js` matches exactly the 4
-  functions above (no stray `.js` under `api/`).
+- vercel.json parses; `functions` lists the 4 functions by explicit path with
+  `{"maxDuration": 10}` each (no broad globs, no `runtime` keys — Node auto-detected).
 - Frontend degrades honestly without functions: `assets/js/api-client.js`
   (7s live timeout, live/waking/cached/none states) — pages paint complete
   static content first; live swap is progressive enhancement.
 - Build machine: **Standard, never Turbo** (Sept 2026 Turbo CPU billed $38.64).
+- Vercel functions entries need ≥1 valid property — use `{"maxDuration": 10}` per explicit function path; never set `runtime` for Node (omit it); never broad globs (2026-10-12: both `nodejs22.x` and `nodejs20.x` fail build validation; empty `{}` fails with "Function must contain at least one property"; `runtime` is only for community runtimes like `vercel-php@0.5.2`). Vercel auto-detects Node from the `api/` directory.
+- No static `.js` data files under `api/` ever — Vercel deploys every `.js` there as a function (the `functions` map is not an allowlist); basename collisions (`x.js` + `x.json` in one dir) fail the build (2026-10-12). Audited 2026-10-12: only the 4 real functions exist, zero collisions.

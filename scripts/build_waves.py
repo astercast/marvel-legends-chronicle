@@ -368,14 +368,14 @@ def main():
       <div class="container hero-inner">
         <span class="hero-kicker">Deep browse</span>
         <h1 id="waves-title">Every wave, <span class="accent">ever.</span></h1>
-        <p class="lede">All 158 Marvel Legends waves, 2002–2026 — each with its figures, BAF breakdown, and your owned/wanted tracking. Generated from the figure database.</p>
+        <p class="lede">All 167 Marvel Legends waves, 2002–2026 — each with its figures, BAF breakdown, and your owned/wanted tracking. Generated from the figure database.</p>
       </div>
     </section>
     <div class="container">
 """ + "\n".join(sections) + """
     </div>"""
     (OUT / "index.html").write_text(
-        page("Waves", "All 158 Marvel Legends waves 2002–2026, each with its figures and BAF breakdown.",
+        page("Waves", "All 167 Marvel Legends waves 2002–2026, each with its figures and BAF breakdown.",
              "waves/index.html", index_body))
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 

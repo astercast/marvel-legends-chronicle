@@ -142,7 +142,7 @@
       "venue": "Pre-order Aug 2026 → shipped Oct 2026"
     },
     {
-      "details": "Made-to-order 2-pack: Bastion Nimrod (first-ever figure, 11.3-inch articulated wings, 2 heads, 4 alt hands, 2 power FX) + Bolivar Trask (alt heads incl. Prime Sentinel form, purple energy FX). 10 accessories. Order window closes 11/20/2026 11:59 PM EDT; cancellations allowed until 12/7/2026. Hasbro Pulse only. Scarcity here is the order window, not a chase ratio. UK price £82.99 (Mephitsu).",
+      "details": "Made-to-order 2-pack: Bastion Nimrod (first-ever figure, 11.3-inch articulated wings, 2 heads, 4 alt hands, 2 power FX) + Bolivar Trask (alt heads incl. Prime Sentinel form, purple energy FX). 10 accessories. Order window closes 11/20/2026 11:59 PM EDT; cancellations allowed until 12/7/2026. Hasbro Pulse only. Scarcity here is the order window, not a chase ratio. UK price £82.99 (Mephitsu). EU price €99.99 (Hasbro Pulse EU listing, ~Nov 1, 2027 ship — first EU price datapoint, Oct 12, 2026 research).",
       "id": "bastion-trask-2pack",
       "name": "X-Men '97 Bastion & Bolivar Trask 2-pack",
       "preorderDate": "2026-10-07",
@@ -580,6 +580,6 @@
     }
   ],
   "note": "Wave-28 window check (2026-10-11): Oct 14/21/28 + Nov 1 windows confirmed on schedule; Holiday Special Spider-Man added; windowResult outcomes recorded on past windows.",
-  "observed": "2026-10-11",
+  "observed": "2026-10-12",
   "source": "Wave 12 research integration (hobby press: Toyark, Marvel Toy News, Bleeding Cool, LaughingPlace, Mephitsu, Comicon.com, Murphy's Multiverse). No invented figures, dates, prices, or retailers; every item mirrors its radar.html card."
 }

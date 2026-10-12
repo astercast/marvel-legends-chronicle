@@ -32,6 +32,8 @@ await import("./test-launch.js");
 await import("./test-vault.js");
 await import("./test-identity-w34.js");
 await import("./test-vault-room.js");
+await import("./test-copy-counts.js");
+await import("./test-drawer-search.js");
 
 const failures = await runAll();
 process.exit(failures ? 1 : 0);
