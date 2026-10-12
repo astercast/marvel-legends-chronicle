@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "drop-week-item",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "kind",
+    "kindLabel",
+    "windowLabel",
+    "retailers",
+    "figures",
+    "price",
+    "shipWindow",
+    "sources"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "deadline",
+        "preorder",
+        "sale-day"
+      ]
+    },
+    "kindLabel": {
+      "type": "string"
+    },
+    "windowAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "windowDate": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "windowLabel": {
+      "type": "string"
+    },
+    "retailers": {
+      "type": "array"
+    },
+    "figures": {
+      "type": "array"
+    },
+    "price": {
+      "type": "object"
+    },
+    "shipWindow": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "array"
+    },
+    "sources": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drop Week Command Center — Marvel Legends Chronicle</title>
+  <meta name="description" content="One command center for the October 2026 Marvel Legends drop sequence: Oct 14 Doomsday Wave 2, Oct 21 X-Men '97, Oct 28 Astonishing 2-pack, Nov 1 YFNS Spider-Man vs. Rhino sale day, and the Nov 20 Trask & Bastion made-to-order deadline. Live countdowns, confirmed lineups, price intel, KO watch, and your personal battle plan. Every figure, date, and price from researched sources — nothing invented.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+  <style>
+    /* Wave 32 — Drop Week Command Center. Scoped .dw- styles.
+       Design craft: display-type countdown numerals, container-query drop
+       cards (reflow by card width, not viewport), sticky wayfinding rail,
+       breadcrumb trail. All motion is transition-free by default; the
+       prefers-reduced-motion block below is belt-and-braces. */
+    .dw-crumbs { font-size: .85rem; color: var(--muted); margin: var(--space-3) 0 0; }
+    .dw-crumbs a { color: var(--muted); }
+    .dw-crumbs [aria-current] { color: var(--ink); font-weight: 600; }
+    .dw-hero { padding-block: var(--space-6) var(--space-5); max-width: 80ch; }
+    .dw-kicker { text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; color: var(--gold); font-weight: 700; margin: 0 0 var(--space-2); }
+    .dw-hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.05; margin: 0 0 var(--space-3); }
+    .dw-hero h1 .accent { color: var(--gold); }
+    .dw-lede { font-size: 1.08rem; max-width: 68ch; color: var(--ink); }
+    .dw-hero-next { border: 1px solid var(--gold); border-radius: 12px; padding: var(--space-4);
+      background: var(--panel); margin-top: var(--space-4); max-width: 40rem; }
+    .dw-next-title { margin: 0 0 var(--space-1); font-size: 1.4rem; }
+    .dw-next-when { color: var(--muted); margin: 0 0 var(--space-2); }
+    .dw-next-count { font-family: var(--font-display); font-weight: 900; font-size: clamp(2.2rem, 7vw, 3.2rem);
+      color: var(--gold); margin: 0; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+    .dw-next-link { display: inline-block; margin-top: var(--space-2); }
+    /* Wayfinding rail: sticky in-page nav (breadcrumb → sections). */
+    .dw-rail { position: sticky; top: 0; z-index: 5; background: var(--bg);
+      border-block: 1px solid var(--line); margin: var(--space-5) 0 0; }
+    .dw-rail ul { display: flex; gap: var(--space-1); overflow-x: auto; list-style: none;
+      margin: 0; padding: var(--space-2) 0; }
+    .dw-rail a { white-space: nowrap; padding: .4rem .8rem; border-radius: 999px;
+      border: 1px solid var(--line); font-size: .85rem; text-decoration: none; }
+    .dw-rail a[aria-current="true"] { border-color: var(--gold); color: var(--gold); font-weight: 700; }
+    .dw-section { padding: var(--space-6) 0; border-top: 2px solid var(--line); max-width: 80ch;
+      scroll-margin-top: 4.5rem; }
+    .dw-section > h2 { margin-top: 0; }
+    /* Container-query drop cards: internals reflow on card width. */
+    .dw-drops { container-type: inline-size; display: grid; gap: var(--space-4);
+      grid-template-columns: 1fr; max-width: none; }
+    @media (min-width: 720px) { .dw-drops { grid-template-columns: 1fr 1fr; } }
+    .dw-card { border: 1px solid var(--line); border-radius: 12px; padding: var(--space-4);
+      background: var(--panel); scroll-margin-top: 4.5rem; display: flex; flex-direction: column; gap: var(--space-2); }
+    .dw-card:target { border-color: var(--gold); }
+    .dw-badge { margin: 0; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+    .dw-badge-upcoming { color: var(--gold); }
+    .dw-badge-drop-day { color: #fff; background: var(--gold); display: inline-block; padding: .15rem .6rem; border-radius: 4px; }
+    .dw-badge-past { color: var(--muted); }
+    .dw-countdown { font-variant-numeric: tabular-nums; }
+    .dw-countdown.is-past { color: var(--muted); }
+    .dw-card-title { margin: 0; font-size: 1.25rem; }
+    .dw-when, .dw-retailers, .dw-price, .dw-ship { margin: 0; font-size: .95rem; }
+    .dw-price { font-weight: 700; }
+    .dw-ship, .dw-retailers { color: var(--muted); }
+    .dw-figs { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: grid; gap: var(--space-2); }
+    .dw-fig-note { margin: .2rem 0 0; font-size: .85rem; color: var(--muted); }
+    .dw-plan-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-2);
+      border: 1px solid var(--line); border-radius: 8px; background: var(--bg);
+      padding: .55rem .8rem; font-size: .95rem; cursor: pointer; text-align: left; color: var(--ink); }
+    .dw-plan-btn:hover { border-color: var(--gold); }
+    .dw-plan-btn[data-state="want"] { border-color: var(--gold); }
+    .dw-plan-btn[data-state="ordered"] { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 12%, var(--bg)); }
+    .dw-fig-tag { font-size: .78rem; color: var(--muted); white-space: nowrap; }
+    .dw-plan-btn[data-state="want"] .dw-fig-tag,
+    .dw-plan-btn[data-state="ordered"] .dw-fig-tag { color: var(--gold); font-weight: 700; }
+    .dw-notes { margin: var(--space-2) 0 0; padding-left: var(--space-4); font-size: .92rem; color: var(--muted); }
+    .dw-notes li { margin-bottom: var(--space-1); }
+    .dw-sources { margin: var(--space-2) 0 0; font-size: .85rem; color: var(--muted); }
+    /* Two-column figure notes inside wide cards (container query, not viewport). */
+    @container (min-width: 560px) {
+      .dw-card .dw-figs { grid-template-columns: 1fr 1fr; }
+      .dw-card .dw-notes { columns: 2; column-gap: var(--space-4); }
+      .dw-card .dw-notes li { break-inside: avoid; }
+    }
+    .dw-intel-grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; max-width: none; }
+    @media (min-width: 720px) { .dw-intel-grid { grid-template-columns: 1fr 1fr; } }
+    .dw-intel-card { border: 1px solid var(--line); border-radius: 10px; padding: var(--space-4); background: var(--panel); }
+    .dw-intel-card h3 { margin-top: 0; }
+    .dw-intel-list { margin: 0; padding-left: var(--space-4); font-size: .95rem; }
+    .dw-intel-list li { margin-bottom: var(--space-2); }
+    .dw-rumor { font-style: italic; }
+    .dw-note { font-size: .92rem; color: var(--muted); }
+    .dw-src { color: var(--muted); }
+    .dw-plan-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center;
+      border: 1px solid var(--line); border-radius: 10px; padding: var(--space-3) var(--space-4);
+      background: var(--panel); margin-bottom: var(--space-4); }
+    .dw-plan-bar p { margin: 0; flex: 1 1 16rem; }
+    .dw-btn { border: 1px solid var(--gold); border-radius: 8px; background: transparent; color: var(--gold);
+      padding: .55rem 1rem; font-weight: 700; cursor: pointer; font-size: .95rem; }
+    .dw-btn:hover { background: color-mix(in srgb, var(--gold) 14%, transparent); }
+    .dw-btn-ghost { border-color: var(--line); color: var(--muted); }
+    .dw-copy-status { font-size: .85rem; color: var(--muted); width: 100%; margin: 0; }
+    .dw-error { color: #c0392b; }
+    .dw-method { border: 1px solid var(--line); border-radius: 10px; padding: var(--space-4);
+      background: var(--panel); font-size: .92rem; color: var(--muted); }
+    .dw-xlinks { padding-left: var(--space-4); }
+    .dw-xlinks li { margin-bottom: var(--space-1); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      .dw-rail a, .dw-plan-btn, .dw-btn, .dw-card { transition: none !important; }
+    }
+    @media print {
+      .site-header, .site-footer, .dw-rail, .skip-link, .dw-plan-bar { display: none !important; }
+      .dw-card, .dw-intel-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to drop week command center</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                      <a href="index.html">Timeline</a>
+        <a href="timeline.html">Legends Timeline</a>
+        <a href="2026-review.html">2026 Review</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="market-briefing.html">Market Briefing</a>
+        <a href="launch-curve.html">Launch Curve</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html">Gift Finder</a>
+        <a href="holiday.html">Holiday Guide</a>
+        <a href="grading.html">Grading</a>
+        <a href="display.html">Display</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="budget.html">Budget</a>
+        <a href="radar.html">Radar</a>
+        <a href="preorders.html">Pre-orders</a>
+        <a href="calendar.html">Release Calendar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="quest.html">Grail Quest</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="rarity.html">Rarity Guide</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="agents.html">Agents</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a></nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <nav class="dw-crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a> › <span aria-current="page">Drop Week Command Center</span>
+    </nav>
+
+    <section class="dw-hero" aria-labelledby="dw-title">
+      <p class="dw-kicker">October 2026 · 5 windows · 22 days</p>
+      <h1 id="dw-title">Drop Week <span class="accent">Command Center.</span></h1>
+      <p class="dw-lede">Four drops and one deadline, back to back: the <strong>Oct 14</strong> Doomsday Wave 2 pre-order,
+      the <strong>Oct 21</strong> X-Men '97 wave, the <strong>Oct 28</strong> Astonishing two-pack reissue, the
+      <strong>Nov 1</strong> Pulse-exclusive sale day — and the <strong>Nov 20</strong> Trask &amp; Bastion made-to-order
+      deadline. Every lineup, price, and date below is researched and sourced. Nothing invented.</p>
+      <div class="dw-hero-next" id="dw-hero-next" aria-label="Next drop"></div>
+    </section>
+
+    <nav class="dw-rail" aria-label="On this page">
+      <ul>
+        <li><a href="#dw-section-drops">The drops</a></li>
+        <li><a href="#dw-section-intel">Price &amp; scarcity intel</a></li>
+        <li><a href="#dw-section-plan">Your battle plan</a></li>
+        <li><a href="#dw-section-rumors">Rumor watch</a></li>
+        <li><a href="#dw-section-method">Methodology</a></li>
+      </ul>
+    </nav>
+
+    <section class="dw-section" id="dw-section-drops" aria-labelledby="dw-drops-h">
+      <h2 id="dw-drops-h">The drops</h2>
+      <p class="dw-note">Tap a figure to add it to your battle plan — tap again to mark it ordered, a third time to clear it. Your plan stays in this browser only.</p>
+      <div class="dw-drops" id="dw-drops"></div>
+      <div id="drop-root" hidden></div>
+      <noscript>
+        <p>Drop Week needs JavaScript for live countdowns and the battle plan. The five windows, as researched:</p>
+<!-- DROPS:NOSCRIPT-BEGIN -->
+<ul>
+<li><strong>Avengers: Doomsday — Wave 2</strong> — 1 PM ET · Wed Oct 14, 2026: Marvel's Beast, Nightcrawler, Lord Doom (Concept Series).</li>
+<li><strong>X-Men '97 — retro blister wave</strong> — 1 PM ET · Wed Oct 21, 2026: Death Gambit, Cyclops, Jean Grey, Vindicator, X-Factor Havok, X-Factor Polaris.</li>
+<li><strong>Astonishing X-Men — Cyclops & Wolverine 2-pack (reissue)</strong> — 1 PM ET · Wed Oct 28, 2026: Cyclops (Astonishing X-Men), Wolverine (Astonishing X-Men).</li>
+<li><strong>Your Friendly Neighborhood Spider-Man — Spider-Man vs. Rhino 2-pack</strong> — Sun Nov 1, 2026 — Pulse-exclusive sale day: Spider-Man (Your Friendly Neighborhood), Rhino (Your Friendly Neighborhood).</li>
+<li><strong>X-Men '97 — Bolivar Trask & Marvel's Bastion Nimrod 2-pack</strong> — 11:59 PM ET · Fri Nov 20, 2026 — order window closes: Bolivar Trask (X-Men '97), Marvel's Bastion Nimrod (X-Men '97).</li>
+</ul>
+<!-- DROPS:NOSCRIPT-END -->
+        <p>Full details, sources, and the tracker live on <a href="preorders.html">the pre-order tracker</a>.</p>
+      </noscript>
+    </section>
+
+    <section class="dw-section" id="dw-section-intel" aria-labelledby="dw-intel-h">
+      <h2 id="dw-intel-h">Price &amp; scarcity intel</h2>
+      <div class="dw-intel-grid">
+        <div class="dw-intel-card">
+          <h3>Why these sell out</h3>
+          <div id="dw-scarcity"></div>
+        </div>
+        <div class="dw-intel-card">
+          <h3>Price intel</h3>
+          <div id="dw-prices"></div>
+        </div>
+        <div class="dw-intel-card">
+          <h3>KO watch</h3>
+          <div id="dw-ko"></div>
+          <p class="dw-note">Full tells on the <a href="auth-wizard.html">Auth Wizard</a>.</p>
+        </div>
+        <div class="dw-intel-card">
+          <h3>Morning-of playbook</h3>
+          <ul class="dw-intel-list">
+            <li>Every 2026 Hasbro window in this sequence opens at <strong>1 PM ET</strong> — the pattern has held all cycle.</li>
+            <li>Pulse has lagged before: on the Oct 6 Mini Comics launch day the Pulse listing trailed other retailers (per a Marvelous News forum post — single source). If Pulse looks empty at 1 PM, check Amazon and the participating retailers.</li>
+            <li>Be signed in and ready at open: Doomsday wave-1 figures sold out within hours of the August launch.</li>
+            <li>Nov 1 is a <strong>sale day, not a pre-order</strong> — no window was announced, so treat Pulse like a launch morning.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="dw-section" id="dw-section-plan" aria-labelledby="dw-plan-h">
+      <h2 id="dw-plan-h">Your battle plan</h2>
+      <div class="dw-plan-bar">
+        <p id="dw-plan-count" aria-live="polite">Loading your plan…</p>
+        <button class="dw-btn" id="dw-copy-plan" type="button">Copy battle plan</button>
+        <button class="dw-btn dw-btn-ghost" id="dw-clear-plan" type="button">Clear</button>
+        <p class="dw-copy-status" id="dw-copy-status" role="status"></p>
+      </div>
+      <p class="dw-note">Stored in this browser only (<code>mlc_dropweek_v1</code>) — nothing is uploaded. Copy it to share on forums or Discord.</p>
+    </section>
+
+    <section class="dw-section" id="dw-section-rumors" aria-labelledby="dw-rumors-h">
+      <h2 id="dw-rumors-h">Rumor watch</h2>
+      <div id="dw-rumors"></div>
+    </section>
+
+    <section class="dw-section" id="dw-section-method" aria-labelledby="dw-method-h">
+      <h2 id="dw-method-h">Methodology &amp; honest gaps</h2>
+      <div class="dw-method" id="dw-method-body"></div>
+      <h3>Keep exploring</h3>
+      <ul class="dw-xlinks">
+        <li><a href="preorders.html">Pre-order tracker</a> — the full 22-item researched tracker behind these drops</li>
+        <li><a href="calendar.html">Release calendar</a> — every exact-date window plotted, Oct 2026 → Sep 2027</li>
+        <li><a href="market-briefing.html">Market briefing</a> — reported prices, scarcity notes, the reissue-cooling pattern</li>
+        <li><a href="watchlist.html">Watchlist + Price Watch</a> — set targets against reported bands</li>
+        <li><a href="quest.html">Grail Quest</a> — pre-order alerts for the next 30 days, generated from your tracker data</li>
+        <li><a href="radar.html">Radar</a> — every reveal card with sources</li>
+        <li><a href="holiday.html">Holiday Guide</a> — gift picks from the same researched data</li>
+        <li><a href="auth-wizard.html">Auth Wizard</a> — KO tells before you buy loose or secondhand</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+      <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a></nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/drop-command.js"></script>
+</body>
+</html>

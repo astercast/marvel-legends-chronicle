@@ -79,6 +79,12 @@
     .milestone-state { font-size: 0.85rem; color: var(--gold); font-weight: 700; }
     .milestone-done { border-color: var(--gold); }
     .milestone:not(.milestone-done) .ach-icon { filter: grayscale(1); }
+    /* Launch-day prep (wave 30): native checkboxes with the brand accent —
+       Baseline accent-color, no custom control needed. */
+    .prep-steps { display: grid; gap: var(--space-1); margin-top: var(--space-2); }
+    .prep-step { display: flex; gap: var(--space-2); align-items: center; padding: var(--space-1) 0; cursor: pointer; color: var(--ink-dim); font-size: 0.9rem; }
+    .prep-step input { accent-color: var(--gold); width: 1.15rem; height: 1.15rem; flex: none; cursor: pointer; }
+    .prep-step:has(input:checked) { color: var(--ink); text-decoration: line-through; text-decoration-color: var(--gold); }
   </style>
 </head>
 <body>
@@ -91,7 +97,7 @@
         <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
       </a>
       <nav class="site-nav" aria-label="Primary">
-                                                                <a href="index.html">Timeline</a>
+                                                                        <a href="index.html">Timeline</a>
         <a href="timeline.html">Legends Timeline</a>
         <a href="2026-review.html">2026 Review</a>
         <a href="start.html">Start</a>
@@ -102,6 +108,7 @@
         <a href="characters/index.html">Characters</a>
         <a href="price-guide.html">Price Guide</a>
         <a href="market-briefing.html">Market Briefing</a>
+        <a href="launch-curve.html">Launch Curve</a>
         <a href="auth-wizard.html">Auth Wizard</a>
         <a href="shelf.html">Your Shelf</a>
         <a href="journal.html">Journal</a>
@@ -207,6 +214,12 @@
             <div class="missing-list" id="alerts-list" aria-live="polite"></div>
             <p class="chart-sub">Dates are the exact pre-order days the hobby press reported — never invented. Announced-but-undated items (no pre-order date reported) don't get alerts; the full list lives on the <a href="preorders.html">pre-order tracker</a>.</p>
           </section>
+          <section class="quest-section" aria-labelledby="prep-heading">
+            <h2 id="prep-heading">Launch-day prep</h2>
+            <p class="section-sub" id="prep-sub" aria-live="polite"></p>
+            <div class="missing-list" id="prep-list" aria-live="polite"></div>
+            <p class="chart-sub">Wave-1 figures sold out within hours of pre-orders opening — the <a href="launch-curve.html">launch curve</a> shows why prep beats panic. Prep quests come from the same confirmed dates as the alerts above; your ticks stay in this browser.</p>
+          </section>
 
           <section class="quest-section" aria-labelledby="ach-heading">
             <h2 id="ach-heading">Achievements</h2>
@@ -290,7 +303,7 @@
     <div class="container footer-grid">
       <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
       <nav aria-label="Footer">
-        <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a>
+        <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a>
       </nav>
     </div>
   </footer>

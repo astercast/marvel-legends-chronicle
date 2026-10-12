@@ -180,6 +180,40 @@ export function recentlyOpened(items, today, daysBack = 14) {
   return out.sort((a, b) => a.daysOpen - b.daysOpen);
 }
 
+/* ---- launch-day prep quests (wave 30, Grail Quest 5.0) ----
+   For each upcoming exact-date pre-order window within daysAhead days, one
+   prep quest: { id, name, date, days, kind, msrp, venue, steps }.
+   kind is "upcoming-window" or "sale-window" (revealed items with an exact
+   on-sale date, e.g. the YFNS Pulse-exclusive sale) — the prep is the same.
+   Steps are the honest prep checklist; ticks persist in mlc_launchprep_v1. */
+export const LAUNCH_PREP_STEPS = [
+  "Signed in at every retailer (Pulse, Amazon)",
+  "Payment method + shipping address current",
+  "Reminder set for the drop time",
+  "Max price decided — and written down",
+  "Watchlist target recorded for the Price Watch",
+];
+
+export function launchPrep(items, today, daysAhead = 14) {
+  const checks = windowCheck(items, today, 0, daysAhead);
+  const out = [];
+  for (const c of checks) {
+    if (!c || c.kind === "past-window") continue;
+    const it = (items || []).find((x) => x && x.id === c.id);
+    out.push({
+      id: c.id,
+      name: c.name,
+      date: c.date,
+      days: c.daysUntil,
+      kind: c.kind,
+      msrp: it && typeof it.price === "number" ? it.price : null,
+      venue: c.venue,
+      steps: LAUNCH_PREP_STEPS.slice(),
+    });
+  }
+  return out.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+}
+
 /** "YYYY-MM" key for an ISO date, or null. */
 export function monthKey(ymd) {
   const p = parseYMD(ymd);

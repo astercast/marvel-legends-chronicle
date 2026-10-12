@@ -23,6 +23,8 @@ export const STORE_KEYS = {
   hunt: "mlc_hunt_v1", // { selected: [figId], maxPrices: { figId: number } } — toy-show hunt planner
   preorders: "mlc_preorders_v1", // { <preorderItemId>: "watching"|"ordered"|"skipped" } — pre-order tracker personal calls
   budget: "mlc_budget_v1", // { monthly: number|null, annual: number|null } — the user's own spend targets
+  launchPrep: "mlc_launchprep_v1", // { <questId>: [bool] } — launch-day prep checklist ticks
+  dropweek: "mlc_dropweek_v1", // { <dropId>: { <figName>: "want"|"ordered" } } — Drop Week battle plan
 };
 
 export const MARKETPLACES = [

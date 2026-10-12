@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "count": 219,
+  "count": 220,
   "skills": [
     {
       "id": "baf-galactus",
@@ -1315,6 +1315,12 @@
       "title": "Call the Chronicle API from code (endpoints, schemas, example fetches)",
       "description": "The code-level companion to AGENT.md: base pattern, every endpoint with its schema, and copy-paste fetch patterns.",
       "path": "skills/agents/api-client.md"
+    },
+    {
+      "id": "launch-strategist",
+      "title": "Decide: buy at launch or wait (the launch-curve verdict)",
+      "description": "Read a figure's launch curve and decide whether to buy at launch, wait out the spike, or set a watchlist target \u2014 from reported data only.",
+      "path": "skills/agents/launch-strategist.md"
     }
   ]
 }

@@ -27,6 +27,7 @@ await import("./test-budget.js");
 await import("./test-compare.js");
 await import("./test-review.js");
 await import("./test-window-check.js");
+await import("./test-drop-command.js");
 
 const failures = await runAll();
 process.exit(failures ? 1 : 0);

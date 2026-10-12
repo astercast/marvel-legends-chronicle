@@ -12,7 +12,7 @@
    The pure logic is exported for the test suite (tests/test-quest.js); the
    page wiring lives at the bottom of this file. */
 import { STORE_KEYS, PATHS } from "./config.js";
-import { load } from "./store.js";
+import { load, save } from "./store.js";
 import { loadData, figureById } from "./data.js";
 import { escapeHtml, badgeFor } from "./figure-dialog.js";
 import { marketplaceQuery, soldSearchUrl } from "./listings.js";
@@ -21,7 +21,7 @@ import { buildQuestShareText } from "./quest-share.js";
 import { verdictLine, money as questMoney } from "./price-watch.js";
 import {
   upcomingPreorders, countdownText, preorderCountdown, money, todayStr,
-  recentlyOpened,
+  recentlyOpened, launchPrep,
 } from "./preorders.js";
 import {
   CONVENTION_EXCLUSIVES, isChase, isRetro, isToyBiz, isVariant,
@@ -72,6 +72,8 @@ const els = {
   recInsight: document.getElementById("rec-insight"),
   alertSub: document.getElementById("alerts-sub"),
   alertList: document.getElementById("alerts-list"),
+  prepSub: document.getElementById("prep-sub"),
+  prepList: document.getElementById("prep-list"),
   achCount: document.getElementById("ach-count"),
   achGrid: document.getElementById("ach-grid"),
   insWave: document.getElementById("ins-wave"),
@@ -239,6 +241,75 @@ async function renderAlerts() {
     div.innerHTML = freshHtml;
     els.alertList.appendChild(div);
   }
+}
+
+/* Launch-day prep quests (Grail Quest 5.0): for each upcoming exact-date
+   pre-order/sale window within 14 days, a tickable prep checklist. Ticks
+   persist per quest in mlc_launchprep_v1 — browser-local only. */
+async function renderPrep() {
+  if (!els.prepList) return;
+  els.prepList.innerHTML = "";
+  els.prepSub.textContent = "";
+  let items;
+  try {
+    const res = await fetch(PATHS.preorders);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const raw = await res.json();
+    items = raw.items ?? raw ?? [];
+  } catch {
+    els.prepSub.textContent = "Prep data couldn't be loaded right now — the full tracker is at the pre-order page.";
+    return;
+  }
+  const today = todayStr();
+  const quests = launchPrep(items, today, 14);
+  if (quests.length === 0) {
+    els.prepSub.textContent = "No pre-order windows in the next 14 days — nothing to prep for yet.";
+    return;
+  }
+  const ticks = load(STORE_KEYS.launchPrep, {});
+  els.prepSub.textContent = `${quests.length} launch ${quests.length === 1 ? "window" : "windows"} in the next 14 days — run the checklist and beat the sellout.`;
+  for (const q of quests) {
+    const done = Array.isArray(ticks[q.id]) ? ticks[q.id] : [];
+    const got = q.steps.filter((_, i) => done[i]).length;
+    const pct = Math.round((got / q.steps.length) * 100);
+    const card = document.createElement("div");
+    card.className = "missing-row";
+    const when = q.days === 0 ? "today" : `in ${q.days} day${q.days === 1 ? "" : "s"}`;
+    const stepsHtml = q.steps.map((s, i) => {
+      const cid = `prep-${q.id}-${i}`;
+      return `<label class="prep-step" for="${cid}"><input type="checkbox" id="${cid}" data-quest="${escapeHtml(q.id)}" data-step="${i}"${done[i] ? " checked" : ""}> ${escapeHtml(s)}</label>`;
+    }).join("");
+    card.innerHTML = `
+      <div class="missing-info" style="flex:1 1 100%">
+        <span class="missing-name">🎯 Be ready: ${escapeHtml(q.name)}</span>
+        <span class="missing-wave">${q.kind === "sale-window" ? "On sale" : "Pre-order opens"} ${when} (${q.date})${q.msrp ? ` · ${escapeHtml(money(q.msrp))} MSRP` : ""}${got === q.steps.length ? " — <strong>Ready ✓</strong>" : ""}</span>
+        <div class="progress-bar" role="progressbar" aria-valuenow="${got}" aria-valuemin="0" aria-valuemax="${q.steps.length}" aria-label="Prep progress for ${escapeHtml(q.name)}" style="margin:var(--space-2) 0">
+          <span style="width:${pct}%"></span>
+        </div>
+        <div class="prep-steps">${stepsHtml}</div>
+      </div>`;
+    els.prepList.appendChild(card);
+  }
+  wirePrepTicks();
+}
+
+/* One persistent change listener for the prep checkboxes (survives re-renders). */
+let prepWired = false;
+function wirePrepTicks() {
+  if (prepWired || !els.prepList) return;
+  prepWired = true;
+  els.prepList.addEventListener("change", (e) => {
+    const box = e.target.closest("input[type=checkbox][data-quest]");
+    if (!box) return;
+    const id = box.dataset.quest, i = Number(box.dataset.step);
+    const cur = load(STORE_KEYS.launchPrep, {});
+    const arr = Array.isArray(cur[id]) ? cur[id].slice() : [];
+    arr[i] = box.checked;
+    cur[id] = arr;
+    save(STORE_KEYS.launchPrep, cur);
+    /* Re-render to update the progress bar + Ready state. */
+    renderPrep().catch(() => {});
+  });
 }
 
 /* ------------------------------------------------------------------ */
@@ -528,6 +599,7 @@ async function init() {
     await loadSignals();
     renderAll(figures, waves);
     renderAlerts().catch(() => {});
+    renderPrep().catch(() => {});
     wireReportExport();
     /* Re-render when tracker toggles fire (owned set changed). */
     els.main.addEventListener("click", (e) => {

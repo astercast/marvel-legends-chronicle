@@ -35,7 +35,7 @@
       "windowResult": "retailers-partial"
     },
     {
-      "details": "Death Gambit (extra hands + card-dealing effect), Cyclops (X-Men team suit, 2 heads, alt hands), Jean Grey (alt hands, powered effects), Vindicator (Morph's form; 2 heads — comic + X-Men '97 versions, extra hands), X-Factor Havok (alt hands, powered effects), X-Factor Polaris (powered effects, second hands) — all on retro blister cards. Pre-orders opened Oct 21, 2026, 1 PM ET at Pulse, Amazon + retailers → Fall 2026. Oct 11 re-check: Oct 21 window stands (1 PM ET, Pulse + Amazon + participating retailers, Fall 2026); ScreenRant notes the wave is Season 2-inspired.",
+      "details": "Hobby-press 'Wave 4': Death Gambit (2 kinetic energy card power effects), Cyclops (New X-Men bomb-jacket design, alt head + 2 alt hands), Jean Grey (alt hands, powered effects), Vindicator (2 heads — comic + X-Men '97 versions, extra hands), X-Factor Havok (alt hands, powered effects), X-Factor Polaris (powered effects, second pair of hands) — all on retro blister cards, Season 2-inspired. Pre-orders opened Oct 21, 2026, 1 PM ET at Pulse, Amazon + retailers → Fall 2026. Oct 12 re-check: the Oct 21 window stands (1 PM ET, Pulse + Amazon + participating retailers, Fall 2026).",
       "id": "xmen97-retro-wave",
       "name": "X-Men '97 retro wave",
       "preorderDate": "2026-10-21",
@@ -59,6 +59,10 @@
         {
           "label": "ScreenRant — Doomsday + X-Men '97 figures (Oct 11, 2026)",
           "url": "https://screenrant.com/marvel-legends-avengers-doomsday-x-men-97-figures/"
+        },
+        {
+          "label": "Near Complete Set — NYCC 2026 Hasbro panel liveblog (Oct 11, 2026)",
+          "url": "https://nearcompleteset.com/2026/10/11/nycc-26-hasbro-marvel-panel/"
         }
       ],
       "status": "preorder",
@@ -319,13 +323,13 @@
       "venue": "Target Geek-Out 2026"
     },
     {
-      "details": "The first-ever Cypher figure, via Target's 2026 Geek-Out event.",
+      "details": "The first-ever Cypher figure, via Target's 2026 Geek-Out event: classic New Mutants black-and-yellow outfit, retro-inspired X-Men card-back packaging, alt hands + signature sword. Pre-orders reported live at Target, $27.99, expected October 2026 (BleedingCool, single source).",
       "id": "cypher-target",
       "name": "Cypher — Target Exclusive (first-ever figure)",
       "preorderDate": null,
-      "price": null,
+      "price": 27.99,
       "query": "Marvel Legends Cypher Target exclusive",
-      "releaseWindow": "2026",
+      "releaseWindow": "October 2026",
       "retailers": [
         "target"
       ],
@@ -333,6 +337,10 @@
         {
           "label": "Marvel Toy News — Cypher + Final Swing Target exclusives",
           "url": "https://marveltoynews.com/marvel-legends-cypher-no-way-home-spider-man-target-exclusives/"
+        },
+        {
+          "label": "BleedingCool — Target-exclusive Cypher (Sep 2026, single source)",
+          "url": "https://bleedingcool.com/collectibles/exclusive-marvel-legends-x-men-cypher-figure-revealed-by-hasbro/"
         }
       ],
       "status": "available",
@@ -391,7 +399,7 @@
         "pulse",
         "amazon"
       ],
-      "details": "NYCC 2026 final-day panel: Lord Doom (Concept Series — from movie concept art, not the on-screen look; 2 alt hands, open + closed spell books), Beast (swappable heads, removable glasses, 2 alt hands, computer data pad), Nightcrawler (2 alt hands, 2 swords, tail). Pre-orders opened Oct 14, 2026, 1 PM ET at Pulse, Amazon + retailers, Spring 2027. The panel also confirmed a running likeness change on the Doomsday Thor figure — variant alert for carded collectors. Oct 11 re-check: the Oct 14 window (1 PM ET, Pulse + Amazon + participating retailers, Spring 2027) still stands — reconfirmed by Mephitsu, MaxBlizz, ScreenRant and FlickeringMyth.",
+      "details": "NYCC 2026 final-day panel: Lord Doom (Concept Series — from movie concept art, not the on-screen look; the design was cut from the film per ComicBook; 2 alt hands, open + closed spell books), Beast (5 accessories: alt head, removable glasses, 2 alt hands, computer data pad), Nightcrawler (5 accessories: 2 alt hands, 2 swords, tail). Pre-orders opened Oct 14, 2026, 1 PM ET at Pulse, Amazon + retailers, Spring 2027. The panel also confirmed a running likeness change on the Doomsday Thor figure — variant alert for carded collectors. Oct 12 re-check: the Oct 14 window (1 PM ET, Pulse + Amazon + participating retailers, Spring 2027) still stands — reconfirmed by Mephitsu, MaxBlizz, ScreenRant and FlickeringMyth. (Note: one line of Mephitsu's panel prose says '14th of November'; the official press block on the same page says October 14 — treated as a prose slip, the official date stands.)",
       "sources": [
         {
           "label": "Flickering Myth — Beast, Nightcrawler, Lord Doom (Oct 10, 2026)",
@@ -408,6 +416,10 @@
         {
           "label": "Mephitsu — NYCC 2026 Hasbro Marvel Legends panel (Oct 10, 2026)",
           "url": "https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel"
+        },
+        {
+          "label": "ComicBook — Lord Doom cut concept design (Oct 11, 2026)",
+          "url": "https://comicbook.com/movies/news/avengers-figure-reveals-lord-doom-doomsday-concept-design-that-was-cut-from-the-film/"
         }
       ]
     },
@@ -423,7 +435,7 @@
       "retailers": [
         "pulse"
       ],
-      "details": "NYCC 2026 reissue: Cyclops (2 alt hands, alt head) + Wolverine (4 alt hands, alt masked head), from the Astonishing X-Men comics. Price not announced at reveal (single source). Oct 11 re-check: the Oct 28 window stands (1 PM ET, Pulse + participating retailers, Fall 2026); Mephitsu's updated panel page lists the full accessory breakdown — 8 accessories: Cyclops 2 alt hands + alt head, Wolverine 4 alt hands + alt masked head. Price still unannounced at this check.",
+      "details": "NYCC 2026 reissue: Cyclops (2 alt hands, alt head) + Wolverine (4 alt hands, alt masked head), from the Astonishing X-Men comics. 8 accessories. Oct 12 re-check: the Oct 28 window stands (1 PM ET, Pulse + participating retailers, Fall 2026); price still unannounced (Mephitsu, single source).",
       "sources": [
         {
           "label": "Mephitsu — NYCC 2026 Hasbro Marvel Legends panel (Oct 10, 2026)",
@@ -464,11 +476,15 @@
       "retailers": [
         "pulse"
       ],
-      "details": "NYCC 2026 reveal: animated-style cell-shaded Spider-Man (masked + unmasked Peter heads, glasses, web line, web-splat FX) vs. Rhino (alt head, 2 alt hands). Inspired by Season 2. 11 accessories. Pulse exclusive, available Nov 1, 2026. Oct 11 re-check: the Nov 1 Pulse-exclusive sale still stands; Mephitsu copy confirms 11 accessories — Spider-Man 4 alt hands + unmasked Peter head + glasses + web line + web-splat FX; Rhino alt head + 2 alt hands.",
+      "details": "NYCC 2026 reveal: animated-style cell-shaded Spider-Man (masked + unmasked Peter Parker heads, 4 alt hands, pair of glasses, web line, web-splat effect that attaches to his wrist or Rhino's face) vs. Rhino in his Carbonadium suit (alt head, 2 alt hands). Inspired by Season 2. 11 accessories. Pulse exclusive, on sale Nov 1, 2026 at 1 PM EDT (MarvelousNews). Oct 12 re-check: the Nov 1 Pulse-exclusive sale still stands; no pre-order window and no announced price.",
       "sources": [
         {
           "label": "Mephitsu — NYCC 2026 Hasbro Marvel Legends panel (Oct 10, 2026)",
           "url": "https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel"
+        },
+        {
+          "label": "MarvelousNews — YFNS 2-pack: Nov 1, 1 PM EDT (Oct 2026)",
+          "url": "https://marvelousnews.com/252-39296"
         }
       ]
     },
@@ -541,6 +557,24 @@
         {
           "label": "ComicsBeat — TAS retro + Holiday Special reveals (Sep 2026)",
           "url": "https://www.comicsbeat.com/retro-spider-man-tas-figures-hasbro-marvel-legends-reveals/"
+        }
+      ]
+    },
+    {
+      "id": "super-skrull-reissue",
+      "name": "Super-Skrull (Fan Channel reissue)",
+      "status": "preorder",
+      "preorderDate": null,
+      "releaseWindow": "Oct–Nov 2026",
+      "price": null,
+      "query": "Marvel Legends Super-Skrull reissue Fan Channel",
+      "venue": "Fan Channel pre-orders live → Oct–Nov 2026",
+      "retailers": [],
+      "details": "Reissue of the previously-exclusive Super-Skrull (ToyHypeUSA, Sep 24, 2026): priced at $46.99–$47.99 across retailers (EE $46.99, BBTS $47.99), expected to ship October–November 2026; pre-orders live at BigBadToyStore, Entertainment Earth, Amazon, GameStop and Zavvi. Another availability-based premium under the reissue radar.",
+      "sources": [
+        {
+          "label": "ToyHypeUSA — Super-Skrull reissue pre-orders (Sep 24, 2026)",
+          "url": "https://toyhypeusa.com/2026/09/24/hasbro-marvel-legends-series-fantastic-four-super-skrull-figure-pre-orders/"
         }
       ]
     }

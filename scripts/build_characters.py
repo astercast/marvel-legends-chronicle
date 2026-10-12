@@ -33,6 +33,7 @@ NAV_LINKS = [
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("market-briefing.html", "Market Briefing"),
+    ("launch-curve.html", "Launch Curve"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
     ("journal.html", "Journal"),
     ("collection-value.html", "Ledger"),
