@@ -234,6 +234,7 @@ def main():
         <span class="hero-kicker">Character archive</span>
         <h1 id="char-title">Every {escape(char)} <span class="accent">ever.</span></h1>
         <p class="lede">{n} Marvel Legends releases, {min(years)}–{max(years)}, in chronological order.</p>
+        <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">{escape(s)}</span></p>
         <div class="char-meta">
           <span class="badge badge-baf">{n} releases</span>
           <span class="badge">{min(years)}–{max(years)}</span>

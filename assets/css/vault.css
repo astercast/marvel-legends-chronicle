@@ -390,3 +390,143 @@ html.vault-motion [data-reveal].is-in {
 @media print {
   .fig-list > .fig::before, .release-list > .release::before { display: none; }
 }
+
+/* ============================================================
+   Wave 34 — The Collector's Vault: identity wave 2
+   Blind-recognition pass: every page type reads as the vault.
+   Signature motion: entrance choreography + hover physics, all
+   gated on html.vault-motion (reduced-motion-first, still default).
+   ============================================================ */
+
+/* ---------- Entrance choreography: kicker → title → lede → rest ----------
+   One-shot, backwards-filled so late JS class-add never flashes. */
+@keyframes vault-hero-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+html.vault-motion .hero .hero-inner > *,
+html.vault-motion .curve-hero > *,
+html.vault-motion .dw-hero > *,
+html.vault-motion .page-head > * {
+  animation: vault-hero-in var(--dur-3) var(--ease-emphasis) backwards;
+}
+html.vault-motion .hero .hero-inner > :nth-child(1),
+html.vault-motion .curve-hero > :nth-child(1),
+html.vault-motion .dw-hero > :nth-child(1),
+html.vault-motion .page-head > :nth-child(1) { animation-delay: 0.05s; }
+html.vault-motion .hero .hero-inner > :nth-child(2),
+html.vault-motion .curve-hero > :nth-child(2),
+html.vault-motion .dw-hero > :nth-child(2),
+html.vault-motion .page-head > :nth-child(2) { animation-delay: 0.14s; }
+html.vault-motion .hero .hero-inner > :nth-child(3),
+html.vault-motion .curve-hero > :nth-child(3),
+html.vault-motion .dw-hero > :nth-child(3),
+html.vault-motion .page-head > :nth-child(3) { animation-delay: 0.23s; }
+html.vault-motion .hero .hero-inner > :nth-child(4),
+html.vault-motion .curve-hero > :nth-child(4),
+html.vault-motion .dw-hero > :nth-child(4),
+html.vault-motion .page-head > :nth-child(4) { animation-delay: 0.32s; }
+html.vault-motion .hero .hero-inner > :nth-child(n+5),
+html.vault-motion .curve-hero > :nth-child(n+5),
+html.vault-motion .dw-hero > :nth-child(n+5),
+html.vault-motion .page-head > :nth-child(n+5) { animation-delay: 0.41s; }
+
+/* ---------- Wax-seal stamp: pressed on, once ---------- */
+@keyframes seal-press {
+  from { opacity: 0; transform: scale(0.88); }
+  60% { opacity: 1; transform: scale(1.015); }
+  to { opacity: 1; transform: scale(1); }
+}
+html.vault-motion .wax-seal { animation: seal-press 0.55s var(--ease-emphasis) 0.25s backwards; }
+
+/* ---------- Hover physics: the card lifts off the gallery wall ----------
+   Lift + shadow + brass edge; motion-gated, so reduce-motion readers get
+   instant border/color feedback only (declared in the always-on rule below). */
+html.vault-motion .card,
+html.vault-motion .dw-card,
+html.vault-motion .brief-card,
+html.vault-motion .curve-card,
+html.vault-motion .hof-card,
+html.vault-motion .guide-card,
+html.vault-motion .doc-card,
+html.vault-motion .resource-card,
+html.vault-motion .history-event {
+  transition:
+    transform var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease),
+    border-color var(--dur-1) var(--ease);
+}
+html.vault-motion .card:hover,
+html.vault-motion .dw-card:hover,
+html.vault-motion .brief-card:hover,
+html.vault-motion .curve-card:hover,
+html.vault-motion .hof-card:hover,
+html.vault-motion .guide-card:hover,
+html.vault-motion .doc-card:hover,
+html.vault-motion .resource-card:hover,
+html.vault-motion .history-event:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+  border-color: var(--gold-deep);
+}
+/* Always-on (reduced-motion-safe): brass edge feedback without the lift. */
+.card:hover, .dw-card:hover, .brief-card:hover, .curve-card:hover,
+.hof-card:hover, .guide-card:hover, .doc-card:hover, .resource-card:hover,
+.history-event:hover { border-color: var(--gold-deep); }
+
+/* Pressed-in tactile buttons (vault-motion only) */
+html.vault-motion .btn:active, html.vault-motion .btn-seal:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Grail Quest: achievements become wax-seal medals ---------- */
+.ach-card .ach-icon {
+  background: radial-gradient(circle at 35% 30%, #b23a42, var(--wax) 45%, var(--wax-deep) 78%, #471016);
+  box-shadow:
+    0 0 0 3px var(--panel),
+    0 0 0 5px var(--gold-deep),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+  color: #f3e6c8;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+.ach-card.ach-locked .ach-icon {
+  filter: grayscale(1) brightness(0.75);
+  box-shadow: 0 0 0 3px var(--panel), 0 0 0 5px var(--line);
+  color: #cfc4ab;
+}
+/* Seal-press flourish when an achievement unlocks (motion-gated) */
+html.vault-motion .ach-card.ach-unlocked .ach-icon { animation: seal-press 0.5s var(--ease-emphasis) backwards; }
+
+/* ---------- Encyclopedia: audio-guide stop numbers ---------- */
+.stop-no {
+  display: block;
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-2);
+}
+.hof-card { border-top: 3px solid var(--gold-deep); }
+
+/* ---------- Drop Week: dispatch placards with registry numbers ---------- */
+.dw-card { border-top: 3px solid var(--gold-deep); }
+.dw-dispatch { margin: 0 0 var(--space-2); }
+
+/* ---------- Launch curve: the ledger page ---------- */
+.curve-list .curve-card svg {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, rgba(220, 174, 60, 0.07) 23px 24px),
+    var(--surface-1);
+}
+.curve-card { border-top: 3px solid var(--gold-deep); }
+
+/* ---------- Market briefing: placard cards ---------- */
+.brief-card { border-top: 3px solid var(--gold-deep); }
+
+/* ---------- API / agents docs: the registrar's desk ---------- */
+.card h3 code, .card h2 code { color: var(--gold); }
+pre, .code-block {
+  border-left: 3px solid var(--gold-deep);
+}

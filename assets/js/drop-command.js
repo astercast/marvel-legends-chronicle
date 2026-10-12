@@ -304,6 +304,8 @@ function renderDrops(drops, plan) {
 
     const h = el("h3", "dw-card-title", d.title);
     h.id = `drop-${d.id}-h`;
+    const dispatch = el("p", "dw-dispatch accession");
+    dispatch.append(el("span", "acc-label", "Dispatch №"), document.createTextNode(" "), el("span", "acc-no", d.id));
     const when = el("p", "dw-when");
     const timeEl = document.createElement("time");
     if (d.windowAt) timeEl.dateTime = d.windowAt;
@@ -347,7 +349,7 @@ function renderDrops(drops, plan) {
       srcs.appendChild(a);
     });
 
-    card.append(badge, h, when, rets, price, ship, figList, notes, srcs);
+    card.append(badge, h, dispatch, when, rets, price, ship, figList, notes, srcs);
     wrap.appendChild(card);
   }
 }

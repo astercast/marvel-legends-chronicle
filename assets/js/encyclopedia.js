@@ -61,13 +61,14 @@ function renderHistory(events) {
   }
 }
 
-function hofCard(h) {
+function hofCard(h, stopNo) {
   const card = document.createElement("article");
   card.className = "card hof-card";
   const radar = h.reissueRadar
     ? `<p class="radar-line">Reissue radar: <span class="${h.reissueRadar.level === "resilient" ? "radar-res" : "radar-vul"}">${escapeHtml(h.reissueRadar.level)}</span> <span class="radar-note">— ${escapeHtml(h.reissueRadar.note)}</span></p>`
     : "";
   card.innerHTML = `
+    <span class="stop-no">Audio-guide stop № ${stopNo}</span>
     <h3>${escapeHtml(h.name)}</h3>
     <div class="tag-row">
       <span class="badge ${h.era === "Toy Biz" ? "badge-toybiz" : ""}">${escapeHtml(h.era)}</span>
@@ -93,7 +94,7 @@ function renderHof(list) {
     els.hof.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><p>No hall-of-fame entries match.</p></div>`;
     return;
   }
-  for (const h of filtered) els.hof.appendChild(hofCard(h));
+  for (const h of filtered) els.hof.appendChild(hofCard(h, String(list.indexOf(h) + 1).padStart(2, "0")));
 }
 
 function renderGuides(sections) {
