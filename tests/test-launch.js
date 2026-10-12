@@ -175,9 +175,9 @@ suite("launch-curve.html: rendered page", () => {
 });
 
 suite("api: launch-curves endpoint", () => {
-  test("manifest registers 16 endpoints with launch-curves records == 2", () => {
+  test("manifest registers 17 endpoints with launch-curves records == 2", () => {
     const names = Object.keys(manifest.endpoints);
-    assert.equal(names.length, 16, `${names.length} endpoints`);
+    assert.equal(names.length, 17, `${names.length} endpoints`);
     assert.equal(manifest.endpoints["launch-curves"].records, 2);
   });
   test("data/v1/launch-curves.json has 2 curve records", () => {

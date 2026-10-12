@@ -91,6 +91,61 @@ export function difficultyFor(missing) {
 }
 
 /* ------------------------------------------------------------------ */
+/* The Grail Ladder — a rarity-signal score, never a value index. Every
+   point comes from the archive's own documented signals (the wave-23 Rarity
+   Guide tiers) or the Chronicle's reported price signals (market recognition
+   that a piece trades as a grail — e.g. the white Epic Heroes Doom's
+   $115–$200 reported band). Honest labeling: this measures documented
+   scarcity signals, not worth. */
+export function grailScore(fig, signals = []) {
+  let score = 0;
+  const text = `${fig?.notes ?? ""} ${fig?.variant ?? ""}`;
+  if (/chase/i.test(text)) score += 100; // Toy Biz chases — the dead era
+  const ex = fig?.exclusive ?? "";
+  if (ex === "HasLab") score += 90;
+  else if (CONVENTION_EXCLUSIVES.has(ex)) score += 80;
+  else if (ex === "Made-to-order") score += 70;
+  else if (ex) score += 40; // retailer / store exclusive
+  if (fig?.variant) score += 25;
+  if (/retro/i.test(text)) score += 10;
+  if (fig?.manufacturer === "Toy Biz") score += 10;
+  const sigs = signalForFigure(fig?.id, signals);
+  if (sigs.some((s) => Number(s?.high) >= 100)) score += 20;
+  else if (sigs.some((s) => Number(s?.high) >= 40)) score += 10;
+  return score;
+}
+
+export function grailTier(score) {
+  if (score >= 80) return "mythic";
+  if (score >= 45) return "rare";
+  if (score >= 20) return "notable";
+  return "common";
+}
+
+export const GRAIL_TIER_LABELS = {
+  mythic: "Mythic grail",
+  rare: "Rare",
+  notable: "Notable",
+  common: "Common",
+};
+
+/* Rarest owned figure — the crown jewel of the shelf. Ties break on the
+   figure name so the pick is deterministic. */
+export function rarestOwned(figures, ownedIds, signals = []) {
+  const owned = new Set(Array.isArray(ownedIds) ? ownedIds : []);
+  let best = null;
+  for (const f of figures ?? []) {
+    if (!owned.has(f?.id)) continue;
+    const score = grailScore(f, signals);
+    if (!best || score > best.score ||
+        (score === best.score && String(f.name) < String(best.fig.name))) {
+      best = { fig: f, score, tier: grailTier(score) };
+    }
+  }
+  return best;
+}
+
+/* ------------------------------------------------------------------ */
 /* Character runs — the same base_name() grouping the character pages use.
    Shared by the quest generator, the achievements, and the insights
    dashboard so all three agree on what "a character run" is. Returns
@@ -221,13 +276,115 @@ export function generateQuests(figures, waves, ownedIds) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Year-shelf commissions — the Vault Room's 25 year-shelves as quests.
+   Completion % is quest progress: every shelf with at least one owned figure
+   is a commission; a finished shelf joins the permanent exhibit. */
+export function shelfCommissions(figures, ownedIds) {
+  const owned = new Set(Array.isArray(ownedIds) ? ownedIds : []);
+  const byYear = new Map();
+  for (const f of figures ?? []) {
+    const y = f?.year;
+    if (!Number.isInteger(y)) continue;
+    if (!byYear.has(y)) byYear.set(y, []);
+    byYear.get(y).push(f);
+  }
+  const out = [];
+  for (const year of [...byYear.keys()].sort((a, b) => a - b)) {
+    const figs = byYear.get(year);
+    const got = figs.filter((f) => owned.has(f.id)).length;
+    out.push({
+      kind: "shelf",
+      id: `shelf:${year}`,
+      title: `Exhibit the ${year} shelf`,
+      sub: "Vault Room year-shelf",
+      total: figs.length,
+      got,
+      missing: figs.filter((f) => !owned.has(f.id)),
+      missingCount: figs.length - got,
+      difficulty: difficultyFor(figs.length - got),
+      year,
+    });
+  }
+  return out;
+}
+
+/* Every commission the registrar tracks: active (started but unfinished)
+   plus completed (the permanent exhibit). Commission ids are stable across
+   renders so completion ceremonies can diff them. */
+export function activeCommissions(figures, waves, ownedIds) {
+  const quests = generateQuests(figures, waves, ownedIds);
+  const shelves = shelfCommissions(figures, ownedIds).filter(
+    (s) => s.got > 0 && s.missingCount > 0
+  );
+  const all = [...quests, ...shelves];
+  all.sort((a, b) => a.missingCount - b.missingCount || a.total - b.total);
+  return all;
+}
+
+export function completedCommissions(figures, waves, ownedIds) {
+  const owned = new Set(Array.isArray(ownedIds) ? ownedIds : []);
+  const done = [];
+
+  /* Completed BAFs — every piece secured. */
+  const bafNameCounts = new Map();
+  const allBafs = buildBafs(waves);
+  for (const b of allBafs) bafNameCounts.set(b.name, (bafNameCounts.get(b.name) ?? 0) + 1);
+  for (const baf of allBafs) {
+    if (!baf.pieces.every((p) => pieceGot(p, owned))) continue;
+    const name = bafNameCounts.get(baf.name) > 1 ? `${baf.name} (${baf.year})` : baf.name;
+    done.push({
+      kind: "baf", id: `baf:${baf.name}:${baf.year}`,
+      title: `Finish BAF: ${name}`, sub: `${baf.series} · ${baf.year}`,
+      total: baf.pieces.length, got: baf.pieces.length,
+    });
+  }
+
+  /* Completed series runs — numbered waves grouped by runKey, all owned. */
+  const runs = new Map();
+  for (const f of figures ?? []) {
+    const key = runKey(f.waveSeries);
+    if (!key) continue;
+    if (!runs.has(key)) runs.set(key, []);
+    runs.get(key).push(f);
+  }
+  for (const [key, figs] of runs) {
+    if (figs.length < 3) continue;
+    if (!figs.every((f) => owned.has(f.id))) continue;
+    const wavesInRun = [...new Set(figs.map((f) => f.waveSeries))].join(" · ");
+    done.push({
+      kind: "run", id: `run:${key}`, title: `Complete the ${key} run`,
+      sub: wavesInRun, total: figs.length, got: figs.length,
+    });
+  }
+
+  /* Completed character runs + year shelves. */
+  for (const r of characterRuns(figures, ownedIds, 5)) {
+    if (r.got !== r.total) continue;
+    done.push({
+      kind: "character", id: `character:${r.name}`,
+      title: `Close the gap: ${r.name} run`,
+      sub: `${r.figs.length} releases in the archive`,
+      total: r.figs.length, got: r.figs.length,
+    });
+  }
+  for (const s of shelfCommissions(figures, ownedIds)) {
+    if (s.total > 0 && s.got === s.total) done.push(s);
+  }
+  return done;
+}
+
+export function countCompletedCommissions(figures, waves, ownedIds) {
+  return completedCommissions(figures, waves, ownedIds).length;
+}
+
+/* ------------------------------------------------------------------ */
 /* "Next quest" recommendations. */
 
 export function recommendNext(figures, waves, ownedIds, watchlist, extra = {}) {
   const ownedSet = new Set(Array.isArray(ownedIds) ? ownedIds : []);
   const signals = Array.isArray(extra.signals) ? extra.signals : [];
   const quests = generateQuests(figures, waves, ownedIds);
-  const out = { baf: null, cheapPiece: null, grail: null, watchHunts: [] };
+  const out = { baf: null, cheapPiece: null, grail: null, watchHunts: [], affordableGrail: null };
 
   /* Closest BAF: fewest pieces missing among started BAFs. */
   const bafQuests = quests.filter((q) => q.kind === "baf");
@@ -267,6 +424,39 @@ export function recommendNext(figures, waves, ownedIds, watchlist, extra = {}) {
   }
   if (best) out.cheapPiece = best;
 
+  /* Rarest affordable grail: unowned figures with documented rarity (rare or
+     mythic on the Grail Ladder), ranked by rarity-per-cost. Cost is the
+     Chronicle's reported signal low when one exists, else the honest
+     figure-type tier proxy — never an invented price. "Affordable" means the
+     reported low is $60 or under, or (with no reported data) a standard /
+     multi-pack figure type. The modern chase is effectively dead, so these
+     are legacy hunts — finite supply, real money. */
+  let grailBest = null;
+  for (const f of figures ?? []) {
+    if (ownedSet.has(f.id)) continue;
+    const score = grailScore(f, signals);
+    const rarity = grailTier(score);
+    if (rarity !== "mythic" && rarity !== "rare") continue;
+    const tier = costTier(f);
+    if (tier >= 4) continue; // HasLab / made-to-order — never "affordable"
+    const lows = signalForFigure(f.id, signals)
+      .map((s) => Number(s?.low))
+      .filter((n) => Number.isFinite(n) && n > 0);
+    const reportedLow = lows.length ? Math.min(...lows) : null;
+    if (reportedLow !== null ? reportedLow > 60 : tier > 2) continue;
+    const cost = reportedLow ?? tier * 20; // tier proxy in comparable dollars
+    const ratio = score / Math.max(cost, 1);
+    if (!grailBest || ratio > grailBest.ratio) {
+      grailBest = {
+        fig: f, score, rarity, tier, reportedLow, ratio,
+        costNote: reportedLow !== null
+          ? `reported low $${reportedLow} (reported range, not a live price)`
+          : `${COST_TIER_LABELS[tier]} (figure-type proxy — verify with eBay solds)`,
+      };
+    }
+  }
+  if (grailBest) out.affordableGrail = grailBest;
+
   /* Nearest watchlist grail: lowest user-reported sighting price; flagged as
      reported, never presented as market data. */
   const entries = Array.isArray(watchlist) ? watchlist : [];
@@ -305,6 +495,20 @@ export function computeAchievements(figures, waves, ownedIds, extra = {}) {
   const today = extra.today instanceof Date ? extra.today : new Date();
 
   const completedBafs = countCompletedBafs(figures, waves, ownedIds);
+
+  /* Completed exhibition commissions (any kind) — the Wing Curator bar. */
+  const completedCount = countCompletedCommissions(figures, waves, ownedIds);
+
+  /* Distinct archive years represented — the Decade Walker bar. */
+  const yearsOwned = new Set(
+    ownedFigs.map((f) => f.year).filter((y) => Number.isInteger(y))
+  );
+
+  /* Mythic-tier grails owned — the Crown Jewel bar (Grail Ladder, never a
+     value index; the market-recognition boost comes from reported signals). */
+  const mythicOwned = ownedFigs.filter(
+    (f) => grailTier(grailScore(f, signals)) === "mythic"
+  ).length;
 
   /* Full character runs owned — the Character Loyalist bar. */
   const completedRuns = characterRuns(figures, ownedIds, 5).filter((r) => r.got === r.total).length;
@@ -433,6 +637,21 @@ export function computeAchievements(figures, waves, ownedIds, extra = {}) {
       id: "century-shelf", name: "Century Shelf", icon: "💯",
       blurb: "Own 100+ figures.",
       got: ownedFigs.length, need: 100,
+    },
+    {
+      id: "crown-jewel", name: "Crown Jewel", icon: "👑",
+      blurb: "Own a mythic-tier grail — the archive's rarest documented tier (chase, convention, or HasLab signals). The modern chase is effectively dead, so mythic pieces are legacy hunts.",
+      got: Math.min(mythicOwned, 1), need: 1,
+    },
+    {
+      id: "decade-walker", name: "Decade Walker", icon: "🗓️",
+      blurb: "Own figures from 10+ different archive years — a walk through the whole line, 2002 to now.",
+      got: Math.min(yearsOwned.size, 10), need: 10,
+    },
+    {
+      id: "wing-curator", name: "Wing Curator", icon: "🏛️",
+      blurb: "Complete a full exhibition commission — any Build-A-Figure, series run, character run, or year-shelf, hung complete.",
+      got: Math.min(completedCount, 1), need: 1,
     },
   ];
 

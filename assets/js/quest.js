@@ -29,6 +29,9 @@ import {
   difficultyFor, generateQuests, recommendNext, computeAchievements,
   LEVELS, xpBreakdown, computeLevel,
   characterRuns, countCompletedBafs,
+  grailScore, grailTier, GRAIL_TIER_LABELS, rarestOwned,
+  shelfCommissions, activeCommissions, completedCommissions,
+  countCompletedCommissions,
 } from "./quest-core.js";
 /* Re-exported so existing importers (tests) keep working. */
 export {
@@ -37,7 +40,14 @@ export {
   difficultyFor, generateQuests, recommendNext, computeAchievements,
   LEVELS, xpBreakdown, computeLevel,
   characterRuns, countCompletedBafs,
+  grailScore, grailTier, GRAIL_TIER_LABELS, rarestOwned,
+  shelfCommissions, activeCommissions, completedCommissions,
+  countCompletedCommissions,
 };
+import {
+  commissionNo, detectNewCompletions, koTargetsIn, exhibitWings,
+} from "./quest-exhibits.js";
+export { commissionNo, detectNewCompletions, koTargetsIn, exhibitWings };
 import {
   completionByWave, completionByYear, characterCompletions, oneFigureAway,
   findDuplicateIds, shelfValueRange, growthByMonth, growthSeries,
@@ -65,11 +75,22 @@ const els = {
   levelBar: document.getElementById("level-bar"),
   questCount: document.getElementById("quest-count"),
   questList: document.getElementById("quest-list"),
+  marketPlacard: document.getElementById("market-placard"),
+  exhibitSub: document.getElementById("exhibit-sub"),
+  exhibitWall: document.getElementById("exhibit-wall"),
+  doneSub: document.getElementById("done-sub"),
+  doneList: document.getElementById("done-list"),
   recBaf: document.getElementById("rec-baf"),
   recCheap: document.getElementById("rec-cheap"),
   recGrail: document.getElementById("rec-grail"),
+  recAffordable: document.getElementById("rec-affordable"),
   recHunts: document.getElementById("rec-hunts"),
   recInsight: document.getElementById("rec-insight"),
+  jewelLine: document.getElementById("jewel-line"),
+  ceremony: document.getElementById("ceremony"),
+  ceremonyTitle: document.getElementById("ceremony-title"),
+  ceremonyBody: document.getElementById("ceremony-body"),
+  ceremonyAcc: document.getElementById("ceremony-acc"),
   alertSub: document.getElementById("alerts-sub"),
   alertList: document.getElementById("alerts-list"),
   prepSub: document.getElementById("prep-sub"),
@@ -130,10 +151,18 @@ function figureRow(fig) {  const row = document.createElement("div");
   return row;
 }
 
-function questCard(q) {
+function questCard(q, idx) {
   const card = document.createElement("article");
   card.className = "card quest-card";
   const pct = q.total ? Math.round((q.got / q.total) * 100) : 0;
+  const no = commissionNo(q.kind, idx);
+  const kindLabel = q.kind === "baf" ? "Build-A-Figure"
+    : q.kind === "character" ? "Character run"
+    : q.kind === "shelf" ? "Year shelf" : "Series run";
+  /* KO-market honesty: a missing piece that is a documented KO target gets
+     an authenticate-first flag — the evergreen KO trade, from the archive's
+     own auth research, wired into quest difficulty. */
+  const koHits = koTargetsIn(q.missing);
   const details = document.createElement("details");
   details.className = "quest-missing";
   const summary = document.createElement("summary");
@@ -152,7 +181,8 @@ function questCard(q) {
   card.innerHTML = `
     <div class="quest-top">
       <span class="badge badge-difficulty">${escapeHtml(q.difficulty)}</span>
-      <span class="badge">${escapeHtml(q.kind === "baf" ? "Build-A-Figure" : q.kind === "character" ? "Character run" : "Series run")}</span>
+      <span class="badge">${escapeHtml(kindLabel)}</span>
+      <span class="commission-no">Commission № ${escapeHtml(no)}</span>
     </div>
     <h3>${escapeHtml(q.title)}</h3>
     <p class="chart-sub">${escapeHtml(q.sub)}</p>
@@ -161,7 +191,8 @@ function questCard(q) {
         <span style="width:${pct}%"></span>
       </div>
       <p class="quest-prog">${q.got} of ${q.total} secured · ${pct}%</p>
-    </div>`;
+    </div>
+    ${koHits.length ? `<p class="ko-flag">⚠️ ${escapeHtml(koHits.map((t) => t.note).join(" "))} <a href="auth-wizard.html">Auth Wizard</a></p>` : ""}`;
   card.appendChild(details);
   return card;
 }
@@ -175,6 +206,115 @@ function recCard(kind, title, bodyHtml) {
     <div class="rec-body"></div>`;
   card.querySelector(".rec-body").innerHTML = bodyHtml;
   return card;
+}
+
+/* ------------------------------------------------------------------ */
+/* The growing exhibit — the collection as a museum that fills in. */
+
+function wingCard(wing) {
+  const card = document.createElement("article");
+  card.className = "card wing-card";
+  const hung = wing.hung.length;
+  const pct = wing.total ? Math.round((hung / wing.total) * 100) : 0;
+  const label = wing.kind === "baf" ? "BAF wing"
+    : wing.kind === "character" ? "Character wing"
+    : wing.kind === "shelf" ? "Shelf wing" : "Run wing";
+  const plaques = wing.hung.slice(0, 12).map(({ piece, fig }) =>
+    `<li class="plaque"><span class="plaque-name">${escapeHtml(fig.name)}</span>` +
+    (piece ? `<span class="plaque-piece">${escapeHtml(piece)}</span>` : "") + `</li>`
+  ).join("");
+  const more = hung > 12 ? `<li class="plaque plaque-more">+${hung - 12} more hung</li>` : "";
+  card.innerHTML = `
+    <span class="badge">${escapeHtml(label)}</span>
+    <h3>${escapeHtml(wing.title)}</h3>
+    <p class="chart-sub">${escapeHtml(wing.sub)} — ${hung}/${wing.total} hung · ${pct}%</p>
+    <ul class="plaque-wall">${plaques}${more}</ul>`;
+  return card;
+}
+
+function renderExhibit(figures, waves, ownedIds) {
+  if (!els.exhibitWall) return;
+  const wings = exhibitWings(figures, waves, ownedIds);
+  const done = completedCommissions(figures, waves, ownedIds);
+  const celebrated = load(STORE_KEYS.questDone, {});
+  els.exhibitSub.textContent = wings.length
+    ? `${wings.length} wing${wings.length === 1 ? "" : "s"} under construction — every figure you log hangs a new plaque.`
+    : "Log figures and your exhibit wall grows here — one plaque per figure, grouped into wings.";
+  els.exhibitWall.innerHTML = "";
+  for (const w of wings.slice(0, 12)) els.exhibitWall.appendChild(wingCard(w));
+  if (wings.length > 12) {
+    const note = document.createElement("p");
+    note.className = "chart-sub";
+    note.textContent = `+ ${wings.length - 12} more wings under construction.`;
+    els.exhibitWall.appendChild(note);
+  }
+
+  /* The permanent gallery — completed commissions, accessioned for good. */
+  if (!els.doneList) return;
+  if (!done.length) {
+    els.doneSub.textContent = "No completed wings yet — finish a commission and the registrar hangs it here permanently.";
+    els.doneList.innerHTML = "";
+    return;
+  }
+  els.doneSub.textContent = `${done.length} completed commission${done.length === 1 ? "" : "s"} — accessioned into the permanent exhibit.`;
+  els.doneList.innerHTML = done.map((c) => {
+    const when = celebrated[c.id] ? ` · accessioned ${escapeHtml(String(celebrated[c.id]))}` : "";
+    return `<li class="done-row"><span class="wax-dot" aria-hidden="true"></span><div><strong>${escapeHtml(c.title)}</strong><span class="chart-sub">${escapeHtml(c.sub)} — ${c.total}/${c.total}${when}</span></div></li>`;
+  }).join("");
+}
+
+/* Quest-complete ceremony — fires once per commission, the first time the
+   board sees it finished. The wax seal replays the wave-34 seal-press; the
+   dialog is native <dialog> (focus trap + Esc by construction). */
+function maybeCelebrate(figures, waves, ownedIds) {
+  if (!els.ceremony) return;
+  const completed = completedCommissions(figures, waves, ownedIds);
+  const celebrated = load(STORE_KEYS.questDone, {});
+  const fresh = detectNewCompletions(celebrated, completed.map((c) => c.id));
+  if (!fresh.length) return;
+  const now = new Date().toISOString().slice(0, 10);
+  for (const id of fresh) celebrated[id] = now;
+  save(STORE_KEYS.questDone, celebrated);
+  const first = completed.find((c) => c.id === fresh[0]);
+  if (!first) return;
+  els.ceremonyTitle.textContent = first.title;
+  els.ceremonyBody.textContent =
+    `Every piece accounted for — ${first.total} of ${first.total}. ` +
+    `The registrar has stamped it, filed it, and hung it in the permanent exhibit.`;
+  els.ceremonyAcc.textContent = `Accession № ${first.id} · ${now}`;
+  if (typeof els.ceremony.showModal === "function") els.ceremony.showModal();
+  else els.ceremony.setAttribute("open", "");
+}
+
+/* ------------------------------------------------------------------ */
+/* Market conditions — the 2026 briefing's intel, wired into quest
+   difficulty where it is honest: the dead chase era (grails are legacy
+   hunts), the reissue program (availability premiums can collapse), and the
+   evergreen KO trade (authenticate first). */
+
+let marketIntel = null;
+async function loadMarket() {
+  try {
+    const res = await fetch(PATHS.questMarket);
+    if (res.ok) marketIntel = await res.json();
+  } catch { /* offline: the placard degrades away, quests don't depend on it */ }
+}
+
+function renderMarketPlacard() {
+  if (!els.marketPlacard) return;
+  if (!marketIntel) { els.marketPlacard.hidden = true; return; }
+  const m = marketIntel;
+  const t = m.priceTiers ?? {};
+  els.marketPlacard.hidden = false;
+  els.marketPlacard.innerHTML = `
+    <span class="brief-kicker">Market conditions · from the 2026 briefing</span>
+    <h2>The registrar reads the market so you don't have to</h2>
+    <ul class="market-notes">
+      <li><strong>The chase is dead; the hunt is legacy.</strong> ${escapeHtml(m.chaseEra?.detail ?? "")}</li>
+      <li><strong>Reissues erase availability premiums.</strong> ${escapeHtml(m.reissueProgram?.detail ?? "")}</li>
+      <li><strong>Knockoffs are evergreen.</strong> ${escapeHtml(m.koWatch?.detail ?? "")}</li>
+    </ul>
+    <p class="chart-sub">2026 retail baseline: standard single <strong>$${t.standard?.usd}</strong> · deluxe $${t.deluxe?.low}–$${t.deluxe?.high} · made-to-order $${t.madeToOrder?.usd}. Full receipts on the <a href="market-briefing.html">market briefing</a>.</p>`;
 }
 
 function achievementCard(a) {
@@ -461,7 +601,11 @@ function renderAll(figures, waves) {
     watchlist, signals: priceSignals, buys, budget, today: new Date(),
   });
   const unlocked = achievements.filter((a) => a.unlocked);
-  const quests = generateQuests(figures, waves, ownedIds);
+
+  /* Active commissions — the registrar's issued quests: BAF finishes,
+     series runs, character runs, and the Vault Room's year-shelves. */
+  const commissions = activeCommissions(figures, waves, ownedIds);
+  const quests = commissions; // share-card + gap copy keep the "quests" name
 
   /* Collector level. (countCompletedBafs is the exported helper — quest.js
      once reached for quest-core's private piece check here and would have
@@ -473,7 +617,7 @@ function renderAll(figures, waves) {
   els.levelTitle.textContent = `${level.title} · Level ${level.level + 1}`;
   els.levelXp.textContent = `${level.xp} XP`;
   els.levelMath.textContent =
-    `= ${bd.fromOwned} owned ×1 + ${completedBafs} BAF${completedBafs === 1 ? "" : "s"} ×25 + ${unlocked.length} achievement${unlocked.length === 1 ? "" : "s"} ×10`;
+    `= ${bd.fromOwned} owned ×1 + ${completedBafs} BAF${completedBafs === 1 ? "" : "s"} ×25 + ${unlocked.length} honor${unlocked.length === 1 ? "" : "s"} ×10`;
   const barPct = level.nextXp ? Math.round((level.xpIntoLevel / level.xpForNext) * 100) : 100;
   els.levelBar.innerHTML = `
     <div class="progress-bar" role="progressbar" aria-valuenow="${level.xpIntoLevel}" aria-valuemin="0" aria-valuemax="${level.xpForNext}" aria-label="Progress to next collector level">
@@ -481,13 +625,22 @@ function renderAll(figures, waves) {
     </div>
     <p class="quest-prog">${level.nextTitle ? `${level.nextXp - level.xp} XP to ${level.nextTitle}` : "Max level — Living Legend. Absolute unit."}</p>`;
 
-  /* Active quests. */
-  els.questCount.textContent = `${quests.length} active quest${quests.length === 1 ? "" : "s"}`;
+  /* Crown jewel — the rarest owned piece, by the Grail Ladder (documented
+     scarcity signals, never a value index). */
+  if (els.jewelLine) {
+    const jewel = rarestOwned(figures, ownedIds, priceSignals);
+    els.jewelLine.innerHTML = jewel
+      ? `👑 <strong>Crown jewel:</strong> ${escapeHtml(jewel.fig.name)} <span class="chart-sub">— ${escapeHtml(GRAIL_TIER_LABELS[jewel.tier])} · ${escapeHtml(jewel.fig.waveSeries ?? "")} ${jewel.fig.year ?? ""}</span>`
+      : "";
+  }
+
+  /* Active commissions. */
+  els.questCount.textContent = `${commissions.length} active commission${commissions.length === 1 ? "" : "s"} — issued by the registrar, progress from your tracker`;
   els.questList.innerHTML = "";
-  if (!quests.length) {
-    els.questList.innerHTML = `<div class="empty-state"><p>No active quests — everything you own is either complete or hasn't been started. Mark more figures owned in the <a href="checklist.html">checklist</a> to open new quests.</p></div>`;
+  if (!commissions.length) {
+    els.questList.innerHTML = `<div class="empty-state"><p>No active commissions — everything you own is either complete or hasn't been started. Mark more figures owned in the <a href="checklist.html">checklist</a> or the <a href="vault-room.html">Vault Room</a> drawers to open new ones.</p></div>`;
   } else {
-    for (const q of quests) els.questList.appendChild(questCard(q));
+    commissions.forEach((q, i) => els.questList.appendChild(questCard(q, i)));
   }
 
   /* Next-quest recommendations. */
@@ -495,6 +648,7 @@ function renderAll(figures, waves) {
   els.recBaf.innerHTML = "";
   els.recCheap.innerHTML = "";
   els.recGrail.innerHTML = "";
+  els.recAffordable.innerHTML = "";
   els.recHunts.innerHTML = "";
   if (rec.baf) {
     els.recBaf.appendChild(recCard("Closest BAF",
@@ -530,6 +684,24 @@ function renderAll(figures, waves) {
   } else {
     els.recGrail.appendChild(recCard("Watchlist grail", "Watchlist empty",
       `<p>Add figures to your <a href="watchlist.html">grail watchlist</a> with target prices and sightings, and this slot will point at your nearest grail.</p>`));
+  }
+
+  /* Rarest affordable grail — the highest rarity-per-cost in the archive you
+     don't own. Rarity from the Grail Ladder (documented scarcity signals);
+     cost from the Chronicle's reported signal low, or the honest figure-type
+     proxy when no reported data exists. Never an invented price. */
+  if (rec.affordableGrail) {
+    const g = rec.affordableGrail;
+    const f = g.fig;
+    els.recAffordable.appendChild(recCard("Rarest affordable grail",
+      f.name,
+      `<p class="quest-prog">${escapeHtml(GRAIL_TIER_LABELS[g.rarity])} · rarity score ${g.score}</p>
+       <ul class="rec-list"><li>${escapeHtml(f.waveSeries)} · ${f.year}${f.variant ? ` · ${escapeHtml(f.variant)}` : ""}${f.exclusive ? ` · ${escapeHtml(f.exclusive)}` : ""}</li></ul>
+       <p class="chart-sub">Why this one: the highest rarity-per-cost among the ${figures.length.toLocaleString("en-US")} archive figures you don't own — ${escapeHtml(g.costNote)}.</p>
+       <p class="honesty">The modern chase is effectively dead — grails are legacy hunts with finite supply. Never pay a premium the reissue program can erase: <a href="${escapeHtml(soldSearchUrl(marketplaceQuery(f)))}" target="_blank" rel="noopener">check eBay solds</a> first, and run KO targets through the <a href="auth-wizard.html">Auth Wizard</a>.</p>`));
+  } else {
+    els.recAffordable.appendChild(recCard("Rarest affordable grail", "Nothing in reach",
+      `<p>Every rare-or-better piece is either on your shelf already or priced out of the affordable band. Log more of the archive and this slot recalculates.</p>`));
   }
 
   /* Watchlist hunts: watched figures ranked by reported market vs your target. */
@@ -570,6 +742,11 @@ function renderAll(figures, waves) {
       `<p>No character run sits exactly one figure from complete. Start one by marking figures owned in the <a href="checklist.html">checklist</a> — the gap analysis in the insights section will light up when you're close.</p>`));
   }
 
+  /* The growing exhibit + the permanent gallery. Celebrate first so the
+     accession dates show in the gallery on the same render. */
+  maybeCelebrate(figures, waves, ownedIds);
+  renderExhibit(figures, waves, ownedIds);
+
   /* Collection insights dashboard (Grail Quest 4.0). */
   renderInsights(figures, waves, ownedIds, buys, completedBafs, achievements);
 
@@ -597,6 +774,8 @@ async function init() {
   try {
     const { figures, waves } = await loadData();
     await loadSignals();
+    await loadMarket();
+    renderMarketPlacard();
     renderAll(figures, waves);
     renderAlerts().catch(() => {});
     renderPrep().catch(() => {});

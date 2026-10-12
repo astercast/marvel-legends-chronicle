@@ -120,7 +120,7 @@ HALLS = [
         ("holiday.html", "Holiday Guide", "Seasonal hunting without the seasonal-markup panic."),
     ]),
     ("The Game", "Play with the archive.", [
-        ("quest.html", "Grail Quest", "Seventeen achievements, one shelf — the collector's game."),
+        ("quest.html", "Grail Quest", "Twenty accessioned honors, exhibition commissions, and the growing exhibit — the collector's game."),
         ("compare.html", "Compare", "Two figures, side by side. No contest rigged."),
         ("grails.html", "Grails", "The ones that got away — and how close they are."),
         ("retro.html", "Retro", "The old days: Toy Biz glory and the figures that started it."),

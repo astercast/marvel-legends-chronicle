@@ -278,9 +278,9 @@ suite("review page (2026-review.html)", () => {
 });
 
 suite("review API endpoint (data/v1/year-review.json)", () => {
-  test("manifest registers year-review as the 16th endpoint", () => {
+  test("manifest registers year-review as the 17th endpoint", () => {
     const names = Object.keys(manifest.endpoints);
-    assert.equal(names.length, 16, "16 endpoints");
+    assert.equal(names.length, 17, "17 endpoints");
     const e = manifest.endpoints["year-review"];
     assert(e, "year-review in manifest");
     assert.equal(e.path, "data/v1/year-review.json", "path");

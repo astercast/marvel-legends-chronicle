@@ -52,9 +52,9 @@ One Vercel project containing:
 **Known quirk (documented, not changed):** `build_api.py` and
 `build_dropweek.py` both write `data/v1/drop-week.json` (content identical,
 formatting differs minified vs pretty — last writer wins). The
-`buildCommand` runs `build_api.py` first and `build_dropweek.py` last, so
-the drop-week build's file is the one deployed. Do not "fix" this by
-reordering; the builds are intentionally independent.
+`buildCommand` runs `build_quest_market.py`, then `build_api.py`, and
+`build_dropweek.py` last, so the drop-week build's file is the one deployed.
+Do not "fix" this by reordering; the builds are intentionally independent.
 
 ## 3. Prerequisites
 
@@ -79,7 +79,7 @@ reordering; the builds are intentionally independent.
 1. **vercel.com/new → Import Git Repository** → select the
    `marvel-legends-chronicle` repo.
 2. **Framework Preset: Other.**
-   - Build Command: `python3 scripts/build_api.py && python3 scripts/build_waves.py && python3 scripts/build_characters.py && python3 scripts/build_timeline.py && python3 scripts/build_rarity.py && python3 scripts/build_launch.py && python3 scripts/build_review.py && python3 scripts/build_dropweek.py && python3 scripts/build_skills.py && python3 scripts/update_nav.py` (timed 5.6s locally; budget <60s)
+   - Build Command: `python3 scripts/build_quest_market.py && python3 scripts/build_api.py && python3 scripts/build_waves.py && python3 scripts/build_characters.py && python3 scripts/build_timeline.py && python3 scripts/build_rarity.py && python3 scripts/build_launch.py && python3 scripts/build_review.py && python3 scripts/build_dropweek.py && python3 scripts/build_skills.py && python3 scripts/update_nav.py` (timed 5.6s locally; budget <60s)
    - Output Directory: *(leave empty — repo root is the Vercel default)*
    - Install Command: `echo 'no dependencies'`
 3. **Environment Variables** (Production scope):

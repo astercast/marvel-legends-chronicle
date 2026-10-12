@@ -1,1 +1,55 @@
-{"$schema":"https://openapi.vercel.sh/vercel.json","buildCommand":"python3 scripts/build_api.py && python3 scripts/build_waves.py && python3 scripts/build_characters.py && python3 scripts/build_timeline.py && python3 scripts/build_rarity.py && python3 scripts/build_launch.py && python3 scripts/build_review.py && python3 scripts/build_dropweek.py && python3 scripts/build_skills.py && python3 scripts/update_nav.py","cleanUrls":true,"crons":[{"path":"/api/cron/radar","schedule":"0 15 * * *"}],"functions":{"api/health.js":{"maxDuration":10},"api/reveals.js":{"maxDuration":10},"api/preorders.js":{"maxDuration":10},"api/cron/radar.js":{"maxDuration":10}},"headers":[{"headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"no-referrer"}],"source":"/api/(.*)"},{"headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"}],"source":"/(.*)"}],"installCommand":"echo 'no dependencies'","trailingSlash":false}
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "python3 scripts/build_quest_market.py && python3 scripts/build_api.py && python3 scripts/build_waves.py && python3 scripts/build_characters.py && python3 scripts/build_timeline.py && python3 scripts/build_rarity.py && python3 scripts/build_launch.py && python3 scripts/build_review.py && python3 scripts/build_dropweek.py && python3 scripts/build_skills.py && python3 scripts/update_nav.py",
+  "cleanUrls": true,
+  "crons": [
+    {
+      "path": "/api/cron/radar",
+      "schedule": "0 15 * * *"
+    }
+  ],
+  "functions": {
+    "api/health.js": {
+      "maxDuration": 10
+    },
+    "api/reveals.js": {
+      "maxDuration": 10
+    },
+    "api/preorders.js": {
+      "maxDuration": 10
+    },
+    "api/cron/radar.js": {
+      "maxDuration": 10
+    }
+  },
+  "headers": [
+    {
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ],
+      "source": "/api/(.*)"
+    },
+    {
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ],
+      "source": "/(.*)"
+    }
+  ],
+  "installCommand": "echo 'no dependencies'",
+  "trailingSlash": false
+}

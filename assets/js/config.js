@@ -5,6 +5,7 @@ export const PATHS = {
   communitySeed: "data/community.json",
   preorders: "data/preorders.json",
   priceSignals: "data/price-signals.json",
+  questMarket: "data/quest-market.json",
   compare: "data/v1/compare.json", // VS-mode profiles: deep links, rarity/price/KO cross-refs, upgrade paths
 };
 
@@ -24,6 +25,7 @@ export const STORE_KEYS = {
   preorders: "mlc_preorders_v1", // { <preorderItemId>: "watching"|"ordered"|"skipped" } — pre-order tracker personal calls
   budget: "mlc_budget_v1", // { monthly: number|null, annual: number|null } — the user's own spend targets
   launchPrep: "mlc_launchprep_v1", // { <questId>: [bool] } — launch-day prep checklist ticks
+  questDone: "mlc_quest_done_v1", // { <commissionId>: "YYYY-MM-DD" } — commissions already celebrated, so the ceremony fires once
   dropweek: "mlc_dropweek_v1", // { <dropId>: { <figName>: "want"|"ordered" } } — Drop Week battle plan
   motion: "mlc_motion_v1", // "reduce"|"auto" — manual motion preference for the vault identity (wave 33)
 };

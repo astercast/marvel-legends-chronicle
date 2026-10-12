@@ -7,8 +7,13 @@
    timeline as a readable list and no parallax. */
 import { openModal } from "./modal.js";
 import { escapeHtml, badgeFor } from "./figure-dialog.js";
-import { trackerButtons } from "./tracker.js";
+import { trackerButtons, owned } from "./tracker.js";
 import { renderResearchLinks } from "./listings.js";
+import { drawerQuestHint } from "./quest-exhibits.js";
+
+/* Module-level archive reference so the drawer dialog can compute quest
+   hints — set once init() loads the room data. */
+let roomFigures = [];
 
 const els = {
   journey: document.getElementById("journey"),
@@ -255,6 +260,26 @@ export function openDrawer(fig, yearCtx, spotlightWhy) {
     bodyEl.appendChild(links);
 
     bodyEl.appendChild(trackerButtons(fig.id));
+
+    /* Quest strip — the drawers feed the quest board (same tracker state),
+       and the strip reflects it back: which commission this drawer serves,
+       and whether pulling it completes one. */
+    const strip = document.createElement("p");
+    strip.className = "drawer-quest-strip";
+    strip.setAttribute("role", "status");
+    const refreshStrip = () => {
+      const hint = drawerQuestHint(fig, roomFigures, owned.all());
+      if (!hint) { strip.hidden = true; return; }
+      strip.hidden = false;
+      strip.classList.toggle("completes", hint.completes);
+      strip.innerHTML = `🏛️ <strong>Commission progress:</strong> ${escapeHtml(hint.text)} <a href="quest.html">Open Grail Quest →</a>`;
+    };
+    refreshStrip();
+    bodyEl.appendChild(strip);
+    bodyEl.addEventListener("click", (e) => {
+      if (e.target.closest(".tracker-btns")) setTimeout(refreshStrip, 60);
+    });
+
     bodyEl.appendChild(renderResearchLinks(fig));
   });
   watchDrawerClose();
@@ -481,6 +506,7 @@ async function init() {
     return;
   }
   const { figures, waves, timeline } = data;
+  roomFigures = figures;
   const waveMeta = new Map();
   for (const w of waves) waveMeta.set(w.id, w);
   const yearByNum = new Map(timeline.map((y) => [y.year, y]));

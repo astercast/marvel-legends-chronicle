@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QuestMarket",
+  "type": "object",
+  "required": [
+    "version",
+    "observed",
+    "methodology",
+    "count",
+    "tiers",
+    "chaseEra",
+    "reissueProgram",
+    "koWatch",
+    "launchCurveNote"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "observed": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "methodology": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "tiers": {
+      "type": "array"
+    },
+    "chaseEra": {
+      "type": "object"
+    },
+    "reissueProgram": {
+      "type": "object"
+    },
+    "koWatch": {
+      "type": "object"
+    },
+    "launchCurveNote": {
+      "type": "object"
+    },
+    "honestGaps": {
+      "type": "array"
+    }
+  }
+}
