@@ -49,3 +49,4 @@ One line per wave, so a fresh mind can reconstruct the history.
 - Pure-logic exports tested: `tests/test-quest.js` (26 tests: quest generation, nearest-BAF ordering, achievement unlocks, XP/level math, share text) registered in `tests/run.js`; real-data smoke test (28 stubbed owned → 30 quests in 23ms).
 - Nav: `quest.html` ("Grail Quest", after Grails) added to canonical lists in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on 32 pages. `llms.txt` + `README.md` updated.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (106/106 tests, 21 suites; 8,823 relative refs, 0 broken).
+- **Commit:** 37a1492 (local) → pushed as GitHub commit `50e943c` on `main`
