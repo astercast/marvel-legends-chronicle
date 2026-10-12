@@ -24,6 +24,7 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - Fan community (client-side demo): profiles, feed, likes, comments, follows, figure-tagged posts
 - Collection tracker: mark figures Owned / Wanted (browser-local)
 - Gift finder (`gift.html`): budget band + favorite character → honest suggestions from the archive (budget filters by figure type as a price proxy, every card links eBay solds for real price verification — no invented prices)
+- 2026 Holiday Buying Guide (`holiday.html`): four recipient profiles (New Collector — five $27.99 entry points; The Kid; The Completionist — 2026 gap-fills with researched pre-order dates; The Bargain Hunter — reissue intel) rendered live from `data/preorders.json`; honest price bands (announced MSRP or "check eBay solds"), KO red flags (Maximum Spider-Man / X-Men '97 Cyclops), chase-market reality, reissue timing; don't-get-burned checklist from the auth wizard + market briefing; holiday-mode banner on `gift.html`
 - "Almost there" on your shelf: BAFs missing 1–2 pieces, waves past 50%, characters nearly complete — computed from your tracker
 - Grail stories: 20 sourced narratives expanding the hall of fame (legend, hunt, reissue saga, honest prices)
 - Variant & chase identifier: spotter's guide + wave-by-wave index of all 83 documented variants
@@ -113,7 +114,8 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `compare.html` — figure compare: 2–4 figures side-by-side with a verdict-free difference-highlighted table
 - `community.html` — fan social (localStorage demo)
 - `quest.html` — Grail Quest: your collection as a game — auto-generated quests (BAF finishes, series/character runs) from your tracker data, next-quest recommendations (closest BAF, cheapest missing piece by figure-type proxy, nearest watchlist grail), 9 archive-signal achievements, collector levels (Rookie → Living Legend), shareable quest card (browser-local)
+- `holiday.html` — 2026 Holiday Buying Guide: four recipient profiles rendered from `data/preorders.json` (no invented figures/prices), honest price bands, KO red flags, reissue intel, don't-get-burned checklist
 - `api.html` — human-readable API docs
 - `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community, print (print.css: paper-friendly timeline + checklist output)
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page, explore, retro, showcase, gift, shelf-share, price-trends, quest (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page, explore, retro, showcase, gift, holiday, shelf-share, price-trends, quest (ES modules)

@@ -50,3 +50,15 @@ One line per wave, so a fresh mind can reconstruct the history.
 - Nav: `quest.html` ("Grail Quest", after Grails) added to canonical lists in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on 32 pages. `llms.txt` + `README.md` updated.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (106/106 tests, 21 suites; 8,823 relative refs, 0 broken).
 - **Commit:** 37a1492 (local) → pushed as GitHub commit `50e943c` on `main`
+
+## Wave 16 — 2026 Holiday Buying Guide (2026-10-11)
+
+- **NEW `holiday.html`** (in nav after Gift Finder on all 33 root pages + footer): the data-driven gift guide, built only from the archive's real data — nothing invented.
+  - **Four recipient profiles** rendered live from `data/preorders.json` via `assets/js/holiday.js`: New Collector (5 entry points at the $27.99 standard MSRP), The Kid (recognizable characters, age-appropriate framing — common-sense toy guidance, no safety claims), The Completionist (2026 gap-fills: Mini Comics Wave 3, X-Men '97, TAS wave with the researched pre-order dates Sep 29 / Oct 6 / Oct 21 2026, plus Bastion & Trask 2-pack, Prof X hoverchair, Onslaught, Cypher), The Bargain Hunter (reissue intel: TAS VHS sellouts → retro-card reissues at $27.99 retail, don't pay the VHS premium; single-source 17% off deal disclosed as such).
+  - **Figure cards**: status badge (Pre-order/Available/Revealed), honest price band (announced MSRP at reveal, or "Price not announced — check eBay solds"), one data-grounded "why" line, pre-filled eBay-solds links (actual sales), generic retailer search links only for retailers the research names, pre-order tracker link, and an "avoid" note where the briefing says so (KO risk on Maximum Spider-Man / X-Men '97 Cyclops — buy at retail/Pulse).
+  - **"Don't get burned" checklist**: KO red flags from the auth wizard (packaging/paint/joints/listing/price + Carnage silver-eyes telltale), figure-specific KO risk, chase-market reality (modern chase dead — never pay chase premiums on 2026 product), reissue timing (sellout → spike → reissue → premium collapse).
+  - Methodology note: statuses frozen at 2026-10-11 observation, solds-vs-asking discipline, "nothing here is investment advice".
+- **Cross-links**: "🎄 Holiday mode" banner on `gift.html` → `holiday.html`; nav + footer rebuilt via `scripts/update_nav.py` (+ `build_waves.py`/`build_characters.py` parity lists).
+- **Pure-logic exports** in `holiday.js`: `priceBandText`, `formatPickDate`, `statusLine`, `renderPick`, `byId`, `PICKS` — tested by new `tests/test-holiday.js` (14 tests) registered in `tests/run.js`. Single-source: cards render from `data/preorders.json`, so dates/prices can't drift.
+- `llms.txt` + `README.md` updated.
+- **Validation:** `scripts/validate.sh` — VALIDATION PASSED (120/120 tests, 26 suites; 8,896 relative refs, 0 broken; JSON/schema/ids/storage/perf green).

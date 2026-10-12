@@ -25,6 +25,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 - `price-guide.html` — transparent sold-listings price methodology, dated price history, reissue effect
 - `auth-wizard.html` — interactive bootleg authentication wizard (step-by-step pass/fail with verdict)
 - `community.html` — fan social: profiles, feed, likes, comments, follows, figure-tagged posts (client-side demo)
+- `holiday.html` — 2026 Holiday Buying Guide: four recipient profiles from the researched 2026 releases, honest price bands (announced MSRP or "check eBay solds"), KO red flags, reissue intel, don't-get-burned checklist
 - `quest.html` — Grail Quest: your collection as a game — auto-generated quests (BAF finishes, series/character runs), next-quest recommendations (closest BAF, cheapest missing piece by figure-type proxy, nearest watchlist grail), 9 archive-signal achievements, collector levels, shareable quest card (browser-local)
 - `api.html` — human-readable API docs
 - `assets/css/` — design system: `tokens.css`, `base.css`, `layout.css`, `components.css`, plus per-page stylesheets
