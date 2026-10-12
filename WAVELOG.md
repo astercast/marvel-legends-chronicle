@@ -147,4 +147,4 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Docs**: `llms.txt` (timeline page + API row + `timeline-page` module), `README.md`, `agents.html` + `api.html` endpoint cards (10).
 - **No new skill**: no clear gap — the 5 existing `skills/eras/` playbooks (toy-biz, transition, infinite, haslab, hasbro-return) + `api-client` already cover this ground.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (210/210 tests, 54 suites — +17; 51 JS files node --check clean; 11,494 relative refs, 0 broken; JSON/schema/ids/storage/perf green; hand-maintained radar-candidates/radar-seen untouched).
-- **Commit:** 9b92863 (local) → push pending
+- **Commit:** 6ade3b8 (local) → pushed as GitHub commit `ba1222df7436` on `main` (remote tree verified via Trees API: all 9 new files present; first push attempt died after blob upload with a false exit 0 — retried the whole script per the push lesson and the second attempt landed)
