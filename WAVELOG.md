@@ -162,4 +162,4 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Docs**: `llms.txt` (rarity row + build script), `README.md` (page list), `AGENT.md`, `API.md`.
 - **No new skill**: no clear gap — the rarity guide is editorial content + API, fully covered by `api-client` and the existing era playbooks.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (226/226 tests, 58 suites — +16; 51 JS files node --check clean; 11,591 relative refs, 0 broken; JSON/schema/ids/storage/perf green; manifest + 11 endpoints validated, 2,375 item records).
-- **Commit:** TBD (local) → push per the push lesson (git add -A + local commit BEFORE gh-push.py; capture $? directly; verify remote tree via GitHub Trees API; retry the whole script if the tree doesn't show the new files)
+- **Commit:** 930381e (local) → pushed as GitHub commit `a855a6a` on `main` (remote tree verified via Trees API: all 7 new files present; exit 0 trusted only after tree verification per the push lesson)
