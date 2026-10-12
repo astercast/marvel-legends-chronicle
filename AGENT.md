@@ -49,7 +49,7 @@ Read this before touching any endpoint or skill.
 | `api/v1/waves.json` | 158 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `source` (nullable), `figureCount` | `api/v1/schema/waves.json` → item `api/v1/schema/wave.json` |
 | `api/v1/figures.json` | 1,904 figures, flat, with wave context. Stable id `<waveId>::<figureName>` (e.g. `toybiz-2002-series-1::Hulk`). Filter by `year`, `manufacturer`, `waveId`, `exclusive`, `variant`, `bafPiece`. Join to waves on `waveId` ↔ `id`. | `api/v1/schema/figures.json` → item `api/v1/schema/figure.json` |
 | `api/v1/encyclopedia.json` | Collector knowledge: `history`, `packagingGuide`, `variantsGuide`, `hallOfFame` (23 entries, each with `reissueRadar` + `verified`), `gradingGuide`, `priceMethod` (the sold-listings methodology), `bootlegGuide` (six checklists), `resources` | `api/v1/schema/encyclopedia.json` |
-| `api/v1/preorders.json` | 15 researched upcoming releases: `status` (`preorder`/`revealed`/`available`), exact `preorderDate` (`YYYY-MM-DD`, `null` when unreported), `releaseWindow`, `price` (announced MSRP, never market), `retailers`, `sources` | `api/v1/schema/preorders.json` → item `api/v1/schema/preorder.json` |
+| `api/v1/preorders.json` | 20 researched upcoming releases: `status` (`preorder`/`revealed`/`available`), exact `preorderDate` (`YYYY-MM-DD`, `null` when unreported), `releaseWindow`, `price` (announced MSRP, never market), `retailers`, `sources` | `api/v1/schema/preorders.json` → item `api/v1/schema/preorder.json` |
 | `api/v1/characters.json` | 66 character guides: `slug`, `name`, `count`, `first`, `last`, `page` (`characters/<slug>.html`) | `api/v1/schema/characters.json` → item `api/v1/schema/character.json` |
 | `api/v1/radar-candidates.json` | Hand-maintained reissue-radar research feed (newly spotted news). Research notes, not a generated snapshot. | `api/v1/schema/radar-candidates.json` → item `api/v1/schema/radar-candidate.json` |
 | `api/v1/radar-seen.json` | Hand-maintained dedupe list of processed radar URLs | `api/v1/schema/radar-seen.json` |
@@ -93,7 +93,7 @@ against the real local `api/v1` JSON.
 
 ### Workflow A — "What should I pre-order this month?"
 
-1. Load `api/v1/preorders.json` (15 researched items, observed 2026-10-11).
+1. Load `api/v1/preorders.json` (20 researched items, observed 2026-10-11).
 2. Split by status + date honesty:
    - `status === "preorder"` with an exact `preorderDate` → actionable.
      `preorderDate <= today` = open now; within 30 days = upcoming.
@@ -107,8 +107,12 @@ against the real local `api/v1` JSON.
 
 Real run (as of 2026-10-11): Mini Comics Wave 3 (pre-order opened 2026-10-06,
 $27.99 MSRP) is open now; the X-Men '97 retro wave opens 2026-10-21
-(10 days out, $27.99 MSRP); the Avengers: Doomsday wave is `revealed`
-(Fall 2026) — watchlist, not a date. See skill `preorder-hunter`.
+(10 days out, $27.99 MSRP); the Avengers: Doomsday wave is `preorder`
+(status upgraded Oct 2026 — Cyclops pre-orders opened Jul 2026) but its
+exact date is unreported, so it reads "open now, date unconfirmed"; Doomsday
+Wave 2 opens 2026-10-14 (3 days out, Spring 2027); the Trask &amp; Bastion
+2-pack is made-to-order with the order window closing Nov 20, 2026. See
+skill `preorder-hunter`.
 
 ### Workflow B — "Is this eBay listing a KO risk?"
 

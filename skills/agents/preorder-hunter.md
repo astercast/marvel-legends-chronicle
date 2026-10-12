@@ -16,7 +16,7 @@ You want to know what's coming, when pre-orders open, and where to look — this
 
 ## Procedure
 
-1. Load `api/v1/preorders.json` — 15 researched upcoming releases (wave-12 research, observed 2026-10-11). Each item: `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact YYYY-MM-DD when reported, `null` when unreported — never invented), `releaseWindow`, `price` (announced MSRP at reveal, never a market price), `retailers` (retailer search-pattern ids), `sources` (hobby-press links).
+1. Load `api/v1/preorders.json` — 20 researched upcoming releases (waves 12 + 20 NYCC 2026 research, observed 2026-10-11). Each item: `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact YYYY-MM-DD when reported, `null` when unreported — never invented), `releaseWindow`, `price` (announced MSRP at reveal, never a market price), `retailers` (retailer search-pattern ids), `sources` (hobby-press links).
 2. Sort by status then date: exact-`preorderDate` items first ('pre-order opens in N days'), then `revealed` items by `releaseWindow`, then `available` items to buy now.
 3. Cross-check the radar (`radar.html`) for newly spotted items not yet in the tracker — radar cards are research notes; the tracker is the canonical schedule.
 4. For each target, use the item's `query` with the retailer search patterns to find listings — the archive links search pages, never product URLs, so links don't rot.

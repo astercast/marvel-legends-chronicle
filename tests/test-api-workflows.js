@@ -18,12 +18,14 @@ const j = (p) => JSON.parse(readFileSync(join(ROOT, p), "utf8"));
    observation date so the test is deterministic. */
 export function preorderPlan(preorders, todayISO) {
   const today = new Date(todayISO + "T00:00:00Z");
-  const daysUntil = (d) => Math.round((new Date(d + "T00:00:00Z") - today) / 864e5);
+  const daysUntil = (d) => d ? Math.round((new Date(d + "T00:00:00Z") - today) / 864e5) : null;
   const open = [], upcoming = [], watch = [], buyNow = [];
   for (const it of preorders.items) {
-    if (it.status === "preorder" && it.preorderDate) {
+    if (it.status === "preorder") {
       const n = daysUntil(it.preorderDate);
-      (n <= 0 ? open : upcoming).push({ id: it.id, name: it.name, preorderDate: it.preorderDate,
+      // Exact date known: past/today -> open, future -> upcoming.
+      // Preorder with no exact date reported: honestly "open now, date unreported".
+      (n === null || n <= 0 ? open : upcoming).push({ id: it.id, name: it.name, preorderDate: it.preorderDate,
                                        price: it.price, daysUntil: n, retailers: it.retailers });
     } else if (it.status === "revealed") {
       watch.push({ id: it.id, name: it.name, releaseWindow: it.releaseWindow, price: it.price });
@@ -105,19 +107,34 @@ suite("agent workflows (AGENT.md, real api/v1 data)", () => {
   test("W1: pre-order plan from preorders.json", () => {
     const plan = preorderPlan(preorders, "2026-10-11");
     assert.equal(plan.asOf, "2026-10-11");
-    assert.equal(preorders.count, 15, "dataset has 15 researched items");
+    assert.equal(preorders.count, 20, "dataset has 20 researched items (15 wave-12 + 5 NYCC 2026)");
     const xmen97 = plan.upcoming30.find((u) => u.id === "xmen97-retro-wave");
     assert(xmen97, "X-Men '97 retro wave is upcoming");
     assert.equal(xmen97.daysUntil, 10, "2026-10-21 is 10 days after 2026-10-11");
     assert.equal(xmen97.price, 27.99);
+    const dw2 = plan.upcoming30.find((u) => u.id === "doomsday-wave-2");
+    assert(dw2, "Doomsday Wave 2 (pre-order 2026-10-14) is upcoming");
+    assert.equal(dw2.daysUntil, 3);
+    const aston = plan.upcoming30.find((u) => u.id === "astonishing-cyclops-wolverine-2pack");
+    assert(aston, "Astonishing Cyclops & Wolverine 2-pack (pre-order 2026-10-28) is upcoming");
+    assert.equal(aston.daysUntil, 17);
     const mini = plan.open.find((o) => o.id === "mini-comics-wave-3");
     assert(mini, "Mini Comics Wave 3 (pre-order 2026-10-06) is open now");
     assert(mini.daysUntil <= 0);
     const tas = plan.open.find((o) => o.id === "tas-retro-wave");
     assert(tas, "TAS retro wave (pre-order 2026-09-29) is open now");
-    const doom = plan.watch.find((w) => w.id === "doomsday-wave");
-    assert(doom, "Doomsday wave (revealed, no exact date) is watchlist material");
-    assert(doom.releaseWindow != null);
+    const trask = plan.open.find((o) => o.id === "bastion-trask-2pack");
+    assert(trask, "Trask & Bastion made-to-order (pre-order 2026-10-07) is open now");
+    assert.equal(trask.daysUntil, -4);
+    const venom = plan.open.find((o) => o.id === "retro-venom-reissue");
+    assert(venom, "Retro Venom (preorder, no exact date) is open with null daysUntil — honest, not dropped");
+    assert.equal(venom.daysUntil, null);
+    const doom = plan.open.find((o) => o.id === "doomsday-wave");
+    assert(doom, "Doomsday wave (preorder, no exact date) is open, not silently dropped");
+    const yfns = plan.watch.find((w) => w.id === "yfns-spidey-rhino-2pack");
+    assert(yfns, "YFNS Spider-Man vs Rhino 2-pack (revealed) is watchlist material");
+    assert(plan.buyNow.some((b) => b.id === "doomsday-ff-thing"),
+           "Walmart Doomsday Thing (available) listed as buy-now");
     assert(plan.buyNow.length > 0, "available items listed as buy-now");
     for (const u of plan.upcoming30) assert(u.daysUntil <= 30 && u.daysUntil > 0);
   });

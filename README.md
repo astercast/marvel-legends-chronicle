@@ -10,7 +10,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 - `start.html` — new collector starter guide: smart first pickups, how to read a wave, spotting fakes, BAF math, tracking your shelf, learning real prices
 - `waves/` — 158 generated wave detail pages (`waves/<wave-id>.html` + index; rebuild with `python3 scripts/build_waves.py`): every figure with inline Owned/Wanted toggles, BAF breakdown, research links, prev/next wave navigation, print checklist
 - `stats.html` — stats dashboard: figures per year, BAF waves over time, top 25 characters, exclusives share, wave-size breakdowns — all computed live from the data
-- `grails.html` — 20 sourced grail stories expanding the hall of fame: the legend, the hunt, the reissue saga, honest prices
+- `grails.html` — 23 sourced grail stories expanding the hall of fame (incl. 3 NYCC 2026 additions): the legend, the hunt, the reissue saga, honest prices
 - `variants.html` — variant & chase identifier: how to spot variants in the wild + wave-by-wave index of all 83 documented variants
 - `baf-economics.html` — BAF economics: cost-to-complete per Build-A-Figure from your own journal sold sightings, ranked cheapest-first (browser-local)
 - `hunt.html` — hunt planner: toy-show trip planner with targets, max prices, printable hunt sheet (browser-local)

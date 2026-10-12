@@ -43,7 +43,7 @@ Base: `api/v1/` — no auth, no keys, no rate limits. Full agent guide: `AGENT.m
 - `api/v1/waves.json` — 158 wave summaries (id, year, manufacturer, series, baf, source, figureCount)
 - `api/v1/figures.json` — flat list of all 1,904 figures with wave context (incl. `source`)
 - `api/v1/encyclopedia.json` — history timeline, packaging evolution, variant/chase/exclusive taxonomy, hall of fame (with reissue radar), grading guide, transparent price methodology, bootleg guide, resources directory
-- `api/v1/preorders.json` — 15 researched upcoming releases: status, exact pre-order dates where reported (null when unreported — never invented), release windows, announced MSRP, retailer search patterns, hobby-press sources; powers the pre-order tracker + release calendar
+- `api/v1/preorders.json` — 20 researched upcoming releases (15 wave-12 + 5 NYCC 2026 additions, statuses refreshed Oct 11, 2026): status, exact pre-order dates where reported (null when unreported — never invented), release windows, announced MSRP, retailer search patterns, hobby-press sources; powers the pre-order tracker + release calendar
 - `api/v1/characters.json` — 66 character guides: slug, name, release count, first/last year, page path
 - `api/v1/radar-candidates.json`, `api/v1/radar-seen.json` — hand-maintained reissue-radar research feed + processed-URL dedupe list
 - `api/v1/schema/` — JSON Schema (draft-07) for every endpoint (manifest, stats, waves, figures, encyclopedia, preorders, characters, radar) plus per-record item schemas
@@ -99,14 +99,14 @@ and `data/encyclopedia.json`. Commit the outputs.
 ## Site structure
 
 - `index.html` — chronological timeline with search, filters (incl. "Featured In" story-source facet), year rail, tracker, milestone-anniversary strip, packaging-era bands (5 documented eras from the encyclopedia's packaging guide)
-- `grails.html` — 20 sourced grail stories expanding the hall of fame
+- `grails.html` — 23 sourced grail stories expanding the hall of fame (incl. 3 NYCC 2026 additions: Trask & Bastion made-to-order, Lord Doom Concept Series, Death Gambit)
 - `variants.html` — variant & chase identifier: spotter's guide + wave-by-wave index of documented variants
 - `checklist.html` — printable owned/wanted checklist from tracker data, grouped by wave
 - `encyclopedia.html` — history, packaging evolution, variants/chases/exclusives, hall of fame, grading guide, bootleg guide, resources
 - `baf-planner.html` — "complete my BAF" planner (browser-local, syncs with tracker): ownership = tracker marks + logged ledger purchases; "closest to complete" ranking (fewest missing pieces first); cheapest-path math per missing piece — journal-logged sold prices first, figure-type tier proxy otherwise, known-path estimate labeled as your own data
 - `characters/index.html` + `characters/<slug>.html` — 66 generated character archive pages (rebuild with `python3 scripts/build_characters.py`); `characters/manifest.json` lists slug, name, count, first/last year per character; every release row carries a `data-fig-id` and a per-figure "Research" affordance (eBay solds / YouTube reviews / web search links); each page shows your run-completion progress bar ("N of M owned") with a missing-figure complete-the-run checklist, read live from the localStorage tracker via `assets/js/char-run.js`
 - `price-guide.html` — transparent sold-listings methodology, dated price history, reissue effect
-- `market-briefing.html` — 2026 market briefing: the death of modern chase figures, reported solds (white Dr. Doom $115–$200, $7.5K Wasp prototype ask), reissue-cooling of aftermarket premiums, KO buyer-beware, reported-listings-only methodology
+- `market-briefing.html` — 2026 market briefing: the death of modern chase figures, reported solds (white Dr. Doom $115–$200, most recent sold $200 Aug 2026; $7.5K Wasp prototype ask), reissue-cooling of aftermarket premiums (Retro Venom reissue, TAS wave Dec 2026–Jan 2027 ship), KO buyer-beware (no new 2026 KO wave), holiday-season gift-timing notes cross-linked to the Gift Finder, reported-listings-only methodology
 - `auth-wizard.html` — interactive bootleg authentication wizard
 - `shelf.html` — "your shelf" dashboard: read-only completion stats (overall/year/era/top characters/BAF) aggregated from the localStorage tracker
 - `radar.html` — release radar: revealed-but-unreleased figures with source links, maintained from hobby press
