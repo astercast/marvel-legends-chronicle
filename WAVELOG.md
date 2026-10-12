@@ -176,4 +176,4 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Tests**: new `preorders: upcomingPreorders (quest pre-order alerts)` suite (4 tests: fixtures + pinned 2026-10-11 run against REAL `data/preorders.json`); `test-api-workflows.js` W1 count 20 → 21. Registered in `tests/run.js`.
 - **No new skill**: no clear gap — pre-order alerting is covered by the `preorder-hunter` playbook + agents page; timeline/rarity-era playbooks + `api-client` cover the rest.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (230/230 tests, 59 suites — +4; 51 JS files node --check clean; 11,591 relative refs, 0 broken; manifest + 11 endpoints validated, 2,376 item records).
-- **Commit:** PENDING
+- **Commit:** e3fc208 (local) → pushed as GitHub commit `ce79cd70adb1cb5a94cd3f126f11df01b06bd2fa` on `main` (remote tree verified via Trees API: commit 200, 649-tree entries incl. all changed files; main head matches)
