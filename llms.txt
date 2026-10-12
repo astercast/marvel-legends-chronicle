@@ -65,8 +65,9 @@ For agents: load the skill whose task matches the request — skills are the
 primary interface for *doing* work; the JSON endpoints are the data layer.
 `api/v1/index.json` points here (`repository`, `skills`, `for_agents`).
 
-Categories: agents (7 playbooks: preorder-hunter, market-brief-reader,
-ko-spotter, grail-evaluator, baf-strategist, collection-auditor, api-client),
+Categories: agents (8 playbooks: preorder-hunter, market-brief-reader,
+ko-spotter, grail-evaluator, baf-strategist, collection-auditor, api-client,
+launch-strategist),
 baf (101 completion checklists), characters (46 collector guides),
 grails (24 dossiers), bootleg (8), eras (5), collection (5), marketplace (4),
 community (4), variants (4), hunts (11).
@@ -74,7 +75,7 @@ community (4), variants (4), hunts (11).
 The agents category uses an "API references" section (pointing at
 `api/v1` endpoints) instead of "Data references"; see the agents
 landing page (`agents.html`) for the endpoint table, data-freshness
-rules (preorder dates, radar, observed 2026-10-11), and 3 worked
+rules (preorder dates, radar, observed 2026-10-12), and 3 worked
 agent workflows (proven by `tests/test-api-workflows.js` against the
 real `api/v1` JSON).
 

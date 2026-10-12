@@ -31,7 +31,8 @@ Static site. GitHub only — nothing is deployed anywhere.
 - `auth-wizard.html` — interactive bootleg authentication wizard (step-by-step pass/fail with verdict)
 - `community.html` — fan social: profiles, feed, likes, comments, follows, figure-tagged posts (client-side demo)
 - `holiday.html` — 2026 Holiday Buying Guide: four recipient profiles from the researched 2026 releases, honest price bands (announced MSRP or "check eBay solds"), KO red flags, reissue intel, don't-get-burned checklist
-- `quest.html` — Grail Quest 4.0: your collection as a game — auto-generated quests (BAF finishes, series/character runs), next-quest recommendations (closest BAF, watch-weighted cheapest missing piece, nearest watchlist grail, watchlist hunts, insight pick from the gap analysis), 17 achievements, collector levels, collection insights dashboard (completion by wave/year/character, duplicates, shelf-value band from reported ranges only, one-figure-away gaps), growth & milestones, collection report export (markdown, for insurance/records), shareable quest card (browser-local)
+- `quest.html` — Grail Quest 5.0: your collection as a game — auto-generated quests (BAF finishes, series/character runs), next-quest recommendations (closest BAF, watch-weighted cheapest missing piece, nearest watchlist grail, watchlist hunts, insight pick from the gap analysis), 17 achievements, collector levels, collection insights dashboard (completion by wave/year/character, duplicates, shelf-value band from reported ranges only, one-figure-away gaps), growth & milestones, collection report export (markdown, for insurance/records), pre-order alerts + launch-day prep quests (tickable checklists for windows in the next 14 days, browser-local), shareable quest card (browser-local)
+- `launch-curve.html` — The Launch Curve: real sold-price timelines for newly launched figures (Doomsday Wave 1 Gambit $79.99 → $25.99, Cyclops $64.99 → $40.99 — reported eBay solds), static SVG charts with MSRP lines + sellout markers, the launch playbook, methodology + honest gaps; API at `api/v1/launch-curves.json`
 - `api.html` — human-readable API docs
 - `assets/css/` — design system: `tokens.css`, `base.css`, `layout.css`, `components.css`, plus per-page stylesheets
 - `assets/js/` — ES modules: `config`, `store` (versioned localStorage), `data` (query layer), `tracker`, `listings`, `modal`, `figure-dialog`, and per-page initializers (`timeline`, `encyclopedia`, `community` + `community-page`)
@@ -56,7 +57,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 
 ## Skills
 
-`skills/` — 219 agentic task procedures (`python3 scripts/build_skills.py`
+`skills/` — 220 agentic task procedures (`python3 scripts/build_skills.py`
 regenerates from `data/*.json` + authored procedures). `skills/index.json`
 is the manifest agents should load first; `api/v1/index.json` points at it.
 101 BAF completion checklists, 46 character collector guides (with run completion), 24 grail

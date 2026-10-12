@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Launch Curve — Marvel Legends Chronicle</title>
+  <meta name="description" content="The launch curve, documented: what really happens to a hot figure's aftermarket after a sellout — real reported eBay sold timelines for newly launched Marvel Legends, and the playbook the data supports.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .curve-hero { padding-block: var(--space-7); }
+    .curve-list { display: grid; gap: var(--space-5); margin-bottom: var(--space-6); }
+    .curve-card { padding: var(--space-5); }
+    .curve-card h2 { font-size: 1.2rem; margin: 0 0 var(--space-1); }
+    .curve-kicker { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--space-2); display: block; }
+    .curve-card p { color: var(--ink-dim); font-size: 0.92rem; margin: var(--space-2) 0; }
+    .curve-card .src { font-size: 0.82rem; }
+    .curve-card svg { width: 100%; height: auto; display: block; margin: var(--space-3) 0; background: var(--surface-1); border-radius: var(--radius-2); }
+    .stat-strip { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-3) 0; }
+    .stat-strip .stat { font-size: 0.85rem; color: var(--ink-dim); }
+    .stat-strip .stat strong { color: var(--ink); font-family: var(--font-mono); }
+    .points-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: var(--space-3) 0; }
+    .points-table th, .points-table td { text-align: left; padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--line); }
+    .points-table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-dim); }
+    .points-table td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .curve-card svg circle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .kind-badge { font-size: 0.72rem; padding: 0.1rem 0.4rem; border-radius: var(--radius-1); background: var(--surface-2); }
+    .playbook { counter-reset: rule; }
+    .playbook li { margin-bottom: var(--space-3); color: var(--ink-dim); font-size: 0.94rem; }
+    .playbook li::marker { color: var(--gold); font-weight: 700; }
+    .playbook strong { color: var(--ink); }
+    /* Web-craft research (2026-10-11): typography craft + scroll-driven reveals.
+       One idea per page (the curve), choreography over decoration, restraint
+       budget honored: one signature effect (the drawing curve), staggered card
+       entrances, everything gated on reduced-motion + @supports so older
+       engines get the static page untouched. */
+    .curve-hero h1, .curve-card h2 { text-wrap: balance; }
+    @media (prefers-reduced-motion: no-preference) {
+      .curve-card { transition: transform 160ms var(--ease); }
+      .curve-card:hover { transform: translateY(-2px); }
+      @supports (animation-timeline: view()) {
+        .curve-list > article, section.curve-card {
+          animation: curve-in linear both;
+          animation-timeline: view();
+          animation-range: entry 0% cover 25%;
+        }
+        .curve-list > article:nth-of-type(2) { animation-delay: 80ms; }
+        .curve-draw {
+          stroke-dasharray: 1;
+          stroke-dashoffset: 1;
+          animation: curve-draw 1s linear both;
+          animation-timeline: view();
+          animation-range: entry 15% entry 75%;
+        }
+      }
+    }
+    @keyframes curve-in {
+      from { opacity: 0; translate: 0 24px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    @keyframes curve-draw { to { stroke-dashoffset: 0; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to launch curves</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="timeline.html">Legends Timeline</a>
+        <a href="2026-review.html">2026 Review</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="market-briefing.html">Market Briefing</a>
+        <a href="launch-curve.html" aria-current="page">Launch Curve</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html">Gift Finder</a>
+        <a href="holiday.html">Holiday Guide</a>
+        <a href="grading.html">Grading</a>
+        <a href="display.html">Display</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="budget.html">Budget</a>
+        <a href="radar.html">Radar</a>
+        <a href="preorders.html">Pre-orders</a>
+        <a href="calendar.html">Release Calendar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="quest.html">Grail Quest</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="rarity.html">Rarity Guide</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="agents.html">Agents</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="curve-hero">
+      <p class="eyebrow">Market data, honestly</p>
+      <h1>The Launch Curve</h1>
+      <p class="lede">A hot figure sells out. The aftermarket spikes. Then it cools — fast. Here is the pattern, drawn from <strong>real reported eBay solds</strong> of newly launched figures, point by point. No index, no predictions, no invented numbers: just the timeline of what collectors actually paid, and the playbook it supports.</p>
+    </div>
+
+    <section class="curve-card card method" aria-labelledby="pattern-h" style="margin-bottom:var(--space-6)">
+      <span class="curve-kicker">The pattern</span>
+      <h2 id="pattern-h">Sellout → spike → cool → retail</h2>
+      <p>Every documented launch on this page follows the same arc. Pre-orders open and the popular figures sell out within hours (GamesRadar documented this for Doomsday Wave 1's Doom, Cyclops and Gambit in August 2026). Within weeks, eBay solds peak at 2–3× MSRP — early buyers paying for immediacy. Then supply catches up, restocks land, and prices collapse back toward retail inside about six weeks. The premium is <strong>time</strong>, not rarity — and time is the one thing every collector can wait out.</p>
+      <p>When a reissue is announced the curve compresses further: speculative listings undercut each other within days. The full mechanism is on the <a href="market-briefing.html">market briefing</a> and in the <a href="rarity.html">rarity guide's</a> reissue-radar notes.</p>
+    </section>
+
+    <div class="curve-list">
+<!--LAUNCH-CURVES:START-->
+<article class="curve-card card" aria-labelledby="curve-doomsday-wave1-gambit">
+<span class="curve-kicker">Avengers: Doomsday Wave 1</span>
+<h2 id="curve-doomsday-wave1-gambit">Gambit</h2>
+<div class="stat-strip" aria-label="Gambit curve stats">
+<span class="stat">Peak <strong>$79.99</strong> (2026-09-24)</span>
+<span class="stat">Latest <strong>$25.99</strong> (2026-10-09)</span>
+<span class="stat">Drop <strong>68%</strong> in 15 days</span>
+<span class="stat">MSRP <strong>$27.99</strong></span>
+</div>
+<svg viewBox="0 0 640 260" role="img" aria-label="Sold-price timeline for Gambit: peak $79.99 on 2026-09-24, latest $25.99 on 2026-10-09, MSRP $27.99.">
+<title>Gambit launch curve</title>
+<line x1="46" y1="161.0" x2="626" y2="161.0" stroke="var(--ink-dim)" stroke-dasharray="6 4" stroke-width="1.5"/>
+<text x="626" y="155.0" text-anchor="end" font-size="11" fill="var(--ink-dim)">MSRP $27.99</text>
+<polyline class="curve-draw" pathLength="1" points="46.0,40.3 123.3,75.1 200.7,91.3 239.3,121.5 239.3,109.9 278.0,135.5 394.0,130.9 432.7,133.2 626.0,165.7" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle tabindex="0" cx="46.0" cy="40.3" r="4.5" fill="var(--gold)"><title>2026-09-24: sold $79.99</title></circle><circle tabindex="0" cx="123.3" cy="75.1" r="4.5" fill="var(--gold)"><title>2026-09-26: sold $64.99</title></circle><circle tabindex="0" cx="200.7" cy="91.3" r="4.5" fill="var(--gold)"><title>2026-09-28: sold $58.00</title></circle><circle tabindex="0" cx="239.3" cy="121.5" r="4.5" fill="var(--gold)"><title>2026-09-29: sold $45.00</title></circle><circle tabindex="0" cx="239.3" cy="109.9" r="4.5" fill="var(--gold)"><title>2026-09-29: sold $50.00</title></circle><circle tabindex="0" cx="278.0" cy="135.5" r="4.5" fill="var(--gold)"><title>2026-09-30: sold $38.99</title></circle><circle tabindex="0" cx="394.0" cy="130.9" r="4.5" fill="var(--gold)"><title>2026-10-03: sold $40.96</title></circle><circle tabindex="0" cx="432.7" cy="133.2" r="4.5" fill="var(--gold)"><title>2026-10-04: sold $39.95</title></circle><circle tabindex="0" cx="626.0" cy="165.7" r="4.5" fill="none" stroke="var(--gold)" stroke-width="2"><title>2026-10-09: presale $25.99</title></circle>
+<text x="46" y="250" font-size="11" fill="var(--ink-dim)">2026-09-24</text>
+<text x="626" y="250" text-anchor="end" font-size="11" fill="var(--ink-dim)">2026-10-09</text>
+<text x="6" y="22" font-size="11" fill="var(--ink-dim)">$80</text>
+<text x="6" y="226" font-size="11" fill="var(--ink-dim)">$0</text>
+</svg>
+<p>Documented launch curve: sellout within hours of pre-orders opening (Aug 2026) → eBay premium spike ($79.99, Sep 24) → collapse toward MSRP ($25.99 presale, Oct 9) inside six weeks. Never pay the launch premium.</p>
+<ul style="color:var(--ink-dim);font-size:0.9rem;list-style:none;padding-left:0"><li><strong>2026-07-27</strong> — Cyclops pre-orders open at Hasbro Pulse (BleedingCool)</li>
+<li><strong>2026-08-01</strong> — Wave-1 pre-orders open; GamesRadar reports Doom, Cyclops and Gambit selling out at retailers within hours</li>
+<li><strong>2026-10-11</strong> — Pulse UK product pages show Cyclops as 'Sold Out' at £27.99 (snapshot, single source)</li></ul>
+<table class="points-table">
+<caption class="sr-only">Reported sold points for Gambit</caption>
+<thead><tr><th scope="col">Date</th><th scope="col">Price</th><th scope="col">Kind</th></tr></thead>
+<tbody><tr><td>2026-09-24</td><td class="num">$79.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-26</td><td class="num">$64.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-28</td><td class="num">$58.00</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-29</td><td class="num">$45.00</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-29</td><td class="num">$50.00</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-30</td><td class="num">$38.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-10-03</td><td class="num">$40.96</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-10-04</td><td class="num">$39.95</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-10-09</td><td class="num">$25.99</td><td><span class="kind-badge">presale</span></td></tr></tbody>
+</table>
+<a class="src" href="https://www.actionfigure411.com/marvel/marvel-legends-avengers-doomsday-gambit-14107.php" target="_blank" rel="noopener">actionfigure411 — Doomsday Gambit eBay sold tracker</a>
+</article>
+<article class="curve-card card" aria-labelledby="curve-doomsday-wave1-cyclops">
+<span class="curve-kicker">Avengers: Doomsday Wave 1</span>
+<h2 id="curve-doomsday-wave1-cyclops">Cyclops</h2>
+<div class="stat-strip" aria-label="Cyclops curve stats">
+<span class="stat">Peak <strong>$64.99</strong> (2026-09-25)</span>
+<span class="stat">Latest <strong>$52.99</strong> (2026-10-04)</span>
+<span class="stat">Drop <strong>18%</strong> in 9 days</span>
+<span class="stat">MSRP <strong>$27.99</strong></span>
+</div>
+<svg viewBox="0 0 640 260" role="img" aria-label="Sold-price timeline for Cyclops: peak $64.99 on 2026-09-25, latest $52.99 on 2026-10-04, MSRP $27.99.">
+<title>Cyclops launch curve</title>
+<line x1="46" y1="146.0" x2="626" y2="146.0" stroke="var(--ink-dim)" stroke-dasharray="6 4" stroke-width="1.5"/>
+<text x="626" y="140.0" text-anchor="end" font-size="11" fill="var(--ink-dim)">MSRP $27.99</text>
+<polyline class="curve-draw" pathLength="1" points="46.0,126.0 384.3,111.7 408.5,40.3 456.8,57.4 505.2,97.4 505.2,88.8 505.2,83.1 505.2,71.7 601.8,108.9 601.8,97.4 626.0,74.6" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle tabindex="0" cx="46.0" cy="126.0" r="4.5" fill="none" stroke="var(--gold)" stroke-width="2"><title>2026-09-10: presale $34.99</title></circle><circle tabindex="0" cx="384.3" cy="111.7" r="4.5" fill="none" stroke="var(--gold)" stroke-width="2"><title>2026-09-24: presale $39.99</title></circle><circle tabindex="0" cx="408.5" cy="40.3" r="4.5" fill="var(--gold)"><title>2026-09-25: sold $64.99</title></circle><circle tabindex="0" cx="456.8" cy="57.4" r="4.5" fill="var(--gold)"><title>2026-09-27: sold $58.99</title></circle><circle tabindex="0" cx="505.2" cy="97.4" r="4.5" fill="var(--gold)"><title>2026-09-29: sold $45.00</title></circle><circle tabindex="0" cx="505.2" cy="88.8" r="4.5" fill="var(--gold)"><title>2026-09-29: sold $48.00</title></circle><circle tabindex="0" cx="505.2" cy="83.1" r="4.5" fill="var(--gold)"><title>2026-09-29: sold $49.99</title></circle><circle tabindex="0" cx="505.2" cy="71.7" r="4.5" fill="var(--gold)"><title>2026-09-29: sold $53.99</title></circle><circle tabindex="0" cx="601.8" cy="108.9" r="4.5" fill="var(--gold)"><title>2026-10-03: sold $40.99</title></circle><circle tabindex="0" cx="601.8" cy="97.4" r="4.5" fill="var(--gold)"><title>2026-10-03: sold $45.00</title></circle><circle tabindex="0" cx="626.0" cy="74.6" r="4.5" fill="var(--gold)"><title>2026-10-04: sold $52.99</title></circle>
+<text x="46" y="250" font-size="11" fill="var(--ink-dim)">2026-09-10</text>
+<text x="626" y="250" text-anchor="end" font-size="11" fill="var(--ink-dim)">2026-10-04</text>
+<text x="6" y="22" font-size="11" fill="var(--ink-dim)">$65</text>
+<text x="6" y="226" font-size="11" fill="var(--ink-dim)">$0</text>
+</svg>
+<p>Same pattern as Gambit: $64.99 peak (Sep 25) → $40.99–$52.99 (Oct 3–4). The 'Sold Out' snapshot on Pulse UK is a stock flag, not a value driver.</p>
+<ul style="color:var(--ink-dim);font-size:0.9rem;list-style:none;padding-left:0"><li><strong>2026-07-27</strong> — Cyclops pre-orders open at Hasbro Pulse (BleedingCool)</li>
+<li><strong>2026-08-01</strong> — Wave-1 pre-orders open; GamesRadar reports Doom, Cyclops and Gambit selling out at retailers within hours</li>
+<li><strong>2026-10-11</strong> — Pulse UK product pages show Cyclops as 'Sold Out' at £27.99 (snapshot, single source)</li></ul>
+<table class="points-table">
+<caption class="sr-only">Reported sold points for Cyclops</caption>
+<thead><tr><th scope="col">Date</th><th scope="col">Price</th><th scope="col">Kind</th></tr></thead>
+<tbody><tr><td>2026-09-10</td><td class="num">$34.99</td><td><span class="kind-badge">presale</span></td></tr>
+<tr><td>2026-09-24</td><td class="num">$39.99</td><td><span class="kind-badge">presale</span></td></tr>
+<tr><td>2026-09-25</td><td class="num">$64.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-27</td><td class="num">$58.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-29</td><td class="num">$45.00</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-29</td><td class="num">$48.00</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-29</td><td class="num">$49.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-09-29</td><td class="num">$53.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-10-03</td><td class="num">$40.99</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-10-03</td><td class="num">$45.00</td><td><span class="kind-badge">sold</span></td></tr>
+<tr><td>2026-10-04</td><td class="num">$52.99</td><td><span class="kind-badge">sold</span></td></tr></tbody>
+</table>
+<a class="src" href="https://www.actionfigure411.com/marvel/marvel-legends-avengers-doomsday-cyclops-14108.php" target="_blank" rel="noopener">actionfigure411 — Doomsday Cyclops eBay sold tracker</a>
+</article>
+<!--LAUNCH-CURVES:END-->
+    </div>
+
+    <section class="curve-card card" aria-labelledby="playbook-h" style="margin-bottom:var(--space-6)">
+      <span class="curve-kicker">Launch playbook</span>
+      <h2 id="playbook-h">What the data supports</h2>
+      <ol class="playbook">
+        <li><strong>Pre-order at 1 PM ET on day one.</strong> The curve only exists because wave-1 figures sold out within hours. Grail Quest's <a href="quest.html">launch-day prep</a> builds you a checklist for every upcoming window.</li>
+        <li><strong>Never pay the launch premium.</strong> Gambit peaked at $79.99 on Sep 24, 2026 and presold at $25.99 fifteen days later — below MSRP. The spike is a tax on impatience, not a valuation.</li>
+        <li><strong>Set your watchlist target at or below MSRP for mainline waves.</strong> The <a href="watchlist.html">Price Watch</a> compares your target against reported ranges — and for mainline figures, retail is the ceiling history supports.</li>
+        <li><strong>Distinguish sellouts from scarcity.</strong> A "Sold Out" flag on a Pulse product page (Cyclops, Oct 2026) is a stock signal, not a grail signal. Real scarcity has a production story — see the <a href="rarity.html">rarity guide</a>.</li>
+        <li><strong>Watch the reissue radar, not the hype.</strong> VHS → Retro, Retro Venom, Super-Skrull: every availability-based premium in 2026 met the same fate. Availability premiums cool; rarity premiums don't.</li>
+      </ol>
+    </section>
+
+    <section class="curve-card card method" aria-labelledby="method-h" style="margin-bottom:var(--space-6)">
+      <span class="curve-kicker">Methodology</span>
+      <h2 id="method-h">Honest gaps</h2>
+      <p>Curves appear only where a hobby tracker publishes at least three dated sold points for a figure — see the documented curves below. Presale points are labeled as presale and never mixed with solds. Points are reported eBay sales from the named tracker, not scraped live prices; the Chronicle publishes no price index. Nothing here is investment advice. Machine-readable: <a href="api/v1/launch-curves.json">api/v1/launch-curves.json</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

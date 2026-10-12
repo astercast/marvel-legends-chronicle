@@ -118,9 +118,9 @@ suite("compare: cross-reference integrity (real data)", () => {
       if (p.rarity) assert(realIds.has(p.id), p.id);
     }
   });
-  test("price signals: all 7 attached, none invented", () => {
+  test("price signals: all 10 attached, none invented", () => {
     const attached = profiles.flatMap((p) => p.priceSignals);
-    assert.equal(attached.length, 7);
+    assert.equal(attached.length, 10);
     const doom = profById.get("hasbro-2013-epic-heroes::Doctor Doom");
     const ids = doom.priceSignals.map((s) => s.id).sort();
     assert.deepEqual(ids, ["green-epic-heroes-doom", "white-epic-heroes-doom"]);

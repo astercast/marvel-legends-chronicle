@@ -1,4 +1,4 @@
-/* Guards the seven agent-playbook skills (skills/agents/): index entries,
+/* Guards the eight agent-playbook skills (skills/agents/): index entries,
    file existence, frontmatter, the "API references" section (agents
    category uses it instead of "Data references"), and count consistency
    with api/v1/index.json. */
@@ -17,13 +17,14 @@ const AGENTS = [
   "baf-strategist",
   "collection-auditor",
   "api-client",
+  "launch-strategist",
 ];
 
 const idx = JSON.parse(readFileSync(join(root, "skills", "index.json"), "utf8"));
 const apiIndex = JSON.parse(readFileSync(join(root, "api", "v1", "index.json"), "utf8"));
 
 suite("agent skills (skills/agents/)", () => {
-  test("index lists exactly the seven agent skills", () => {
+  test("index lists exactly the eight agent skills", () => {
     const ids = idx.skills
       .filter((s) => s.path.startsWith("skills/agents/"))
       .map((s) => s.id);

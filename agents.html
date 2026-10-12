@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agents — Marvel Legends Chronicle</title>
-  <meta name="description" content="The agentic surface of the Marvel Legends Chronicle: API endpoints, llms.txt, the 219-skill library (incl. 6 agent playbooks), data freshness, and worked agent workflows.">
+  <meta name="description" content="The agentic surface of the Marvel Legends Chronicle: API endpoints, llms.txt, the 220-skill library (incl. 8 agent playbooks), data freshness, and worked agent workflows.">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
@@ -77,7 +77,7 @@
     <div class="container page-head">
       <span class="hero-kicker">For agents</span>
       <h1>Agents</h1>
-      <p class="lede">The full agentic surface of the Chronicle: the versioned JSON API, <code>llms.txt</code>, the 219-skill playbook library, and the data-freshness rules. Skills are the primary interface for <em>doing</em> work; the JSON endpoints are the data layer.</p>
+      <p class="lede">The full agentic surface of the Chronicle: the versioned JSON API, <code>llms.txt</code>, the 220-skill playbook library, and the data-freshness rules. Skills are the primary interface for <em>doing</em> work; the JSON endpoints are the data layer.</p>
     </div>
 
     <div class="container">
@@ -108,6 +108,7 @@
           <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/timeline.json"><code>api/v1/timeline.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Legends Timeline: 25 year records (2002–2026) — sourced milestones, packaging eras, per-year waves (real archive ids), spotlight figures.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/rarity.json"><code>api/v1/rarity.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Rarity Guide: 9 tiers (chase, running-change, deco, unmasked, convention, retailer, Pulse/Fan Channel, HasLab, made-to-order) — sourced examples (real figure ids), how-to-spot, value notes (reported prices only), archive counts, quest mapping.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/price-signals.json"><code>api/v1/price-signals.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Reported market price signals for the Price Watch: curated, sourced sold-band / sold-avg / listing / claimed prices already published on the Chronicle (encyclopedia, market briefing) — reported ranges, not live prices; the Chronicle publishes no price index.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/launch-curves.json"><code>api/v1/launch-curves.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Launch Curve: real sold-price timelines for newly launched figures — every point a reported eBay sold/presale from a named hobby tracker, with sellout event markers and MSRP. Documents the sellout → spike → cool → retail pattern; reported timelines, not predictions.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/compare.json"><code>api/v1/compare.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">VS-mode figure profiles (1,904): stable <code>deepLink</code> (<code>waves/&lt;waveId&gt;.html#fig-&lt;slug&gt;</code>), shareable <code>compareUrl</code>, <code>rarity</code> tier cross-ref, <code>priceSignals</code> (reported ranges, never live), <code>koWatch</code> note, <code>upgradePaths</code> (documented other releases of the same character). Powers the Figure Compare page.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/year-review.json"><code>api/v1/year-review.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">2026: The State of Legends — scored Top-10 2026 releases (transparent distinction criteria), 2026 archive stats, reported-price movement math (reported solds only, never an index), best-value picks, KO watch, rarity highlights, honest gaps. Powers the 2026 year-in-review page.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/radar-candidates.json"><code>api/v1/radar-*.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Hand-maintained reissue-radar research feed + processed-URL dedupe list.</p></article>
@@ -118,7 +119,7 @@
       <section aria-labelledby="skills-h">
         <h2 id="skills-h">The skills directory</h2>
         <div class="card" style="margin-bottom:var(--space-6);">
-          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0 0 var(--space-3);">219 task procedures in <code>skills/</code>, indexed by <a href="skills/index.json"><code>skills/index.json</code></a> — rebuilt with <code>python3 scripts/build_skills.py</code> (generator; new hand-authored skills go in its <code>HAND</code> list). Categories: <strong>agents</strong> (7), baf (101), characters (46), grails (24), bootleg (8), collection (5), community (4), eras (5), hunts (11), marketplace (4), variants (4). The <strong>agents</strong> category is the seven cross-cutting playbooks — they use an <em>API references</em> section pointing at <code>api/v1</code> endpoints; every other category uses <em>Data references</em> pointing at <code>data/*.json</code>.</p>
+          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0 0 var(--space-3);">220 task procedures in <code>skills/</code>, indexed by <a href="skills/index.json"><code>skills/index.json</code></a> — rebuilt with <code>python3 scripts/build_skills.py</code> (generator; new hand-authored skills go in its <code>HAND</code> list). Categories: <strong>agents</strong> (8), baf (101), characters (46), grails (24), bootleg (8), collection (5), community (4), eras (5), hunts (11), marketplace (4), variants (4). The <strong>agents</strong> category is the eight cross-cutting playbooks — they use an <em>API references</em> section pointing at <code>api/v1</code> endpoints; every other category uses <em>Data references</em> pointing at <code>data/*.json</code>.</p>
           <ul style="font-size:0.92rem;color:var(--ink-dim);margin:0;padding-left:1.2rem;">
             <li><a href="skills/agents/preorder-hunter.md"><code>preorder-hunter</code></a> — find what's coming, when, and where (drives the pre-order tracker + radar).</li>
             <li><a href="skills/agents/market-brief-reader.md"><code>market-brief-reader</code></a> — read the market briefing honestly: reported solds only, never an index.</li>
@@ -127,6 +128,7 @@
             <li><a href="skills/agents/baf-strategist.md"><code>baf-strategist</code></a> — cheapest-first BAF completion from owned/wanted state.</li>
             <li><a href="skills/agents/collection-auditor.md"><code>collection-auditor</code></a> — shelf summary: coverage gaps, era splits, next acquisitions.</li>
             <li><a href="skills/agents/api-client.md"><code>api-client</code></a> — call the API from code: endpoints, schemas, example fetches (companion to <a href="AGENT.md"><code>AGENT.md</code></a>).</li>
+            <li><a href="skills/agents/launch-strategist.md"><code>launch-strategist</code></a> — buy at launch or wait out the spike? Launch-curve verdicts from reported data only.</li>
           </ul>
         </div>
       </section>
