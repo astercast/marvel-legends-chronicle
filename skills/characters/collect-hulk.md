@@ -1,13 +1,13 @@
 ---
 name: collect-hulk
-description: Complete a Hulk collection: all 27 Marvel Legends releases, chronological.
+description: Complete a Hulk collection: all 29 Marvel Legends releases, chronological.
 ---
 
 # Collect every Hulk
 
 ## Use when
 
-You collect Hulk. 27 releases are catalogued from 2002 to 2026.
+You collect Hulk. 29 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -25,13 +25,13 @@ You collect Hulk. 27 releases are catalogued from 2002 to 2026.
   - 2006 — Box Set - House of M: Hulk (Box set exclusive)
   - 2006 — Face-Off Series 1: Hulk
   - 2006 — Face-Off Series 1: Hulk [Screaming]
+  - 2006 — Icons Series 2: Hulk
+  - 2006 — Icons Series 2: Hulk [Gray]
   - 2008 — Fin Fang Foom Wave: Hulk
   - 2008 — Fin Fang Foom Wave: Hulk
   - 2008 — Fin Fang Foom Wave: Hulk
   - 2008 — Fin Fang Foom Wave: Hulk [Classic green]
-  - 2008 — SDCC Box Set - Fin Fang Foom: Hulk (San Diego Comic-Con)
-  - 2008 — SDCC Box Set - Fin Fang Foom: Hulk (San Diego Comic-Con)
-  - …and 13 more
+  - …and 15 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

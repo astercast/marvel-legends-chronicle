@@ -26,7 +26,7 @@ You collect Invisible Woman. 10 releases are catalogued from 2004 to 2026.
   - 2022 — Store & Convention Exclusives: Invisible Woman (Hasbro Pulse)
   - 2025 — Fantastic Four: First Steps Wave: Invisible Woman
   - 2026 — Store & Convention Exclusives: Invisible Woman
-  - 2026 — Store & Convention Exclusives: Invisible Woman (Amazon)
+  - 2026 — Store & Convention Exclusives: Invisible Woman (Walmart)
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

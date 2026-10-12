@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "count": 220,
+  "count": 222,
   "skills": [
     {
       "id": "baf-galactus",
@@ -611,38 +611,44 @@
     {
       "id": "collect-spider-man",
       "title": "Collect every Spider-Man",
-      "description": "Complete a Spider-Man collection: all 86 Marvel Legends releases, chronological.",
+      "description": "Complete a Spider-Man collection: all 88 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-spider-man.md"
     },
     {
       "id": "collect-iron-man",
       "title": "Collect every Iron Man",
-      "description": "Complete a Iron Man collection: all 75 Marvel Legends releases, chronological.",
+      "description": "Complete a Iron Man collection: all 77 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-iron-man.md"
     },
     {
       "id": "collect-wolverine",
       "title": "Collect every Wolverine",
-      "description": "Complete a Wolverine collection: all 53 Marvel Legends releases, chronological.",
+      "description": "Complete a Wolverine collection: all 56 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-wolverine.md"
     },
     {
       "id": "collect-captain-america",
       "title": "Collect every Captain America",
-      "description": "Complete a Captain America collection: all 52 Marvel Legends releases, chronological.",
+      "description": "Complete a Captain America collection: all 54 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-captain-america.md"
-    },
-    {
-      "id": "collect-thor",
-      "title": "Collect every Thor",
-      "description": "Complete a Thor collection: all 28 Marvel Legends releases, chronological.",
-      "path": "skills/characters/collect-thor.md"
     },
     {
       "id": "collect-hulk",
       "title": "Collect every Hulk",
-      "description": "Complete a Hulk collection: all 27 Marvel Legends releases, chronological.",
+      "description": "Complete a Hulk collection: all 29 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-hulk.md"
+    },
+    {
+      "id": "collect-thor",
+      "title": "Collect every Thor",
+      "description": "Complete a Thor collection: all 29 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-thor.md"
+    },
+    {
+      "id": "collect-daredevil",
+      "title": "Collect every Daredevil",
+      "description": "Complete a Daredevil collection: all 22 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-daredevil.md"
     },
     {
       "id": "collect-deadpool",
@@ -651,27 +657,21 @@
       "path": "skills/characters/collect-deadpool.md"
     },
     {
+      "id": "collect-punisher",
+      "title": "Collect every Punisher",
+      "description": "Complete a Punisher collection: all 21 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-punisher.md"
+    },
+    {
       "id": "collect-black-widow",
       "title": "Collect every Black Widow",
       "description": "Complete a Black Widow collection: all 21 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-black-widow.md"
     },
     {
-      "id": "collect-daredevil",
-      "title": "Collect every Daredevil",
-      "description": "Complete a Daredevil collection: all 20 Marvel Legends releases, chronological.",
-      "path": "skills/characters/collect-daredevil.md"
-    },
-    {
-      "id": "collect-punisher",
-      "title": "Collect every Punisher",
-      "description": "Complete a Punisher collection: all 20 Marvel Legends releases, chronological.",
-      "path": "skills/characters/collect-punisher.md"
-    },
-    {
       "id": "collect-cyclops",
       "title": "Collect every Cyclops",
-      "description": "Complete a Cyclops collection: all 18 Marvel Legends releases, chronological.",
+      "description": "Complete a Cyclops collection: all 19 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-cyclops.md"
     },
     {
@@ -689,14 +689,20 @@
     {
       "id": "collect-human-torch",
       "title": "Collect every Human Torch",
-      "description": "Complete a Human Torch collection: all 14 Marvel Legends releases, chronological.",
+      "description": "Complete a Human Torch collection: all 16 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-human-torch.md"
     },
     {
       "id": "collect-venom",
       "title": "Collect every Venom",
-      "description": "Complete a Venom collection: all 14 Marvel Legends releases, chronological.",
+      "description": "Complete a Venom collection: all 16 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-venom.md"
+    },
+    {
+      "id": "collect-doctor-doom",
+      "title": "Collect every Doctor Doom",
+      "description": "Complete a Doctor Doom collection: all 13 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-doctor-doom.md"
     },
     {
       "id": "collect-storm",
@@ -711,10 +717,16 @@
       "path": "skills/characters/collect-war-machine.md"
     },
     {
-      "id": "collect-doctor-doom",
-      "title": "Collect every Doctor Doom",
-      "description": "Complete a Doctor Doom collection: all 12 Marvel Legends releases, chronological.",
-      "path": "skills/characters/collect-doctor-doom.md"
+      "id": "collect-magneto",
+      "title": "Collect every Magneto",
+      "description": "Complete a Magneto collection: all 12 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-magneto.md"
+    },
+    {
+      "id": "collect-beast",
+      "title": "Collect every Beast",
+      "description": "Complete a Beast collection: all 12 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-beast.md"
     },
     {
       "id": "collect-hawkeye",
@@ -727,12 +739,6 @@
       "title": "Collect every Ghost Rider",
       "description": "Complete a Ghost Rider collection: all 11 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-ghost-rider.md"
-    },
-    {
-      "id": "collect-magneto",
-      "title": "Collect every Magneto",
-      "description": "Complete a Magneto collection: all 11 Marvel Legends releases, chronological.",
-      "path": "skills/characters/collect-magneto.md"
     },
     {
       "id": "collect-vision",
@@ -763,12 +769,6 @@
       "title": "Collect every Star-Lord",
       "description": "Complete a Star-Lord collection: all 11 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-star-lord.md"
-    },
-    {
-      "id": "collect-beast",
-      "title": "Collect every Beast",
-      "description": "Complete a Beast collection: all 10 Marvel Legends releases, chronological.",
-      "path": "skills/characters/collect-beast.md"
     },
     {
       "id": "collect-rogue",
@@ -835,6 +835,12 @@
       "title": "Collect every Spider-Woman",
       "description": "Complete a Spider-Woman collection: all 9 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-spider-woman.md"
+    },
+    {
+      "id": "collect-silver-surfer",
+      "title": "Collect every Silver Surfer",
+      "description": "Complete a Silver Surfer collection: all 9 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-silver-surfer.md"
     },
     {
       "id": "collect-winter-soldier",
@@ -1021,6 +1027,12 @@
       "title": "Research the HasLab Galactus (2021) grail",
       "description": "Why the HasLab Galactus (2021) matters, its price evidence, and how to verify one.",
       "path": "skills/grails/grail-haslab-galactus-2021.md"
+    },
+    {
+      "id": "grail-doomsday-wave-1-2026-the-launch-curve",
+      "title": "Research the Doomsday Wave 1 (2026) \u2014 the launch curve grail",
+      "description": "Why the Doomsday Wave 1 (2026) \u2014 the launch curve matters, its price evidence, and how to verify one.",
+      "path": "skills/grails/grail-doomsday-wave-1-2026-the-launch-curve.md"
     },
     {
       "id": "bootleg-packaging",

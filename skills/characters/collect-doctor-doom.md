@@ -1,13 +1,13 @@
 ---
 name: collect-doctor-doom
-description: Complete a Doctor Doom collection: all 12 Marvel Legends releases, chronological.
+description: Complete a Doctor Doom collection: all 13 Marvel Legends releases, chronological.
 ---
 
 # Collect every Doctor Doom
 
 ## Use when
 
-You collect Doctor Doom. 12 releases are catalogued from 2002 to 2026.
+You collect Doctor Doom. 13 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -20,6 +20,7 @@ You collect Doctor Doom. 12 releases are catalogued from 2002 to 2026.
 2.   - 2002 — Series 2: Doctor Doom
   - 2004 — Box Set - Fantastic Four: Doctor Doom
   - 2007 — Ronan the Accuser Wave: Doctor Doom
+  - 2007 — Icons Series 5: Doctor Doom
   - 2013 — Epic Heroes: Doctor Doom
   - 2013 — Epic Heroes: Doctor Doom [Future Foundation]
   - 2019 — Store & Convention Exclusives: Doctor Doom (Walgreens)

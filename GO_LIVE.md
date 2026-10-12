@@ -1,5 +1,20 @@
 # GO_LIVE — Marvel Legends Chronicle (marvel-radar)
 
+> **TWO-TRACK MODEL (2026-10-11, user's order):** the working repo
+> (`astercast/marvel-legends-chronicle`) is NEVER deployed — all wave work,
+> commits, and pushes happen here, GitHub-only. The live track is the
+> release snapshot repo **`astercast/marvel-legends-chronicle-live`**
+> (private), holding a clean pre-built snapshot: static frontend +
+> `vercel.json` + `/api/*` functions + cron. First -live snapshot pushed
+> 2026-10-12 (authorized one-time); after that, NEVER push -live again
+> without the user's explicit "push"/"ship it". The Vercel deploy is a
+> **one-time CLI deploy from the `-live` clone — no git integration, ever**.
+> Before every push, verify `git remote get-url origin` matches the intended
+> track; when in doubt, stop and report.
+>
+> The rest of this document describes the deployment architecture that the
+> `-live` snapshot carries. "Repo" below = the -live release repo.
+
 > **LIVE-READY, NOT DEPLOYED. Do not connect Vercel until the user approves.**
 >
 > This document is the single source of truth for taking the Chronicle live on

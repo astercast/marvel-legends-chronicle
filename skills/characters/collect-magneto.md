@@ -1,13 +1,13 @@
 ---
 name: collect-magneto
-description: Complete a Magneto collection: all 11 Marvel Legends releases, chronological.
+description: Complete a Magneto collection: all 12 Marvel Legends releases, chronological.
 ---
 
 # Collect every Magneto
 
 ## Use when
 
-You collect Magneto. 11 releases are catalogued from 2002 to 2026.
+You collect Magneto. 12 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -19,6 +19,7 @@ You collect Magneto. 11 releases are catalogued from 2002 to 2026.
 1. Work the list chronologically — oldest first, they appreciate fastest:
 2.   - 2002 — Series 3: Magneto
   - 2003 — Box Set - X-Men Legends: Magneto
+  - 2007 — Icons Series 7: Magneto
   - 2014 — Jubilee Wave (Toys "R" Us Exclusive): Magneto (Toys "R" Us)
   - 2018 — Apocalypse Wave: Magneto
   - 2019 — Store & Convention Exclusives: Magneto (Amazon)

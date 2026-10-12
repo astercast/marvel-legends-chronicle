@@ -1,13 +1,13 @@
 ---
 name: collect-beast
-description: Complete a Beast collection: all 10 Marvel Legends releases, chronological.
+description: Complete a Beast collection: all 12 Marvel Legends releases, chronological.
 ---
 
 # Collect every Beast
 
 ## Use when
 
-You collect Beast. 10 releases are catalogued from 2003 to 2026.
+You collect Beast. 12 releases are catalogued from 2003 to 2026.
 
 ## Inputs
 
@@ -19,6 +19,8 @@ You collect Beast. 10 releases are catalogued from 2003 to 2026.
 1. Work the list chronologically — oldest first, they appreciate fastest:
 2.   - 2003 — Series 4: Beast
   - 2003 — Box Set - X-Men Legends: Beast
+  - 2006 — Icons Series 3: Beast
+  - 2006 — Icons Series 3: Beast [Blue, lab coat and glasses]
   - 2007 — Annihilus Wave: Beast
   - 2009 — Nemesis Wave (Walmart Exclusive): Beast (Walmart)
   - 2014 — Store & Convention Exclusives: Beast (Toys "R" Us)
