@@ -83,6 +83,18 @@ export function openFigureDialog(fig) {
       bodyEl.appendChild(charLink);
     }
 
+    /* VS-mode entry point (wave 26): compare this figure against any other.
+       URL is resolved against the current page so it works from any depth. */
+    const cmpLink = document.createElement("a");
+    cmpLink.className = "btn btn-sm";
+    const cmpUrl = new URL("compare.html", location.href);
+    cmpUrl.searchParams.set("a", fig.id);
+    cmpLink.href = cmpUrl.href;
+    cmpLink.textContent = "⚖️ Compare this figure";
+    cmpLink.style.marginBottom = "var(--space-3)";
+    cmpLink.style.marginLeft = "var(--space-2)";
+    bodyEl.appendChild(cmpLink);
+
     bodyEl.appendChild(trackerButtons(fig.id));
     bodyEl.appendChild(renderMarketplaceLinks(fig));
     bodyEl.appendChild(renderResearchLinks(fig));

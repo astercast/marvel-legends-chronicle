@@ -12,10 +12,14 @@ and a print-checklist button.
 """
 import json
 import re
+import sys
 from collections import defaultdict
 from html import escape
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote, quote_plus
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from compare_lib import profiles_by_position
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -92,6 +96,17 @@ PAGE_CSS = """    .wave-hero { padding-block: var(--space-7); }
     .wave-card:hover { text-decoration: none; border-color: var(--red); }
     .wave-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
     .wave-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+    /* Wave 26 deep-link overhaul: per-figure anchors + cross-link rows. */
+    .fig { scroll-margin-top: 90px; border-radius: var(--radius-m); }
+    .fig:target { outline: 2px solid var(--gold); outline-offset: 6px;
+      background: rgba(245, 179, 1, 0.05); }
+    .fig-xref { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3);
+      margin-top: var(--space-2); font-size: 0.8rem; }
+    .xref-link { color: var(--ink-dim); text-decoration: none;
+      border-bottom: 1px dotted var(--line); white-space: nowrap; }
+    .xref-link:hover { color: var(--gold); border-bottom-style: solid; }
+    .fig-ko { margin: var(--space-2) 0 0; font-size: 0.82rem; color: var(--ink-dim);
+      border-left: 3px solid var(--red); padding-left: var(--space-2); }
     @media print {
       .site-header, .site-footer, .wave-nav, .wave-actions, .research,
       .track-slot, .skip-link { display: none !important; }
@@ -157,6 +172,56 @@ def badges(fig):
     return f'<span class="tag-row">{"".join(out)}</span>' if out else ""
 
 
+def fig_xref(prof):
+    """Per-figure cross-link block (wave 26 deep-link overhaul): stable deep-link
+    anchor, VS-mode compare entry, rarity-tier link, reported price signals,
+    KO-spotter note, and Grail Quest relevance — all from real data only."""
+    items = []
+    # Stable deep link to this exact figure (copiable fragment URL).
+    anchor = prof["deepLink"].split("#", 1)[1]
+    items.append(
+        f'<a class="xref-link" href="#{anchor}" title="Stable deep link to this figure">'
+        f'🔗 Deep link</a>')
+    # VS mode entry point.
+    items.append(
+        f'<a class="xref-link" href="../{prof["compareUrl"]}">'
+        f'⚖️ Compare</a>')
+    # Rarity tier cross-link.
+    if prof.get("rarity"):
+        r = prof["rarity"]
+        items.append(
+            f'<a class="xref-link" href="../rarity.html#tier-{r["tier"]}">'
+            f'💎 {escape(r["tierName"])}</a>')
+    # Reported price signals (reported ranges, never invented).
+    for s in prof.get("priceSignals") or []:
+        title = f'{escape(s["label"])} — reported {s["kind"].replace("-", " ")}, {escape(s["source"])}'
+        items.append(
+            f'<a class="xref-link" href="../watchlist.html" title="{title}">'
+            f'💰 Reported {escape(s["display"])}</a>')
+    # KO-spotter note where applicable.
+    ko_html = ""
+    if prof.get("koWatch"):
+        k = prof["koWatch"]
+        ko_html = (
+            f'<p class="fig-ko" role="note">⚠️ {escape(k["note"])} '
+            f'<a href="../auth-wizard.html">Run the Auth Wizard →</a></p>')
+    # Grail Quest relevance.
+    quest_html = ""
+    r = prof.get("rarity")
+    if r and r.get("questAchievement"):
+        quest_html = (
+            f'<a class="xref-link" href="../quest.html">'
+            f'🏆 Quest: {escape(r["questAchievement"])}</a>')
+    elif prof.get("priceSignals"):
+        quest_html = (
+            f'<a class="xref-link" href="../watchlist.html">'
+            f'🎯 Watchlist hunt candidate</a>')
+    if quest_html:
+        items.append(quest_html)
+    return (f'<div class="fig-xref" aria-label="Figure cross-links">'
+            f'{"".join(items)}</div>{ko_html}')
+
+
 def research_details(name, variant):
     """Static per-figure research affordance. Same URL patterns as
     assets/js/listings.js — no prices scraped, no reviews invented."""
@@ -202,15 +267,19 @@ def main():
 
         era_cls = "badge-toybiz" if w["manufacturer"] == "Toy Biz" else ""
         rows = []
-        for f in figs:
+        prof_by_idx = profiles_by_position()
+        for fi, f in enumerate(figs):
             fig_id = f"{wid}::{f['name']}"
+            prof = prof_by_idx[(wid, fi)]
+            anchor = prof["deepLink"].split("#", 1)[1]
             note = f'<span class="fig-notes">{escape(f["notes"])}</span>' if f.get("notes") else ""
             rows.append(
-                f'          <li class="fig" data-fig-id="{escape(fig_id, quote=True)}">'
+                f'          <li class="fig" id="{anchor}" data-fig-id="{escape(fig_id, quote=True)}">'
                 f'<span class="fig-name">{escape(f["name"])}</span>'
                 f'{badges(f)}'
                 f'<span class="track-slot" data-track-for="{escape(fig_id, quote=True)}"></span>'
                 f'{note}'
+                f'{fig_xref(prof)}'
                 f'{research_details(f["name"], f.get("variant"))}</li>')
 
         baf_block = ""

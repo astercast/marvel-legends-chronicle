@@ -5,6 +5,7 @@ export const PATHS = {
   communitySeed: "data/community.json",
   preorders: "data/preorders.json",
   priceSignals: "data/price-signals.json",
+  compare: "api/v1/compare.json", // VS-mode profiles: deep links, rarity/price/KO cross-refs, upgrade paths
 };
 
 export const STORE_KEYS = {

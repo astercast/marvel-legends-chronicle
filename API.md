@@ -27,9 +27,10 @@ Base path: `api/v1/`
 | `timeline.json` | Envelope `{version, observed, title, lede, yearMin, yearMax, count, years, packagingEras, sourcesNote}` — 25 year records (2002–2026): `year`, `era`, `headline`, `summary`, `packaging` (nullable), `milestones` (each with `text` + `sources[]`), `waves` (real archive `id`s + `page`), `spotlight` (real figure `id`s + `why`) |
 | `rarity.json` | Envelope `{tiers, title, lede, observed, methodology, archiveCounts, crossCutting, page}` — 9 tier records: `body`, `howToSpot`, `valueNote` (reported prices only, never an index), `archiveSignal`, `questAchievement`, `examples` (real figure `id`s + `waveId`/`year`/`series`/`wavePage`), `sources[]` (`label`/`url`/`note`) |
 | `price-signals.json` | Envelope `{version, observed, methodology, count, signals}` — 7 reported market price signals (wave 25): `id`, `figId` (real archive id), `label`, `kind` (`sold-band`/`sold-avg`/`listing`/`claimed`), `low`/`high` (USD), `display`, `source` + `sourceUrl`, `note`, `singleSource` (nullable), `asOf` — reported ranges, not live prices; the Chronicle publishes no price index. Powers Price Watch verdicts vs user targets. |
+| `compare.json` | Envelope `{version, observed, methodology, count, profiles}` — 1,904 VS-mode figure profiles (wave 26): `id`, `name`, `variant`/`exclusive`/`bafPiece`/`notes`, `waveId`/`waveSeries`/`year`/`manufacturer`, `deepLink` (`waves/<waveId>.html#fig-<slug>` — stable, disambiguated within a wave), `compareUrl` (`compare.html?a=<id>` share link), `rarity` (`tier`/`tierName`/`questAchievement`, nullable), `priceSignals[]` (reported ranges, never live prices), `koWatch` (`note`/`source`, nullable), `upgradePaths[]` (`id`/`waveSeries`/`year`/`variant`/`exclusive`/`relation` in `variant`/`base-release`/`reissue`/`exclusive`/`same-character`, capped at 8 — documented other releases of the same character). Derived from committed data by `scripts/compare_lib.py`; powers the Figure Compare page. |
 | `radar-candidates.json` | Hand-maintained reissue-radar research feed: newly spotted news items (`title`, `url`, `source`, `detected_at`) |
 | `radar-seen.json` | Hand-maintained dedupe list of processed radar URLs (array of strings) |
-| `schema/` | JSON Schema (draft-07) for every endpoint: `manifest.json`, `stats.json`, `waves.json` + item `wave.json`, `figures.json` + item `figure.json`, `encyclopedia.json`, `preorders.json` + item `preorder.json`, `characters.json` + item `character.json`, `timeline.json` + item `timeline-year.json`, `rarity.json` + item `rarity-tier.json`, `price-signals.json` + item `price-signal.json`, `radar-candidates.json` + item `radar-candidate.json`, `radar-seen.json` |
+| `schema/` | JSON Schema (draft-07) for every endpoint: `manifest.json`, `stats.json`, `waves.json` + item `wave.json`, `figures.json` + item `figure.json`, `encyclopedia.json`, `preorders.json` + item `preorder.json`, `characters.json` + item `character.json`, `timeline.json` + item `timeline-year.json`, `rarity.json` + item `rarity-tier.json`, `price-signals.json` + item `price-signal.json`, `compare.json` + item `compare-profile.json`, `radar-candidates.json` + item `radar-candidate.json`, `radar-seen.json` |
 
 ## Figure object
 
@@ -52,6 +53,8 @@ Base path: `api/v1/`
 - `id` is stable: `<waveId>::<figureName>`. New figures get new ids; ids are never recycled.
 - Nullable fields are explicit `null` when unknown — never invented.
 - `notes` may flag disputed wave numbering or unverified BAF pieces.
+- **Deep links (wave 26):** every figure has a stable deep link `waves/<waveId>.html#fig-<slug>` where `<slug>` is the kebab-case figure name, disambiguated with the variant slug (or a 1-based index) when a name repeats inside one wave — e.g. `waves/toybiz-2002-series-1.html#fig-hulk-straight-fingers-white-shirt`. A shareable VS-mode compare link is `compare.html?a=<urlencoded id>&b=<urlencoded id>`. Both are also exposed per-figure in `api/v1/compare.json` (`deepLink`, `compareUrl`).
+- **Honest absences:** articulation counts and accessory lists are not in the archive — the compare UI says so instead of fabricating them.
 
 ## Wave object
 

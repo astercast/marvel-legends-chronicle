@@ -18,6 +18,10 @@ VERSION = "1.0.0"
 OBSERVED = "2026-10-11"  # observation date for the dataset
 UPDATED = OBSERVED + "T00:00:00Z"  # deterministic ISO-8601 UTC stamp for the manifest
 
+import sys
+sys.path.insert(0, str(ROOT / "scripts"))
+from compare_lib import build_profiles as build_compare_profiles
+
 
 def load_json(path):
     return json.loads(Path(path).read_text())
@@ -150,6 +154,24 @@ def main():
         "signals": price_raw["signals"],
     }
 
+    # "profiles" is the first list in the envelope: the manifest-driven validator
+    # takes the first list value as the item array for itemSchema checks.
+    compare_profiles = build_compare_profiles()
+    compare_envelope = {
+        "version": VERSION,
+        "observed": OBSERVED,
+        "methodology": (
+            "Per-figure VS-mode profiles derived from committed Chronicle data: stable deep links "
+            "(waves/<waveId>.html#fig-<slug>), shareable compare URLs, rarity-tier cross-refs "
+            "(Rarity Guide), reported price signals (reported ranges, not live prices — the Chronicle "
+            "publishes no price index), KO-spotter notes, and documented upgrade paths (other releases "
+            "of the same character: variants, documented reissues, exclusives). No invented figures, "
+            "dates, or prices; articulation counts and accessory lists are not in the archive."
+        ),
+        "count": len(compare_profiles),
+        "profiles": compare_profiles,
+    }
+
     skills_index = {}
     skills_idx_path = ROOT / "skills" / "index.json"
     if skills_idx_path.exists():
@@ -230,6 +252,15 @@ def main():
             "Hand-maintained dedupe list of radar URLs already processed. Array of URL strings.",
             schema="api/v1/schema/radar-seen.json", records=len(radar_seen),
             notes="Hand-maintained — build_api.py reads it for the record count but never rewrites it."),
+        "compare": ep(
+            "api/v1/compare.json",
+            "VS-mode figure profiles: one per archive figure — stable `deepLink` "
+            "(waves/<waveId>.html#fig-<slug>), shareable `compareUrl` (compare.html?a=<id>), "
+            "`rarity` tier cross-ref, `priceSignals` (reported ranges, never live prices), "
+            "`koWatch` note, and `upgradePaths` (documented other releases of the same character). "
+            "Powers the Figure Compare page; derived from committed data by scripts/compare_lib.py.",
+            schema="api/v1/schema/compare.json", item_schema="api/v1/schema/compare-profile.json",
+            records=len(compare_profiles)),
     }
 
     index = {
@@ -507,6 +538,7 @@ def main():
         "characters.json": characters_envelope,
         "timeline.json": timeline_envelope,
         "price-signals.json": price_envelope,
+        "compare.json": compare_envelope,
         **schemas,
     }
     for name, payload in outputs.items():

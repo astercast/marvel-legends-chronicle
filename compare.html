@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Figure Compare — Marvel Legends Chronicle</title>
-  <meta name="description" content="Settle the debate: pick 2–4 Marvel Legends figures and compare them side-by-side — wave, year, BAF pieces, exclusives, variants.">
+  <meta name="description" content="Settle the debate: pick 2–4 Marvel Legends figures and compare them side-by-side — release info, archive notes, reported price bands, rarity signals, KO watch, documented upgrade paths. Shareable compare links; no winner declared.">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
@@ -37,6 +37,25 @@
     table.cmp-table tbody th { background: var(--panel); width: 140px; color: var(--ink-dim); font-weight: 600; }
     table.cmp-table tr.differs td { background: rgba(245, 179, 1, 0.06); }
     .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .cmp-toolbar { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-4); }
+    .cmp-notice { border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: var(--radius-m);
+      padding: var(--space-3) var(--space-4); margin-bottom: var(--space-4); font-size: 0.9rem; }
+    .cmp-notice p { margin: 0; }
+    .cmp-links { font-size: 0.85rem; margin: var(--space-3) 0 0; }
+    .cmp-signal + .cmp-signal { margin-top: var(--space-2); }
+    .cmp-upgrades { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+    .cmp-upgrades li { font-size: 0.88rem; }
+    .cmp-guide { margin-bottom: var(--space-7); }
+    .cmp-guide h2 { font-size: 1.25rem; margin-bottom: var(--space-1); }
+    .cmp-guide-list { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: grid; gap: var(--space-3); }
+    .cmp-guide-list li { border: 1px solid var(--line-soft); border-left: 3px solid var(--gold);
+      border-radius: var(--radius-m); padding: var(--space-3) var(--space-4); font-size: 0.92rem;
+      background: var(--panel); }
+    .cmp-guide-ko { border-left-color: var(--red); }
+    .cmp-guide-close { border-left-color: var(--line); color: var(--ink-dim); }
+    @media (prefers-reduced-motion: reduce) {
+      table.cmp-table tr.differs td { background: none; }
+    }
   </style>
 </head>
 <body>
@@ -97,30 +116,38 @@
       <div class="container hero-inner">
         <span class="hero-kicker">Settle the debate</span>
         <h1 id="cmp-title">Figure <span class="accent">compare.</span></h1>
-        <p class="lede">Which Doom is best? Pick up to four figures and put them side-by-side — wave, year, BAF pieces, exclusives, variants. The data is the verdict; we declare no winner.</p>
+        <p class="lede">Which Doom is best? Pick up to four figures and put them side-by-side — release info, archive notes, reported price bands, rarity signals, KO watch, and documented upgrade paths. Share the link; the data is the verdict — we declare no winner.</p>
       </div>
     </section>
 
     <div class="container">
+      <p class="visually-hidden" role="status" id="cmp-live" aria-live="polite"></p>
+      <div class="cmp-notice" id="cmp-notice" hidden></div>
+
+      <div class="cmp-toolbar">
+        <button type="button" class="btn btn-sm" id="cmp-share" hidden>Copy compare link</button>
+      </div>
+
       <div class="cmp-slots" id="cmp-slots" aria-label="Comparison slots"></div>
 
       <div class="cmp-search-row">
         <div class="field">
           <label for="cmp-search">Search figures to compare</label>
-          <input class="input" id="cmp-search" type="search" placeholder="Doctor Doom, Sentinel wave, Haslab…" autocomplete="off">
+          <input class="input" id="cmp-search" type="search" placeholder="Doctor Doom, Sentinel wave, Haslab… (press / to focus)" autocomplete="off">
         </div>
         <button type="button" class="btn btn-sm btn-ghost" id="cmp-clear" hidden>Clear all</button>
       </div>
       <ul id="cmp-results" aria-label="Search results"></ul>
 
       <div class="empty-state" id="cmp-empty">
-        <p>Search above and add 2–4 figures to start comparing.</p>
+        <p>Search above and add 2–4 figures to start comparing — or open a shared link like <code>compare.html?a=&lt;id&gt;&amp;b=&lt;id&gt;</code>.</p>
       </div>
 
       <div class="cmp-cards" id="cmp-cards" hidden></div>
       <div class="cmp-table-wrap"><div id="cmp-table" hidden></div></div>
+      <section class="cmp-guide" id="cmp-guide" hidden aria-label="Which to buy guidance"></section>
 
-      <p class="chart-sub" style="margin-bottom:var(--space-7);">No photos: figure imagery isn't hotlinked. Compare on the facts — sculpt and paint notes live in each figure's archive notes. Open any figure on the <a href="index.html">timeline</a> for full details.</p>
+      <p class="chart-sub" style="margin-bottom:var(--space-7);">No photos: figure imagery isn't hotlinked. Articulation counts and accessory lists aren't in the archive — compare on the documented facts. Every figure has a stable deep link (<code>waves/&lt;waveId&gt;.html#fig-&lt;slug&gt;</code>) on its wave page. Prices are reported ranges, never live.</p>
     </div>
   </main>
 
