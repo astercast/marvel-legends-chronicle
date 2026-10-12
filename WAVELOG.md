@@ -16,7 +16,7 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Docs**: `AGENT.md` + `API.md` + `llms.txt` + `api.html` + `agents.html` preorders counts 21 → 22.
 - **Tests**: new `tests/test-window-check.js` (12 tests, registered in `tests/run.js`) — fixtures (kinds, unscored-never-passes, exclusion ranges, sale-window, scorecard math, recentlyOpened ordering) + pinned 2026-10-11 run against REAL `data/preorders.json` (4 past/3 upcoming + Nov 1 sale, 3/1/0/0 scorecard, fresh-windows order); `test-api-workflows.js` count 21 → 22.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (328/328 tests, 87 suites — +12; JS node --check clean; 13,785 relative refs, 0 broken; manifest + 14 endpoints validated, 4,298 item records; 14 storage keys registered; ids/storage/perf green).
-- **Commit:** LOCAL → pushed as GitHub commit `REMOTE` on `main` (remote tree verified via Trees API; push per the standing gh-push.py lesson: capture `$?` directly, verify the commit exists)
+- **Commit:** ea71ac6 (local) → pushed as GitHub commit `c4b2cf192c7fc4dc4d05bfca7f0096d68939d8a6` on `main` (remote tree verified via Trees API: commit 200, 674-tree entries incl. all changed files, not truncated; main head matches; single attempt, exit 0 trusted only after tree verification per the push lesson)
 
 - **Waves 1–11 (completed 2026-10-11):** archive build-out — 1,904-figure archive, wave/character pages, explore, retro, showcase, gift finder, price trends, shelf, journal, radar, BAF planner; engineering pass (51-test suite, `scripts/validate.sh`); design overhaul v2 ("The Archive").
 
