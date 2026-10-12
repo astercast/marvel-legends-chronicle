@@ -3,6 +3,7 @@
 import { suite, test, assert } from "./assert.js";
 import {
   priceBandText, formatPickDate, statusLine, renderPick, byId, PICKS,
+  FINDER_LINKS, giftFinderUrl, renderFinderLinks,
 } from "../assets/js/holiday.js";
 
 const item = (over = {}) => ({
@@ -108,5 +109,31 @@ suite("holiday: PICKS config", () => {
     const map = byId([item(), item({ id: "other" })]);
     assert.equal(map.get("mini-comics-wave-3").name, "Mini Comics Wave 3");
     assert.equal(map.get("missing"), undefined);
+  });
+});
+
+suite("holiday: gift-finder deep links", () => {
+  test("one prefilled link per recipient profile", () => {
+    assert.equal(FINDER_LINKS.length, 4, "new, kid, completionist, bargain");
+    const profiles = FINDER_LINKS.map((l) => l.profile).sort();
+    assert.deepEqual(profiles, ["bargain", "completionist", "kid", "new"]);
+  });
+
+  test("links prefill the gift finder's real URL params", () => {
+    assert.equal(giftFinderUrl("kid"), "gift.html?budget=under25&for=kid&character=Spider-Man");
+    assert.equal(giftFinderUrl("completionist"), "gift.html?budget=splurge&for=collector&character=X-Men");
+    assert.equal(giftFinderUrl("new"), "gift.html?budget=under25&for=casual");
+    assert.equal(giftFinderUrl("bargain"), "gift.html?budget=under50&for=casual");
+    assert.equal(giftFinderUrl("nobody"), "gift.html", "unknown profile → plain finder");
+  });
+
+  test("renderFinderLinks renders one link per profile", () => {
+    const html = renderFinderLinks();
+    for (const l of FINDER_LINKS) {
+      /* hrefs are HTML-escaped in the markup (& → &amp;) */
+      const escaped = l.href.replace(/&/g, "&amp;");
+      assert(html.includes(escaped), `link for ${l.profile} present`);
+      assert(html.includes(l.label), `label for ${l.profile} present`);
+    }
   });
 });

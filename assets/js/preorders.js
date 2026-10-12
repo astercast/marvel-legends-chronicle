@@ -202,6 +202,16 @@ export function money(n) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
+/* giftReady(item) — a pre-orderable gift flag: the item is actually buyable
+   (status "preorder" or "available") and its announced MSRP fits most gift
+   budgets (≤ $35 — the standard-single band). Pure, exported for tests.
+   MSRP is the researched announced price, never a market claim. */
+export function giftReady(item) {
+  if (!item) return false;
+  if (item.status !== "preorder" && item.status !== "available") return false;
+  return typeof item.price === "number" && Number.isFinite(item.price) && item.price <= 35;
+}
+
 export function escapeAttr(s) {
   return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 }
@@ -248,9 +258,11 @@ function cardHtml(item, today, states) {
     <div class="radar-meta">
       <span class="status status-${st.key === "available" ? "available" : st.key.startsWith("preorder") ? "preorder" : "revealed"}">${escapeAttr(st.label)}</span>
       ${price ? `<span class="price">${price}</span>` : ""}
+      ${giftReady(item) ? `<span class="status status-available" title="Announced MSRP fits most gift budgets — a pre-orderable gift pick">🎁 Gift-ready</span>` : ""}
     </div>
     <p class="po-detail">${escapeAttr(st.detail)}</p>
     ${item.details ? `<p>${escapeAttr(item.details)}</p>` : ""}
+    ${giftReady(item) ? `<p class="pick-status muted">Pre-orderable at ${money(item.price)} announced MSRP — fits the holiday budget. Pair with the <a href="holiday.html">holiday guide</a> or <a href="gift.html?budget=under50&for=casual">gift finder</a>.</p>` : ""}
     <div class="po-retailers" role="group" aria-label="Retailer search links">${retailLinks || '<span class="venue">No retailer confirmed by research yet.</span>'}</div>
     <fieldset class="po-state">
       <legend>Your call</legend>

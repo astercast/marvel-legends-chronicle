@@ -125,7 +125,8 @@ for html in html_files:
     for u in refs:
         if u.startswith(("#", "http://", "https://", "//", "mailto:", "data:", "javascript:")) or not u:
             continue
-        target = (html.parent / u.split("#")[0])
+        # Strip fragment and query string: "gift.html?budget=under25" -> "gift.html"
+        target = (html.parent / u.split("#")[0].split("?")[0])
         checked += 1
         if not target.exists():
             fail(f"broken ref: {html.relative_to(ROOT)} -> {u}")

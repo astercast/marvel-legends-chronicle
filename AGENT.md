@@ -154,6 +154,30 @@ $27.99 MSRP) is open now; the X-Men '97 retro wave opens 2026-10-21
    radar = cap at reissue price + a small premium, or wait.
    See skill `grail-evaluator`.
 
+### Workflow E — "What's a good gift for a Marvel fan?"
+
+1. Confirm budget band and recipient: kid / casual fan / collector. Budget
+   bands are figure-type proxies, never prices — "under $25" = standard
+   singles only; state that plainly.
+2. Resolve the character or team in `api/v1/figures.json` (name substring;
+   teams: X-Men, Avengers, Spider-Man, Fantastic Four, Guardians, Deadpool —
+   matched on name + wave series text).
+3. Rank from archive signals only: character/team match, recency (a kid
+   wants 2024+ at retail), figure type, rarity flags (collector: exclusives,
+   variants, chases first; kid: exclusives last).
+4. KO-risk check: flag any pick matching the archive's known-KO-target
+   research (`bootlegGuide` targets: Dragon Man, Ronan, Juggernaut BAF
+   recast, Carnage silver-eyes tell; holiday-guide 2026: Maximum Spider-Man,
+   X-Men '97 Cyclops). KO picks get "retail or Auth Wizard first", never a
+   marketplace recommendation.
+5. "Buy this, not that": if the same character has a pricier variant or
+   exclusive, recommend the standard and name the skip explicitly.
+6. Price honesty: the only dollars you may cite are announced pre-order
+   MSRPs (`api/v1/preorders.json` `price`, labeled as such) or the user's
+   own logged prices. Everything else = "check eBay solds".
+   Prefill the tool for the user:
+   `gift.html?budget=under25&for=kid&character=Spider-Man`.
+
 ## 4. Interactive tools: using their data shapes programmatically
 
 The site's tools (tracker, journal, watchlist, hunt planner, BAF planner,

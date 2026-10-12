@@ -10,6 +10,11 @@ import { loadData, figureById } from "./data.js";
 import { load, save } from "./store.js";
 import { escapeHtml, badgeFor } from "./figure-dialog.js";
 import { owned } from "./tracker.js";
+import { buildBafs } from "./baf-planner.js";
+import {
+  generateQuests, recommendNext, computeAchievements, computeLevel,
+} from "./quest-core.js";
+import { buildQuestShareText } from "./quest-share.js";
 
 const MAX_SLOTS = 10;
 
@@ -23,6 +28,9 @@ const els = {
   count: document.getElementById("show-count"),
   pickerNote: document.getElementById("picker-note"),
   pickerEmpty: document.getElementById("picker-empty"),
+  shareText: document.getElementById("quest-share-text"),
+  shareCopy: document.getElementById("quest-share-copy"),
+  shareStatus: document.getElementById("quest-share-status"),
 };
 
 let figures = [];
@@ -176,13 +184,52 @@ function addFromSearch() {
   render();
 }
 
+/* "Copy my quest" export — the same quest-card text as Grail Quest,
+   recomputed here from the shared tracker stores. */
+function refreshShareText(waves) {
+  if (!els.shareText) return;
+  const ownedIds = owned.all();
+  const watchlist = load(STORE_KEYS.watchlist, []);
+  const achievements = computeAchievements(figures, waves, ownedIds);
+  const unlocked = achievements.filter((a) => a.unlocked);
+  const quests = generateQuests(figures, waves, ownedIds);
+  const bafs = buildBafs(waves);
+  const ownedSet = new Set(ownedIds);
+  const completedBafs = bafs.filter((b) =>
+    b.pieces.every((p) => p.carriers.some((c) => ownedSet.has(c.id)))
+  ).length;
+  const level = computeLevel(ownedIds.length, completedBafs, unlocked.length);
+  const recs = recommendNext(figures, waves, ownedIds, watchlist);
+  const latest = [...unlocked].pop() ?? null;
+  els.shareText.value = buildQuestShareText({
+    level, ownedCount: ownedIds.length, archiveCount: figures.length,
+    completedBafs, achievements, quests, latestAchievement: latest, recs,
+  });
+}
+
 async function main() {
+  let waves = [];
   try {
-    ({ figures } = await loadData());
+    ({ figures, waves } = await loadData());
   } catch {
     els.list.innerHTML = `<div class="empty-state"><p>Could not load the figure archive.</p></div>`;
     return;
   }
+  refreshShareText(waves);
+  els.shareCopy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(els.shareText.value);
+      els.shareStatus.textContent = "Copied — paste it anywhere.";
+    } catch {
+      els.shareText.select();
+      try {
+        document.execCommand("copy");
+        els.shareStatus.textContent = "Copied — paste it anywhere.";
+      } catch {
+        els.shareStatus.textContent = "Copy didn't work — select the text manually.";
+      }
+    }
+  });
 
   els.list.addEventListener("dragover", (e) => {
     const dragging = els.list.querySelector(".dragging");

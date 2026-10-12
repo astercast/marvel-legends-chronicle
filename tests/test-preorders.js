@@ -2,7 +2,7 @@ import { suite, test, assert } from "./assert.js";
 import {
   parseYMD, todayStr, daysBetween, preorderCountdown, countdownText, itemStatus,
   monthKey, itemsByMonth, undatedItems, calendarMonths, monthMatrix, itemsOnDay,
-  inWindow, isValidState, retailerById,
+  inWindow, isValidState, retailerById, giftReady,
 } from "../assets/js/preorders.js";
 
 const item = (over = {}) => ({
@@ -176,5 +176,20 @@ suite("preorders: states and retailers", () => {
     assert.equal(retailerById("walmart").label, "Walmart");
     assert.equal(retailerById("nope"), null);
     assert(retailerById("pulse").url("x-men 97").includes("x-men%2097"), "search URL encodes the query");
+  });
+});
+
+suite("preorders: gift-ready flags", () => {
+  test("pre-orderable at standard MSRP flags as a gift pick", () => {
+    assert(giftReady(item()), "preorder at $27.99 → gift-ready");
+    assert(giftReady(item({ status: "available", price: 35 })), "available at $35 → gift-ready");
+  });
+
+  test("revealed-only, unpriced, or over-budget items never flag", () => {
+    assert(!giftReady(item({ status: "revealed" })), "revealed is not buyable yet");
+    assert(!giftReady(item({ price: null })), "no invented MSRP — unpriced never flags");
+    assert(!giftReady(item({ price: 54.99 })), "over $35 is not a budget gift");
+    assert(!giftReady(item({ price: "27.99" })), "string prices never flag");
+    assert(!giftReady(null), "null-safe");
   });
 });

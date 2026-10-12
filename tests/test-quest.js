@@ -307,4 +307,26 @@ suite("share card", () => {
     assert(text.includes("Finish BAF: The Adversary (2023)"), "top quest present");
     assert(text.includes(latest.name), "latest achievement present");
   });
+
+  test("share text v2 adds progress, next quests — no invented numbers", () => {
+    const ownedIds = ["w3::Iron Man", "w3::Captain America", "w3::Thor", "w3::Hulk", "w1::Gambit"];
+    const level = computeLevel(ownedIds.length, 0, 1);
+    const quests = generateQuests(figures, waves, ownedIds);
+    const achievements = computeAchievements(figures, waves, ownedIds);
+    const watchlist = [];
+    const recs = recommendNext(figures, waves, ownedIds, watchlist);
+    const text = shareCardText({
+      level, ownedCount: ownedIds.length, archiveCount: 1904, completedBafs: 0,
+      achievements, quests, latestAchievement: null, recs,
+    });
+    assert(text.includes("5 figures owned (0% of the 1,904-figure archive)"), "archive progress present");
+    assert(text.includes("Next quests:"), "next-quest section present");
+    assert(text.includes("Closest BAF:"), "closest-BAF rec present");
+    const textNoRecs = shareCardText({
+      level, ownedCount: ownedIds.length, completedBafs: 0,
+      achievements, quests, latestAchievement: null,
+    });
+    assert(!textNoRecs.includes("Next quests:"), "recs optional — old callers unaffected");
+    assert(!textNoRecs.includes("1,904"), "archiveCount optional");
+  });
 });

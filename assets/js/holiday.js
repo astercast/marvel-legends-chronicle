@@ -190,6 +190,45 @@ export function byId(items) {
   return map;
 }
 
+/* ---- gift-finder deep links (one per recipient profile) ---- */
+
+/* Prefilled Gift Finder URLs — ?budget= filters by figure-type tier,
+   ?for= weights the ranking for the recipient, ?character= seeds the
+   character/team match. Exported for tests. */
+export const FINDER_LINKS = [
+  {
+    profile: "new", label: "New Collector",
+    href: "gift.html?budget=under25&for=casual",
+    blurb: "Starter-friendly picks, weighted for a casual fan.",
+  },
+  {
+    profile: "kid", label: "The Kid",
+    href: "gift.html?budget=under25&for=kid&character=Spider-Man",
+    blurb: "Kid-weighted ranking, starting from Spider-Man — swap in their hero.",
+  },
+  {
+    profile: "completionist", label: "The Completionist",
+    href: "gift.html?budget=splurge&for=collector&character=X-Men",
+    blurb: "Collector-weighted, no budget ceiling, starting from the X-Men team.",
+  },
+  {
+    profile: "bargain", label: "The Bargain Hunter",
+    href: "gift.html?budget=under50&for=casual",
+    blurb: "Up-to-$50 band with KO-risk notes and buy-this-not-that calls.",
+  },
+];
+
+export function giftFinderUrl(profile) {
+  const f = FINDER_LINKS.find((l) => l.profile === profile);
+  return f ? f.href : "gift.html";
+}
+
+export function renderFinderLinks() {
+  return FINDER_LINKS.map((l) =>
+    `<a class="btn btn-sm" href="${esc(l.href)}" title="${esc(l.blurb)}">${esc(l.label)} → Gift Finder</a>`
+  ).join("");
+}
+
 export async function init() {
   const mounts = [...document.querySelectorAll("[data-picks]")];
   if (!mounts.length) return;
@@ -210,6 +249,9 @@ export async function init() {
       .filter(({ item }) => item);
     mount.innerHTML = picks.map(({ item, pick }) => renderPick(item, pick)).join("");
   }
+  /* Gift-finder deep links (one per profile). */
+  const finder = document.getElementById("finder-links");
+  if (finder) finder.innerHTML = renderFinderLinks();
 }
 
 init();

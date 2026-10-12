@@ -93,11 +93,17 @@
       <div class="container hero-inner">
         <span class="hero-kicker">Build-A-Figure planner</span>
         <h1 id="planner-title">Complete my <span class="accent">BAF.</span></h1>
-        <p class="lede">Pick a Build-A-Figure, mark the figures you own, and see exactly which pieces you're missing — with acquisition guidance. Ownership syncs with the timeline tracker (stored in your browser only).</p>
+        <p class="lede">Pick a Build-A-Figure, mark the figures you own, and see exactly which pieces you're missing — with cheapest-path acquisition math priced from your journal's sold prices. Ownership syncs with the timeline tracker and your logged ledger purchases (stored in your browser only).</p>
       </div>
     </section>
 
     <div class="container">
+      <section aria-labelledby="closest-h" style="margin-bottom:var(--space-7)">
+        <h2 id="closest-h" style="font-size:1.2rem;margin-bottom:var(--space-1);">Closest to complete</h2>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:var(--space-4);">Your nearest BAF finishes — fewest missing pieces first, from your owned marks plus logged purchases.</p>
+        <div id="baf-closest" style="display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fill,minmax(280px,1fr));"></div>
+      </section>
+
       <div class="planner-layout">
         <div>
           <h2 style="font-size:1rem;margin-bottom:var(--space-3);">Build-A-Figures</h2>

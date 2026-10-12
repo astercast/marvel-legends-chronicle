@@ -119,6 +119,21 @@
         <ol class="showcase-list" id="showcase-list"></ol>
       </section>
     </div>
+
+    <div class="container">
+      <section aria-labelledby="quest-share-heading" style="margin-bottom:var(--space-7)">
+        <h2 id="quest-share-heading" style="font-size:1.2rem;margin-bottom:var(--space-1);">Copy my quest — for the showcase</h2>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:var(--space-4);max-width:70ch;">Your Grail Quest status as shareable plain text — progress, achievements, and your next-quest list. Paste it into your collection showcase, a forum post, or Discord.</p>
+        <div class="card" style="padding:var(--space-4);display:grid;gap:var(--space-3);">
+          <label class="visually-hidden" for="quest-share-text">Quest status text</label>
+          <textarea id="quest-share-text" readonly style="width:100%;min-height:9rem;font-family:var(--font-mono,monospace);font-size:0.85rem;padding:var(--space-3);border:1px solid var(--line);border-radius:var(--radius);background:var(--panel-2);color:var(--ink);resize:vertical;"></textarea>
+          <div style="display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap;">
+            <button type="button" class="btn" id="quest-share-copy">Copy my quest</button>
+            <span id="quest-share-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">

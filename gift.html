@@ -18,6 +18,13 @@
     .gift-card { display: grid; gap: var(--space-2); }
     .gift-why { color: var(--muted); font-size: 0.88rem; margin: 0; }
     .checkline { display: flex; align-items: center; gap: var(--space-2); font-size: 0.9rem; }
+    .gift-ko { font-size: 0.88rem; margin: 0; border-left: 3px solid var(--red, #e5484d); padding-left: var(--space-2); }
+    .gift-notthat { font-size: 0.88rem; margin: 0; border-left: 3px solid var(--gold); padding-left: var(--space-2); color: var(--ink-dim); }
+    .for-field { border: 0; padding: 0; margin: 0; display: grid; gap: var(--space-2); }
+    .for-field legend { font-size: 0.9rem; font-weight: 600; margin-bottom: var(--space-1); padding: 0; }
+    .for-opts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .for-opt { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+    .for-opt:has(input:checked) { border-color: var(--gold); color: var(--gold); background: rgba(245, 179, 1, 0.08); }
     .checkline input { width: 1.1rem; height: 1.1rem; accent-color: var(--gold); }
     .gift-holiday-banner { padding: var(--space-4); margin-bottom: var(--space-5); border-left: 4px solid var(--gold); }
     .gift-holiday-banner p { font-size: 0.95rem; margin: 0; }
@@ -78,7 +85,7 @@
       <div class="container hero-inner">
         <span class="hero-kicker">Never gift blind again</span>
         <h1 id="gift-title">Gift <span class="accent">finder.</span></h1>
-        <p class="lede">Pick a budget and their favorite character — get honest suggestions from the archive, each with real research links so you can check the actual price before you buy.</p>
+        <p class="lede">Pick a budget, name a character <em>or team</em>, and say who it's for — get ranked, honest suggestions from the archive, each with real research links so you can check the actual price before you buy.</p>
       </div>
     </section>
 
@@ -99,11 +106,19 @@
               </select>
             </div>
             <div class="field">
-              <label for="g-character">Favorite character</label>
+              <label for="g-character">Favorite character or team</label>
               <input class="input" id="g-character" name="character" list="g-characters" autocomplete="off"
-                     placeholder="e.g. Spider-Man, Storm, Doctor Doom…">
+                     placeholder="e.g. Spider-Man, Storm, Doctor Doom, X-Men (team)…">
               <datalist id="g-characters"></datalist>
             </div>
+            <fieldset class="for-field">
+              <legend>Who is it for?</legend>
+              <div class="for-opts">
+                <label class="for-opt"><input type="radio" name="g-for" value="kid"> A kid</label>
+                <label class="for-opt"><input type="radio" name="g-for" value="casual" checked> A casual fan</label>
+                <label class="for-opt"><input type="radio" name="g-for" value="collector"> A collector</label>
+              </div>
+            </fieldset>
             <div class="field">
               <label for="g-source">Universe <span class="muted">(optional)</span></label>
               <select class="input" id="g-source" name="source">
@@ -119,7 +134,7 @@
             </label>
             <button type="submit" class="btn btn-gold">Find gifts</button>
           </form>
-          <p class="method-note" style="margin-top:var(--space-4)">Budget bands filter by <strong>figure type as a price proxy</strong> — the archive has no MSRP data, so these are guidance, not price claims. Under $25 favors standard mainline singles; up to $50 adds variants and exclusives; splurge leads with the impressive stuff. Every suggestion links eBay solds so you can verify the real price before buying.</p>
+          <p class="method-note" style="margin-top:var(--space-4)">Ranking is pure archive signals — character/team match, recency, figure type, and rarity flags — weighted by recipient. <strong>Price tiers are figure-type classes, never prices</strong>: the archive has no MSRP data, and the only dollar numbers you'll see are your own journal-logged prices or announced pre-order MSRPs. ⚠️ KO flags come from the encyclopedia's authentication research. Every suggestion links eBay solds so you can verify the real price before buying.</p>
         </section>
 
         <section aria-labelledby="gift-results-heading" aria-live="polite">
