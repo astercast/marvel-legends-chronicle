@@ -33,6 +33,7 @@ NAV = [
     ("collection-value.html", "Ledger"),
     ("exclusives.html", "Exclusives"),
     ("watchlist.html", "Watchlist"),
+    ("budget.html", "Budget"),
     ("radar.html", "Radar"),
     ("preorders.html", "Pre-orders"),
     ("calendar.html", "Release Calendar"),

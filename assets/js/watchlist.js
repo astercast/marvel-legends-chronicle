@@ -6,6 +6,9 @@ import { loadData } from "./data.js";
 import { load, save } from "./store.js";
 import { escapeHtml } from "./figure-dialog.js";
 import { soldSearchUrl } from "./listings.js";
+import {
+  signalForFigure, watchVerdict, verdictLine, shareWatchlistText,
+} from "./price-watch.js";
 
 const WHERE_SUGGESTIONS = ["eBay", "eBay sold listings", "BigBadToyStore", "Hasbro Pulse", "Amazon", "Local comic shop", "Toy show / convention", "Facebook Marketplace", "Mercari", "Whatnot"];
 
@@ -22,9 +25,12 @@ const els = {
   export: document.getElementById("watchlist-export"),
   import: document.getElementById("watchlist-import"),
   importLabel: document.getElementById("watchlist-import-label"),
+  share: document.getElementById("watchlist-share"),
+  shareStatus: document.getElementById("watchlist-share-status"),
 };
 
 let labelToFig = new Map();
+let priceSignals = []; // reported market signals, loaded once; [] = none available
 
 function uid() {
   return (crypto.randomUUID ? crypto.randomUUID() : `w${Date.now()}${Math.random().toString(16).slice(2)}`);
@@ -102,6 +108,27 @@ function sightingRow(entry, s) {
   </li>`;
 }
 
+function marketSection(entry) {
+  const sigs = signalForFigure(entry.figId, priceSignals);
+  if (!sigs.length) {
+    return `<div class="market-box market-none"><p class="chart-sub">No reported market data for this figure yet — <a href="${soldSearchUrl(`Marvel Legends ${entry.name}`)}" target="_blank" rel="noopener noreferrer">check eBay solds</a> to set an informed target.</p></div>`;
+  }
+  const rows = sigs.map((s) => {
+    const v = watchVerdict(s, entry.target);
+    const cls = v.status === "in-range" || v.status === "below" ? "deal-good"
+      : v.status === "above" ? "deal-bad" : "";
+    const srcLink = /^https?:/i.test(s.sourceUrl || "")
+      ? `<a href="${escapeHtml(s.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.source)}</a>`
+      : `<a href="${escapeHtml(s.sourceUrl || "#")}">${escapeHtml(s.source)}</a>`;
+    return `<li class="market-row">
+      <span class="market-label">${escapeHtml(s.label)}: <strong class="entry-price">${escapeHtml(s.display)}</strong></span>
+      ${cls ? `<span class="deal ${cls} deal-inline">${escapeHtml(verdictLine(v))}</span>` : `<span class="chart-sub">${escapeHtml(verdictLine(v))}</span>`}
+      <span class="market-src">Reported by ${srcLink}${s.note ? ` — ${escapeHtml(s.note)}` : ""}${s.singleSource ? ` <span class="badge">single source</span>` : ""}</span>
+    </li>`;
+  }).join("");
+  return `<div class="market-box"><p class="market-head">Reported market vs your target <span class="muted">(reported ranges, not live prices)</span></p><ul class="market-list">${rows}</ul></div>`;
+}
+
 function entryCard(entry) {
   const li = document.createElement("li");
   li.className = "card hunt";
@@ -119,6 +146,7 @@ function entryCard(entry) {
       <span class="muted">${(entry.sightings || []).length} sighting${(entry.sightings || []).length === 1 ? "" : "s"}</span>
       ${v ? `<span class="deal ${v.cls} deal-inline">${escapeHtml(v.text.split("—")[0])}</span>` : ""}
     </div>
+    ${marketSection(entry)}
     ${entry.note ? `<p class="entry-note">${escapeHtml(entry.note)}</p>` : ""}
     <ul class="sight-list">${(entry.sightings || []).map((s) => sightingRow(entry, s)).join("")}</ul>
     <details class="sight-form-wrap">
@@ -297,6 +325,24 @@ async function main() {
     if (e.target.files[0]) importJson(e.target.files[0]);
     e.target.value = "";
   });
+  els.share.addEventListener("click", async () => {
+    const text = shareWatchlistText(getList(), priceSignals);
+    try {
+      await navigator.clipboard.writeText(text);
+      els.shareStatus.textContent = "Copied — paste it anywhere.";
+    } catch {
+      els.shareStatus.textContent = "Copy didn't work — select the text manually.";
+    }
+  });
+
+  // Reported market signals — nice to have, never blocking.
+  try {
+    const res = await fetch(PATHS.priceSignals);
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data.signals)) priceSignals = data.signals;
+    }
+  } catch { /* stay offline-friendly: entries render without market context */ }
 
   render();
 }

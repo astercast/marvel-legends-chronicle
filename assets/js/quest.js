@@ -3,7 +3,10 @@
    archive data to generate quests, achievements, a collector level, and a
    shareable quest card. No invented figures, prices, or rarity: every signal
    (chase flags, retro notes, variants, exclusives, Toy Biz era, BAF pieces)
-   comes from data/figures.json. Prices are never shown — the "cost" proxy is a
+   comes from data/figures.json. Market dollars are never invented — the only
+   dollars shown are the Chronicle's reported price signals (data/price-signals.json,
+   labeled "reported ranges, not live prices"), the user's own watchlist
+   targets, and the user's own logged purchases. The "cost" proxy stays a
    figure-type tier labeled honestly, and watchlist sightings are flagged as
    user-reported.
    The pure logic is exported for the test suite (tests/test-quest.js); the
@@ -16,6 +19,7 @@ import { escapeHtml, badgeFor } from "./figure-dialog.js";
 import { marketplaceQuery, soldSearchUrl } from "./listings.js";
 import { owned, trackerButtons } from "./tracker.js";
 import { buildQuestShareText } from "./quest-share.js";
+import { verdictLine, money as questMoney } from "./price-watch.js";
 import {
   upcomingPreorders, countdownText, preorderCountdown, money, todayStr,
 } from "./preorders.js";
@@ -57,6 +61,7 @@ const els = {
   recBaf: document.getElementById("rec-baf"),
   recCheap: document.getElementById("rec-cheap"),
   recGrail: document.getElementById("rec-grail"),
+  recHunts: document.getElementById("rec-hunts"),
   alertSub: document.getElementById("alerts-sub"),
   alertList: document.getElementById("alerts-list"),
   achCount: document.getElementById("ach-count"),
@@ -66,8 +71,19 @@ const els = {
   shareStatus: document.getElementById("share-status"),
 };
 
-function figureRow(fig) {
-  const row = document.createElement("div");
+/* Reported market signals — a bonus layer, never a blocker. */
+let priceSignals = [];
+async function loadSignals() {
+  try {
+    const res = await fetch(PATHS.priceSignals);
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data.signals)) priceSignals = data.signals;
+    }
+  } catch { /* offline: watchlist/budget quest features degrade gracefully */ }
+}
+
+function figureRow(fig) {  const row = document.createElement("div");
   row.className = "missing-row";
   row.innerHTML = `
     <div class="missing-info">
@@ -198,7 +214,11 @@ async function renderAlerts() {
 function renderAll(figures, waves) {
   const ownedIds = owned.all();
   const watchlist = load(STORE_KEYS.watchlist, []);
-  const achievements = computeAchievements(figures, waves, ownedIds);
+  const buys = load(STORE_KEYS.buys, []);
+  const budget = load(STORE_KEYS.budget, {});
+  const achievements = computeAchievements(figures, waves, ownedIds, {
+    watchlist, signals: priceSignals, buys, budget, today: new Date(),
+  });
   const unlocked = achievements.filter((a) => a.unlocked);
   const quests = generateQuests(figures, waves, ownedIds);
 
@@ -232,10 +252,11 @@ function renderAll(figures, waves) {
   }
 
   /* Next-quest recommendations. */
-  const rec = recommendNext(figures, waves, ownedIds, watchlist);
+  const rec = recommendNext(figures, waves, ownedIds, watchlist, { signals: priceSignals });
   els.recBaf.innerHTML = "";
   els.recCheap.innerHTML = "";
   els.recGrail.innerHTML = "";
+  els.recHunts.innerHTML = "";
   if (rec.baf) {
     els.recBaf.appendChild(recCard("Closest BAF",
       rec.baf.title,
@@ -247,10 +268,10 @@ function renderAll(figures, waves) {
       `<p>Mark BAF-wave figures owned in the <a href="baf-planner.html">BAF planner</a> and this slot will point at your nearest finish.</p>`));
   }
   if (rec.cheapPiece) {
-    const { fig, tier, quest } = rec.cheapPiece;
+    const { fig, tier, quest, watchNote } = rec.cheapPiece;
     els.recCheap.appendChild(recCard("Cheapest missing piece",
       fig.name,
-      `<p class="quest-prog">Figure-type proxy: <strong>${escapeHtml(COST_TIER_LABELS[tier])}</strong> (tier ${tier}/4).</p>
+      `<p class="quest-prog">Figure-type proxy: <strong>${escapeHtml(COST_TIER_LABELS[tier])}</strong> (tier ${tier}/4).${watchNote ? ` <span class="badge">weighted by your watchlist target</span>` : ""}</p>
        <p class="chart-sub">Fills: ${escapeHtml(quest.title)} (${quest.got}/${quest.total})</p>
        <p class="honesty">A rough guess from the figure type, not a price. Verify with <a href="${escapeHtml(soldSearchUrl(marketplaceQuery(fig)))}" target="_blank" rel="noopener">eBay solds</a>.</p>`));
   } else {
@@ -270,6 +291,27 @@ function renderAll(figures, waves) {
   } else {
     els.recGrail.appendChild(recCard("Watchlist grail", "Watchlist empty",
       `<p>Add figures to your <a href="watchlist.html">grail watchlist</a> with target prices and sightings, and this slot will point at your nearest grail.</p>`));
+  }
+
+  /* Watchlist hunts: watched figures ranked by reported market vs your target. */
+  if (rec.watchHunts.length) {
+    const rows = rec.watchHunts.map((h) => {
+      const e = h.entry;
+      const sig = h.best?.signal ?? h.signals[0] ?? null;
+      const v = h.verdict;
+      const band = sig ? `<span class="chart-sub">reported: ${escapeHtml(sig.display)}</span>` : `<span class="chart-sub">no reported market data</span>`;
+      const line = v.status === "no-data" || v.status === "no-target"
+        ? `<span class="chart-sub">${escapeHtml(verdictLine(v))}</span>`
+        : `<span class="deal ${v.status === "above" ? "deal-bad" : "deal-good"} deal-inline">${escapeHtml(verdictLine(v))}</span>`;
+      return `<li><strong>${escapeHtml(e.name ?? e.figId)}</strong> — target <strong>${questMoney(e.target)}</strong> · ${band} · ${line}</li>`;
+    }).join("");
+    els.recHunts.appendChild(recCard("Watchlist hunts",
+      "Closest to your target",
+      `<ul class="rec-list">${rows}</ul>
+       <p class="honesty">Reported ranges, not live prices — from the Chronicle's own research. <a href="watchlist.html">Open the price watch</a>.</p>`));
+  } else {
+    els.recHunts.appendChild(recCard("Watchlist hunts", "No hunts open",
+      `<p>Add figures with target prices to your <a href="watchlist.html">watchlist</a> and this slot ranks them by how close the reported market is to your number.</p>`));
   }
 
   /* Achievements. */
@@ -295,6 +337,7 @@ async function init() {
   els.board.hidden = false;
   try {
     const { figures, waves } = await loadData();
+    await loadSignals();
     renderAll(figures, waves);
     renderAlerts().catch(() => {});
     /* Re-render when tracker toggles fire (owned set changed). */

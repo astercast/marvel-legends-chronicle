@@ -36,7 +36,7 @@ NAV_LINKS = [
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
     ("journal.html", "Journal"),
     ("collection-value.html", "Ledger"),
-    ("exclusives.html", "Exclusives"), ("watchlist.html", "Watchlist"),
+    ("exclusives.html", "Exclusives"), ("watchlist.html", "Watchlist"), ("budget.html", "Budget"),
     ("radar.html", "Radar"), ("preorders.html", "Pre-orders"),
     ("calendar.html", "Release Calendar"), ("compare.html", "Compare"),
     ("holiday.html", "Holiday Guide"), ("grading.html", "Grading"), ("display.html", "Display"), ("grails.html", "Grails"), ("quest.html", "Grail Quest"), ("variants.html", "Variants"),

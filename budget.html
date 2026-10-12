@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Budget Tracker — Marvel Legends Chronicle</title>
+  <meta name="description" content="A spend mirror for your Marvel Legends collecting: your logged purchases against your own monthly and annual budgets, with plain arithmetic stats. Nothing leaves your browser.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .b-hero { padding-block: var(--space-7); }
+    .b-grid { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: var(--space-5); margin-bottom: var(--space-6); align-items: start; }
+    @media (max-width: 900px) { .b-grid { grid-template-columns: 1fr; } }
+    .b-form { display: grid; gap: var(--space-3); }
+    .budget-card { margin-bottom: var(--space-5); }
+    .budget-line { margin: var(--space-2) 0 0; }
+    .budget-over { color: #f87171; font-weight: 700; margin: var(--space-2) 0 0; }
+    .progress-bar.over span { background: #f87171; }
+    .buy-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+    .buy-row { display: grid; grid-template-columns: 1fr auto auto auto; gap: var(--space-2); align-items: baseline; padding: var(--space-2) 0; border-top: 1px solid var(--line-soft); font-size: 0.88rem; }
+    .buy-row:first-child { border-top: none; }
+    .buy-name { font-weight: 600; }
+    .buy-date, .buy-where { color: var(--muted); font-size: 0.8rem; }
+    .buy-price { font-family: var(--font-mono); font-weight: 700; color: var(--gold); }
+    .stat-wide { grid-column: 1 / -1; }
+    .stat-small { font-size: 1rem; }
+    .method-note { font-size: 0.82rem; color: var(--muted); max-width: 70ch; }
+    @media (prefers-reduced-motion: reduce) {
+      .progress-bar span { transition: none; }
+    }
+    @media print {
+      .site-header, .site-footer, .b-form-wrap { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to budget tracker</a>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Timeline</a>
+        <a href="timeline.html">Legends Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="market-briefing.html">Market Briefing</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html">Gift Finder</a>
+        <a href="holiday.html">Holiday Guide</a>
+        <a href="grading.html">Grading</a>
+        <a href="display.html">Display</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="budget.html" aria-current="page">Budget</a>
+        <a href="radar.html">Radar</a>
+        <a href="preorders.html">Pre-orders</a>
+        <a href="calendar.html">Release Calendar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="quest.html">Grail Quest</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="rarity.html">Rarity Guide</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="agents.html">Agents</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero b-hero" aria-labelledby="b-title">
+      <div class="container hero-inner">
+        <span class="hero-kicker">Your money, your mirror</span>
+        <h1 id="b-title">Budget <span class="accent">tracker.</span></h1>
+        <p class="lede">Your logged purchases against the monthly and annual budgets <em>you</em> set. Plain arithmetic — totals, averages, a biggest-single-purchase — and nothing else. This page is a mirror, not a planner: it never tells you what to spend.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="b-grid">
+        <section class="card b-form-wrap" style="padding:var(--space-5)" aria-labelledby="b-settings-heading">
+          <h2 id="b-settings-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Your budgets</h2>
+          <form id="budget-form" class="b-form" novalidate>
+            <div class="field">
+              <label for="b-monthly">Monthly budget (USD)</label>
+              <input class="input" id="b-monthly" name="monthly" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="150.00">
+            </div>
+            <div class="field">
+              <label for="b-annual">Annual budget (USD)</label>
+              <input class="input" id="b-annual" name="annual" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="1800.00">
+            </div>
+            <p class="form-error" id="b-save-status" role="status" aria-live="polite"></p>
+            <div class="btn-row" style="margin-top:0">
+              <button type="submit" class="btn btn-gold">Save budgets</button>
+              <button type="button" class="btn btn-ghost" id="b-clear-budgets">Clear</button>
+            </div>
+          </form>
+          <p class="method-note" style="margin-top:var(--space-4)">Budgets are targets you set for yourself — the Chronicle never suggests a number, and nothing here is financial advice. Log purchases on the <a href="collection-value.html">Ledger</a> page; they show up here automatically. Everything lives in this browser (<code>mlc_budget_v1</code>).</p>
+        </section>
+
+        <div>
+          <div class="stat-strip" id="b-summary" aria-label="Spending summary" style="margin-bottom:var(--space-5)"></div>
+
+          <section class="card budget-card" style="padding:var(--space-5)" aria-labelledby="b-month-title">
+            <h2 id="b-month-title" style="font-size:1.15rem;margin-bottom:var(--space-3)">This month</h2>
+            <div id="b-month-bar"></div>
+            <p class="chart-sub" id="b-month-line"></p>
+          </section>
+
+          <section class="card budget-card" style="padding:var(--space-5)" aria-labelledby="b-year-title">
+            <h2 id="b-year-title" style="font-size:1.15rem;margin-bottom:var(--space-3)">This year</h2>
+            <div id="b-year-bar"></div>
+            <p class="chart-sub" id="b-year-line"></p>
+          </section>
+
+          <section class="card budget-card" style="padding:var(--space-5)" aria-labelledby="b-stats-heading">
+            <h2 id="b-stats-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">All-time stats</h2>
+            <div class="stat-strip" id="b-stats" aria-label="All-time purchase stats"></div>
+          </section>
+
+          <section class="card" style="padding:var(--space-5)" aria-labelledby="b-recent-heading">
+            <h2 id="b-recent-heading" style="font-size:1.15rem;margin-bottom:var(--space-3)">Recent purchases</h2>
+            <div class="empty-state" id="b-empty" hidden>
+              <p>No purchases logged yet. Log what you actually paid on the <a href="collection-value.html">Ledger</a> page and the numbers will appear here.</p>
+            </div>
+            <ul class="buy-list" id="b-recent"></ul>
+            <p class="chart-sub" style="margin-top:var(--space-3)">Purchases come from the <a href="collection-value.html">Ledger</a> (<code>mlc_buys_v1</code>). Hunting a figure? Set a target on the <a href="watchlist.html">Watchlist</a> and let the <a href="quest.html">Grail Quest</a> weigh it in.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <nav aria-label="Footer">
+        <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/budget.js"></script>
+</body>
+</html>

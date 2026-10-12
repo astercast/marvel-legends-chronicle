@@ -4,6 +4,7 @@ export const PATHS = {
   encyclopedia: "data/encyclopedia.json",
   communitySeed: "data/community.json",
   preorders: "data/preorders.json",
+  priceSignals: "data/price-signals.json",
 };
 
 export const STORE_KEYS = {
@@ -20,6 +21,7 @@ export const STORE_KEYS = {
   gallery: "mlc_gallery_v1", // { shelves: [{ id, name, layout, photos: [{ id, dataUrl, caption, tags: [figId], ts }] }] } — Shelf Gallery photos (client-side only)
   hunt: "mlc_hunt_v1", // { selected: [figId], maxPrices: { figId: number } } — toy-show hunt planner
   preorders: "mlc_preorders_v1", // { <preorderItemId>: "watching"|"ordered"|"skipped" } — pre-order tracker personal calls
+  budget: "mlc_budget_v1", // { monthly: number|null, annual: number|null } — the user's own spend targets
 };
 
 export const MARKETPLACES = [

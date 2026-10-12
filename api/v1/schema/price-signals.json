@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema#","properties":{"count":{"type":"integer"},"methodology":{"type":"string"},"observed":{"type":"string"},"signals":{"type":"array"},"version":{"type":"string"}},"required":["version","observed","methodology","count","signals"],"title":"PriceSignalList","type":"object"}

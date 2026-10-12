@@ -528,7 +528,8 @@
    "body": [
     "Rarity is a supply fact; value is a supply-and-demand fact. The Chronicle keeps them separate on purpose: every dollar in this guide is a reported listing or sold price, never a Chronicle price index.",
     "The encyclopedia's reissue research states the rule plainly: originals keep a premium only when the value driver is rarity or provenance (prototypes, true limited runs), not mere availability. Documented cases: the VHS Animated Series sellout → aftermarket spike → 2026 Retro reissues at $27.99; the Super-Skrull 'previously an exclusive' reissue at $46.99; the 2021 PulseCon cel-shaded Retro Venom reissued at Fan Channel for $34.99. In each case the spike belonged to availability, and the reissue took it back.",
-    "The reissue radar marks each grail resilient or vulnerable. Structural scarcity (short-packs, funded-only runs) is resilient; availability scarcity (sold-out-at-retail) is vulnerable. Check the radar before paying a premium."
+    "The reissue radar marks each grail resilient or vulnerable. Structural scarcity (short-packs, funded-only runs) is resilient; availability scarcity (sold-out-at-retail) is vulnerable. Check the radar before paying a premium.",
+    "The Chronicle's Price Watch keeps the same discipline: your watchlist targets are compared against reported sold and listing bands only — reported ranges, not live prices, never a Chronicle valuation."
    ],
    "icon": "💹",
    "id": "rarity-not-value",
@@ -544,6 +545,10 @@
     {
      "label": "Price guide",
      "url": "price-guide.html"
+    },
+    {
+     "label": "Price Watch (watchlist)",
+     "url": "watchlist.html"
     }
    ],
    "name": "What rarity means for value"
@@ -565,7 +570,8 @@
   {
    "body": [
     "Every tier in this guide maps to a quest achievement, all computed from the archive's own signals — nothing invented. Own the archive's chase-flagged figures for Chase Hunter, 10+ documented variants for Variant Vault, 5+ convention exclusives (SDCC, NYCC, HASCON, PulseCon) for Convention Floor — plus the wave-23 additions below.",
-    "New in this wave: HasLab Backer (own any HasLab exclusive figure), Made To Order (own a made-to-order figure), and Rarity Trifecta (own a chase, a convention exclusive, and a HasLab figure — one of each tier)."
+    "New in this wave: HasLab Backer (own any HasLab exclusive figure), Made To Order (own a made-to-order figure), and Rarity Trifecta (own a chase, a convention exclusive, and a HasLab figure — one of each tier).",
+    "Wave 25 adds three more: Patient Hunter (a watched figure's reported market low drops into your target range), Deal Day (you log a purchase below your watchlist target), and Budget Keeper (10+ purchases logged while this month's spend stays at or under your own monthly budget). The Budget Tracker page mirrors your logged ledger purchases against the budgets you set."
    ],
    "icon": "🏆",
    "id": "quest-hook",

@@ -21,6 +21,8 @@ await import("./test-api-workflows.js");
 await import("./test-gift.js");
 await import("./test-timeline.js");
 await import("./test-rarity.js");
+await import("./test-price-watch.js");
+await import("./test-budget.js");
 
 const failures = await runAll();
 process.exit(failures ? 1 : 0);

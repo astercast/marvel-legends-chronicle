@@ -53,6 +53,7 @@ Read this before touching any endpoint or skill.
 | `api/v1/characters.json` | 66 character guides: `slug`, `name`, `count`, `first`, `last`, `page` (`characters/<slug>.html`) | `api/v1/schema/characters.json` → item `api/v1/schema/character.json` |
 | `api/v1/timeline.json` | The Legends Timeline: 25 year records (2002–2026) — `era`, `headline`, `summary`, sourced `milestones`, `packaging` notes, per-year `waves` (real archive ids + pages), `spotlight` figure ids; envelope carries the 5 `packagingEras` | `api/v1/schema/timeline.json` → item `api/v1/schema/timeline-year.json` |
 | `api/v1/rarity.json` | The Rarity Guide: 9 tier records (chase, running-change, deco, unmasked, convention, retailer, Pulse/Fan Channel, HasLab, made-to-order) — `body`, `howToSpot`, `valueNote` (reported prices only), `archiveSignal`, `questAchievement`, `examples` (real figure `id`s + `waveId`/`year`/`wavePage`), `sources[]`; envelope carries `archiveCounts` + `methodology` + `crossCutting` | `api/v1/schema/rarity.json` → item `api/v1/schema/rarity-tier.json` |
+| `api/v1/price-signals.json` | Reported market price signals for the Price Watch: 7 curated records keyed to real figure `id`s — `kind` (`sold-band`/`sold-avg`/`listing`/`claimed`), `low`/`high` (USD), `display`, `source` + `sourceUrl`, `note`, `singleSource` flag, `asOf`; envelope carries `methodology` ("reported ranges, not live prices — no Chronicle price index"). Powers watchlist verdicts vs user targets. | `api/v1/schema/price-signals.json` → item `api/v1/schema/price-signal.json` |
 | `api/v1/radar-candidates.json` | Hand-maintained reissue-radar research feed (newly spotted news). Research notes, not a generated snapshot. | `api/v1/schema/radar-candidates.json` → item `api/v1/schema/radar-candidate.json` |
 | `api/v1/radar-seen.json` | Hand-maintained dedupe list of processed radar URLs | `api/v1/schema/radar-seen.json` |
 
@@ -179,8 +180,10 @@ skill `preorder-hunter`.
 5. "Buy this, not that": if the same character has a pricier variant or
    exclusive, recommend the standard and name the skip explicitly.
 6. Price honesty: the only dollars you may cite are announced pre-order
-   MSRPs (`api/v1/preorders.json` `price`, labeled as such) or the user's
-   own logged prices. Everything else = "check eBay solds".
+   MSRPs (`api/v1/preorders.json` `price`, labeled as such), the Chronicle's
+   reported price signals (`api/v1/price-signals.json`, labeled "reported
+   ranges, not live prices"), or the user's own logged prices. Everything
+   else = "check eBay solds".
    Prefill the tool for the user:
    `gift.html?budget=under25&for=kid&character=Spider-Man`.
 
@@ -217,6 +220,7 @@ pre-order tracker) are browser-local — an agent can't reach a user's
 | `mlc_watchlist_v1` | `[{ id, figId, name, wave, target, note, created, sightings: [{ id, date, where, price, sold, url, note }] }]` |
 | `mlc_hunt_v1` | `{ selected: [figId], maxPrices: { figId: number } }` |
 | `mlc_preorders_v1` | `{ <preorderItemId>: "watching" \| "ordered" \| "skipped" }` |
+| `mlc_budget_v1` | `{ monthly: number\|null, annual: number\|null }` — the user's own spend targets (Budget Tracker; never suggested by the Chronicle) |
 | `mlc_showcase_v1` | `{ order: [figId], notes: { figId: text } }` |
 | `mlc_gallery_v1` | `{ shelves: [{ id, name, layout: "grid"\|"run"\|"baf", photos: [{ id, dataUrl, caption, tags: [figId], ts }] }] }` — client-side only, never uploaded |
 | `mlc_shelf_history_v1` | `[{ d: "YYYY-MM-DD", owned, wanted, bafDone }]` |

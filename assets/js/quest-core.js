@@ -3,6 +3,10 @@
    safe to import from any page. All signals derive from the archive
    data and the caller's owned/watchlist ids — nothing invented. */
 import { buildBafs } from "./baf-planner.js";
+import {
+  signalForFigure, closenessToTarget, rankWatchHunts,
+} from "./price-watch.js";
+import { monthKey, buysInMonth, totalFor } from "./budget-core.js";
 
 /* ------------------------------------------------------------------ */
 /* Archive signals — all derived from the figure records, nothing added. */
@@ -192,23 +196,46 @@ export function generateQuests(figures, waves, ownedIds) {
 /* ------------------------------------------------------------------ */
 /* "Next quest" recommendations. */
 
-export function recommendNext(figures, waves, ownedIds, watchlist) {
-  const ownedSet = new Set(ownedIds);
+export function recommendNext(figures, waves, ownedIds, watchlist, extra = {}) {
+  const ownedSet = new Set(Array.isArray(ownedIds) ? ownedIds : []);
+  const signals = Array.isArray(extra.signals) ? extra.signals : [];
   const quests = generateQuests(figures, waves, ownedIds);
-  const out = { baf: null, cheapPiece: null, grail: null };
+  const out = { baf: null, cheapPiece: null, grail: null, watchHunts: [] };
 
   /* Closest BAF: fewest pieces missing among started BAFs. */
   const bafQuests = quests.filter((q) => q.kind === "baf");
   if (bafQuests.length) out.baf = bafQuests[0];
 
   /* Cheapest missing piece of a character/series run, by figure-type proxy —
-     labeled honestly as a proxy, not a price. */
+     labeled honestly as a proxy, not a price. When a missing piece is on the
+     user's watchlist and the Chronicle has a reported market signal for it,
+     the proxy is weighted by how close the reported range is to the user's
+     target (flagged on the result, never presented as a price). */
+  const watchByFig = new Map();
+  for (const e of Array.isArray(watchlist) ? watchlist : []) {
+    if (e && e.figId && Number(e.target) > 0 && !watchByFig.has(e.figId)) {
+      watchByFig.set(e.figId, e);
+    }
+  }
   let best = null;
   for (const q of quests) {
     if (q.kind !== "character" && q.kind !== "run") continue;
     for (const f of q.missing) {
       const tier = costTier(f);
-      if (!best || tier < best.tier) best = { fig: f, tier, quest: q };
+      let score = tier;
+      let watchNote = null;
+      const w = watchByFig.get(f.id);
+      if (w && !ownedSet.has(f.id)) {
+        for (const s of signalForFigure(f.id, signals)) {
+          const c = closenessToTarget(s, w.target);
+          if (c !== null && c > 0) {
+            score = tier - Math.min(c, 0.9);
+            watchNote = "watch-weighted";
+            break;
+          }
+        }
+      }
+      if (!best || score < best.score) best = { fig: f, tier, score, quest: q, watchNote };
     }
   }
   if (best) out.cheapPiece = best;
@@ -230,15 +257,25 @@ export function recommendNext(figures, waves, ownedIds, watchlist) {
   }
   if (grail) out.grail = grail;
 
+  /* Watchlist hunts: watched figures ranked by how close the Chronicle's
+     reported market data is to the user's target — the "best next hunt".
+     Reported ranges, never live prices. */
+  out.watchHunts = rankWatchHunts(watchlist, ownedIds, signals).slice(0, 5);
+
   return out;
 }
 
 /* ------------------------------------------------------------------ */
 /* Achievements — unlockable badges from archive signals only. */
 
-export function computeAchievements(figures, waves, ownedIds) {
-  const ownedSet = new Set(ownedIds);
+export function computeAchievements(figures, waves, ownedIds, extra = {}) {
+  const ownedSet = new Set(Array.isArray(ownedIds) ? ownedIds : []);
   const ownedFigs = figures.filter((f) => ownedSet.has(f.id));
+  const watchlist = Array.isArray(extra.watchlist) ? extra.watchlist : [];
+  const signals = Array.isArray(extra.signals) ? extra.signals : [];
+  const buys = Array.isArray(extra.buys) ? extra.buys : [];
+  const budget = extra.budget ?? {};
+  const today = extra.today instanceof Date ? extra.today : new Date();
 
   const bafs = buildBafs(waves);
   const completedBafs = bafs.filter((b) =>
@@ -253,7 +290,51 @@ export function computeAchievements(figures, waves, ownedIds) {
     if (allOwned) completedWaves++;
   }
 
+  /* --- wave-25: watchlist + budget achievements (all user-derived + reported data) --- */
+  /* Patient Hunter: watched figures whose reported market low is at/under target. */
+  const watchTargets = new Map();
+  for (const e of watchlist) {
+    const t = Number(e?.target);
+    if (e?.figId && Number.isFinite(t) && t > 0 && !watchTargets.has(e.figId)) {
+      watchTargets.set(e.figId, t);
+    }
+  }
+  const patientHits = [];
+  for (const [figId, target] of watchTargets) {
+    const lows = signalForFigure(figId, signals)
+      .map((s) => Number(s?.low))
+      .filter((n) => Number.isFinite(n) && n > 0);
+    if (lows.length && Math.min(...lows) <= target) patientHits.push(figId);
+  }
+  /* Deal Day: purchases logged below the watchlist target for the same figure. */
+  const dealHits = buys.filter((b) => {
+    const t = watchTargets.get(b?.figId);
+    const p = Number(b?.price);
+    return t !== undefined && Number.isFinite(p) && p > 0 && p < t;
+  });
+  /* Budget Keeper: 10+ purchases logged AND this month's spend at/under the
+     user's own monthly budget (injectable `today` keeps tests honest). */
+  const monthTotal = totalFor(buysInMonth(buys, monthKey(today)));
+  const monthlyLimit = Number(budget?.monthly);
+  const withinBudget = Number.isFinite(monthlyLimit) && monthlyLimit > 0 && monthTotal <= monthlyLimit;
+
   const catalog = [
+    {
+      id: "patient-hunter", name: "Patient Hunter", icon: "🏹",
+      blurb: "A watched figure's reported market low is at or under your target — patience paid off.",
+      got: patientHits.length, need: 1,
+    },
+    {
+      id: "deal-day", name: "Deal Day", icon: "🎉",
+      blurb: "Log a purchase below the watchlist target you set for that figure.",
+      got: dealHits.length, need: 1,
+    },
+    {
+      id: "budget-keeper", name: "Budget Keeper", icon: "🧾",
+      blurb: "Log 10+ purchases while keeping this month's spend at or under your own monthly budget.",
+      got: Math.min(buys.length, 10), need: 10,
+      unlocked: buys.length >= 10 && withinBudget,
+    },
     {
       id: "first-steps", name: "First Steps", icon: "🐾",
       blurb: "Log your first 5 figures in the tracker.",
@@ -320,7 +401,9 @@ export function computeAchievements(figures, waves, ownedIds) {
 
   return catalog.map((a) => ({
     ...a,
-    unlocked: a.got >= a.need,
+    // Most achievements unlock on got >= need; a few (budget-keeper) carry
+    // their own unlock rule combining progress with a user-set condition.
+    unlocked: "unlocked" in a ? a.unlocked : a.got >= a.need,
   }));
 }
 

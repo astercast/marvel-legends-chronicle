@@ -330,3 +330,94 @@ suite("share card", () => {
     assert(!textNoRecs.includes("1,904"), "archiveCount optional");
   });
 });
+
+suite("wave 25: watchlist + budget achievements", () => {
+  const SIG = [
+    { id: "s1", figId: "w1::Storm", label: "Storm", kind: "sold-band", low: 40, high: 60 },
+  ];
+
+  test("Patient Hunter unlocks when a reported low drops into target range", () => {
+    const wl = [{ id: "x", figId: "w1::Storm", name: "Storm", target: 50 }];
+    const a = computeAchievements(figures, waves, [], { watchlist: wl, signals: SIG });
+    const ph = a.find((x) => x.id === "patient-hunter");
+    assert(ph, "achievement exists");
+    assert(ph.unlocked, "reported low $40 is under the $50 target");
+    assert.equal(ph.got, 1);
+    const poor = [{ id: "x", figId: "w1::Storm", name: "Storm", target: 30 }];
+    const b = computeAchievements(figures, waves, [], { watchlist: poor, signals: SIG });
+    assert(!b.find((x) => x.id === "patient-hunter").unlocked, "$40 low over a $30 target stays locked");
+    const none = computeAchievements(figures, waves, [], {});
+    assert(!none.find((x) => x.id === "patient-hunter").unlocked, "no watchlist stays locked");
+  });
+
+  test("Deal Day unlocks on a purchase logged below the watchlist target", () => {
+    const wl = [{ id: "x", figId: "w1::Gambit", name: "Gambit", target: 50 }];
+    const deal = computeAchievements(figures, waves, [], {
+      watchlist: wl, buys: [{ figId: "w1::Gambit", price: 40 }],
+    });
+    assert(deal.find((x) => x.id === "deal-day").unlocked, "paid $40 against a $50 target");
+    const noDeal = computeAchievements(figures, waves, [], {
+      watchlist: wl, buys: [{ figId: "w1::Gambit", price: 60 }],
+    });
+    assert(!noDeal.find((x) => x.id === "deal-day").unlocked, "paid over target stays locked");
+  });
+
+  test("Budget Keeper needs 10+ purchases AND the month under budget", () => {
+    const ten = Array.from({ length: 10 }, (_, i) => ({ id: String(i), name: "F", price: 10, date: "2026-10-05" }));
+    const today = new Date(2026, 9, 15);
+    const ok = computeAchievements(figures, waves, [], { buys: ten, budget: { monthly: 100 }, today });
+    assert(ok.find((x) => x.id === "budget-keeper").unlocked, "10 x $10 = $100 against a $100 budget");
+    const nine = computeAchievements(figures, waves, [], { buys: ten.slice(0, 9), budget: { monthly: 100 }, today });
+    const bk9 = nine.find((x) => x.id === "budget-keeper");
+    assert(!bk9.unlocked, "9 purchases is not 10");
+    assert.equal(bk9.got, 9, "progress reported honestly");
+    const over = computeAchievements(figures, waves, [], { buys: ten, budget: { monthly: 50 }, today });
+    assert(!over.find((x) => x.id === "budget-keeper").unlocked, "$100 spend over a $50 budget stays locked");
+    const noBudget = computeAchievements(figures, waves, [], { buys: ten, today });
+    assert(!noBudget.find((x) => x.id === "budget-keeper").unlocked, "no budget set stays locked");
+  });
+
+  test("the three new achievements render without breaking the old ones", () => {
+    const a = computeAchievements(figures, waves, []);
+    for (const id of ["patient-hunter", "deal-day", "budget-keeper"]) {
+      assert(a.some((x) => x.id === id), `${id} is in the catalog`);
+    }
+    assert.equal(a.filter((x) => x.unlocked).length, 0, "empty everything unlocks nothing");
+  });
+});
+
+suite("wave 25: watchlist-fed recommendations", () => {
+  const SIG = [
+    { id: "s1", figId: "w1::Storm", label: "Storm", kind: "sold-band", low: 40, high: 60 },
+    { id: "s2", figId: "w1::Rogue", label: "Rogue", kind: "sold-band", low: 90, high: 110 },
+  ];
+
+  test("watchHunts ranks watched figures by target closeness", () => {
+    const wl = [
+      { id: "a", figId: "w1::Storm", name: "Storm", target: 45 }, // closeness 1
+      { id: "b", figId: "w1::Rogue", name: "Rogue", target: 45 }, // closeness 0.5
+    ];
+    const rec = recommendNext(figures, waves, ["w1::Gambit"], wl, { signals: SIG });
+    assert.equal(rec.watchHunts.length, 2);
+    assert.equal(rec.watchHunts[0].entry.name, "Storm");
+    assert.equal(rec.watchHunts[1].entry.name, "Rogue");
+    assert.equal(rec.watchHunts[0].verdict.status, "in-range", "$45 sits in the $40–$60 band");
+  });
+
+  test("watchHunts excludes owned figures", () => {
+    const wl = [{ id: "a", figId: "w1::Storm", name: "Storm", target: 45 }];
+    const rec = recommendNext(figures, waves, ["w1::Gambit", "w1::Storm"], wl, { signals: SIG });
+    assert.equal(rec.watchHunts.length, 0, "owned figure excluded");
+  });
+
+  test("cheapest missing piece is watch-weighted when the target nears the reported band", () => {
+    const owned = ["w1::Gambit"];
+    const wl = [{ id: "a", figId: "w1::Storm", name: "Storm", target: 45 }];
+    const weighted = recommendNext(figures, waves, owned, wl, { signals: SIG });
+    assert(weighted.cheapPiece, "a cheap piece exists");
+    assert.equal(weighted.cheapPiece.fig.id, "w1::Storm");
+    assert.equal(weighted.cheapPiece.watchNote, "watch-weighted", "weighting is flagged honestly");
+    const plain = recommendNext(figures, waves, owned, wl);
+    assert(!plain.cheapPiece.watchNote, "no signals -> no weighting flag");
+  });
+});
