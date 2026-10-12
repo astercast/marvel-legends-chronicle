@@ -2,42 +2,49 @@
   {
     "slug": "spider-man",
     "name": "Spider-Man",
-    "count": 86,
+    "count": 88,
     "first": 2003,
     "last": 2026
   },
   {
     "slug": "iron-man",
     "name": "Iron Man",
-    "count": 75,
+    "count": 77,
     "first": 2002,
     "last": 2026
   },
   {
     "slug": "wolverine",
     "name": "Wolverine",
-    "count": 53,
+    "count": 56,
     "first": 2002,
     "last": 2026
   },
   {
     "slug": "captain-america",
     "name": "Captain America",
-    "count": 52,
-    "first": 2002,
-    "last": 2026
-  },
-  {
-    "slug": "thor",
-    "name": "Thor",
-    "count": 28,
+    "count": 54,
     "first": 2002,
     "last": 2026
   },
   {
     "slug": "hulk",
     "name": "Hulk",
-    "count": 27,
+    "count": 29,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "thor",
+    "name": "Thor",
+    "count": 29,
+    "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "daredevil",
+    "name": "Daredevil",
+    "count": 22,
     "first": 2002,
     "last": 2026
   },
@@ -49,6 +56,13 @@
     "last": 2026
   },
   {
+    "slug": "punisher",
+    "name": "Punisher",
+    "count": 21,
+    "first": 2003,
+    "last": 2026
+  },
+  {
     "slug": "black-widow",
     "name": "Black Widow",
     "count": 21,
@@ -56,23 +70,9 @@
     "last": 2026
   },
   {
-    "slug": "daredevil",
-    "name": "Daredevil",
-    "count": 20,
-    "first": 2002,
-    "last": 2026
-  },
-  {
-    "slug": "punisher",
-    "name": "Punisher",
-    "count": 20,
-    "first": 2003,
-    "last": 2026
-  },
-  {
     "slug": "cyclops",
     "name": "Cyclops",
-    "count": 18,
+    "count": 19,
     "first": 2005,
     "last": 2026
   },
@@ -93,15 +93,22 @@
   {
     "slug": "human-torch",
     "name": "Human Torch",
-    "count": 14,
+    "count": 16,
     "first": 2002,
     "last": 2026
   },
   {
     "slug": "venom",
     "name": "Venom",
-    "count": 14,
+    "count": 16,
     "first": 2004,
+    "last": 2026
+  },
+  {
+    "slug": "doctor-doom",
+    "name": "Doctor Doom",
+    "count": 13,
+    "first": 2002,
     "last": 2026
   },
   {
@@ -119,10 +126,17 @@
     "last": 2025
   },
   {
-    "slug": "doctor-doom",
-    "name": "Doctor Doom",
+    "slug": "magneto",
+    "name": "Magneto",
     "count": 12,
     "first": 2002,
+    "last": 2026
+  },
+  {
+    "slug": "beast",
+    "name": "Beast",
+    "count": 12,
+    "first": 2003,
     "last": 2026
   },
   {
@@ -135,13 +149,6 @@
   {
     "slug": "ghost-rider",
     "name": "Ghost Rider",
-    "count": 11,
-    "first": 2002,
-    "last": 2026
-  },
-  {
-    "slug": "magneto",
-    "name": "Magneto",
     "count": 11,
     "first": 2002,
     "last": 2026
@@ -180,13 +187,6 @@
     "count": 11,
     "first": 2014,
     "last": 2023
-  },
-  {
-    "slug": "beast",
-    "name": "Beast",
-    "count": 10,
-    "first": 2003,
-    "last": 2026
   },
   {
     "slug": "rogue",
@@ -263,6 +263,13 @@
     "name": "Spider-Woman",
     "count": 9,
     "first": 2006,
+    "last": 2025
+  },
+  {
+    "slug": "silver-surfer",
+    "name": "Silver Surfer",
+    "count": 9,
+    "first": 2007,
     "last": 2025
   },
   {
@@ -364,13 +371,6 @@
     "last": 2024
   },
   {
-    "slug": "silver-surfer",
-    "name": "Silver Surfer",
-    "count": 7,
-    "first": 2007,
-    "last": 2025
-  },
-  {
     "slug": "ms-marvel",
     "name": "Ms. Marvel",
     "count": 7,
@@ -390,6 +390,13 @@
     "count": 6,
     "first": 2002,
     "last": 2008
+  },
+  {
+    "slug": "colossus",
+    "name": "Colossus",
+    "count": 6,
+    "first": 2003,
+    "last": 2026
   },
   {
     "slug": "nick-fury",
@@ -453,12 +460,5 @@
     "count": 6,
     "first": 2018,
     "last": 2026
-  },
-  {
-    "slug": "namor",
-    "name": "Namor",
-    "count": 5,
-    "first": 2002,
-    "last": 2024
   }
 ]

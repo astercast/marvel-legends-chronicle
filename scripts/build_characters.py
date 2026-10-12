@@ -34,6 +34,7 @@ NAV_LINKS = [
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("market-briefing.html", "Market Briefing"),
     ("launch-curve.html", "Launch Curve"),
+    ("drop-week.html", "Drop Week"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
     ("journal.html", "Journal"),
     ("collection-value.html", "Ledger"),

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate static wave pages: waves/<wave-id>.html for all 158 waves,
+"""Generate static wave pages: waves/<wave-id>.html for all 167 waves,
 plus waves/index.html and waves/manifest.json.
 
 Usage: python3 scripts/build_waves.py
@@ -38,6 +38,7 @@ NAV_LINKS = [
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
     ("market-briefing.html", "Market Briefing"),
     ("launch-curve.html", "Launch Curve"),
+    ("drop-week.html", "Drop Week"),
     ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
     ("journal.html", "Journal"),
     ("collection-value.html", "Ledger"),

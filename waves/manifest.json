@@ -1261,6 +1261,78 @@
     "year": 2026,
     "manufacturer": "Hasbro",
     "baf": null,
-    "figureCount": 92
+    "figureCount": 93
+  },
+  {
+    "id": "toybiz-2006-icons-1",
+    "series": "Icons Series 1",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 6
+  },
+  {
+    "id": "toybiz-2006-icons-2",
+    "series": "Icons Series 2",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 4
+  },
+  {
+    "id": "toybiz-2006-icons-3",
+    "series": "Icons Series 3",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 4
+  },
+  {
+    "id": "hasbro-2007-icons-4",
+    "series": "Icons Series 4",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 2
+  },
+  {
+    "id": "hasbro-2007-icons-5",
+    "series": "Icons Series 5",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 4
+  },
+  {
+    "id": "hasbro-2007-icons-6",
+    "series": "Icons Series 6",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 3
+  },
+  {
+    "id": "hasbro-2007-icons-7",
+    "series": "Icons Series 7",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 2
+  },
+  {
+    "id": "hasbro-2007-icons-additional",
+    "series": "Icons (Hasbro 12-inch) \u2014 additional releases",
+    "year": 2007,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 5
+  },
+  {
+    "id": "toybiz-2006-masterworks",
+    "series": "Masterworks",
+    "year": 2006,
+    "manufacturer": "Toy Biz",
+    "baf": null,
+    "figureCount": 4
   }
 ]

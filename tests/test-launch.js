@@ -10,7 +10,7 @@
      Astonishing 16d excluded; YFNS sale-window Nov 1 = 20d excluded).
    - launch-curve.html: both curve sections present, SVG .curve-draw + pathLength,
      markers resolved, keyboard-focusable data points.
-   - API manifest: 15 endpoints; launch-curves records == 2. */
+   - API manifest: 16 endpoints; launch-curves records == 2. */
 "use strict";
 
 import { readFileSync, existsSync } from "node:fs";
@@ -175,9 +175,9 @@ suite("launch-curve.html: rendered page", () => {
 });
 
 suite("api: launch-curves endpoint", () => {
-  test("manifest registers 15 endpoints with launch-curves records == 2", () => {
+  test("manifest registers 16 endpoints with launch-curves records == 2", () => {
     const names = Object.keys(manifest.endpoints);
-    assert.equal(names.length, 15, `${names.length} endpoints`);
+    assert.equal(names.length, 16, `${names.length} endpoints`);
     assert.equal(manifest.endpoints["launch-curves"].records, 2);
   });
   test("api/v1/launch-curves.json has 2 curve records", () => {

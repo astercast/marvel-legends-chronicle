@@ -495,14 +495,14 @@
  ],
  "archiveCounts": {
   "chaseFlagged": 2,
-  "variantFigures": 83,
+  "variantFigures": 94,
   "sdcc": 74,
   "conventionExclusive": 80,
   "haslab": 8,
   "madeToOrder": 4,
   "hasbroPulse": 70,
   "fanChannel": 56,
-  "exclusiveFigures": 587
+  "exclusiveFigures": 589
  },
  "crossCutting": [
   {

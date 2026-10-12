@@ -351,6 +351,34 @@
           "figureCount": 11,
           "baf": null,
           "page": "waves/toybiz-2006-face-off-2.html"
+        },
+        {
+          "id": "toybiz-2006-icons-1",
+          "series": "Icons Series 1",
+          "figureCount": 6,
+          "baf": null,
+          "page": "waves/toybiz-2006-icons-1.html"
+        },
+        {
+          "id": "toybiz-2006-icons-2",
+          "series": "Icons Series 2",
+          "figureCount": 4,
+          "baf": null,
+          "page": "waves/toybiz-2006-icons-2.html"
+        },
+        {
+          "id": "toybiz-2006-icons-3",
+          "series": "Icons Series 3",
+          "figureCount": 4,
+          "baf": null,
+          "page": "waves/toybiz-2006-icons-3.html"
+        },
+        {
+          "id": "toybiz-2006-masterworks",
+          "series": "Masterworks",
+          "figureCount": 4,
+          "baf": null,
+          "page": "waves/toybiz-2006-masterworks.html"
         }
       ],
       "spotlight": [
@@ -430,6 +458,41 @@
           "figureCount": 8,
           "baf": null,
           "page": "waves/hasbro-2007-store-exclusives.html"
+        },
+        {
+          "id": "hasbro-2007-icons-4",
+          "series": "Icons Series 4",
+          "figureCount": 2,
+          "baf": null,
+          "page": "waves/hasbro-2007-icons-4.html"
+        },
+        {
+          "id": "hasbro-2007-icons-5",
+          "series": "Icons Series 5",
+          "figureCount": 4,
+          "baf": null,
+          "page": "waves/hasbro-2007-icons-5.html"
+        },
+        {
+          "id": "hasbro-2007-icons-6",
+          "series": "Icons Series 6",
+          "figureCount": 3,
+          "baf": null,
+          "page": "waves/hasbro-2007-icons-6.html"
+        },
+        {
+          "id": "hasbro-2007-icons-7",
+          "series": "Icons Series 7",
+          "figureCount": 2,
+          "baf": null,
+          "page": "waves/hasbro-2007-icons-7.html"
+        },
+        {
+          "id": "hasbro-2007-icons-additional",
+          "series": "Icons (Hasbro 12-inch) — additional releases",
+          "figureCount": 5,
+          "baf": null,
+          "page": "waves/hasbro-2007-icons-additional.html"
         }
       ],
       "spotlight": []
@@ -1833,7 +1896,7 @@
         {
           "id": "hasbro-2026-exclusives",
           "series": "Store & Convention Exclusives",
-          "figureCount": 92,
+          "figureCount": 93,
           "baf": null,
           "page": "waves/hasbro-2026-exclusives.html"
         }

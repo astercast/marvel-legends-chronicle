@@ -17,7 +17,7 @@ You are writing code (a script, a tool, another agent) against the Chronicle's s
 
 1. Start at `api/v1/index.json` — the self-describing manifest. Each endpoint entry gives `path`, `description`, `schema` + `itemSchema` URLs, ISO-8601 UTC `updated`, `records` count, and deprecation `notes`.
 2. Base is `api/v1/` relative to the site root; no auth, no keys, no rate limits. Static snapshots — fetch once, filter client-side.
-3. Cheapest overview: `api/v1/stats.json`. Full catalog: `api/v1/figures.json` (1,904 records, stable ids `<waveId>::<figureName>`). Wave context: `api/v1/waves.json`, joined on `waveId` ↔ `id`.
+3. Cheapest overview: `api/v1/stats.json`. Full catalog: `api/v1/figures.json` (1,939 records, stable ids `<waveId>::<figureName>`). Wave context: `api/v1/waves.json`, joined on `waveId` ↔ `id`.
 4. Collector knowledge: `api/v1/encyclopedia.json` (bootleg checklists, price method, hall of fame with reissue radar). Upcoming releases: `api/v1/preorders.json`. Character guides: `api/v1/characters.json`.
 5. Validate what you receive: JSON Schema draft-07 for every endpoint under `api/v1/schema/`. `null` means unknown — never invented. Empty results are `[]`.
 6. Price discipline: the API carries announced MSRPs and reported solds only — never an index. Frame numbers as reported, never as quotes.
