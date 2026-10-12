@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 NAV = [
     ("index.html", "Timeline"),
     ("timeline.html", "Legends Timeline"),
+    ("2026-review.html", "2026 Review"),
     ("start.html", "Start"),
     ("waves/index.html", "Waves"),
     ("stats.html", "Stats"),

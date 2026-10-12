@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026: The State of Legends — Marvel Legends Chronicle</title>
+  <meta name="description" content="The 2026 Marvel Legends year in review, as documented in the Chronicle: top 10 releases with shown criteria, reported price movements, best-value picks, KO watch, rarity highlights, and a month-by-month timeline. Nothing invented.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+  <style>
+    .yr-hero { padding-block: var(--space-7); }
+    .yr-hero p.lede { font-size: 1.1rem; max-width: 72ch; }
+    .hero-kicker { text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; color: var(--gold); font-weight: 700; }
+    .accent { color: var(--gold); }
+    .yr-stats { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-4) 0 0; padding: 0; }
+    .yr-stat { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-2) var(--space-3);
+      background: var(--panel); min-width: 7rem; }
+    .yr-stat-n { font-family: var(--font-display); font-weight: 900; font-size: 1.4rem; color: var(--gold); margin: 0; }
+    .yr-stat-l { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .yr-stats-note { font-size: 0.8rem; color: var(--muted); }
+    .yr-method { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-4);
+      background: var(--panel); margin: var(--space-5) 0; max-width: 80ch; }
+    .yr-method h2 { margin-top: 0; }
+    .yr-section { border-top: 2px solid var(--line); padding: var(--space-5) 0; max-width: 80ch; }
+    .yr-section > h2 { margin-top: 0; }
+    .yr-criteria { border-left: 3px solid var(--gold); padding-left: var(--space-3); color: var(--muted); font-size: .95rem; }
+    .yr-scrub ul { display: flex; flex-wrap: wrap; gap: var(--space-1); padding: 0; margin: 0; list-style: none; }
+    .yr-scrub a { display: inline-block; border: 1px solid var(--line); border-radius: 999px;
+      padding: .35rem .7rem; font-size: .85rem; text-decoration: none; background: var(--panel); }
+    .yr-scrub a .yr-scrub-full { display: none; }
+    .yr-scrub a[aria-current="true"] { border-color: var(--gold); color: var(--gold); font-weight: 700; }
+    .yr-scrub-note { font-size: .8rem; color: var(--muted); }
+    .yr-month { scroll-margin-top: var(--space-6); border: 1px solid var(--line); border-radius: 8px;
+      padding: var(--space-3) var(--space-4); margin-bottom: var(--space-3); background: var(--panel); }
+    .yr-month h3 { margin-top: 0; }
+    .yr-month:target { border-color: var(--gold); }
+    .yr-month-empty { color: var(--muted); font-style: italic; }
+    .yr-ev-tag { display: inline-block; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em;
+      border-radius: 4px; padding: .1rem .45rem; margin-right: .4rem; }
+    .yr-ev-documented { background: var(--gold); color: #111; }
+    .yr-ev-scheduled { background: transparent; border: 1px dashed var(--muted); color: var(--muted); }
+    .yr-src { font-size: .85rem; color: var(--muted); }
+    .yr-dsrc { font-size: .85rem; color: var(--muted); }
+    .yr-top10 { list-style: none; padding: 0; counter-reset: yr-top; }
+    .yr-top-entry { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-3); background: var(--panel); scroll-margin-top: var(--space-6); }
+    .yr-top-entry h3 { margin-top: 0; }
+    .yr-rank { font-family: var(--font-display); color: var(--gold); margin-right: .4rem; }
+    .yr-score { font-size: .8rem; color: var(--muted); font-weight: 400; margin-left: .5rem; }
+    .yr-dist { margin: var(--space-2) 0; padding-left: var(--space-4); }
+    .yr-dist li { margin-bottom: var(--space-1); }
+    .yr-entry-links { font-size: .9rem; }
+    .yr-table { width: 100%; border-collapse: collapse; margin: var(--space-3) 0; font-size: .95rem; }
+    .yr-table th, .yr-table td { border: 1px solid var(--line); padding: .5rem .7rem; text-align: left; }
+    .yr-table thead th { background: var(--panel); }
+    .yr-singles { padding-left: var(--space-4); }
+    .yr-singles li { margin-bottom: var(--space-1); }
+    .yr-value-note { color: var(--muted); font-size: .9rem; }
+    .yr-move { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-3); background: var(--panel); }
+    .yr-move h3 { margin-top: 0; }
+    .yr-move-delta { font-size: .85rem; color: var(--gold); font-weight: 700; margin-left: .5rem; white-space: nowrap; }
+    .yr-surprises { padding-left: var(--space-4); }
+    .yr-surprises li { margin-bottom: var(--space-4); }
+    .yr-surprises h3 { margin-bottom: var(--space-1); }
+    .yr-flag { display: inline-block; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em;
+      border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; padding: .1rem .45rem; }
+    .yr-narr { margin-bottom: var(--space-4); }
+    .yr-narr-src { font-size: .9rem; }
+    .yr-links { padding-left: var(--space-4); }
+    .yr-links li { margin-bottom: var(--space-1); }
+    .yr-api-note { font-size: .9rem; color: var(--muted); margin-top: var(--space-6); }
+    @media (min-width: 560px) { .yr-scrub a .yr-scrub-full { display: inline; } }
+    @media print {
+      .site-header, .site-footer, .yr-scrub, .skip-link { display: none !important; }
+      .yr-section, .yr-top-entry, .yr-month { break-inside: avoid; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .yr-scrub a, .yr-top-entry a, .yr-links a { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to 2026 year in review</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+              <a href="index.html">Timeline</a>
+        <a href="timeline.html">Legends Timeline</a>
+        <a href="2026-review.html" aria-current="page">2026 Review</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="market-briefing.html">Market Briefing</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html">Gift Finder</a>
+        <a href="holiday.html">Holiday Guide</a>
+        <a href="grading.html">Grading</a>
+        <a href="display.html">Display</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="budget.html">Budget</a>
+        <a href="radar.html">Radar</a>
+        <a href="preorders.html">Pre-orders</a>
+        <a href="calendar.html">Release Calendar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="quest.html">Grail Quest</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="rarity.html">Rarity Guide</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="agents.html">Agents</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a></nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="yr-hero" aria-labelledby="yr-title">
+      <span class="hero-kicker">Year in review · 2026</span>
+      <h1 id="yr-title">2026: the state <span class="accent">of Legends.</span></h1>
+      <p class="lede">The year in Marvel Legends <strong>as documented in the Chronicle</strong> — every wave dated 2026 in the encyclopedia archive, every 2026 release on the pre-order tracker, every reported price, every documented surprise. Nothing here is invented: figures, dates, and prices all resolve to real archive records or researched tracker items, and every gap is labeled.</p>
+<!-- REVIEW:STATS-BEGIN -->
+<dl class="yr-stats">
+  <div class="yr-stat"><dt class="yr-stat-n">5</dt><dd class="yr-stat-l">waves dated 2026 in the encyclopedia</dd></div>
+  <div class="yr-stat"><dt class="yr-stat-n">114</dt><dd class="yr-stat-l">2026-dated figures in the archive</dd></div>
+  <div class="yr-stat"><dt class="yr-stat-n">19</dt><dd class="yr-stat-l">tracker items with 2026 dates/windows</dd></div>
+  <div class="yr-stat"><dt class="yr-stat-n">7</dt><dd class="yr-stat-l">figures with reported price data</dd></div>
+  <div class="yr-stat"><dt class="yr-stat-n">0</dt><dd class="yr-stat-l">new counterfeit waves documented in 2026</dd></div>
+  <div class="yr-stat"><dt class="yr-stat-n">$27.99</dt><dd class="yr-stat-l">standard 2026 single-figure MSRP</dd></div>
+</dl>
+<p class="yr-stats-note">As documented in the Chronicle — <a href="#yr-gaps">gaps labeled below</a>. Observed <time datetime="2026-10-11">October 11, 2026</time>.</p>
+<!-- REVIEW:STATS-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-method-h">
+      <h2 id="yr-method-h">Methodology &amp; honest gaps</h2>
+<!-- REVIEW:METHOD-BEGIN -->
+<div class="yr-method" id="yr-gaps">
+  <h3>How this page was built</h3>
+  <ul>
+    <li>Waves and figures come from data/figures.json — 5 waves carry a 2026 year, plus the Store &amp; Convention Exclusives bucket&#x27;s 2026 entries. Release dates, windows, and announced MSRPs come from data/preorders.json (21 tracked items); announced prices are never market prices.</li>
+    <li>Price movements use data/price-signals.json only — reported sold bands, averages, listings, and claimed prices with named sources. The Chronicle publishes no price index, and no 2026 figure has reported aftermarket data in the archive yet.</li>
+    <li>The Top 10 is scored, not vibes: each entry&#x27;s documented distinctions are counted (first-ever figure = 2 points; first-since-a-year, notable pack-in, format distinction, archive-first, or documented 2026 market story = 1 each). Ties break alphabetically. Every distinction cites its record.</li>
+    <li>Best-value ranks announced per-figure MSRP only, using pack sizes stated in each item&#x27;s own tracker record. No aftermarket data, no quality scores, no speculation.</li>
+    <li>KO coverage is the documented record: no new 2026 counterfeit wave was documented; specific KO listings are named with their sources. Rarity highlights come from the Rarity Guide&#x27;s tiers.</li>
+  </ul>
+  <h3>What the data doesn't cover</h3>
+  <ul>
+    <li>Price data covers 7 figures — none of them 2026 releases. The Fall 2026 waves&#x27; aftermarket behavior will be the first real test of the reissue-cooling pattern at scale.</li>
+    <li>The encyclopedia&#x27;s 2026 archive is 5 dated waves (114 figures). The pre-order tracker covers 21 items, 17 with 2026 release windows or dates; undated 2027 reveals are listed in the timeline, not ranked.</li>
+    <li>No production numbers or chase ratios were ever officially documented for any figure on this page — the Rarity Guide&#x27;s methodology applies here too.</li>
+    <li>Observed October 11, 2026. The year isn&#x27;t over: Q4 pre-order dates and December ship windows may still move.</li>
+  </ul>
+</div>
+<!-- REVIEW:METHOD-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-months-h">
+      <h2 id="yr-months-h">The year, month by month</h2>
+      <p>Scrub the timeline. Each month carries what the Chronicle actually documented — or says so when the record is empty.</p>
+<!-- REVIEW:SCRUBBER-BEGIN -->
+<nav class="yr-scrub" id="yr-scrubber" aria-label="2026 month scrubber">
+  <ul>
+    <li><a href="#month-2026-01" data-month="2026-01"><span aria-hidden="true">Jan</span><span class="yr-scrub-full">January</span></a></li>
+    <li><a href="#month-2026-02" data-month="2026-02"><span aria-hidden="true">Feb</span><span class="yr-scrub-full">February ●</span></a></li>
+    <li><a href="#month-2026-03" data-month="2026-03"><span aria-hidden="true">Mar</span><span class="yr-scrub-full">March ●</span></a></li>
+    <li><a href="#month-2026-04" data-month="2026-04"><span aria-hidden="true">Apr</span><span class="yr-scrub-full">April ●</span></a></li>
+    <li><a href="#month-2026-05" data-month="2026-05"><span aria-hidden="true">May</span><span class="yr-scrub-full">May ●</span></a></li>
+    <li><a href="#month-2026-06" data-month="2026-06"><span aria-hidden="true">Jun</span><span class="yr-scrub-full">June</span></a></li>
+    <li><a href="#month-2026-07" data-month="2026-07"><span aria-hidden="true">Jul</span><span class="yr-scrub-full">July ●</span></a></li>
+    <li><a href="#month-2026-08" data-month="2026-08"><span aria-hidden="true">Aug</span><span class="yr-scrub-full">August ●</span></a></li>
+    <li><a href="#month-2026-09" data-month="2026-09"><span aria-hidden="true">Sep</span><span class="yr-scrub-full">September ●</span></a></li>
+    <li><a href="#month-2026-10" data-month="2026-10"><span aria-hidden="true">Oct</span><span class="yr-scrub-full">October ●</span></a></li>
+    <li><a href="#month-2026-11" data-month="2026-11"><span aria-hidden="true">Nov</span><span class="yr-scrub-full">November ●</span></a></li>
+    <li><a href="#month-2026-12" data-month="2026-12"><span aria-hidden="true">Dec</span><span class="yr-scrub-full">December ●</span></a></li>
+  </ul>
+</nav>
+<p class="yr-scrub-note">● marks months with documented or scheduled events. Months with no Chronicle record say so.</p>
+<!-- REVIEW:SCRUBBER-END -->
+<!-- REVIEW:MONTHS-BEGIN -->
+<section class="yr-month" id="month-2026-01" aria-labelledby="month-2026-01-h">
+  <h3 id="month-2026-01-h">January 2026</h3>
+  <p class="yr-month-empty">No 2026 events documented in the Chronicle for this month.</p>
+</section>
+<section class="yr-month" id="month-2026-02" aria-labelledby="month-2026-02-h">
+  <h3 id="month-2026-02-h">February 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Toy Fair 2026: Hasbro&#x27;s official pricing confirms the $27.99 standard for single figures. <a class="yr-src" href="https://www.toyark.com/2026/02/15/toy-fair-2026-hasbro-marvel-legends-official-photos-583124">Toyark — Toy Fair 2026 pricing (Feb 15, 2026)</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-03" aria-labelledby="month-2026-03-h">
+  <h3 id="month-2026-03-h">March 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> White Epic Heroes Doctor Doom sells for $150 (Mar 12) on the actionfigure411 tracker. <a class="yr-src" href="https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php">actionfigure411 — white Doom sold history</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-04" aria-labelledby="month-2026-04-h">
+  <h3 id="month-2026-04-h">April 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Maximum Series Spider-Man KO reviewed in video (~April 2026) — the year&#x27;s KO watch begins. <a class="yr-src" href="https://www.youtube.com/watch?v=Oya-uV7U844">YouTube — Maximum Series Spider-Man KO review (2026)</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-05" aria-labelledby="month-2026-05-h">
+  <h3 id="month-2026-05-h">May 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> White Epic Heroes Doctor Doom sells for $149 (May 3). <a class="yr-src" href="https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php">actionfigure411 — white Doom sold history</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-06" aria-labelledby="month-2026-06-h">
+  <h3 id="month-2026-06-h">June 2026</h3>
+  <p class="yr-month-empty">No 2026 events documented in the Chronicle for this month.</p>
+</section>
+<section class="yr-month" id="month-2026-07" aria-labelledby="month-2026-07-h">
+  <h3 id="month-2026-07-h">July 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Avengers: Doomsday wave Cyclops pre-orders open July 27 at Hasbro Pulse ($27.99). <a class="yr-src" href="preorders.html">Pre-order tracker: doomsday-wave</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> ComicBook.com covers the chase market and the $7,500 Wasp prototype ask (~Jul 2026). <a class="yr-src" href="https://comicbook.com/collectibles/news/a-coat-of-paint-is-the-difference-between-this-7-5k-prototype-and-a-common-marvel-legends-figure/">ComicBook.com — chase coverage (~Jul 2026)</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-08" aria-labelledby="month-2026-08-h">
+  <h3 id="month-2026-08-h">August 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> White Epic Heroes Doctor Doom sells for $200.00 (Aug 10) — top of the reported band, and the latest sold on the tracker. <a class="yr-src" href="https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php">actionfigure411 — white Doom sold history</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Retro Venom reissue news: the 2021 Pulse Con cel-shaded TAS Venom returns at Fan Channel for $34.99. <a class="yr-src" href="https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/">Bleeding Cool — Retro Venom reissue (Aug 2026)</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Marvel Legends × Magic: The Gathering Wave 2 details surface ($39.99, playable card per figure). <a class="yr-src" href="https://www.toyark.com/2026/08/13/marvel-legends-x-magic-the-gathering-wave-2-597672">Toyark — MTG Wave 2 (Aug 13, 2026)</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-09" aria-labelledby="month-2026-09-h">
+  <h3 id="month-2026-09-h">September 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Spider-Man: The Animated Series retro wave pre-orders open September 29 ($27.99; ships Dec 2026–Jan 2027) — first-ever solo-carded 6-inch Aunt May. <a class="yr-src" href="https://toyhypeusa.com/2026/09/29/hasbro-marvel-legends-series-spiderman-tas-retro-aunt-may-mary-jane-smythe-maximum-carnage-figures-pre-orders/">ToyHypeUSA — TAS retro ship window (Sep 29, 2026)</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Mini Comics Wave 3 revealed (Sep 15): mini comic per figure, first red Elektra since 2018. <a class="yr-src" href="https://comicon.com/2026/09/15/newly-announced-marvel-legend-figures-draw-inspiration-from-comics-animated-series-and-more/">Comicon.com — Mini Comics Wave 3 reveal (Sep 15, 2026)</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> X-Men &#x27;97 Cyclops KO reviewed (September 2026). <a class="yr-src" href="https://www.youtube.com/watch?v=xp7IEpKskEM">YouTube — X-Men &#x27;97 Cyclops KO review (Sep 2026)</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-10" aria-labelledby="month-2026-10-h">
+  <h3 id="month-2026-10-h">October 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Mini Comics Wave 3 pre-orders open October 6 ($27.99). <a class="yr-src" href="preorders.html">Pre-order tracker: mini-comics-wave-3</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Doomsday Fantastic Four Walmart exclusives confirmed in stores and online (Oct 7). <a class="yr-src" href="https://www.comicsbeat.com/nycc-26-hasbro-x-walmart-collector-con-avengers-doomsday-g1-transformers-street-fighter/">ComicsBeat — NYCC Collector Con (Oct 7, 2026)</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> NYCC 2026 final-day panel (Oct 11): Doomsday Wave 2, X-Men &#x27;97, and Astonishing X-Men rosters confirmed with pre-order dates. <a class="yr-src" href="https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel">Mephitsu — NYCC 2026 panel (Oct 10, 2026)</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Doomsday Wave 2 pre-orders open October 14 (Spring 2027). <a class="yr-src" href="preorders.html">Pre-order tracker: doomsday-wave-2</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> X-Men &#x27;97 retro wave pre-orders open October 21 ($27.99). <a class="yr-src" href="preorders.html">Pre-order tracker: xmen97-retro-wave</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> Astonishing X-Men Cyclops &amp; Wolverine 2-pack pre-orders open October 28 (price unannounced, single source). <a class="yr-src" href="preorders.html">Pre-order tracker: astonishing-cyclops-wolverine-2pack</a></li>
+    <li><span class="yr-ev-tag yr-ev-documented">documented</span> MTG Wave 2 ships. <a class="yr-src" href="preorders.html">Pre-order tracker: mtg-wave-2</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-11" aria-labelledby="month-2026-11-h">
+  <h3 id="month-2026-11-h">November 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-scheduled">scheduled</span> Your Friendly Neighborhood Spider-Man: Spider-Man vs. Rhino 2-pack on sale at Hasbro Pulse, November 1 (Pulse exclusive, no pre-order announced). <a class="yr-src" href="preorders.html">Pre-order tracker: yfns-spidey-rhino-2pack</a></li>
+    <li><span class="yr-ev-tag yr-ev-scheduled">scheduled</span> Bastion &amp; Bolivar Trask made-to-order window closes November 20, 11:59 PM EDT. <a class="yr-src" href="preorders.html">Pre-order tracker: bastion-trask-2pack</a></li>
+  </ul>
+</section>
+<section class="yr-month" id="month-2026-12" aria-labelledby="month-2026-12-h">
+  <h3 id="month-2026-12-h">December 2026</h3>
+  <ul>
+    <li><span class="yr-ev-tag yr-ev-scheduled">scheduled</span> Spider-Man: TAS retro wave ships (December 2026–January 2027 window). <a class="yr-src" href="preorders.html">Pre-order tracker: tas-retro-wave</a></li>
+    <li><span class="yr-ev-tag yr-ev-scheduled">scheduled</span> Retro Venom reissue ships December 2026. <a class="yr-src" href="preorders.html">Pre-order tracker: retro-venom-reissue</a></li>
+  </ul>
+</section>
+<!-- REVIEW:MONTHS-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-top10-h">
+      <h2 id="yr-top10-h">The Top 10 of 2026</h2>
+<!-- REVIEW:TOP10-BEGIN -->
+<p class="yr-criteria"><strong>Criteria (shown, not hidden):</strong> each entry is scored on documented distinctions — first-ever = 2 pts, first-since = 1 pt, pack-in = 1 pt, format = 1 pt, archive-first = 1 pt, market-story = 1 pt. Ties break alphabetically by display name. Every distinction cites its Chronicle record.</p>
+<ol class="yr-top10">
+<li class="yr-top-entry" id="yr-top-tas-retro-wave">
+  <h3><span class="yr-rank" aria-hidden="true">#1</span> Spider-Man: The Animated Series retro wave <span class="yr-score">4 pts</span></h3>
+  <p>The reissue-cycle story of the year: the sold-out Pulse VHS exclusives return on retro blister cards at the standard $27.99 — with the first-ever solo-carded 6-inch Aunt May leading the wave.</p>
+  <ul class="yr-dist">
+    <li><strong>first-ever</strong> (+2): First-ever solo-carded 6-inch Aunt May <span class="yr-dsrc">— Pre-order tracker: tas-retro-wave</span></li>
+    <li><strong>format</strong> (+1): Reissues the sold-out Pulse VHS exclusives on retro blister cards <span class="yr-dsrc">— Pre-order tracker: tas-retro-wave</span></li>
+    <li><strong>market-story</strong> (+1): Textbook sellout → aftermarket spike → reissue → premium collapse <span class="yr-dsrc">— Market briefing: reissue section</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-bastion-trask-2pack">
+  <h3><span class="yr-rank" aria-hidden="true">#2</span> X-Men &#x27;97 Bastion &amp; Bolivar Trask 2-pack <span class="yr-score">3 pts</span></h3>
+  <p>The biggest swing of 2026: an 11.3-inch-winged Bastion (documented as a first-ever figure in the tracker research) sold made-to-order — scarcity is the order window, not a chase ratio. Window closes November 20, 2026.</p>
+  <ul class="yr-dist">
+    <li><strong>first-ever</strong> (+2): First-ever Bastion figure per the tracker research (11.3-inch articulated wings); the archive&#x27;s only other Bastion is the 2021 HasLab Sentinel X-Men Blue version <span class="yr-dsrc">— Pre-order tracker: bastion-trask-2pack</span></li>
+    <li><strong>format</strong> (+1): Made-to-order 2-pack at $74.99 — scarcity is the order window <span class="yr-dsrc">— Pre-order tracker: bastion-trask-2pack</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-cypher-target">
+  <h3><span class="yr-rank" aria-hidden="true">#3</span> Cypher — Target exclusive <span class="yr-score">2 pts</span></h3>
+  <p>The first-ever Cypher figure arrived via Target&#x27;s 2026 Geek-Out event — and made the encyclopedia&#x27;s 2026 exclusives the same year.</p>
+  <ul class="yr-dist">
+    <li><strong>first-ever</strong> (+2): First-ever Cypher figure <span class="yr-dsrc">— Pre-order tracker: cypher-target</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a> · <a href="waves/hasbro-2026-exclusives.html#fig-cypher">Deep link →</a> · <a href="compare.html?a=hasbro-2026-exclusives%3A%3ACypher">Compare →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-mtg-wave-2">
+  <h3><span class="yr-rank" aria-hidden="true">#4</span> Marvel Legends × Magic: The Gathering Wave 2 <span class="yr-score">2 pts</span></h3>
+  <p>Shipped October 2026 with a playable Magic: The Gathering card in every box — plus an Amazon-exclusive Black Panther on top of the Doom / Captain America / Malice core.</p>
+  <ul class="yr-dist">
+    <li><strong>pack-in</strong> (+1): Playable Magic: The Gathering card with every figure <span class="yr-dsrc">— Pre-order tracker: mtg-wave-2</span></li>
+    <li><strong>market-story</strong> (+1): Shipped October 2026 with an Amazon-exclusive Black Panther <span class="yr-dsrc">— Pre-order tracker: mtg-wave-2</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a> · <a href="waves/hasbro-2026-exclusives.html#fig-black-panther">Deep link →</a> · <a href="compare.html?a=hasbro-2026-exclusives%3A%3ABlack%20Panther">Compare →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-mini-comics-wave-3">
+  <h3><span class="yr-rank" aria-hidden="true">#5</span> Mini Comics Wave 3 <span class="yr-score">2 pts</span></h3>
+  <p>Every figure ships with a physical mini comic — and the wave delivers the first red Elektra since 2018 plus a Fraction/Aja-era Hawkeye straight out of Hawkeye #3 (2012).</p>
+  <ul class="yr-dist">
+    <li><strong>first-since</strong> (+1): First red Elektra since 2018 <span class="yr-dsrc">— Pre-order tracker: mini-comics-wave-3</span></li>
+    <li><strong>pack-in</strong> (+1): Physical mini comic packed with every figure <span class="yr-dsrc">— Pre-order tracker: mini-comics-wave-3</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-retro-venom-reissue">
+  <h3><span class="yr-rank" aria-hidden="true">#6</span> Retro Venom reissue <span class="yr-score">2 pts</span></h3>
+  <p>The 2021 Pulse Con cel-shaded TAS Venom is back at Fan Channel retailers for $34.99 on a retro cardback — the reissue cycle resolving live, no themed outer box this time.</p>
+  <ul class="yr-dist">
+    <li><strong>market-story</strong> (+1): 2021 Pulse Con exclusive reissued at Fan Channel — reissue-radar candidate resolving live <span class="yr-dsrc">— Market briefing: post-NYCC refresh</span></li>
+    <li><strong>format</strong> (+1): Retro cardback with no themed outer box <span class="yr-dsrc">— Pre-order tracker: retro-venom-reissue</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-xmen97-retro-wave">
+  <h3><span class="yr-rank" aria-hidden="true">#7</span> X-Men &#x27;97 retro wave <span class="yr-score">2 pts</span></h3>
+  <p>The full wave on retro blister cards — Death Gambit with card-dealing effects, team-suit Cyclops, powered-up Jean — with its NYCC-confirmed roster and an October 21, 2026 pre-order date.</p>
+  <ul class="yr-dist">
+    <li><strong>format</strong> (+1): Full wave on retro blister cards <span class="yr-dsrc">— Pre-order tracker: xmen97-retro-wave</span></li>
+    <li><strong>market-story</strong> (+1): NYCC final-day panel confirmed the roster; pre-orders opened October 21, 2026 <span class="yr-dsrc">— Market briefing: post-NYCC refresh</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-astonishing-cyclops-wolverine-2pack">
+  <h3><span class="yr-rank" aria-hidden="true">#8</span> Astonishing X-Men Cyclops &amp; Wolverine 2-pack <span class="yr-score">1 pt</span></h3>
+  <p>NYCC 2026&#x27;s reissue play: the Astonishing X-Men two-pack returns with a reported October 28 pre-order — price not announced at reveal (single source).</p>
+  <ul class="yr-dist">
+    <li><strong>market-story</strong> (+1): NYCC 2026 reissue with reported October 28 pre-order; price unannounced (single source) <span class="yr-dsrc">— Pre-order tracker: astonishing-cyclops-wolverine-2pack</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-doomsday-wave">
+  <h3><span class="yr-rank" aria-hidden="true">#9</span> Avengers: Doomsday wave <span class="yr-score">1 pt</span></h3>
+  <p>The MCU tie-in wave of the year — Thor with flight stand, Doctor Doom, Gambit, a James Marsden-likeness Cyclops (pre-orders opened July 27, 2026), Magneto, Shang-Chi, and Mr. Fantastic &amp; H.E.R.B.I.E.</p>
+  <ul class="yr-dist">
+    <li><strong>market-story</strong> (+1): Avengers: Doomsday film tie-in wave; Cyclops pre-orders opened July 27, 2026 at $27.99 <span class="yr-dsrc">— Pre-order tracker: doomsday-wave</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a> · <a href="waves/hasbro-2026-doomsday-1.html">Wave page →</a></p>
+</li>
+<li class="yr-top-entry" id="yr-top-doomsday-wave-2">
+  <h3><span class="yr-rank" aria-hidden="true">#10</span> Avengers: Doomsday Wave 2 <span class="yr-score">1 pt</span></h3>
+  <p>Revealed on the NYCC 2026 final-day panel — Concept Series Lord Doom with open and closed spell books, a swappable-head Beast, and a fully-kitted Nightcrawler. Pre-orders opened October 14, 2026 for Spring 2027.</p>
+  <ul class="yr-dist">
+    <li><strong>market-story</strong> (+1): NYCC 2026 final-day panel reveal; pre-orders opened October 14, 2026 <span class="yr-dsrc">— Market briefing: post-NYCC refresh</span></li>
+  </ul>
+  <p class="yr-entry-links"><a href="preorders.html">Pre-order tracker →</a></p>
+</li>
+</ol>
+<p class="yr-compare-all"><a href="compare.html">Open VS mode to compare the contenders →</a></p>
+<!-- REVIEW:TOP10-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-value-h">
+      <h2 id="yr-value-h">Best value, on paper</h2>
+<!-- REVIEW:VALUE-BEGIN -->
+<p class="yr-criteria"><strong>Criteria:</strong> Announced MSRP per packed figure, using only pack sizes stated in each item&#x27;s own tracker record. Singles ranked at their announced price. No aftermarket data, no quality scores, no speculation — on paper only.</p>
+<h3>Multi-packs by announced cost per packed figure</h3>
+<table class="yr-table"><thead><tr><th scope="col">Pack</th><th scope="col">Announced MSRP</th><th scope="col">Packed figures</th><th scope="col">Per figure</th></tr></thead><tbody>
+<tr><th scope="row"><a href="preorders.html">Avengers: Doomsday Fantastic Four — Mister Fantastic + H.E.R.B.I.E.</a></th><td>$39.97</td><td>2</td><td><strong>$19.98</strong></td></tr>
+<tr><th scope="row"><a href="preorders.html">Avengers: Doomsday Fantastic Four — Invisible Woman + Human Torch</a></th><td>$55</td><td>2</td><td><strong>$27.5</strong></td></tr>
+<tr><th scope="row"><a href="preorders.html">Spider-Man 60s Cartoon 3-Pack (Spider-Man, Lizard, Electro)</a></th><td>$84.99</td><td>3</td><td><strong>$28.33</strong></td></tr>
+<tr><th scope="row"><a href="preorders.html">X-Men &#x27;97 Bastion &amp; Bolivar Trask 2-pack</a></th><td>$74.99</td><td>2</td><td><strong>$37.49</strong></td></tr>
+</tbody></table>
+<h3>Singles at the $27.99 standard</h3>
+<ul class="yr-singles">
+  <li><a href="preorders.html">Mini Comics Wave 3</a> — $27.99</li>
+  <li><a href="preorders.html">X-Men &#x27;97 retro wave</a> — $27.99</li>
+  <li><a href="preorders.html">Spider-Man: The Animated Series retro wave</a> — $27.99</li>
+  <li><a href="preorders.html">Avengers: Doomsday wave</a> — $27.99</li>
+  <li><a href="preorders.html">Spider-Man (No Way Home &quot;Final Swing&quot;) — Target Exclusive</a> — $27.99</li>
+  <li><a href="preorders.html">Animated Series VHS reissues on Retro cards (Mary Jane, Aunt May, Smythe, Maximum Carnage)</a> — $27.99</li>
+  <li><a href="preorders.html">Avengers: Doomsday Wave 2</a> — $27.99</li>
+</ul>
+<p class="yr-value-note">The Doomsday Fantastic Four Walmart exclusives lead on paper — Mister Fantastic + H.E.R.B.I.E. at $39.97 works out under $20 per packed figure. Deluxe singles (Retro Venom $34.99, Onslaught $39.99, The Thing $69.95) are priced as single figures in their records, so they rank as singles. The $27.99 standard holds across every Fall 2026 single-figure wave.</p>
+<!-- REVIEW:VALUE-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-prices-h">
+      <h2 id="yr-prices-h">Price movements</h2>
+<!-- REVIEW:PRICES-BEGIN -->
+<p class="yr-criteria"><strong>Coverage:</strong> reported-price data exists for 7 figures — none of them 2026 releases. Every number below is a reported sold, average, listing, or claim with a named source. The Chronicle publishes no price index.</p>
+<section class="yr-move" aria-labelledby="mv-white-epic-heroes-doom">
+  <h3 id="mv-white-epic-heroes-doom">White-deco Epic Heroes Doctor Doom <span class="yr-move-delta">▲ $50 (+33.3%)</span></h3>
+  <p>Reported solds: 2026-03-12: $150, 2026-05-03: $149, 2026-08-10: $200. First → last: $150 → $200, a $50 move (+33.3%). <span class="yr-dsrc">— Reported eBay solds from the actionfigure411 tracker, as published in the signal record. Source: actionfigure411 eBay sold tracker</span></p>
+</section>
+<h3>Other reported bands (no sold sequence documented)</h3>
+<ul>
+  <li><strong>Standard green Epic Heroes Doctor Doom</strong> — reported sold average $62.44 avg (solds $40–$75) <span class="yr-dsrc">— Legendsverse market value (48 tracked sales)</span></li>
+  <li><strong>Series 3 Wolverine (masked, unmasked, gold-foil)</strong> — reported sold band $20.50–$62.00 <span class="yr-dsrc">— actionfigure411 eBay sold tracker</span></li>
+  <li><strong>SDCC 2007 Stan Lee</strong> — reported sold band $43–$119.99 <span class="yr-dsrc">— actionfigure411 eBay sold tracker</span></li>
+  <li><strong>Series 5 Red Skull chase</strong> — listing (not a sale) $59.99 listing <span class="yr-dsrc">— ToyWiz listing</span></li>
+  <li><strong>Series 6 Deadpool and Doop</strong> — claimed (single-source) ~$350 claimed <span class="yr-flag">single-source</span> <span class="yr-dsrc">— Claimed; tabloid source</span></li>
+  <li><strong>Colossus-BAF-wave Cyclops (older release)</strong> — listing (not a sale) $14.99 in stock <span class="yr-dsrc">— BigBadToyStore stock snapshot</span></li>
+</ul>
+<!-- REVIEW:PRICES-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-surprises-h">
+      <h2 id="yr-surprises-h">Biggest surprises</h2>
+<!-- REVIEW:SURPRISES-BEGIN -->
+<ol class="yr-surprises">
+  <li><h3>The VHS premiums collapsed by design</h3><p>The sold-out Pulse VHS-exclusive Animated Series figures escalated on the aftermarket — then Hasbro re-released the same figures on retro blister cards at $27.99. Sellout → spike → reissue → premium collapse, textbook and on schedule. <a class="yr-src" href="https://marveltoynews.com/marvel-legends-mary-jane-aunt-may-smythe-carnage-reissues/">Marvel Toy News — TAS reissues (Sep 2026)</a></p></li>
+  <li><h3>A white Doom sold for $200</h3><p>The white-deco Epic Heroes Doctor Doom — the modern chase-adjacent standout — closed at $200 on August 10, 2026, the top of its $115–$200 reported band. The standard green Doom averaged $62.44 across 48 tracked sales; the premium is the variant, not the character. <a class="yr-src" href="https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php">actionfigure411 — Epic Heroes Dr. Doom white variant sold history</a></p></li>
+  <li><h3>Target cancelled confirmed preorders</h3><p>X-Men Onslaught was &#x27;extremely hit or miss in stores&#x27; — and Target cancelled many confirmed 2026 preorders, so in-hand beats preordered. Availability, not price, was the 2026 Target story. <a class="yr-src" href="preorders.html">Pre-order tracker: onslaught-target</a></p></li>
+  <li><h3>The year&#x27;s biggest figure is made-to-order</h3><p>Bastion &amp; Bolivar Trask: an 11.3-inch-winged Bastion, 10 accessories, $74.99, Hasbro Pulse only — and the order window closes November 20, 2026. Miss it and it&#x27;s gone from retail; it ships November 2027. <a class="yr-src" href="preorders.html">Pre-order tracker: bastion-trask-2pack</a></p></li>
+  <li><h3>The year of firsts</h3><p>First-ever Cypher. First-ever solo-carded 6-inch Aunt May. First red Elektra since 2018. First-ever Bastion (per the tracker research). 2026 kept handing collectors figures the line had never done. <a class="yr-src" href="preorders.html">Pre-order tracker records</a></p></li>
+  <li><h3>Marvel Rivals joins the line</h3><p>Moon Knight, Punisher, Spider-Man, Luna Snow, Venom, and Jeff the Land Shark — six Marvel Rivals (video game) versions, the first in the archive, all inside the 2026 exclusives. <a class="yr-src" href="waves/hasbro-2026-exclusives.html">Encyclopedia wave: hasbro-2026-exclusives</a></p></li>
+  <li><h3>Retro Venom comes back at $34.99</h3><p>The 2021 Pulse Con cel-shaded TAS Venom — a convention exclusive — returns at Fan Channel retailers for $34.99, shipping December 2026. The reissue program isn&#x27;t slowing down. <a class="yr-src" href="https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/">Bleeding Cool — Retro Venom reissue (Aug 2026)</a></p></li>
+  <li><h3>The modern chase is dead</h3><p>Hasbro has &#x27;largely abandoned&#x27; short-packed chase figures in modern Marvel Legends — no 2025–2026-era 6-inch chase was documented by the hobby press this year. The chase era is now history, and the Rarity Guide treats it that way. <a class="yr-src" href="market-briefing.html">Market briefing — the chase era ends</a></p></li>
+</ol>
+<!-- REVIEW:SURPRISES-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-rarity-h">
+      <h2 id="yr-rarity-h">Rarity highlights</h2>
+<!-- REVIEW:RARITY-BEGIN -->
+<ul>
+  <li>Modern chase figures are effectively dead — &#x27;largely abandoned&#x27; by Hasbro; no 2025–2026 6-inch chase documented. <a class="yr-src" href="market-briefing.html">Market briefing — the chase era ends</a></li>
+  <li>Bastion &amp; Bolivar Trask ($74.99) is the 2026 made-to-order case study: scarcity is the order window, not a chase ratio. <a class="yr-src" href="rarity.html">Rarity Guide — made-to-order tier</a></li>
+  <li>SDCC 2026 added two convention exclusives: Professor X &amp; hoverchair, and the Spider-Man 60s cartoon 3-pack. <a class="yr-src" href="preorders.html">Pre-order tracker records</a></li>
+  <li>First red Elektra since 2018 — 2026&#x27;s notable deco return, packed with a mini comic. <a class="yr-src" href="preorders.html">Pre-order tracker: mini-comics-wave-3</a></li>
+  <li>Retro Venom: a 2021 Pulse Con exclusive returning at Fan Channel — the reissue cycle hitting the convention tier. <a class="yr-src" href="https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/">Bleeding Cool — Retro Venom reissue (Aug 2026)</a></li>
+</ul>
+<p><a href="rarity.html">Full Rarity Guide →</a> · <a href="market-briefing.html">2026 Market Briefing →</a></p>
+<!-- REVIEW:RARITY-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-ko-h">
+      <h2 id="yr-ko-h">KO watch</h2>
+<!-- REVIEW:KO-BEGIN -->
+<p><strong>No new 2026 counterfeit wave was documented.</strong></p>
+<ul>
+  <li>Maximum Series Spider-Man KO — reviewed in video, ~April 2026. <a class="yr-src" href="https://www.youtube.com/watch?v=Oya-uV7U844">YouTube — Maximum Series Spider-Man KO review (2026)</a></li>
+  <li>X-Men &#x27;97 Cyclops KO (Mustang Toyz, S.H. Figuarts-style) — reviewed September 2026. <a class="yr-src" href="https://www.youtube.com/watch?v=xp7IEpKskEM">YouTube — X-Men &#x27;97 Cyclops KO review (Sep 2026)</a></li>
+  <li>Carnage silver-eyes telltale remains the reference case for spotting bootlegs. <a class="yr-src" href="rarity.html">Rarity Guide — rare = faked</a></li>
+  <li>Maximum Symbiote Spider-Man: the official 6-inch Maximum Series figure was on display at the NYCC 2026 pre-show showcase (single source). Do not confuse it with the AliExpress Maximum Series Spider-Man KO listings reviewer videos have flagged — buy the official line at retail or Pulse. <a class="yr-src" href="preorders.html">Pre-order tracker: maximum-symbiote-spiderman</a></li>
+</ul>
+<p><a href="auth-wizard.html">Run the authentication wizard →</a></p>
+<!-- REVIEW:KO-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-narrative-h">
+      <h2 id="yr-narrative-h">The 2026 narrative</h2>
+<!-- REVIEW:NARRATIVE-BEGIN -->
+<section class="yr-narr"><h3>The year the chase died</h3><p>Hasbro has &#x27;largely abandoned&#x27; short-packed chase figures in modern Marvel Legends, and no 2025–2026-era 6-inch chase was documented by the hobby press this year. The chase era — Toy Biz&#x27;s finite redistributions, the art-deco variants produced &#x27;with scarcity in mind&#x27; — is now history, and the Rarity Guide treats it as such. What replaced it isn&#x27;t a new scarcity mechanic: it&#x27;s the order window. The year&#x27;s defining limited release, the Bastion &amp; Bolivar Trask 2-pack, is made-to-order — scarcity measured in calendar days, not case ratios.</p><p class="yr-narr-src">
+<a class="yr-src" href="market-briefing.html">Market briefing — the chase era ends</a> <a class="yr-src" href="rarity.html">Rarity Guide</a>
+</p></section>
+<section class="yr-narr"><h3>Retro is the packaging story</h3><p>2026 brought no packaging overhaul. Instead it brought the retro blister card back as the default canvas — the X-Men &#x27;97 wave, the Spider-Man: The Animated Series wave, and the Retro Venom reissue all ride retro cardbacks — and the mini comic as the pack-in of the year, with Mini Comics Wave 3 putting a physical comic in every box. After the plastic-free reversal of April 2023, the line&#x27;s packaging story is settled: nostalgia on the front, sustainability in the materials.</p><p class="yr-narr-src">
+<a class="yr-src" href="timeline.html">Legends Timeline — 2026</a> <a class="yr-src" href="preorders.html">Pre-order tracker records</a>
+</p></section>
+<section class="yr-narr"><h3>The reissue machine</h3><p>2026 was the year the reissue program stopped being a rumor and became the market&#x27;s central mechanism. The Pulse VHS-exclusive Animated Series figures sold out, escalated on the aftermarket — and came back on retro blister cards at the $27.99 standard. The 2021 Pulse Con cel-shaded Venom is back at Fan Channel for $34.99. NYCC added an Astonishing X-Men two-pack reissue. The pattern is now textbook: sellout → aftermarket spike → reissue → premium collapse. The open question is whether it keeps working at scale — the Fall 2026 waves&#x27; aftermarket behavior will be the first real test.</p><p class="yr-narr-src">
+<a class="yr-src" href="https://marveltoynews.com/marvel-legends-mary-jane-aunt-may-smythe-carnage-reissues/">Marvel Toy News — TAS reissues (Sep 2026)</a> <a class="yr-src" href="https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/">Bleeding Cool — Retro Venom reissue (Aug 2026)</a> <a class="yr-src" href="market-briefing.html">Market briefing — post-NYCC refresh</a>
+</p></section>
+<section class="yr-narr"><h3>The aftermarket in miniature</h3><p>Reported-price coverage for 2026 is thin — seven figures, none of them 2026 releases — but it tells a coherent story. The white-deco Epic Heroes Doctor Doom is the modern chase-adjacent standout: $115–$200 in reported solds, closing at $200 on August 10, 2026, against roughly $60 in October 2024. The standard green Doom averaged $62.44 across 48 tracked sales. The $7,500 asking price on the unproduced Toy Biz Series 15 blue-and-white Wasp chase prototype (~10 carded) is an ask, not a sale — a two-decade-old artifact, not a 2026 discovery. And one retailer&#x27;s October snapshot said it plainly: the older Colossus-BAF Cyclops sat in stock at $14.99 while the X-Men &#x27;97 Cyclops sold out. Demand concentrates where the cameras are.</p><p class="yr-narr-src">
+<a class="yr-src" href="https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php">actionfigure411 — white Doom sold history</a> <a class="yr-src" href="market-briefing.html">Market briefing — 2026 market briefing</a>
+</p></section>
+<section class="yr-narr"><h3>Still unresolved</h3><p>The year isn&#x27;t over. Doomsday Wave 2 pre-orders opened October 14, the X-Men &#x27;97 wave October 21, the Astonishing two-pack October 28; the YFNS Spider-Man vs. Rhino 2-pack hits Pulse November 1; the Bastion &amp; Trask order window closes November 20; the TAS wave and Retro Venom ship in December. Every one of those is a live data point this retrospective will need when the year closes — check the release calendar and the pre-order tracker for the current state.</p><p class="yr-narr-src">
+<a class="yr-src" href="calendar.html">Release Calendar</a> <a class="yr-src" href="preorders.html">Pre-order tracker</a>
+</p></section>
+<!-- REVIEW:NARRATIVE-END -->
+    </section>
+
+    <section class="yr-section" aria-labelledby="yr-cross-h">
+      <h2 id="yr-cross-h">Keep digging</h2>
+<!-- REVIEW:CROSS-BEGIN -->
+<ul class="yr-links">
+  <li><a href="timeline.html">Legends Timeline — the year-by-year line history →</a></li>
+  <li><a href="market-briefing.html">2026 Market Briefing — the market narrative in full →</a></li>
+  <li><a href="rarity.html">Rarity Guide — chase vs variant vs exclusive vs limited →</a></li>
+  <li><a href="radar.html">Radar — what&#x27;s coming next →</a></li>
+  <li><a href="preorders.html">Pre-order tracker — statuses and countdowns →</a></li>
+  <li><a href="calendar.html">Release Calendar — dates on a grid →</a></li>
+  <li><a href="encyclopedia.html">Encyclopedia — the full archive →</a></li>
+  <li><a href="compare.html">VS mode — compare the contenders side by side →</a></li>
+  <li><a href="quest.html">Grail Quest — turn 2026&#x27;s standouts into quests →</a></li>
+  <li><a href="watchlist.html">Watchlist — Price Watch with reported bands →</a></li>
+  <li><a href="price-guide.html">Price Guide — how to value your own figures →</a></li>
+  <li><a href="gift.html">Gift Finder — 2026 picks by recipient →</a></li>
+  <li><a href="api.html">API — the year-review endpoint for agents →</a></li>
+  <li>2026 encyclopedia waves: <a href="waves/hasbro-2026-box.html">Box Wave</a> · <a href="waves/hasbro-2026-deadpool-wolverine-2.html">Deadpool &amp; Wolverine Wave 2</a> · <a href="waves/hasbro-2026-deadpool-wolverine-3.html">Deadpool &amp; Wolverine Wave 3</a> · <a href="waves/hasbro-2026-doomsday-1.html">Avengers: Doomsday Wave 1</a> · <a href="waves/hasbro-2026-exclusives.html">Store &amp; Convention Exclusives</a></li>
+</ul>
+<!-- REVIEW:CROSS-END -->
+    </section>
+
+    <p class="yr-api-note">API: <a href="api/v1/year-review.json"><code>api/v1/year-review.json</code></a> — top-10 entries with scores and distinction breakdowns, archive stats, price-movement math, and honest gaps. Reported ranges, not live prices.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+      <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a></nav>
+    </div>
+  </footer>
+  <script src="assets/js/review.js"></script>
+</body>
+</html>

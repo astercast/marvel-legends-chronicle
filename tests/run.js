@@ -24,6 +24,7 @@ await import("./test-rarity.js");
 await import("./test-price-watch.js");
 await import("./test-budget.js");
 await import("./test-compare.js");
+await import("./test-review.js");
 
 const failures = await runAll();
 process.exit(failures ? 1 : 0);

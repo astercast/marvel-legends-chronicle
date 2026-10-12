@@ -28,7 +28,7 @@ def slug(s):
 
 
 NAV_LINKS = [
-    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("start.html", "Start"),
+    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("2026-review.html", "2026 Review"), ("start.html", "Start"),
     ("waves/index.html", "Waves"), ("stats.html", "Stats"),
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
