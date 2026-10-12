@@ -37,6 +37,17 @@ export function isConventionExclusive(fig) {
   return CONVENTION_EXCLUSIVES.has(fig.exclusive);
 }
 
+/* Rarity tiers the wave-23 guide documents: HasLab (funded-only production)
+   and made-to-order (order-window production). Both are archive `exclusive`
+   values — nothing guessed. */
+export function isHasLab(fig) {
+  return fig.exclusive === "HasLab";
+}
+
+export function isMadeToOrder(fig) {
+  return fig.exclusive === "Made-to-order";
+}
+
 /* Strip parenthetical qualifiers, mirroring the character pages'
    base_name() in scripts/build_characters.py. */
 export function baseName(n) {
@@ -278,6 +289,22 @@ export function computeAchievements(figures, waves, ownedIds) {
       id: "convention-floor", name: "Convention Floor", icon: "🎪",
       blurb: "Own 5+ convention-exclusive figures (SDCC, NYCC, HASCON, PulseCon).",
       got: ownedFigs.filter(isConventionExclusive).length, need: 5,
+    },
+    {
+      id: "haslab-backer", name: "HasLab Backer", icon: "🏗️",
+      blurb: "Own any HasLab exclusive figure (funded-only production, per the Rarity Guide).",
+      got: ownedFigs.filter(isHasLab).length, need: 1,
+    },
+    {
+      id: "made-to-order", name: "Made To Order", icon: "📋",
+      blurb: "Own a made-to-order figure — scarcity was the calendar, not a chase ratio.",
+      got: ownedFigs.filter(isMadeToOrder).length, need: 1,
+    },
+    {
+      id: "rarity-trifecta", name: "Rarity Trifecta", icon: "🏆",
+      blurb: "Own a chase, a convention exclusive, AND a HasLab figure — one of each tier.",
+      got: [isChase, isConventionExclusive, isHasLab].filter((fn) => ownedFigs.some(fn)).length,
+      need: 3,
     },
     {
       id: "completionist", name: "Completionist", icon: "✅",

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Rarity Guide — Marvel Legends Chronicle</title>
+  <meta name="description" content="Chase vs variant vs exclusive vs limited: the collector's guide to Marvel Legends rarity — documented examples, spotting tells, and what rarity means for value. Every claim sourced.">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+  <style>
+    .rar-hero { padding-block: var(--space-7); }
+    .rar-hero p.lede { font-size: 1.1rem; max-width: 72ch; }
+    .rar-stats { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-4) 0 0; padding: 0; }
+    .rar-stat { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-2) var(--space-3);
+      background: var(--panel); min-width: 7rem; }
+    .rar-stat-n { font-family: var(--font-display); font-weight: 900; font-size: 1.4rem; color: var(--gold); margin: 0; }
+    .rar-stat-l { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .rar-stats-note { font-size: 0.8rem; color: var(--muted); }
+    .rar-toc { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-3) var(--space-4);
+      background: var(--panel); margin: var(--space-5) 0; }
+    .rar-toc h2 { margin: 0 0 var(--space-2); font-size: 1rem; }
+    .rar-toc ul { columns: 2; margin: 0; padding-left: var(--space-4); }
+    .rar-toc li { margin-bottom: var(--space-1); break-inside: avoid; }
+    .rar-method { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-4);
+      background: var(--panel); margin: var(--space-5) 0; max-width: 80ch; }
+    .rar-method h2 { margin-top: 0; }
+    .rar-tier, .rar-cross { border-top: 2px solid var(--line); padding: var(--space-5) 0; max-width: 80ch; }
+    .rar-tier h2, .rar-cross h2 { margin-top: 0; }
+    .rar-tier h3 { font-size: 1rem; margin: var(--space-4) 0 var(--space-1); }
+    .rar-tagline { font-weight: 700; color: var(--gold); }
+    .rar-spot li, .rar-examples li, .rar-sources li, .rar-links li { margin-bottom: var(--space-1); }
+    .rar-ex-note, .rar-src-note { color: var(--muted); font-size: 0.9rem; }
+    .rar-sources { font-size: 0.9rem; }
+    @media (max-width: 560px) { .rar-toc ul { columns: 1; } }
+    @media print {
+      .site-header, .site-footer, .rar-toc, .skip-link { display: none !important; }
+      .rar-tier, .rar-cross { break-inside: avoid; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rar-toc a, .rar-examples a, .rar-links a { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to rarity guide</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+              <a href="index.html">Timeline</a>
+        <a href="timeline.html">Legends Timeline</a>
+        <a href="start.html">Start</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="stats.html">Stats</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="baf-planner.html">BAF Planner</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="price-guide.html">Price Guide</a>
+        <a href="market-briefing.html">Market Briefing</a>
+        <a href="auth-wizard.html">Auth Wizard</a>
+        <a href="shelf.html">Your Shelf</a>
+        <a href="journal.html">Journal</a>
+        <a href="baf-economics.html">BAF Economics</a>
+        <a href="hunt.html">Hunt Planner</a>
+        <a href="gift.html">Gift Finder</a>
+        <a href="holiday.html">Holiday Guide</a>
+        <a href="grading.html">Grading</a>
+        <a href="display.html">Display</a>
+        <a href="collection-value.html">Ledger</a>
+        <a href="exclusives.html">Exclusives</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="radar.html">Radar</a>
+        <a href="preorders.html">Pre-orders</a>
+        <a href="calendar.html">Release Calendar</a>
+        <a href="compare.html">Compare</a>
+        <a href="grails.html">Grails</a>
+        <a href="quest.html">Grail Quest</a>
+        <a href="variants.html">Variants</a>
+        <a href="variant-spotlight.html">Variant Spotlight</a>
+        <a href="rarity.html" aria-current="page">Rarity Guide</a>
+        <a href="checklist.html">Checklist</a>
+        <a href="explore.html">Explore</a>
+        <a href="retro.html">Retro</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="skills.html">Skills</a>
+        <a href="agents.html">Agents</a>
+        <a href="community.html">Community</a>
+        <a href="api.html">API</a></nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="rar-hero">
+      <h1>💎 The Rarity Guide</h1>
+      <p class="lede">What makes a Marvel Legends figure rare — chase vs variant vs exclusive vs limited — how to spot each, what rarity does (and doesn&rsquo;t) mean for value, and how rarity feeds the Grail Quest. Every example is a real figure in the archive. Every claim is sourced or flagged.</p>
+      <!-- RARITY:STATS-BEGIN -->
+<dl class="rar-stats">
+  <div class="rar-stat"><dt class="rar-stat-n">9</dt><dd class="rar-stat-l">rarity tiers</dd></div>
+  <div class="rar-stat"><dt class="rar-stat-n">2</dt><dd class="rar-stat-l">chase-style figures flagged</dd></div>
+  <div class="rar-stat"><dt class="rar-stat-n">83</dt><dd class="rar-stat-l">documented variants</dd></div>
+  <div class="rar-stat"><dt class="rar-stat-n">74</dt><dd class="rar-stat-l">SDCC exclusives</dd></div>
+  <div class="rar-stat"><dt class="rar-stat-n">8</dt><dd class="rar-stat-l">HasLab figures</dd></div>
+  <div class="rar-stat"><dt class="rar-stat-n">4</dt><dd class="rar-stat-l">made-to-order figures</dd></div>
+  <div class="rar-stat"><dt class="rar-stat-n">587</dt><dd class="rar-stat-l">exclusives in the archive</dd></div>
+</dl>
+<p class="rar-stats-note">Counts come straight from the archive — nothing estimated.</p>
+<!-- RARITY:STATS-END -->
+    </div>
+
+    <!-- RARITY:METHOD-BEGIN -->
+<section class="rar-method" aria-labelledby="rar-method-h">
+  <h2 id="rar-method-h">Methodology</h2>
+  <ul>
+    <li>Every example links to a real figure in the Chronicle archive (id form &lt;waveId&gt;::&lt;figureName&gt;); a build script asserts each one resolves.</li>
+    <li>Chase flags come from the archive&#x27;s own notes/variant text — the archive documents 2 chase-style figures, both Toy Biz-era. Community chase lists are labeled as such.</li>
+    <li>No production numbers or chase ratios appear anywhere below, because none were ever officially documented (encyclopedia honest gaps).</li>
+    <li>Every dollar figure is a reported listing or sold price from a named source, never a Chronicle price index.</li>
+  </ul>
+</section>
+<!-- RARITY:METHOD-END -->
+
+    <!-- RARITY:TOC-BEGIN -->
+<nav class="rar-toc" aria-label="Rarity guide contents">
+  <h2>On this page</h2>
+  <ul>
+    <li><a href="#tier-chase"><span aria-hidden="true">🎯</span> Chase figures</a></li>
+    <li><a href="#tier-running-change"><span aria-hidden="true">🔄</span> Running changes</a></li>
+    <li><a href="#tier-deco-variant"><span aria-hidden="true">🎨</span> Deco variants</a></li>
+    <li><a href="#tier-unmasked"><span aria-hidden="true">😶</span> Unmasked variants</a></li>
+    <li><a href="#tier-convention"><span aria-hidden="true">🎪</span> Convention exclusives</a></li>
+    <li><a href="#tier-retailer"><span aria-hidden="true">🏪</span> Store exclusives</a></li>
+    <li><a href="#tier-pulse-fanchannel"><span aria-hidden="true">📡</span> Pulse &amp; Fan Channel</a></li>
+    <li><a href="#tier-haslab"><span aria-hidden="true">🏗️</span> HasLab</a></li>
+    <li><a href="#tier-made-to-order"><span aria-hidden="true">📋</span> Made-to-order</a></li>
+    <li><a href="#cc-rare-faked"><span aria-hidden="true">🕵️</span> Rare = faked</a></li>
+    <li><a href="#cc-rarity-not-value"><span aria-hidden="true">💹</span> What rarity means for value</a></li>
+    <li><a href="#cc-rarity-not-quality"><span aria-hidden="true">⚖️</span> Rarity ≠ quality</a></li>
+    <li><a href="#cc-quest-hook"><span aria-hidden="true">🏆</span> Rarity feeds the Grail Quest</a></li>
+  </ul>
+</nav>
+<!-- RARITY:TOC-END -->
+
+    <!-- RARITY:TIERS-BEGIN -->
+<section class="rar-tier" id="tier-chase" aria-labelledby="tier-chase-h">
+  <h2 id="tier-chase-h"><span aria-hidden="true">🎯</span> Chase figures</h2>
+  <p class="rar-tagline">Short-packed figures hidden in the regular assortment.</p>
+  <p>Chase figures are the rarest thing Marvel Legends ever did on a mass scale: standard-assortment figures packed at a fraction of the regular case ratio, sometimes unpictured on the box back so collectors had to hunt blind. Toy Biz ran the program in the line&#x27;s middle years — its April 2004 statement named the Red Skull in Series 5 as the chase kicking off the 2004 line, and said a finite amount of previously released chase figures would be redistributed into later assortments.</p>
+  <p>The archive&#x27;s chase flags are all Toy Biz-era (two figures, both flagged chase-style in their notes). A community-compiled Toyark list documents more short-packed figures from the era — Series 4 Goliath, the Series 6 unmasked Wolverine, the Series 7 phasing Vision, the Series 8 Doombot re-release, the Series 12 unmasked Wolverine and red-costume Iron Fist, the Series 13 unmasked Green Goblin and alternate-crown Loki, the Series 14 unmasked Baron Zemo — but those come from collector consensus, not Hasbro documentation. The archive only flags what its own notes record.</p>
+  <p>Hasbro-era Legends effectively retired the chase mechanic. The Chronicle&#x27;s 2026 market briefing treats the chase era as over: Hasbro-era scarcity moved to exclusives and made-to-order windows instead.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Archive notes say &#x27;chase-style&#x27; or &#x27;chase&#x27; — check the figure&#x27;s wave page.</li>
+    <li>Not pictured on the packaging back (the Red Skull is the documented case).</li>
+    <li>Toy Biz box art sometimes lists the assortment without the chase — the figure surprises you in the case.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>The encyclopedia&#x27;s hall of fame carries the Series 5 Red Skull chase with a $59.99 ToyWiz listing (listing, not sold) and calls it &#x27;the template for ML chase culture&#x27; — its premium is structural (a true short-pack) rather than availability-driven, which is why it&#x27;s flagged reissue-resilient.</p>
+  <p>The Series 3 unmasked Wolverine variant (a chase-adjacent variant) moved between $20.50 and $62.00 in 2026 eBay solds tracked by actionfigure411 — a wide band that shows how condition and timing dominate even for desirable Toy Biz figures.</p>
+  <p>No exact production numbers exist for any Toy Biz chase variant (encyclopedia honest gaps). Any seller quoting an exact ratio is inventing it.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/toybiz-2003-series-5.html">Red Skull</a> <span class="rar-ex-note">— Chase-style; never pictured on the Series 5 packaging back. The archive&#x27;s flagship chase.</span></li>
+    <li><a href="waves/toybiz-2002-series-2.html">Doombot</a> <span class="rar-ex-note">— Chase-style variant of Doctor Doom; re-released into the Series 8 assortment as a chase.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="http://www.toymania.com/news/messages/4849.shtml">Toy Biz April 2004 statement (toymania.com)</a> <span class="rar-src-note">— Chase figures starting with Red Skull; finite redistribution; scarcity-built art deco variants.</span></li>
+    <li><a href="https://www.toyark.com/forums/marvel-legends-collection-139-more-83572/?s=ae440485cbbbaeec867c46f2d0c4fa53">Toyark community chase list</a> <span class="rar-src-note">— Collector-consensus chase flags per series (community-sourced, not official).</span></li>
+    <li><a href="https://www.actionfigure411.com/marvel/marvel-legends-series-3-wolverine-953.php">actionfigure411 Wolverine Series 3 solds</a> <span class="rar-src-note">— Reported eBay sold prices, 2026.</span></li>
+    <li><a href="market-briefing.html">Chronicle market briefing</a> <span class="rar-src-note">— Internal: the chase era is over; 2026 intel.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-running-change" aria-labelledby="tier-running-change-h">
+  <h2 id="tier-running-change-h"><span aria-hidden="true">🔄</span> Running changes</h2>
+  <p class="rar-tagline">Mid-production fixes and tweaks, both versions shipped at retail.</p>
+  <p>A running change is a tweak Hasbro or Toy Biz made mid-production — a deco fix, a swapped hand, a corrected paint mask. Both the before and after versions ship at regular retail, so neither is a chase in the structural sense; but the scarcer of the two (usually the earlier, shorter run) becomes the one collectors hunt.</p>
+  <p>The archive documents running changes in the variant field. Classic cases: the Series 2 Human Torch with and without the &#x27;4&#x27; on the chest, and the Series 1 Hulk&#x27;s straight-fingers white-shirt version. Spotting them takes side-by-side comparison, which is exactly why the Variant Spotlight page exists for the hardest ones.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Variant text on the archive names the change (&#x27;No 4 on chest&#x27;, &#x27;Straight fingers, white shirt&#x27;).</li>
+    <li>Compare against the Variant Spotlight page&#x27;s tells for that figure.</li>
+    <li>Running changes are the sneakiest fakes target — run the Auth Wizard on any expensive one.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>Running-change premiums are modest and fragile: a later production run can wash the scarcity away, and nothing about a running change prevents a reissue. Check the market briefing&#x27;s reissue radar before paying up.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/toybiz-2002-series-2.html">Human Torch</a> <span class="rar-ex-note">— The &#x27;No 4 on chest&#x27; variant — the documented running change.</span></li>
+    <li><a href="waves/toybiz-2002-series-1.html">Hulk</a> <span class="rar-ex-note">— Straight-fingers, white-shirt variant of the Series 1 Hulk.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="variants.html">Chronicle variants index</a> <span class="rar-src-note">— Internal: all 83 documented variants, wave by wave.</span></li>
+    <li><a href="variant-spotlight.html">Chronicle variant spotlight</a> <span class="rar-src-note">— Internal: spotting tells for the hardest variants.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-deco-variant" aria-labelledby="tier-deco-variant-h">
+  <h2 id="tier-deco-variant-h"><span aria-hidden="true">🎨</span> Deco variants</h2>
+  <p class="rar-tagline">Same sculpt, new paint — sometimes deliberately scarce.</p>
+  <p>Deco variants reuse a sculpt with a new paint job: stealth armor, gold finishes, alternate-costume repaints. Toy Biz&#x27;s April 2004 statement is explicit about the strategy — it planned &#x27;beautifully crafted art deco variants&#x27; produced &#x27;with scarcity in mind, making fewer available than their mass-produced counterparts.&#x27; Scarcity by design, not by accident.</p>
+  <p>The Series 1 Iron Man&#x27;s stealth-armor and gold Model 2 (horned) variants are the archive&#x27;s early examples: same assortment, same sculpt, visibly different figure.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>The archive&#x27;s variant field names the deco (&#x27;Stealth armor&#x27;, &#x27;Gold Model 2 (horned) version&#x27;).</li>
+    <li>Deco variants are prime KO targets — rare paint is easy to fake. The Carnage silver-eyes tell is the classic deco-KO case.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>The encyclopedia flags the stealth-armor Iron Man variant as reissue-vulnerable: &#x27;a reissue would collapse the premium&#x27; — the value is in the deco, and a re-deco is one production run away.</p>
+  <p>Deco-variant demand is character-driven: popular characters hold their premium longer; obscure ones don&#x27;t.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/toybiz-2002-series-1.html">Iron Man</a> <span class="rar-ex-note">— Stealth-armor variant of the Series 1 Iron Man.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="http://www.toymania.com/news/messages/4849.shtml">Toy Biz April 2004 statement (toymania.com)</a> <span class="rar-src-note">— &#x27;Art deco variants&#x27; produced &#x27;with scarcity in mind&#x27;.</span></li>
+    <li><a href="encyclopedia.html">Chronicle encyclopedia — hall of fame</a> <span class="rar-src-note">— Internal: stealth Iron Man reissue-radar flag.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-unmasked" aria-labelledby="tier-unmasked-h">
+  <h2 id="tier-unmasked-h"><span aria-hidden="true">😶</span> Unmasked variants</h2>
+  <p class="rar-tagline">The masked figure, minus the mask — a whole sub-economy.</p>
+  <p>Unmasked variants are Legends&#x27; most consistent variant type: the same figure with an alternate unmasked head. Toy Biz made them chase-adjacent — the Series 3 unmasked Wolverine and the community-flagged Series 12 unmasked Wolverine, Series 13 unmasked Green Goblin, and Series 14 unmasked Baron Zemo all ride the chase conversation.</p>
+  <p>They work because the mask is a real sculpt change, not just paint — harder to fake cleanly, and the alternate head reads as a genuinely different figure on the shelf.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Variant field says &#x27;Unmasked&#x27; — check the figure&#x27;s wave page for which head ships.</li>
+    <li>Series 3 Wolverine&#x27;s unmasked variant is the reference example for the whole type.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>2026 eBay solds for the Series 3 Wolverine (tracked by actionfigure411) ran $20.50–$62.00 across masked, unmasked, and gold-foil versions — the unmasked variant sat at the top of the band ($50–$62). Unmasked variants command the clearest, most repeatable premium in the Toy Biz catalog.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/toybiz-2002-series-3.html">Wolverine</a> <span class="rar-ex-note">— The unmasked variant — top of the 2026 sold band for the figure.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="https://www.actionfigure411.com/marvel/marvel-legends-series-3-wolverine-953.php">actionfigure411 Wolverine Series 3 solds</a> <span class="rar-src-note">— Reported eBay sold prices, 2026.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-convention" aria-labelledby="tier-convention-h">
+  <h2 id="tier-convention-h"><span aria-hidden="true">🎪</span> Convention exclusives</h2>
+  <p class="rar-tagline">SDCC and friends: one weekend, one booth, then the aftermarket.</p>
+  <p>Convention exclusives are Legends&#x27; loudest scarcity events. The pattern is old and stable: a set announced in June, sold at the show, and sometimes offered afterward in limited quantities online. SDCC 2007 paired a Stan Lee figure (with Spider-Man and Peter Parker heads, per the Fwoosh&#x27;s review) with a She-Hulk in her Fantastic Four costume, new ponytail head sculpt, and a full lawyering kit — skirt, sport coat, glasses, briefcase. SDCC 2008 brought the Savage Land set (Ka-Zar, Shanna the She-Devil, Zabu). SDCC 2012&#x27;s Uncanny X-Force three-pack was, in MarvelToyNews&#x27; words at the time, &#x27;insanely popular and difficult to acquire&#x27;. SDCC 2013&#x27;s Thunderbolts five-pack (Luke Cage, Ghost, Moonstone, Crossbones, Judith Chambers) retailed at $89.99 at the Hasbro booth and later went up on HasbroToyShop.com in limited supplies.</p>
+  <p>The archive records 74 San Diego Comic-Con figures — the deepest single-exclusive pool in the catalog. PulseCon and HASCON entries exist too, and the Grail Quest&#x27;s Convention Floor achievement tracks SDCC, NYCC, HASCON, and PulseCon ownership.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Exclusive field reads &#x27;San Diego Comic-Con&#x27; (or NYCC / HASCON / Hasbro PulseCon).</li>
+    <li>Con sets often have show-specific packaging (the Thunderbolts Tower box) — repro boxes are a known fake vector.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>The SDCC 2007 Stan Lee&#x27;s 2025–26 eBay solds tracked by actionfigure411 ranged $43–$119.99 — a 3x spread by condition and timing. Even marquee con exclusives are volatile; buy the figure, not the hype.</p>
+  <p>Con exclusives hold premiums better than retailer exclusives because they were never restocked at retail — but limited online leftovers (Thunderbolts 2013) can quietly extend the window.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/hasbro-2007-sdcc.html">Stan Lee</a> <span class="rar-ex-note">— SDCC 2007 — 2025–26 solds $43–$119.99 (actionfigure411).</span></li>
+    <li><a href="waves/hasbro-2007-sdcc.html">She-Hulk</a> <span class="rar-ex-note">— SDCC 2007 — FF costume, ponytail head, lawyering accessories.</span></li>
+    <li><a href="waves/hasbro-2012-sdcc-xforce.html">Wolverine</a> <span class="rar-ex-note">— The &#x27;insanely popular and difficult to acquire&#x27; Uncanny X-Force set.</span></li>
+    <li><a href="waves/hasbro-2013-exclusives.html">Ghost</a> <span class="rar-ex-note">— SDCC 2013 Thunderbolts five-pack, $89.99 at the booth.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="https://thefwoosh.com/2014/07/hasbro-marvel-legends-sdcc-she-hulk/">The Fwoosh — SDCC She-Hulk review</a> <span class="rar-src-note">— 2014 review of the 2007 exclusive: new head, FF costume, lawyering kit.</span></li>
+    <li><a href="https://www.toyark.com/2013/06/05/usa-today-reveals-hasbro-sdcc-exclusives-89031">Toyark — SDCC 2013 Thunderbolts reveal</a> <span class="rar-src-note">— $89.99 set; Judith Chambers, Ghost, Crossbones, Luke Cage, Moonstone.</span></li>
+    <li><a href="https://mintconditioncustom.com/2013/06/05/news-2013-sdcc-exclusive-marvel-legends-thunderbolts-set-revealed/">Mint Condition Customs — Thunderbolts follow-up</a> <span class="rar-src-note">— Later offered on HasbroToyShop.com in limited supplies.</span></li>
+    <li><a href="http://marveltoynews.com/marvel-legends-sdcc-2013-exclusives-thunderbolts-box-set-revealed/">MarvelToyNews — SDCC 2013 exclusives</a> <span class="rar-src-note">— 2012 X-Force set &#x27;insanely popular and difficult to acquire&#x27;.</span></li>
+    <li><a href="https://marveltoys.fandom.com/wiki/Marvel_Legends">Marvel Toys Wiki — Marvel Legends</a> <span class="rar-src-note">— Con-exclusive set lists (SDCC 2007/2008/2012).</span></li>
+    <li><a href="https://www.actionfigure411.com/marvel/marvel-legends-exclusives-stan-lee-1979.php">actionfigure411 Stan Lee solds</a> <span class="rar-src-note">— Reported eBay sold prices, 2025–26.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-retailer" aria-labelledby="tier-retailer-h">
+  <h2 id="tier-retailer-h"><span aria-hidden="true">🏪</span> Store exclusives</h2>
+  <p class="rar-tagline">Walmart, Target, Walgreens, TRU, Amazon — wide, but gated.</p>
+  <p>Store exclusives are the biggest exclusive category by count: Amazon (82 figures in the archive), Walmart (81), Target (76), Toys &#x27;R&#x27; Us (44), Walgreens (26). They&#x27;re widely available for a window — then gone, and the aftermarket decides. Walgreens&#x27; 2019 exclusives (Dani Moonstar and company) are a recent example of a chain-gated figure becoming a hunt item.</p>
+  <p>The archive&#x27;s Exclusives browser (exclusives.html) slices all 587 exclusives by retailer. The honesty rule there holds here: figures whose exclusive field names no retailer (&#x27;Box set exclusive&#x27;, &#x27;Made-to-order&#x27;) are grouped as unconfirmed, never guessed.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Exclusive field names the retailer (&#x27;Walmart&#x27;, &#x27;Target&#x27;, &#x27;Walgreens&#x27;, &quot;Toys &#x27;R&#x27; Us&quot;, &#x27;Amazon&#x27;).</li>
+    <li>Chain exclusives sometimes get a second life as Fan Channel releases — check the market briefing before paying a premium.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>Store-exclusive premiums are the most reissue-fragile tier in the guide. The encyclopedia&#x27;s reissue-effect research is blunt: reissue announced → speculative listings undercut each other → asking prices fall within days. The 2026 VHS → Retro reissue case (sellout, aftermarket spike, then Retro reissues at $27.99) is the clean documented example.</p>
+  <p>Originals keep a premium only when the value driver is rarity or provenance — prototypes, true limited runs — not mere availability.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/hasbro-2025-exclusives.html">Dragon Man</a> <span class="rar-ex-note">— 2025 chain-exclusive-adjacent release — and a documented KO target.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="exclusives.html">Chronicle exclusives browser</a> <span class="rar-src-note">— Internal: 587 exclusives by retailer.</span></li>
+    <li><a href="encyclopedia.html">Chronicle encyclopedia — reissue effect</a> <span class="rar-src-note">— Internal: documented reissue cases + the rarity/provenance rule.</span></li>
+    <li><a href="https://www.actionfiguresandcomics.com/collections/x/marvel-legends-loose-complete?page=3&amp;view=list">actionfiguresandcomics listing</a> <span class="rar-src-note">— 2019 Walgreens-exclusive Dani Moonstar in the loose-complete inventory.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-pulse-fanchannel" aria-labelledby="tier-pulse-fanchannel-h">
+  <h2 id="tier-pulse-fanchannel-h"><span aria-hidden="true">📡</span> Pulse &amp; Fan Channel</h2>
+  <p class="rar-tagline">Direct-to-collector: the specialist channel.</p>
+  <p>Hasbro Pulse (70 figures in the archive) and the Fan Channel (56) are the direct-to-collector lanes: specialist-retailer and Pulse-only figures that skip mass retail. Fan Channel exclusives were routing through specialist retailers by 2021, and the 20th Anniversary Series 1 (2022) was a Fan Channel showcase.</p>
+  <p>These sit between store exclusives and made-to-order: produced for the collector channel, but in standard production quantities — scarcity comes from channel gating, not a fixed run.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Exclusive field reads &#x27;Hasbro Pulse&#x27; or &#x27;Fan channel&#x27;.</li>
+    <li>Fan Channel figures often reappear at general retail years later — check preorders and the radar before treating one as scarce.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>Pulse/Fan Channel premiums erode on reissue: the 2026 Retro Venom reissue (a 2021 PulseCon cel-shaded figure reissued at Fan Channel for $34.99) is the documented case. Channel-gated is not limited.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/hasbro-2023-exclusives.html">Stryfe</a> <span class="rar-ex-note">— Fan Channel exclusive — channel-gated, not a limited run.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="encyclopedia.html">Chronicle encyclopedia</a> <span class="rar-src-note">— Internal: Fan Channel routing, 20th Anniversary Series 1.</span></li>
+    <li><a href="market-briefing.html">Chronicle market briefing</a> <span class="rar-src-note">— Internal: Retro Venom reissue case, 2026.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-haslab" aria-labelledby="tier-haslab-h">
+  <h2 id="tier-haslab-h"><span aria-hidden="true">🏗️</span> HasLab</h2>
+  <p class="rar-tagline">Crowdfunded, funded-only production — the true limited run.</p>
+  <p>HasLab is Legends&#x27; only true limited-run tier: a figure (or figure set) is produced only if backers fund it in the window. No funding, no figure — the 2022 Engine of Vengeance failed to fund and never existed. Funded runs: the Sentinel (2020, $349.99), Galactus (2021, $399.99, ~14,000 backers), and Giant-Man (2023, $199.99, 13,876 backers), per the encyclopedia&#x27;s HasLab research.</p>
+  <p>The archive records 8 HasLab figures — the three headline pieces plus stretch-goal figures (Bastion and a Female Prime Sentinel for the Sentinel campaign; Nova, Silver Surfer, and Morg for Galactus). Everything else in Legends got a production run; HasLab got a backer count.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Exclusive field reads &#x27;HasLab&#x27;.</li>
+    <li>Every HasLab piece ships with backer-tier extras (stretch-goal figures); loose &#x27;HasLab&#x27; figures without the full campaign context deserve extra scrutiny.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>HasLab premiums are the sturdiest in the guide: funded-only production can&#x27;t be reissued at retail without a new campaign, and backer counts are public. Even so, the driver is still demand — a character nobody wants is a limited run nobody chases.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/hasbro-2021-exclusives.html">Sentinel</a> <span class="rar-ex-note">— HasLab 2020 — $349.99 at backing.</span></li>
+    <li><a href="waves/hasbro-2022-exclusives.html">Galactus</a> <span class="rar-ex-note">— HasLab 2021 — $399.99, ~14,000 backers.</span></li>
+    <li><a href="waves/hasbro-2024-exclusives.html">Giant-Man (Hank Pym)</a> <span class="rar-ex-note">— The Giant-Man HasLab figure as recorded in the archive.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="encyclopedia.html">Chronicle encyclopedia</a> <span class="rar-src-note">— Internal: HasLab pricing, backer counts, Engine of Vengeance failure.</span></li>
+  </ul>
+</section>
+<section class="rar-tier" id="tier-made-to-order" aria-labelledby="tier-made-to-order-h">
+  <h2 id="tier-made-to-order-h"><span aria-hidden="true">📋</span> Made-to-order</h2>
+  <p class="rar-tagline">Order-window scarcity: the calendar is the chase ratio.</p>
+  <p>Made-to-order figures are produced to the order window, not to a fixed number: buy during the window, the figure exists. Miss it, and the aftermarket is your only door. The Chronicle&#x27;s grail notes put it precisely: made-to-order scarcity is the calendar, not a chase ratio.</p>
+  <p>The X-Men &#x27;97 Bastion &amp; Bolivar Trask two-pack is the live example: $74.99, order window open until November 20, 2026, cancellable until December 7, ships around November 2027. The archive&#x27;s made-to-order figures include the 2025 Dragon Man (Future Foundation), the 2025 X-Men &#x27;97 Sentinel, and 2026&#x27;s Mephisto and X-Men &#x27;97 Apocalypse.</p>
+  <h3>How to spot</h3>
+  <ul class="rar-spot">
+    <li>Exclusive field reads &#x27;Made-to-order&#x27;.</li>
+    <li>The radar and preorders pages track live windows — the rarity is the deadline.</li>
+  </ul>
+  <h3>What it means for value</h3>
+  <p>Made-to-order premiums are deadline-driven: the window&#x27;s closing date is the only scarcity signal, and long ship dates (a year out) mean the aftermarket trades on promises, not plastic. Treat pre-ship listings like pre-orders, not inventory.</p>
+  <h3>Documented examples</h3>
+  <ul class="rar-examples">
+    <li><a href="waves/hasbro-2025-exclusives.html">Dragon Man</a> <span class="rar-ex-note">— 2025 made-to-order — and a documented KO target.</span></li>
+    <li><a href="waves/hasbro-2025-exclusives.html">Sentinel</a> <span class="rar-ex-note">— 2025 X-Men &#x27;97 made-to-order Sentinel.</span></li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="rar-sources">
+    <li><a href="preorders.html">Chronicle preorders</a> <span class="rar-src-note">— Internal: live made-to-order windows and dates.</span></li>
+    <li><a href="grails.html">Chronicle grails</a> <span class="rar-src-note">— Internal: &#x27;made-to-order scarcity is the calendar, not a chase ratio&#x27;.</span></li>
+  </ul>
+</section>
+<!-- RARITY:TIERS-END -->
+
+    <!-- RARITY:CROSS-BEGIN -->
+<section class="rar-cross" id="cc-rare-faked" aria-labelledby="cc-rare-faked-h">
+  <h2 id="cc-rare-faked-h"><span aria-hidden="true">🕵️</span> Rare = faked</h2>
+  <p>Rarity and fakery travel together: the bootleg guide&#x27;s known-KO-target list names Dragon Man, Ronan, and the Juggernaut BAF recast outright, and the KO Carnage&#x27;s silver-eyes tell is the classic deco-fake case. The guide&#x27;s first rule of price logic is the rarity rule in one line: if a rare figure sells at a common price, be suspicious.</p>
+  <p>Before buying any figure this guide flags as rare, run the Auth Wizard — packaging, paint, joints, and listing red flags, in order.</p>
+  <ul class="rar-links">
+    <li><a href="auth-wizard.html">Auth Wizard →</a></li>
+    <li><a href="encyclopedia.html">Bootleg guide (encyclopedia) →</a></li>
+  </ul>
+</section>
+<section class="rar-cross" id="cc-rarity-not-value" aria-labelledby="cc-rarity-not-value-h">
+  <h2 id="cc-rarity-not-value-h"><span aria-hidden="true">💹</span> What rarity means for value</h2>
+  <p>Rarity is a supply fact; value is a supply-and-demand fact. The Chronicle keeps them separate on purpose: every dollar in this guide is a reported listing or sold price, never a Chronicle price index.</p>
+  <p>The encyclopedia&#x27;s reissue research states the rule plainly: originals keep a premium only when the value driver is rarity or provenance (prototypes, true limited runs), not mere availability. Documented cases: the VHS Animated Series sellout → aftermarket spike → 2026 Retro reissues at $27.99; the Super-Skrull &#x27;previously an exclusive&#x27; reissue at $46.99; the 2021 PulseCon cel-shaded Retro Venom reissued at Fan Channel for $34.99. In each case the spike belonged to availability, and the reissue took it back.</p>
+  <p>The reissue radar marks each grail resilient or vulnerable. Structural scarcity (short-packs, funded-only runs) is resilient; availability scarcity (sold-out-at-retail) is vulnerable. Check the radar before paying a premium.</p>
+  <ul class="rar-links">
+    <li><a href="market-briefing.html">Market briefing →</a></li>
+    <li><a href="grails.html">Reissue radar (grails) →</a></li>
+    <li><a href="price-guide.html">Price guide →</a></li>
+  </ul>
+</section>
+<section class="rar-cross" id="cc-rarity-not-quality" aria-labelledby="cc-rarity-not-quality-h">
+  <h2 id="cc-rarity-not-quality-h"><span aria-hidden="true">⚖️</span> Rarity ≠ quality</h2>
+  <p>The honest note the whole guide rests on: a rare figure is not automatically a good figure. Some of the line&#x27;s most sought-after pieces are mediocre toys with great stories, and some of its best sculpts are commons. Chase the figure you want on the shelf, not the tier — the Grail Quest rewards hunting, but the shelf is yours.</p>
+  <ul class="rar-links">
+    <li><a href="quest.html">Grail Quest →</a></li>
+  </ul>
+</section>
+<section class="rar-cross" id="cc-quest-hook" aria-labelledby="cc-quest-hook-h">
+  <h2 id="cc-quest-hook-h"><span aria-hidden="true">🏆</span> Rarity feeds the Grail Quest</h2>
+  <p>Every tier in this guide maps to a quest achievement, all computed from the archive&#x27;s own signals — nothing invented. Own the archive&#x27;s chase-flagged figures for Chase Hunter, 10+ documented variants for Variant Vault, 5+ convention exclusives (SDCC, NYCC, HASCON, PulseCon) for Convention Floor — plus the wave-23 additions below.</p>
+  <p>New in this wave: HasLab Backer (own any HasLab exclusive figure), Made To Order (own a made-to-order figure), and Rarity Trifecta (own a chase, a convention exclusive, and a HasLab figure — one of each tier).</p>
+  <ul class="rar-links">
+    <li><a href="quest.html">Grail Quest →</a></li>
+    <li><a href="gift.html?for=collector">Rarest gift picks (Gift Finder) →</a></li>
+  </ul>
+</section>
+<!-- RARITY:CROSS-END -->
+
+    <p class="rar-stats-note" style="margin-top:var(--space-6)">API: <a href="api/v1/rarity.json"><code>api/v1/rarity.json</code></a> — tier definitions, example figure refs, archive counts, quest mapping.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <nav aria-label="Footer">
+      <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

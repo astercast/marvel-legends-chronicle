@@ -16,6 +16,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 - `baf-economics.html` — BAF economics: cost-to-complete per Build-A-Figure from your own journal sold sightings, ranked cheapest-first (browser-local)
 - `hunt.html` — hunt planner: toy-show trip planner with targets, max prices, printable hunt sheet (browser-local)
 - `variant-spotlight.html` — 15 of the most interesting documented variants: why each matters + how to spot it
+- `rarity.html` — The Rarity Guide: chase vs variant vs exclusive vs limited — 9 tiers with documented examples (real archive ids), how-to-spot tells, value notes (reported prices only), rare = faked / rarity ≠ value / rarity ≠ quality sections; content from `data/rarity-guide.json` (rebuild with `python3 scripts/build_rarity.py`); API at `api/v1/rarity.json`
 - `checklist.html` — printable owned/wanted checklist from your tracker data, grouped by wave (print stylesheet also covers the timeline)
 - `explore.html` — archive explorer: "Surprise me" seeded random-figure engine (no repeats until the deck is exhausted) + curated rabbit holes — variant oddities, deepest Toy Biz cuts, one-figure characters, the ten oldest BAFs (browser-local)
 - `retro.html` — retro line browser: every retro-carded figure identified from the archive's own notes, grouped by retro line (Marvel Retro waves, Retro fan channel, retro singles); retro status never guessed (browser-local)

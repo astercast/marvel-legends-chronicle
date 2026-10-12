@@ -40,6 +40,7 @@ NAV = [
     ("grails.html", "Grails"), ("quest.html", "Grail Quest"),
     ("variants.html", "Variants"),
     ("variant-spotlight.html", "Variant Spotlight"),
+    ("rarity.html", "Rarity Guide"),
     ("checklist.html", "Checklist"),
     ("explore.html", "Explore"),
     ("retro.html", "Retro"),

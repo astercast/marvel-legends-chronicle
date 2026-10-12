@@ -20,6 +20,7 @@ await import("./test-grading.js");
 await import("./test-api-workflows.js");
 await import("./test-gift.js");
 await import("./test-timeline.js");
+await import("./test-rarity.js");
 
 const failures = await runAll();
 process.exit(failures ? 1 : 0);
