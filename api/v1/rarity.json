@@ -571,7 +571,8 @@
    "body": [
     "Every tier in this guide maps to a quest achievement, all computed from the archive's own signals — nothing invented. Own the archive's chase-flagged figures for Chase Hunter, 10+ documented variants for Variant Vault, 5+ convention exclusives (SDCC, NYCC, HASCON, PulseCon) for Convention Floor — plus the wave-23 additions below.",
     "New in this wave: HasLab Backer (own any HasLab exclusive figure), Made To Order (own a made-to-order figure), and Rarity Trifecta (own a chase, a convention exclusive, and a HasLab figure — one of each tier).",
-    "Wave 25 adds three more: Patient Hunter (a watched figure's reported market low drops into your target range), Deal Day (you log a purchase below your watchlist target), and Budget Keeper (10+ purchases logged while this month's spend stays at or under your own monthly budget). The Budget Tracker page mirrors your logged ledger purchases against the budgets you set."
+    "Wave 25 adds three more: Patient Hunter (a watched figure's reported market low drops into your target range), Deal Day (you log a purchase below your watchlist target), and Budget Keeper (10+ purchases logged while this month's spend stays at or under your own monthly budget). The Budget Tracker page mirrors your logged ledger purchases against the budgets you set.",
+    "Wave 29 adds two more: Character Loyalist (own every archive release of one character's full run — 5+ releases, the same grouping the character pages use) and Archivist (log 50 figures in the tracker). The wave's spec also named Completionist (100% of a wave) and First BAF — both already existed as the Completionist and Build-A-Master achievements, so no duplicates were added."
    ],
    "icon": "🏆",
    "id": "quest-hook",

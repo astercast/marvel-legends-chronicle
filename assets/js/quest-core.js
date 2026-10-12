@@ -91,6 +91,40 @@ export function difficultyFor(missing) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Character runs — the same base_name() grouping the character pages use.
+   Shared by the quest generator, the achievements, and the insights
+   dashboard so all three agree on what "a character run" is. Returns
+   [{ name, figs, got, total, missing }] for characters with at least
+   minReleases archive releases (default 5). */
+export function characterRuns(figures, ownedIds, minReleases = 5) {
+  const owned = new Set(Array.isArray(ownedIds) ? ownedIds : []);
+  const chars = new Map();
+  for (const f of figures ?? []) {
+    const name = baseName(f?.name);
+    if (!name) continue;
+    if (!chars.has(name)) chars.set(name, []);
+    chars.get(name).push(f);
+  }
+  const out = [];
+  for (const [name, figs] of chars) {
+    if (figs.length < minReleases) continue;
+    const missing = figs.filter((f) => !owned.has(f.id));
+    out.push({ name, figs, got: figs.length - missing.length, total: figs.length, missing });
+  }
+  return out;
+}
+
+/* Completed Build-A-Figures from the user's owned state. Exported so page
+   layers never re-implement the piece check (quest.js once called the
+   module-private pieceGot directly and would have thrown at runtime). */
+export function countCompletedBafs(figures, waves, ownedIds) {
+  const ownedSet = new Set(Array.isArray(ownedIds) ? ownedIds : []);
+  return buildBafs(waves).filter((b) =>
+    b.pieces.every((p) => pieceGot(p, ownedSet))
+  ).length;
+}
+
+/* ------------------------------------------------------------------ */
 /* Quest generation. */
 
 function pieceGot(piece, ownedSet) {
@@ -162,17 +196,10 @@ export function generateQuests(figures, waves, ownedIds) {
     });
   }
 
-  /* Character-run quests — same base_name() grouping as the character pages. */
-  const chars = new Map();
-  for (const f of figures) {
-    const name = baseName(f.name);
-    if (!name) continue;
-    if (!chars.has(name)) chars.set(name, []);
-    chars.get(name).push(f);
-  }
-  for (const [name, figs] of chars) {
-    if (figs.length < 5) continue;
-    const got = figs.filter((f) => ownedSet.has(f.id)).length;
+  /* Character-run quests — same grouping as the character pages (and the
+     insights dashboard): characters with >= 5 archive releases. */
+  for (const run of characterRuns(figures, ownedIds, 5)) {
+    const { name, figs, got } = run;
     if (got === 0 || got === figs.length) continue;
     quests.push({
       kind: "character",
@@ -181,7 +208,7 @@ export function generateQuests(figures, waves, ownedIds) {
       sub: `${figs.length} releases in the archive`,
       total: figs.length,
       got,
-      missing: figs.filter((f) => !ownedSet.has(f.id)),
+      missing: run.missing,
     });
   }
 
@@ -277,10 +304,10 @@ export function computeAchievements(figures, waves, ownedIds, extra = {}) {
   const budget = extra.budget ?? {};
   const today = extra.today instanceof Date ? extra.today : new Date();
 
-  const bafs = buildBafs(waves);
-  const completedBafs = bafs.filter((b) =>
-    b.pieces.every((p) => pieceGot(p, ownedSet))
-  ).length;
+  const completedBafs = countCompletedBafs(figures, waves, ownedIds);
+
+  /* Full character runs owned — the Character Loyalist bar. */
+  const completedRuns = characterRuns(figures, ownedIds, 5).filter((r) => r.got === r.total).length;
 
   let completedWaves = 0;
   for (const w of waves) {
@@ -391,6 +418,16 @@ export function computeAchievements(figures, waves, ownedIds, extra = {}) {
       id: "completionist", name: "Completionist", icon: "✅",
       blurb: "Complete a full wave run — every figure owned.",
       got: Math.min(completedWaves, 1), need: 1,
+    },
+    {
+      id: "character-loyalist", name: "Character Loyalist", icon: "🦸",
+      blurb: "Own every archive release of one character's full run (5+ releases).",
+      got: Math.min(completedRuns, 1), need: 1,
+    },
+    {
+      id: "archivist", name: "Archivist", icon: "🗄️",
+      blurb: "Log 50 figures in the tracker.",
+      got: Math.min(ownedFigs.length, 50), need: 50,
     },
     {
       id: "century-shelf", name: "Century Shelf", icon: "💯",

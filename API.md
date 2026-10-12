@@ -103,14 +103,24 @@ Base path: `api/v1/`
 (`name`, `description`) followed by: Use when, Inputs, Procedure,
 Worked example, Data references, Pitfalls.
 
-The `agents` category (6 cross-cutting playbooks) uses an
+The `agents` category (7 cross-cutting playbooks) uses an
 **API references** section pointing at `api/v1` endpoints instead of
 `Data references`: `preorder-hunter` (upcoming pre-orders from
 `preorders.json` + radar), `market-brief-reader` (market briefing +
 price-trend data, reported solds only), `ko-spotter` (bootleg risk
 from KO intel + auth-wizard logic), `grail-evaluator` (rarity signals
 + reissue radar), `baf-strategist` (cheapest-first BAF completion),
-`collection-auditor` (shelf gaps, era splits, next acquisitions).
+`collection-auditor` (shelf gaps, era splits, next acquisitions),
+`api-client` (code-level companion to `AGENT.md`: base pattern,
+endpoints, schemas, copy-paste fetches).
+
+Agent reference implementation for collection math: `assets/js/insights.js`
+(pure exports — `completionByWave`, `completionByYear`,
+`characterCompletions`, `oneFigureAway`, `findDuplicateIds`,
+`shelfValueRange` (reported ranges, never an appraisal), `growthSeries`,
+`computeMilestones`, `buildCollectionReport`). Mirror its math when a user
+pastes their tracker export; the markdown collection report it builds is
+headed "Your records, not a valuation."
 
 Agents: `api/v1/index.json` carries `repository`, `skills` (directory,
 index, count, usage), and `for_agents` routing. Load the skill matching

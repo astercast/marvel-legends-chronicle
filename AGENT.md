@@ -150,6 +150,19 @@ skill `preorder-hunter`.
    shelf with zero X-Men).
 6. Prices come only from the user's own journal solds — never invent them.
    See skill `collection-auditor`.
+7. The site's reference implementation for all of this is
+   `assets/js/insights.js` (pure exports: `completionByWave`,
+   `completionByYear`, `characterCompletions`, `oneFigureAway` — the
+   one-figure-away gap analysis, `findDuplicateIds`, `shelfValueRange`
+   (reported ranges summed per figure, never an appraisal),
+   `growthSeries`/`growthByMonth`, `computeMilestones`,
+   `buildCollectionReport`). Mirror its math when a user pastes their tracker
+   export; never invent a band.
+8. The Grail Quest's "Collection report" export (`buildCollectionReport`)
+   is the canonical markdown record: snapshot, completion by year, closest
+   wave completions, one-figure-away gaps, duplicates, milestones, growth —
+   headed "Your records, not a valuation." If a user pastes one, read it as
+   their data, not as a Chronicle valuation.
 
 ### Workflow D — "Is this grail worth the premium?"
 
@@ -248,6 +261,6 @@ run Workflow C. Never fabricate owned state.
 
 `skills/index.json` indexes all skills (id, title, description, path). Load
 the full skill file for the task at hand — each has Use when, Inputs,
-Procedure, a Worked example, Data/API references, and Pitfalls. The six
+Procedure, a Worked example, Data/API references, and Pitfalls. The seven
 `skills/agents/` playbooks are the primary agentic interface; the API is the
 data layer behind them. The human-readable agents surface is `agents.html`.

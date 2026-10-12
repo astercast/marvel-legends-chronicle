@@ -14,7 +14,6 @@
 import { STORE_KEYS, PATHS } from "./config.js";
 import { load } from "./store.js";
 import { loadData, figureById } from "./data.js";
-import { buildBafs } from "./baf-planner.js";
 import { escapeHtml, badgeFor } from "./figure-dialog.js";
 import { marketplaceQuery, soldSearchUrl } from "./listings.js";
 import { owned, trackerButtons } from "./tracker.js";
@@ -29,6 +28,7 @@ import {
   isConventionExclusive, baseName, runKey, costTier, COST_TIER_LABELS,
   difficultyFor, generateQuests, recommendNext, computeAchievements,
   LEVELS, xpBreakdown, computeLevel,
+  characterRuns, countCompletedBafs,
 } from "./quest-core.js";
 /* Re-exported so existing importers (tests) keep working. */
 export {
@@ -36,7 +36,13 @@ export {
   isConventionExclusive, baseName, runKey, costTier, COST_TIER_LABELS,
   difficultyFor, generateQuests, recommendNext, computeAchievements,
   LEVELS, xpBreakdown, computeLevel,
+  characterRuns, countCompletedBafs,
 };
+import {
+  completionByWave, completionByYear, characterCompletions, oneFigureAway,
+  findDuplicateIds, shelfValueRange, growthByMonth, growthSeries,
+  computeMilestones, buildCollectionReport, money as insightsMoney,
+} from "./insights.js";
 
 
 /* ------------------------------------------------------------------ */
@@ -63,10 +69,24 @@ const els = {
   recCheap: document.getElementById("rec-cheap"),
   recGrail: document.getElementById("rec-grail"),
   recHunts: document.getElementById("rec-hunts"),
+  recInsight: document.getElementById("rec-insight"),
   alertSub: document.getElementById("alerts-sub"),
   alertList: document.getElementById("alerts-list"),
   achCount: document.getElementById("ach-count"),
   achGrid: document.getElementById("ach-grid"),
+  insWave: document.getElementById("ins-wave"),
+  insYear: document.getElementById("ins-year"),
+  insChar: document.getElementById("ins-char"),
+  insGaps: document.getElementById("ins-gaps"),
+  insDupes: document.getElementById("ins-dupes"),
+  insShelf: document.getElementById("ins-shelf"),
+  growthTable: document.getElementById("growth-table"),
+  growthNote: document.getElementById("growth-note"),
+  milestoneList: document.getElementById("milestone-list"),
+  reportText: document.getElementById("report-text"),
+  reportCopy: document.getElementById("report-copy"),
+  reportDownload: document.getElementById("report-download"),
+  reportStatus: document.getElementById("report-status"),
   shareText: document.getElementById("share-text"),
   shareCopy: document.getElementById("share-copy"),
   shareStatus: document.getElementById("share-status"),
@@ -221,6 +241,146 @@ async function renderAlerts() {
   }
 }
 
+/* ------------------------------------------------------------------ */
+/* Collection insights dashboard (Grail Quest 4.0). Pure-computed from the
+   archive + the user's own localStorage state; every dollar is a reported
+   band or a user-logged price, never an appraisal. */
+
+function progressRowHtml(label, sub, got, total, ariaLabel) {
+  const pct = total ? Math.round((got / total) * 100) : 0;
+  return `
+    <div class="ins-row">
+      <div class="ins-row-head">
+        <span class="ins-label">${escapeHtml(label)}</span>
+        <span class="ins-sub">${escapeHtml(sub)}</span>
+        <span class="ins-num">${got}/${total} · ${pct}%</span>
+      </div>
+      <div class="progress-bar" role="progressbar" aria-valuenow="${got}" aria-valuemin="0" aria-valuemax="${total}" aria-label="${escapeHtml(ariaLabel)}">
+        <span style="width:${pct}%"></span>
+      </div>
+    </div>`;
+}
+
+let latestReport = "";
+
+function renderInsights(figures, waves, ownedIds, buys, completedBafs, achievements) {
+  if (!els.insWave) return; /* section absent — older markup; degrade gracefully */
+  const milestones = computeMilestones({ ownedCount: ownedIds.length, completedBafs, buys });
+  const priceSigs = priceSignals;
+
+  /* Completion by wave: started waves, most-complete first, top 8. */
+  const waveRows = completionByWave(figures, waves, ownedIds);
+  const done = waveRows.filter((w) => w.pct === 100);
+  const started = waveRows.filter((w) => w.got > 0 && w.pct < 100).slice(0, 8);
+  els.insWave.innerHTML = done.length || started.length
+    ? `<p class="chart-sub">${done.length} wave${done.length === 1 ? "" : "s"} complete · ${started.length ? "your closest finishes:" : "no unfinished waves — everything you touch is complete."}</p>` +
+      started.map((w) => progressRowHtml(w.series, String(w.year ?? ""), w.got, w.total, `${w.series} completion`)).join("")
+    : `<p class="chart-sub">Mark figures owned and your wave-by-wave completion appears here.</p>`;
+
+  /* Completion by year: compact list. */
+  const yearRows = completionByYear(figures, ownedIds);
+  const yearStarted = yearRows.filter((r) => r.got > 0);
+  els.insYear.innerHTML = yearStarted.length
+    ? yearStarted.map((r) => progressRowHtml(String(r.year), "archive year", r.got, r.total, `Completion for ${r.year}`)).join("")
+    : `<p class="chart-sub">No years started yet.</p>`;
+
+  /* Completion by character: fewest missing first, top 8. */
+  const charRows = characterCompletions(figures, ownedIds).filter((c) => c.got > 0).slice(0, 8);
+  els.insChar.innerHTML = charRows.length
+    ? charRows.map((c) => progressRowHtml(c.name, c.missingCount === 0 ? "run complete" : `${c.missingCount} to go`, c.got, c.total, `${c.name} run completion`)).join("")
+    : `<p class="chart-sub">No character runs started (5+ archive releases per character).</p>`;
+
+  /* Gap analysis: one figure away. */
+  const gaps = oneFigureAway(figures, ownedIds);
+  els.insGaps.innerHTML = gaps.length
+    ? `<ul class="rec-list">` + gaps.slice(0, 6).map((g) => {
+        const miss = g.missing[0];
+        return `<li><strong>${escapeHtml(g.name)}</strong> — ${g.got}/${g.total}; missing <strong>${escapeHtml(miss?.name ?? "unknown")}</strong> <span class="chart-sub">(${escapeHtml(miss?.waveSeries ?? "")} · ${miss?.year ?? ""})</span></li>`;
+      }).join("") + `</ul>
+      <p class="honesty">The most-wanted list: complete one of these runs and the Character Loyalist achievement is yours.</p>`
+    : `<p class="chart-sub">No character run is exactly one figure from complete.</p>`;
+
+  /* Duplicate detection — honest nudge, never an auto-delete. */
+  const rawOwned = load(STORE_KEYS.owned, []);
+  const dupes = findDuplicateIds(rawOwned);
+  els.insDupes.innerHTML = dupes.length
+    ? `<ul class="rec-list">` + dupes.map((d) => {
+        const fig = figureById(figures, d.id);
+        return `<li><strong>${escapeHtml(fig?.name ?? d.id)}</strong> <span class="chart-sub">(${escapeHtml(d.id)})</span> logged ${d.count}× — did you mean to log it twice? The tracker treats it as one figure; remove the extra entry in the <a href="checklist.html">checklist</a> if it was an accident.</li>`;
+      }).join("") + `</ul>`
+    : `<p class="chart-sub">Clean — no figure id logged twice.</p>`;
+
+  /* Shelf value — reported ranges, not an appraisal. */
+  const shelf = shelfValueRange(figures, ownedIds, priceSigs);
+  els.insShelf.innerHTML = `
+    <p class="shelf-band">${shelf.covered ? `${insightsMoney(shelf.low)}–${insightsMoney(shelf.high)}` : "—"}</p>
+    <p class="chart-sub">${shelf.covered
+      ? `Reported band across ${shelf.covered} of your figures with reported market data.`
+      : "No reported market data for the figures you own yet."}
+      ${shelf.uncovered ? `${shelf.uncovered} owned figure${shelf.uncovered === 1 ? "" : "s"} without a reported signal — excluded, never guessed.` : ""}</p>
+    <p class="honesty">Reported ranges, not an appraisal — summed from the Chronicle's published price signals. Not insurance-grade; see the export below for the full record.</p>`;
+
+  /* Growth view — monthly buckets from the Ledger's purchase dates. */
+  const months = growthByMonth(buys);
+  if (!months.length) {
+    els.growthNote.textContent = "No dated purchases logged yet — add purchase dates in the Ledger and your growth chart fills in (\"since you started logging\").";
+    els.growthTable.innerHTML = "";
+  } else {
+    const skipped = growthSeries(buys).skipped;
+    els.growthNote.textContent = `Since you started logging: ${months.length} month${months.length === 1 ? "" : "s"} of purchases${skipped ? ` · ${skipped} purchase${skipped === 1 ? "" : "s"} without a parseable date excluded` : ""}.`;
+    els.growthTable.innerHTML = `
+      <table class="data-table">
+        <caption class="visually-hidden">Collection growth by month</caption>
+        <thead><tr><th scope="col">Month</th><th scope="col">Added</th><th scope="col">Spent</th><th scope="col">Total figures</th><th scope="col">Total spent</th></tr></thead>
+        <tbody>${months.map((m) =>
+          `<tr><th scope="row">${escapeHtml(m.month)}</th><td>${m.added}</td><td>${insightsMoney(m.spend)}</td><td>${m.totalCount}</td><td>${insightsMoney(m.totalSpend)}</td></tr>`).join("")}
+        </tbody>
+      </table>`;
+  }
+
+  /* Milestones. */
+  els.milestoneList.innerHTML = milestones.map((m) => `
+    <li class="milestone ${m.unlocked ? "milestone-done" : ""}">
+      <span class="ach-icon" aria-hidden="true">${m.icon}</span>
+      <div><strong>${escapeHtml(m.name)}</strong>
+      <span class="chart-sub">${escapeHtml(m.blurb)}</span>
+      <span class="milestone-state">${escapeHtml(m.detail)}</span></div>
+    </li>`).join("");
+
+  /* Export — the markdown report. */
+  latestReport = buildCollectionReport({
+    generatedAt: new Date().toISOString().slice(0, 10),
+    figures, waves, ownedIds, signals: priceSigs, buys, achievements, milestones,
+  });
+  els.reportText.value = latestReport;
+}
+
+/* Export wiring: copy + download the report. Attached once at init. */
+function wireReportExport() {
+  if (!els.reportCopy || els.reportCopy.dataset.wired) return;
+  els.reportCopy.dataset.wired = "1";
+  els.reportCopy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(els.reportText.value);
+      els.reportStatus.textContent = "Copied — paste it anywhere.";
+    } catch {
+      els.reportText.select();
+      try { document.execCommand("copy"); els.reportStatus.textContent = "Copied — paste it anywhere."; }
+      catch { els.reportStatus.textContent = "Copy didn't work — select the text manually."; }
+    }
+  });
+  els.reportDownload.addEventListener("click", () => {
+    const blob = new Blob([els.reportText.value], { type: "text/markdown" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `marvel-legends-collection-report-${new Date().toISOString().slice(0, 10)}.md`;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 100);
+    els.reportStatus.textContent = "Downloaded — keep it with your insurance records.";
+  });
+}
+
 function renderAll(figures, waves) {
   const ownedIds = owned.all();
   const watchlist = load(STORE_KEYS.watchlist, []);
@@ -232,12 +392,10 @@ function renderAll(figures, waves) {
   const unlocked = achievements.filter((a) => a.unlocked);
   const quests = generateQuests(figures, waves, ownedIds);
 
-  /* Collector level. */
-  const bafs = buildBafs(waves);
-  const ownedSet = new Set(ownedIds);
-  const completedBafs = bafs.filter((b) =>
-    b.pieces.every((p) => pieceGot(p, ownedSet))
-  ).length;
+  /* Collector level. (countCompletedBafs is the exported helper — quest.js
+     once reached for quest-core's private piece check here and would have
+     thrown a ReferenceError the moment the board rendered.) */
+  const completedBafs = countCompletedBafs(figures, waves, ownedIds);
   const level = computeLevel(ownedIds.length, completedBafs, unlocked.length);
   const bd = xpBreakdown(ownedIds.length, completedBafs, unlocked.length);
 
@@ -324,6 +482,26 @@ function renderAll(figures, waves) {
       `<p>Add figures with target prices to your <a href="watchlist.html">watchlist</a> and this slot ranks them by how close the reported market is to your number.</p>`));
   }
 
+  /* Insight-driven recommendation: the nearest one-figure-away character
+     run — the gap analysis feeds the quest board directly. */
+  const gaps = oneFigureAway(figures, ownedIds);
+  if (gaps.length) {
+    const g = gaps[0];
+    const miss = g.missing[0];
+    els.recInsight.appendChild(recCard("Insight pick · one figure away",
+      `Close the gap: ${g.name} run`,
+      `<p class="quest-prog">${g.got}/${g.total} secured — one figure stands between you and a complete run.</p>
+       <ul class="rec-list"><li><strong>${escapeHtml(miss.name)}</strong> <span class="chart-sub">(${escapeHtml(miss.waveSeries ?? "")} · ${miss.year ?? ""})</span></li></ul>
+       <p class="honesty">From the collection insights below — computed from the archive and your tracker, no prices involved.</p>`));
+  } else {
+    els.recInsight.appendChild(recCard("Insight pick",
+      "No one-figure-away runs",
+      `<p>No character run sits exactly one figure from complete. Start one by marking figures owned in the <a href="checklist.html">checklist</a> — the gap analysis in the insights section will light up when you're close.</p>`));
+  }
+
+  /* Collection insights dashboard (Grail Quest 4.0). */
+  renderInsights(figures, waves, ownedIds, buys, completedBafs, achievements);
+
   /* Achievements. */
   els.achCount.textContent = `${unlocked.length} of ${achievements.length} unlocked`;
   els.achGrid.innerHTML = "";
@@ -350,6 +528,7 @@ async function init() {
     await loadSignals();
     renderAll(figures, waves);
     renderAlerts().catch(() => {});
+    wireReportExport();
     /* Re-render when tracker toggles fire (owned set changed). */
     els.main.addEventListener("click", (e) => {
       if (e.target.closest(".tracker-btns")) {

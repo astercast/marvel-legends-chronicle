@@ -59,6 +59,26 @@
     .onboard-steps .card { padding: var(--space-4); }
     .onboard-steps h3 { font-size: 1rem; margin: 0 0 var(--space-2); }
     .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--gold); color: #1a1206; font-weight: 900; margin-bottom: var(--space-2); }
+    /* Collection insights (wave 29) */
+    .ins-grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .ins-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ins-card h3 { font-size: 1rem; margin: 0 0 var(--space-2); }
+    .ins-row { margin-bottom: var(--space-3); }
+    .ins-row-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-2); font-size: 0.9rem; }
+    .ins-label { font-weight: 700; }
+    .ins-sub { color: var(--muted); font-size: 0.8rem; }
+    .ins-num { margin-left: auto; color: var(--ink-dim); font-size: 0.85rem; }
+    .ins-card .progress-bar { margin-top: var(--space-1); }
+    .shelf-band { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; margin: 0 0 var(--space-2); color: var(--gold); }
+    .ins-subhead { font-size: 1rem; margin: var(--space-5) 0 var(--space-2); }
+    .milestone-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .milestone-list { grid-template-columns: repeat(2, 1fr); } }
+    .milestone { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+    .milestone .ach-icon { width: 2.4rem; height: 2.4rem; font-size: 1.2rem; flex: none; }
+    .milestone > div { display: grid; gap: var(--space-1); }
+    .milestone-state { font-size: 0.85rem; color: var(--gold); font-weight: 700; }
+    .milestone-done { border-color: var(--gold); }
+    .milestone:not(.milestone-done) .ach-icon { filter: grayscale(1); }
   </style>
 </head>
 <body>
@@ -177,6 +197,7 @@
               <div id="rec-cheap"></div>
               <div id="rec-grail"></div>
               <div id="rec-hunts"></div>
+              <div id="rec-insight"></div>
             </div>
           </section>
 
@@ -191,6 +212,61 @@
             <h2 id="ach-heading">Achievements</h2>
             <p class="section-sub" id="ach-count" aria-live="polite"></p>
             <div class="ach-grid" id="ach-grid"></div>
+          </section>
+
+          <section class="quest-section" aria-labelledby="insights-heading">
+            <h2 id="insights-heading">Collection insights</h2>
+            <p class="section-sub">Completion math over your real tracker data — by wave, by year, by character — plus duplicate checks and a shelf-value band built only from the Chronicle's reported price ranges. Nothing here is an appraisal.</p>
+            <div class="ins-grid">
+              <div class="card ins-card">
+                <h3>Completion by wave</h3>
+                <div id="ins-wave" aria-live="polite"></div>
+              </div>
+              <div class="card ins-card">
+                <h3>Completion by year</h3>
+                <div id="ins-year" aria-live="polite"></div>
+              </div>
+              <div class="card ins-card">
+                <h3>Completion by character</h3>
+                <p class="chart-sub">Characters with 5+ archive releases, closest first.</p>
+                <div id="ins-char" aria-live="polite"></div>
+              </div>
+              <div class="card ins-card">
+                <h3>One figure away</h3>
+                <p class="chart-sub">The most-wanted list: character runs exactly one figure from complete.</p>
+                <div id="ins-gaps" aria-live="polite"></div>
+              </div>
+              <div class="card ins-card">
+                <h3>Duplicate check</h3>
+                <div id="ins-dupes" aria-live="polite"></div>
+              </div>
+              <div class="card ins-card">
+                <h3>Shelf value</h3>
+                <div id="ins-shelf" aria-live="polite"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="quest-section" aria-labelledby="growth-heading">
+            <h2 id="growth-heading">Growth &amp; milestones</h2>
+            <p class="section-sub" id="growth-note" aria-live="polite"></p>
+            <div id="growth-table"></div>
+            <h3 class="ins-subhead">Milestones</h3>
+            <ul class="milestone-list" id="milestone-list"></ul>
+          </section>
+
+          <section class="quest-section" aria-labelledby="export-heading">
+            <h2 id="export-heading">Collection report</h2>
+            <p class="section-sub">A plain-text record of your collection for insurance and your own files — completion, shelf-value bands, gaps, milestones. Your records, not a valuation.</p>
+            <div class="share-box">
+              <label class="visually-hidden" for="report-text">Collection report text</label>
+              <textarea id="report-text" readonly></textarea>
+              <div class="share-row">
+                <button class="btn" id="report-copy" type="button">Copy report</button>
+                <button class="btn" id="report-download" type="button">Download .md</button>
+                <span id="report-status" role="status" aria-live="polite"></span>
+              </div>
+            </div>
           </section>
 
           <section class="quest-section" aria-labelledby="share-heading">

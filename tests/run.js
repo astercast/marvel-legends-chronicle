@@ -15,6 +15,7 @@ await import("./test-listings.js");
 await import("./test-preorders.js");
 await import("./test-agents.js");
 await import("./test-quest.js");
+await import("./test-insights.js");
 await import("./test-holiday.js");
 await import("./test-grading.js");
 await import("./test-api-workflows.js");
