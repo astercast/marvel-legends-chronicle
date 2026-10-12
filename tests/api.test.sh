@@ -6,14 +6,13 @@
 # and against a preview URL.
 #
 #   BASE=http://localhost:3100 ./tests/api.test.sh
-#   BASE=https://<preview>.vercel.app CRON_SECRET=<secret> ./tests/api.test.sh
+#   BASE=https://<preview>.vercel.app ./tests/api.test.sh
 #
 # Deps: bash, curl, python3 only.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 BASE="${BASE:-http://localhost:3100}"
-CRON_SECRET="${CRON_SECRET:-testsecret}"
 
 pass=0; fail=0
 chk() { # chk <name> <command...>
