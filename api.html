@@ -9,6 +9,20 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    #api-output .tok-key { color: #8a5a00; }
+    #api-output .tok-str { color: #1a7a2e; }
+    #api-output .tok-num { color: #1a4fd6; }
+    #api-output .tok-bool { color: #b04a00; }
+    #api-output .tok-nul { color: #888; font-style: italic; }
+    @media (prefers-color-scheme: dark) {
+      #api-output .tok-key { color: #e8b93e; }
+      #api-output .tok-str { color: #7ddb8f; }
+      #api-output .tok-num { color: #7aa8ff; }
+      #api-output .tok-bool { color: #ff9d5c; }
+      #api-output .tok-nul { color: #aaa; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to API docs</a>
@@ -65,20 +79,40 @@
     <div class="container page-head">
       <span class="hero-kicker">Machine-readable</span>
       <h1>The API</h1>
-      <p class="lede">Versioned static JSON for agents and tools. Stable ids, explicit years, and provenance notes. Start at <code>api/v1/index.json</code>; full reference lives in <code>API.md</code>. For the agentic playbooks (218 skills incl. 6 agent playbooks) see the <a href="skills.html">skills library</a> and the <a href="agents.html">agents page</a>.</p>
+      <p class="lede">Versioned static JSON for agents and tools. Stable ids, explicit years, and provenance notes. Start at <code>api/v1/index.json</code>; full reference lives in <code>API.md</code>. For the agentic playbooks (219 skills incl. 7 agent playbooks) see the <a href="skills.html">skills library</a> and the <a href="agents.html">agents page</a>.</p>
     </div>
 
     <div class="container">
       <section aria-labelledby="endpoints-h">
         <h2 id="endpoints-h">Endpoints</h2>
         <div class="guide-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-3);margin-bottom:var(--space-6);">
-          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/index.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Manifest: version, endpoints, observation date.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/index.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Self-describing manifest: every endpoint with schema URLs, ISO-8601 UTC <code>updated</code>, record counts, deprecation notes.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><code>api/v1/stats.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><code>api/v1/waves.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">158 waves with series, year, manufacturer, BAF, and figure counts.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><code>api/v1/figures.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Flat list of all 1,904 figures with wave context and stable ids.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><code>api/v1/encyclopedia.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">History, packaging evolution, variant/chase taxonomy, hall of fame (with reissue radar), grading guide, price methodology, bootleg guide, resources. New claims carry source + confidence.</p></article>
           <article class="card"><h3 style="font-size:1rem;"><code>api/v1/preorders.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">15 researched upcoming releases (wave 12): status, exact pre-order dates where reported, release windows, announced MSRP, source links. Powers the pre-order tracker and release calendar.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/schema/</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">JSON Schema for waves, figures, and pre-order items.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/characters.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">66 character guides: slug, name, release count, first/last year, page path.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/radar-*.json</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Hand-maintained reissue-radar research feed (<code>radar-candidates.json</code>) + processed-URL dedupe list (<code>radar-seen.json</code>).</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>api/v1/schema/</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">JSON Schema (draft-07) for every endpoint — plus per-record item schemas.</p></article>
+        </div>
+      </section>
+
+      <section aria-labelledby="console-h">
+        <h2 id="console-h">Try the API</h2>
+        <div class="card" style="margin-bottom:var(--space-6);">
+          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0 0 var(--space-3);">Pick an endpoint and fetch it live — the same JSON any agent consumes. Output is truncated at 2,000 lines; the full payload is one click away via the endpoint cards above. The endpoint list loads from <code>api/v1/index.json</code> itself.</p>
+          <form id="api-console-form" style="display:flex;gap:var(--space-2);flex-wrap:wrap;align-items:end;margin-bottom:var(--space-3);">
+            <div style="flex:1 1 240px;min-width:0;">
+              <label for="api-endpoint" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.25rem;">Endpoint</label>
+              <select id="api-endpoint" style="width:100%;padding:0.5rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);"></select>
+            </div>
+            <button type="submit" id="api-fetch" class="btn btn-sm">Fetch</button>
+            <button type="button" id="api-copy" class="btn btn-sm" disabled>Copy JSON</button>
+          </form>
+          <p id="api-status" role="status" aria-live="polite" style="font-size:0.88rem;color:var(--muted);margin:0 0 var(--space-2);"></p>
+          <pre id="api-output" tabindex="0" aria-label="API response" style="max-height:480px;overflow:auto;background:var(--bg-soft,#f6f4ee);border:1px solid var(--line);border-radius:8px;padding:var(--space-3);font-size:0.8rem;line-height:1.5;white-space:pre;"><code id="api-output-code">Choose an endpoint and press Fetch.</code></pre>
+          <p style="font-size:0.82rem;color:var(--muted);margin:var(--space-2) 0 0;">If fetching fails with a network error, this page is being opened as a file — serve the site over HTTP (e.g. <code>python3 -m http.server</code>) and try again. Agents: the proven, tested versions of the three core workflows live in <a href="AGENT.md"><code>AGENT.md</code></a>.</p>
         </div>
       </section>
 
@@ -93,7 +127,7 @@
       <section aria-labelledby="llm-h">
         <h2 id="llm-h">For language models</h2>
         <div class="card">
-          <p style="font-size:0.92rem;color:var(--ink-dim);">Agents should start with <code>llms.txt</code> (index) and <code>API.md</code> (reference). Both sit at the repository root. The 218-skill playbook library lives in <a href="skills.html"><code>skills/</code></a> — including the 6 <a href="skills/index.json">agent playbooks</a> (<code>preorder-hunter</code>, <code>market-brief-reader</code>, <code>ko-spotter</code>, <code>grail-evaluator</code>, <code>baf-strategist</code>, <code>collection-auditor</code>) — with the human-readable agents surface at <a href="agents.html">agents.html</a>.</p>
+          <p style="font-size:0.92rem;color:var(--ink-dim);">Agents should start with <code>llms.txt</code> (index) and <code>API.md</code> (reference). Both sit at the repository root. The 219-skill playbook library lives in <a href="skills.html"><code>skills/</code></a> — including the 7 <a href="skills/index.json">agent playbooks</a> (<code>preorder-hunter</code>, <code>market-brief-reader</code>, <code>ko-spotter</code>, <code>grail-evaluator</code>, <code>baf-strategist</code>, <code>collection-auditor</code>, <code>api-client</code>) — with the human-readable agents surface at <a href="agents.html">agents.html</a> and the agent guide at <a href="AGENT.md"><code>AGENT.md</code></a>.</p>
           <div class="btn-row">
             <a class="btn btn-sm" href="llms.txt" download>llms.txt</a>
             <a class="btn btn-sm" href="API.md" download>API.md</a>
@@ -111,5 +145,6 @@
       </nav>
     </div>
   </footer>
+  <script src="assets/js/api-console.js"></script>
 </body>
 </html>

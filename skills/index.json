@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "count": 218,
+  "count": 219,
   "skills": [
     {
       "id": "baf-galactus",
@@ -1309,6 +1309,12 @@
       "title": "Audit a collection shelf (gaps, era splits, next acquisitions)",
       "description": "Summarize a shelf from owned/wanted state: era coverage, near-complete wins, gaps, and the smartest next pickups.",
       "path": "skills/agents/collection-auditor.md"
+    },
+    {
+      "id": "api-client",
+      "title": "Call the Chronicle API from code (endpoints, schemas, example fetches)",
+      "description": "The code-level companion to AGENT.md: base pattern, every endpoint with its schema, and copy-paste fetch patterns.",
+      "path": "skills/agents/api-client.md"
     }
   ]
 }

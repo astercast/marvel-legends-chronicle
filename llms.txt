@@ -36,19 +36,21 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 
 ## API (static JSON, versioned)
 
-Base: `api/v1/`
+Base: `api/v1/` — no auth, no keys, no rate limits. Full agent guide: `AGENT.md`.
 
-- `api/v1/index.json` — manifest: version, endpoints, observation date, provenance
+- `api/v1/index.json` — self-describing manifest: every endpoint with path, description, schema + itemSchema URLs, ISO-8601 UTC `updated` timestamp, record counts, deprecation notes. Start here.
 - `api/v1/stats.json` — totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies
 - `api/v1/waves.json` — 158 wave summaries (id, year, manufacturer, series, baf, source, figureCount)
 - `api/v1/figures.json` — flat list of all 1,904 figures with wave context (incl. `source`)
 - `api/v1/encyclopedia.json` — history timeline, packaging evolution, variant/chase/exclusive taxonomy, hall of fame (with reissue radar), grading guide, transparent price methodology, bootleg guide, resources directory
 - `api/v1/preorders.json` — 15 researched upcoming releases: status, exact pre-order dates where reported (null when unreported — never invented), release windows, announced MSRP, retailer search patterns, hobby-press sources; powers the pre-order tracker + release calendar
-- `api/v1/schema/wave.json`, `api/v1/schema/figure.json`, `api/v1/schema/preorder.json` — JSON Schema (draft-07)
+- `api/v1/characters.json` — 66 character guides: slug, name, release count, first/last year, page path
+- `api/v1/radar-candidates.json`, `api/v1/radar-seen.json` — hand-maintained reissue-radar research feed + processed-URL dedupe list
+- `api/v1/schema/` — JSON Schema (draft-07) for every endpoint (manifest, stats, waves, figures, encyclopedia, preorders, characters, radar) plus per-record item schemas
 
 ## Skills (agentic task procedures)
 
-218 skills in `skills/` — rebuild with `python3 scripts/build_skills.py`
+219 skills in `skills/` — rebuild with `python3 scripts/build_skills.py`
 (generates from `data/*.json` + authored procedures; outputs committed).
 `skills/index.json` is the manifest: id, title, description, path per skill.
 
@@ -56,8 +58,8 @@ For agents: load the skill whose task matches the request — skills are the
 primary interface for *doing* work; the JSON endpoints are the data layer.
 `api/v1/index.json` points here (`repository`, `skills`, `for_agents`).
 
-Categories: agents (6 playbooks: preorder-hunter, market-brief-reader,
-ko-spotter, grail-evaluator, baf-strategist, collection-auditor),
+Categories: agents (7 playbooks: preorder-hunter, market-brief-reader,
+ko-spotter, grail-evaluator, baf-strategist, collection-auditor, api-client),
 baf (101 completion checklists), characters (46 collector guides),
 grails (24 dossiers), bootleg (8), eras (5), collection (5), marketplace (4),
 community (4), variants (4), hunts (11).
@@ -66,7 +68,8 @@ The agents category uses an "API references" section (pointing at
 `api/v1` endpoints) instead of "Data references"; see the agents
 landing page (`agents.html`) for the endpoint table, data-freshness
 rules (preorder dates, radar, observed 2026-10-11), and 3 worked
-agent workflows.
+agent workflows (proven by `tests/test-api-workflows.js` against the
+real `api/v1` JSON).
 
 ## Stable ids
 

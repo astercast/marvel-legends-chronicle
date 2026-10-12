@@ -4,19 +4,29 @@ Version **1.0.0** · Observed **2026-10-11** · Static JSON, no auth, no rate li
 
 Base path: `api/v1/`
 
+## Shared API conventions (all sites)
+- Base: `api/v1/` relative to the site root. Works on any static host; no auth, no keys, no rate limits.
+- Manifest: `api/v1/index.json` lists every endpoint with its schema URL, `updated` timestamp, and notes. Start here.
+- Timestamps: ISO-8601 UTC (`2026-10-11T00:00:00Z`). Date-only fields are `YYYY-MM-DD`.
+- Versions: `meta.version` semver on the manifest; breaking changes get a new `v2/` path, never a silent shape change.
+- Errors: static files can't return error bodies. A missing endpoint means a wrong path — re-read `index.json`. Empty results are `[]`, never `null`. Every record carries its provenance (`source`, `observed`/`updated`).
+- Pagination: not needed — payloads are complete snapshots sized for client-side filtering. If a future endpoint paginates, it will use `?page=` and document it here.
+- Freshness: every payload states when it was generated and from what snapshot. Treat undated numbers as stale.
+
 ## Endpoints
 
 | Endpoint | Contents |
 |---|---|
-| `index.json` | Manifest: name, version, observation date, provenance note, endpoint map |
+| `index.json` | Self-describing manifest: every endpoint with `path`, `description`, `schema` + `itemSchema` URLs, ISO-8601 UTC `updated`, `records` count, deprecation `notes` |
 | `stats.json` | Totals: waves, figures, year range, BAF waves, exclusive/variant counts, per-year and per-manufacturer breakdowns |
-| `waves.json` | Array of 158 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `figureCount` |
+| `waves.json` | Array of 158 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `source` (nullable), `figureCount` |
 | `figures.json` | Array of 1,904 figures, flat. Each figure carries its wave context |
 | `encyclopedia.json` | `history` (timeline events), `packagingGuide` (packaging evolution, sourced), `variantsGuide` (variant taxonomy, chase/case ratios, exclusives, international), `hallOfFame` (23 entries, each with a `reissueRadar` flag), `gradingGuide` (AFA/CGA, CAS, UKG, grading-premium caveat), `priceMethod` (sold-listings methodology, dated price history, reissue effect), `bootlegGuide` (sections), `resources` (directory) |
-| `preorders.json` | 15 researched upcoming releases (wave 12): `id`, `name`, `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact `YYYY-MM-DD`, null when unreported — never invented), `releaseWindow` (e.g. `"Fall 2026"`), `price` (announced MSRP, never a market price), `query` (retailer search query), `venue`, `details`, `retailers` (retailer search-pattern ids the research names), `sources` (hobby-press links) |
-| `schema/wave.json` | JSON Schema (draft-07) for wave summaries |
-| `schema/figure.json` | JSON Schema (draft-07) for figures |
-| `schema/preorder.json` | JSON Schema (draft-07) for pre-order items |
+| `preorders.json` | Envelope `{version, observed, source, note, count, items}` — 15 researched upcoming releases (wave 12): `id`, `name`, `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact `YYYY-MM-DD`, null when unreported — never invented), `releaseWindow` (e.g. `"Fall 2026"`), `price` (announced MSRP, never a market price), `query` (retailer search query), `venue`, `details`, `retailers` (retailer search-pattern ids the research names), `sources` (hobby-press links) |
+| `characters.json` | Envelope `{version, observed, count, characters}` — 66 character guides: `slug`, `name`, `count`, `first`, `last`, `page` (`characters/<slug>.html`) |
+| `radar-candidates.json` | Hand-maintained reissue-radar research feed: newly spotted news items (`title`, `url`, `source`, `detected_at`) |
+| `radar-seen.json` | Hand-maintained dedupe list of processed radar URLs (array of strings) |
+| `schema/` | JSON Schema (draft-07) for every endpoint: `manifest.json`, `stats.json`, `waves.json` + item `wave.json`, `figures.json` + item `figure.json`, `encyclopedia.json`, `preorders.json` + item `preorder.json`, `characters.json` + item `character.json`, `radar-candidates.json` + item `radar-candidate.json`, `radar-seen.json` |
 
 ## Figure object
 
@@ -81,7 +91,7 @@ Base path: `api/v1/`
 
 ## Skills
 
-218 task procedures in `skills/`, indexed by `skills/index.json`
+219 task procedures in `skills/`, indexed by `skills/index.json`
 (id, title, description, path). Each skill file has frontmatter
 (`name`, `description`) followed by: Use when, Inputs, Procedure,
 Worked example, Data references, Pitfalls.

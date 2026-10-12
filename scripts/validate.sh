@@ -35,6 +35,7 @@ def warn(m): warns.append(m)
 
 # ---- 2. JSON parses ----
 json_files = sorted(ROOT.glob("data/*.json")) + sorted((ROOT/"api"/"v1").glob("*.json")) \
+    + sorted((ROOT/"api"/"v1"/"schema").glob("*.json")) \
     + [ROOT/"characters"/"manifest.json", ROOT/"skills"/"index.json"]
 for p in json_files:
     try:
@@ -43,7 +44,10 @@ for p in json_files:
         fail(f"JSON parse: {p.relative_to(ROOT)}: {e}")
 print(f"json: {len(json_files)} files parsed")
 
-# ---- 3. schema validation (hand-rolled draft-07 subset) ----
+# ---- 3. schema validation (hand-rolled draft-07 subset, manifest-driven) ----
+# The manifest (api/v1/index.json) is the single source of truth: every
+# endpoint is validated against its `schema`; endpoints with an `itemSchema`
+# get every record validated too; `records` counts are cross-checked.
 def type_ok(v, t):
     return {"string": isinstance(v, str),
             "integer": isinstance(v, int) and not isinstance(v, bool),
@@ -57,6 +61,8 @@ def check(v, s, path):
         if not any(type_ok(v, x) for x in t): fail(f"schema {path}: expected {t}, got {type(v).__name__}")
     elif t and not type_ok(v, t):
         fail(f"schema {path}: expected {t}, got {type(v).__name__}"); return
+    if isinstance(v, list) and "items" in s:
+        for i, item in enumerate(v): check(item, s["items"], f"{path}[{i}]")
     if isinstance(v, dict):
         for r in s.get("required", []):
             if r not in v: fail(f"schema {path}: missing required '{r}'")
@@ -64,13 +70,44 @@ def check(v, s, path):
             if k in v: check(v[k], sub, f"{path}.{k}")
     if "enum" in s and v not in s["enum"]:
         fail(f"schema {path}: {v!r} not in enum {s['enum']}")
-fig_schema = json.loads((ROOT/"api"/"v1"/"schema"/"figure.json").read_text())
-wave_schema = json.loads((ROOT/"api"/"v1"/"schema"/"wave.json").read_text())
-for i, f in enumerate(json.loads((ROOT/"api"/"v1"/"figures.json").read_text())):
-    check(f, fig_schema, f"figures[{i}]")
-for i, w in enumerate(json.loads((ROOT/"api"/"v1"/"waves.json").read_text())):
-    check(w, wave_schema, f"waves[{i}]")
-print("schema: 1904 figures + 158 waves validated")
+manifest = json.loads((ROOT/"api"/"v1"/"index.json").read_text())
+check(manifest, json.loads((ROOT/"api"/"v1"/"schema"/"manifest.json").read_text()), "index.json")
+recs = 0
+for name, e in manifest["endpoints"].items():
+    for k in ["path", "description", "schema", "itemSchema", "updated", "records", "notes"]:
+        if k not in e: fail(f"manifest: endpoint '{name}' missing key '{k}'")
+    payload_path = ROOT / e["path"]
+    if not payload_path.is_file():
+        fail(f"manifest: endpoint '{name}' payload missing: {e['path']}"); continue
+    payload = json.loads(payload_path.read_text(encoding="utf-8"))
+    items = None
+    if e["itemSchema"]:
+        if isinstance(payload, list):
+            items = payload
+        elif isinstance(payload, dict):
+            for v in payload.values():
+                if isinstance(v, list):
+                    items = v; break
+    if e["schema"]:
+        sch_path = ROOT / e["schema"]
+        if not sch_path.is_file():
+            fail(f"manifest: endpoint '{name}' schema file missing: {e['schema']}")
+        else:
+            check(payload, json.loads(sch_path.read_text(encoding="utf-8")), e["path"])
+    if e["itemSchema"]:
+        if items is None:
+            fail(f"manifest: endpoint '{name}' has itemSchema but no array in payload")
+        else:
+            isch = json.loads((ROOT / e["itemSchema"]).read_text(encoding="utf-8"))
+            for i, it in enumerate(items):
+                check(it, isch, f"{e['path']}[{i}]")
+            recs += len(items)
+    if e["records"] is not None:
+        actual = len(items) if items is not None \
+            else (len(payload) if isinstance(payload, list) else 1)
+        if actual != e["records"]:
+            fail(f"manifest: endpoint '{name}' records={e['records']} but payload has {actual}")
+print(f"schema: manifest + {len(manifest['endpoints'])} endpoints validated ({recs} item records)")
 
 # ---- 4. relative-link check ----
 html_files = sorted(ROOT.glob("*.html")) + sorted((ROOT/"waves").glob("*.html")) + sorted((ROOT/"characters").glob("*.html"))

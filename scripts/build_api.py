@@ -3,6 +3,12 @@
 
 Regenerate after any data change:  python3 scripts/build_api.py
 Outputs are committed to the repo so the API is static and versioned.
+
+The manifest (api/v1/index.json) is self-describing: every endpoint lists
+its path, description, schema URL, item-schema URL, ISO-8601 UTC `updated`
+timestamp, record count, and deprecation notes. validate.sh reads the
+manifest and validates every endpoint against its schema — the manifest is
+the single source of truth for the API surface.
 """
 import json
 from pathlib import Path
@@ -10,10 +16,24 @@ ROOT = Path(__file__).resolve().parent.parent
 API = ROOT / "api" / "v1"
 VERSION = "1.0.0"
 OBSERVED = "2026-10-11"  # observation date for the dataset
+UPDATED = OBSERVED + "T00:00:00Z"  # deterministic ISO-8601 UTC stamp for the manifest
 
 
 def load_json(path):
     return json.loads(Path(path).read_text())
+
+
+def ep(path, description, schema=None, item_schema=None, records=None, notes=None):
+    """One self-describing manifest entry for an endpoint."""
+    return {
+        "path": path,
+        "description": description,
+        "schema": schema,          # schema URL for the endpoint's top-level JSON value
+        "itemSchema": item_schema,  # schema URL for one record (array/envelope endpoints)
+        "updated": UPDATED,
+        "records": records,
+        "notes": notes,            # deprecation notes, or null
+    }
 
 
 def main():
@@ -25,6 +45,9 @@ def main():
     raw = load_json(ROOT / "data" / "figures.json")
     encyc = load_json(ROOT / "data" / "encyclopedia.json")
     preorders_raw = load_json(ROOT / "data" / "preorders.json")
+    characters_raw = load_json(ROOT / "characters" / "manifest.json")
+    radar_candidates = load_json(API / "radar-candidates.json")
+    radar_seen = load_json(API / "radar-seen.json")
     waves = raw["waves"]
 
     figures = []
@@ -73,30 +96,101 @@ def main():
         "byManufacturer": by_mfr,
     }
 
-    endpoints = {
-        "index": "api/v1/index.json",
-        "stats": "api/v1/stats.json",
-        "waves": "api/v1/waves.json",
-        "figures": "api/v1/figures.json",
-        "encyclopedia": "api/v1/encyclopedia.json",
-        "preorders": "api/v1/preorders.json",
-        "schemas": {
-            "wave": "api/v1/schema/wave.json",
-            "figure": "api/v1/schema/figure.json",
-            "preorder": "api/v1/schema/preorder.json",
-        },
+    characters = [
+        {
+            "slug": c["slug"],
+            "name": c["name"],
+            "count": c["count"],
+            "first": c["first"],
+            "last": c["last"],
+            "page": f"characters/{c['slug']}.html",
+        }
+        for c in characters_raw
+    ]
+
+    preorder_items = preorders_raw["items"]
+    preorders_envelope = {
+        "version": VERSION,
+        "observed": OBSERVED,
+        "source": preorders_raw.get("source"),
+        "note": preorders_raw.get("note"),
+        "count": len(preorder_items),
+        "items": preorder_items,
     }
+    characters_envelope = {
+        "version": VERSION,
+        "observed": OBSERVED,
+        "count": len(characters),
+        "characters": characters,
+    }
+
     skills_index = {}
     skills_idx_path = ROOT / "skills" / "index.json"
     if skills_idx_path.exists():
         skills_index = json.loads(skills_idx_path.read_text())
+
+    endpoints = {
+        "index": ep(
+            "api/v1/index.json",
+            "Self-describing manifest: every endpoint with path, description, schema URLs, "
+            "ISO-8601 UTC updated timestamp, record counts, and deprecation notes. Start here.",
+            schema="api/v1/schema/manifest.json", records=1),
+        "stats": ep(
+            "api/v1/stats.json",
+            "Archive totals: wave/figure counts, year range, BAF/exclusive/variant tallies, "
+            "per-year and per-manufacturer breakdowns. Cheapest entry point for overview questions.",
+            schema="api/v1/schema/stats.json", records=1),
+        "waves": ep(
+            "api/v1/waves.json",
+            "One summary per wave: id, year, manufacturer, series, BAF name (nullable), "
+            "story source (nullable), figure count.",
+            schema="api/v1/schema/waves.json", item_schema="api/v1/schema/wave.json",
+            records=len(wave_summaries)),
+        "figures": ep(
+            "api/v1/figures.json",
+            "Flat list of every figure with wave context and stable ids (<waveId>::<figureName>). "
+            "Filter client-side by year, manufacturer, waveId, exclusive, variant, bafPiece.",
+            schema="api/v1/schema/figures.json", item_schema="api/v1/schema/figure.json",
+            records=len(figures)),
+        "encyclopedia": ep(
+            "api/v1/encyclopedia.json",
+            "Collector encyclopedia: line history, packaging evolution, variant/chase/exclusive "
+            "taxonomy, hall of fame (with reissue-radar flags), grading guide, transparent price "
+            "methodology, bootleg-spotting guide, resources directory. Editorial knowledge, not catalog data.",
+            schema="api/v1/schema/encyclopedia.json", records=1),
+        "preorders": ep(
+            "api/v1/preorders.json",
+            "Researched upcoming releases: status (preorder/revealed/available), exact preorderDate "
+            "(YYYY-MM-DD, null when unreported — never invented), releaseWindow, announced MSRP "
+            "(never a market price), retailer search patterns, hobby-press sources.",
+            schema="api/v1/schema/preorders.json", item_schema="api/v1/schema/preorder.json",
+            records=len(preorder_items)),
+        "characters": ep(
+            "api/v1/characters.json",
+            "Character guides: every character with a dedicated page — slug, display name, release "
+            "count, first/last year, and the page path. Join to figures.json by character name for shelf audits.",
+            schema="api/v1/schema/characters.json", item_schema="api/v1/schema/character.json",
+            records=len(characters)),
+        "radar-candidates": ep(
+            "api/v1/radar-candidates.json",
+            "Hand-maintained reissue-radar research feed: newly spotted news items (title, URL, "
+            "source, detection time). Research notes, not a generated snapshot.",
+            schema="api/v1/schema/radar-candidates.json", item_schema="api/v1/schema/radar-candidate.json",
+            records=len(radar_candidates),
+            notes="Hand-maintained — build_api.py reads it for the record count but never rewrites it."),
+        "radar-seen": ep(
+            "api/v1/radar-seen.json",
+            "Hand-maintained dedupe list of radar URLs already processed. Array of URL strings.",
+            schema="api/v1/schema/radar-seen.json", records=len(radar_seen),
+            notes="Hand-maintained — build_api.py reads it for the record count but never rewrites it."),
+    }
 
     index = {
         "name": "Marvel Legends Chronicle API",
         "version": VERSION,
         "observed": OBSERVED,
         "repository": "https://github.com/astercast/marvel-legends-chronicle",
-        "for_agents": "Start at api/v1/index.json. For task procedures, read skills/index.json and load the relevant skill file — skills are the primary agentic interface for doing work, the JSON endpoints are the data layer.",
+        "for_agents": "Start at api/v1/index.json. For task procedures, read skills/index.json and load the relevant skill file — skills are the primary agentic interface for doing work, the JSON endpoints are the data layer. The full agent guide is AGENT.md at the repository root.",
         "provenance": "Fan-compiled archive. Within-year ordering is year-accurate but not audited to the month; some BAF pieces and disputed wave numbers are flagged in notes.",
         "skills": {
             "directory": "skills/",
@@ -107,9 +201,8 @@ def main():
         "endpoints": endpoints,
     }
 
-    wave_schema = {
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "title": "Wave",
+    # ---- schemas (draft-07) ----
+    wave_item = {
         "type": "object",
         "required": ["id", "year", "manufacturer", "series", "figureCount"],
         "properties": {
@@ -118,12 +211,12 @@ def main():
             "manufacturer": {"type": "string", "enum": ["Toy Biz", "Hasbro"]},
             "series": {"type": "string"},
             "baf": {"type": ["string", "null"]},
+            "source": {"type": ["string", "null"],
+                       "description": "Story source when the wave name names it: mcu|animated|videogame, else null"},
             "figureCount": {"type": "integer"},
         },
     }
-    figure_schema = {
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "title": "Figure",
+    figure_item = {
         "type": "object",
         "required": ["id", "name", "waveId", "waveSeries", "year", "manufacturer"],
         "properties": {
@@ -138,12 +231,10 @@ def main():
             "year": {"type": "integer"},
             "manufacturer": {"type": "string", "enum": ["Toy Biz", "Hasbro"]},
             "waveBaf": {"type": ["string", "null"]},
+            "source": {"type": ["string", "null"]},
         },
     }
-
-    preorder_schema = {
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "title": "PreorderItem",
+    preorder_item = {
         "type": "object",
         "required": ["id", "name", "status"],
         "properties": {
@@ -160,6 +251,130 @@ def main():
             "sources": {"type": "array", "items": {"type": "object"}},
         },
     }
+    character_item = {
+        "type": "object",
+        "required": ["slug", "name", "count", "first", "last"],
+        "properties": {
+            "slug": {"type": "string", "description": "Kebab-case character slug; page at characters/<slug>.html"},
+            "name": {"type": "string"},
+            "count": {"type": "integer", "description": "Catalogued releases for this character"},
+            "first": {"type": "integer", "description": "First release year"},
+            "last": {"type": "integer", "description": "Most recent release year"},
+            "page": {"type": "string"},
+        },
+    }
+    radar_candidate_item = {
+        "type": "object",
+        "required": ["title", "url", "source", "detected_at"],
+        "properties": {
+            "title": {"type": "string"},
+            "url": {"type": "string"},
+            "source": {"type": "string"},
+            "detected_at": {"type": "string", "description": "ISO-8601 UTC detection time"},
+        },
+    }
+
+    def schema_doc(title, body):
+        return {"$schema": "http://json-schema.org/draft-07/schema#",
+                "title": title, **body}
+
+    endpoint_entry = {
+        "type": "object",
+        "required": ["path", "description", "schema", "itemSchema", "updated", "records", "notes"],
+        "properties": {
+            "path": {"type": "string"},
+            "description": {"type": "string"},
+            "schema": {"type": ["string", "null"]},
+            "itemSchema": {"type": ["string", "null"]},
+            "updated": {"type": "string", "description": "ISO-8601 UTC"},
+            "records": {"type": ["integer", "null"]},
+            "notes": {"type": ["string", "null"]},
+        },
+    }
+
+    schemas = {
+        "schema/wave.json": schema_doc("Wave", wave_item),
+        "schema/waves.json": schema_doc("WaveList", {"type": "array", "items": wave_item}),
+        "schema/figure.json": schema_doc("Figure", figure_item),
+        "schema/figures.json": schema_doc("FigureList", {"type": "array", "items": figure_item}),
+        "schema/preorder.json": schema_doc("PreorderItem", preorder_item),
+        "schema/preorders.json": schema_doc("PreorderList", {
+            "type": "object",
+            "required": ["version", "observed", "count", "items"],
+            "properties": {
+                "version": {"type": "string"},
+                "observed": {"type": "string"},
+                "source": {"type": ["string", "null"]},
+                "note": {"type": ["string", "null"]},
+                "count": {"type": "integer"},
+                "items": {"type": "array", "items": preorder_item},
+            }}),
+        "schema/character.json": schema_doc("Character", character_item),
+        "schema/characters.json": schema_doc("CharacterList", {
+            "type": "object",
+            "required": ["version", "observed", "count", "characters"],
+            "properties": {
+                "version": {"type": "string"},
+                "observed": {"type": "string"},
+                "count": {"type": "integer"},
+                "characters": {"type": "array", "items": character_item},
+            }}),
+        "schema/radar-candidate.json": schema_doc("RadarCandidate", radar_candidate_item),
+        "schema/radar-candidates.json": schema_doc("RadarCandidateList",
+                                                  {"type": "array", "items": radar_candidate_item}),
+        "schema/radar-seen.json": schema_doc("RadarSeenList",
+                                             {"type": "array", "items": {"type": "string"}}),
+        "schema/stats.json": schema_doc("ArchiveStats", {
+            "type": "object",
+            "required": ["version", "observed", "waves", "figures", "yearMin", "yearMax",
+                         "bafWaves", "exclusiveFigures", "variantFigures",
+                         "byYear", "byManufacturer"],
+            "properties": {
+                "version": {"type": "string"},
+                "observed": {"type": "string"},
+                "waves": {"type": "integer"},
+                "figures": {"type": "integer"},
+                "yearMin": {"type": "integer"},
+                "yearMax": {"type": "integer"},
+                "bafWaves": {"type": "integer"},
+                "exclusiveFigures": {"type": "integer"},
+                "variantFigures": {"type": "integer"},
+                "byYear": {"type": "object"},
+                "byManufacturer": {"type": "object"},
+            }}),
+        "schema/encyclopedia.json": schema_doc("CollectorEncyclopedia", {
+            "type": "object",
+            "required": ["history", "packagingGuide", "variantsGuide", "hallOfFame",
+                         "gradingGuide", "priceMethod", "bootlegGuide", "resources"],
+            "properties": {
+                "history": {"type": "array"},
+                "packagingGuide": {"type": "object"},
+                "variantsGuide": {"type": "object"},
+                "hallOfFame": {"type": "array"},
+                "gradingGuide": {"type": "object"},
+                "priceMethod": {"type": "object"},
+                "bootlegGuide": {"type": "object"},
+                "resources": {"type": "array"},
+            }}),
+        "schema/manifest.json": schema_doc("ChronicleAPIManifest", {
+            "type": "object",
+            "required": ["name", "version", "observed", "repository", "for_agents",
+                         "provenance", "skills", "endpoints"],
+            "properties": {
+                "name": {"type": "string"},
+                "version": {"type": "string", "description": "Semver; breaking changes get a new v2/ path"},
+                "observed": {"type": "string"},
+                "repository": {"type": "string"},
+                "for_agents": {"type": "string"},
+                "provenance": {"type": "string"},
+                "skills": {"type": "object"},
+                "endpoints": {"type": "object",
+                              "description": "Each key is an endpoint name; each value is an endpoint entry",
+                              "properties": {name: endpoint_entry for name in
+                                             ["index", "stats", "waves", "figures", "encyclopedia",
+                                              "preorders", "characters", "radar-candidates", "radar-seen"]}},
+            }}),
+    }
 
     outputs = {
         "index.json": index,
@@ -167,24 +382,17 @@ def main():
         "waves.json": wave_summaries,
         "figures.json": figures,
         "encyclopedia.json": encyc,
-        "preorders.json": {
-            "version": VERSION,
-            "observed": OBSERVED,
-            "source": preorders_raw.get("source"),
-            "note": preorders_raw.get("note"),
-            "count": len(preorders_raw["items"]),
-            "items": preorders_raw["items"],
-        },
-        "schema/wave.json": wave_schema,
-        "schema/figure.json": figure_schema,
-        "schema/preorder.json": preorder_schema,
+        "preorders.json": preorders_envelope,
+        "characters.json": characters_envelope,
+        **schemas,
     }
     for name, payload in outputs.items():
         # Minified on the wire: api/v1/figures.json is 732KB pretty-printed.
         # Nulls are KEPT (API contract: absent != null for consumers).
         (API / name).write_text(json.dumps(payload, separators=(",", ":"), ensure_ascii=False) + "\n")
 
-    print(f"API v{VERSION}: {len(wave_summaries)} waves, {len(figures)} figures -> {API}")
+    print(f"API v{VERSION}: {len(wave_summaries)} waves, {len(figures)} figures, "
+          f"{len(characters)} characters -> {API}")
 
 
 if __name__ == "__main__":

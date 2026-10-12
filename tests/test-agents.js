@@ -1,4 +1,4 @@
-/* Guards the six agent-playbook skills (skills/agents/): index entries,
+/* Guards the seven agent-playbook skills (skills/agents/): index entries,
    file existence, frontmatter, the "API references" section (agents
    category uses it instead of "Data references"), and count consistency
    with api/v1/index.json. */
@@ -16,13 +16,14 @@ const AGENTS = [
   "grail-evaluator",
   "baf-strategist",
   "collection-auditor",
+  "api-client",
 ];
 
 const idx = JSON.parse(readFileSync(join(root, "skills", "index.json"), "utf8"));
 const apiIndex = JSON.parse(readFileSync(join(root, "api", "v1", "index.json"), "utf8"));
 
 suite("agent skills (skills/agents/)", () => {
-  test("index lists exactly the six agent skills", () => {
+  test("index lists exactly the seven agent skills", () => {
     const ids = idx.skills
       .filter((s) => s.path.startsWith("skills/agents/"))
       .map((s) => s.id);
@@ -60,7 +61,7 @@ suite("agent skills (skills/agents/)", () => {
     }
   });
 
-  test("agent skills carry all six playbook sections", () => {
+  test("agent skills carry all playbook sections", () => {
     const sections = ["## Use when", "## Inputs", "## Procedure", "## Worked example", "## Pitfalls"];
     for (const id of AGENTS) {
       const text = readFileSync(join(root, "skills", "agents", `${id}.md`), "utf8");
@@ -75,7 +76,7 @@ suite("agent skills (skills/agents/)", () => {
     assert.equal(idx.skills.length, idx.count);
   });
 
-  test("agents.html links all six agent skills and the three surface docs", () => {
+  test("agents.html links all agent skills and the three surface docs", () => {
     const text = readFileSync(join(root, "agents.html"), "utf8");
     for (const id of AGENTS) {
       assert(text.includes(`skills/agents/${id}.md`), `agents.html: missing link to ${id}`);
