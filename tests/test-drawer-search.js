@@ -13,7 +13,7 @@ const read = (p) => readFileSync(join(root, p), "utf8");
 
 const page = read("vault-room.html");
 const js = read("assets/js/vault-room.js");
-const figures = JSON.parse(read("api/v1/figures.json"));
+const figures = JSON.parse(read("data/v1/figures.json"));
 
 const stubFigs = [
   { id: "w1::Doctor Doom", name: "Doctor Doom", variant: null, exclusive: null, bafPiece: null, notes: "classic", waveId: "w1", waveSeries: "Epic Heroes", year: 2013, manufacturer: "Hasbro" },

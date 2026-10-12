@@ -403,7 +403,7 @@ function cardHtml(item, today, states) {
 /* Live-first data load through the §3 fallback contract (Vercel Wave B):
  * 1. Try the live function /api/preorders (7s timeout) — projects the
  *    committed tracker into the §7.3 shape.
- * 2. On failure, fall back to the static api/v1/preorders.json.
+ * 2. On failure, fall back to the static data/v1/preorders.json.
  * 3. Both shapes normalize into the tracker's item shape; unknown fields
  *    are ignored, missing optionals stay null. Never rejects to a blank
  *    page: an empty array keeps the honest error line visible. */
@@ -436,7 +436,7 @@ function refinePreorderBadge(badgeEl, result) {
 
 async function legacyStaticLoad() {
   try {
-    const res = await fetch("/api/v1/preorders.json");
+    const res = await fetch("/data/v1/preorders.json");
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data.items) ? data.items : [];
@@ -451,7 +451,7 @@ async function loadItems() {
   if (!client || typeof client.fetchWithFallback !== "function") {
     return legacyStaticLoad();
   }
-  const result = await client.fetchWithFallback("/api/preorders", "/api/v1/preorders.json", {
+  const result = await client.fetchWithFallback("/api/preorders", "/data/v1/preorders.json", {
     badgeEl,
   });
   refinePreorderBadge(badgeEl, result);

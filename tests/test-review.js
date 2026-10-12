@@ -2,7 +2,7 @@
    - Pinned-fixture tests for the review computations: top-10 distinction
      scoring + ordering (score desc, alphabetical tie-break) and price-movement
      math (first->last delta, %). The test recomputes both from the source
-     data files and requires api/v1/year-review.json to match.
+     data files and requires data/v1/year-review.json to match.
    - Real-data integrity: every ref resolves, every source URL well-formed,
      every sold sits inside its signal's reported band.
    - Page + API structure: markers resolved, month sections, scrubber links,
@@ -20,8 +20,8 @@ const review = JSON.parse(readFileSync(join(ROOT, "data/year-review.json"), "utf
 const figRaw = JSON.parse(readFileSync(join(ROOT, "data/figures.json"), "utf8"));
 const preRaw = JSON.parse(readFileSync(join(ROOT, "data/preorders.json"), "utf8"));
 const sigRaw = JSON.parse(readFileSync(join(ROOT, "data/price-signals.json"), "utf8"));
-const api = JSON.parse(readFileSync(join(ROOT, "api/v1/year-review.json"), "utf8"));
-const manifest = JSON.parse(readFileSync(join(ROOT, "api/v1/index.json"), "utf8"));
+const api = JSON.parse(readFileSync(join(ROOT, "data/v1/year-review.json"), "utf8"));
+const manifest = JSON.parse(readFileSync(join(ROOT, "data/v1/index.json"), "utf8"));
 const page = readFileSync(join(ROOT, "2026-review.html"), "utf8");
 
 const wavesById = new Map(figRaw.waves.map((w) => [w.id, w]));
@@ -264,7 +264,7 @@ suite("review page (2026-review.html)", () => {
   test("cross-links to timeline, briefing, rarity, radar, encyclopedia, VS mode", () => {
     for (const href of ["timeline.html", "market-briefing.html", "rarity.html", "radar.html",
                         "preorders.html", "encyclopedia.html", "compare.html", "quest.html",
-                        "api/v1/year-review.json"]) {
+                        "data/v1/year-review.json"]) {
       assert(page.includes(`href="${href}"`), `cross-link ${href}`);
     }
   });
@@ -277,15 +277,15 @@ suite("review page (2026-review.html)", () => {
   });
 });
 
-suite("review API endpoint (api/v1/year-review.json)", () => {
+suite("review API endpoint (data/v1/year-review.json)", () => {
   test("manifest registers year-review as the 16th endpoint", () => {
     const names = Object.keys(manifest.endpoints);
     assert.equal(names.length, 16, "16 endpoints");
     const e = manifest.endpoints["year-review"];
     assert(e, "year-review in manifest");
-    assert.equal(e.path, "api/v1/year-review.json", "path");
-    assert.equal(e.schema, "api/v1/schema/year-review.json", "schema");
-    assert.equal(e.itemSchema, "api/v1/schema/year-review-item.json", "itemSchema");
+    assert.equal(e.path, "data/v1/year-review.json", "path");
+    assert.equal(e.schema, "data/v1/schema/year-review.json", "schema");
+    assert.equal(e.itemSchema, "data/v1/schema/year-review-item.json", "itemSchema");
     assert.equal(e.records, 10, "records = 10 top-10 entries");
     assert(existsSync(join(ROOT, e.schema)), "envelope schema file exists");
     assert(existsSync(join(ROOT, e.itemSchema)), "item schema file exists");

@@ -9,7 +9,7 @@
   tie-break), per-figure MSRP math for best-value, first->last sold deltas for
   price movements, 2026 archive stats, month scrubber from the events data.
 - Regenerates the marked sections of 2026-review.html (static HTML, works
-  without JS) and writes api/v1/year-review.json ("top10" is the first list
+  without JS) and writes data/v1/year-review.json ("top10" is the first list
   so the manifest-driven validator picks it for itemSchema).
 
 Regenerate: python3 scripts/build_review.py
@@ -31,7 +31,7 @@ FIGURES = DATA / "figures.json"
 PREORDERS = DATA / "preorders.json"
 SIGNALS = DATA / "price-signals.json"
 PAGE = ROOT / "2026-review.html"
-API_OUT = ROOT / "api" / "v1" / "year-review.json"
+API_OUT = ROOT / "data" / "v1" / "year-review.json"
 
 URL_OK = re.compile(r"^(https?://[^\s'\"<>]+|[a-z0-9_./-]+\.html(\?[^\\s'\"<>]*)?)$")
 

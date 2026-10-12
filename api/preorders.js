@@ -1,7 +1,7 @@
 /* api/preorders.js — GET /api/preorders (marvel-radar).
  * Upcoming pre-order dates feeding the pre-order tracker (§7.3).
  *
- * Reads the committed api/v1/preorders.json (the wave-research pre-order
+ * Reads the committed data/v1/preorders.json (the wave-research pre-order
  * tracker payload) from the deployment bundle and projects each item into
  * the §7.3 shape: figure/wave, goes_live_at, retailers, price_or_tbd.
  *
@@ -13,7 +13,7 @@
  *   windows opened at 1 PM ET; the file does not carry times).
  * - status is explicit per item (preorder | revealed | available).
  *
- * No query inputs. Fallback: api/v1/preorders.json
+ * No query inputs. Fallback: data/v1/preorders.json
  */
 "use strict";
 
@@ -78,7 +78,7 @@ module.exports = (req, res) => {
 
   let raw;
   try {
-    raw = JSON.parse(fs.readFileSync(path.join(__dirname, "v1", "preorders.json"), "utf8"));
+    raw = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "v1", "preorders.json"), "utf8"));
   } catch (e) {
     console.log(`[upstream] preorders.json fail error=${String((e && e.message) || e).slice(0, 120)}`);
     return err(

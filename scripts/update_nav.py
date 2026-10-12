@@ -59,10 +59,26 @@ NAV = [
 PRIMARY_RE = re.compile(r'(<nav class="site-nav" aria-label="Primary">\s*)(.*?)(\s*</nav>)', re.S)
 FOOTER_RE = re.compile(r'(<nav aria-label="Footer">\s*)(.*?)(\s*</nav>)', re.S)
 
+# EXTREME MAKEOVER (2026-10-12): the primary nav is the first impression —
+# nine doors, not forty-four. The full registry lives in the footer.
+PRIMARY_NAV = [
+    ("index.html", "Timeline"),
+    ("vault-room.html", "Vault Room"),
+    ("drop-week.html", "Drop Week"),
+    ("preorders.html", "Pre-orders"),
+    ("waves/index.html", "Waves"),
+    ("characters/index.html", "Characters"),
+    ("encyclopedia.html", "Encyclopedia"),
+    ("quest.html", "Grail Quest"),
+    ("timeline.html", "Legends Timeline"),
+    ("2026-review.html", "2026 Review"),
+    ("start.html", "Start"),
+]
+
 
 def primary_nav(current):
     items = []
-    for href, label in NAV:
+    for href, label in PRIMARY_NAV:
         cur = ' aria-current="page"' if href == current else ""
         items.append(f'        <a href="{href}"{cur}>{label}</a>')
     return "\n".join(items)

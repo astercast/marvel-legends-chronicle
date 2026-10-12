@@ -1,12 +1,12 @@
 # Marvel Legends Chronicle — API Reference
 
-Version **1.0.0** · Observed **2026-10-11** · Static JSON + live serverless functions (marvel-radar). Static `api/v1/` needs no auth and has no rate limits; the live `/api/*` layer adds 60 req/min/IP and `CRON_SECRET` on the cron job only.
+Version **1.0.0** · Observed **2026-10-11** · Static JSON + live serverless functions (marvel-radar). Static `data/v1/` needs no auth and has no rate limits; the live `/api/*` layer adds 60 req/min/IP and `CRON_SECRET` on the cron job only.
 
-Base path: `api/v1/`
+Base path: `data/v1/`
 
 ## Shared API conventions (all sites)
-- Base: `api/v1/` relative to the site root. Works on any static host; no auth, no keys, no rate limits.
-- Manifest: `api/v1/index.json` lists every endpoint with its schema URL, `updated` timestamp, and notes. Start here.
+- Base: `data/v1/` relative to the site root. Works on any static host; no auth, no keys, no rate limits.
+- Manifest: `data/v1/index.json` lists every endpoint with its schema URL, `updated` timestamp, and notes. Start here.
 - Timestamps: ISO-8601 UTC (`2026-10-11T00:00:00Z`). Date-only fields are `YYYY-MM-DD`.
 - Versions: `meta.version` semver on the manifest; breaking changes get a new `v2/` path, never a silent shape change.
 - Errors: static files can't return error bodies. A missing endpoint means a wrong path — re-read `index.json`. Empty results are `[]`, never `null`. Every record carries its provenance (`source`, `observed`/`updated`).
@@ -37,13 +37,13 @@ Base path: `api/v1/`
 
 ## Live server API (marvel-radar) — Vercel functions
 
-Deployed as one Vercel project: static frontend + 4 serverless functions under `/api/*` (zero npm dependencies; Node auto-detected — `functions.*.runtime` is omitted, since Vercel rejects any runtime value for Node functions and the key exists only for community runtimes). The live endpoints are **unversioned**; behavior changes bump `meta.version`. Every response uses the shared envelope — `{ok, data, meta}` on success, `{ok:false, data:null, meta, error:{code, message}}` on failure — validated against `api/v1/schema/envelope.json` (draft 2020-12). The frontend calls the live endpoint first with a 7-second timeout and falls back to the static twin (`api/v1/...`); the badge next to each widget reports `live` vs `cached · updated HH:MM` honestly.
+Deployed as one Vercel project: static frontend + 4 serverless functions under `/api/*` (zero npm dependencies; Node auto-detected — `functions.*.runtime` is omitted, since Vercel rejects any runtime value for Node functions and the key exists only for community runtimes). The live endpoints are **unversioned**; behavior changes bump `meta.version`. Every response uses the shared envelope — `{ok, data, meta}` on success, `{ok:false, data:null, meta, error:{code, message}}` on failure — validated against `data/v1/schema/envelope.json` (draft 2020-12). The frontend calls the live endpoint first with a 7-second timeout and falls back to the static twin (`data/v1/...`); the badge next to each widget reports `live` vs `cached · updated HH:MM` honestly.
 
 | Method | Path | Function | Inputs | `data` payload | Static twin |
 |---|---|---|---|---|---|
 | GET | `/api/health` | `api/health.js` | — | `status` (ok/degraded, never 5xx), `service`, `version`, `uptime_s`, `functions[]` (roster), `data_freshness` (per-file `generated_at`, 24h SLA verdict), `checks` (booleans) | — |
-| GET | `/api/reveals` | `api/reveals.js` | `?since=` ISO date (default 30d ago), `?limit=` default 50, clamp 1–200 | `reveals[]`: `id`, `title`, `wave` (null until researched), `figures[]`, `announced_at`, `sources[{name,url}]`, `status` (`rumor`/`confirmed`/`preorder-live`/`released`), `price_tbd` (always true — no price ever assumed) | `api/v1/radar-candidates.json` |
-| GET | `/api/preorders` | `api/preorders.js` | — | `observed`, `count`, `upcoming_count`, `preorders[]`: `id`, `name`, `status`, `goes_live_at` (midnight UTC — the file carries dates, never times), `retailers`, `price` (or null) / `price_tbd`, `release_window`, `venue`, `details`, `sources` | `api/v1/preorders.json` |
+| GET | `/api/reveals` | `api/reveals.js` | `?since=` ISO date (default 30d ago), `?limit=` default 50, clamp 1–200 | `reveals[]`: `id`, `title`, `wave` (null until researched), `figures[]`, `announced_at`, `sources[{name,url}]`, `status` (`rumor`/`confirmed`/`preorder-live`/`released`), `price_tbd` (always true — no price ever assumed) | `data/v1/radar-candidates.json` |
+| GET | `/api/preorders` | `api/preorders.js` | — | `observed`, `count`, `upcoming_count`, `preorders[]`: `id`, `name`, `status`, `goes_live_at` (midnight UTC — the file carries dates, never times), `retailers`, `price` (or null) / `price_tbd`, `release_window`, `venue`, `details`, `sources` | `data/v1/preorders.json` |
 | GET | `/api/cron/radar` | `api/cron/radar.js` | cron only (`CRON_SECRET` bearer) | `{checked, changed, committed, new_reveals[]}` — daily 15:00 UTC collector-press poll | — |
 
 Envelope `meta` fields: `service` (`marvel-radar`), `version` (semver), `generated_at` (RFC 3339 UTC, second precision), `source` (`live`/`cache`/`static`), `degraded`, `stale_since`, `upstream[]` (every touched source, failures included — never omitted), `note` (plain-words degradation), `request_id` (`req_` + 6 hex). Error codes: `BAD_INPUT` 400, `UNAUTHORIZED` 401, `NOT_FOUND` 404, `RATE_LIMITED` 429 (+ `Retry-After`), `UPSTREAM_UNAVAILABLE` 502, `REFRESH_FAILED`/`INTERNAL` 500.
@@ -71,7 +71,7 @@ Caching: `Cache-Control: public, s-maxage=600, stale-while-revalidate=86400` on 
 - `id` is stable: `<waveId>::<figureName>`. New figures get new ids; ids are never recycled.
 - Nullable fields are explicit `null` when unknown — never invented.
 - `notes` may flag disputed wave numbering or unverified BAF pieces.
-- **Deep links (wave 26):** every figure has a stable deep link `waves/<waveId>.html#fig-<slug>` where `<slug>` is the kebab-case figure name, disambiguated with the variant slug (or a 1-based index) when a name repeats inside one wave — e.g. `waves/toybiz-2002-series-1.html#fig-hulk-straight-fingers-white-shirt`. A shareable VS-mode compare link is `compare.html?a=<urlencoded id>&b=<urlencoded id>`. Both are also exposed per-figure in `api/v1/compare.json` (`deepLink`, `compareUrl`).
+- **Deep links (wave 26):** every figure has a stable deep link `waves/<waveId>.html#fig-<slug>` where `<slug>` is the kebab-case figure name, disambiguated with the variant slug (or a 1-based index) when a name repeats inside one wave — e.g. `waves/toybiz-2002-series-1.html#fig-hulk-straight-fingers-white-shirt`. A shareable VS-mode compare link is `compare.html?a=<urlencoded id>&b=<urlencoded id>`. Both are also exposed per-figure in `data/v1/compare.json` (`deepLink`, `compareUrl`).
 - **Honest absences:** articulation counts and accessory lists are not in the archive — the compare UI says so instead of fabricating them.
 
 ## Wave object
@@ -121,7 +121,7 @@ Caching: `Cache-Control: public, s-maxage=600, stale-while-revalidate=86400` on 
 Worked example, Data references, Pitfalls.
 
 The `agents` category (7 cross-cutting playbooks) uses an
-**API references** section pointing at `api/v1` endpoints instead of
+**API references** section pointing at `data/v1` endpoints instead of
 `Data references`: `preorder-hunter` (upcoming pre-orders from
 `preorders.json` + radar), `market-brief-reader` (market briefing +
 price-trend data, reported solds only), `ko-spotter` (bootleg risk
@@ -139,7 +139,7 @@ Agent reference implementation for collection math: `assets/js/insights.js`
 pastes their tracker export; the markdown collection report it builds is
 headed "Your records, not a valuation."
 
-Agents: `api/v1/index.json` carries `repository`, `skills` (directory,
+Agents: `data/v1/index.json` carries `repository`, `skills` (directory,
 index, count, usage), and `for_agents` routing. Load the skill matching
 the task; use the JSON endpoints as the data layer behind it.
 The human-readable agents surface is `agents.html` (endpoint table,

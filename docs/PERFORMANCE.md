@@ -21,7 +21,7 @@ optimized in place:
 |---|---|---|---|
 | `data/figures.json` | 339,051 B | 176,735 B | **−48%** (minified, null keys stripped) |
 | `data/encyclopedia.json` | 52,808 B | 41,639 B | −21% (minified; nulls kept) |
-| `api/v1/figures.json` (generated) | 732,443 B | 583,930 B | −20% (minified; **nulls kept** — API contract) |
+| `data/v1/figures.json` (generated) | 732,443 B | 583,930 B | −20% (minified; **nulls kept** — API contract) |
 
 Null-stripping `data/figures.json` is safe: every site access to the optional
 figure fields (`variant`, `exclusive`, `bafPiece`, `notes`, `waveBaf`) goes

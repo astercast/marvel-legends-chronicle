@@ -127,7 +127,7 @@ suite("timeline page (timeline.html)", () => {
   });
 
   test("methodology + API cross-link present", () => {
-    assert(page.includes('href="api/v1/timeline.json"'), "no api/v1/timeline.json link");
+    assert(page.includes('href="data/v1/timeline.json"'), "no data/v1/timeline.json link");
     assert(page.includes("encyclopedia.html#history") || page.includes("encyclopedia.html#retro-blisters-2026"), "no encyclopedia back-link");
   });
 });

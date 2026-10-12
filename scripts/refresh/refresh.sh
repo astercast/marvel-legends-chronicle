@@ -7,7 +7,7 @@
 # Install as a daily cron job, e.g.:
 #   0 8 * * * /home/hatch/workspace/marvel-legends-chronicle/scripts/refresh/refresh.sh
 #
-# After the scan, commit + push any changed api/v1/radar-*.json files so the
+# After the scan, commit + push any changed data/v1/radar-*.json files so the
 # live site picks them up. (gh-push.py is used for authed pushes.)
 
 set -u

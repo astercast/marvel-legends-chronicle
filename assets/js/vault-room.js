@@ -1,6 +1,6 @@
 /* The Vault Room — a browsable vault of every Marvel Legends figure, 2002-2026.
-   Shelves are built from the real archive datasets (api/v1/figures.json,
-   api/v1/waves.json, api/v1/timeline.json); nothing is invented. Drawers open
+   Shelves are built from the real archive datasets (data/v1/figures.json,
+   data/v1/waves.json, data/v1/timeline.json); nothing is invented. Drawers open
    into an archive-drawer dialog (shared accessible modal: focus trap, Esc,
    focus restore). Deep-link any drawer: #fig=<figure id>.
    Animation is transform/opacity only; reduced-motion readers get the full
@@ -43,7 +43,7 @@ function characterSlugFor(name) {
 
 async function loadRoomData() {
   const [figures, waves, timeline] = await Promise.all(
-    ["api/v1/figures.json", "api/v1/waves.json", "api/v1/timeline.json"].map((u) =>
+    ["data/v1/figures.json", "data/v1/waves.json", "data/v1/timeline.json"].map((u) =>
       fetch(u).then((r) => {
         if (!r.ok) throw new Error(`${u}: ${r.status}`);
         return r.json();

@@ -31,8 +31,7 @@ def slug(s):
 
 
 # Keep in sync with scripts/build_characters.py NAV_LINKS.
-NAV_LINKS = [
-    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("2026-review.html", "2026 Review"), ("start.html", "Start"),
+NAV_LINKS = [    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("2026-review.html", "2026 Review"), ("start.html", "Start"),
     ("waves/index.html", "Waves"), ("stats.html", "Stats"),
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
@@ -56,10 +55,26 @@ NAV_LINKS = [
     ("community.html", "Community"), ("api.html", "API"),
 ]
 
+# EXTREME MAKEOVER (2026-10-12): nine doors in the primary nav, not forty-four.
+# The full registry stays in the footer.
+PRIMARY_NAV_LINKS = [
+    ("index.html", "Timeline"),
+    ("vault-room.html", "Vault Room"),
+    ("drop-week.html", "Drop Week"),
+    ("preorders.html", "Pre-orders"),
+    ("waves/index.html", "Waves"),
+    ("characters/index.html", "Characters"),
+    ("encyclopedia.html", "Encyclopedia"),
+    ("quest.html", "Grail Quest"),
+    ("timeline.html", "Legends Timeline"),
+    ("2026-review.html", "2026 Review"),
+    ("start.html", "Start"),
+]
+
 
 def nav(current):
     items = []
-    for href, label in NAV_LINKS:
+    for href, label in PRIMARY_NAV_LINKS:
         cur = ' aria-current="page"' if href == current else ""
         items.append(f'        <a href="../{href}"{cur}>{label}</a>')
     return "\n".join(items)

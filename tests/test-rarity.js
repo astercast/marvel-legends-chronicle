@@ -1,6 +1,6 @@
 /* Wave 23: Rarity & variants guide tests.
    Guards the editorial source (data/rarity-guide.json), the generated page
-   (rarity.html), the API payload (api/v1/rarity.json), and the wave-23 quest
+   (rarity.html), the API payload (data/v1/rarity.json), and the wave-23 quest
    achievements. Every example id must resolve to a REAL archive figure. */
 import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -15,7 +15,7 @@ const waves = new Map(raw.waves.map((w) => [w.id, w]));
 const figIds = new Set();
 for (const w of raw.waves) for (const f of w.figures) figIds.add(`${w.id}::${f.name}`);
 const page = readFileSync(join(root, "rarity.html"), "utf8");
-const api = JSON.parse(readFileSync(join(root, "api", "v1", "rarity.json"), "utf8"));
+const api = JSON.parse(readFileSync(join(root, "data", "v1", "rarity.json"), "utf8"));
 
 const URL_OK = /^(https?:\/\/[^\s'"<>]+|[a-z0-9_.-]+\.html(\?[^\s'"<>]*)?)$/;
 
@@ -93,7 +93,7 @@ suite("rarity page (rarity.html)", () => {
     assert(page.includes('href="auth-wizard.html"'), "KO-spotter cross-link missing");
     assert(page.includes('href="market-briefing.html"'), "market briefing cross-link missing");
     assert(page.includes('href="gift.html?for=collector"'), "rarest-gift-picks link missing");
-    assert(page.includes('href="api/v1/rarity.json"'), "API link missing");
+    assert(page.includes('href="data/v1/rarity.json"'), "API link missing");
   });
 
   test("a11y + perf basics", () => {
@@ -103,7 +103,7 @@ suite("rarity page (rarity.html)", () => {
   });
 });
 
-suite("rarity API (api/v1/rarity.json)", () => {
+suite("rarity API (data/v1/rarity.json)", () => {
   test("tiers is the first list (manifest-driven validator picks it)", () => {
     const firstList = Object.entries(api).find(([, v]) => Array.isArray(v))[0];
     assert.equal(firstList, "tiers", "tiers must be the first list in the envelope");

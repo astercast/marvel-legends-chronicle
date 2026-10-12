@@ -17,7 +17,7 @@ import {
 
 let figures = [];
 let selected = [];
-let profiles = null; // Map<figId, profile> from api/v1/compare.json, lazy
+let profiles = null; // Map<figId, profile> from data/v1/compare.json, lazy
 
 const els = {
   search: document.getElementById("cmp-search"),

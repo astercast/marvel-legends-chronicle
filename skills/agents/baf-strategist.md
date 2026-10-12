@@ -16,7 +16,7 @@ You want to complete a Build-A-Figure and need the optimal buy order.
 
 ## Procedure
 
-1. Find the BAF skill in `skills/index.json` (101 completion checklists, `baf-*`) — it lists every piece-carrying figure in the wave, built from `api/v1/figures.json` (`bafPiece` per figure).
+1. Find the BAF skill in `skills/index.json` (101 completion checklists, `baf-*`) — it lists every piece-carrying figure in the wave, built from `data/v1/figures.json` (`bafPiece` per figure).
 2. Subtract figures you already own: owned figure = owned piece. Missing pieces map to missing figures.
 3. Prioritize: figures you want anyway first, then the cheapest piece-carriers. Watch for variants that DON'T include the piece — check `bafPiece` notes before buying.
 4. Cross-check cost with BAF-economics logic: cost-to-complete from your own journal sold sightings; pieces with no logged sightings have no data, not zero cost.
@@ -28,7 +28,7 @@ Missing the Box BAF torso? The `baf-box` skill says Marrina Smallwood (2026 Box 
 
 ## API references
 
-- `api/v1/figures.json`
+- `data/v1/figures.json`
 - `skills/index.json`
 
 ## Pitfalls

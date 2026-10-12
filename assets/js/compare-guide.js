@@ -4,7 +4,7 @@
 
    Anchor algorithm MUST stay in parity with scripts/compare_lib.py wave_anchors:
    tests/test-compare.js recomputes anchors from the real data and asserts they
-   match api/v1/compare.json's deepLinks. */
+   match data/v1/compare.json's deepLinks. */
 
 "use strict";
 
@@ -78,7 +78,7 @@ export function reviewSearchUrl(name, variant) {
 }
 
 /* Honest upgrade-path trade-off notes, generated from the relation — the API
-   stores the relation only (see api/v1/schema/compare-profile.json). */
+   stores the relation only (see data/v1/schema/compare-profile.json). */
 export function upgradeNote(path) {
   const label = path.variant ? ` (${path.variant})`
     : path.exclusive ? ` (${path.exclusive} exclusive)` : "";

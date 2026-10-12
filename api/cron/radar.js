@@ -227,7 +227,7 @@ function normalizeReveals(candidates) {
 /* ---------- local bundle fallback (read-only degradation path) ---------- */
 function readBundleJson(name) {
   try {
-    return JSON.parse(fs.readFileSync(path.join(__dirname, "..", "v1", name), "utf8"));
+    return JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "data", "v1", name), "utf8"));
   } catch (e) {
     return null;
   }
@@ -371,8 +371,8 @@ module.exports = async (req, res) => {
     if (tokenConfigured && repoConfigured) {
       try {
         const [c, s] = await Promise.all([
-          github.readJson("api/v1/radar-candidates.json"),
-          github.readJson("api/v1/radar-seen.json"),
+          github.readJson("data/v1/radar-candidates.json"),
+          github.readJson("data/v1/radar-seen.json"),
         ]);
         candidates = c.data;
         seen = s.data;
@@ -435,11 +435,11 @@ module.exports = async (req, res) => {
     if (changed && tokenConfigured && repoConfigured && githubReadOk) {
       const [w1, w2] = await Promise.all([
         github.writeJsonIfChanged(
-          "api/v1/radar-candidates.json", pruned,
+          "data/v1/radar-candidates.json", pruned,
           `radar: ${fresh.length} new reveal candidate(s) (${SERVICE} cron)`
         ),
         github.writeJsonIfChanged(
-          "api/v1/radar-seen.json", seenSorted,
+          "data/v1/radar-seen.json", seenSorted,
           `radar: seen-store update (${SERVICE} cron)`
         ),
       ]);

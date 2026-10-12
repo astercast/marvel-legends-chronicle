@@ -102,7 +102,13 @@
       "headline": "Box sets arrive",
       "milestones": [],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "toybiz-2003-series-5",
+          "name": "Blade",
+          "why": "The line's first real bet on a movie look — Blade II's leather-and-shades Wesley Snipes, years before ‘cinematic universe’ was a phrase collectors used."
+        }
+      ],
       "summary": "Series 4 and 5 keep the numbered line rolling while Toy Biz experiments with big-ticket multipacks: the X-Men Legends and Urban Legends box sets.",
       "year": 2003
     },
@@ -110,7 +116,13 @@
       "headline": "The numbered line grows",
       "milestones": [],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "toybiz-2004-series-6",
+          "name": "Deadpool and Doop",
+          "why": "A Deadpool two-pack from 2004, when he was a cult favorite and Doop got equal billing — the kind of weird swing the line would later stop taking."
+        }
+      ],
       "summary": "Series 6, 7, and 8 deepen the roster, and the box-set program continues with Spider-Man vs. the Sinister 6 and a Fantastic Four set.",
       "year": 2004
     },
@@ -219,7 +231,13 @@
         }
       ],
       "packaging": "Blister card; comic pack-in dropped; finger joints eliminated on new molds.",
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2007-annihilus",
+          "name": "Gladiator Hulk",
+          "why": "First-year Hasbro, already with a running change worth hunting: early silver-arm Gladiator Hulks versus the corrected green."
+        }
+      ],
       "summary": "The Hasbro era begins January 1, 2007. New packaging drops the comic book pack-in and new molds eliminate Toy Biz's signature finger joints — but the Build-A-Figure theme continues with the Annihilus, Blob, Ronan, Brood Queen, and Sandman (Spider-Man 3) waves, plus the first SDCC and store exclusives.",
       "year": 2007
     },
@@ -227,7 +245,13 @@
       "headline": "Big dragons, red Hulks",
       "milestones": [],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2008-fin-fang-foom",
+          "name": "Skaar",
+          "why": "Skaar, son of Hulk, riding the Planet Hulk wave — 2008 was the year the line went all-in on Hulk mythology with a dragon for a BAF."
+        }
+      ],
       "summary": "The Fin Fang Foom wave anchors the year, with a Target-exclusive Red Hulk wave, a Walmart-exclusive Ares wave, 2-packs, and an SDCC Fin Fang Foom box set.",
       "year": 2008
     },
@@ -254,7 +278,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2009-nemesis",
+          "name": "Daredevil",
+          "why": "The Walmart-exclusive Nemesis wave's first-appearance Daredevil — yellow and brown, the costume the purists had waited years for."
+        }
+      ],
       "summary": "Output slows to a trickle — a Walmart-exclusive Nemesis wave and 2-packs Series 2 are the whole year. Hasbro launches the 3.75-inch Marvel Universe line, and production on Legends slows to the point that cancellation is rumored.",
       "year": 2009
     },
@@ -276,7 +306,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2010-tru-2packs",
+          "name": "Winter Soldier",
+          "why": "The entire 2010 line was ten Toys ‘R’ Us two-packs. This Winter Soldier — years before the films made him a headliner — is the survivor's prize of the thinnest year in Legends history."
+        }
+      ],
       "summary": "The archive holds only Toys 'R' Us 2-packs this year — but at SDCC 2010, Hasbro announces the line's full return for 2012, citing fan demand and the upcoming Marvel movies.",
       "year": 2010
     },
@@ -284,7 +320,13 @@
       "headline": "One Thor",
       "milestones": [],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2011-sdcc-thor",
+          "name": "Thor",
+          "why": "One figure. The whole 2011 line was this SDCC Thor in a Mjolnir-shaped box — the line's lowest ebb and a packaging flex, all at once."
+        }
+      ],
       "summary": "The archive's entire 2011 is a single SDCC Thor exclusive. The comeback is a year out.",
       "year": 2011
     },
@@ -326,7 +368,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2013-rocket-raccoon",
+          "name": "Jean Grey",
+          "why": "Jim Lee Jean Grey, headlining the wave that built a Rocket Raccoon — a full year before the movie made him a star. The line betting early."
+        }
+      ],
       "summary": "A named Epic Heroes wave (not the later 4-inch kid line), plus Iron Monger, Hit-Monkey, and Rocket Raccoon waves — the Hit-Monkey, Rocket Raccoon, and Jubilee waves use the 'Mini' Build-A-Figure concept. Puck arrives as a Previews exclusive.",
       "year": 2013
     },
@@ -358,7 +406,13 @@
       "headline": "The BAF blockbusters",
       "milestones": [],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2015-thanos",
+          "name": "Batroc",
+          "why": "Batroc the Leaper, mustache and all, in the Thanos wave — 2015's proof the line still made figures for the five people who asked."
+        }
+      ],
       "summary": "Big-build year: Thanos (Infinity), Ultron Prime and the Hulkbuster (Age of Ultron), Rhino, Hobgoblin, and the Allfather waves.",
       "year": 2015
     },
@@ -390,7 +444,13 @@
       "headline": "MCU tie-in peak",
       "milestones": [],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2017-gladiator-hulk",
+          "name": "Hela",
+          "why": "Cate Blanchett's Hela, antlers and all — the Ragnarok wave finally gave the MCU's best villain a proper figure."
+        }
+      ],
       "summary": "Movie waves dominate: Vulture (Homecoming), Mantis (Guardians of the Galaxy Vol. 2), and Gladiator Hulk (Thor: Ragnarok) alongside comics waves — Sandman, Titus, Warlock (New Mutants), and Man-Thing.",
       "year": 2017
     },
@@ -398,7 +458,13 @@
       "headline": "Infinity War year",
       "milestones": [],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2018-thanos",
+          "name": "Proxima Midnight",
+          "why": "Proxima Midnight — the Black Order got figures before most Avengers did. Infinity War year belonged to the villains."
+        }
+      ],
       "summary": "Ten waves — the biggest year in the archive by figure count. Okoye, Thanos, and Cull Obsidian ride Avengers: Infinity War; Lizard, Sasquatch, Apocalypse, SP//dr, Monster Venom, and Sauron cover the comics side.",
       "year": 2018
     },
@@ -420,7 +486,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2019-kingpin",
+          "name": "Black Cat",
+          "why": "Crime-boss Black Cat from the Kingpin wave — 2019 kept feeding the Spider-corner while the movies took their victory lap."
+        }
+      ],
       "summary": "Hasbro unveils Uncanny X-Men figures on throwback '90s-style cards as part of the Marvel 80th anniversary — Wolverine, Silver Samurai, Cyclops, Dazzler, Storm, and Iceman — with pre-orders opening in June and shipping slated for August. The M'Baku, Kree Sentry, Kingpin, Armored Thanos (Endgame), Caliban, Smart Hulk, Molten Man (Far From Home), Wendigo, and Fat Thor waves fill the year.",
       "year": 2019
     },
@@ -456,7 +528,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2020-super-skrull",
+          "name": "Doctor Doom",
+          "why": "Doctor Doom anchoring the 2020 Fantastic Four refresh — the most important villain in comics finally getting the modern sculpt he was owed."
+        }
+      ],
       "summary": "The first Marvel Legends HasLab: a 26.3-inch Sentinel at $349.99, funded in about 24 hours. Mainline waves include Super-Skrull, Demogoblin, Crimson Dynamo, the Gamerverse Abomination, Venompool, and Joe Fixit waves, plus Sugar Man and Strong Guy. Hasbro also launches the 3.75-inch Marvel Legends RETRO line via Pulse two-packs, and at Toy Fair 2020 the X-Men movie likenesses finally join the 6-inch line.",
       "year": 2020
     },
@@ -492,7 +570,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2021-watcher",
+          "name": "Captain Carter",
+          "why": "Captain Carter — the What If...? wave bottled streaming-era Marvel faster than the line ever had before."
+        }
+      ],
       "summary": "The 32-inch Galactus HasLab at $399.99 draws 14,000 backers — the biggest Marvel Legends ever. The Stilt-Man, Tri-Sentinel, Mr. Hyde, Flight Gear, Xemnu, Ursa Major, Colossus (Age of Apocalypse), Watcher (What If...?), Gilgamesh (Eternals), and Armadillo waves round out a packed year. Pinless joints become standard, and Fan Channel exclusives flow through specialist retailers.",
       "year": 2021
     },
@@ -523,7 +607,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2022-attuma",
+          "name": "Namor",
+          "why": "Namor, finally — the Sub-Mariner's first MCU look, and the figure his fans had demanded for a decade."
+        }
+      ],
       "summary": "A premium 20th Anniversary Series 1 celebrates the 2002 Toy Biz debut — Captain America, Iron Man, Hulk, and Toad with retro-style packaging, as Fan Channel exclusives. The Rintrah (Multiverse of Madness), Korg (Love and Thunder), Bonebreaker, Controller, Infinity Ultron (What If...?), Attuma (Wakanda Forever), and Khonshu (Moon Knight) waves fill the year, and Pulse Con 2022 kicks off a new X-Men retro team-uniform line with Wolverine.",
       "year": 2022
     },
@@ -574,7 +664,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2024-xmen-97-2",
+          "name": "Nightcrawler",
+          "why": "Nightcrawler, teleporting off the screen — the ’97 revival turned Saturday-morning nostalgia into the line's best cartoon wave."
+        }
+      ],
       "summary": "The Void, Zabu, and Blackheart (Strange Tales) waves anchor the year, with X-Men '97 Wave 2, Deadpool & Wolverine Wave 1, and Across the Spider-Verse Wave 2 riding the animation wave. Standard MSRP reaches $24.99.",
       "year": 2024
     },
@@ -592,7 +688,13 @@
         }
       ],
       "packaging": null,
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2025-fantastic-four-first-steps",
+          "name": "Silver Surfer (Shalla-Bal)",
+          "why": "Shalla-Bal as the Silver Surfer — the First Steps wave bet on the film's boldest swing, and it worked."
+        }
+      ],
       "summary": "The Nemesis (Uncanny X-Force), Executioner, Gamerverse Legends, Fantastic Four: First Steps, and X-Men '97 Wave 3 waves fill the year, and the Magic: The Gathering crossover figures launch with foil card versions.",
       "year": 2025
     },
@@ -688,7 +790,13 @@
         }
       ],
       "packaging": "Retro blister cards with mini-comic pack-ins.",
-      "spotlight": [],
+      "spotlight": [
+        {
+          "wave": "hasbro-2026-doomsday-1",
+          "name": "Doctor Doom",
+          "why": "Doom himself, launching the Doomsday line — the figure the next two years of the MCU will be measured against."
+        }
+      ],
       "summary": "2026 goes retro: blister cards with mini-comic pack-ins, a deliberate throwback to the Toy Biz clamshell era. The archive holds the Box BAF wave, Deadpool & Wolverine Waves 2–3, and Avengers: Doomsday Wave 1 so far. 2026 covers releases observed through 2026-10-11 — see the pre-order tracker for what's next.",
       "year": 2026
     }

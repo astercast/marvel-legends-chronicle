@@ -1,6 +1,6 @@
 /* Wave 18: agent-workflow proofs.
    Runs the three AGENT.md end-to-end workflows against the REAL local
-   api/v1 JSON files (no fixtures for the data itself — only for user input
+   data/v1 JSON files (no fixtures for the data itself — only for user input
    like "my owned figures" or "this eBay listing"). If these pass, an agent
    following AGENT.md gets correct answers from the archive. */
 "use strict";
@@ -97,12 +97,12 @@ export function shelfAudit(ownedIds, figures, waves) {
            nearComplete, bafGaps };
 }
 
-suite("agent workflows (AGENT.md, real api/v1 data)", () => {
-  const preorders = j("api/v1/preorders.json");
-  const ency = j("api/v1/encyclopedia.json");
-  const figures = j("api/v1/figures.json");
-  const waves = j("api/v1/waves.json");
-  const stats = j("api/v1/stats.json");
+suite("agent workflows (AGENT.md, real data/v1 data)", () => {
+  const preorders = j("data/v1/preorders.json");
+  const ency = j("data/v1/encyclopedia.json");
+  const figures = j("data/v1/figures.json");
+  const waves = j("data/v1/waves.json");
+  const stats = j("data/v1/stats.json");
 
   test("W1: pre-order plan from preorders.json", () => {
     const plan = preorderPlan(preorders, "2026-10-11");

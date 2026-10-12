@@ -21,9 +21,9 @@ assets/css/*.css               8 stylesheets (tokens → base → layout → com
 data/figures.json             SOURCE OF TRUTH: 167 waves, 1939 figures (minified, nulls stripped)
 data/encyclopedia.json        Encyclopedia content (minified)
 data/community.json           Seed posts for the fan-social mock
-api/v1/*.json                 Generated public API (build_api.py): figures, waves,
+data/v1/*.json                 Generated public API (build_api.py): figures, waves,
                               stats, encyclopedia, index + schema/{figure,wave}.json
-api/v1/schema/                JSON Schemas (draft-07 subset) for figures + waves
+data/v1/schema/                JSON Schemas (draft-07 subset) for figures + waves
 characters/manifest.json      Generated: 66 characters, figure counts, year ranges
 skills/*/SKILL.md             Agent skills (build_skills.py regenerates the set)
 scripts/                      Generators + validate.sh
@@ -41,11 +41,11 @@ data/figures.json (hand-maintained, minified)
     │       year, manufacturer, waveBaf, source, ...fig } — cached in-memory
     ├──> scripts/build_waves.py      → waves/*.html (167 pages)
     ├──> scripts/build_characters.py → characters/*.html + manifest.json
-    └──> scripts/build_api.py        → api/v1/*.json (+ schemas)
+    └──> scripts/build_api.py        → data/v1/*.json (+ schemas)
 ```
 
 **Generators own their outputs.** Never hand-edit `waves/*.html`,
-`characters/*.html`, `api/v1/*.json`, or `skills/*/SKILL.md` — change the
+`characters/*.html`, `data/v1/*.json`, or `skills/*/SKILL.md` — change the
 source/generator and re-run. `scripts/update_nav.py` owns the nav blocks on
 all 27 root pages (canonical `NAV` list; `build_waves.py` has the relative
 form for generated pages — keep them in sync).
@@ -53,7 +53,7 @@ form for generated pages — keep them in sync).
 **`data/figures.json` must stay minified** with null-valued optional keys
 stripped (339 KB → 177 KB). `scripts/validate.sh` fails past 225 KB.
 All site JS was audited null/undefined-safe for the optional figure fields
-(`variant`, `exclusive`, `bafPiece`, `notes`, `waveBaf`); `api/v1/figures.json`
+(`variant`, `exclusive`, `bafPiece`, `notes`, `waveBaf`); `data/v1/figures.json`
 keeps its nulls (API contract: absent ≠ null).
 
 ## Page types

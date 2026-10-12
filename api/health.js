@@ -20,7 +20,7 @@ const SLA_S = 86400; // 24h — matches the daily radar cadence (§7.3)
 
 function readBundleFile(name) {
   try {
-    const p = path.join(__dirname, "v1", name);
+    const p = path.join(__dirname, "..", "data", "v1", name);
     return { ok: true, text: fs.readFileSync(p, "utf8") };
   } catch (e) {
     return { ok: false, error: String((e && e.message) || e) };

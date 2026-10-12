@@ -5,7 +5,7 @@
  *
  * Contract: every dynamic widget calls the live function first with a short
  * timeout; on success the badge reads "live". On timeout / network error /
- * non-ok envelope it falls back to the static api/v1/*.json file and the
+ * non-ok envelope it falls back to the static data/v1/*.json file and the
  * badge reads "cached · updated HH:MM" (honest timestamp from the data).
  * The badge is the honesty mechanism — never hidden when the data is stale.
  *
@@ -25,7 +25,7 @@
   }
 
   // opts: { timeoutMs, staticPath, badgeEl }
-  // livePath like "/api/trends"; staticPath like "/api/v1/trends.flat.json"
+  // livePath like "/api/trends"; staticPath like "/data/v1/trends.flat.json"
   // resolves { data, source: "live"|"static", generatedAt, degraded, note }
   // never rejects — worst case returns { data: null, source: "none" }
   function fetchWithFallback(livePath, staticPath, opts) {

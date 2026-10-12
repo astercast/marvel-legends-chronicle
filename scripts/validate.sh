@@ -2,7 +2,7 @@
 # scripts/validate.sh — full validation pipeline for the Marvel Legends Chronicle.
 #   1. node --check on every site JS file
 #   2. JSON parse of every data file
-#   3. JSON-Schema validation of api/v1 against api/v1/schema/
+#   3. JSON-Schema validation of data/v1 against data/v1/schema/
 #   4. Relative-link check across all HTML pages
 #   5. Element-ID cross-check (page-specific scripts vs their page)
 #   6. localStorage key registry check (config.js STORE_KEYS vs literals)
@@ -34,8 +34,8 @@ def fail(m): errs.append(m)
 def warn(m): warns.append(m)
 
 # ---- 2. JSON parses ----
-json_files = sorted(ROOT.glob("data/*.json")) + sorted((ROOT/"api"/"v1").glob("*.json")) \
-    + sorted((ROOT/"api"/"v1"/"schema").glob("*.json")) \
+json_files = sorted(ROOT.glob("data/*.json")) + sorted((ROOT/"data"/"v1").glob("*.json")) \
+    + sorted((ROOT/"data"/"v1"/"schema").glob("*.json")) \
     + [ROOT/"characters"/"manifest.json", ROOT/"skills"/"index.json"]
 for p in json_files:
     try:
@@ -45,7 +45,7 @@ for p in json_files:
 print(f"json: {len(json_files)} files parsed")
 
 # ---- 3. schema validation (hand-rolled draft-07 subset, manifest-driven) ----
-# The manifest (api/v1/index.json) is the single source of truth: every
+# The manifest (data/v1/index.json) is the single source of truth: every
 # endpoint is validated against its `schema`; endpoints with an `itemSchema`
 # get every record validated too; `records` counts are cross-checked.
 def type_ok(v, t):
@@ -70,8 +70,8 @@ def check(v, s, path):
             if k in v: check(v[k], sub, f"{path}.{k}")
     if "enum" in s and v not in s["enum"]:
         fail(f"schema {path}: {v!r} not in enum {s['enum']}")
-manifest = json.loads((ROOT/"api"/"v1"/"index.json").read_text())
-check(manifest, json.loads((ROOT/"api"/"v1"/"schema"/"manifest.json").read_text()), "index.json")
+manifest = json.loads((ROOT/"data"/"v1"/"index.json").read_text())
+check(manifest, json.loads((ROOT/"data"/"v1"/"schema"/"manifest.json").read_text()), "index.json")
 recs = 0
 for name, e in manifest["endpoints"].items():
     for k in ["path", "description", "schema", "itemSchema", "updated", "records", "notes"]:

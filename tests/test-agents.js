@@ -1,7 +1,7 @@
 /* Guards the eight agent-playbook skills (skills/agents/): index entries,
    file existence, frontmatter, the "API references" section (agents
    category uses it instead of "Data references"), and count consistency
-   with api/v1/index.json. */
+   with data/v1/index.json. */
 import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
@@ -21,7 +21,7 @@ const AGENTS = [
 ];
 
 const idx = JSON.parse(readFileSync(join(root, "skills", "index.json"), "utf8"));
-const apiIndex = JSON.parse(readFileSync(join(root, "api", "v1", "index.json"), "utf8"));
+const apiIndex = JSON.parse(readFileSync(join(root, "data", "v1", "index.json"), "utf8"));
 
 suite("agent skills (skills/agents/)", () => {
   test("index lists exactly the eight agent skills", () => {
@@ -49,14 +49,14 @@ suite("agent skills (skills/agents/)", () => {
     }
   });
 
-  test("agent skills reference only api/v1 endpoints", () => {
+  test("agent skills reference only data/v1 endpoints", () => {
     const refRe = /## API references\n\n((?:- .+\n)+)/;
     for (const id of AGENTS) {
       const text = readFileSync(join(root, "skills", "agents", `${id}.md`), "utf8");
       const m = text.match(refRe);
       assert(m, `${id}: no API references list`);
       for (const line of m[1].trim().split("\n")) {
-        assert(line.includes("`api/v1/") || line.includes("`skills/"),
+        assert(line.includes("`data/v1/") || line.includes("`skills/"),
           `${id}: non-API ref ${line}`);
       }
     }
@@ -72,7 +72,7 @@ suite("agent skills (skills/agents/)", () => {
     }
   });
 
-  test("api/v1/index.json skill count matches skills/index.json", () => {
+  test("data/v1/index.json skill count matches skills/index.json", () => {
     assert.equal(apiIndex.skills.count, idx.skills.length);
     assert.equal(idx.skills.length, idx.count);
   });
@@ -82,7 +82,7 @@ suite("agent skills (skills/agents/)", () => {
     for (const id of AGENTS) {
       assert(text.includes(`skills/agents/${id}.md`), `agents.html: missing link to ${id}`);
     }
-    for (const ref of ["api/v1/index.json", "skills/index.json", "llms.txt"]) {
+    for (const ref of ["data/v1/index.json", "skills/index.json", "llms.txt"]) {
       assert(text.includes(ref), `agents.html: missing reference to ${ref}`);
     }
   });

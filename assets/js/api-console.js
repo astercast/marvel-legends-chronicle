@@ -1,5 +1,5 @@
 /* api-console.js — "Try the API" console on api.html.
-   Page-specific: fetches api/v1/index.json for the endpoint list, then
+   Page-specific: fetches data/v1/index.json for the endpoint list, then
    fetches + pretty-prints the chosen endpoint. All failures are graceful:
    file:// fetches fail in some browsers, so the error path says exactly
    what to do instead. */
@@ -20,13 +20,13 @@
 
   // Fallback list if the manifest itself can't be fetched (offline/file errors).
   var FALLBACK = [
-    { name: "index", path: "api/v1/index.json" },
-    { name: "stats", path: "api/v1/stats.json" },
-    { name: "waves", path: "api/v1/waves.json" },
-    { name: "figures", path: "api/v1/figures.json" },
-    { name: "encyclopedia", path: "api/v1/encyclopedia.json" },
-    { name: "preorders", path: "api/v1/preorders.json" },
-    { name: "characters", path: "api/v1/characters.json" }
+    { name: "index", path: "data/v1/index.json" },
+    { name: "stats", path: "data/v1/stats.json" },
+    { name: "waves", path: "data/v1/waves.json" },
+    { name: "figures", path: "data/v1/figures.json" },
+    { name: "encyclopedia", path: "data/v1/encyclopedia.json" },
+    { name: "preorders", path: "data/v1/preorders.json" },
+    { name: "characters", path: "data/v1/characters.json" }
   ];
 
   function esc(s) {
@@ -60,7 +60,7 @@
   }
 
   function loadManifest() {
-    fetch("api/v1/index.json")
+    fetch("data/v1/index.json")
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json();
@@ -72,7 +72,7 @@
         });
         if (!endpoints.length) throw new Error("empty manifest");
         fillPicker(endpoints);
-        setStatus("Endpoint list loaded from api/v1/index.json.");
+        setStatus("Endpoint list loaded from data/v1/index.json.");
       })
       .catch(function () {
         endpoints = FALLBACK;

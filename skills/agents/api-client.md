@@ -15,27 +15,27 @@ You are writing code (a script, a tool, another agent) against the Chronicle's s
 
 ## Procedure
 
-1. Start at `api/v1/index.json` — the self-describing manifest. Each endpoint entry gives `path`, `description`, `schema` + `itemSchema` URLs, ISO-8601 UTC `updated`, `records` count, and deprecation `notes`.
-2. Base is `api/v1/` relative to the site root; no auth, no keys, no rate limits. Static snapshots — fetch once, filter client-side.
-3. Cheapest overview: `api/v1/stats.json`. Full catalog: `api/v1/figures.json` (1,939 records, stable ids `<waveId>::<figureName>`). Wave context: `api/v1/waves.json`, joined on `waveId` ↔ `id`.
-4. Collector knowledge: `api/v1/encyclopedia.json` (bootleg checklists, price method, hall of fame with reissue radar). Upcoming releases: `api/v1/preorders.json`. Character guides: `api/v1/characters.json`.
-5. Validate what you receive: JSON Schema draft-07 for every endpoint under `api/v1/schema/`. `null` means unknown — never invented. Empty results are `[]`.
+1. Start at `data/v1/index.json` — the self-describing manifest. Each endpoint entry gives `path`, `description`, `schema` + `itemSchema` URLs, ISO-8601 UTC `updated`, `records` count, and deprecation `notes`.
+2. Base is `data/v1/` relative to the site root; no auth, no keys, no rate limits. Static snapshots — fetch once, filter client-side.
+3. Cheapest overview: `data/v1/stats.json`. Full catalog: `data/v1/figures.json` (1,939 records, stable ids `<waveId>::<figureName>`). Wave context: `data/v1/waves.json`, joined on `waveId` ↔ `id`.
+4. Collector knowledge: `data/v1/encyclopedia.json` (bootleg checklists, price method, hall of fame with reissue radar). Upcoming releases: `data/v1/preorders.json`. Character guides: `data/v1/characters.json`.
+5. Validate what you receive: JSON Schema draft-07 for every endpoint under `data/v1/schema/`. `null` means unknown — never invented. Empty results are `[]`.
 6. Price discipline: the API carries announced MSRPs and reported solds only — never an index. Frame numbers as reported, never as quotes.
 7. Read `AGENT.md` at the repo root for the full agent guide, including three proven end-to-end workflows (pre-order planning, KO-risk verdicts, shelf audits) with worked examples.
 
 ## Worked example
 
-fetch('api/v1/preorders.json') → items.filter(i => i.status === 'preorder' && i.preorderDate) → sort by preorderDate → 'X-Men \'97 retro wave opens 2026-10-21, 10 days out, $27.99 MSRP.'
+fetch('data/v1/preorders.json') → items.filter(i => i.status === 'preorder' && i.preorderDate) → sort by preorderDate → 'X-Men \'97 retro wave opens 2026-10-21, 10 days out, $27.99 MSRP.'
 
 ## API references
 
-- `api/v1/index.json`
-- `api/v1/stats.json`
-- `api/v1/figures.json`
-- `api/v1/waves.json`
-- `api/v1/encyclopedia.json`
-- `api/v1/preorders.json`
-- `api/v1/characters.json`
+- `data/v1/index.json`
+- `data/v1/stats.json`
+- `data/v1/figures.json`
+- `data/v1/waves.json`
+- `data/v1/encyclopedia.json`
+- `data/v1/preorders.json`
+- `data/v1/characters.json`
 
 ## Pitfalls
 

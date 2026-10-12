@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build api/v1/*.json from the Chronicle source data.
+"""Build data/v1/*.json from the Chronicle source data.
 
 Regenerate after any data change:  python3 scripts/build_api.py
 Outputs are committed to the repo so the API is static and versioned.
 
-The manifest (api/v1/index.json) is self-describing: every endpoint lists
+The manifest (data/v1/index.json) is self-describing: every endpoint lists
 its path, description, schema URL, item-schema URL, ISO-8601 UTC `updated`
 timestamp, record count, and deprecation notes. validate.sh reads the
 manifest and validates every endpoint against its schema — the manifest is
@@ -13,7 +13,7 @@ the single source of truth for the API surface.
 import json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-API = ROOT / "api" / "v1"
+API = ROOT / "data" / "v1"
 VERSION = "1.0.0"
 OBSERVED = "2026-10-11"  # observation date for the dataset
 UPDATED = OBSERVED + "T00:00:00Z"  # deterministic ISO-8601 UTC stamp for the manifest
@@ -41,7 +41,7 @@ def ep(path, description, schema=None, item_schema=None, records=None, notes=Non
 
 
 def main():
-    # NEVER rmtree api/v1 wholesale: hand-maintained files (radar-candidates.json,
+    # NEVER rmtree data/v1 wholesale: hand-maintained files (radar-candidates.json,
     # radar-seen.json, anything else not in `outputs`) must survive a rebuild.
     # Only write/replace the files this script generates.
     (API / "schema").mkdir(parents=True, exist_ok=True)
@@ -201,112 +201,112 @@ def main():
 
     endpoints = {
         "index": ep(
-            "api/v1/index.json",
+            "data/v1/index.json",
             "Self-describing manifest: every endpoint with path, description, schema URLs, "
             "ISO-8601 UTC updated timestamp, record counts, and deprecation notes. Start here.",
-            schema="api/v1/schema/manifest.json", records=1),
+            schema="data/v1/schema/manifest.json", records=1),
         "stats": ep(
-            "api/v1/stats.json",
+            "data/v1/stats.json",
             "Archive totals: wave/figure counts, year range, BAF/exclusive/variant tallies, "
             "per-year and per-manufacturer breakdowns. Cheapest entry point for overview questions.",
-            schema="api/v1/schema/stats.json", records=1),
+            schema="data/v1/schema/stats.json", records=1),
         "waves": ep(
-            "api/v1/waves.json",
+            "data/v1/waves.json",
             "One summary per wave: id, year, manufacturer, series, BAF name (nullable), "
             "story source (nullable), figure count.",
-            schema="api/v1/schema/waves.json", item_schema="api/v1/schema/wave.json",
+            schema="data/v1/schema/waves.json", item_schema="data/v1/schema/wave.json",
             records=len(wave_summaries)),
         "figures": ep(
-            "api/v1/figures.json",
+            "data/v1/figures.json",
             "Flat list of every figure with wave context and stable ids (<waveId>::<figureName>). "
             "Filter client-side by year, manufacturer, waveId, exclusive, variant, bafPiece.",
-            schema="api/v1/schema/figures.json", item_schema="api/v1/schema/figure.json",
+            schema="data/v1/schema/figures.json", item_schema="data/v1/schema/figure.json",
             records=len(figures)),
         "encyclopedia": ep(
-            "api/v1/encyclopedia.json",
+            "data/v1/encyclopedia.json",
             "Collector encyclopedia: line history, packaging evolution, variant/chase/exclusive "
             "taxonomy, hall of fame (with reissue-radar flags), grading guide, transparent price "
             "methodology, bootleg-spotting guide, resources directory. Editorial knowledge, not catalog data.",
-            schema="api/v1/schema/encyclopedia.json", records=1),
+            schema="data/v1/schema/encyclopedia.json", records=1),
         "preorders": ep(
-            "api/v1/preorders.json",
+            "data/v1/preorders.json",
             "Researched upcoming releases: status (preorder/revealed/available), exact preorderDate "
             "(YYYY-MM-DD, null when unreported — never invented), releaseWindow, announced MSRP "
             "(never a market price), retailer search patterns, hobby-press sources.",
-            schema="api/v1/schema/preorders.json", item_schema="api/v1/schema/preorder.json",
+            schema="data/v1/schema/preorders.json", item_schema="data/v1/schema/preorder.json",
             records=len(preorder_items)),
         "characters": ep(
-            "api/v1/characters.json",
+            "data/v1/characters.json",
             "Character guides: every character with a dedicated page — slug, display name, release "
             "count, first/last year, and the page path. Join to figures.json by character name for shelf audits.",
-            schema="api/v1/schema/characters.json", item_schema="api/v1/schema/character.json",
+            schema="data/v1/schema/characters.json", item_schema="data/v1/schema/character.json",
             records=len(characters)),
         "timeline": ep(
-            "api/v1/timeline.json",
+            "data/v1/timeline.json",
             "The Legends Timeline: year-by-year line history 2002-2026 — era, headline, summary, "
             "sourced milestones, packaging notes, per-year wave records (ids link into the "
             "archive), and spotlight figure ids.",
-            schema="api/v1/schema/timeline.json", item_schema="api/v1/schema/timeline-year.json",
+            schema="data/v1/schema/timeline.json", item_schema="data/v1/schema/timeline-year.json",
             records=len(timeline_raw["years"])),
         "rarity": ep(
-            "api/v1/rarity.json",
+            "data/v1/rarity.json",
             "The Rarity Guide: chase vs variant vs exclusive vs limited — tier definitions with "
             "sourced examples (real figure ids), how-to-spot notes, value notes (reported prices only), "
             "archive signal counts, and the quest-achievement mapping. Generated by scripts/build_rarity.py.",
-            schema="api/v1/schema/rarity.json", item_schema="api/v1/schema/rarity-tier.json",
-            records=len(load_json(ROOT / "api" / "v1" / "rarity.json")["tiers"])),
+            schema="data/v1/schema/rarity.json", item_schema="data/v1/schema/rarity-tier.json",
+            records=len(load_json(ROOT / "data" / "v1" / "rarity.json")["tiers"])),
         "price-signals": ep(
-            "api/v1/price-signals.json",
+            "data/v1/price-signals.json",
             "Reported market price signals for the Price Watch: curated, sourced sold-band / sold-avg / "
             "listing / claimed prices already published on the Chronicle (encyclopedia, market briefing) — "
             "reported ranges, not live prices; the Chronicle publishes no price index.",
-            schema="api/v1/schema/price-signals.json", item_schema="api/v1/schema/price-signal.json",
+            schema="data/v1/schema/price-signals.json", item_schema="data/v1/schema/price-signal.json",
             records=len(price_raw["signals"])),
         "launch-curves": ep(
-            "api/v1/launch-curves.json",
+            "data/v1/launch-curves.json",
             "The Launch Curve: real sold-price timelines for newly launched figures — every "
             "point a reported eBay sold/presale from a named hobby tracker, with sellout "
             "event markers and MSRP. Documents the sellout → spike → cool → retail pattern; "
             "reported timelines, not predictions. Generated by scripts/build_launch.py.",
-            schema="api/v1/schema/launch-curves.json", item_schema="api/v1/schema/launch-curve.json",
+            schema="data/v1/schema/launch-curves.json", item_schema="data/v1/schema/launch-curve.json",
             records=len(launch_raw["curves"])),
         "drop-week": ep(
-            "api/v1/drop-week.json",
+            "data/v1/drop-week.json",
             "Drop Week Command Center: the Oct 14 → Nov 1 drop sequence + Nov 20 made-to-order "
             "deadline — confirmed drop windows, lineups with researched accessory notes, announced "
             "prices, ship windows, scarcity/price/KO intel, and rumor watch (flagged uncertain). "
             "Editorial payload generated by scripts/build_dropweek.py from data/drop-week.json.",
-            schema="api/v1/schema/drop-week.json", item_schema="api/v1/schema/drop-week-item.json",
+            schema="data/v1/schema/drop-week.json", item_schema="data/v1/schema/drop-week-item.json",
             records=len(drop_raw["drops"])),
         "radar-candidates": ep(
-            "api/v1/radar-candidates.json",
+            "data/v1/radar-candidates.json",
             "Hand-maintained reissue-radar research feed: newly spotted news items (title, URL, "
             "source, detection time). Research notes, not a generated snapshot.",
-            schema="api/v1/schema/radar-candidates.json", item_schema="api/v1/schema/radar-candidate.json",
+            schema="data/v1/schema/radar-candidates.json", item_schema="data/v1/schema/radar-candidate.json",
             records=len(radar_candidates),
             notes="Hand-maintained — build_api.py reads it for the record count but never rewrites it."),
         "radar-seen": ep(
-            "api/v1/radar-seen.json",
+            "data/v1/radar-seen.json",
             "Hand-maintained dedupe list of radar URLs already processed. Array of URL strings.",
-            schema="api/v1/schema/radar-seen.json", records=len(radar_seen),
+            schema="data/v1/schema/radar-seen.json", records=len(radar_seen),
             notes="Hand-maintained — build_api.py reads it for the record count but never rewrites it."),
         "compare": ep(
-            "api/v1/compare.json",
+            "data/v1/compare.json",
             "VS-mode figure profiles: one per archive figure — stable `deepLink` "
             "(waves/<waveId>.html#fig-<slug>), shareable `compareUrl` (compare.html?a=<id>), "
             "`rarity` tier cross-ref, `priceSignals` (reported ranges, never live prices), "
             "`koWatch` note, and `upgradePaths` (documented other releases of the same character). "
             "Powers the Figure Compare page; derived from committed data by scripts/compare_lib.py.",
-            schema="api/v1/schema/compare.json", item_schema="api/v1/schema/compare-profile.json",
+            schema="data/v1/schema/compare.json", item_schema="data/v1/schema/compare-profile.json",
             records=len(compare_profiles)),
         "year-review": ep(
-            "api/v1/year-review.json",
+            "data/v1/year-review.json",
             "2026: The State of Legends — the year-in-review: scored Top-10 2026 releases "
             "(transparent distinction criteria), 2026 archive stats, reported-price movement math "
             "(reported solds only, never an index), best-value picks from announced MSRPs, KO watch, "
             "rarity highlights, and honest data gaps. Generated by scripts/build_review.py.",
-            schema="api/v1/schema/year-review.json", item_schema="api/v1/schema/year-review-item.json",
-            records=len(load_json(ROOT / "api" / "v1" / "year-review.json")["top10"])),
+            schema="data/v1/schema/year-review.json", item_schema="data/v1/schema/year-review-item.json",
+            records=len(load_json(ROOT / "data" / "v1" / "year-review.json")["top10"])),
     }
 
     index = {
@@ -314,13 +314,13 @@ def main():
         "version": VERSION,
         "observed": OBSERVED,
         "repository": "https://github.com/astercast/marvel-legends-chronicle",
-        "for_agents": "Start at api/v1/index.json. For task procedures, read skills/index.json and load the relevant skill file — skills are the primary agentic interface for doing work, the JSON endpoints are the data layer. The full agent guide is AGENT.md at the repository root.",
+        "for_agents": "Start at data/v1/index.json. For task procedures, read skills/index.json and load the relevant skill file — skills are the primary agentic interface for doing work, the JSON endpoints are the data layer. The full agent guide is AGENT.md at the repository root.",
         "provenance": "Fan-compiled archive. Within-year ordering is year-accurate but not audited to the month; some BAF pieces and disputed wave numbers are flagged in notes.",
         "skills": {
             "directory": "skills/",
             "index": "skills/index.json",
             "count": skills_index.get("count", 0),
-            "usage": "Each skill is a markdown file with frontmatter (name, description), then: Use when, Inputs, Procedure, Worked example, Data/API references, Pitfalls. Agent-playbook skills (skills/agents/) use an 'API references' section pointing at api/v1 endpoints; the rest use 'Data references' pointing at data/*.json. Load the skill whose task matches the user's request.",
+            "usage": "Each skill is a markdown file with frontmatter (name, description), then: Use when, Inputs, Procedure, Worked example, Data/API references, Pitfalls. Agent-playbook skills (skills/agents/) use an 'API references' section pointing at data/v1 endpoints; the rest use 'Data references' pointing at data/*.json. Load the skill whose task matches the user's request.",
         },
         "endpoints": endpoints,
     }
@@ -591,7 +591,7 @@ def main():
         **schemas,
     }
     for name, payload in outputs.items():
-        # Minified on the wire: api/v1/figures.json is 732KB pretty-printed.
+        # Minified on the wire: data/v1/figures.json is 732KB pretty-printed.
         # Nulls are KEPT (API contract: absent != null for consumers).
         (API / name).write_text(json.dumps(payload, separators=(",", ":"), ensure_ascii=False) + "\n")
 

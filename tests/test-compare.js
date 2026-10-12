@@ -1,6 +1,6 @@
 /* Wave 26: VS mode (Figure Compare) + encyclopedia deep-link overhaul tests.
    Logic tests run against pinned fixtures; data tests run against the REAL
-   data/figures.json + api/v1/compare.json + built waves/*.html — every deep
+   data/figures.json + data/v1/compare.json + built waves/*.html — every deep
    link must resolve, every cross-reference must point at a real figure, and no
    price may be invented (guidance may only repeat numbers from the fixtures). */
 "use strict";
@@ -16,7 +16,7 @@ import {
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const figRaw = JSON.parse(readFileSync(join(ROOT, "data/figures.json"), "utf8"));
-const compareRaw = JSON.parse(readFileSync(join(ROOT, "api/v1/compare.json"), "utf8"));
+const compareRaw = JSON.parse(readFileSync(join(ROOT, "data/v1/compare.json"), "utf8"));
 const profiles = compareRaw.profiles;
 
 /* Real archive id set: <waveId>::<figureName>, same format as data.js. */

@@ -3,7 +3,7 @@
  * Renders the "Latest press scan" section on radar.html through the
  * ARCHITECTURE.md §3 fallback contract:
  *   1. Try the live function  /api/reveals?limit=N   (7s timeout)
- *   2. On failure, fall back to api/v1/radar-candidates.json (static)
+ *   2. On failure, fall back to data/v1/radar-candidates.json (static)
  *   3. On total failure, hide the section — the hand-curated radar cards
  *      below it are the pre-rendered static page and always remain.
  *
@@ -118,7 +118,7 @@
     if (!section || !window.ApiClient) return;
 
     window.ApiClient.fetchWithFallback("/api/reveals?limit=" + MAX_ITEMS,
-      "/api/v1/radar-candidates.json", { badgeEl: badgeEl })
+      "/data/v1/radar-candidates.json", { badgeEl: badgeEl })
       .then(function (result) {
         if (result.source === "live" && result.data && Array.isArray(result.data.reveals)) {
           section.innerHTML = result.data.reveals.map(revealCard).join("");

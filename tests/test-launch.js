@@ -26,7 +26,7 @@ const curvesDoc = j("data/launch-curves.json");
 const curves = curvesDoc.curves;
 const figRaw = j("data/figures.json");
 const preorders = j("data/preorders.json").items;
-const manifest = j("api/v1/index.json");
+const manifest = j("data/v1/index.json");
 const page = readFileSync(join(ROOT, "launch-curve.html"), "utf8");
 
 const waveById = new Map();
@@ -180,8 +180,8 @@ suite("api: launch-curves endpoint", () => {
     assert.equal(names.length, 16, `${names.length} endpoints`);
     assert.equal(manifest.endpoints["launch-curves"].records, 2);
   });
-  test("api/v1/launch-curves.json has 2 curve records", () => {
-    const api = j("api/v1/launch-curves.json");
+  test("data/v1/launch-curves.json has 2 curve records", () => {
+    const api = j("data/v1/launch-curves.json");
     assert.equal(api.count, 2);
     assert.equal(api.curves.length, 2);
   });

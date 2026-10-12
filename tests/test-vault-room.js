@@ -121,9 +121,9 @@ suite("vault room — generator nav sync", () => {
 });
 
 suite("vault room — real-data integrity", () => {
-  const figures = JSON.parse(read("api/v1/figures.json"));
-  const waves = JSON.parse(read("api/v1/waves.json"));
-  const timeline = JSON.parse(read("api/v1/timeline.json"));
+  const figures = JSON.parse(read("data/v1/figures.json"));
+  const waves = JSON.parse(read("data/v1/waves.json"));
+  const timeline = JSON.parse(read("data/v1/timeline.json"));
 
   test("archive scale: 1,939 figures, 167 waves, 25 years", () => {
     assert(figures.length === 1939, `figures: ${figures.length}`);

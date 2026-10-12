@@ -1,6 +1,6 @@
 /* Wave 32 tests: Drop Week Command Center pure logic + real-data integrity.
    Pinned-fixture tests for countdown/status/plan math; real-data runs against
-   data/drop-week.json and api/v1/drop-week.json (no invented figures, dates,
+   data/drop-week.json and data/v1/drop-week.json (no invented figures, dates,
    or prices — every dollar amount must be a researched, allowed value). */
 "use strict";
 
@@ -16,7 +16,7 @@ import {
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const data = JSON.parse(readFileSync(join(ROOT, "data/drop-week.json"), "utf8"));
-const api = JSON.parse(readFileSync(join(ROOT, "api/v1/drop-week.json"), "utf8"));
+const api = JSON.parse(readFileSync(join(ROOT, "data/v1/drop-week.json"), "utf8"));
 const page = readFileSync(join(ROOT, "drop-week.html"), "utf8");
 const configJs = readFileSync(join(ROOT, "assets/js/config.js"), "utf8");
 

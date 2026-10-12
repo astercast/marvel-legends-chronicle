@@ -1,6 +1,6 @@
 /* Copy-count guard: the site's prose must never drift from the archive again.
    Every "N figures" / "N waves" archive-total mention in the copy corpus must
-   equal the live counts derived from api/v1 (never invented, never pinned
+   equal the live counts derived from data/v1 (never invented, never pinned
    to a stale snapshot). Small per-wave/per-year counts are exempt; only
    4-digit figure totals and 3-digit wave totals are treated as archive totals.
 
@@ -13,9 +13,9 @@ import { suite, test, assert } from "./assert.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-// Derive from api/v1 (the live surface), cross-check against the source data.
-const apiFigures = JSON.parse(readFileSync(join(root, "api", "v1", "figures.json"), "utf8"));
-const apiWaves = JSON.parse(readFileSync(join(root, "api", "v1", "waves.json"), "utf8"));
+// Derive from data/v1 (the live surface), cross-check against the source data.
+const apiFigures = JSON.parse(readFileSync(join(root, "data", "v1", "figures.json"), "utf8"));
+const apiWaves = JSON.parse(readFileSync(join(root, "data", "v1", "waves.json"), "utf8"));
 const dataRaw = JSON.parse(readFileSync(join(root, "data", "figures.json"), "utf8"));
 const liveFigures = apiFigures.length;
 const liveWaves = apiWaves.length;
@@ -45,9 +45,9 @@ function copyCorpus() {
 }
 
 suite("copy counts track the live archive", () => {
-  test("api/v1 counts match the source data", () => {
-    assert.equal(liveFigures, dataFigures, "api/v1 figures.json != data/figures.json");
-    assert.equal(liveWaves, dataRaw.waves.length, "api/v1 waves.json != data waves");
+  test("data/v1 counts match the source data", () => {
+    assert.equal(liveFigures, dataFigures, "data/v1 figures.json != data/figures.json");
+    assert.equal(liveWaves, dataRaw.waves.length, "data/v1 waves.json != data waves");
   });
 
   test("no 4-digit figure total drifts from the live count", () => {

@@ -6,7 +6,7 @@
   (http(s) or a relative .html page, query strings allowed).
 - Regenerates the tier sections of rarity.html between markers (static HTML,
   works without JS).
-- Writes api/v1/rarity.json (tier definitions, example figure refs with
+- Writes data/v1/rarity.json (tier definitions, example figure refs with
   wave context, archive counts, quest mapping).
 
 Regenerate: python3 scripts/build_rarity.py
@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 GUIDE = ROOT / "data" / "rarity-guide.json"
 FIGURES = ROOT / "data" / "figures.json"
 PAGE = ROOT / "rarity.html"
-API_OUT = ROOT / "api" / "v1" / "rarity.json"
+API_OUT = ROOT / "data" / "v1" / "rarity.json"
 
 TIER_FIELDS = {"id", "name", "icon", "tagline", "body", "howToSpot", "valueNote", "examples", "sources"}
 CROSS_FIELDS = {"id", "name", "icon", "body", "links"}

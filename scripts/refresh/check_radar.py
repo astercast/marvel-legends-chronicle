@@ -4,9 +4,9 @@ check_radar.py — hobby-press reveal scanner for the Marvel Legends release rad
 
 Polls hobby-press RSS feeds plus a multi-query Google News RSS search for
 Marvel Legends reveal / announcement items, filters by keyword, and writes
-NEW items to api/v1/radar-candidates.json.
+NEW items to data/v1/radar-candidates.json.
 
-Dedup is handled against api/v1/radar-seen.json (a persistent seen-URL store
+Dedup is handled against data/v1/radar-seen.json (a persistent seen-URL store
 this script maintains itself). Nothing here ever touches radar.html — the
 candidates file is the product; a human (or the builder agent) reviews it and
 promotes VERIFIED reveals into radar.html. Unverified reveals must never be
@@ -27,7 +27,7 @@ import xml.etree.ElementTree as ET
 
 # Repo root is three levels above this file: scripts/refresh/check_radar.py
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-API_DIR = os.path.join(ROOT, "api", "v1")
+API_DIR = os.path.join(ROOT, "data", "v1")
 CANDIDATES_PATH = os.path.join(API_DIR, "radar-candidates.json")
 SEEN_PATH = os.path.join(API_DIR, "radar-seen.json")
 

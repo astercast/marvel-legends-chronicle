@@ -10,7 +10,7 @@ Single source of truth for:
     data only — variants, documented reissues, exclusives), with honest relations
 
 Used by scripts/build_waves.py (wave-page anchors + per-figure xref blocks) and
-scripts/build_api.py (the api/v1/compare.json endpoint). Nothing here invents
+scripts/build_api.py (the data/v1/compare.json endpoint). Nothing here invents
 figures, dates, or prices — every field is derived from committed data files.
 
 ABSOLUTE RULE: no invented figures/dates/prices. Articulation counts and

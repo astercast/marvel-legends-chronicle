@@ -29,50 +29,17 @@
         <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
       </a>
       <nav class="site-nav" aria-label="Primary">
-                                                                                                                <a href="index.html">Timeline</a>
+                                                                                                                                <a href="index.html">Timeline</a>
+        <a href="vault-room.html">Vault Room</a>
+        <a href="drop-week.html">Drop Week</a>
+        <a href="preorders.html">Pre-orders</a>
+        <a href="waves/index.html">Waves</a>
+        <a href="characters/index.html">Characters</a>
+        <a href="encyclopedia.html">Encyclopedia</a>
+        <a href="quest.html">Grail Quest</a>
         <a href="timeline.html">Legends Timeline</a>
         <a href="2026-review.html">2026 Review</a>
         <a href="start.html">Start</a>
-        <a href="waves/index.html">Waves</a>
-        <a href="stats.html">Stats</a>
-        <a href="encyclopedia.html">Encyclopedia</a>
-        <a href="baf-planner.html">BAF Planner</a>
-        <a href="characters/index.html">Characters</a>
-        <a href="price-guide.html">Price Guide</a>
-        <a href="market-briefing.html">Market Briefing</a>
-        <a href="launch-curve.html">Launch Curve</a>
-        <a href="drop-week.html">Drop Week</a>
-        <a href="auth-wizard.html">Auth Wizard</a>
-        <a href="shelf.html">Your Shelf</a>
-        <a href="journal.html">Journal</a>
-        <a href="baf-economics.html">BAF Economics</a>
-        <a href="hunt.html">Hunt Planner</a>
-        <a href="gift.html">Gift Finder</a>
-        <a href="holiday.html">Holiday Guide</a>
-        <a href="grading.html">Grading</a>
-        <a href="display.html">Display</a>
-        <a href="collection-value.html">Ledger</a>
-        <a href="exclusives.html">Exclusives</a>
-        <a href="watchlist.html">Watchlist</a>
-        <a href="budget.html">Budget</a>
-        <a href="radar.html">Radar</a>
-        <a href="preorders.html">Pre-orders</a>
-        <a href="calendar.html">Release Calendar</a>
-        <a href="compare.html">Compare</a>
-        <a href="grails.html">Grails</a>
-        <a href="quest.html">Grail Quest</a>
-        <a href="variants.html">Variants</a>
-        <a href="variant-spotlight.html">Variant Spotlight</a>
-        <a href="rarity.html">Rarity Guide</a>
-        <a href="checklist.html">Checklist</a>
-        <a href="explore.html">Explore</a>
-        <a href="retro.html">Retro</a>
-        <a href="showcase.html">Showcase</a>
-        <a href="vault-room.html">Vault Room</a>
-        <a href="skills.html">Skills</a>
-        <a href="agents.html" aria-current="page">Agents</a>
-        <a href="community.html">Community</a>
-        <a href="api.html">API</a>
       </nav>
     </div>
   </header>
@@ -91,7 +58,7 @@
         <div class="card" style="margin-bottom:var(--space-6);">
           <ol class="steps-list" style="padding-left:1.4rem;font-size:0.92rem;color:var(--ink-dim);margin:0;">
             <li>Read <a href="llms.txt"><code>llms.txt</code></a> — the one-page index of what this archive is and where everything lives.</li>
-            <li>Open <a href="api/v1/index.json"><code>api/v1/index.json</code></a> — the manifest: version, observation date, endpoint map, and the <code>for_agents</code> pointer.</li>
+            <li>Open <a href="data/v1/index.json"><code>data/v1/index.json</code></a> — the manifest: version, observation date, endpoint map, and the <code>for_agents</code> pointer.</li>
             <li>Read <a href="skills/index.json"><code>skills/index.json</code></a> and load the skill whose task matches the user's request — each skill is a markdown playbook: <em>Use when, Inputs, Procedure, Worked example, API/Data references, Pitfalls</em>.</li>
             <li>Fetch only the API endpoints the skill names. <code>stats.json</code> is the cheapest overview; <code>figures.json</code> is the heavy one.</li>
             <li>Answer with the archive's honesty rules: unknown = explicit <code>null</code>, prices = reported/user-logged only (never a market index), single-source claims flagged. Full reference lives in <a href="api.html">The API</a> and <a href="API.md"><code>API.md</code></a>.</li>
@@ -101,31 +68,31 @@
 
       <section aria-labelledby="endpoints-h">
         <h2 id="endpoints-h">API endpoints</h2>
-        <p style="font-size:0.92rem;color:var(--ink-dim);margin-bottom:var(--space-3);">Static versioned JSON under <code>api/v1/</code> — no auth, no rate limits. Documented in full at <a href="api.html">api.html</a> / <a href="API.md"><code>API.md</code></a>.</p>
+        <p style="font-size:0.92rem;color:var(--ink-dim);margin-bottom:var(--space-3);">Static versioned JSON under <code>data/v1/</code> — no auth, no rate limits. Documented in full at <a href="api.html">api.html</a> / <a href="API.md"><code>API.md</code></a>.</p>
         <div class="guide-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-3);margin-bottom:var(--space-6);">
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/index.json"><code>api/v1/index.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Self-describing manifest: every endpoint with schema URLs, ISO-8601 UTC <code>updated</code>, record counts, deprecation notes.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/stats.json"><code>api/v1/stats.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/waves.json"><code>api/v1/waves.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">167 waves with series, year, manufacturer, BAF, and figure counts.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/figures.json"><code>api/v1/figures.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Flat list of all 1,939 figures with wave context and stable ids.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/encyclopedia.json"><code>api/v1/encyclopedia.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">History, packaging evolution, variant/chase taxonomy, hall of fame (with reissue radar), grading guide, price methodology, bootleg guide, resources.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/preorders.json"><code>api/v1/preorders.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">22 researched upcoming releases: status, exact pre-order dates where reported, release windows, announced MSRP, source links, window-result honesty field.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/characters.json"><code>api/v1/characters.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">66 character guides: slug, name, release count, first/last year, page path.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/timeline.json"><code>api/v1/timeline.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Legends Timeline: 25 year records (2002–2026) — sourced milestones, packaging eras, per-year waves (real archive ids), spotlight figures.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/rarity.json"><code>api/v1/rarity.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Rarity Guide: 9 tiers (chase, running-change, deco, unmasked, convention, retailer, Pulse/Fan Channel, HasLab, made-to-order) — sourced examples (real figure ids), how-to-spot, value notes (reported prices only), archive counts, quest mapping.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/price-signals.json"><code>api/v1/price-signals.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Reported market price signals for the Price Watch: curated, sourced sold-band / sold-avg / listing / claimed prices already published on the Chronicle (encyclopedia, market briefing) — reported ranges, not live prices; the Chronicle publishes no price index.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/launch-curves.json"><code>api/v1/launch-curves.json</code></a></h3></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/drop-week.json"><code>api/v1/drop-week.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Drop Week Command Center: the Oct 14 → Nov 1 drop sequence + Nov 20 made-to-order deadline — confirmed windows, lineups with researched accessory notes, announced prices, ship windows, scarcity/price/KO intel, rumor watch flagged uncertain.</p><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Launch Curve: real sold-price timelines for newly launched figures — every point a reported eBay sold/presale from a named hobby tracker, with sellout event markers and MSRP. Documents the sellout → spike → cool → retail pattern; reported timelines, not predictions.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/compare.json"><code>api/v1/compare.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">VS-mode figure profiles (1,939): stable <code>deepLink</code> (<code>waves/&lt;waveId&gt;.html#fig-&lt;slug&gt;</code>), shareable <code>compareUrl</code>, <code>rarity</code> tier cross-ref, <code>priceSignals</code> (reported ranges, never live), <code>koWatch</code> note, <code>upgradePaths</code> (documented other releases of the same character). Powers the Figure Compare page.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/year-review.json"><code>api/v1/year-review.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">2026: The State of Legends — scored Top-10 2026 releases (transparent distinction criteria), 2026 archive stats, reported-price movement math (reported solds only, never an index), best-value picks, KO watch, rarity highlights, honest gaps. Powers the 2026 year-in-review page.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/radar-candidates.json"><code>api/v1/radar-*.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Hand-maintained reissue-radar research feed + processed-URL dedupe list.</p></article>
-          <article class="card"><h3 style="font-size:1rem;"><a href="api/v1/schema/figure.json"><code>api/v1/schema/</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">JSON Schema (draft-07) for every endpoint — plus per-record item schemas.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/index.json"><code>data/v1/index.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Self-describing manifest: every endpoint with schema URLs, ISO-8601 UTC <code>updated</code>, record counts, deprecation notes.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/stats.json"><code>data/v1/stats.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Totals, per-year and per-manufacturer counts, BAF/exclusive/variant tallies.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/waves.json"><code>data/v1/waves.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">167 waves with series, year, manufacturer, BAF, and figure counts.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/figures.json"><code>data/v1/figures.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Flat list of all 1,939 figures with wave context and stable ids.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/encyclopedia.json"><code>data/v1/encyclopedia.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">History, packaging evolution, variant/chase taxonomy, hall of fame (with reissue radar), grading guide, price methodology, bootleg guide, resources.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/preorders.json"><code>data/v1/preorders.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">22 researched upcoming releases: status, exact pre-order dates where reported, release windows, announced MSRP, source links, window-result honesty field.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/characters.json"><code>data/v1/characters.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">66 character guides: slug, name, release count, first/last year, page path.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/timeline.json"><code>data/v1/timeline.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Legends Timeline: 25 year records (2002–2026) — sourced milestones, packaging eras, per-year waves (real archive ids), spotlight figures.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/rarity.json"><code>data/v1/rarity.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Rarity Guide: 9 tiers (chase, running-change, deco, unmasked, convention, retailer, Pulse/Fan Channel, HasLab, made-to-order) — sourced examples (real figure ids), how-to-spot, value notes (reported prices only), archive counts, quest mapping.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/price-signals.json"><code>data/v1/price-signals.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Reported market price signals for the Price Watch: curated, sourced sold-band / sold-avg / listing / claimed prices already published on the Chronicle (encyclopedia, market briefing) — reported ranges, not live prices; the Chronicle publishes no price index.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/launch-curves.json"><code>data/v1/launch-curves.json</code></a></h3></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/drop-week.json"><code>data/v1/drop-week.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Drop Week Command Center: the Oct 14 → Nov 1 drop sequence + Nov 20 made-to-order deadline — confirmed windows, lineups with researched accessory notes, announced prices, ship windows, scarcity/price/KO intel, rumor watch flagged uncertain.</p><p style="font-size:0.88rem;color:var(--muted);margin:0;">The Launch Curve: real sold-price timelines for newly launched figures — every point a reported eBay sold/presale from a named hobby tracker, with sellout event markers and MSRP. Documents the sellout → spike → cool → retail pattern; reported timelines, not predictions.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/compare.json"><code>data/v1/compare.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">VS-mode figure profiles (1,939): stable <code>deepLink</code> (<code>waves/&lt;waveId&gt;.html#fig-&lt;slug&gt;</code>), shareable <code>compareUrl</code>, <code>rarity</code> tier cross-ref, <code>priceSignals</code> (reported ranges, never live), <code>koWatch</code> note, <code>upgradePaths</code> (documented other releases of the same character). Powers the Figure Compare page.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/year-review.json"><code>data/v1/year-review.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">2026: The State of Legends — scored Top-10 2026 releases (transparent distinction criteria), 2026 archive stats, reported-price movement math (reported solds only, never an index), best-value picks, KO watch, rarity highlights, honest gaps. Powers the 2026 year-in-review page.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/radar-candidates.json"><code>data/v1/radar-*.json</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Hand-maintained reissue-radar research feed + processed-URL dedupe list.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><a href="data/v1/schema/figure.json"><code>data/v1/schema/</code></a></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">JSON Schema (draft-07) for every endpoint — plus per-record item schemas.</p></article>
         </div>
       </section>
 
       <section aria-labelledby="skills-h">
         <h2 id="skills-h">The skills directory</h2>
         <div class="card" style="margin-bottom:var(--space-6);">
-          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0 0 var(--space-3);">220 task procedures in <code>skills/</code>, indexed by <a href="skills/index.json"><code>skills/index.json</code></a> — rebuilt with <code>python3 scripts/build_skills.py</code> (generator; new hand-authored skills go in its <code>HAND</code> list). Categories: <strong>agents</strong> (8), baf (101), characters (46), grails (24), bootleg (8), collection (5), community (4), eras (5), hunts (11), marketplace (4), variants (4). The <strong>agents</strong> category is the eight cross-cutting playbooks — they use an <em>API references</em> section pointing at <code>api/v1</code> endpoints; every other category uses <em>Data references</em> pointing at <code>data/*.json</code>.</p>
+          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0 0 var(--space-3);">220 task procedures in <code>skills/</code>, indexed by <a href="skills/index.json"><code>skills/index.json</code></a> — rebuilt with <code>python3 scripts/build_skills.py</code> (generator; new hand-authored skills go in its <code>HAND</code> list). Categories: <strong>agents</strong> (8), baf (101), characters (46), grails (24), bootleg (8), collection (5), community (4), eras (5), hunts (11), marketplace (4), variants (4). The <strong>agents</strong> category is the eight cross-cutting playbooks — they use an <em>API references</em> section pointing at <code>data/v1</code> endpoints; every other category uses <em>Data references</em> pointing at <code>data/*.json</code>.</p>
           <ul style="font-size:0.92rem;color:var(--ink-dim);margin:0;padding-left:1.2rem;">
             <li><a href="skills/agents/preorder-hunter.md"><code>preorder-hunter</code></a> — find what's coming, when, and where (drives the pre-order tracker + radar).</li>
             <li><a href="skills/agents/market-brief-reader.md"><code>market-brief-reader</code></a> — read the market briefing honestly: reported solds only, never an index.</li>
@@ -154,13 +121,13 @@
 
       <section aria-labelledby="workflows-h">
         <h2 id="workflows-h">Worked agent workflows</h2>
-        <p style="font-size:0.92rem;color:var(--ink-dim);margin-bottom:var(--space-3);">The full agent guide is <a href="AGENT.md"><code>AGENT.md</code></a> — base pattern, example requests, the interactive tools' data shapes, and these three workflows as tested code (<code>tests/test-api-workflows.js</code> runs them against the real <code>api/v1</code> JSON).</p>
+        <p style="font-size:0.92rem;color:var(--ink-dim);margin-bottom:var(--space-3);">The full agent guide is <a href="AGENT.md"><code>AGENT.md</code></a> — base pattern, example requests, the interactive tools' data shapes, and these three workflows as tested code (<code>tests/test-api-workflows.js</code> runs them against the real <code>data/v1</code> JSON).</p>
         <div class="guide-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-3);margin-bottom:var(--space-6);">
           <article class="card workflow">
             <h3>"What should I pre-order this month?"</h3>
             <ol>
               <li>Load skill <a href="skills/agents/preorder-hunter.md"><code>preorder-hunter</code></a>.</li>
-              <li>Fetch <code>api/v1/preorders.json</code>; sort by status then date.</li>
+              <li>Fetch <code>data/v1/preorders.json</code>; sort by status then date.</li>
               <li>Exact-date items first: e.g. the X-Men '97 retro wave pre-order opens 2026-10-21 — actionable. Mini Comics Wave 3 (opened 2026-10-06) — available now via retailer search.</li>
               <li><code>revealed</code> items with only a season (Avengers: Doomsday, Fall 2026) go on the watchlist, never the buy list.</li>
               <li>Report what you know vs. don't; cite <code>sources</code> links for every claim.</li>
@@ -170,7 +137,7 @@
             <h3>"Is this eBay listing a KO risk?"</h3>
             <ol>
               <li>Load skill <a href="skills/agents/ko-spotter.md"><code>ko-spotter</code></a>.</li>
-              <li>Fetch <code>api/v1/encyclopedia.json</code> → <code>bootlegGuide</code>; run all six checklists (packaging, paint, joints, targets, listings, price-logic).</li>
+              <li>Fetch <code>data/v1/encyclopedia.json</code> → <code>bootlegGuide</code>; run all six checklists (packaging, paint, joints, targets, listings, price-logic).</li>
               <li>Apply price logic: 40%+ under 90-day reported solds = assume bootleg until proven otherwise; watch the Shopee fraud zone (KOs priced like genuine).</li>
               <li>Apply photo tells: stock vs real photos, peg differences, joint gaps (e.g. KO Carnage's silver eyes).</li>
               <li>Verdict with fails listed; when in doubt, recommend passing — never pressure-buy.</li>
@@ -180,7 +147,7 @@
             <h3>"Audit my X-Men shelf"</h3>
             <ol>
               <li>Load skill <a href="skills/agents/collection-auditor.md"><code>collection-auditor</code></a>.</li>
-              <li>Fetch <code>api/v1/stats.json</code> + <code>api/v1/figures.json</code>; take the user's owned/wanted state as input.</li>
+              <li>Fetch <code>data/v1/stats.json</code> + <code>data/v1/figures.json</code>; take the user's owned/wanted state as input.</li>
               <li>Near-complete wins first: waves past 50%, BAFs missing 1–2 pieces, characters nearly complete.</li>
               <li>Spot era gaps (e.g. all-modern shelf with zero Toy Biz); name the gap and the cheapest representative fix.</li>
               <li>Deliver counts, era splits, top 3 gaps, top 3 next pickups — plain sentences, no invented prices.</li>

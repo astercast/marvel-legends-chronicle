@@ -1,7 +1,7 @@
 /* price-watch.js — pure Price Watch logic: compare a user's target price
    against the Chronicle's reported market signals. No DOM, no storage,
    no fetch: callers supply the watchlist entries and the signals array
-   (from data/price-signals.json or api/v1/price-signals.json). Every
+   (from data/price-signals.json or data/v1/price-signals.json). Every
    number shown traces to a reported listing/sold — never scraped, never
    invented. "Reported ranges, not live prices." */
 

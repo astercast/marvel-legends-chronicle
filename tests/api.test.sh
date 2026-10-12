@@ -135,9 +135,9 @@ assert e['ok'] is False and e['error']['code']=='UNAUTHORIZED', e\""
 chk "cron no-store" bash -c "curl -s -D - -o /dev/null '$BASE/api/cron/radar' | grep -qi 'no-store'"
 
 # 7. static fallback present (the §3 contract)
-chk "static fallback radar-candidates" bash -c "curl -sf '$BASE/api/v1/radar-candidates.json' -o /dev/null"
-chk "static fallback preorders" bash -c "curl -sf '$BASE/api/v1/preorders.json' -o /dev/null"
-chk "static fallback envelope schema" bash -c "curl -sf '$BASE/api/v1/schema/envelope.json' | python3 -c \"import json,sys; json.load(sys.stdin)\""
+chk "static fallback radar-candidates" bash -c "curl -sf '$BASE/data/v1/radar-candidates.json' -o /dev/null"
+chk "static fallback preorders" bash -c "curl -sf '$BASE/data/v1/preorders.json' -o /dev/null"
+chk "static fallback envelope schema" bash -c "curl -sf '$BASE/data/v1/schema/envelope.json' | python3 -c \"import json,sys; json.load(sys.stdin)\""
 
 # 8. GET cache headers (§1.6): s-maxage=600 on resource functions
 chk "reveals cache s-maxage=600" bash -c "curl -sf -D - -o /dev/null '$BASE/api/reveals?limit=1' | grep -qi 's-maxage=600'"

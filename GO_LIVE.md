@@ -31,7 +31,7 @@ locally. Nothing is connected to Vercel yet. Do not run the hookup steps in
 One Vercel project containing:
 
 - **Static frontend** — the whole repo root: 275 pages (42 root + 167 waves +
-  66 characters), `assets/`, `data/`, `skills/`, `api/v1/*.json` (static
+  66 characters), `assets/`, `data/`, `skills/`, `data/v1/*.json` (static
   fallback data).
 - **4 serverless functions** (service `marvel-radar`, zero npm dependencies,
   Node auto-detected — no `runtime` key, envelope-only responses):
@@ -46,11 +46,11 @@ One Vercel project containing:
 - **Frontend wiring** — `assets/js/api-client.js` (§3.2 reference client,
   7s live timeout, live/waking/cached/none states); `radar.html` "Latest
   press scan" section and `preorders.html` tracker both call `/api/*` first
-  and fall back to the static `api/v1/` JSON. The site never looks broken
+  and fall back to the static `data/v1/` JSON. The site never looks broken
   when functions are unavailable.
 
 **Known quirk (documented, not changed):** `build_api.py` and
-`build_dropweek.py` both write `api/v1/drop-week.json` (content identical,
+`build_dropweek.py` both write `data/v1/drop-week.json` (content identical,
 formatting differs minified vs pretty — last writer wins). The
 `buildCommand` runs `build_api.py` first and `build_dropweek.py` last, so
 the drop-week build's file is the one deployed. Do not "fix" this by
@@ -101,7 +101,7 @@ reordering; the builds are intentionally independent.
    curl -sf "$BASE/api/reveals?limit=5" | python3 -c "import json,sys; e=json.load(sys.stdin); assert e['ok'] and 'reveals' in e['data']"
    curl -sf "$BASE/api/preorders" | python3 -c "import json,sys; e=json.load(sys.stdin); assert e['ok'] and 'preorders' in e['data']"
    curl -s -o /dev/null -w '%{http_code}\n' "$BASE/api/cron/radar"   # expect 401 without secret
-   curl -sf "$BASE/api/v1/radar-candidates.json" -o /dev/null        # static twin coexists
+   curl -sf "$BASE/data/v1/radar-candidates.json" -o /dev/null        # static twin coexists
    ```
 8. **Disable test:** block `/api/*` (or stop functions) → reload
    `radar.html` and `preorders.html` → assert every widget shows cached data
@@ -177,7 +177,7 @@ comments, not in test fixtures.
 - Add the domain in Vercel dashboard → Domains; the `api/*` paths move with
   the domain automatically.
 - If a custom domain is assigned later, sweep `llms.txt`/sitemap absolute
-  URLs and the `api/v1/schema/envelope.json` `$id` (currently on the
+  URLs and the `data/v1/schema/envelope.json` `$id` (currently on the
   default `*.vercel.app` host) — flag as a wave task at that time.
 
 ## 10. Rollback

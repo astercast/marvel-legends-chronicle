@@ -16,9 +16,9 @@ You want a read on your collection: what's strong, what's thin, and the smartest
 
 ## Procedure
 
-1. Use the archive's shelf-analytics template (`api/v1/stats.json` for archive totals): manufacturer split (Toy Biz vs Hasbro), era coverage (founding 2002–2006 era, transition, modern), peak collecting years.
+1. Use the archive's shelf-analytics template (`data/v1/stats.json` for archive totals): manufacturer split (Toy Biz vs Hasbro), era coverage (founding 2002–2006 era, transition, modern), peak collecting years.
 2. Find near-complete wins first: waves past 50%, BAFs missing 1–2 pieces, characters nearly complete — the site's 'Almost there' logic. Completing a near-finished set beats starting a new one.
-3. Spot era gaps: e.g. an all-modern shelf with zero Toy Biz, or no retro-carded representation — name the gap and the cheapest representative fix from `api/v1/figures.json`.
+3. Spot era gaps: e.g. an all-modern shelf with zero Toy Biz, or no retro-carded representation — name the gap and the cheapest representative fix from `data/v1/figures.json`.
 4. Rank next acquisitions: near-completions first, then grail targets with resilient reissue radar, then hunt-list figures with logged max prices.
 5. Present the summary in the shareable shelf-summary shape: counts, era splits, top 3 gaps, top 3 next pickups — plain sentences, no invented prices (prices only from the user's own journal solds).
 
@@ -28,9 +28,9 @@ A shelf of 40 modern Spider-Man figures and zero X-Men: coverage skew flagged; t
 
 ## API references
 
-- `api/v1/stats.json`
-- `api/v1/figures.json`
-- `api/v1/encyclopedia.json`
+- `data/v1/stats.json`
+- `data/v1/figures.json`
+- `data/v1/encyclopedia.json`
 
 ## Pitfalls
 

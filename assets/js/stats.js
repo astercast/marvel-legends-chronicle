@@ -1,4 +1,4 @@
-/* Stats dashboard — figures-per-year chart from api/v1/stats.json. */
+/* Stats dashboard — figures-per-year chart from data/v1/stats.json. */
 (function () {
   "use strict";
   var els = {
@@ -13,7 +13,7 @@
     return year <= 2006 ? "#ffb37f" : "#e62429"; /* Toy Biz era vs Hasbro era */
   }
 
-  fetch("api/v1/stats.json")
+  fetch("data/v1/stats.json")
     .then(function (r) { if (!r.ok) throw new Error("stats fetch failed"); return r.json(); })
     .then(function (s) {
       var years = Object.keys(s.byYear).map(Number).sort(function (a, b) { return a - b; });
@@ -63,7 +63,7 @@
       els.table.innerHTML = years.map(function (y) {
         return "<tr><td>" + y + "</td><td>" + s.byYear[y] + "</td><td>" + (y <= 2006 ? "Toy Biz" : "Hasbro") + "</td></tr>";
       }).join("");
-      els.note.textContent = "Era coloring is by year (Toy Biz 2002–2006, Hasbro 2007–2026). Data: api/v1/stats.json, observed " + s.observed + ".";
+      els.note.textContent = "Era coloring is by year (Toy Biz 2002–2006, Hasbro 2007–2026). Data: data/v1/stats.json, observed " + s.observed + ".";
     })
     .catch(function () {
       els.chart.innerHTML = '<div class="empty-state"><p>Could not load statistics. Check your connection and reload.</p></div>';

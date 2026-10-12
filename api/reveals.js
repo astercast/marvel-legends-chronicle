@@ -1,7 +1,7 @@
 /* api/reveals.js — GET /api/reveals (marvel-radar).
  * Latest-reveals API feeding the pre-order tracker and release radar (§7.3).
  *
- * Reads the committed api/v1/radar-candidates.json (the file the daily cron
+ * Reads the committed data/v1/radar-candidates.json (the file the daily cron
  * job maintains) from the deployment bundle and normalizes each raw press
  * detection into the §7.3 reveal shape. No upstream is touched per request —
  * the cron owns polling; this endpoint owns honest serving.
@@ -15,7 +15,7 @@
  *   never upgraded on a single source.
  *
  * Query: ?since= (ISO date, default 30d ago) ?limit= (default 50, clamp 1-200)
- * Fallback: api/v1/radar-candidates.json
+ * Fallback: data/v1/radar-candidates.json
  */
 "use strict";
 
@@ -134,7 +134,7 @@ module.exports = (req, res) => {
 
   let raw;
   try {
-    raw = JSON.parse(fs.readFileSync(path.join(__dirname, "v1", "radar-candidates.json"), "utf8"));
+    raw = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "v1", "radar-candidates.json"), "utf8"));
   } catch (e) {
     console.log(`[upstream] radar-candidates.json fail error=${String((e && e.message) || e).slice(0, 120)}`);
     return err(

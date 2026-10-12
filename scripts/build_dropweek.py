@@ -3,12 +3,12 @@
 
 Validates the editorial source (required fields, parseable ISO datetimes,
 well-formed source URLs, price kinds, no stray dollar figures) and writes:
-  - api/v1/drop-week.json          (envelope: version/observed/methodology/count/drops)
-  - api/v1/schema/drop-week.json
-  - api/v1/schema/drop-week-item.json
+  - data/v1/drop-week.json          (envelope: version/observed/methodology/count/drops)
+  - data/v1/schema/drop-week.json
+  - data/v1/schema/drop-week-item.json
 
 MANIFEST NOTE (for the merge worker): register the endpoint in build_api.py so
-api/v1/index.json gains a "drop-week" entry pointing at these files — the
+data/v1/index.json gains a "drop-week" entry pointing at these files — the
 manifest-driven validator only checks registered endpoints, so this script
 deliberately does NOT touch index.json or build_api.py (parallel lanes).
 """
@@ -22,8 +22,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "drop-week.json"
-OUT = ROOT / "api" / "v1" / "drop-week.json"
-SCHEMA_DIR = ROOT / "api" / "v1" / "schema"
+OUT = ROOT / "data" / "v1" / "drop-week.json"
+SCHEMA_DIR = ROOT / "data" / "v1" / "schema"
 
 KINDS = {"preorder", "sale-day", "deadline"}
 PRICE_KINDS = {"msrp", "unannounced"}
