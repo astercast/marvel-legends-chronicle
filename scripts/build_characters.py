@@ -28,7 +28,7 @@ def slug(s):
 
 
 NAV_LINKS = [
-    ("index.html", "Timeline"), ("start.html", "Start"),
+    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("start.html", "Start"),
     ("waves/index.html", "Waves"), ("stats.html", "Stats"),
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
@@ -136,7 +136,7 @@ def page(title, desc, current, body, extra_scripts=""):
   <footer class="site-footer">
     <div class="container footer-grid">
       <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
-      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../start.html">Start</a><a href="../waves/index.html">Waves</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../collection-value.html">Ledger</a><a href="../exclusives.html">Exclusives</a><a href="../watchlist.html">Watchlist</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../grails.html">Grails</a><a href="../grading.html">Grading</a><a href="../display.html">Display</a><a href="../variants.html">Variants</a><a href="../checklist.html">Checklist</a><a href="../explore.html">Explore</a><a href="../retro.html">Retro</a><a href="../showcase.html">Showcase</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
+      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../timeline.html">Legends Timeline</a><a href="../start.html">Start</a><a href="../waves/index.html">Waves</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../collection-value.html">Ledger</a><a href="../exclusives.html">Exclusives</a><a href="../watchlist.html">Watchlist</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../grails.html">Grails</a><a href="../grading.html">Grading</a><a href="../display.html">Display</a><a href="../variants.html">Variants</a><a href="../checklist.html">Checklist</a><a href="../explore.html">Explore</a><a href="../retro.html">Retro</a><a href="../showcase.html">Showcase</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a></nav>
     </div>
   </footer>
 {extra_scripts}</body>

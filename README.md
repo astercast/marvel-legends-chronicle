@@ -7,6 +7,7 @@ Static site. GitHub only — nothing is deployed anywhere.
 ## What's here
 
 - `index.html` — the chronological timeline (1,904 figures, 158 waves, 2002–2026), with a "Featured In" story-source facet (MCU / animated / video game — 29 waves classified, the rest honestly Unclassified)
+- `timeline.html` — The Legends Timeline: year-by-year line history 2002–2026 — sourced milestones, 5 packaging eras, all 158 waves linked into the archive (rebuild year sections with `python3 scripts/build_timeline.py`); API at `api/v1/timeline.json`
 - `start.html` — new collector starter guide: smart first pickups, how to read a wave, spotting fakes, BAF math, tracking your shelf, learning real prices
 - `waves/` — 158 generated wave detail pages (`waves/<wave-id>.html` + index; rebuild with `python3 scripts/build_waves.py`): every figure with inline Owned/Wanted toggles, BAF breakdown, research links, prev/next wave navigation, print checklist
 - `stats.html` — stats dashboard: figures per year, BAF waves over time, top 25 characters, exclusives share, wave-size breakdowns — all computed live from the data

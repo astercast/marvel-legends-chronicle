@@ -46,6 +46,7 @@ def main():
     encyc = load_json(ROOT / "data" / "encyclopedia.json")
     preorders_raw = load_json(ROOT / "data" / "preorders.json")
     characters_raw = load_json(ROOT / "characters" / "manifest.json")
+    timeline_raw = load_json(ROOT / "data" / "timeline.json")
     radar_candidates = load_json(API / "radar-candidates.json")
     radar_seen = load_json(API / "radar-seen.json")
     waves = raw["waves"]
@@ -123,6 +124,20 @@ def main():
         "count": len(characters),
         "characters": characters,
     }
+    # "years" is the first list in the envelope: the manifest-driven validator
+    # takes the first list value as the item array for itemSchema checks.
+    timeline_envelope = {
+        "version": VERSION,
+        "observed": OBSERVED,
+        "title": timeline_raw["title"],
+        "lede": timeline_raw["lede"],
+        "yearMin": timeline_raw["yearMin"],
+        "yearMax": timeline_raw["yearMax"],
+        "count": timeline_raw["count"],
+        "years": timeline_raw["years"],
+        "packagingEras": timeline_raw["packagingEras"],
+        "sourcesNote": timeline_raw["sourcesNote"],
+    }
 
     skills_index = {}
     skills_idx_path = ROOT / "skills" / "index.json"
@@ -171,6 +186,13 @@ def main():
             "count, first/last year, and the page path. Join to figures.json by character name for shelf audits.",
             schema="api/v1/schema/characters.json", item_schema="api/v1/schema/character.json",
             records=len(characters)),
+        "timeline": ep(
+            "api/v1/timeline.json",
+            "The Legends Timeline: year-by-year line history 2002-2026 — era, headline, summary, "
+            "sourced milestones, packaging notes, per-year wave records (ids link into the "
+            "archive), and spotlight figure ids.",
+            schema="api/v1/schema/timeline.json", item_schema="api/v1/schema/timeline-year.json",
+            records=len(timeline_raw["years"])),
         "radar-candidates": ep(
             "api/v1/radar-candidates.json",
             "Hand-maintained reissue-radar research feed: newly spotted news items (title, URL, "
@@ -273,6 +295,50 @@ def main():
             "detected_at": {"type": "string", "description": "ISO-8601 UTC detection time"},
         },
     }
+    timeline_source_item = {
+        "type": "object",
+        "required": ["label", "url"],
+        "properties": {"label": {"type": "string"}, "url": {"type": "string"}},
+    }
+    timeline_year_item = {
+        "type": "object",
+        "required": ["year", "era", "headline", "summary", "milestones", "waves", "spotlight"],
+        "properties": {
+            "year": {"type": "integer"},
+            "era": {"type": "string", "enum": ["Toy Biz", "Hasbro"]},
+            "headline": {"type": "string"},
+            "summary": {"type": "string"},
+            "packaging": {"type": ["string", "null"]},
+            "milestones": {"type": "array", "items": {
+                "type": "object",
+                "required": ["text", "sources"],
+                "properties": {
+                    "text": {"type": "string"},
+                    "sources": {"type": "array", "items": timeline_source_item},
+                }}},
+            "waves": {"type": "array", "items": {
+                "type": "object",
+                "required": ["id", "series", "figureCount", "page"],
+                "properties": {
+                    "id": {"type": "string"},
+                    "series": {"type": "string"},
+                    "figureCount": {"type": "integer"},
+                    "baf": {"type": ["string", "null"]},
+                    "page": {"type": "string"},
+                }}},
+            "spotlight": {"type": "array", "items": {
+                "type": "object",
+                "required": ["id", "name", "waveId", "waveSeries", "why", "page"],
+                "properties": {
+                    "id": {"type": "string"},
+                    "name": {"type": "string"},
+                    "waveId": {"type": "string"},
+                    "waveSeries": {"type": "string"},
+                    "why": {"type": "string"},
+                    "page": {"type": "string"},
+                }}},
+        },
+    }
 
     def schema_doc(title, body):
         return {"$schema": "http://json-schema.org/draft-07/schema#",
@@ -324,6 +390,35 @@ def main():
                                                   {"type": "array", "items": radar_candidate_item}),
         "schema/radar-seen.json": schema_doc("RadarSeenList",
                                              {"type": "array", "items": {"type": "string"}}),
+        "schema/timeline-year.json": schema_doc("TimelineYear", timeline_year_item),
+        "schema/timeline.json": schema_doc("LegendsTimeline", {
+            "type": "object",
+            "required": ["version", "observed", "title", "lede", "yearMin", "yearMax",
+                         "count", "years", "packagingEras", "sourcesNote"],
+            "properties": {
+                "version": {"type": "string"},
+                "observed": {"type": "string"},
+                "title": {"type": "string"},
+                "lede": {"type": "string"},
+                "yearMin": {"type": "integer"},
+                "yearMax": {"type": "integer"},
+                "count": {"type": "integer"},
+                "years": {"type": "array", "items": timeline_year_item},
+                "packagingEras": {"type": "array", "items": {
+                    "type": "object",
+                    "required": ["name", "years", "text", "sources"],
+                    "properties": {
+                        "name": {"type": "string"},
+                        "years": {"type": "string"},
+                        "text": {"type": "string"},
+                        "sources": {"type": "array", "items": {
+                            "type": "object",
+                            "required": ["label", "url"],
+                            "properties": {"label": {"type": "string"}, "url": {"type": "string"}},
+                        }},
+                    }}},
+                "sourcesNote": {"type": "string"},
+            }}),
         "schema/stats.json": schema_doc("ArchiveStats", {
             "type": "object",
             "required": ["version", "observed", "waves", "figures", "yearMin", "yearMax",
@@ -372,7 +467,8 @@ def main():
                               "description": "Each key is an endpoint name; each value is an endpoint entry",
                               "properties": {name: endpoint_entry for name in
                                              ["index", "stats", "waves", "figures", "encyclopedia",
-                                              "preorders", "characters", "radar-candidates", "radar-seen"]}},
+                                              "preorders", "characters", "timeline",
+                                              "radar-candidates", "radar-seen"]}},
             }}),
     }
 
@@ -384,6 +480,7 @@ def main():
         "encyclopedia.json": encyc,
         "preorders.json": preorders_envelope,
         "characters.json": characters_envelope,
+        "timeline.json": timeline_envelope,
         **schemas,
     }
     for name, payload in outputs.items():

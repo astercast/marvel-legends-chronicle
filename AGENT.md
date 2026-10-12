@@ -51,6 +51,7 @@ Read this before touching any endpoint or skill.
 | `api/v1/encyclopedia.json` | Collector knowledge: `history`, `packagingGuide`, `variantsGuide`, `hallOfFame` (23 entries, each with `reissueRadar` + `verified`), `gradingGuide`, `priceMethod` (the sold-listings methodology), `bootlegGuide` (six checklists), `resources` | `api/v1/schema/encyclopedia.json` |
 | `api/v1/preorders.json` | 20 researched upcoming releases: `status` (`preorder`/`revealed`/`available`), exact `preorderDate` (`YYYY-MM-DD`, `null` when unreported), `releaseWindow`, `price` (announced MSRP, never market), `retailers`, `sources` | `api/v1/schema/preorders.json` → item `api/v1/schema/preorder.json` |
 | `api/v1/characters.json` | 66 character guides: `slug`, `name`, `count`, `first`, `last`, `page` (`characters/<slug>.html`) | `api/v1/schema/characters.json` → item `api/v1/schema/character.json` |
+| `api/v1/timeline.json` | The Legends Timeline: 25 year records (2002–2026) — `era`, `headline`, `summary`, sourced `milestones`, `packaging` notes, per-year `waves` (real archive ids + pages), `spotlight` figure ids; envelope carries the 5 `packagingEras` | `api/v1/schema/timeline.json` → item `api/v1/schema/timeline-year.json` |
 | `api/v1/radar-candidates.json` | Hand-maintained reissue-radar research feed (newly spotted news). Research notes, not a generated snapshot. | `api/v1/schema/radar-candidates.json` → item `api/v1/schema/radar-candidate.json` |
 | `api/v1/radar-seen.json` | Hand-maintained dedupe list of processed radar URLs | `api/v1/schema/radar-seen.json` |
 

@@ -28,7 +28,7 @@ def slug(s):
 
 # Keep in sync with scripts/build_characters.py NAV_LINKS.
 NAV_LINKS = [
-    ("index.html", "Timeline"), ("start.html", "Start"),
+    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("start.html", "Start"),
     ("waves/index.html", "Waves"), ("stats.html", "Stats"),
     ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
     ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
@@ -244,6 +244,7 @@ def main():
         <div class="wave-actions">
           <button type="button" class="btn btn-sm" id="print-checklist">Print checklist</button>
           <a class="btn btn-sm" href="index.html">← All waves</a>
+          <a class="btn btn-sm" href="../timeline.html#year-{w["year"]}">📜 {w["year"]} in the Legends Timeline</a>
         </div>
       </div>
     </section>
