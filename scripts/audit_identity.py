@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """scripts/audit_identity.py — wave 34 consistency audit of the Collector's Vault identity.
 
-Checks every HTML page (276: 41 root + 168 waves + 67 characters) for the
+Checks every HTML page (277: 42 root + 168 waves + 67 characters) for the
 identity wiring that makes the site recognizable blind:
   1. vault.css linked, AFTER components.css
   2. vault.js loaded with defer
@@ -31,6 +31,7 @@ SIGNATURE_PAGES = {
     "api.html": ["accession"],
     "agents.html": ["accession"],
     "encyclopedia.html": ["accession", "hof-card"],
+    "vault-room.html": ["accession", "vault-room"],
 }
 
 fails = []

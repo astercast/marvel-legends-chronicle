@@ -49,6 +49,7 @@ NAV = [
     ("explore.html", "Explore"),
     ("retro.html", "Retro"),
     ("showcase.html", "Showcase"),
+    ("vault-room.html", "Vault Room"),
     ("skills.html", "Skills"),
     ("agents.html", "Agents"),
     ("community.html", "Community"),
