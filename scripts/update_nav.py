@@ -1,102 +1,24 @@
 #!/usr/bin/env python3
 """Rewrite primary + footer nav on every root HTML page from the canonical list.
-- Dedupes the accidental double Start/Waves links.
-- Adds Exclusives + Watchlist after Journal.
-- Sets aria-current="page" on the matching primary-nav link.
-Idempotent: nav blocks are rebuilt from scratch each run.
-Keep in sync with scripts/build_waves.py NAV_LINKS (relative form)."""
+- Primary nav is the front desk: six doors + the Index of Halls button.
+- Footer nav is the full 44-page registry (no-JS readers get everything).
+- The Index of Halls <template> is injected after </header> (idempotent).
+Idempotent: nav blocks + template are rebuilt from scratch each run.
+Uses scripts/nav_data.py as the single source of truth — keep in sync with
+scripts/build_waves.py and scripts/build_characters.py (relative form)."""
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-
-NAV = [
-    ("index.html", "Timeline"),
-    ("timeline.html", "Legends Timeline"),
-    ("2026-review.html", "2026 Review"),
-    ("start.html", "Start"),
-    ("waves/index.html", "Waves"),
-    ("stats.html", "Stats"),
-    ("encyclopedia.html", "Encyclopedia"),
-    ("baf-planner.html", "BAF Planner"),
-    ("characters/index.html", "Characters"),
-    ("price-guide.html", "Price Guide"),
-    ("market-briefing.html", "Market Briefing"),
-    ("launch-curve.html", "Launch Curve"),
-    ("drop-week.html", "Drop Week"),
-    ("auth-wizard.html", "Auth Wizard"),
-    ("shelf.html", "Your Shelf"),
-    ("journal.html", "Journal"),
-    ("baf-economics.html", "BAF Economics"),
-    ("hunt.html", "Hunt Planner"),
-    ("gift.html", "Gift Finder"),
-    ("holiday.html", "Holiday Guide"),
-    ("grading.html", "Grading"),
-    ("display.html", "Display"),
-    ("collection-value.html", "Ledger"),
-    ("exclusives.html", "Exclusives"),
-    ("watchlist.html", "Watchlist"),
-    ("budget.html", "Budget"),
-    ("radar.html", "Radar"),
-    ("preorders.html", "Pre-orders"),
-    ("calendar.html", "Release Calendar"),
-    ("compare.html", "Compare"),
-    ("grails.html", "Grails"), ("quest.html", "Grail Quest"),
-    ("variants.html", "Variants"),
-    ("variant-spotlight.html", "Variant Spotlight"),
-    ("rarity.html", "Rarity Guide"),
-    ("checklist.html", "Checklist"),
-    ("explore.html", "Explore"),
-    ("retro.html", "Retro"),
-    ("showcase.html", "Showcase"),
-    ("vault-room.html", "Vault Room"),
-    ("skills.html", "Skills"),
-    ("agents.html", "Agents"),
-    ("community.html", "Community"),
-    ("api.html", "API"),
-]
+sys.path.insert(0, str(ROOT / "scripts"))
+import nav_data  # noqa: E402
 
 PRIMARY_RE = re.compile(r'(<nav class="site-nav" aria-label="Primary">\s*)(.*?)(\s*</nav>)', re.S)
 FOOTER_RE = re.compile(r'(<nav aria-label="Footer">\s*)(.*?)(\s*</nav>)', re.S)
-
-# EXTREME MAKEOVER (2026-10-12): the primary nav is the first impression —
-# nine doors, not forty-four. The full registry lives in the footer.
-PRIMARY_NAV = [
-    ("index.html", "Timeline"),
-    ("vault-room.html", "Vault Room"),
-    ("drop-week.html", "Drop Week"),
-    ("preorders.html", "Pre-orders"),
-    ("waves/index.html", "Waves"),
-    ("characters/index.html", "Characters"),
-    ("encyclopedia.html", "Encyclopedia"),
-    ("quest.html", "Grail Quest"),
-    ("timeline.html", "Legends Timeline"),
-    ("2026-review.html", "2026 Review"),
-    ("start.html", "Start"),
-]
-
-
-def primary_nav(current):
-    items = []
-    for href, label in PRIMARY_NAV:
-        cur = ' aria-current="page"' if href == current else ""
-        items.append(f'        <a href="{href}"{cur}>{label}</a>')
-    return "\n".join(items)
-
-
-def footer_nav():
-    links = "".join(f'<a href="{href}">{label}</a>' for href, label in NAV)
-    return links + MOTION_TOGGLE
-
-
-# Wave 33 (Collector's Vault): the vault keeper's switch — a manual
-# reduced-motion toggle. Bound by assets/js/vault.js (class hook).
-MOTION_TOGGLE = (
-    '<button type="button" class="motion-toggle" aria-pressed="false">'
-    '<span class="motion-toggle-track" aria-hidden="true">'
-    '<span class="motion-toggle-thumb"></span></span>'
-    'Reduce motion <span class="motion-toggle-state">Off</span></button>'
-)
+# The directory template, injected once after the header closes.
+TEMPLATE_RE = re.compile(r'\s*<template id="directory-panel">.*?</template>', re.S)
+HEADER_CLOSE_RE = re.compile(r"</header>", re.S)
 
 
 def main():
@@ -106,13 +28,19 @@ def main():
         name = path.name
 
         def repl_primary(m):
-            return m.group(1) + primary_nav(name) + m.group(3)
+            return m.group(1) + nav_data.primary_nav_html(name) + m.group(3)
 
         def repl_footer(m):
-            return m.group(1) + footer_nav() + m.group(3)
+            return m.group(1) + nav_data.footer_nav_html(name) + m.group(3)
 
         new = PRIMARY_RE.sub(repl_primary, text, count=1)
         new = FOOTER_RE.sub(repl_footer, new, count=1)
+        # Directory template: strip any existing copy, then inject after </header>.
+        new = TEMPLATE_RE.sub("", new, count=1)
+        if "</header>" in new:
+            new = HEADER_CLOSE_RE.sub(
+                "</header>\n" + nav_data.directory_template_html(), new, count=1
+            )
         if new != text:
             path.write_text(new)
             changed.append(name)

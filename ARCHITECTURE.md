@@ -46,9 +46,13 @@ data/figures.json (hand-maintained, minified)
 
 **Generators own their outputs.** Never hand-edit `waves/*.html`,
 `characters/*.html`, `data/v1/*.json`, or `skills/*/SKILL.md` — change the
-source/generator and re-run. `scripts/update_nav.py` owns the nav blocks on
-all 27 root pages (canonical `NAV` list; `build_waves.py` has the relative
-form for generated pages — keep them in sync).
+source/generator and re-run. `scripts/nav_data.py` is the canonical nav
+source (44 pages, 6 front-desk doors, 6 halls, footer registry); the three
+generators import it rather than redefining lists: `scripts/update_nav.py`
+owns the nav blocks + Index-of-Halls template on all 43 root pages,
+`scripts/build_waves.py` and `scripts/build_characters.py` inject the
+relative form into generated pages. `scripts/build_atrium.py` owns the
+homepage "Choose a hall" section (same source).
 
 **`data/figures.json` must stay minified** with null-valued optional keys
 stripped (339 KB → 177 KB). `scripts/validate.sh` fails past 225 KB.

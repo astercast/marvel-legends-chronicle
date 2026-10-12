@@ -530,3 +530,414 @@ html.vault-motion .ach-card.ach-unlocked .ach-icon { animation: seal-press 0.5s 
 pre, .code-block {
   border-left: 3px solid var(--gold-deep);
 }
+
+/* =====================================================================
+   EXTREME MAKEOVER (2026-10-12) — the atrium edition.
+   First-visit hierarchy: one hero, one action, everything else behind
+   doors the visitor chooses to open. Quiet sections by default (research
+   rule 219); expressive motion reserved for the wax seal and the
+   directory. Reduced motion: the still state is the default everywhere —
+   nothing here animates without html.vault-motion.
+   ===================================================================== */
+
+/* ---------- Front desk: the directory button in the primary nav ---------- */
+.directory-button {
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: 0.35rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--gold-deep);
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--gold);
+  font-size: 0.86rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease),
+    color var(--dur-1) var(--ease);
+}
+.directory-button:hover {
+  border-color: var(--gold);
+  background: rgba(220, 174, 60, 0.08);
+  color: var(--ink);
+}
+.directory-button-mark { font-size: 1rem; line-height: 1; }
+
+/* ---------- Index of Halls (directory template, cloned into the modal) ---------- */
+.dir-body { max-width: 880px; }
+.dir-intro {
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 var(--space-4);
+  max-width: 62ch;
+}
+.dir-halls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+.dir-hall-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--gold-deep);
+}
+.dir-hall-note { font-size: 0.82rem; font-style: italic; color: var(--muted); margin: 0 0 var(--space-2); }
+.dir-pages { list-style: none; margin: 0; padding: 0; }
+.dir-pages li { border-bottom: 1px dotted var(--line-soft); }
+.dir-pages li:last-child { border-bottom: 0; }
+.dir-pages a {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0 0.5rem 1.6rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.dir-pages a::before { /* brass drawer pull */
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 8px;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
+}
+.dir-pages a:hover .dir-page { color: var(--gold); }
+.dir-page { display: block; font-weight: 600; font-size: 0.92rem; }
+.dir-blurb { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; line-height: 1.4; }
+.dir-colophon {
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ---------- Atrium hero ---------- */
+.atrium-hero .hero-inner { max-width: 68ch; }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  margin: var(--space-5) 0 var(--space-4);
+}
+.hero-actions .btn-seal {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  padding: 0.85rem 1.6rem;
+  font-size: 1rem;
+}
+.hero-secondary {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-deep);
+  padding-bottom: 2px;
+}
+.hero-secondary:hover { color: var(--ink); border-color: var(--gold); }
+
+/* The engraved register line: one breath of numbers, not a tile wall. */
+.engraved-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.9rem;
+  margin: var(--space-5) 0 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+  color: var(--ink);
+}
+.engraved-stats .stat-num { font-variant-numeric: tabular-nums; }
+.engraved-stats .stat-sep { color: var(--gold-deep); font-size: 0.8em; }
+.engraved-stats .stat-word {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 0.4rem;
+}
+.cabinet-note {
+  margin: var(--space-2) 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.cabinet-note a { color: var(--gold); }
+
+/* ---------- On the desk this week (drop-week teaser) ---------- */
+.on-the-desk { padding-block: var(--space-7); }
+.desk-placard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gold-deep);
+  border-radius: var(--radius-m);
+  background: linear-gradient(180deg, rgba(220, 174, 60, 0.06), rgba(220, 174, 60, 0.015));
+  padding: var(--space-5) var(--space-5) var(--space-4);
+}
+.desk-kicker {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 var(--space-2);
+}
+.desk-drop-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  margin: 0 0 var(--space-1);
+  text-wrap: balance;
+}
+.desk-drop-meta { color: var(--muted); font-size: 0.92rem; margin: 0 0 var(--space-3); max-width: 70ch; }
+.desk-countdown {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+}
+.desk-countdown .cd-num {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.desk-countdown .cd-unit {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.desk-countdown .cd-sep { color: var(--gold-deep); font-size: 1.6rem; }
+.desk-cta { margin-top: var(--space-2); }
+
+/* ---------- Choose a hall (specimen-drawer accordion) ---------- */
+.halls { padding-block: var(--space-6); }
+.halls-head h2, .register-head h2, .registrar-head h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  margin: 0 0 var(--space-2);
+  text-wrap: balance;
+}
+.section-kicker {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 var(--space-2);
+}
+.section-lede { color: var(--ink-dim); max-width: 68ch; margin: 0 0 var(--space-5); }
+.hall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-3);
+}
+.hall {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  background: linear-gradient(180deg, rgba(246, 240, 224, 0.035), rgba(246, 240, 224, 0.008));
+  overflow: hidden;
+}
+.hall[open] { border-color: var(--gold-deep); }
+.hall > summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.hall > summary::-webkit-details-marker { display: none; }
+.hall-seal {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c14b52, var(--wax) 60%, var(--wax-deep));
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(212, 175, 55, 0.45);
+  display: grid;
+  place-items: center;
+  color: #f3dfae;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+}
+.hall-title { font-family: var(--font-display); font-size: 1.05rem; margin: 0; letter-spacing: 0.04em; }
+.hall-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin: 0.15rem 0 0; }
+.hall-pull {
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform var(--dur-1) var(--ease);
+}
+.hall[open] .hall-pull { transform: rotate(45deg); }
+.hall-pages { list-style: none; margin: 0; padding: 0 var(--space-4) var(--space-4); }
+.hall-pages li { border-top: 1px dotted var(--line-soft); }
+.hall-pages a {
+  position: relative;
+  display: block;
+  padding: 0.55rem 0 0.55rem 1.6rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.hall-pages a::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 8px;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
+}
+.hall-pages a:hover .dir-page { color: var(--gold); }
+
+/* ---------- The Chronological Register (era tabs) ---------- */
+.register { padding-block: var(--space-6); }
+.era-tabs {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--space-5);
+  scrollbar-width: thin;
+}
+.era-tab {
+  font: inherit;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  color: var(--ink-dim);
+  white-space: nowrap;
+  text-align: left;
+}
+.era-tab .era-tab-years {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+.era-tab .era-tab-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  margin-top: 0.15rem;
+}
+.era-tab:hover { color: var(--ink); }
+.era-tab[aria-selected="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--gold);
+}
+.era-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.era-placard { margin-bottom: var(--space-5); }
+.era-placard .era-note { max-width: 72ch; }
+
+/* ---------- From the registrar's desk ---------- */
+.registrar { padding-block: var(--space-7); }
+.registrar .placard { position: relative; max-width: 76ch; }
+.registrar-note p { font-size: 1.02rem; line-height: 1.75; }
+.registrar-sign {
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.registrar-sign .wax-seal { flex: 0 0 auto; }
+.registrar-sign cite {
+  font-style: normal;
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  color: var(--ink-on-paper);
+}
+.registrar-sign small { display: block; font-family: var(--font-body); letter-spacing: 0; color: var(--muted-on-paper); font-size: 0.78rem; }
+
+/* ---------- The lost drawer (404) ---------- */
+.lost-drawer { text-align: center; padding-block: var(--space-7); }
+.lost-drawer .drawer-404 {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 16vw, 11rem);
+  line-height: 1;
+  color: var(--ink);
+  margin: 0;
+  text-shadow: 0 2px 0 var(--gold-deep);
+}
+.lost-drawer .lede { max-width: 52ch; margin-inline: auto; }
+.lost-halls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-2);
+  max-width: 860px;
+  margin: var(--space-5) auto 0;
+  text-align: left;
+}
+.lost-halls a {
+  display: block;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-s);
+  padding: var(--space-3) var(--space-4);
+  text-decoration: none;
+  color: var(--ink);
+}
+.lost-halls a:hover { border-color: var(--gold-deep); }
+.lost-halls .dir-page { margin-bottom: 0.15rem; }
+
+/* ---------- Vault Room: hero focus ---------- */
+.vault-room-hero .hero-actions { margin-bottom: 0; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .dir-halls { grid-template-columns: 1fr; }
+  .hall-grid { grid-template-columns: 1fr; }
+  .engraved-stats { font-size: 1.15rem; }
+  .desk-countdown { gap: var(--space-2); }
+}
+
+/* ---------- Atrium refinements (from screenshot review) ---------- */
+.hall-title { display: block; }
+.hall-note { display: block; }
+.atrium-hero .mock-note {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: var(--space-4);
+  max-width: 60ch;
+}
+.lost-drawer .accession { justify-content: center; }
+
+/* The directory opens in the paper archive drawer — ink on paper, not on dark. */
+.dir-body .dir-intro { color: var(--muted-on-paper); }
+.dir-body .dir-hall-note { color: var(--muted-on-paper); }
+.dir-body .dir-pages a { color: var(--ink-on-paper); }
+.dir-body .dir-page { color: var(--ink-on-paper); }
+.dir-body .dir-pages a:hover .dir-page { color: var(--gold-deep); }
+.dir-body .dir-blurb { color: var(--muted-on-paper); }
+.dir-body .dir-colophon { color: var(--muted-on-paper); border-top-color: rgba(26, 22, 16, 0.25); }
+.dir-body .dir-pages li { border-bottom-color: rgba(26, 22, 16, 0.18); }
+
+/* The directory button must never scroll out of reach on small screens:
+   it leads the nav row instead of trailing it. */
+@media (max-width: 720px) {
+  .site-nav .directory-button { order: -1; margin-left: 0; margin-right: 0.35rem; }
+}

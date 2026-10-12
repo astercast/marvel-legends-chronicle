@@ -126,7 +126,35 @@
     );
   }
 
+  /* --- Index of Halls: the directory button opens the full 44-page
+         index (a static <template> in every page) inside the shared modal.
+         The modal module is dynamically imported so vault.js stays a
+         dependency-free classic script. --- */
+  function initDirectory() {
+    var btn = document.getElementById("directory-button");
+    var tpl = document.getElementById("directory-panel");
+    if (!btn || !tpl || !("content" in tpl)) return;
+    var src = (document.currentScript && document.currentScript.src) || "";
+    var base = src.slice(0, src.lastIndexOf("/") + 1);
+    btn.addEventListener("click", function () {
+      import(base + "modal.js").then(function (m) {
+        var frag = tpl.content.cloneNode(true);
+        m.openModal(function (title, body) {
+          title.textContent = "Index of Halls";
+          body.classList.add("dir-body");
+          body.appendChild(frag);
+        });
+      }).catch(function () {
+        /* Module import failed (very old browser): fall back to the footer
+           registry, which lists every page with no JS at all. */
+        var footer = document.querySelector(".site-footer nav");
+        if (footer) footer.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
   initToggle();
+  initDirectory();
   if (syncMotionFlag()) {
     initReveals();
     initSheen();

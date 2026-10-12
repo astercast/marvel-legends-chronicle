@@ -1,11 +1,12 @@
 /* Timeline page — chronological waves, figure cards, search, filters. */
 import { loadData, searchFigures, computeStats, sourceLabel, sourceCoverage } from "./data.js";
 import { openFigureDialog, badgeFor, escapeHtml } from "./figure-dialog.js";
-import { eraForYear, renderEraLegend, eraDivider } from "./era-bands.js";
+import { ERAS, eraYears } from "./era-bands.js";
 import { owned, wanted } from "./tracker.js";
 
 const els = {
   stats: document.getElementById("stat-strip"),
+  cabinet: document.getElementById("cabinet-note"),
   search: document.getElementById("f-search"),
   mfr: document.getElementById("f-mfr"),
   baf: document.getElementById("f-baf"),
@@ -15,7 +16,78 @@ const els = {
   timeline: document.getElementById("timeline"),
   yearRail: document.getElementById("year-rail"),
   reset: document.getElementById("f-reset"),
+  eraTabs: document.getElementById("era-tabs"),
+  eraPlacard: document.getElementById("era-placard"),
 };
+
+/* The register opens one era at a time — the packaging eras are the
+   archive's canonical periodization (assets/js/era-bands.js). Default: the
+   newest era, so first-timers meet the present, not a 25-year wall. */
+let activeEraId = ERAS[ERAS.length - 1].id;
+
+function eraFromHash() {
+  const m = /^#era=([a-z-]+)/.exec(location.hash || "");
+  return ERAS.some((e) => e.id === m?.[1]) ? m[1] : null;
+}
+
+function setEra(id, { replace = true } = {}) {
+  activeEraId = id;
+  const url = `#era=${id}`;
+  if (replace && "replaceState" in history) history.replaceState(null, "", url);
+  else location.hash = url;
+  syncEraTabs();
+}
+
+function syncEraTabs() {
+  if (!els.eraTabs) return;
+  Array.prototype.forEach.call(els.eraTabs.querySelectorAll('[role="tab"]'), (tab) => {
+    const on = tab.dataset.era === activeEraId;
+    tab.setAttribute("aria-selected", on ? "true" : "false");
+    tab.tabIndex = on ? 0 : -1;
+  });
+}
+
+function renderEraTabs(onSelect) {
+  if (!els.eraTabs) return;
+  els.eraTabs.innerHTML = "";
+  ERAS.forEach((era) => {
+    const tab = document.createElement("button");
+    tab.type = "button";
+    tab.setAttribute("role", "tab");
+    tab.dataset.era = era.id;
+    tab.id = `era-tab-${era.id}`;
+    tab.innerHTML =
+      `<span class="era-tab-years">${escapeHtml(eraYears(era))}</span>` +
+      `<span class="era-tab-title">${escapeHtml(era.title)}</span>`;
+    tab.addEventListener("click", () => onSelect(era.id));
+    tab.addEventListener("keydown", (e) => {
+      const tabs = Array.prototype.slice.call(els.eraTabs.querySelectorAll('[role="tab"]'));
+      const i = tabs.indexOf(tab);
+      let j = null;
+      if (e.key === "ArrowRight") j = (i + 1) % tabs.length;
+      else if (e.key === "ArrowLeft") j = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") j = 0;
+      else if (e.key === "End") j = tabs.length - 1;
+      if (j !== null) { e.preventDefault(); tabs[j].focus(); onSelect(tabs[j].dataset.era); }
+    });
+    tab.className = "era-tab";
+    els.eraTabs.appendChild(tab);
+  });
+  syncEraTabs();
+}
+
+function renderEraPlacard(searching) {
+  if (!els.eraPlacard) return;
+  const era = ERAS.find((e) => e.id === activeEraId);
+  if (!era) { els.eraPlacard.innerHTML = ""; return; }
+  els.eraPlacard.innerHTML =
+    `<p class="era-kicker">Packaging era · ${escapeHtml(eraYears(era))}</p>` +
+    `<h3 class="era-title">${escapeHtml(era.title)}</h3>` +
+    `<p class="era-note">${escapeHtml(era.note)} ` +
+    `<a href="${escapeHtml(era.learnMore)}">Packaging history&nbsp;→</a>` +
+    (searching ? ` <span class="era-search-note">Searching the whole archive — era tabs resume when the search clears.</span>` : "") +
+    `</p>`;
+}
 
 function state() {
   return {
@@ -84,6 +156,7 @@ function renderTimeline(waves, figures) {
 
   // Search mode: flat results list, capped for DOM sanity
   if (s.q.length >= 2) {
+    renderEraPlacard(true);
     const results = searchFigures(figures, s.q).slice(0, 240);
     const meta = document.createElement("p");
     meta.className = "search-results-meta";
@@ -102,10 +175,12 @@ function renderTimeline(waves, figures) {
     return;
   }
 
-  const years = [...new Set(waves.map((w) => w.year))].sort((a, b) => a - b);
+  const era = ERAS.find((e) => e.id === activeEraId);
+  const years = [...new Set(waves.map((w) => w.year))]
+    .filter((y) => !era || (y >= era.startYear && y <= era.endYear))
+    .sort((a, b) => a - b);
+  renderEraPlacard(s.q.length >= 2);
   let totalWaves = 0, totalFigs = 0;
-  els.timeline.appendChild(renderEraLegend());
-  let prevEra = null;
   for (const year of years) {
     const rail = document.createElement("a");
     rail.href = `#year-${year}`;
@@ -116,13 +191,6 @@ function renderTimeline(waves, figures) {
     const blocks = yearWaves.map((w) => waveBlock(w, s)).filter(Boolean);
     if (!blocks.length) continue;
 
-    /* Insert a packaging-era band whenever the era changes between rendered years. */
-    const era = eraForYear(year);
-    if (era && era !== prevEra) {
-      els.timeline.appendChild(eraDivider(era));
-    }
-    prevEra = era;
-
     const section = document.createElement("section");
     section.className = "year-section";
     section.id = `year-${year}`;
@@ -130,7 +198,6 @@ function renderTimeline(waves, figures) {
     section.innerHTML = `
       <div class="year-head">
         <h2>${year}</h2>
-        ${era ? `<span class="era-tag">${escapeHtml(era.title)}</span>` : ""}
         <span class="year-count">${blocks.length} wave${blocks.length === 1 ? "" : "s"} · ${count} figures</span>
       </div>`;
     for (const b of blocks) section.appendChild(b);
@@ -178,13 +245,28 @@ function setupYearSpy() {
 }
 
 function renderStats(stats) {
-  els.stats.innerHTML = `
-    <div class="stat"><div class="stat-value">${stats.figures.toLocaleString()}</div><div class="stat-label">Figures</div></div>
-    <div class="stat"><div class="stat-value">${stats.waves}</div><div class="stat-label">Waves</div></div>
-    <div class="stat"><div class="stat-value">${stats.yearMin}–${String(stats.yearMax).slice(2)}</div><div class="stat-label">Years</div></div>
-    <div class="stat"><div class="stat-value">${stats.bafWaves}</div><div class="stat-label">BAF waves</div></div>
-    <div class="stat"><div class="stat-value">${owned.count()}</div><div class="stat-label">You own</div></div>
-    <div class="stat"><div class="stat-value">${wanted.count()}</div><div class="stat-label">You want</div></div>`;
+  /* The engraved register line: one breath of numbers, not a tile wall.
+     Owned/wanted live one line down — and only when there's something to say. */
+  els.stats.innerHTML =
+    `<span class="stat-num">${stats.figures.toLocaleString()}</span> <span class="stat-word">figures</span>` +
+    `<span class="stat-sep" aria-hidden="true">·</span>` +
+    `<span class="stat-num">${stats.waves}</span> <span class="stat-word">waves</span>` +
+    `<span class="stat-sep" aria-hidden="true">·</span>` +
+    `<span class="stat-num">${stats.yearMin}–${String(stats.yearMax).slice(2)}</span> <span class="stat-word">years</span>` +
+    `<span class="stat-sep" aria-hidden="true">·</span>` +
+    `<span class="stat-num">${stats.bafWaves}</span> <span class="stat-word">BAF waves</span>`;
+  const o = owned.count(), w = wanted.count();
+  if (els.cabinet) {
+    if (o + w > 0) {
+      els.cabinet.hidden = false;
+      els.cabinet.innerHTML =
+        `Your cabinet: <strong>${o}</strong> owned · <strong>${w}</strong> wanted — ` +
+        `<a href="shelf.html">open your shelf</a>`;
+    } else {
+      els.cabinet.hidden = true;
+      els.cabinet.innerHTML = "";
+    }
+  }
 }
 
 async function init() {
@@ -201,6 +283,10 @@ async function init() {
       els.sourceNote.textContent =
         `“Featured In” classifies ${classified.toLocaleString()} of ${total.toLocaleString()} figures (${pct}% of the archive) — only where the wave name itself names the source. Everything else is Unclassified; we don't guess.`;
     }
+
+    renderEraTabs((id) => { setEra(id); renderTimeline(waves, figures); });
+    const fromHash = eraFromHash();
+    if (fromHash) setEra(fromHash, { replace: false });
 
     let debounce;
     const rerender = () => {

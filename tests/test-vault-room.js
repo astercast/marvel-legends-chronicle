@@ -109,9 +109,13 @@ suite("vault room — animation discipline", () => {
 });
 
 suite("vault room — generator nav sync", () => {
-  test("room link lives in the canonical nav lists", () => {
+  test("room link lives in the canonical nav source", () => {
+    // EXTREME MAKEOVER: nav_data.py is the single source of truth; the three
+    // generators import it rather than redefining the lists.
+    assert(read("scripts/nav_data.py").includes('("vault-room.html", "Vault Room")'),
+      "nav_data.py lists the room");
     for (const f of ["scripts/update_nav.py", "scripts/build_waves.py", "scripts/build_characters.py"]) {
-      assert(read(f).includes('("vault-room.html", "Vault Room")'), `${f} lists the room`);
+      assert(read(f).includes("import nav_data"), `${f} imports the canonical nav`);
     }
   });
 

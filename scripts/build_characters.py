@@ -12,6 +12,9 @@ from collections import Counter, defaultdict
 from html import escape
 from pathlib import Path
 from urllib.parse import quote_plus
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import nav_data  # canonical nav: scripts/nav_data.py
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -27,53 +30,19 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-NAV_LINKS = [
-    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("2026-review.html", "2026 Review"), ("start.html", "Start"),
-    ("waves/index.html", "Waves"), ("stats.html", "Stats"),
-    ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
-    ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
-    ("market-briefing.html", "Market Briefing"),
-    ("launch-curve.html", "Launch Curve"),
-    ("drop-week.html", "Drop Week"),
-    ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
-    ("journal.html", "Journal"),
-    ("collection-value.html", "Ledger"),
-    ("exclusives.html", "Exclusives"), ("watchlist.html", "Watchlist"), ("budget.html", "Budget"),
-    ("radar.html", "Radar"), ("preorders.html", "Pre-orders"),
-    ("calendar.html", "Release Calendar"), ("compare.html", "Compare"),
-    ("holiday.html", "Holiday Guide"), ("grading.html", "Grading"), ("display.html", "Display"), ("grails.html", "Grails"), ("quest.html", "Grail Quest"), ("variants.html", "Variants"),
-    ("rarity.html", "Rarity Guide"),
-    ("checklist.html", "Checklist"),
-    ("explore.html", "Explore"), ("retro.html", "Retro"), ("showcase.html", "Showcase"),
-    ("vault-room.html", "Vault Room"),
-    ("skills.html", "Skills"),
-    ("agents.html", "Agents"),
-    ("community.html", "Community"), ("api.html", "API"),
-]
-
-# EXTREME MAKEOVER (2026-10-12): nine doors in the primary nav, not forty-four.
-# The full registry stays in the footer.
-PRIMARY_NAV_LINKS = [
-    ("index.html", "Timeline"),
-    ("vault-room.html", "Vault Room"),
-    ("drop-week.html", "Drop Week"),
-    ("preorders.html", "Pre-orders"),
-    ("waves/index.html", "Waves"),
-    ("characters/index.html", "Characters"),
-    ("encyclopedia.html", "Encyclopedia"),
-    ("quest.html", "Grail Quest"),
-    ("timeline.html", "Legends Timeline"),
-    ("2026-review.html", "2026 Review"),
-    ("start.html", "Start"),
-]
+# Navigation comes from the canonical source — scripts/nav_data.py.
+# (The old per-script NAV_LINKS / PRIMARY_NAV_LINKS duplication is retired —
+# the hardcoded footer this script used to carry was missing pages; nav_data
+# restores the full 44-page registry here too.)
+NAV_LINKS = nav_data.NAV
 
 
 def nav(current):
-    items = []
-    for href, label in PRIMARY_NAV_LINKS:
-        cur = ' aria-current="page"' if href == current else ""
-        items.append(f'        <a href="../{href}"{cur}>{label}</a>')
-    return "\n".join(items)
+    return nav_data.primary_nav_html(current, prefix="../")
+
+
+FOOTER_NAV = nav_data.footer_nav_html("characters/index.html", prefix="../")
+DIRECTORY_TEMPLATE = nav_data.directory_template_html(prefix="../")
 
 
 PAGE_CSS = """    .char-hero { padding-block: var(--space-7); }
@@ -150,6 +119,7 @@ def page(title, desc, current, body, extra_scripts=""):
       </nav>
     </div>
   </header>
+{DIRECTORY_TEMPLATE}
 
   <main id="main">
 {body}
@@ -158,7 +128,7 @@ def page(title, desc, current, body, extra_scripts=""):
   <footer class="site-footer">
     <div class="container footer-grid">
       <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
-      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../timeline.html">Legends Timeline</a><a href="../start.html">Start</a><a href="../waves/index.html">Waves</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../journal.html">Journal</a><a href="../collection-value.html">Ledger</a><a href="../exclusives.html">Exclusives</a><a href="../watchlist.html">Watchlist</a><a href="../radar.html">Radar</a><a href="../compare.html">Compare</a><a href="../grails.html">Grails</a><a href="../grading.html">Grading</a><a href="../display.html">Display</a><a href="../variants.html">Variants</a><a href="../checklist.html">Checklist</a><a href="../explore.html">Explore</a><a href="../retro.html">Retro</a><a href="../showcase.html">Showcase</a><a href="../skills.html">Skills</a><a href="../community.html">Community</a><a href="../api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button></nav>
+      <nav aria-label="Footer">{FOOTER_NAV}</nav>
     </div>
   </footer>
   <script src="../assets/js/vault.js" defer></script>

@@ -459,7 +459,20 @@ function showError(err) {
   els.years.appendChild(p);
 }
 
+/* The hero's "Find a drawer" button: scrolls to the drawer index and
+   hands focus to the search input — the room's fastest door. */
+function initFindDrawerCta() {
+  const cta = document.getElementById("find-drawer-cta");
+  const input = document.getElementById("drawer-search-input");
+  if (!cta || !input) return;
+  cta.addEventListener("click", () => {
+    input.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.setTimeout(() => input.focus({ preventScroll: true }), 450);
+  });
+}
+
 async function init() {
+  initFindDrawerCta();
   let data;
   try {
     data = await loadRoomData();

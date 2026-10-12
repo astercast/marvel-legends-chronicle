@@ -20,6 +20,7 @@ from urllib.parse import quote, quote_plus
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from compare_lib import profiles_by_position
+import nav_data  # canonical nav: scripts/nav_data.py
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -30,64 +31,17 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-# Keep in sync with scripts/build_characters.py NAV_LINKS.
-NAV_LINKS = [    ("index.html", "Timeline"), ("timeline.html", "Legends Timeline"), ("2026-review.html", "2026 Review"), ("start.html", "Start"),
-    ("waves/index.html", "Waves"), ("stats.html", "Stats"),
-    ("encyclopedia.html", "Encyclopedia"), ("baf-planner.html", "BAF Planner"),
-    ("characters/index.html", "Characters"), ("price-guide.html", "Price Guide"),
-    ("market-briefing.html", "Market Briefing"),
-    ("launch-curve.html", "Launch Curve"),
-    ("drop-week.html", "Drop Week"),
-    ("auth-wizard.html", "Auth Wizard"), ("shelf.html", "Your Shelf"),
-    ("journal.html", "Journal"),
-    ("collection-value.html", "Ledger"),
-    ("exclusives.html", "Exclusives"), ("watchlist.html", "Watchlist"),
-    ("budget.html", "Budget"),
-    ("radar.html", "Radar"), ("preorders.html", "Pre-orders"),
-    ("calendar.html", "Release Calendar"), ("compare.html", "Compare"),
-    ("holiday.html", "Holiday Guide"), ("grading.html", "Grading"), ("display.html", "Display"), ("grails.html", "Grails"), ("quest.html", "Grail Quest"), ("variants.html", "Variants"),
-    ("rarity.html", "Rarity Guide"),
-    ("checklist.html", "Checklist"),
-    ("explore.html", "Explore"), ("retro.html", "Retro"), ("showcase.html", "Showcase"),
-    ("vault-room.html", "Vault Room"),
-    ("skills.html", "Skills"),
-    ("agents.html", "Agents"),
-    ("community.html", "Community"), ("api.html", "API"),
-]
-
-# EXTREME MAKEOVER (2026-10-12): nine doors in the primary nav, not forty-four.
-# The full registry stays in the footer.
-PRIMARY_NAV_LINKS = [
-    ("index.html", "Timeline"),
-    ("vault-room.html", "Vault Room"),
-    ("drop-week.html", "Drop Week"),
-    ("preorders.html", "Pre-orders"),
-    ("waves/index.html", "Waves"),
-    ("characters/index.html", "Characters"),
-    ("encyclopedia.html", "Encyclopedia"),
-    ("quest.html", "Grail Quest"),
-    ("timeline.html", "Legends Timeline"),
-    ("2026-review.html", "2026 Review"),
-    ("start.html", "Start"),
-]
+# Navigation comes from the canonical source — scripts/nav_data.py.
+# (The old per-script NAV_LINKS / PRIMARY_NAV_LINKS duplication is retired.)
+NAV_LINKS = nav_data.NAV
 
 
 def nav(current):
-    items = []
-    for href, label in PRIMARY_NAV_LINKS:
-        cur = ' aria-current="page"' if href == current else ""
-        items.append(f'        <a href="../{href}"{cur}>{label}</a>')
-    return "\n".join(items)
+    return nav_data.primary_nav_html(current, prefix="../")
 
 
-FOOTER_NAV = "".join(
-    f'<a href="../{href}">{label}</a>' for href, label in NAV_LINKS
-) + (
-    '<button type="button" class="motion-toggle" aria-pressed="false">'
-    '<span class="motion-toggle-track" aria-hidden="true">'
-    '<span class="motion-toggle-thumb"></span></span>'
-    'Reduce motion <span class="motion-toggle-state">Off</span></button>'
-)
+FOOTER_NAV = nav_data.footer_nav_html("waves/index.html", prefix="../")
+DIRECTORY_TEMPLATE = nav_data.directory_template_html(prefix="../")
 
 PAGE_CSS = """    .wave-hero { padding-block: var(--space-7); }
     .wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
@@ -170,6 +124,7 @@ def page(title, desc, current, body, extra_head=""):
       </nav>
     </div>
   </header>
+{DIRECTORY_TEMPLATE}
 
   <main id="main">
 {body}
