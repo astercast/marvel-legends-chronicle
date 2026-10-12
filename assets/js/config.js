@@ -17,6 +17,7 @@ export const STORE_KEYS = {
   exploreSeed: "mlc_explore_seed_v1", // integer seed for the explorer's shuffle
   exploreSeen: "mlc_explore_seen_v1", // [figId] — figures already surfaced by "Surprise me"
   showcase: "mlc_showcase_v1", // { order: [figId], notes: { figId: text } } — the top-10 Shelfie Showcase
+  gallery: "mlc_gallery_v1", // { shelves: [{ id, name, layout, photos: [{ id, dataUrl, caption, tags: [figId], ts }] }] } — Shelf Gallery photos (client-side only)
   hunt: "mlc_hunt_v1", // { selected: [figId], maxPrices: { figId: number } } — toy-show hunt planner
   preorders: "mlc_preorders_v1", // { <preorderItemId>: "watching"|"ordered"|"skipped" } — pre-order tracker personal calls
 };

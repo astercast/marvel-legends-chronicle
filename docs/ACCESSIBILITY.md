@@ -23,6 +23,10 @@ verified good practice, documented here so it stays that way.
   (`grep` over `assets/js/` confirms).
 - **Showcase reorder:** drag-and-drop is a progressive enhancement; Up/Down
   buttons provide the full keyboard path (`showcase.js` `moveId`).
+- **Shelf gallery reorder (Wave 21):** every photo carries ← / → buttons
+  (aria-labeled "Move photo earlier/later"), and a focused photo responds to
+  Left/Right arrow keys with focus restored to the moved photo
+  (`gallery.js`). No drag-only path anywhere.
 - **Modal (`assets/js/modal.js`):** full focus trap (Tab cycles inside),
   Escape closes, focus returns to the invoking element, focus moves to the
   close button on open, `role="dialog"` + `aria-modal="true"` +
@@ -36,7 +40,8 @@ verified good practice, documented here so it stays that way.
 `aria-live="polite"` is present on every dynamically-updated region audited:
 wizard, BAF detail, econ stats, checklist summary + list, ledger KPIs,
 community main, exclusives coverage, hunt results, surprise progress (fixed
-this pass), and 6 more pages.
+this pass), showcase quest-strip (level / achievements / rarest owned) and
+shelfie copy status (`gallery.js`), and 6 more pages.
 
 ### Forms
 All inputs on `gift.html`, `journal.html`, `hunt.html`, `watchlist.html`,
@@ -49,7 +54,8 @@ page (skip to main content).
 
 ### Motion
 `@media (prefers-reduced-motion: reduce)` in `base.css` and
-`components.css`; no auto-playing animation anywhere (sparklines and charts
+`components.css`; `showcase.html` carries a scoped reduce block for the
+gallery (Wave 21); no auto-playing animation anywhere (sparklines and charts
 are static SVG).
 
 ### Color contrast (measured 2026-10-11, WCAG AA = 4.5:1)

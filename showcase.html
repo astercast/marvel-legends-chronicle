@@ -28,8 +28,64 @@
     .drag-handle { cursor: grab; border: 1px solid var(--line); border-radius: var(--radius);
       background: var(--bg); padding: 0.3rem 0.6rem; font-size: 0.8rem; color: var(--muted); }
     .empty-slot { border-style: dashed; color: var(--muted); }
+    /* ---- Showcase 2.0: shelf gallery ---- */
+    .quest-strip { padding: var(--space-4); margin-bottom: var(--space-6); }
+    .quest-strip h2 { margin: 0 0 var(--space-2); font-size: 1.1rem; }
+    .quest-strip-list { list-style: none; margin: 0 0 var(--space-3); padding: 0;
+      display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
+    .quest-strip-list li { font-size: 0.92rem; }
+    .quest-strip p { margin: 0; }
+    .g-head { display: flex; justify-content: space-between; align-items: start;
+      gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-3); }
+    .g-head h2 { margin: 0 0 var(--space-1); font-size: 1.4rem; }
+    .privacy-note { border: 1px dashed var(--line); border-radius: var(--radius);
+      padding: var(--space-3); font-size: 0.85rem; color: var(--muted);
+      max-width: 90ch; margin-bottom: var(--space-4); }
+    .privacy-note strong { color: var(--ink); }
+    .storage-banner { border: 1px solid var(--gold); border-radius: var(--radius);
+      padding: var(--space-3); margin-bottom: var(--space-4); background: var(--panel); }
+    .storage-banner p { margin: 0 0 var(--space-2); font-size: 0.9rem; }
+    .g-shelf { border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--panel); padding: var(--space-4); margin-bottom: var(--space-4); }
+    .g-shelf-head { display: flex; flex-wrap: wrap; gap: var(--space-3);
+      align-items: end; margin-bottom: var(--space-3); }
+    .g-name-field input { font-size: 1.05rem; font-weight: 700; min-width: 12rem; }
+    .g-layout-blurb { flex-basis: 100%; margin: 0; }
+    .g-shelf-actions { display: flex; gap: var(--space-2); margin-left: auto; flex-wrap: wrap; }
+    .g-add-photo { cursor: pointer; }
+    .g-photos { display: grid; gap: var(--space-3); }
+    .g-photos.layout-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+    .g-photos.layout-run { grid-auto-flow: column; grid-auto-columns: minmax(170px, 230px);
+      overflow-x: auto; padding-bottom: var(--space-2); }
+    .g-photos.layout-baf { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+    .g-photos.layout-baf .g-photo:first-child { grid-column: 1 / -1;
+      max-width: 26rem; margin-inline: auto; width: 100%; }
+    .g-photo { border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--bg); padding: var(--space-2); margin: 0; }
+    .g-photo:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .g-photo img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
+      border-radius: calc(var(--radius) - 2px); display: block; background: var(--panel-2); }
+    .g-field { display: grid; gap: 0.2rem; font-size: 0.78rem; color: var(--muted);
+      margin-bottom: var(--space-2); }
+    .g-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-bottom: var(--space-2); }
+    .g-chip { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.78rem;
+      border: 1px solid var(--line); border-radius: 999px; padding: 0.15rem 0.2rem 0.15rem 0.6rem;
+      background: var(--panel-2); }
+    .g-chip-x { border: none; background: none; color: var(--muted); font-size: 1rem;
+      line-height: 1; padding: 0.1rem 0.4rem; cursor: pointer; border-radius: 999px; }
+    .g-chip-x:hover, .g-chip-x:focus-visible { color: var(--ink); background: var(--line); }
+    .g-tag-add { display: flex; gap: var(--space-1); align-items: end; }
+    .g-tag-add .g-field { flex: 1; margin-bottom: 0; }
+    .g-actions { display: flex; gap: var(--space-1); margin-top: var(--space-2); flex-wrap: wrap; }
+    #shelfie-text { width: 100%; min-height: 12rem; font-family: var(--font-mono, monospace);
+      font-size: 0.85rem; padding: var(--space-3); border: 1px solid var(--line);
+      border-radius: var(--radius); background: var(--panel-2); color: var(--ink); resize: vertical; }
+    @media (prefers-reduced-motion: reduce) {
+      .g-photo img, .g-chip, .storage-banner { transition: none !important; animation: none !important; }
+    }
     @media print {
-      .site-header, .site-footer, .picker, .slot-actions, .show-actions { display: none !important; }
+      .site-header, .site-footer, .picker, .slot-actions, .show-actions,
+      .g-shelf-actions, .g-actions, .g-tag-add, .quest-strip { display: none !important; }
       .show-layout { display: block; }
       .show-slot textarea { border: none; resize: none; }
     }
@@ -95,6 +151,18 @@
       </div>
     </section>
 
+    <div class="container">
+      <section class="card quest-strip" aria-labelledby="quest-strip-title">
+        <h2 id="quest-strip-title">Your quest, on the gallery wall</h2>
+        <ul class="quest-strip-list">
+          <li id="quest-strip-level" aria-live="polite"></li>
+          <li id="quest-strip-ach" aria-live="polite"></li>
+          <li id="quest-strip-rarest" aria-live="polite"></li>
+        </ul>
+        <p><a href="quest.html">Open Grail Quest →</a></p>
+      </section>
+    </div>
+
     <div class="container show-layout">
       <aside class="picker" aria-labelledby="picker-title">
         <h2 id="picker-title" style="margin-top:0">Add from your shelf</h2>
@@ -117,6 +185,45 @@
           <button type="button" class="btn btn-sm" id="btn-clear">Clear showcase</button>
         </div>
         <ol class="showcase-list" id="showcase-list"></ol>
+      </section>
+    </div>
+
+    <div class="container" style="margin-bottom:var(--space-7)">
+      <section aria-labelledby="gallery-title">
+        <div class="g-head">
+          <div>
+            <h2 id="gallery-title">Shelf gallery</h2>
+            <p class="chart-sub" style="margin:0;max-width:70ch;">Your shelves, your photos.
+              Arrange each shelf with a layout template, tag the figures in each shot,
+              and reorder with the arrow buttons — or focus a photo and use ← →.</p>
+          </div>
+          <button type="button" class="btn" id="btn-add-shelf">Add shelf</button>
+        </div>
+        <p class="privacy-note" id="gallery-privacy"><strong>🔒 Private by design.</strong>
+          Your photos never leave this device: they are stored as data URLs in this
+          browser's localStorage — no uploads, no servers, no tracking. EXIF metadata
+          (location, camera details) is stripped automatically when a photo is imported.</p>
+        <div class="storage-banner" id="gallery-storage" hidden role="alert">
+          <p id="gallery-storage-text"></p>
+          <button type="button" class="btn btn-sm" id="btn-downscale">Downscale all photos</button>
+        </div>
+        <div id="gallery-shelves"></div>
+        <datalist id="gallery-figure-list"></datalist>
+      </section>
+    </div>
+
+    <div class="container" style="margin-bottom:var(--space-7)">
+      <section aria-labelledby="shelfie-title">
+        <h2 id="shelfie-title" style="font-size:1.2rem;margin-bottom:var(--space-1);">Shelfie share card</h2>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:var(--space-4);max-width:70ch;">A shareable text summary of your gallery — photo count, top tagged figures, your Grail Quest progress, and your latest grail-worthy shelfie. Copy it into a forum post or Discord.</p>
+        <div class="card" style="padding:var(--space-4);display:grid;gap:var(--space-3);">
+          <label class="visually-hidden" for="shelfie-text">Shelfie share card text</label>
+          <textarea id="shelfie-text" readonly></textarea>
+          <div style="display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap;">
+            <button type="button" class="btn" id="shelfie-copy">Copy shelfie card</button>
+            <span id="shelfie-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
       </section>
     </div>
 
@@ -145,5 +252,6 @@
     </div>
   </footer>
   <script type="module" src="assets/js/showcase.js"></script>
+  <script type="module" src="assets/js/gallery.js"></script>
 </body>
 </html>

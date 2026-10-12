@@ -182,6 +182,24 @@ skill `preorder-hunter`.
    Prefill the tool for the user:
    `gift.html?budget=under25&for=kid&character=Spider-Man`.
 
+### Workflow F — "Curate my shelf gallery for sharing"
+
+1. Ask the user to paste their `mlc_gallery_v1` export (shape in §4 —
+   shelves with per-photo `tags: [figId]`; photos themselves stay on their
+   device, only ids and captions travel).
+2. Validate every tag against `api/v1/figures.json` ids (stable
+   `<waveId>::<figureName>`); drop or flag anything unmatched — never guess.
+3. Suggest a layout per shelf: `run` for shelves tagged with one character or
+   series run (check `api/v1/characters.json` for run membership), `baf` when
+   a shelf holds most pieces of one BAF wave (`bafPiece` fields), `grid`
+   otherwise.
+4. Draft the "Shelfie share card" text: photo/shelf counts, top-5 tagged
+   figures (real names, no ids), quest level + archive completion % from the
+   user's owned count, and the newest rare-tagged photo (chase / convention
+   exclusive / HasLab / variant signals) as the "latest grail-worthy shelfie".
+5. Remind them: photos never leave their browser (dataURL + localStorage);
+   share text only.
+
 ## 4. Interactive tools: using their data shapes programmatically
 
 The site's tools (tracker, journal, watchlist, hunt planner, BAF planner,
@@ -198,6 +216,7 @@ pre-order tracker) are browser-local — an agent can't reach a user's
 | `mlc_hunt_v1` | `{ selected: [figId], maxPrices: { figId: number } }` |
 | `mlc_preorders_v1` | `{ <preorderItemId>: "watching" \| "ordered" \| "skipped" }` |
 | `mlc_showcase_v1` | `{ order: [figId], notes: { figId: text } }` |
+| `mlc_gallery_v1` | `{ shelves: [{ id, name, layout: "grid"\|"run"\|"baf", photos: [{ id, dataUrl, caption, tags: [figId], ts }] }] }` — client-side only, never uploaded |
 | `mlc_shelf_history_v1` | `[{ d: "YYYY-MM-DD", owned, wanted, bafDone }]` |
 
 When a user pastes their tracker export, parse it against these shapes, then

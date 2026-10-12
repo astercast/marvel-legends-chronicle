@@ -9,6 +9,7 @@ await import("./test-data-integrity.js");
 await import("./test-price-trends.js");
 await import("./test-explore.js");
 await import("./test-showcase.js");
+await import("./test-gallery.js");
 await import("./test-baf.js");
 await import("./test-listings.js");
 await import("./test-preorders.js");

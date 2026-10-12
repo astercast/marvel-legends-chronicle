@@ -32,7 +32,7 @@ Fan-made. Not affiliated with Marvel, Hasbro, or Toy Biz.
 - Printable checklist: your tracker as a paper checklist grouped by wave, with print stylesheet (also applied to the timeline)
 - Archive explorer (`explore.html`): "Surprise me" seeded random-figure engine (no repeats until the deck is exhausted) + curated rabbit holes — variant oddities, deepest Toy Biz cuts, one-figure characters, the ten oldest BAFs — every result links its figure dialog and wave page (browser-local)
 - Retro line browser (`retro.html`): all retro-carded figures identified from the archive's own notes (Marvel Retro waves, Retro fan channel, retro singles), grouped by retro line with coverage stated — retro status never guessed (browser-local)
-- Shelfie showcase (`showcase.html`): curate your top 10 from owned figures, reorder by drag-and-drop or keyboard, one "why it made the cut" line per slot, printable layout; "Copy my quest" export (quest-card text: progress, achievements, next-quest list) shared with Grail Quest via `assets/js/quest-share.js` (browser-local)
+- Shelfie showcase (`showcase.html`): curate your top 10 from owned figures, reorder by drag-and-drop or keyboard, one "why it made the cut" line per slot, printable layout; "Copy my quest" export (quest-card text: progress, achievements, next-quest list) shared with Grail Quest via `assets/js/quest-share.js` (browser-local); Shelf Gallery 2.0 — per-shelf photo slots (own photos via file input, stored as dataURLs in localStorage, client-side only, EXIF stripped on import, quota handling with downscale option), captions + figure-tagging against real archive ids, layout templates (grid / character-run row / BAF centerpiece), arrow-key + button reorder, Grail Quest header strip (level, achievements, rarest owned), "Shelfie share card" text export reusing quest-share logic (top figures, completion %, latest grail) with copy-to-clipboard
 
 ## API (static JSON, versioned)
 
@@ -123,4 +123,4 @@ and `data/encyclopedia.json`. Commit the outputs.
 - `api.html` — human-readable API docs
 - `assets/css/` — tokens, base, layout, components, timeline, encyclopedia, community, print (print.css: paper-friendly timeline + checklist output)
 - `assets/js/` — config, store, data, tracker, listings, modal, figure-dialog,
-  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page, explore, retro, showcase, gift, holiday, grading, shelf-share, price-trends, quest, quest-core, quest-share, ko-targets (ES modules)
+  timeline, encyclopedia, baf-planner, price-guide, auth-wizard, shelf, compare, variants, checklist, history-strip, era-bands, community, community-page, explore, retro, showcase, gallery, gallery-core, gift, holiday, grading, shelf-share, price-trends, quest, quest-core, quest-share, ko-targets (ES modules)
