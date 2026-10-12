@@ -68,7 +68,18 @@ def primary_nav(current):
 
 
 def footer_nav():
-    return "".join(f'<a href="{href}">{label}</a>' for href, label in NAV)
+    links = "".join(f'<a href="{href}">{label}</a>' for href, label in NAV)
+    return links + MOTION_TOGGLE
+
+
+# Wave 33 (Collector's Vault): the vault keeper's switch — a manual
+# reduced-motion toggle. Bound by assets/js/vault.js (class hook).
+MOTION_TOGGLE = (
+    '<button type="button" class="motion-toggle" aria-pressed="false">'
+    '<span class="motion-toggle-track" aria-hidden="true">'
+    '<span class="motion-toggle-thumb"></span></span>'
+    'Reduce motion <span class="motion-toggle-state">Off</span></button>'
+)
 
 
 def main():

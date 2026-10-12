@@ -1,32 +1,100 @@
+/* Self-hosted variable fonts (all SIL OFL, from google/fonts).
+   Cinzel [wght] — Roman inscriptional caps, display voice.
+   Newsreader [opsz,wght] — book serif, body voice.
+   font-display: swap with metric-safe serif fallbacks (see --font-*). */
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/cinzel-latin-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/cinzel-latin-ext-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-ext-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/newsreader-latin-ext-italic.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 /* ============================================================
-   Design tokens — Marvel Legends Chronicle, "The Archive" v2
-   Art direction: museum-grade collector archive. Deep ink blacks,
-   archival paper tones, one signature red used with discipline.
-   Christie's lot catalog meets Marvel — never a fan wiki.
+   Design tokens — Marvel Legends Chronicle, "The Collector's Vault"
+   Wave 33 identity. Art direction: museum archive taken further —
+   archival paper, exhibit placards, accession numbers,
+   specimen-drawer grids, wax seals.
+   Typography (fleet-resolved, nothing shared with the other sites):
+   Cinzel (Roman inscriptional caps, display) + Newsreader
+   (variable optical-size book serif, body). Accession numbers and
+   data set in tabular Newsreader, per the museum-label recipe.
+   Motion: one primary Premium easing; reduced-motion-first
+   authoring — still state is the default, motion is the opt-in.
    ============================================================ */
 :root {
-  /* --- Ink & paper --- */
-  --bg: #0b0b10;            /* gallery black */
-  --bg-soft: #101016;       /* panel wash */
-  --bg-deep: #070709;       /* deepest recess */
-  --panel: #14141b;         /* card ground */
-  --panel-2: #1a1a23;       /* raised card */
-  --panel-3: #20202b;       /* hover raise */
-  --line: #262631;          /* hairline */
-  --line-soft: #1c1c25;     /* faint hairline */
-  --line-bright: #343442;   /* emphasized hairline */
+  /* --- Ink & paper (the vault at night) --- */
+  --bg: #0d0c10;            /* vault black, warm */
+  --bg-soft: #121116;       /* panel wash */
+  --bg-deep: #08080a;       /* deepest recess */
+  --panel: #16151b;         /* card ground */
+  --panel-2: #1c1b22;       /* raised card */
+  --panel-3: #232228;       /* hover raise */
+  --line: #2a2932;          /* hairline */
+  --line-soft: #1e1d24;     /* faint hairline */
+  --line-bright: #3a3944;   /* emphasized hairline */
 
   /* --- Type --- */
-  --ink: #f5f1e8;           /* archival paper white */
-  --ink-dim: #cfc9bb;       /* secondary paper */
-  --muted: #8e8a7e;         /* tertiary, captions */
+  --ink: #f6f0e0;           /* archival paper white */
+  --ink-dim: #d6cfba;       /* secondary paper */
+  --muted: #948e7c;         /* tertiary, captions */
 
-  /* --- Signature accents (discipline: red = action/identity only) --- */
+  /* --- Archival paper (exhibit placards, drawer cards) --- */
+  --paper: #ece1c8;
+  --paper-2: #e0d1b0;
+  --ink-on-paper: #1a1610;
+  --muted-on-paper: #5d5644;
+  --line-on-paper: #c9b98f;
+
+  /* --- Signature accents (discipline: red = Marvel action/identity only) --- */
   --red: #e62429;           /* signature red — brand, primary actions, active states */
   --red-deep: #a31218;
-  --red-ink: #ff6b6f;       /* red safe for small text on black */
-  --gold: #e8b32a;          /* brass — provenance, BAF, milestones */
-  --gold-deep: #9a7414;
+  --red-ink: #ff7b7f;       /* red safe for small text on black */
+  --gold: #dcae3c;          /* brass — provenance, BAF, milestones, engraved trim */
+  --gold-deep: #8f6b1c;
+  --wax: #93222a;           /* wax-seal oxblood — certified, grail, signature moments */
+  --wax-deep: #5f141b;
   --blue: #8fd6ff;          /* informational links */
   --green: #6fe3a1;
   --violet: #c9a7ff;
@@ -39,11 +107,11 @@
   --radius-pill: 999px;
 
   /* --- Type system --- */
-  --font-display: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-cond: "Arial Narrow", "HelveticaNeue-CondensedBold", "Archivo",
-    "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-body: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: "Cinzel", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-cond: "Cinzel", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  /* ^^ vault identity: the "condensed label" voice is engraved caps, not a grotesque */
+  --font-body: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 
   --text-xs: 0.72rem;
   --text-sm: 0.82rem;
@@ -68,15 +136,20 @@
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
   --shadow-2: 0 10px 32px rgba(0, 0, 0, 0.5);
   --shadow-3: 0 18px 56px rgba(0, 0, 0, 0.55);
-  --edge-light: inset 0 1px 0 rgba(245, 241, 232, 0.06);
+  --edge-light: inset 0 1px 0 rgba(246, 240, 224, 0.06);
 
-  /* --- Motion --- */
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-swift: cubic-bezier(0.3, 0.9, 0.25, 1);
-  --dur-1: 0.12s;
-  --dur-2: 0.2s;
-  --dur-3: 0.32s;
+  /* --- Motion: one Premium signature (fleet rule 22) ---
+     --ease carries ~80% of animation; --ease-emphasis for heroes
+     and signature moments. 2–3 bezier total, adjectives first:
+     calm, weighty, precise. */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-swift: cubic-bezier(0.25, 1, 0.5, 1);
+  --dur-1: 0.15s;
+  --dur-2: 0.25s;
+  --dur-3: 0.4s;
 
-  /* --- Focus --- */
+  /* --- Focus: gold halo is the vault's tactile signature.
+     Focus rings appear instantly — a state, not a transition. --- */
   --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--gold);
 }

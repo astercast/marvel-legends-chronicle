@@ -25,6 +25,7 @@ export const STORE_KEYS = {
   budget: "mlc_budget_v1", // { monthly: number|null, annual: number|null } — the user's own spend targets
   launchPrep: "mlc_launchprep_v1", // { <questId>: [bool] } — launch-day prep checklist ticks
   dropweek: "mlc_dropweek_v1", // { <dropId>: { <figName>: "want"|"ordered" } } — Drop Week battle plan
+  motion: "mlc_motion_v1", // "reduce"|"auto" — manual motion preference for the vault identity (wave 33)
 };
 
 export const MARKETPLACES = [

@@ -1,0 +1,392 @@
+/* ============================================================
+   The Collector's Vault — identity layer (wave 33)
+   Loaded AFTER components.css on every page (hand + generated).
+   Museum archive taken further: archival paper placards, accession
+   numbers, specimen-drawer grids, wax seals, brass trim.
+
+   Conventions:
+   - Still state is the default; motion lives behind
+     html.vault-motion (set by vault.js only under
+     prefers-reduced-motion: no-preference and no manual reduce).
+   - One Premium easing (--ease); --ease-emphasis for signature moments.
+   - ::selection washes brass; focus halo stays gold (tactile signature).
+   ============================================================ */
+
+:root { color-scheme: dark; }
+html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length */
+
+/* ---------- Custom scrollbars ---------- */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: #3a3220;
+  border-radius: 8px;
+  border: 3px solid var(--bg-deep);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--gold-deep); }
+* { scrollbar-color: var(--gold-deep) var(--bg-deep); }
+
+/* ---------- Masthead: the brand mark becomes a wax seal ---------- */
+.brand-mark {
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c33a43, var(--red) 45%, var(--red-deep) 80%);
+  border: 2px solid #7d0e13;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.28),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+.site-nav a[aria-current="page"]::after { background: var(--gold); } /* engraved brass, not red */
+
+/* ---------- Hero: the vault wall ---------- */
+.hero {
+  background:
+    radial-gradient(1200px 420px at 50% -12%, rgba(220, 174, 60, 0.1), transparent 60%),
+    radial-gradient(1100px 380px at 12% -10%, rgba(230, 36, 41, 0.08), transparent 60%),
+    var(--bg-soft);
+}
+/* One-shot vault-light sweep on load — no loop, so no pause control needed. */
+html.vault-motion .hero { position: relative; }
+html.vault-motion .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 42%, rgba(220, 174, 60, 0.09) 50%, transparent 58%);
+  transform: translateX(-100%);
+  animation: vault-sweep 1.6s var(--ease-emphasis) 0.3s 1;
+}
+@keyframes vault-sweep { to { transform: translateX(100%); } }
+
+/* ---------- Exhibit placards (paper on the dark wall) ---------- */
+.placard {
+  position: relative;
+  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+  color: var(--ink-on-paper);
+  border: 1px solid var(--line-on-paper);
+  outline: 3px double rgba(143, 107, 28, 0.5);
+  outline-offset: 5px;
+  border-radius: var(--radius-s);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-2);
+}
+.placard::after { /* paper grain */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.placard h2, .placard h3 { color: var(--ink-on-paper); }
+.placard .lede, .placard p { color: var(--ink-on-paper); }
+.placard .link-note, .placard .muted { color: var(--muted-on-paper); }
+.placard .bolt {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4d98c, var(--gold-deep) 70%, #4c3a10);
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.55), 0 1px 1px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.placard .bolt.tl { top: 9px; left: 9px; }
+.placard .bolt.tr { top: 9px; right: 9px; }
+.placard .bolt.bl { bottom: 9px; left: 9px; }
+.placard .bolt.br { bottom: 9px; right: 9px; }
+
+/* Stat strips become paper placards */
+.stat {
+  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+  border: 1px solid var(--line-on-paper);
+  border-top: 3px solid var(--gold-deep);
+  color: var(--ink-on-paper);
+}
+.stat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.stat-value { color: var(--ink-on-paper); }
+.stat-label { color: var(--muted-on-paper); }
+
+/* ---------- Accession numbers ---------- */
+.accession {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-xs);
+}
+.acc-label {
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.acc-no {
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+/* ---------- Wax seal ---------- */
+.wax-seal {
+  --seal: 88px;
+  width: var(--seal);
+  height: var(--seal);
+  border-radius: 48% 52% 51% 49% / 52% 49% 51% 48%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: radial-gradient(circle at 35% 30%, #b23a42, var(--wax) 45%, var(--wax-deep) 78%, #471016);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.28),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.5);
+}
+.wax-seal::after {
+  content: "";
+  position: absolute;
+  inset: 11px;
+  border-radius: inherit;
+  border: 1px solid rgba(236, 225, 200, 0.4);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+.wax-seal > span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--seal) * 0.34);
+  color: #f3e6c8;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 -1px 1px rgba(255, 255, 255, 0.2);
+  transform: rotate(-8deg);
+}
+
+/* ---------- Specimen drawers: figure + release rows ---------- */
+.fig-list > .fig,
+.release-list > .release {
+  position: relative;
+  background: linear-gradient(180deg, rgba(246, 240, 224, 0.03), rgba(246, 240, 224, 0.008));
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-s);
+  margin-bottom: var(--space-2);
+  padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-4) + 22px);
+  transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
+}
+.fig-list > .fig::before,
+.release-list > .release::before { /* brass drawer pull */
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 12px;
+  height: 30px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
+  box-shadow: inset 0 1px 1px rgba(255, 244, 214, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.fig-list > .fig:hover,
+.release-list > .release:hover {
+  border-color: var(--gold-deep);
+  background: linear-gradient(180deg, rgba(246, 240, 224, 0.055), rgba(246, 240, 224, 0.015));
+}
+.fig-list > .fig .fig-name,
+.release-list > .release .release-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Lot tags: engraved brass ---------- */
+.badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  background: linear-gradient(180deg, rgba(246, 240, 224, 0.05), rgba(246, 240, 224, 0.015));
+}
+
+/* ---------- Buttons ---------- */
+.btn-seal {
+  background: linear-gradient(180deg, #a52a32, var(--wax) 60%, var(--wax-deep));
+  border-color: var(--wax-deep);
+  color: #f6ead0;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+}
+.btn-seal:hover {
+  background: linear-gradient(180deg, #b23340, #a1252d 60%, #6b171d);
+  border-color: var(--wax-deep);
+  color: #fff4dd;
+}
+
+/* ---------- Ledger tables ---------- */
+.data-table thead th, .value-table thead th, .price-table thead th {
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold-deep);
+  font-weight: 700;
+}
+
+/* ---------- Modal: the archive drawer, pulled open ---------- */
+.modal {
+  position: relative;
+  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+  color: var(--ink-on-paper);
+  border: 1px solid var(--line-on-paper);
+  border-top: 3px solid var(--gold-deep);
+}
+.modal::after { /* paper grain */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.modal-head { border-bottom: 1px solid var(--line-on-paper); }
+.modal-head h2 { color: var(--ink-on-paper); }
+.modal-close { border-color: var(--line-on-paper); color: var(--muted-on-paper); background: transparent; }
+.modal-close:hover { color: var(--ink-on-paper); border-color: var(--muted-on-paper); }
+.kv dt { color: var(--muted-on-paper); }
+.link-note { color: var(--muted-on-paper); }
+.dialog-subhead { color: var(--ink-on-paper); }
+.modal .share-preview { background: var(--bg-deep); color: var(--ink); border-color: var(--line); }
+
+/* ---------- Footer: the vault register ---------- */
+.site-footer {
+  border-top: 3px double var(--gold-deep);
+  background: #0a090c;
+}
+.site-footer .footer-grid > p:first-child {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-dim);
+  max-width: 34ch;
+}
+
+/* Manual motion control — the vault keeper's switch */
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--line-bright);
+  color: var(--ink-dim);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.motion-toggle:hover { border-color: var(--gold-deep); color: var(--ink); }
+.motion-toggle-track {
+  width: 30px;
+  height: 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-bright);
+  background: var(--bg-deep);
+  position: relative;
+  flex: 0 0 auto;
+}
+.motion-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: left var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
+}
+.motion-toggle[aria-pressed="true"] { border-color: var(--gold-deep); color: var(--gold); }
+.motion-toggle[aria-pressed="true"] .motion-toggle-thumb { left: 16px; background: var(--gold); }
+.motion-toggle:focus-visible { box-shadow: var(--focus-ring); }
+
+/* ---------- Rope-rule exhibit divider ---------- */
+.rope-rule {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-7) 0;
+  border: 0;
+  padding: 0;
+}
+.rope-rule::before, .rope-rule::after {
+  content: "";
+  height: 6px;
+  flex: 1;
+  border-radius: 3px;
+  background: repeating-linear-gradient(45deg, #6b5a2e 0 6px, #8f6b1c 6px 12px, #54400f 12px 18px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.rope-rule::before {
+  -webkit-mask: linear-gradient(to left, #000 30%, transparent);
+  mask: linear-gradient(to left, #000 30%, transparent);
+}
+.rope-rule::after {
+  -webkit-mask: linear-gradient(to right, #000 30%, transparent);
+  mask: linear-gradient(to right, #000 30%, transparent);
+}
+
+/* ---------- Vitrine sheen (pointer-tracked glass; JS sets --mx/--my) ---------- */
+html.vault-motion .stat,
+html.vault-motion .placard,
+html.vault-motion a.card.wave-card,
+html.vault-motion a.card.char-card {
+  position: relative;
+  --mx: 50%;
+  --my: 25%;
+}
+html.vault-motion .stat::before,
+html.vault-motion .placard::before,
+html.vault-motion a.card.wave-card::before,
+html.vault-motion a.card.char-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(340px 220px at var(--mx) var(--my), rgba(246, 240, 224, 0.1), transparent 62%);
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease);
+  z-index: 1;
+}
+html.vault-motion .stat:hover::before,
+html.vault-motion .placard:hover::before,
+html.vault-motion a.card.wave-card:hover::before,
+html.vault-motion a.card.char-card:hover::before,
+html.vault-motion .stat:focus-within::before,
+html.vault-motion a.card.wave-card:focus-within::before,
+html.vault-motion a.card.char-card:focus-within::before { opacity: 1; }
+
+/* ---------- Scroll reveals: finished state is the default ---------- */
+html.vault-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+}
+html.vault-motion [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease-emphasis);
+  transition-delay: var(--rd, 0s);
+}
+
+/* ---------- Print: the checklist becomes a paper exhibit ---------- */
+@media print {
+  .fig-list > .fig::before, .release-list > .release::before { display: none; }
+}

@@ -66,6 +66,11 @@ def nav(current):
 
 FOOTER_NAV = "".join(
     f'<a href="../{href}">{label}</a>' for href, label in NAV_LINKS
+) + (
+    '<button type="button" class="motion-toggle" aria-pressed="false">'
+    '<span class="motion-toggle-track" aria-hidden="true">'
+    '<span class="motion-toggle-thumb"></span></span>'
+    'Reduce motion <span class="motion-toggle-state">Off</span></button>'
 )
 
 PAGE_CSS = """    .wave-hero { padding-block: var(--space-7); }
@@ -126,10 +131,12 @@ def page(title, desc, current, body, extra_head=""):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{escape(title)} — Marvel Legends Chronicle</title>
   <meta name="description" content="{escape(desc)}">
+  <link rel="preload" href="../assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/vault.css">
   <style>
 {PAGE_CSS}  </style>
 {extra_head}</head>
@@ -158,6 +165,7 @@ def page(title, desc, current, body, extra_head=""):
       <nav aria-label="Footer">{FOOTER_NAV}</nav>
     </div>
   </footer>
+  <script src="../assets/js/vault.js" defer></script>
 </body>
 </html>
 """
@@ -314,6 +322,7 @@ def main():
           {"<span class=\"badge\">Build-A-Figure wave</span>" if w.get("baf") else ""}
           <span class="badge" id="owned-count" aria-live="polite">You own 0 of {n}</span>
         </div>
+        <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">{escape(wid)}</span></p>
         <div class="wave-actions">
           <button type="button" class="btn btn-sm" id="print-checklist">Print checklist</button>
           <a class="btn btn-sm" href="index.html">← All waves</a>

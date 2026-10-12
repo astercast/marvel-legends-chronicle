@@ -26,9 +26,13 @@ export function escapeHtml(s) {
 }
 
 /* Character pages (characters/<slug>.html) — lazy index so the dialog can link
-   "Every <character> release →" when one exists. */
+   "Every <character> release →" when one exists.
+   Resolved against this module's own URL (always <root>/assets/js/) so the
+   fetch works at any page depth — a document-relative "characters/…"
+   path 404s on characters/*.html. */
 const charIndex = new Map();
-fetch("characters/manifest.json")
+const manifestUrl = new URL("../../characters/manifest.json", import.meta.url);
+fetch(manifestUrl)
   .then((r) => (r.ok ? r.json() : []))
   .then((m) => {
     for (const c of m) charIndex.set(String(c.name).toLowerCase(), c.slug);
