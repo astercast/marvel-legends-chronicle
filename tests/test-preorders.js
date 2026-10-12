@@ -2,8 +2,11 @@ import { suite, test, assert } from "./assert.js";
 import {
   parseYMD, todayStr, daysBetween, preorderCountdown, countdownText, itemStatus,
   monthKey, itemsByMonth, undatedItems, calendarMonths, monthMatrix, itemsOnDay,
-  inWindow, isValidState, retailerById, giftReady,
+  inWindow, isValidState, retailerById, giftReady, upcomingPreorders,
 } from "../assets/js/preorders.js";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 
 const item = (over = {}) => ({
   id: "x", name: "Test Wave", status: "preorder", preorderDate: null,
@@ -191,5 +194,49 @@ suite("preorders: gift-ready flags", () => {
     assert(!giftReady(item({ price: 54.99 })), "over $35 is not a budget gift");
     assert(!giftReady(item({ price: "27.99" })), "string prices never flag");
     assert(!giftReady(null), "null-safe");
+  });
+});
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+
+suite("preorders: upcomingPreorders (quest pre-order alerts)", () => {
+  const TODAY = "2026-10-11";
+
+  test("returns only preorder-status items with dates in the window, soonest first", () => {
+    const items = [
+      item({ id: "a", preorderDate: "2026-10-14" }),
+      item({ id: "b", preorderDate: "2026-10-21" }),
+      item({ id: "c", preorderDate: "2026-11-10" }),
+      item({ id: "d", preorderDate: "2026-10-10" }), // yesterday — already open, not an alert
+      item({ id: "e", preorderDate: null }),         // announced, no date — never an alert
+      item({ id: "f", status: "revealed", preorderDate: null }),
+      item({ id: "g", status: "available", preorderDate: "2026-10-14" }),
+      item({ id: "h", preorderDate: "junk" }),
+    ];
+    assert.deepEqual(upcomingPreorders(items, TODAY).map((i) => i.id), ["a", "b", "c"]);
+  });
+
+  test("default 30-day window; custom window narrows it", () => {
+    const items = [item({ id: "a", preorderDate: "2026-10-14" }), item({ id: "b", preorderDate: "2026-11-20" })];
+    assert.deepEqual(upcomingPreorders(items, TODAY, 30).map((i) => i.id), ["a"]);
+    assert.deepEqual(upcomingPreorders(items, TODAY, 60).map((i) => i.id), ["a", "b"]);
+  });
+
+  test("today counts as day 0; empty and null-safe", () => {
+    assert.deepEqual(upcomingPreorders([item({ id: "t", preorderDate: TODAY })], TODAY).map((i) => i.id), ["t"]);
+    assert.deepEqual(upcomingPreorders([], TODAY), []);
+    assert.deepEqual(upcomingPreorders(null, TODAY), []);
+  });
+
+  test("real data on 2026-10-11: exactly the three Oct pre-order windows", () => {
+    const data = JSON.parse(readFileSync(join(ROOT, "data", "preorders.json"), "utf8"));
+    const got = upcomingPreorders(data.items, TODAY).map((i) => i.id);
+    assert.deepEqual(got, [
+      "doomsday-wave-2",
+      "xmen97-retro-wave",
+      "astonishing-cyclops-wolverine-2pack",
+    ], `alerts: ${got.join(", ")}`);
+    assert(!got.includes("yfns-spidey-rhino-2pack"), "revealed YFNS 2-pack (no pre-order date) stays out");
+    assert(!got.includes("maximum-symbiote-spiderman"), "undated Maximum Symbiote reveal stays out");
   });
 });

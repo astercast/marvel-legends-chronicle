@@ -107,7 +107,7 @@ suite("agent workflows (AGENT.md, real api/v1 data)", () => {
   test("W1: pre-order plan from preorders.json", () => {
     const plan = preorderPlan(preorders, "2026-10-11");
     assert.equal(plan.asOf, "2026-10-11");
-    assert.equal(preorders.count, 20, "dataset has 20 researched items (15 wave-12 + 5 NYCC 2026)");
+    assert.equal(preorders.count, 21, "dataset has 21 researched items (15 wave-12 + 5 NYCC 2026 + 1 wave-24 reveal)");
     const xmen97 = plan.upcoming30.find((u) => u.id === "xmen97-retro-wave");
     assert(xmen97, "X-Men '97 retro wave is upcoming");
     assert.equal(xmen97.daysUntil, 10, "2026-10-21 is 10 days after 2026-10-11");

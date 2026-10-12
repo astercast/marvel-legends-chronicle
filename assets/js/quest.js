@@ -8,7 +8,7 @@
    user-reported.
    The pure logic is exported for the test suite (tests/test-quest.js); the
    page wiring lives at the bottom of this file. */
-import { STORE_KEYS } from "./config.js";
+import { STORE_KEYS, PATHS } from "./config.js";
 import { load } from "./store.js";
 import { loadData, figureById } from "./data.js";
 import { buildBafs } from "./baf-planner.js";
@@ -16,6 +16,9 @@ import { escapeHtml, badgeFor } from "./figure-dialog.js";
 import { marketplaceQuery, soldSearchUrl } from "./listings.js";
 import { owned, trackerButtons } from "./tracker.js";
 import { buildQuestShareText } from "./quest-share.js";
+import {
+  upcomingPreorders, countdownText, preorderCountdown, money, todayStr,
+} from "./preorders.js";
 import {
   CONVENTION_EXCLUSIVES, isChase, isRetro, isToyBiz, isVariant,
   isConventionExclusive, baseName, runKey, costTier, COST_TIER_LABELS,
@@ -54,6 +57,8 @@ const els = {
   recBaf: document.getElementById("rec-baf"),
   recCheap: document.getElementById("rec-cheap"),
   recGrail: document.getElementById("rec-grail"),
+  alertSub: document.getElementById("alerts-sub"),
+  alertList: document.getElementById("alerts-list"),
   achCount: document.getElementById("ach-count"),
   achGrid: document.getElementById("ach-grid"),
   shareText: document.getElementById("share-text"),
@@ -148,6 +153,46 @@ function achievementCard(a) {
       <p class="quest-prog">${a.unlocked ? "Unlocked ✓" : `${a.got} of ${a.need}`}</p>
     </div>`;
   return card;
+}
+
+/* Pre-order alerts: confirmed pre-order dates opening in the next 30 days.
+   Read from data/preorders.json, not from archive data — announced-but-unreleased
+   items live on the pre-order layer, never in the archive waves. */
+async function renderAlerts() {
+  if (!els.alertList) return;
+  els.alertList.innerHTML = "";
+  els.alertSub.textContent = "";
+  let items;
+  try {
+    const res = await fetch(PATHS.preorders);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const raw = await res.json();
+    items = raw.items ?? raw ?? [];
+  } catch {
+    els.alertSub.textContent = "Pre-order data couldn't be loaded right now — the full tracker is at the pre-order page.";
+    return;
+  }
+  const today = todayStr();
+  const upcoming = upcomingPreorders(items, today, 30);
+  if (upcoming.length === 0) {
+    els.alertSub.textContent = "No confirmed pre-order dates in the next 30 days.";
+    els.alertList.innerHTML = `<p class="chart-sub" style="margin:0">Announced-but-undated items are on the <a href="preorders.html">pre-order tracker</a> — they open whenever Hasbro says so, and the dates there are reported, never invented.</p>`;
+    return;
+  }
+  els.alertSub.textContent = `${upcoming.length} confirmed pre-order ${upcoming.length === 1 ? "date" : "dates"} in the next 30 days — your quest clock starts here.`;
+  for (const item of upcoming) {
+    const row = document.createElement("div");
+    row.className = "missing-row";
+    const price = money(item.price);
+    const cd = preorderCountdown(item, today);
+    row.innerHTML = `
+      <div class="missing-info">
+        <span class="missing-name">${escapeHtml(item.name)}</span>
+        <span class="missing-wave">${escapeHtml(countdownText(cd))}${price ? ` · ${escapeHtml(price)} MSRP` : ""}</span>
+      </div>
+      <div class="missing-links"><a href="preorders.html">Pre-order tracker</a></div>`;
+    els.alertList.appendChild(row);
+  }
 }
 
 function renderAll(figures, waves) {
@@ -251,6 +296,7 @@ async function init() {
   try {
     const { figures, waves } = await loadData();
     renderAll(figures, waves);
+    renderAlerts().catch(() => {});
     /* Re-render when tracker toggles fire (owned set changed). */
     els.main.addEventListener("click", (e) => {
       if (e.target.closest(".tracker-btns")) {

@@ -86,6 +86,22 @@ export function itemStatus(item, today) {
   return { key: "announced", label: "Announced", detail: `pre-order date not reported yet${win}` };
 }
 
+/**
+ * Pre-order alerts: items with a confirmed pre-order date opening within
+ * daysAhead days from today (inclusive), status "preorder", sorted by date.
+ * Items with no date (announced but undated) are never included — the date
+ * was never reported, and inventing an alert window for them would be a lie.
+ */
+export function upcomingPreorders(items, today, daysAhead = 30) {
+  const list = (items ?? []).filter((i) =>
+    i && i.status === "preorder" && i.preorderDate && parseYMD(i.preorderDate));
+  return list
+    .map((i) => ({ item: i, days: daysBetween(today, i.preorderDate) }))
+    .filter((e) => e.days !== null && e.days >= 0 && e.days <= daysAhead)
+    .sort((a, b) => a.days - b.days)
+    .map((e) => e.item);
+}
+
 /** "YYYY-MM" key for an ISO date, or null. */
 export function monthKey(ymd) {
   const p = parseYMD(ymd);

@@ -49,7 +49,7 @@ Read this before touching any endpoint or skill.
 | `api/v1/waves.json` | 158 wave summaries: `id`, `year`, `manufacturer`, `series`, `baf` (nullable), `source` (nullable), `figureCount` | `api/v1/schema/waves.json` → item `api/v1/schema/wave.json` |
 | `api/v1/figures.json` | 1,904 figures, flat, with wave context. Stable id `<waveId>::<figureName>` (e.g. `toybiz-2002-series-1::Hulk`). Filter by `year`, `manufacturer`, `waveId`, `exclusive`, `variant`, `bafPiece`. Join to waves on `waveId` ↔ `id`. | `api/v1/schema/figures.json` → item `api/v1/schema/figure.json` |
 | `api/v1/encyclopedia.json` | Collector knowledge: `history`, `packagingGuide`, `variantsGuide`, `hallOfFame` (23 entries, each with `reissueRadar` + `verified`), `gradingGuide`, `priceMethod` (the sold-listings methodology), `bootlegGuide` (six checklists), `resources` | `api/v1/schema/encyclopedia.json` |
-| `api/v1/preorders.json` | 20 researched upcoming releases: `status` (`preorder`/`revealed`/`available`), exact `preorderDate` (`YYYY-MM-DD`, `null` when unreported), `releaseWindow`, `price` (announced MSRP, never market), `retailers`, `sources` | `api/v1/schema/preorders.json` → item `api/v1/schema/preorder.json` |
+| `api/v1/preorders.json` | 21 researched upcoming releases: `status` (`preorder`/`revealed`/`available`), exact `preorderDate` (`YYYY-MM-DD`, `null` when unreported), `releaseWindow`, `price` (announced MSRP, never market), `retailers`, `sources` | `api/v1/schema/preorders.json` → item `api/v1/schema/preorder.json` |
 | `api/v1/characters.json` | 66 character guides: `slug`, `name`, `count`, `first`, `last`, `page` (`characters/<slug>.html`) | `api/v1/schema/characters.json` → item `api/v1/schema/character.json` |
 | `api/v1/timeline.json` | The Legends Timeline: 25 year records (2002–2026) — `era`, `headline`, `summary`, sourced `milestones`, `packaging` notes, per-year `waves` (real archive ids + pages), `spotlight` figure ids; envelope carries the 5 `packagingEras` | `api/v1/schema/timeline.json` → item `api/v1/schema/timeline-year.json` |
 | `api/v1/rarity.json` | The Rarity Guide: 9 tier records (chase, running-change, deco, unmasked, convention, retailer, Pulse/Fan Channel, HasLab, made-to-order) — `body`, `howToSpot`, `valueNote` (reported prices only), `archiveSignal`, `questAchievement`, `examples` (real figure `id`s + `waveId`/`year`/`wavePage`), `sources[]`; envelope carries `archiveCounts` + `methodology` + `crossCutting` | `api/v1/schema/rarity.json` → item `api/v1/schema/rarity-tier.json` |
@@ -95,7 +95,7 @@ against the real local `api/v1` JSON.
 
 ### Workflow A — "What should I pre-order this month?"
 
-1. Load `api/v1/preorders.json` (20 researched items, observed 2026-10-11).
+1. Load `api/v1/preorders.json` (21 researched items, observed 2026-10-11).
 2. Split by status + date honesty:
    - `status === "preorder"` with an exact `preorderDate` → actionable.
      `preorderDate <= today` = open now; within 30 days = upcoming.
