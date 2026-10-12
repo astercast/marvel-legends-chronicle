@@ -12,6 +12,9 @@ import {
   DAY_MS, dropTimeMs, countdownParts, formatCountdown, timeToDrop,
   dropStatus, statusLabel, sortDrops, nextDrop, newPlan, planState,
   cyclePlanState, planCounts, planTotals, buildPlanShareText, PLAN_KEY,
+  formatWindowLocal, toggleCheck, checklistProgress, CHECKLIST_KEY,
+  makeSighting, addSighting, removeSighting, priceLanes, priceVerdict,
+  fmtMoney, PRICES_KEY, SIGHTING_KINDS,
 } from "../assets/js/drop-command.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -141,7 +144,8 @@ suite("drop-command: real data integrity", () => {
     }
   });
   test("no invented prices: every $N is a researched, allowed amount", () => {
-    const allowed = new Set(["27.99", "74.99", "39.97", "55", "69.95", "46.99", "47.99", "64.99", "39.99"]);
+    const allowed = new Set(["27.99", "74.99", "39.97", "55", "69.95", "46.99", "47.99", "64.99", "39.99",
+                             "83.97", "79.99", "25.99", "40.99", "52.99", "30"]);
     const blob = JSON.stringify(data);
     for (const m of blob.matchAll(/\$(\d[\d,]*(?:\.\d{2})?)/g)) {
       assert(allowed.has(m[1].replace(/,/g, "")), `unlisted amount $${m[1]}`);
@@ -159,7 +163,10 @@ suite("drop-command: real data integrity", () => {
   test("api payload mirrors the data file", () => {
     assert(api.count === data.drops.length, "count matches");
     assert(JSON.stringify(api.drops) === JSON.stringify(data.drops), "drops deep-equal");
-    assert(api.observed === "2026-10-11", "observed date");
+    assert(api.observed === "2026-10-12", "observed date (Oct 12 radar poll refresh)");
+    assert(JSON.stringify(api.checklist) === JSON.stringify(data.checklist), "checklist deep-equal");
+    assert(JSON.stringify(api.priceWatch) === JSON.stringify(data.priceWatch), "priceWatch deep-equal");
+    assert(JSON.stringify(api.radarPoll) === JSON.stringify(data.radarPoll), "radarPoll deep-equal");
   });
   test("rumor watch is flagged uncertain, never presented as confirmed", () => {
     const rw = data.intel.rumorWatch;
@@ -168,16 +175,144 @@ suite("drop-command: real data integrity", () => {
   });
 });
 
+suite("drop-command: flagship refresh — countdown precision", () => {
+  test("the Oct 14 window is exactly 17:00 UTC (1 PM ET)", () => {
+    const d2 = data.drops.find((d) => d.id === "doomsday-wave-2");
+    assert(dropTimeMs(d2) === Date.UTC(2026, 9, 14, 17, 0, 0),
+      `got ${new Date(dropTimeMs(d2)).toISOString()}`);
+  });
+  test("countdown carries seconds and formats them", () => {
+    const p = countdownParts(3600000 + 14 * 60000 + 9000);
+    assert(p.hours === 1 && p.mins === 14 && p.secs === 9, JSON.stringify(p));
+    assert(formatCountdown(p) === "1h 14m 9s", formatCountdown(p));
+    const t = timeToDrop(drop(), T0 - 90000);
+    assert(!t.past && t.mins === 1 && t.secs === 30, JSON.stringify(t));
+  });
+  test("formatCountdown without a secs field stays the short form (back-compat)", () => {
+    assert(formatCountdown({ days: 3, hours: 4, mins: 12 }) === "3d 4h 12m", "pinned form");
+  });
+  test("formatWindowLocal converts the window to the reader's clock", () => {
+    const la = formatWindowLocal("2026-10-14T13:00:00-04:00", "en-US", "America/Los_Angeles");
+    assert(la.includes("Oct 14") && la.includes("10:00 AM"), `LA: ${la}`);
+    const lon = formatWindowLocal("2026-10-14T13:00:00-04:00", "en-GB", "Europe/London");
+    assert(lon.includes("18:00") || lon.includes("6:00"), `London: ${lon}`);
+    assert(formatWindowLocal("not-a-date") === "", "bad input → empty");
+  });
+});
+
+suite("drop-command: buyer checklist", () => {
+  test("toggleCheck flips and clears, progress counts", () => {
+    let s = {};
+    s = toggleCheck(s, "alarm");
+    assert(s.alarm === true, "ticked");
+    const items = [{ id: "alarm" }, { id: "tabs" }];
+    assert(checklistProgress(s, items).done === 1, "1 of 2");
+    s = toggleCheck(s, "alarm");
+    assert(!("alarm" in s), "untick removes the key");
+    assert(checklistProgress(s, items).done === 0, "0 of 2");
+  });
+  test("real checklist: 10 items, unique ids, phases cover the whole window arc", () => {
+    const ck = data.checklist;
+    assert(ck.length === 10, `10 items, got ${ck.length}`);
+    assert(new Set(ck.map((i) => i.id)).size === 10, "unique ids");
+    const phases = new Set(ck.map((i) => i.phase));
+    for (const p of ["before", "morning", "at-open", "after"]) {
+      assert(phases.has(p), `phase ${p} present`);
+    }
+    for (const i of ck) assert(i.label.length > 10 && i.detail.length > 20, `${i.id} has real copy`);
+  });
+  test("checklist ceiling math is honest: 3 x $27.99 = $83.97", () => {
+    const ceiling = data.checklist.find((i) => i.id === "ceiling");
+    assert(ceiling.label.includes("$83.97"), "label carries the total");
+    assert(Math.abs(3 * 27.99 - 83.97) < 0.001, "math checks");
+  });
+});
+
+suite("drop-command: price tracker lanes never mix", () => {
+  const sight = (over = {}) => makeSighting({
+    id: "s1", figure: "Nightcrawler", kind: "asking", price: 45, where: "eBay", date: "2026-10-14", ...over,
+  });
+  test("makeSighting validates kind/price/figure", () => {
+    assert(sight() !== null, "valid sighting passes");
+    assert(makeSighting({ figure: "X", kind: "asking", price: 0 }) === null, "zero price rejected");
+    assert(makeSighting({ figure: "X", kind: "mixed", price: 10 }) === null, "no third lane exists");
+    assert(makeSighting({ figure: "", kind: "sold", price: 10 }) === null, "figure required");
+    assert(SIGHTING_KINDS.join(",") === "asking,sold", "exactly two lanes");
+  });
+  test("priceLanes summarizes asking and sold strictly separately", () => {
+    let list = [];
+    list = addSighting(list, { id: "a", figure: "Nightcrawler", kind: "asking", price: 45, date: "2026-10-14" });
+    list = addSighting(list, { id: "b", figure: "Nightcrawler", kind: "asking", price: 39.5, date: "2026-10-14" });
+    list = addSighting(list, { id: "c", figure: "Nightcrawler", kind: "sold", price: 60, date: "2026-10-15" });
+    list = addSighting(list, { id: "d", figure: "Marvel's Beast", kind: "sold", price: 20, date: "2026-10-15" });
+    const lanes = priceLanes(list, "Nightcrawler");
+    assert(lanes.asking.count === 2 && lanes.asking.low === 39.5 && lanes.asking.high === 45,
+      `asking ${JSON.stringify(lanes.asking)}`);
+    assert(lanes.sold.count === 1 && lanes.sold.low === 60 && lanes.sold.high === 60,
+      `sold ${JSON.stringify(lanes.sold)} — the $60 sold must NOT leak into asking`);
+    const empty = priceLanes(list, "Lord Doom (Concept Series)");
+    assert(empty.asking.count === 0 && empty.sold.low === null, "empty lanes are null, not zero");
+    list = removeSighting(list, "c");
+    assert(priceLanes(list, "Nightcrawler").sold.count === 0, "removal works");
+  });
+  test("priceVerdict never calls an asking price a sale", () => {
+    const markup = priceVerdict({ asking: { count: 1, low: 45, high: 45 }, sold: { count: 0, low: null, high: null } }, 27.99);
+    assert(markup.includes("over MSRP") && markup.includes("not a sale"), markup);
+    const soldLow = priceVerdict({ asking: { count: 0, low: null, high: null }, sold: { count: 1, low: 25, high: 25 } }, 27.99);
+    assert(soldLow.includes("Reported solds"), soldLow);
+    assert(fmtMoney(27.99) === "$27.99" && fmtMoney(null) === "—", "money formatting");
+  });
+  test("real priceWatch: figures match the drop, MSRPs pinned, context is Wave 1 solds", () => {
+    const pw = data.priceWatch;
+    const dropFigs = data.drops.find((d) => d.id === pw.dropId).figures.map((f) => f.name);
+    assert(pw.figures.map((f) => f.name).join("|") === dropFigs.join("|"), "same figures, same order");
+    assert(pw.figures.every((f) => f.msrp === 27.99), "all $27.99 announced");
+    assert(pw.note.includes("never blended"), "lane rule stated in the data");
+    assert(pw.context.length === 2 && pw.context.every((c) => c.text.includes("sold") || c.text.includes("presale")),
+      "context cites reported solds/presales only");
+  });
+});
+
+suite("drop-command: reveal radar poll (Oct 12)", () => {
+  test("poll findings are flagged and sourced, newest first-class", () => {
+    const poll = data.radarPoll;
+    assert(poll.polledAt === "2026-10-12", "poll date");
+    assert(poll.findings.length === 5, `5 findings, got ${poll.findings.length}`);
+    for (const f of poll.findings) {
+      assert(["confirmed", "reported", "single-source", "uncertain"].includes(f.flag), `flag ${f.flag}`);
+      assert(f.sources.length > 0 && f.sources.every((s) => /^https?:\/\//.test(s.url)), `${f.headline}: sources`);
+    }
+  });
+  test("the window reconfirmation leads, the Venom Spider-Man reveal is single-source", () => {
+    const poll = data.radarPoll;
+    assert(poll.findings[0].flag === "confirmed" && poll.findings[0].headline.includes("Oct 14"), "lead finding");
+    const venom = poll.findings.find((f) => f.headline.includes("Venom Spider-Man"));
+    assert(venom && venom.flag === "single-source", "Venom filed as candidate, not fact");
+  });
+  test("the $30 price-rise chatter is flagged uncertain, never adopted", () => {
+    const f = data.radarPoll.findings.find((x) => x.flag === "uncertain");
+    assert(f && f.detail.includes("$30") && f.detail.includes("$27.99"), "rumor vs announced price both named");
+    const d2 = data.drops.find((d) => d.id === "doomsday-wave-2");
+    assert(d2.price.text.includes("$27.99"), "the drop keeps the announced price");
+  });
+});
+
 suite("drop-command: page + storage", () => {
   test("page has breadcrumb, rail, sections, and plan controls", () => {
     for (const id of ["dw-section-drops", "dw-section-intel", "dw-section-plan",
                       "dw-section-rumors", "dw-section-method", "dw-drops",
                       "dw-plan-count", "dw-copy-plan", "dw-clear-plan",
-                      "dw-copy-status", "dw-method-body", "drop-root"]) {
+                      "dw-copy-status", "dw-method-body", "drop-root",
+                      "dw-section-checklist", "dw-checklist", "dw-check-progress", "dw-check-reset",
+                      "dw-section-prices", "dw-price-rows", "dw-price-note", "dw-price-msrp-note",
+                      "dw-price-context", "dw-price-fig", "dw-price-kind", "dw-price-amount",
+                      "dw-price-where", "dw-price-date", "dw-price-add", "dw-price-status",
+                      "dw-price-list", "dw-section-radar", "dw-radar-poll"]) {
       assert(page.includes(`id="${id}"`), `page has #${id}`);
     }
     assert(page.includes('aria-label="Breadcrumb"'), "breadcrumb nav");
     assert(page.includes('aria-label="On this page"'), "wayfinding rail");
+    assert(page.includes("17:00 UTC"), "hero states the window in UTC");
   });
   test("rail links all resolve to real section anchors", () => {
     const rail = page.split('aria-label="On this page"')[1].split("</nav>")[0];
@@ -200,5 +335,9 @@ suite("drop-command: page + storage", () => {
   test("storage key registered in config.js", () => {
     assert(PLAN_KEY === "mlc_dropweek_v1", `PLAN_KEY is ${PLAN_KEY}`);
     assert(configJs.includes('"mlc_dropweek_v1"'), "registered in config.js");
+    assert(CHECKLIST_KEY === "mlc_dropweek_checklist_v1", `CHECKLIST_KEY is ${CHECKLIST_KEY}`);
+    assert(PRICES_KEY === "mlc_dropweek_prices_v1", `PRICES_KEY is ${PRICES_KEY}`);
+    assert(configJs.includes('"mlc_dropweek_checklist_v1"'), "checklist key registered");
+    assert(configJs.includes('"mlc_dropweek_prices_v1"'), "prices key registered");
   });
 });

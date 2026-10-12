@@ -24,6 +24,18 @@
     },
     "drops": {
       "type": "array"
+    },
+    "intel": {
+      "type": "object"
+    },
+    "checklist": {
+      "type": "array"
+    },
+    "priceWatch": {
+      "type": "object"
+    },
+    "radarPoll": {
+      "type": "object"
     }
   }
 }

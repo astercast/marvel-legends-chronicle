@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "observed": "2026-10-11",
-  "methodology": "Every figure, date, price, and retailer below comes from the October 2026 research sweep (NYCC 2026 final-day panel coverage + September Fanstream + Hasbro Pulse product listings), cross-checked against the Chronicle's own pre-order tracker. Prices are announced MSRPs or reported listings, never market predictions. Items flagged [single-source] have one named source; items flagged [uncertain] are rumors. Observed 2026-10-11 \u2014 windows can move; check the pre-order tracker for the latest status.",
+  "observed": "2026-10-12",
+  "methodology": "Every figure, date, price, and retailer below comes from the October 2026 research sweep (NYCC 2026 final-day panel coverage + September Fanstream + Hasbro Pulse product listings), cross-checked against the Chronicle's own pre-order tracker, and re-polled on Oct 12, 2026 (see the Reveal Radar poll). Prices are announced MSRPs or reported listings, never market predictions. Items flagged [single-source] have one named source; items flagged [uncertain] are rumors. Observed 2026-10-12 \u2014 windows can move; check the pre-order tracker for the latest status.",
   "count": 5,
   "drops": [
     {
@@ -239,5 +239,242 @@
       "windowAt": "2026-11-20T23:59:00-05:00",
       "windowLabel": "11:59 PM ET \u00b7 Fri Nov 20, 2026 \u2014 order window closes"
     }
-  ]
+  ],
+  "intel": {
+    "koWatch": [
+      "Maximum Spider-Man KO listings continue on AliExpress, distinguished from the official Maximum Symbiote Spider-Man shown at the NYCC showcase \u2014 check the Auth Wizard's KO tells before buying loose.",
+      "No new 2026 counterfeit wave has been documented since Oct 1.",
+      "The X-Men '97 Cyclops has documented KO video reviews \u2014 buy this wave at retail or Pulse."
+    ],
+    "price": [
+      {
+        "text": "Standard 6\" single-figure MSRP is $27.99 \u2014 unchanged across every 2026 reveal found. No 2026 price increase detected (Marvel Toy News, 2026-09-28: 'the typical MSRP right now')."
+      },
+      {
+        "text": "On sale now at Walmart (Doomsday Fantastic Four exclusives, no pre-order was offered): Mister Fantastic & H.E.R.B.I.E. $39.97 \u00b7 Invisible Woman & Human Torch 2-pack $55 \u00b7 The Thing $69.95."
+      },
+      {
+        "text": "Target exclusives live: Spider-Man 'Final Swing' (No Way Home) $27.99 pre-orders live \u00b7 X-Men Cypher (retro cardback, New Mutants) $27.99 pre-orders live \u00b7 X-Men Onslaught 8\" $39.99 announced [single-source]."
+      },
+      {
+        "text": "Super-Skrull reissue up for pre-order at BigBadToyStore / Entertainment Earth at $46.99\u2013$47.99, ships Oct\u2013Nov 2026 [single-source]."
+      },
+      {
+        "text": "Gargantos (Marvel Games, Player 2 colorway) $64.99 pre-order live at Pulse, ships early Dec 2026."
+      }
+    ],
+    "rumorWatch": {
+      "items": [
+        "Marvel Rivals: Luna Snow & Spider-Man 2-pack",
+        "Marvel Rivals: Jeff & Venom 2-pack",
+        "Marvel Rivals: Moon Knight & Punisher",
+        "Ghost Rider",
+        "Lady Deadpool",
+        "Psylocke (puffy-sleeves version)",
+        "Cloak & Dagger",
+        "Maximum Thor",
+        "Avengers: The Crossing \u2014 Scarlet Witch & Vision",
+        "Walmart-exclusive Punisher (version unknown)"
+      ],
+      "note": "Leaks are thin this cycle and everything below is [uncertain] until Hasbro confirms. A translated-Chinese-listings thread (Toyark forums, ~May 2026) correctly predicted much of what has since been confirmed \u2014 including the Doomsday wave and X-Men '97 elements \u2014 which lends the source credibility, but each item stays a rumor until announced.",
+      "sources": [
+        {
+          "label": "Toyark forums \u2014 new Marvel Legends 6\" appreciation thread (crowd-sourced, uncertain)",
+          "url": "https://www.toyark.com/forums/new-marvel-legends-6-appreciation-thread-112921-page3325/"
+        }
+      ]
+    },
+    "scarcity": [
+      {
+        "sources": [
+          {
+            "internal": true,
+            "label": "GamesRadar (via Chronicle market briefing, observed 2026-10-11)",
+            "url": "market-briefing.html"
+          }
+        ],
+        "text": "Doomsday wave-1 figures (Doom, Cyclops, Gambit) sold out at retailers within hours of the August launch."
+      },
+      {
+        "sources": [
+          {
+            "internal": true,
+            "label": "Chronicle pre-order window check, observed 2026-10-11",
+            "url": "market-briefing.html#alert-accuracy-h"
+          }
+        ],
+        "text": "Pulse UK showed Cyclops at \u00a327.99 as 'Sold Out' in an Oct 11 snapshot \u2014 the '97 suit Cyclops demand is real."
+      },
+      {
+        "sources": [
+          {
+            "internal": true,
+            "label": "Marvelous News forum post (single source, via Chronicle research)",
+            "url": "preorders.html"
+          }
+        ],
+        "text": "Pulse listings have lagged before: on the Oct 6 Mini Comics Wave 3 launch day, the Pulse listing trailed other retailers (per a Marvelous News forum post \u2014 single source). If Pulse looks empty at 1 PM, check Amazon and the participating retailers."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "targets",
+      "phase": "before",
+      "label": "Pick your targets \u2014 and only your targets",
+      "detail": "Three figures in this wave. Mark each one in your battle plan (tap a figure on its drop card below) so tomorrow is execution, not deliberation."
+    },
+    {
+      "id": "ceiling",
+      "phase": "before",
+      "label": "Set your ceiling at MSRP: $27.99 a figure, $83.97 for all three",
+      "detail": "That is the announced price for this wave. Anything above it at 1 PM is a markup wearing a retail costume \u2014 walk to the next retailer instead of paying it."
+    },
+    {
+      "id": "accounts",
+      "phase": "before",
+      "label": "Sign in everywhere tonight, not at 12:59 tomorrow",
+      "detail": "Hasbro Pulse and Amazon, payment method and shipping address saved on both. A checkout queue is no place to be typing a card number."
+    },
+    {
+      "id": "backups",
+      "phase": "before",
+      "label": "Line up the backup doors",
+      "detail": "BigBadToyStore and Entertainment Earth are also carrying the wave (named in Oct 12 coverage). Open their search pages tonight so tomorrow is one click, not a search."
+    },
+    {
+      "id": "alarm",
+      "phase": "before",
+      "label": "Set the alarm for 12:45 PM ET",
+      "detail": "Fifteen minutes early is the whole game. Every 2026 window in this sequence has opened at 1 PM ET sharp."
+    },
+    {
+      "id": "tabs",
+      "phase": "morning",
+      "label": "Tabs open by 12:50 PM ET, in attack order",
+      "detail": "Lord Doom first \u2014 a Doom in a movie wave, and Wave 1's Doom sold out at retailers within hours of the August launch. Then Nightcrawler, then Beast."
+    },
+    {
+      "id": "lag-rule",
+      "phase": "morning",
+      "label": "Know the Pulse-lag rule before you need it",
+      "detail": "On the Oct 6 Mini Comics launch, the Pulse listing trailed other retailers (single source). If Pulse shows nothing at 1 PM, that is a lag, not a sellout \u2014 check Amazon before you panic."
+    },
+    {
+      "id": "read-price",
+      "phase": "at-open",
+      "label": "Read the price before you confirm \u2014 once, carefully",
+      "detail": "The listing should say $27.99. If it says more, you are looking at a marketplace seller, not the wave. Back out and use a backup tab. (One aggregator claims prices may rise toward $30 \u2014 unconfirmed; the live listing is the only verdict. See the radar poll below.)"
+    },
+    {
+      "id": "save-confirmation",
+      "phase": "at-open",
+      "label": "Save the confirmation screen",
+      "detail": "Order number, per-figure price paid, retailer. Then log what you paid in the price tracker below \u2014 receipts like yours are how the next wave's tracker stays honest."
+    },
+    {
+      "id": "no-chase",
+      "phase": "after",
+      "label": "If you miss, do not chase a presale above MSRP",
+      "detail": "Wave 1 taught this in public: Gambit sold at $79.99 on Sep 24 and was a $25.99 presale by Oct 9. Restocks and the Spring 2027 retail release beat the launch-week premium."
+    }
+  ],
+  "priceWatch": {
+    "dropId": "doomsday-wave-2",
+    "note": "Three lanes, never blended: what Hasbro announced, what sellers are asking, and what buyers have actually paid in reported solds. Before the window opens, the asking and sold lanes for this wave are empty \u2014 that is the honest state of the record, not a gap in it.",
+    "msrpNote": "Announced MSRP per the Chronicle pre-order tracker, re-checked Oct 12, 2026. Hasbro's own press copy for this wave lists no price \u2014 if a live listing disagrees at 1 PM tomorrow, the listing wins and this tracker gets corrected.",
+    "figures": [
+      {
+        "name": "Marvel's Beast",
+        "msrp": 27.99
+      },
+      {
+        "name": "Nightcrawler",
+        "msrp": 27.99
+      },
+      {
+        "name": "Lord Doom (Concept Series)",
+        "msrp": 27.99
+      }
+    ],
+    "context": [
+      {
+        "figure": "Gambit \u2014 Doomsday Wave 1",
+        "text": "Reported eBay solds peaked at $79.99 on Sep 24, 2026, then cooled through six straight readings to a $25.99 presale on Oct 9 \u2014 under MSRP inside six weeks."
+      },
+      {
+        "figure": "Cyclops \u2014 Doomsday Wave 1",
+        "text": "Reported solds peaked at $64.99 on Sep 25, 2026 and sat at $40.99\u2013$52.99 by Oct 3\u20134 \u2014 cooling toward the same $27.99 MSRP this wave carries."
+      }
+    ],
+    "contextSource": {
+      "label": "actionfigure411 sold trackers, charted on the Chronicle Launch Curve",
+      "url": "launch-curve.html"
+    }
+  },
+  "radarPoll": {
+    "polledAt": "2026-10-12",
+    "polledNote": "Poll run Mon Oct 12, 2026, about 3:05 PM PDT (22:05 UTC): the radar scanner swept Toyark, Marvel Toy News, Bleeding Cool and Google News and filed 10 new candidates to the Reveal Radar; a hand check of the NYCC panel reports added two more. What matters for tomorrow:",
+    "findings": [
+      {
+        "flag": "confirmed",
+        "headline": "The Oct 14 window held everywhere",
+        "detail": "Every Oct 12 report repeats the same terms: pre-orders open Wed Oct 14 at 1 PM ET on Hasbro Pulse, Amazon and participating retailers, and the figures ship Spring 2027. No outlet reported a move, a delay, or a different hour.",
+        "sources": [
+          {
+            "label": "ScreenRant \u2014 the exclusive NYCC reveal write-up",
+            "url": "https://screenrant.com/marvel-legends-avengers-doomsday-x-men-97-figures/"
+          },
+          {
+            "label": "Laughing Place \u2014 Hasbro reveals at NYCC 2026",
+            "url": "https://www.laughingplace.com/disney-merchandise/hasbro-marvel-legends-star-wars-figures-nycc-2026/"
+          }
+        ]
+      },
+      {
+        "flag": "reported",
+        "headline": "Two more doors: BigBadToyStore and Entertainment Earth",
+        "detail": "Oct 12 coverage names both among the stores carrying the wave \u2014 worth having open as backups if Pulse lags at the open.",
+        "sources": [
+          {
+            "label": "Drezzed (Clownfish TV) \u2014 Hasbro reveals Lord Doom, Beast and Nightcrawler",
+            "url": "https://drezzed.clownfishtv.com/p/hasbro-reveals-lord-doom-beast-and"
+          }
+        ]
+      },
+      {
+        "flag": "single-source",
+        "headline": "New reveal at the panel's close: a Venom Spider-Man deluxe figure",
+        "detail": "The panel report ends with a comic-book Venom Spider-Man, described as a deluxe release due in 2027 \u2014 no images were shown. It is filed on the Reveal Radar as a candidate and joins the pre-order tracker only when a second source or Hasbro confirms it.",
+        "sources": [
+          {
+            "label": "Mephitsu \u2014 NYCC 2026 Hasbro Marvel Legends panel report",
+            "url": "https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel"
+          }
+        ]
+      },
+      {
+        "flag": "single-source",
+        "headline": "Doomsday Thor is shipping with a running change of likenesses",
+        "detail": "The panel noted alternate Thor likenesses already in distribution. If you own the Wave 1 Thor, check which head your copy has before anyone sells you a 'variant' at a premium.",
+        "sources": [
+          {
+            "label": "Mephitsu \u2014 NYCC 2026 Hasbro Marvel Legends panel report",
+            "url": "https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel"
+          }
+        ]
+      },
+      {
+        "flag": "uncertain",
+        "headline": "Price-rise chatter \u2014 unproven until the listings post",
+        "detail": "One aggregator write-up claims Hasbro mentioned standard singles rising toward $30 at NYCC. No panel report, press release, or retailer listing repeats it, and Hasbro's press copy for this wave lists no price at all. The tracker keeps the announced $27.99; the first live listings tomorrow settle the question.",
+        "sources": [
+          {
+            "label": "GhanaMMA aggregator write-up (unverified, single outlet)",
+            "url": "https://www.ghanamma.com/2026/10/12/avengers-figure-reveals-lord-doom-doomsday-concept-design-that-was-cut-from-the-film/"
+          }
+        ]
+      }
+    ]
+  }
 }

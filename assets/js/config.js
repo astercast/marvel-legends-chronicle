@@ -27,6 +27,8 @@ export const STORE_KEYS = {
   launchPrep: "mlc_launchprep_v1", // { <questId>: [bool] } — launch-day prep checklist ticks
   questDone: "mlc_quest_done_v1", // { <commissionId>: "YYYY-MM-DD" } — commissions already celebrated, so the ceremony fires once
   dropweek: "mlc_dropweek_v1", // { <dropId>: { <figName>: "want"|"ordered" } } — Drop Week battle plan
+  dropweekChecklist: "mlc_dropweek_checklist_v1", // { <checklistItemId>: true } — Drop Week buyer checklist ticks
+  dropweekPrices: "mlc_dropweek_prices_v1", // [{ id, figure, kind: "asking"|"sold", price, where, date, note }] — the user's own Drop Week price sightings, lanes never mixed
   motion: "mlc_motion_v1", // "reduce"|"auto" — manual motion preference for the vault identity (wave 33)
 };
 

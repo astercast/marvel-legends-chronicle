@@ -24,22 +24,50 @@ export function dropTimeMs(drop) {
   return null;
 }
 
-/** Split a non-negative ms span into days/hours/mins. */
+/** Split a non-negative ms span into days/hours/mins/secs. */
 export function countdownParts(ms) {
-  const total = Math.max(0, Math.floor(ms / 60000));
-  const days = Math.floor(total / 1440);
-  const hours = Math.floor((total % 1440) / 60);
-  const mins = total % 60;
-  return { days, hours, mins };
+  const totalSecs = Math.max(0, Math.floor(ms / 1000));
+  const days = Math.floor(totalSecs / 86400);
+  const hours = Math.floor((totalSecs % 86400) / 3600);
+  const mins = Math.floor((totalSecs % 3600) / 60);
+  const secs = totalSecs % 60;
+  return { days, hours, mins, secs };
 }
 
-/** "3d 4h 12m" — short countdown text. */
+/**
+ * "3d 4h 12m" — short countdown text. When the parts carry a `secs` field
+ * (everything produced by countdownParts/timeToDrop does), the seconds are
+ * shown too: on drop morning the last minute is the whole game.
+ */
 export function formatCountdown(parts) {
   const bits = [];
   if (parts.days > 0) bits.push(`${parts.days}d`);
   if (parts.hours > 0 || parts.days > 0) bits.push(`${parts.hours}h`);
   bits.push(`${parts.mins}m`);
+  if (typeof parts.secs === "number") bits.push(`${parts.secs}s`);
   return bits.join(" ");
+}
+
+/**
+ * The window moment in the reader's own timezone, e.g. "Wed, Oct 14, 10:00 AM PDT".
+ * 1 PM ET is not 1 PM everywhere, and drop day is the wrong day to do mental math.
+ */
+export function formatWindowLocal(iso, locale, timeZone) {
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return "";
+  const opts = {
+    weekday: "short", month: "short", day: "numeric",
+    hour: "numeric", minute: "2-digit", timeZoneName: "short",
+  };
+  if (timeZone) opts.timeZone = timeZone;
+  try {
+    return new Intl.DateTimeFormat(locale || undefined, opts).format(new Date(t));
+  } catch {
+    return new Intl.DateTimeFormat(undefined, {
+      weekday: "short", month: "short", day: "numeric",
+      hour: "numeric", minute: "2-digit", timeZoneName: "short",
+    }).format(new Date(t));
+  }
 }
 
 /**
@@ -50,9 +78,9 @@ export function timeToDrop(drop, nowMs = Date.now()) {
   const t = dropTimeMs(drop);
   if (t == null) return null;
   const diff = t - nowMs;
-  if (diff <= 0) return { past: true, days: 0, hours: 0, mins: 0 };
-  const { days, hours, mins } = countdownParts(diff);
-  return { past: false, days, hours, mins };
+  if (diff <= 0) return { past: true, days: 0, hours: 0, mins: 0, secs: 0 };
+  const { days, hours, mins, secs } = countdownParts(diff);
+  return { past: false, days, hours, mins, secs };
 }
 
 /**
@@ -180,6 +208,96 @@ export function buildPlanShareText(plan, drops, whenText) {
   return lines.join("\n").trimEnd();
 }
 
+/* ---- buyer checklist (user state) ---- */
+
+export const CHECKLIST_KEY = STORE_KEYS.dropweekChecklist;
+
+/** Checklist tick state: { [itemId]: true }. Unchecked ids are absent. */
+export function toggleCheck(state, itemId) {
+  const next = { ...(state || {}) };
+  if (next[itemId]) delete next[itemId];
+  else next[itemId] = true;
+  return next;
+}
+
+export function checklistProgress(state, items) {
+  const list = items || [];
+  const done = list.filter((i) => state && state[i.id]).length;
+  return { done, total: list.length };
+}
+
+/* ---- price tracker (user sightings) ----
+   The Chronicle's rule, enforced in code: asking prices and sold prices are
+   separate lanes and are never averaged, ranged, or summarized together. */
+
+export const PRICES_KEY = STORE_KEYS.dropweekPrices;
+
+export const SIGHTING_KINDS = ["asking", "sold"];
+
+/** Validate + normalize a sighting. Returns null when the entry is unusable. */
+export function makeSighting(raw) {
+  if (!raw || typeof raw !== "object") return null;
+  const price = Number(raw.price);
+  if (!raw.figure || !SIGHTING_KINDS.includes(raw.kind)) return null;
+  if (!Number.isFinite(price) || price <= 0 || price > 100000) return null;
+  return {
+    id: String(raw.id || ""),
+    figure: String(raw.figure),
+    kind: raw.kind,
+    price: Math.round(price * 100) / 100,
+    where: String(raw.where || "").slice(0, 80),
+    date: /^\d{4}-\d{2}-\d{2}$/.test(raw.date || "") ? raw.date : "",
+    note: String(raw.note || "").slice(0, 140),
+  };
+}
+
+export function addSighting(list, raw) {
+  const s = makeSighting(raw);
+  if (!s) return list;
+  return [...(list || []), s];
+}
+
+export function removeSighting(list, id) {
+  return (list || []).filter((s) => s.id !== id);
+}
+
+/**
+ * Per-figure price lanes. `asking` summarizes ONLY asking sightings, `sold`
+ * ONLY sold sightings — the two never touch. Empty lane = { count: 0, low: null, high: null }.
+ */
+export function priceLanes(sightings, figureName) {
+  const lane = (kind) => {
+    const ps = (sightings || [])
+      .filter((s) => s.figure === figureName && s.kind === kind)
+      .map((s) => s.price);
+    return ps.length
+      ? { count: ps.length, low: Math.min(...ps), high: Math.max(...ps) }
+      : { count: 0, low: null, high: null };
+  };
+  return { asking: lane("asking"), sold: lane("sold") };
+}
+
+export function fmtMoney(n) {
+  return n == null ? "—" : `$${Number(n).toFixed(2)}`;
+}
+
+/** One honest sentence about a figure's lanes vs its announced MSRP. */
+export function priceVerdict(lanes, msrp) {
+  if (lanes.sold.count > 0 && lanes.sold.low <= msrp) {
+    return `Reported solds start at ${fmtMoney(lanes.sold.low)} — at or under the ${fmtMoney(msrp)} MSRP.`;
+  }
+  if (lanes.sold.count > 0) {
+    return `Reported solds start at ${fmtMoney(lanes.sold.low)} — above MSRP. Wave 1's solds cooled within weeks; patience has a track record here.`;
+  }
+  if (lanes.asking.count > 0 && lanes.asking.low > msrp) {
+    return `The cheapest asking price logged is ${fmtMoney(lanes.asking.low)} — ${fmtMoney(lanes.asking.low - msrp)} over MSRP. An asking price is a hope, not a sale.`;
+  }
+  if (lanes.asking.count > 0) {
+    return `Asking prices logged start at ${fmtMoney(lanes.asking.low)} — at MSRP. No solds logged yet.`;
+  }
+  return "Nothing logged yet — this lane fills in from your own sightings.";
+}
+
 /* ---- page wiring ---- */
 
 function el(tag, cls, text) {
@@ -208,6 +326,25 @@ function savePlan(plan) {
   }
 }
 
+function loadJson(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return fallback;
+    const v = JSON.parse(raw);
+    return v == null ? fallback : v;
+  } catch {
+    return fallback;
+  }
+}
+
+function saveJson(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    /* quota or privacy mode — the state just doesn't persist */
+  }
+}
+
 export async function init() {
   const root = document.getElementById("drop-root");
   if (!root) return;
@@ -224,14 +361,17 @@ export async function init() {
   const plan = loadPlan();
 
   renderHero(data, drops);
+  renderChecklist(data.checklist || []);
   renderDrops(drops, plan);
+  renderPriceWatch(data.priceWatch || null);
+  renderRadarPoll(data.radarPoll || null);
   renderIntel(data.intel || {});
   const mbody = document.getElementById("dw-method-body");
   if (mbody) mbody.textContent = data.methodology || "";
   wirePlan(drops, plan);
   wireRail();
   tickCountdowns(drops);
-  setInterval(() => tickCountdowns(drops), 30000);
+  setInterval(() => tickCountdowns(drops), 1000);
 }
 
 function renderHero(data, drops) {
@@ -251,9 +391,16 @@ function renderHero(data, drops) {
     '<p class="dw-next-when"></p>' +
     '<p class="dw-next-count" id="dw-next-count" aria-hidden="true"></p>' +
     '<p class="sr-only" id="dw-next-count-sr" aria-live="polite"></p>' +
-    `<a class="dw-next-link" href="#drop-${nd.id}">Jump to this drop ↓</a>`;
+    '<p class="dw-next-local" id="dw-next-local"></p>' +
+    `<a class="dw-next-link" href="#drop-${nd.id}">Jump to this drop ↓</a>` +
+    ' <a class="dw-next-link" href="#dw-section-checklist">Open the buyer checklist ↓</a>';
   hero.querySelector(".dw-next-title").textContent = nd.title;
   hero.querySelector(".dw-next-when").textContent = nd.windowLabel;
+  const local = hero.querySelector(".dw-next-local");
+  if (local && nd.windowAt) {
+    const here = formatWindowLocal(nd.windowAt);
+    if (here) local.textContent = `That is ${here} where you are — set the alarm for your clock, not ET's.`;
+  }
 }
 
 function tickCountdowns(drops) {
@@ -277,11 +424,14 @@ function tickCountdowns(drops) {
       cd.setAttribute("aria-hidden", "true");
     }
     if (sr && t && !t.past) {
+      /* The visual clock ticks every second; the spoken summary only changes
+         when the minute does, so screen readers aren't spammed. */
       const bits = [];
       if (t.days) bits.push(`${t.days} day${t.days === 1 ? "" : "s"}`);
       if (t.hours) bits.push(`${t.hours} hour${t.hours === 1 ? "" : "s"}`);
       bits.push(`${t.mins} minute${t.mins === 1 ? "" : "s"}`);
-      sr.textContent = `${d.title} opens in ${bits.join(", ")}.`;
+      const msg = `${d.title} opens in ${bits.join(", ")}.`;
+      if (sr.textContent !== msg) sr.textContent = msg;
     }
   }
 }
@@ -396,6 +546,233 @@ function renderIntel(intel) {
   mount("dw-rumors", rwNodes);
 }
 
+const CHECKLIST_PHASES = [
+  ["before", "Before the window"],
+  ["morning", "Window morning"],
+  ["at-open", "At 1 PM ET"],
+  ["after", "After you order"],
+];
+
+function renderChecklist(items) {
+  const wrap = document.getElementById("dw-checklist");
+  if (!wrap || !items.length) return;
+  let state = loadJson(CHECKLIST_KEY, {});
+  if (!state || typeof state !== "object" || Array.isArray(state)) state = {};
+  const progress = document.getElementById("dw-check-progress");
+  const update = () => {
+    const { done, total } = checklistProgress(state, items);
+    if (progress) {
+      progress.textContent =
+        done === total
+          ? `All ${total} done. You are ready for the window — the rest is clicking.`
+          : `${done} of ${total} done.`;
+    }
+  };
+  wrap.innerHTML = "";
+  for (const [phase, label] of CHECKLIST_PHASES) {
+    const group = items.filter((i) => i.phase === phase);
+    if (!group.length) continue;
+    const h = el("h3", "dw-check-phase", label);
+    const ul = el("ul", "dw-check-list");
+    for (const item of group) {
+      const li = el("li", "dw-check-item");
+      const box = document.createElement("input");
+      box.type = "checkbox";
+      box.className = "dw-check-box";
+      box.id = `dw-check-${item.id}`;
+      box.checked = !!state[item.id];
+      box.addEventListener("change", () => {
+        state = toggleCheck(state, item.id);
+        saveJson(CHECKLIST_KEY, state);
+        update();
+      });
+      const lab = document.createElement("label");
+      lab.htmlFor = box.id;
+      const strong = el("span", "dw-check-label", item.label);
+      lab.appendChild(strong);
+      if (item.detail) lab.appendChild(el("span", "dw-check-detail", item.detail));
+      li.append(box, lab);
+      ul.appendChild(li);
+    }
+    wrap.append(h, ul);
+  }
+  const reset = document.getElementById("dw-check-reset");
+  if (reset) {
+    reset.addEventListener("click", () => {
+      state = {};
+      saveJson(CHECKLIST_KEY, state);
+      wrap.querySelectorAll(".dw-check-box").forEach((b) => { b.checked = false; });
+      update();
+    });
+  }
+  update();
+}
+
+function renderPriceWatch(pw) {
+  const body = document.getElementById("dw-price-rows");
+  if (!body || !pw || !Array.isArray(pw.figures)) return;
+  let sightings = loadJson(PRICES_KEY, []);
+  if (!Array.isArray(sightings)) sightings = [];
+  sightings = sightings.map(makeSighting).filter(Boolean);
+
+  const note = document.getElementById("dw-price-note");
+  if (note && pw.note) note.textContent = pw.note;
+  const msrpNote = document.getElementById("dw-price-msrp-note");
+  if (msrpNote && pw.msrpNote) msrpNote.textContent = pw.msrpNote;
+  const ctx = document.getElementById("dw-price-context");
+  if (ctx) {
+    ctx.innerHTML = "";
+    const ul = el("ul", "dw-intel-list");
+    for (const c of pw.context || []) {
+      const li = el("li", null, "");
+      li.appendChild(el("strong", null, `${c.figure}: `));
+      li.appendChild(document.createTextNode(c.text));
+      ul.appendChild(li);
+    }
+    ctx.appendChild(ul);
+    if (pw.contextSource) {
+      const p = el("p", "dw-sources", "Source: ");
+      const a = document.createElement("a");
+      a.href = pw.contextSource.url;
+      a.textContent = pw.contextSource.label;
+      p.appendChild(a);
+      ctx.appendChild(p);
+    }
+  }
+
+  const figSelect = document.getElementById("dw-price-fig");
+  if (figSelect) {
+    figSelect.innerHTML = "";
+    for (const f of pw.figures) {
+      const opt = document.createElement("option");
+      opt.value = f.name;
+      opt.textContent = f.name;
+      figSelect.appendChild(opt);
+    }
+  }
+  const dateInput = document.getElementById("dw-price-date");
+  if (dateInput && !dateInput.value) {
+    dateInput.value = new Date().toISOString().slice(0, 10);
+  }
+
+  const render = () => {
+    body.innerHTML = "";
+    for (const f of pw.figures) {
+      const lanes = priceLanes(sightings, f.name);
+      const tr = document.createElement("tr");
+      const name = el("th", "dw-price-fig-name", f.name);
+      name.scope = "row";
+      const msrp = el("td", "dw-price-msrp", fmtMoney(f.msrp));
+      const asking = el("td", "dw-price-lane",
+        lanes.asking.count
+          ? `${fmtMoney(lanes.asking.low)}${lanes.asking.high > lanes.asking.low ? ` – ${fmtMoney(lanes.asking.high)}` : ""} (${lanes.asking.count} logged)`
+          : "No listings logged yet");
+      const sold = el("td", "dw-price-lane",
+        lanes.sold.count
+          ? `${fmtMoney(lanes.sold.low)}${lanes.sold.high > lanes.sold.low ? ` – ${fmtMoney(lanes.sold.high)}` : ""} (${lanes.sold.count} logged)`
+          : "No solds yet — the wave ships Spring 2027");
+      const verdict = el("td", "dw-price-verdict", priceVerdict(lanes, f.msrp));
+      tr.append(name, msrp, asking, sold, verdict);
+      body.appendChild(tr);
+    }
+    const list = document.getElementById("dw-price-list");
+    if (list) {
+      list.innerHTML = "";
+      if (!sightings.length) {
+        list.appendChild(el("li", "dw-note", "No sightings logged yet. When a listing catches your eye tomorrow, put it here — asking or sold, never both at once."));
+      }
+      for (const s of [...sightings].reverse()) {
+        const li = el("li", "dw-sighting");
+        const kindLabel = s.kind === "sold" ? "SOLD" : "ASKING";
+        li.appendChild(el("span", "dw-sighting-text",
+          `${kindLabel} · ${s.figure} · ${fmtMoney(s.price)}${s.where ? ` at ${s.where}` : ""}${s.date ? ` · ${s.date}` : ""}`));
+        const del = document.createElement("button");
+        del.type = "button";
+        del.className = "dw-btn dw-btn-ghost dw-sighting-del";
+        del.textContent = "Remove";
+        del.setAttribute("aria-label", `Remove sighting: ${s.figure} ${kindLabel.toLowerCase()} at ${fmtMoney(s.price)}`);
+        del.addEventListener("click", () => {
+          sightings = removeSighting(sightings, s.id);
+          saveJson(PRICES_KEY, sightings);
+          render();
+        });
+        li.appendChild(del);
+        list.appendChild(li);
+      }
+    }
+  };
+
+  const addBtn = document.getElementById("dw-price-add");
+  const status = document.getElementById("dw-price-status");
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      const kind = document.getElementById("dw-price-kind");
+      const amount = document.getElementById("dw-price-amount");
+      const where = document.getElementById("dw-price-where");
+      const s = makeSighting({
+        id: `s-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`,
+        figure: figSelect ? figSelect.value : "",
+        kind: kind ? kind.value : "",
+        price: amount ? amount.value : "",
+        where: where ? where.value : "",
+        date: dateInput ? dateInput.value : "",
+      });
+      if (!s) {
+        if (status) status.textContent = "That entry needs a figure, a lane (asking or sold), and a price above zero.";
+        return;
+      }
+      sightings = addSighting(sightings, s);
+      saveJson(PRICES_KEY, sightings);
+      if (amount) amount.value = "";
+      if (status) status.textContent = `Logged: ${s.figure}, ${s.kind} at ${fmtMoney(s.price)}. It stays in the ${s.kind} lane.`;
+      render();
+    });
+  }
+  render();
+}
+
+const POLL_FLAG_LABELS = {
+  "confirmed": "Confirmed",
+  "reported": "Reported",
+  "single-source": "Single source",
+  "uncertain": "Uncertain — not confirmed",
+};
+
+function renderRadarPoll(poll) {
+  const wrap = document.getElementById("dw-radar-poll");
+  if (!wrap || !poll || !Array.isArray(poll.findings)) return;
+  wrap.innerHTML = "";
+  if (poll.polledNote) wrap.appendChild(el("p", "dw-note", poll.polledNote));
+  const list = el("div", "dw-poll-list");
+  for (const f of poll.findings) {
+    const card = el("article", "dw-poll-card");
+    const flag = el("p", `dw-poll-flag dw-poll-flag-${f.flag}`, POLL_FLAG_LABELS[f.flag] || f.flag);
+    card.appendChild(flag);
+    card.appendChild(el("h3", "dw-poll-head", f.headline));
+    card.appendChild(el("p", "dw-poll-detail", f.detail));
+    const srcs = el("p", "dw-sources", "Sources: ");
+    (f.sources || []).forEach((s, i) => {
+      if (i > 0) srcs.appendChild(document.createTextNode(" · "));
+      const a = document.createElement("a");
+      a.href = s.url;
+      a.rel = "noopener";
+      a.textContent = s.label;
+      srcs.appendChild(a);
+    });
+    card.appendChild(srcs);
+    list.appendChild(card);
+  }
+  wrap.appendChild(list);
+  const more = el("p", "dw-note", "");
+  more.appendChild(document.createTextNode("The full scanner output lives on the "));
+  const a = document.createElement("a");
+  a.href = "radar.html";
+  a.textContent = "Reveal Radar";
+  more.appendChild(a);
+  more.appendChild(document.createTextNode(" — candidates stay candidates until a second source or Hasbro confirms them."));
+  wrap.appendChild(more);
+}
+
 function wirePlan(drops, plan) {
   const wrap = document.getElementById("dw-drops");
   const countLine = document.getElementById("dw-plan-count");
@@ -429,7 +806,7 @@ function wirePlan(drops, plan) {
   const status = document.getElementById("dw-copy-status");
   if (copyBtn) {
     copyBtn.addEventListener("click", async () => {
-      const text = buildPlanShareText(plan, drops, "Observed 2026-10-11 · times in ET");
+      const text = buildPlanShareText(plan, drops, "Observed 2026-10-12 · times in ET");
       try {
         await navigator.clipboard.writeText(text);
         if (status) status.textContent = "Battle plan copied — paste it anywhere.";

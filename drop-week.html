@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Drop Week Command Center — Marvel Legends Chronicle</title>
-  <meta name="description" content="One command center for the October 2026 Marvel Legends drop sequence: Oct 14 Doomsday Wave 2, Oct 21 X-Men '97, Oct 28 Astonishing 2-pack, Nov 1 YFNS Spider-Man vs. Rhino sale day, and the Nov 20 Trask & Bastion made-to-order deadline. Live countdowns, confirmed lineups, price intel, KO watch, and your personal battle plan. Every figure, date, and price from researched sources — nothing invented.">
+  <meta name="description" content="One command center for the October 2026 Marvel Legends drop sequence: Oct 14 Doomsday Wave 2, Oct 21 X-Men '97, Oct 28 Astonishing 2-pack, Nov 1 YFNS Spider-Man vs. Rhino sale day, and the Nov 20 Trask & Bastion made-to-order deadline. Live countdown to the Oct 14 window, a buyer checklist, a per-figure price tracker that never mixes asking and sold prices, the Oct 12 Reveal Radar poll, KO watch, and your personal battle plan. Every figure, date, and price from researched sources — nothing invented.">
   <link rel="preload" href="assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -100,6 +100,49 @@
     .dw-btn-ghost { border-color: var(--line); color: var(--muted); }
     .dw-copy-status { font-size: .85rem; color: var(--muted); width: 100%; margin: 0; }
     .dw-error { color: #c0392b; }
+    /* Flagship refresh (2026-10-12): buyer checklist, price tracker, radar poll. */
+    .dw-next-local { color: var(--muted); font-size: .95rem; margin: var(--space-2) 0 0; }
+    .dw-hero-window { color: var(--muted); font-size: .95rem; max-width: 68ch; }
+    .dw-check-head { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+    .dw-check-head p { margin: 0; flex: 1 1 14rem; font-weight: 700; }
+    .dw-check-phase { margin: var(--space-4) 0 var(--space-2); font-size: 1rem;
+      text-transform: uppercase; letter-spacing: .08em; color: var(--gold); }
+    .dw-check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+    .dw-check-item { display: flex; gap: var(--space-3); align-items: flex-start;
+      border: 1px solid var(--line); border-radius: 10px; padding: var(--space-3) var(--space-4); background: var(--panel); }
+    .dw-check-item:has(.dw-check-box:checked) { border-color: var(--gold); }
+    .dw-check-box { width: 1.25rem; height: 1.25rem; margin-top: .2rem; accent-color: var(--gold); flex: none; cursor: pointer; }
+    .dw-check-item label { cursor: pointer; }
+    .dw-check-label { display: block; font-weight: 700; }
+    .dw-check-detail { display: block; color: var(--muted); font-size: .92rem; margin-top: .15rem; }
+    .dw-price-wrap { overflow-x: auto; max-width: none; }
+    .dw-price-table { border-collapse: collapse; width: 100%; min-width: 44rem; font-size: .95rem; }
+    .dw-price-table th, .dw-price-table td { border: 1px solid var(--line); padding: .6rem .8rem;
+      text-align: left; vertical-align: top; }
+    .dw-price-table thead th { background: var(--panel); font-size: .8rem;
+      text-transform: uppercase; letter-spacing: .06em; }
+    .dw-price-fig-name { font-weight: 700; }
+    .dw-price-msrp { font-weight: 700; font-variant-numeric: tabular-nums; }
+    .dw-price-lane { font-variant-numeric: tabular-nums; }
+    .dw-price-verdict { color: var(--muted); }
+    .dw-price-form { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end;
+      border: 1px solid var(--line); border-radius: 10px; padding: var(--space-4); background: var(--panel); }
+    .dw-price-form label { display: grid; gap: .3rem; font-size: .85rem; font-weight: 700; }
+    .dw-price-form select, .dw-price-form input { font: inherit; font-weight: 400; color: var(--ink);
+      background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .5rem .7rem; }
+    .dw-sighting-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+    .dw-sighting { display: flex; gap: var(--space-2); align-items: center; justify-content: space-between;
+      border: 1px solid var(--line); border-radius: 8px; padding: .5rem .8rem; background: var(--panel); font-size: .92rem; }
+    .dw-sighting-del { padding: .3rem .7rem; font-size: .85rem; }
+    .dw-poll-list { display: grid; gap: var(--space-4); grid-template-columns: 1fr; max-width: none; }
+    @media (min-width: 720px) { .dw-poll-list { grid-template-columns: 1fr 1fr; } }
+    .dw-poll-card { border: 1px solid var(--line); border-radius: 10px; padding: var(--space-4); background: var(--panel); }
+    .dw-poll-flag { margin: 0 0 var(--space-2); font-size: .78rem; text-transform: uppercase;
+      letter-spacing: .08em; font-weight: 700; color: var(--muted); }
+    .dw-poll-flag-confirmed { color: var(--gold); }
+    .dw-poll-flag-uncertain { color: #c0392b; }
+    .dw-poll-head { margin: 0 0 var(--space-2); font-size: 1.08rem; }
+    .dw-poll-detail { margin: 0; font-size: .95rem; color: var(--ink); }
     .dw-method { border: 1px solid var(--line); border-radius: 10px; padding: var(--space-4);
       background: var(--panel); font-size: .92rem; color: var(--muted); }
     .dw-xlinks { padding-left: var(--space-4); }
@@ -150,17 +193,34 @@
       deadline. Every lineup, price, and date below is researched and sourced. Nothing invented.</p>
       <p class="dw-dispatch accession"><span class="acc-label">Archive №</span> <span class="acc-no">drop-week</span></p>
       <div class="dw-hero-next" id="dw-hero-next" aria-label="Next drop"></div>
+      <p class="dw-hero-window">The Oct 14 window, in other clocks: <strong>1:00 PM ET is 17:00 UTC</strong> — 10:00 AM on the US West Coast, 6:00 PM in London. The countdown above runs on the exact instant, seconds included.</p>
     </section>
 
     <nav class="dw-rail" aria-label="On this page">
       <ul>
+        <li><a href="#dw-section-checklist">Buyer checklist</a></li>
         <li><a href="#dw-section-drops">The drops</a></li>
+        <li><a href="#dw-section-prices">Price tracker</a></li>
         <li><a href="#dw-section-intel">Price &amp; scarcity intel</a></li>
         <li><a href="#dw-section-plan">Your battle plan</a></li>
+        <li><a href="#dw-section-radar">Reveal Radar poll</a></li>
         <li><a href="#dw-section-rumors">Rumor watch</a></li>
         <li><a href="#dw-section-method">Methodology</a></li>
       </ul>
     </nav>
+
+    <section class="dw-section" id="dw-section-checklist" aria-labelledby="dw-checklist-h">
+      <h2 id="dw-checklist-h">The buyer checklist</h2>
+      <p class="dw-note">Work it top to bottom — tonight's five minutes are worth more than tomorrow's fastest refresh. Ticks save in this browser only (<code>mlc_dropweek_checklist_v1</code>).</p>
+      <div class="dw-check-head">
+        <p id="dw-check-progress" aria-live="polite">Loading the checklist…</p>
+        <button class="dw-btn dw-btn-ghost" id="dw-check-reset" type="button">Reset checklist</button>
+      </div>
+      <div id="dw-checklist"></div>
+      <noscript>
+        <p>The checklist, in brief: pick your targets and set your ceiling at the announced price; sign in to Pulse and Amazon tonight with payment and address saved; line up BigBadToyStore and Entertainment Earth as backups; alarm for 12:45 PM ET; tabs open by 12:50 in attack order — Lord Doom, Nightcrawler, Beast; at 1 PM read the price before confirming, and if Pulse looks empty, check Amazon before assuming a sellout.</p>
+      </noscript>
+    </section>
 
     <section class="dw-section" id="dw-section-drops" aria-labelledby="dw-drops-h">
       <h2 id="dw-drops-h">The drops</h2>
@@ -179,6 +239,59 @@
 </ul>
 <!-- DROPS:NOSCRIPT-END -->
         <p>Full details, sources, and the tracker live on <a href="preorders.html">the pre-order tracker</a>.</p>
+      </noscript>
+    </section>
+
+    <section class="dw-section" id="dw-section-prices" aria-labelledby="dw-prices-h">
+      <h2 id="dw-prices-h">Price tracker — Doomsday Wave 2</h2>
+      <p class="dw-note" id="dw-price-note"></p>
+      <div class="dw-price-wrap">
+        <table class="dw-price-table">
+          <thead>
+            <tr>
+              <th scope="col">Figure</th>
+              <th scope="col">Announced MSRP</th>
+              <th scope="col">Asking — listings</th>
+              <th scope="col">Sold — reported sales</th>
+              <th scope="col">The reading</th>
+            </tr>
+          </thead>
+          <tbody id="dw-price-rows"></tbody>
+        </table>
+      </div>
+      <p class="dw-note" id="dw-price-msrp-note"></p>
+      <h3>What Wave 1 actually did</h3>
+      <div id="dw-price-context"></div>
+      <p class="dw-note">Full charts on the <a href="launch-curve.html">Launch Curve</a> — every point a reported sale from a named tracker, presales labeled as presales.</p>
+      <h3>Log a sighting</h3>
+      <p class="dw-note">See a price — a listing, or a completed sale — and put it in the right lane. Asking is what a seller wants; sold is what a buyer paid. This tracker never averages the two, and neither should you.</p>
+      <div class="dw-price-form">
+        <label>Figure
+          <select id="dw-price-fig"></select>
+        </label>
+        <label>Lane
+          <select id="dw-price-kind">
+            <option value="asking">Asking — a listing price I saw</option>
+            <option value="sold">Sold — a completed sale I saw</option>
+          </select>
+        </label>
+        <label>Price (USD)
+          <input id="dw-price-amount" type="number" min="0" step="0.01" inputmode="decimal" placeholder="27.99">
+        </label>
+        <label>Where
+          <input id="dw-price-where" type="text" maxlength="80" placeholder="eBay, Pulse, a shop…">
+        </label>
+        <label>Date
+          <input id="dw-price-date" type="date">
+        </label>
+        <button class="dw-btn" id="dw-price-add" type="button">Log sighting</button>
+        <p class="dw-copy-status" id="dw-price-status" role="status"></p>
+      </div>
+      <h3>Your sightings</h3>
+      <ul class="dw-sighting-list" id="dw-price-list"></ul>
+      <p class="dw-note">Sightings live in this browser only (<code>mlc_dropweek_prices_v1</code>) — your field notes, not a market index.</p>
+      <noscript>
+        <p>The tracker's announced prices: Marvel's Beast, Nightcrawler, and Lord Doom (Concept Series) are each $27.99 announced MSRP, pre-orders opening Oct 14 at 1 PM ET, shipping Spring 2027. No sold prices exist yet for an unreleased wave — beware any site that shows you some.</p>
       </noscript>
     </section>
 
@@ -219,6 +332,14 @@
         <p class="dw-copy-status" id="dw-copy-status" role="status"></p>
       </div>
       <p class="dw-note">Stored in this browser only (<code>mlc_dropweek_v1</code>) — nothing is uploaded. Copy it to share on forums or Discord.</p>
+    </section>
+
+    <section class="dw-section" id="dw-section-radar" aria-labelledby="dw-radar-h">
+      <h2 id="dw-radar-h">Reveal Radar poll — Oct 12</h2>
+      <div id="dw-radar-poll"></div>
+      <noscript>
+        <p>The Oct 12 poll, in brief: the Oct 14 window was reconfirmed on the same terms everywhere it was reported (1 PM ET, Pulse + Amazon + participating retailers, Spring 2027). Two panel-report items are single-source so far — a Venom Spider-Man deluxe figure due in 2027 with no images shown, and a running change of likenesses on the Doomsday Thor. One aggregator's claim of prices rising toward $30 is unconfirmed by any other source. Full detail on the <a href="radar.html">Reveal Radar</a>.</p>
+      </noscript>
     </section>
 
     <section class="dw-section" id="dw-section-rumors" aria-labelledby="dw-rumors-h">

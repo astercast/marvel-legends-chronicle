@@ -27,9 +27,13 @@ SCHEMA_DIR = ROOT / "data" / "v1" / "schema"
 
 KINDS = {"preorder", "sale-day", "deadline"}
 PRICE_KINDS = {"msrp", "unannounced"}
+CHECKLIST_PHASES = {"before", "morning", "at-open", "after"}
+POLL_FLAGS = {"confirmed", "reported", "single-source", "uncertain"}
 URL_RE = re.compile(r"^https?://\S+$")
-# dollar amounts the source is allowed to name (announced MSRPs / reported listings)
-ALLOWED_AMOUNTS = {"27.99", "74.99", "39.97", "55", "69.95", "46.99", "47.99", "64.99", "39.99"}
+# dollar amounts the source is allowed to name (announced MSRPs / reported listings /
+# reported solds from the Launch Curve trackers / the flagged $30 price-rise rumor)
+ALLOWED_AMOUNTS = {"27.99", "74.99", "39.97", "55", "69.95", "46.99", "47.99", "64.99", "39.99",
+                   "83.97", "79.99", "25.99", "40.99", "52.99", "30"}
 
 
 def fail(msg: str) -> None:
@@ -86,6 +90,61 @@ def main() -> None:
             fail(f"{where}: drops must be in chronological order")
         prev_ms = ms
 
+    # --- buyer checklist (Drop Week flagship refresh, 2026-10-12) ---
+    checklist = data.get("checklist")
+    if not isinstance(checklist, list) or len(checklist) < 5:
+        fail("checklist must be a list of at least 5 items")
+    seen_ck: set[str] = set()
+    for i, item in enumerate(checklist):
+        where = f"checklist[{i}]"
+        for key in ("id", "phase", "label", "detail"):
+            if not item.get(key):
+                fail(f"{where}: missing {key!r}")
+        if item["id"] in seen_ck:
+            fail(f"{where}: duplicate checklist id {item['id']!r}")
+        seen_ck.add(item["id"])
+        if item["phase"] not in CHECKLIST_PHASES:
+            fail(f"{where}: bad phase {item['phase']!r}")
+
+    # --- price tracker: figures must be the target drop's, MSRPs explicit ---
+    pw = data.get("priceWatch")
+    if not isinstance(pw, dict):
+        fail("priceWatch must be an object")
+    target = next((d for d in drops if d["id"] == pw.get("dropId")), None)
+    if target is None:
+        fail(f"priceWatch.dropId {pw.get('dropId')!r} is not a drop id")
+    drop_names = [f["name"] for f in target["figures"]]
+    pw_names = [f.get("name") for f in pw.get("figures", [])]
+    if pw_names != drop_names:
+        fail(f"priceWatch figures {pw_names} must match drop figures {drop_names}")
+    for f in pw["figures"]:
+        if not isinstance(f.get("msrp"), (int, float)) or f["msrp"] <= 0:
+            fail(f"priceWatch figure {f.get('name')!r}: msrp must be a positive number")
+    for c in pw.get("context", []):
+        if not c.get("figure") or not c.get("text"):
+            fail(f"priceWatch context entry needs figure + text: {c!r}")
+    if not pw.get("contextSource", {}).get("label"):
+        fail("priceWatch.contextSource needs a label")
+
+    # --- reveal radar poll: every finding flagged + sourced ---
+    poll = data.get("radarPoll")
+    if not isinstance(poll, dict) or not poll.get("polledAt"):
+        fail("radarPoll must be an object with polledAt")
+    findings = poll.get("findings")
+    if not isinstance(findings, list) or not findings:
+        fail("radarPoll.findings must be a non-empty list")
+    for i, fd in enumerate(findings):
+        where = f"radarPoll.findings[{i}]"
+        if fd.get("flag") not in POLL_FLAGS:
+            fail(f"{where}: bad flag {fd.get('flag')!r}")
+        if not fd.get("headline") or not fd.get("detail"):
+            fail(f"{where}: needs headline + detail")
+        if not isinstance(fd.get("sources"), list) or not fd["sources"]:
+            fail(f"{where}: sources must be a non-empty list")
+        for s in fd["sources"]:
+            if not s.get("label") or not URL_RE.match(s.get("url", "")):
+                fail(f"{where}: source needs a label and an http(s) url: {s!r}")
+
     # no invented prices: every $N in the payload must be an allowed amount
     blob = json.dumps(data)
     for m in re.finditer(r"\$(\d[\d,]*(?:\.\d{2})?)", blob):
@@ -104,6 +163,10 @@ def main() -> None:
             "methodology": {"type": "string"},
             "count": {"type": "integer"},
             "drops": {"type": "array"},
+            "intel": {"type": "object"},
+            "checklist": {"type": "array"},
+            "priceWatch": {"type": "object"},
+            "radarPoll": {"type": "object"},
         },
     }, indent=2) + "\n", encoding="utf-8")
     (SCHEMA_DIR / "drop-week-item.json").write_text(json.dumps({
@@ -135,6 +198,10 @@ def main() -> None:
         "methodology": data["methodology"],
         "count": len(drops),
         "drops": drops,
+        "intel": data.get("intel", {}),
+        "checklist": checklist,
+        "priceWatch": pw,
+        "radarPoll": poll,
     }
     OUT.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(f"build_dropweek: wrote {OUT.relative_to(ROOT)} ({len(drops)} drops) + schemas")
