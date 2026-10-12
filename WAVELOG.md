@@ -62,3 +62,17 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Pure-logic exports** in `holiday.js`: `priceBandText`, `formatPickDate`, `statusLine`, `renderPick`, `byId`, `PICKS` — tested by new `tests/test-holiday.js` (14 tests) registered in `tests/run.js`. Single-source: cards render from `data/preorders.json`, so dates/prices can't drift.
 - `llms.txt` + `README.md` updated.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (120/120 tests, 26 suites; 8,896 relative refs, 0 broken; JSON/schema/ids/storage/perf green).
+
+## Wave 17 — The Collector's Craft (2026-10-11)
+
+- **NEW `grading.html`** (in nav after Holiday Guide on all 35 root pages + footer): condition & grading guide from standard hobby knowledge — nothing invented.
+  - The C-10→C-1 scale rendered live from pure-logic `assets/js/grading.js` (`GRADES` data with per-grade carded-vs-loose meanings + shorthand bands via `gradeBand()`), HTML table with `scope="row"` headers, noscript summary fallback.
+  - MOC/MIB/loose distinctions (with the "MIB is ambiguous — say which" honesty rule), what actually affects value (card corners, bubble clarity/yellowing, paint apps, joint tightness, completeness incl. BAF pieces/accessories), photographing flaws for listings (light, the four shot types, describe-don't-sell), and a never-do list (no solvents, no sun-fading fixes, no resealing, no over-grading).
+  - "Related tools" box (Journal / Showcase / Grail Quest); encyclopedia cross-links both ways (`encyclopedia.html#grading` ↔ `grading.html`).
+- **NEW `display.html`** (same nav placement): display & storage guide — UV protection (direct sunlight the #1 killer), individual acrylic cases vs glass cabinets (Detolf style), humidity/temperature basics (attics and garages are never the answer), dust management, earthquake-proofing (museum putty, anchored cabinets, heavy pieces low), rotating displays, photographing the collection, room-by-room guidance.
+  - Related-tools box (Shelf / Showcase / Grail Quest); cross-linked from `encyclopedia.html#packaging` and back.
+- **Cross-links from the sold-price journal**: `journal.html` log form now carries "Grade before you log" → `grading.html`.
+- **Nav parity**: `grading.html`/`display.html` ("Grading"/"Display", after Holiday Guide) added to canonical lists in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on 35 root pages; wave pages (158) + character pages (66) regenerated; hard-coded footer template in `build_characters.py` also patched.
+- **Tests**: new `tests/test-grading.js` (9 tests: 10-entry C-10..C-1 ordering, entry shape, distinct labels, band ladder, case-insensitive/reject junk, row count, per-grade bands, scope=row headers) registered in `tests/run.js` — 129/129 passing (29 suites).
+- `llms.txt` entries for both pages (+ `grading` added to the JS module list).
+- **Validation:** `scripts/validate.sh` — VALIDATION PASSED (129/129 tests, 29 suites; 10,856 relative refs, 0 broken; JSON/schema/ids/storage/perf green).

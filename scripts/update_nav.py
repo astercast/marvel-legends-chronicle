@@ -27,6 +27,8 @@ NAV = [
     ("hunt.html", "Hunt Planner"),
     ("gift.html", "Gift Finder"),
     ("holiday.html", "Holiday Guide"),
+    ("grading.html", "Grading"),
+    ("display.html", "Display"),
     ("collection-value.html", "Ledger"),
     ("exclusives.html", "Exclusives"),
     ("watchlist.html", "Watchlist"),
