@@ -16,11 +16,12 @@ You want to know what's coming, when pre-orders open, and where to look — this
 
 ## Procedure
 
-1. Load `api/v1/preorders.json` — 20 researched upcoming releases (waves 12 + 20 NYCC 2026 research, observed 2026-10-11). Each item: `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact YYYY-MM-DD when reported, `null` when unreported — never invented), `releaseWindow`, `price` (announced MSRP at reveal, never a market price), `retailers` (retailer search-pattern ids), `sources` (hobby-press links).
+1. Load `api/v1/preorders.json` — 22 researched upcoming releases (observed 2026-10-11). Each item: `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact YYYY-MM-DD when reported, `null` when unreported — never invented), `releaseWindow`, `price` (announced MSRP at reveal, never a market price), `retailers` (retailer search-pattern ids), `sources` (hobby-press links), `windowResult` (past-window outcome: `as-announced` | `retailers-partial` | `delayed` | `missed` | `unscored`).
 2. Sort by status then date: exact-`preorderDate` items first ('pre-order opens in N days'), then `revealed` items by `releaseWindow`, then `available` items to buy now.
 3. Cross-check the radar (`radar.html`) for newly spotted items not yet in the tracker — radar cards are research notes; the tracker is the canonical schedule.
 4. For each target, use the item's `query` with the retailer search patterns to find listings — the archive links search pages, never product URLs, so links don't rot.
-5. Report what you know vs. don't: exact-date items are actionable, season-only items are watchlist material, `null` preorderDate means no date has been reported yet.
+5. Cite the tracker's own record honestly: `windowResult` says whether past pre-order windows fired as announced — `unscored` means no outcome researched yet, not a pass.
+6. Report what you know vs. don't: exact-date items are actionable, season-only items are watchlist material, `null` preorderDate means no date has been reported yet.
 
 ## Worked example
 

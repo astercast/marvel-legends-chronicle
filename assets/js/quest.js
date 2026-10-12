@@ -22,6 +22,7 @@ import { buildQuestShareText } from "./quest-share.js";
 import { verdictLine, money as questMoney } from "./price-watch.js";
 import {
   upcomingPreorders, countdownText, preorderCountdown, money, todayStr,
+  recentlyOpened,
 } from "./preorders.js";
 import {
   CONVENTION_EXCLUSIVES, isChase, isRetro, isToyBiz, isVariant,
@@ -190,9 +191,13 @@ async function renderAlerts() {
   }
   const today = todayStr();
   const upcoming = upcomingPreorders(items, today, 30);
+  /* Fresh windows: pre-orders that opened in the last 14 days — still at
+     MSRP, still orderable, a hunt with a deadline. */
+  const fresh = recentlyOpened(items, today, 14);
+  const freshHtml = fresh.length ? `<p class="chart-sub" style="margin:var(--space-3) 0 var(--space-2)">🟢 <strong>Fresh windows</strong> (opened in the last 14 days — orderable now, MSRP): ${fresh.map((f) => `${escapeHtml(f.item.name)} (${f.daysOpen}d ago)`).join("; ")}. Our alerts' track record is on the <a href="market-briefing.html#alert-accuracy-h">market briefing</a>.</p>` : "";
   if (upcoming.length === 0) {
     els.alertSub.textContent = "No confirmed pre-order dates in the next 30 days.";
-    els.alertList.innerHTML = `<p class="chart-sub" style="margin:0">Announced-but-undated items are on the <a href="preorders.html">pre-order tracker</a> — they open whenever Hasbro says so, and the dates there are reported, never invented.</p>`;
+    els.alertList.innerHTML = `<p class="chart-sub" style="margin:0">Announced-but-undated items are on the <a href="preorders.html">pre-order tracker</a> — they open whenever Hasbro says so, and the dates there are reported, never invented.</p>` + freshHtml;
     return;
   }
   els.alertSub.textContent = `${upcoming.length} confirmed pre-order ${upcoming.length === 1 ? "date" : "dates"} in the next 30 days — your quest clock starts here.`;
@@ -208,6 +213,11 @@ async function renderAlerts() {
       </div>
       <div class="missing-links"><a href="preorders.html">Pre-order tracker</a></div>`;
     els.alertList.appendChild(row);
+  }
+  if (freshHtml) {
+    const div = document.createElement("div");
+    div.innerHTML = freshHtml;
+    els.alertList.appendChild(div);
   }
 }
 

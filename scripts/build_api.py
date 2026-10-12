@@ -334,6 +334,7 @@ def main():
             "venue": {"type": ["string", "null"]},
             "details": {"type": ["string", "null"]},
             "retailers": {"type": "array", "items": {"type": "string"}},
+            "windowResult": {"type": ["string", "null"], "enum": ["as-announced", "retailers-partial", "delayed", "missed", "unscored", None], "description": "Post-window outcome for past pre-order dates: as-announced | retailers-partial | delayed | missed | unscored (no outcome researched yet — never a silent pass)"},
             "sources": {"type": "array", "items": {"type": "object"}},
         },
     }

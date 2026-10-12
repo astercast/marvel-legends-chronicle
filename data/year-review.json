@@ -1,1 +1,741 @@
-{"bestValue":{"criteria":"Announced MSRP per packed figure, using only pack sizes stated in each item's own tracker record. Singles ranked at their announced price. No aftermarket data, no quality scores, no speculation — on paper only.","note":"The Doomsday Fantastic Four Walmart exclusives lead on paper — Mister Fantastic + H.E.R.B.I.E. at $39.97 works out under $20 per packed figure. Deluxe singles (Retro Venom $34.99, Onslaught $39.99, The Thing $69.95) are priced as single figures in their records, so they rank as singles. The $27.99 standard holds across every Fall 2026 single-figure wave.","packs":[{"figures":2,"itemId":"doomsday-ff-reed-herbie"},{"figures":2,"itemId":"doomsday-ff-sue-johnny"},{"figures":3,"itemId":"spidey-60s-3pack"},{"figures":2,"itemId":"bastion-trask-2pack"}]},"criteriaNote":"Ranked by count of documented distinctions (see scoring above); ties broken alphabetically by display name. Distinctions are facts already published in the Chronicle's tracker, encyclopedia, or market briefing — each cites its record.","gaps":["Price data covers 7 figures — none of them 2026 releases. The Fall 2026 waves' aftermarket behavior will be the first real test of the reissue-cooling pattern at scale.","The encyclopedia's 2026 archive is 5 dated waves (114 figures). The pre-order tracker covers 21 items, 17 with 2026 release windows or dates; undated 2027 reveals are listed in the timeline, not ranked.","No production numbers or chase ratios were ever officially documented for any figure on this page — the Rarity Guide's methodology applies here too.","Observed October 11, 2026. The year isn't over: Q4 pre-order dates and December ship windows may still move."],"koWatch":{"headline":"No new 2026 counterfeit wave was documented.","items":[{"source":{"label":"YouTube — Maximum Series Spider-Man KO review (2026)","url":"https://www.youtube.com/watch?v=Oya-uV7U844"},"text":"Maximum Series Spider-Man KO — reviewed in video, ~April 2026."},{"source":{"label":"YouTube — X-Men '97 Cyclops KO review (Sep 2026)","url":"https://www.youtube.com/watch?v=xp7IEpKskEM"},"text":"X-Men '97 Cyclops KO (Mustang Toyz, S.H. Figuarts-style) — reviewed September 2026."},{"source":{"label":"Rarity Guide — rare = faked","url":"rarity.html"},"text":"Carnage silver-eyes telltale remains the reference case for spotting bootlegs."},{"source":{"label":"Pre-order tracker: maximum-symbiote-spiderman","url":"preorders.html"},"text":"Maximum Symbiote Spider-Man: the official 6-inch Maximum Series figure was on display at the NYCC 2026 pre-show showcase (single source). Do not confuse it with the AliExpress Maximum Series Spider-Man KO listings reviewer videos have flagged — buy the official line at retail or Pulse."}]},"lede":"The year in Marvel Legends as documented in the Chronicle — every wave dated 2026 in the encyclopedia archive, every 2026 release on the pre-order tracker, every reported price, and every documented surprise. Nothing here is invented: figures, dates, and prices all resolve to real archive records or researched tracker items, and every gap is labeled.","methodology":["Waves and figures come from data/figures.json — 5 waves carry a 2026 year, plus the Store & Convention Exclusives bucket's 2026 entries. Release dates, windows, and announced MSRPs come from data/preorders.json (21 tracked items); announced prices are never market prices.","Price movements use data/price-signals.json only — reported sold bands, averages, listings, and claimed prices with named sources. The Chronicle publishes no price index, and no 2026 figure has reported aftermarket data in the archive yet.","The Top 10 is scored, not vibes: each entry's documented distinctions are counted (first-ever figure = 2 points; first-since-a-year, notable pack-in, format distinction, archive-first, or documented 2026 market story = 1 each). Ties break alphabetically. Every distinction cites its record.","Best-value ranks announced per-figure MSRP only, using pack sizes stated in each item's own tracker record. No aftermarket data, no quality scores, no speculation.","KO coverage is the documented record: no new 2026 counterfeit wave was documented; specific KO listings are named with their sources. Rarity highlights come from the Rarity Guide's tiers."],"months":[{"events":[],"month":"2026-01"},{"events":[{"source":{"label":"Toyark — Toy Fair 2026 pricing (Feb 15, 2026)","url":"https://www.toyark.com/2026/02/15/toy-fair-2026-hasbro-marvel-legends-official-photos-583124"},"status":"documented","text":"Toy Fair 2026: Hasbro's official pricing confirms the $27.99 standard for single figures."}],"month":"2026-02"},{"events":[{"source":{"label":"actionfigure411 — white Doom sold history","url":"https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"},"status":"documented","text":"White Epic Heroes Doctor Doom sells for $150 (Mar 12) on the actionfigure411 tracker."}],"month":"2026-03"},{"events":[{"source":{"label":"YouTube — Maximum Series Spider-Man KO review (2026)","url":"https://www.youtube.com/watch?v=Oya-uV7U844"},"status":"documented","text":"Maximum Series Spider-Man KO reviewed in video (~April 2026) — the year's KO watch begins."}],"month":"2026-04"},{"events":[{"source":{"label":"actionfigure411 — white Doom sold history","url":"https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"},"status":"documented","text":"White Epic Heroes Doctor Doom sells for $149 (May 3)."}],"month":"2026-05"},{"events":[],"month":"2026-06"},{"events":[{"source":{"label":"Pre-order tracker: doomsday-wave","url":"preorders.html"},"status":"documented","text":"Avengers: Doomsday wave Cyclops pre-orders open July 27 at Hasbro Pulse ($27.99)."},{"source":{"label":"ComicBook.com — chase coverage (~Jul 2026)","url":"https://comicbook.com/collectibles/news/a-coat-of-paint-is-the-difference-between-this-7-5k-prototype-and-a-common-marvel-legends-figure/"},"status":"documented","text":"ComicBook.com covers the chase market and the $7,500 Wasp prototype ask (~Jul 2026)."}],"month":"2026-07"},{"events":[{"source":{"label":"actionfigure411 — white Doom sold history","url":"https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"},"status":"documented","text":"White Epic Heroes Doctor Doom sells for $200.00 (Aug 10) — top of the reported band, and the latest sold on the tracker."},{"source":{"label":"Bleeding Cool — Retro Venom reissue (Aug 2026)","url":"https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"},"status":"documented","text":"Retro Venom reissue news: the 2021 Pulse Con cel-shaded TAS Venom returns at Fan Channel for $34.99."},{"source":{"label":"Toyark — MTG Wave 2 (Aug 13, 2026)","url":"https://www.toyark.com/2026/08/13/marvel-legends-x-magic-the-gathering-wave-2-597672"},"status":"documented","text":"Marvel Legends × Magic: The Gathering Wave 2 details surface ($39.99, playable card per figure)."}],"month":"2026-08"},{"events":[{"source":{"label":"ToyHypeUSA — TAS retro ship window (Sep 29, 2026)","url":"https://toyhypeusa.com/2026/09/29/hasbro-marvel-legends-series-spiderman-tas-retro-aunt-may-mary-jane-smythe-maximum-carnage-figures-pre-orders/"},"status":"documented","text":"Spider-Man: The Animated Series retro wave pre-orders open September 29 ($27.99; ships Dec 2026–Jan 2027) — first-ever solo-carded 6-inch Aunt May."},{"source":{"label":"Comicon.com — Mini Comics Wave 3 reveal (Sep 15, 2026)","url":"https://comicon.com/2026/09/15/newly-announced-marvel-legend-figures-draw-inspiration-from-comics-animated-series-and-more/"},"status":"documented","text":"Mini Comics Wave 3 revealed (Sep 15): mini comic per figure, first red Elektra since 2018."},{"source":{"label":"YouTube — X-Men '97 Cyclops KO review (Sep 2026)","url":"https://www.youtube.com/watch?v=xp7IEpKskEM"},"status":"documented","text":"X-Men '97 Cyclops KO reviewed (September 2026)."}],"month":"2026-09"},{"events":[{"source":{"label":"Pre-order tracker: mini-comics-wave-3","url":"preorders.html"},"status":"documented","text":"Mini Comics Wave 3 pre-orders open October 6 ($27.99)."},{"source":{"label":"ComicsBeat — NYCC Collector Con (Oct 7, 2026)","url":"https://www.comicsbeat.com/nycc-26-hasbro-x-walmart-collector-con-avengers-doomsday-g1-transformers-street-fighter/"},"status":"documented","text":"Doomsday Fantastic Four Walmart exclusives confirmed in stores and online (Oct 7)."},{"source":{"label":"Mephitsu — NYCC 2026 panel (Oct 10, 2026)","url":"https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel"},"status":"documented","text":"NYCC 2026 final-day panel (Oct 11): Doomsday Wave 2, X-Men '97, and Astonishing X-Men rosters confirmed with pre-order dates."},{"source":{"label":"Pre-order tracker: doomsday-wave-2","url":"preorders.html"},"status":"documented","text":"Doomsday Wave 2 pre-orders open October 14 (Spring 2027)."},{"source":{"label":"Pre-order tracker: xmen97-retro-wave","url":"preorders.html"},"status":"documented","text":"X-Men '97 retro wave pre-orders open October 21 ($27.99)."},{"source":{"label":"Pre-order tracker: astonishing-cyclops-wolverine-2pack","url":"preorders.html"},"status":"documented","text":"Astonishing X-Men Cyclops & Wolverine 2-pack pre-orders open October 28 (price unannounced, single source)."},{"source":{"label":"Pre-order tracker: mtg-wave-2","url":"preorders.html"},"status":"documented","text":"MTG Wave 2 ships."}],"month":"2026-10"},{"events":[{"source":{"label":"Pre-order tracker: yfns-spidey-rhino-2pack","url":"preorders.html"},"status":"scheduled","text":"Your Friendly Neighborhood Spider-Man: Spider-Man vs. Rhino 2-pack on sale at Hasbro Pulse, November 1 (Pulse exclusive, no pre-order announced)."},{"source":{"label":"Pre-order tracker: bastion-trask-2pack","url":"preorders.html"},"status":"scheduled","text":"Bastion & Bolivar Trask made-to-order window closes November 20, 11:59 PM EDT."}],"month":"2026-11"},{"events":[{"source":{"label":"Pre-order tracker: tas-retro-wave","url":"preorders.html"},"status":"scheduled","text":"Spider-Man: TAS retro wave ships (December 2026–January 2027 window)."},{"source":{"label":"Pre-order tracker: retro-venom-reissue","url":"preorders.html"},"status":"scheduled","text":"Retro Venom reissue ships December 2026."}],"month":"2026-12"}],"narrative":[{"body":"Hasbro has 'largely abandoned' short-packed chase figures in modern Marvel Legends, and no 2025–2026-era 6-inch chase was documented by the hobby press this year. The chase era — Toy Biz's finite redistributions, the art-deco variants produced 'with scarcity in mind' — is now history, and the Rarity Guide treats it as such. What replaced it isn't a new scarcity mechanic: it's the order window. The year's defining limited release, the Bastion & Bolivar Trask 2-pack, is made-to-order — scarcity measured in calendar days, not case ratios.","heading":"The year the chase died","sources":[{"label":"Market briefing — the chase era ends","url":"market-briefing.html"},{"label":"Rarity Guide","url":"rarity.html"}]},{"body":"2026 brought no packaging overhaul. Instead it brought the retro blister card back as the default canvas — the X-Men '97 wave, the Spider-Man: The Animated Series wave, and the Retro Venom reissue all ride retro cardbacks — and the mini comic as the pack-in of the year, with Mini Comics Wave 3 putting a physical comic in every box. After the plastic-free reversal of April 2023, the line's packaging story is settled: nostalgia on the front, sustainability in the materials.","heading":"Retro is the packaging story","sources":[{"label":"Legends Timeline — 2026","url":"timeline.html"},{"label":"Pre-order tracker records","url":"preorders.html"}]},{"body":"2026 was the year the reissue program stopped being a rumor and became the market's central mechanism. The Pulse VHS-exclusive Animated Series figures sold out, escalated on the aftermarket — and came back on retro blister cards at the $27.99 standard. The 2021 Pulse Con cel-shaded Venom is back at Fan Channel for $34.99. NYCC added an Astonishing X-Men two-pack reissue. The pattern is now textbook: sellout → aftermarket spike → reissue → premium collapse. The open question is whether it keeps working at scale — the Fall 2026 waves' aftermarket behavior will be the first real test.","heading":"The reissue machine","sources":[{"label":"Marvel Toy News — TAS reissues (Sep 2026)","url":"https://marveltoynews.com/marvel-legends-mary-jane-aunt-may-smythe-carnage-reissues/"},{"label":"Bleeding Cool — Retro Venom reissue (Aug 2026)","url":"https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"},{"label":"Market briefing — post-NYCC refresh","url":"market-briefing.html"}]},{"body":"Reported-price coverage for 2026 is thin — seven figures, none of them 2026 releases — but it tells a coherent story. The white-deco Epic Heroes Doctor Doom is the modern chase-adjacent standout: $115–$200 in reported solds, closing at $200 on August 10, 2026, against roughly $60 in October 2024. The standard green Doom averaged $62.44 across 48 tracked sales. The $7,500 asking price on the unproduced Toy Biz Series 15 blue-and-white Wasp chase prototype (~10 carded) is an ask, not a sale — a two-decade-old artifact, not a 2026 discovery. And one retailer's October snapshot said it plainly: the older Colossus-BAF Cyclops sat in stock at $14.99 while the X-Men '97 Cyclops sold out. Demand concentrates where the cameras are.","heading":"The aftermarket in miniature","sources":[{"label":"actionfigure411 — white Doom sold history","url":"https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"},{"label":"Market briefing — 2026 market briefing","url":"market-briefing.html"}]},{"body":"The year isn't over. Doomsday Wave 2 pre-orders opened October 14, the X-Men '97 wave October 21, the Astonishing two-pack October 28; the YFNS Spider-Man vs. Rhino 2-pack hits Pulse November 1; the Bastion & Trask order window closes November 20; the TAS wave and Retro Venom ship in December. Every one of those is a live data point this retrospective will need when the year closes — check the release calendar and the pre-order tracker for the current state.","heading":"Still unresolved","sources":[{"label":"Release Calendar","url":"calendar.html"},{"label":"Pre-order tracker","url":"preorders.html"}]}],"observed":"2026-10-11","priceMovements":[{"note":"Reported eBay solds from the actionfigure411 tracker, as published in the signal record.","signalId":"white-epic-heroes-doom","solds":[["2026-03-12",150.0],["2026-05-03",149.0],["2026-08-10",200.0]]}],"rarityHighlights":[{"source":{"label":"Market briefing — the chase era ends","url":"market-briefing.html"},"text":"Modern chase figures are effectively dead — 'largely abandoned' by Hasbro; no 2025–2026 6-inch chase documented."},{"source":{"label":"Rarity Guide — made-to-order tier","url":"rarity.html"},"text":"Bastion & Bolivar Trask ($74.99) is the 2026 made-to-order case study: scarcity is the order window, not a chase ratio."},{"source":{"label":"Pre-order tracker records","url":"preorders.html"},"text":"SDCC 2026 added two convention exclusives: Professor X & hoverchair, and the Spider-Man 60s cartoon 3-pack."},{"source":{"label":"Pre-order tracker: mini-comics-wave-3","url":"preorders.html"},"text":"First red Elektra since 2018 — 2026's notable deco return, packed with a mini comic."},{"source":{"label":"Bleeding Cool — Retro Venom reissue (Aug 2026)","url":"https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"},"text":"Retro Venom: a 2021 Pulse Con exclusive returning at Fan Channel — the reissue cycle hitting the convention tier."}],"scoring":{"first-ever":2,"first-since":1,"pack-in":1,"format":1,"archive-first":1,"market-story":1},"surprises":[{"source":{"label":"Marvel Toy News — TAS reissues (Sep 2026)","url":"https://marveltoynews.com/marvel-legends-mary-jane-aunt-may-smythe-carnage-reissues/"},"text":"The sold-out Pulse VHS-exclusive Animated Series figures escalated on the aftermarket — then Hasbro re-released the same figures on retro blister cards at $27.99. Sellout → spike → reissue → premium collapse, textbook and on schedule.","title":"The VHS premiums collapsed by design"},{"source":{"label":"actionfigure411 — Epic Heroes Dr. Doom white variant sold history","url":"https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"},"text":"The white-deco Epic Heroes Doctor Doom — the modern chase-adjacent standout — closed at $200 on August 10, 2026, the top of its $115–$200 reported band. The standard green Doom averaged $62.44 across 48 tracked sales; the premium is the variant, not the character.","title":"A white Doom sold for $200"},{"source":{"label":"Pre-order tracker: onslaught-target","url":"preorders.html"},"text":"X-Men Onslaught was 'extremely hit or miss in stores' — and Target cancelled many confirmed 2026 preorders, so in-hand beats preordered. Availability, not price, was the 2026 Target story.","title":"Target cancelled confirmed preorders"},{"source":{"label":"Pre-order tracker: bastion-trask-2pack","url":"preorders.html"},"text":"Bastion & Bolivar Trask: an 11.3-inch-winged Bastion, 10 accessories, $74.99, Hasbro Pulse only — and the order window closes November 20, 2026. Miss it and it's gone from retail; it ships November 2027.","title":"The year's biggest figure is made-to-order"},{"source":{"label":"Pre-order tracker records","url":"preorders.html"},"text":"First-ever Cypher. First-ever solo-carded 6-inch Aunt May. First red Elektra since 2018. First-ever Bastion (per the tracker research). 2026 kept handing collectors figures the line had never done.","title":"The year of firsts"},{"source":{"label":"Encyclopedia wave: hasbro-2026-exclusives","url":"waves/hasbro-2026-exclusives.html"},"text":"Moon Knight, Punisher, Spider-Man, Luna Snow, Venom, and Jeff the Land Shark — six Marvel Rivals (video game) versions, the first in the archive, all inside the 2026 exclusives.","title":"Marvel Rivals joins the line"},{"source":{"label":"Bleeding Cool — Retro Venom reissue (Aug 2026)","url":"https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"},"text":"The 2021 Pulse Con cel-shaded TAS Venom — a convention exclusive — returns at Fan Channel retailers for $34.99, shipping December 2026. The reissue program isn't slowing down.","title":"Retro Venom comes back at $34.99"},{"source":{"label":"Market briefing — the chase era ends","url":"market-briefing.html"},"text":"Hasbro has 'largely abandoned' short-packed chase figures in modern Marvel Legends — no 2025–2026-era 6-inch chase was documented by the hobby press this year. The chase era is now history, and the Rarity Guide treats it that way.","title":"The modern chase is dead"}],"title":"2026: The State of Legends","top10":[{"blurb":"The reissue-cycle story of the year: the sold-out Pulse VHS exclusives return on retro blister cards at the standard $27.99 — with the first-ever solo-carded 6-inch Aunt May leading the wave.","display":"Spider-Man: The Animated Series retro wave","distinctions":[{"claim":"First-ever solo-carded 6-inch Aunt May","kind":"first-ever","source":"Pre-order tracker: tas-retro-wave"},{"claim":"Reissues the sold-out Pulse VHS exclusives on retro blister cards","kind":"format","source":"Pre-order tracker: tas-retro-wave"},{"claim":"Textbook sellout → aftermarket spike → reissue → premium collapse","kind":"market-story","source":"Market briefing: reissue section"}],"id":"tas-retro-wave","ref":{"id":"tas-retro-wave","kind":"preorder"}},{"blurb":"The biggest swing of 2026: an 11.3-inch-winged Bastion (documented as a first-ever figure in the tracker research) sold made-to-order — scarcity is the order window, not a chase ratio. Window closes November 20, 2026.","display":"X-Men '97 Bastion & Bolivar Trask 2-pack","distinctions":[{"claim":"First-ever Bastion figure per the tracker research (11.3-inch articulated wings); the archive's only other Bastion is the 2021 HasLab Sentinel X-Men Blue version","kind":"first-ever","source":"Pre-order tracker: bastion-trask-2pack"},{"claim":"Made-to-order 2-pack at $74.99 — scarcity is the order window","kind":"format","source":"Pre-order tracker: bastion-trask-2pack"}],"id":"bastion-trask-2pack","ref":{"id":"bastion-trask-2pack","kind":"preorder"}},{"blurb":"The first-ever Cypher figure arrived via Target's 2026 Geek-Out event — and made the encyclopedia's 2026 exclusives the same year.","display":"Cypher — Target exclusive","distinctions":[{"claim":"First-ever Cypher figure","kind":"first-ever","source":"Pre-order tracker: cypher-target"}],"figureRef":"hasbro-2026-exclusives::Cypher","id":"cypher-target","ref":{"id":"cypher-target","kind":"preorder"}},{"blurb":"Every figure ships with a physical mini comic — and the wave delivers the first red Elektra since 2018 plus a Fraction/Aja-era Hawkeye straight out of Hawkeye #3 (2012).","display":"Mini Comics Wave 3","distinctions":[{"claim":"First red Elektra since 2018","kind":"first-since","source":"Pre-order tracker: mini-comics-wave-3"},{"claim":"Physical mini comic packed with every figure","kind":"pack-in","source":"Pre-order tracker: mini-comics-wave-3"}],"id":"mini-comics-wave-3","ref":{"id":"mini-comics-wave-3","kind":"preorder"}},{"blurb":"Shipped October 2026 with a playable Magic: The Gathering card in every box — plus an Amazon-exclusive Black Panther on top of the Doom / Captain America / Malice core.","display":"Marvel Legends × Magic: The Gathering Wave 2","distinctions":[{"claim":"Playable Magic: The Gathering card with every figure","kind":"pack-in","source":"Pre-order tracker: mtg-wave-2"},{"claim":"Shipped October 2026 with an Amazon-exclusive Black Panther","kind":"market-story","source":"Pre-order tracker: mtg-wave-2"}],"figureRef":"hasbro-2026-exclusives::Black Panther","id":"mtg-wave-2","ref":{"id":"mtg-wave-2","kind":"preorder"}},{"blurb":"The 2021 Pulse Con cel-shaded TAS Venom is back at Fan Channel retailers for $34.99 on a retro cardback — the reissue cycle resolving live, no themed outer box this time.","display":"Retro Venom reissue","distinctions":[{"claim":"2021 Pulse Con exclusive reissued at Fan Channel — reissue-radar candidate resolving live","kind":"market-story","source":"Market briefing: post-NYCC refresh"},{"claim":"Retro cardback with no themed outer box","kind":"format","source":"Pre-order tracker: retro-venom-reissue"}],"id":"retro-venom-reissue","ref":{"id":"retro-venom-reissue","kind":"preorder"}},{"blurb":"The full wave on retro blister cards — Death Gambit with card-dealing effects, team-suit Cyclops, powered-up Jean — with its NYCC-confirmed roster and an October 21, 2026 pre-order date.","display":"X-Men '97 retro wave","distinctions":[{"claim":"Full wave on retro blister cards","kind":"format","source":"Pre-order tracker: xmen97-retro-wave"},{"claim":"NYCC final-day panel confirmed the roster; pre-orders opened October 21, 2026","kind":"market-story","source":"Market briefing: post-NYCC refresh"}],"id":"xmen97-retro-wave","ref":{"id":"xmen97-retro-wave","kind":"preorder"}},{"blurb":"NYCC 2026's reissue play: the Astonishing X-Men two-pack returns with a reported October 28 pre-order — price not announced at reveal (single source).","display":"Astonishing X-Men Cyclops & Wolverine 2-pack","distinctions":[{"claim":"NYCC 2026 reissue with reported October 28 pre-order; price unannounced (single source)","kind":"market-story","source":"Pre-order tracker: astonishing-cyclops-wolverine-2pack"}],"id":"astonishing-cyclops-wolverine-2pack","ref":{"id":"astonishing-cyclops-wolverine-2pack","kind":"preorder"}},{"blurb":"The MCU tie-in wave of the year — Thor with flight stand, Doctor Doom, Gambit, a James Marsden-likeness Cyclops (pre-orders opened July 27, 2026), Magneto, Shang-Chi, and Mr. Fantastic & H.E.R.B.I.E.","display":"Avengers: Doomsday wave","distinctions":[{"claim":"Avengers: Doomsday film tie-in wave; Cyclops pre-orders opened July 27, 2026 at $27.99","kind":"market-story","source":"Pre-order tracker: doomsday-wave"}],"id":"doomsday-wave","ref":{"id":"doomsday-wave","kind":"preorder"},"waveRef":"hasbro-2026-doomsday-1"},{"blurb":"Revealed on the NYCC 2026 final-day panel — Concept Series Lord Doom with open and closed spell books, a swappable-head Beast, and a fully-kitted Nightcrawler. Pre-orders opened October 14, 2026 for Spring 2027.","display":"Avengers: Doomsday Wave 2","distinctions":[{"claim":"NYCC 2026 final-day panel reveal; pre-orders opened October 14, 2026","kind":"market-story","source":"Market briefing: post-NYCC refresh"}],"id":"doomsday-wave-2","ref":{"id":"doomsday-wave-2","kind":"preorder"}}]}
+{
+  "bestValue": {
+    "criteria": "Announced MSRP per packed figure, using only pack sizes stated in each item's own tracker record. Singles ranked at their announced price. No aftermarket data, no quality scores, no speculation — on paper only.",
+    "note": "The Doomsday Fantastic Four Walmart exclusives lead on paper — Mister Fantastic + H.E.R.B.I.E. at $39.97 works out under $20 per packed figure. Deluxe singles (Retro Venom $34.99, Onslaught $39.99, The Thing $69.95) are priced as single figures in their records, so they rank as singles. The $27.99 standard holds across every Fall 2026 single-figure wave.",
+    "packs": [
+      {
+        "figures": 2,
+        "itemId": "doomsday-ff-reed-herbie"
+      },
+      {
+        "figures": 2,
+        "itemId": "doomsday-ff-sue-johnny"
+      },
+      {
+        "figures": 3,
+        "itemId": "spidey-60s-3pack"
+      },
+      {
+        "figures": 2,
+        "itemId": "bastion-trask-2pack"
+      }
+    ]
+  },
+  "criteriaNote": "Ranked by count of documented distinctions (see scoring above); ties broken alphabetically by display name. Distinctions are facts already published in the Chronicle's tracker, encyclopedia, or market briefing — each cites its record.",
+  "gaps": [
+    "Price data covers 7 figures — none of them 2026 releases. The Fall 2026 waves' aftermarket behavior will be the first real test of the reissue-cooling pattern at scale.",
+    "The encyclopedia's 2026 archive is 5 dated waves (114 figures). The pre-order tracker covers 21 items, 17 with 2026 release windows or dates; undated 2027 reveals are listed in the timeline, not ranked.",
+    "No production numbers or chase ratios were ever officially documented for any figure on this page — the Rarity Guide's methodology applies here too.",
+    "Observed October 11, 2026. The year isn't over: Q4 pre-order dates and December ship windows may still move."
+  ],
+  "koWatch": {
+    "headline": "No new 2026 counterfeit wave was documented.",
+    "items": [
+      {
+        "source": {
+          "label": "YouTube — Maximum Series Spider-Man KO review (2026)",
+          "url": "https://www.youtube.com/watch?v=Oya-uV7U844"
+        },
+        "text": "Maximum Series Spider-Man KO — reviewed in video, ~April 2026."
+      },
+      {
+        "source": {
+          "label": "YouTube — X-Men '97 Cyclops KO review (Sep 2026)",
+          "url": "https://www.youtube.com/watch?v=xp7IEpKskEM"
+        },
+        "text": "X-Men '97 Cyclops KO (Mustang Toyz, S.H. Figuarts-style) — reviewed September 2026."
+      },
+      {
+        "source": {
+          "label": "Rarity Guide — rare = faked",
+          "url": "rarity.html"
+        },
+        "text": "Carnage silver-eyes telltale remains the reference case for spotting bootlegs."
+      },
+      {
+        "source": {
+          "label": "Pre-order tracker: maximum-symbiote-spiderman",
+          "url": "preorders.html"
+        },
+        "text": "Maximum Symbiote Spider-Man: the official 6-inch Maximum Series figure was on display at the NYCC 2026 pre-show showcase (single source). Do not confuse it with the AliExpress Maximum Series Spider-Man KO listings reviewer videos have flagged — buy the official line at retail or Pulse."
+      }
+    ]
+  },
+  "lede": "The year in Marvel Legends as documented in the Chronicle — every wave dated 2026 in the encyclopedia archive, every 2026 release on the pre-order tracker, every reported price, and every documented surprise. Nothing here is invented: figures, dates, and prices all resolve to real archive records or researched tracker items, and every gap is labeled.",
+  "methodology": [
+    "Waves and figures come from data/figures.json — 5 waves carry a 2026 year, plus the Store & Convention Exclusives bucket's 2026 entries. Release dates, windows, and announced MSRPs come from data/preorders.json (21 tracked items); announced prices are never market prices.",
+    "Price movements use data/price-signals.json only — reported sold bands, averages, listings, and claimed prices with named sources. The Chronicle publishes no price index, and no 2026 figure has reported aftermarket data in the archive yet.",
+    "The Top 10 is scored, not vibes: each entry's documented distinctions are counted (first-ever figure = 2 points; first-since-a-year, notable pack-in, format distinction, archive-first, or documented 2026 market story = 1 each). Ties break alphabetically. Every distinction cites its record.",
+    "Best-value ranks announced per-figure MSRP only, using pack sizes stated in each item's own tracker record. No aftermarket data, no quality scores, no speculation.",
+    "KO coverage is the documented record: no new 2026 counterfeit wave was documented; specific KO listings are named with their sources. Rarity highlights come from the Rarity Guide's tiers."
+  ],
+  "months": [
+    {
+      "events": [],
+      "month": "2026-01"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "Toyark — Toy Fair 2026 pricing (Feb 15, 2026)",
+            "url": "https://www.toyark.com/2026/02/15/toy-fair-2026-hasbro-marvel-legends-official-photos-583124"
+          },
+          "status": "documented",
+          "text": "Toy Fair 2026: Hasbro's official pricing confirms the $27.99 standard for single figures."
+        }
+      ],
+      "month": "2026-02"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "actionfigure411 — white Doom sold history",
+            "url": "https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"
+          },
+          "status": "documented",
+          "text": "White Epic Heroes Doctor Doom sells for $150 (Mar 12) on the actionfigure411 tracker."
+        }
+      ],
+      "month": "2026-03"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "YouTube — Maximum Series Spider-Man KO review (2026)",
+            "url": "https://www.youtube.com/watch?v=Oya-uV7U844"
+          },
+          "status": "documented",
+          "text": "Maximum Series Spider-Man KO reviewed in video (~April 2026) — the year's KO watch begins."
+        }
+      ],
+      "month": "2026-04"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "actionfigure411 — white Doom sold history",
+            "url": "https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"
+          },
+          "status": "documented",
+          "text": "White Epic Heroes Doctor Doom sells for $149 (May 3)."
+        }
+      ],
+      "month": "2026-05"
+    },
+    {
+      "events": [],
+      "month": "2026-06"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "Pre-order tracker: doomsday-wave",
+            "url": "preorders.html"
+          },
+          "status": "documented",
+          "text": "Avengers: Doomsday wave Cyclops pre-orders open July 27 at Hasbro Pulse ($27.99)."
+        },
+        {
+          "source": {
+            "label": "ComicBook.com — chase coverage (~Jul 2026)",
+            "url": "https://comicbook.com/collectibles/news/a-coat-of-paint-is-the-difference-between-this-7-5k-prototype-and-a-common-marvel-legends-figure/"
+          },
+          "status": "documented",
+          "text": "ComicBook.com covers the chase market and the $7,500 Wasp prototype ask (~Jul 2026)."
+        }
+      ],
+      "month": "2026-07"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "actionfigure411 — white Doom sold history",
+            "url": "https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"
+          },
+          "status": "documented",
+          "text": "White Epic Heroes Doctor Doom sells for $200.00 (Aug 10) — top of the reported band, and the latest sold on the tracker."
+        },
+        {
+          "source": {
+            "label": "Bleeding Cool — Retro Venom reissue (Aug 2026)",
+            "url": "https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"
+          },
+          "status": "documented",
+          "text": "Retro Venom reissue news: the 2021 Pulse Con cel-shaded TAS Venom returns at Fan Channel for $34.99."
+        },
+        {
+          "source": {
+            "label": "Toyark — MTG Wave 2 (Aug 13, 2026)",
+            "url": "https://www.toyark.com/2026/08/13/marvel-legends-x-magic-the-gathering-wave-2-597672"
+          },
+          "status": "documented",
+          "text": "Marvel Legends × Magic: The Gathering Wave 2 details surface ($39.99, playable card per figure)."
+        }
+      ],
+      "month": "2026-08"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "ToyHypeUSA — TAS retro ship window (Sep 29, 2026)",
+            "url": "https://toyhypeusa.com/2026/09/29/hasbro-marvel-legends-series-spiderman-tas-retro-aunt-may-mary-jane-smythe-maximum-carnage-figures-pre-orders/"
+          },
+          "status": "documented",
+          "text": "Spider-Man: The Animated Series retro wave pre-orders open September 29 ($27.99; ships Dec 2026–Jan 2027) — first-ever solo-carded 6-inch Aunt May."
+        },
+        {
+          "source": {
+            "label": "Comicon.com — Mini Comics Wave 3 reveal (Sep 15, 2026)",
+            "url": "https://comicon.com/2026/09/15/newly-announced-marvel-legend-figures-draw-inspiration-from-comics-animated-series-and-more/"
+          },
+          "status": "documented",
+          "text": "Mini Comics Wave 3 revealed (Sep 15): mini comic per figure, first red Elektra since 2018."
+        },
+        {
+          "source": {
+            "label": "YouTube — X-Men '97 Cyclops KO review (Sep 2026)",
+            "url": "https://www.youtube.com/watch?v=xp7IEpKskEM"
+          },
+          "status": "documented",
+          "text": "X-Men '97 Cyclops KO reviewed (September 2026)."
+        },
+        {
+          "text": "Spider-Man (Marvel Holiday Special) pre-orders open September 23 (general release at Pulse, Amazon, Target, Walmart; ships Fall 2026).",
+          "status": "documented",
+          "source": {
+            "label": "BleedingCool — Holiday Special Spider-Man (Sep 2026)",
+            "url": "https://bleedingcool.com/collectibles/spider-man-saves-christmas-with-hasbros-new-holiday-marvel-legends/"
+          }
+        }
+      ],
+      "month": "2026-09"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "Pre-order tracker: mini-comics-wave-3",
+            "url": "preorders.html"
+          },
+          "status": "documented",
+          "text": "Mini Comics Wave 3 pre-orders open October 6 ($27.99)."
+        },
+        {
+          "source": {
+            "label": "ComicsBeat — NYCC Collector Con (Oct 7, 2026)",
+            "url": "https://www.comicsbeat.com/nycc-26-hasbro-x-walmart-collector-con-avengers-doomsday-g1-transformers-street-fighter/"
+          },
+          "status": "documented",
+          "text": "Doomsday Fantastic Four Walmart exclusives confirmed in stores and online (Oct 7)."
+        },
+        {
+          "source": {
+            "label": "Mephitsu — NYCC 2026 panel (Oct 10, 2026)",
+            "url": "https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel"
+          },
+          "status": "documented",
+          "text": "NYCC 2026 final-day panel (Oct 11): Doomsday Wave 2, X-Men '97, and Astonishing X-Men rosters confirmed with pre-order dates."
+        },
+        {
+          "source": {
+            "label": "Pre-order tracker: doomsday-wave-2",
+            "url": "preorders.html"
+          },
+          "status": "documented",
+          "text": "Doomsday Wave 2 pre-orders open October 14 (Spring 2027)."
+        },
+        {
+          "source": {
+            "label": "Pre-order tracker: xmen97-retro-wave",
+            "url": "preorders.html"
+          },
+          "status": "documented",
+          "text": "X-Men '97 retro wave pre-orders open October 21 ($27.99)."
+        },
+        {
+          "source": {
+            "label": "Pre-order tracker: astonishing-cyclops-wolverine-2pack",
+            "url": "preorders.html"
+          },
+          "status": "documented",
+          "text": "Astonishing X-Men Cyclops & Wolverine 2-pack pre-orders open October 28 (price unannounced, single source)."
+        },
+        {
+          "source": {
+            "label": "Pre-order tracker: mtg-wave-2",
+            "url": "preorders.html"
+          },
+          "status": "documented",
+          "text": "MTG Wave 2 ships."
+        },
+        {
+          "text": "Pre-order window check (Oct 11): Oct 14/21/28 windows confirmed on schedule; Doomsday wave-1 Cyclops shows Sold Out at Hasbro Pulse (scarcity signal, not a price).",
+          "status": "documented",
+          "source": {
+            "label": "Chronicle market briefing — window check (Oct 11, 2026)",
+            "url": "market-briefing.html"
+          }
+        }
+      ],
+      "month": "2026-10"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "Pre-order tracker: yfns-spidey-rhino-2pack",
+            "url": "preorders.html"
+          },
+          "status": "scheduled",
+          "text": "Your Friendly Neighborhood Spider-Man: Spider-Man vs. Rhino 2-pack on sale at Hasbro Pulse, November 1 (Pulse exclusive, no pre-order announced)."
+        },
+        {
+          "source": {
+            "label": "Pre-order tracker: bastion-trask-2pack",
+            "url": "preorders.html"
+          },
+          "status": "scheduled",
+          "text": "Bastion & Bolivar Trask made-to-order window closes November 20, 11:59 PM EDT."
+        }
+      ],
+      "month": "2026-11"
+    },
+    {
+      "events": [
+        {
+          "source": {
+            "label": "Pre-order tracker: tas-retro-wave",
+            "url": "preorders.html"
+          },
+          "status": "scheduled",
+          "text": "Spider-Man: TAS retro wave ships (December 2026–January 2027 window)."
+        },
+        {
+          "source": {
+            "label": "Pre-order tracker: retro-venom-reissue",
+            "url": "preorders.html"
+          },
+          "status": "scheduled",
+          "text": "Retro Venom reissue ships December 2026."
+        }
+      ],
+      "month": "2026-12"
+    }
+  ],
+  "narrative": [
+    {
+      "body": "Hasbro has 'largely abandoned' short-packed chase figures in modern Marvel Legends, and no 2025–2026-era 6-inch chase was documented by the hobby press this year. The chase era — Toy Biz's finite redistributions, the art-deco variants produced 'with scarcity in mind' — is now history, and the Rarity Guide treats it as such. What replaced it isn't a new scarcity mechanic: it's the order window. The year's defining limited release, the Bastion & Bolivar Trask 2-pack, is made-to-order — scarcity measured in calendar days, not case ratios.",
+      "heading": "The year the chase died",
+      "sources": [
+        {
+          "label": "Market briefing — the chase era ends",
+          "url": "market-briefing.html"
+        },
+        {
+          "label": "Rarity Guide",
+          "url": "rarity.html"
+        }
+      ]
+    },
+    {
+      "body": "2026 brought no packaging overhaul. Instead it brought the retro blister card back as the default canvas — the X-Men '97 wave, the Spider-Man: The Animated Series wave, and the Retro Venom reissue all ride retro cardbacks — and the mini comic as the pack-in of the year, with Mini Comics Wave 3 putting a physical comic in every box. After the plastic-free reversal of April 2023, the line's packaging story is settled: nostalgia on the front, sustainability in the materials.",
+      "heading": "Retro is the packaging story",
+      "sources": [
+        {
+          "label": "Legends Timeline — 2026",
+          "url": "timeline.html"
+        },
+        {
+          "label": "Pre-order tracker records",
+          "url": "preorders.html"
+        }
+      ]
+    },
+    {
+      "body": "2026 was the year the reissue program stopped being a rumor and became the market's central mechanism. The Pulse VHS-exclusive Animated Series figures sold out, escalated on the aftermarket — and came back on retro blister cards at the $27.99 standard. The 2021 Pulse Con cel-shaded Venom is back at Fan Channel for $34.99. NYCC added an Astonishing X-Men two-pack reissue. The pattern is now textbook: sellout → aftermarket spike → reissue → premium collapse. The open question is whether it keeps working at scale — the Fall 2026 waves' aftermarket behavior will be the first real test.",
+      "heading": "The reissue machine",
+      "sources": [
+        {
+          "label": "Marvel Toy News — TAS reissues (Sep 2026)",
+          "url": "https://marveltoynews.com/marvel-legends-mary-jane-aunt-may-smythe-carnage-reissues/"
+        },
+        {
+          "label": "Bleeding Cool — Retro Venom reissue (Aug 2026)",
+          "url": "https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"
+        },
+        {
+          "label": "Market briefing — post-NYCC refresh",
+          "url": "market-briefing.html"
+        }
+      ]
+    },
+    {
+      "body": "Reported-price coverage for 2026 is thin — seven figures, none of them 2026 releases — but it tells a coherent story. The white-deco Epic Heroes Doctor Doom is the modern chase-adjacent standout: $115–$200 in reported solds, closing at $200 on August 10, 2026, against roughly $60 in October 2024. The standard green Doom averaged $62.44 across 48 tracked sales. The $7,500 asking price on the unproduced Toy Biz Series 15 blue-and-white Wasp chase prototype (~10 carded) is an ask, not a sale — a two-decade-old artifact, not a 2026 discovery. And one retailer's October snapshot said it plainly: the older Colossus-BAF Cyclops sat in stock at $14.99 while the X-Men '97 Cyclops sold out. Demand concentrates where the cameras are.",
+      "heading": "The aftermarket in miniature",
+      "sources": [
+        {
+          "label": "actionfigure411 — white Doom sold history",
+          "url": "https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"
+        },
+        {
+          "label": "Market briefing — 2026 market briefing",
+          "url": "market-briefing.html"
+        }
+      ]
+    },
+    {
+      "body": "The year isn't over. Doomsday Wave 2 pre-orders opened October 14, the X-Men '97 wave October 21, the Astonishing two-pack October 28; the YFNS Spider-Man vs. Rhino 2-pack hits Pulse November 1; the Bastion & Trask order window closes November 20; the TAS wave and Retro Venom ship in December. Every one of those is a live data point this retrospective will need when the year closes — check the release calendar and the pre-order tracker for the current state.",
+      "heading": "Still unresolved",
+      "sources": [
+        {
+          "label": "Release Calendar",
+          "url": "calendar.html"
+        },
+        {
+          "label": "Pre-order tracker",
+          "url": "preorders.html"
+        }
+      ]
+    }
+  ],
+  "observed": "2026-10-11",
+  "priceMovements": [
+    {
+      "note": "Reported eBay solds from the actionfigure411 tracker, as published in the signal record.",
+      "signalId": "white-epic-heroes-doom",
+      "solds": [
+        [
+          "2026-03-12",
+          150.0
+        ],
+        [
+          "2026-05-03",
+          149.0
+        ],
+        [
+          "2026-08-10",
+          200.0
+        ]
+      ]
+    }
+  ],
+  "rarityHighlights": [
+    {
+      "source": {
+        "label": "Market briefing — the chase era ends",
+        "url": "market-briefing.html"
+      },
+      "text": "Modern chase figures are effectively dead — 'largely abandoned' by Hasbro; no 2025–2026 6-inch chase documented."
+    },
+    {
+      "source": {
+        "label": "Rarity Guide — made-to-order tier",
+        "url": "rarity.html"
+      },
+      "text": "Bastion & Bolivar Trask ($74.99) is the 2026 made-to-order case study: scarcity is the order window, not a chase ratio."
+    },
+    {
+      "source": {
+        "label": "Pre-order tracker records",
+        "url": "preorders.html"
+      },
+      "text": "SDCC 2026 added two convention exclusives: Professor X & hoverchair, and the Spider-Man 60s cartoon 3-pack."
+    },
+    {
+      "source": {
+        "label": "Pre-order tracker: mini-comics-wave-3",
+        "url": "preorders.html"
+      },
+      "text": "First red Elektra since 2018 — 2026's notable deco return, packed with a mini comic."
+    },
+    {
+      "source": {
+        "label": "Bleeding Cool — Retro Venom reissue (Aug 2026)",
+        "url": "https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"
+      },
+      "text": "Retro Venom: a 2021 Pulse Con exclusive returning at Fan Channel — the reissue cycle hitting the convention tier."
+    }
+  ],
+  "scoring": {
+    "first-ever": 2,
+    "first-since": 1,
+    "pack-in": 1,
+    "format": 1,
+    "archive-first": 1,
+    "market-story": 1
+  },
+  "surprises": [
+    {
+      "source": {
+        "label": "Marvel Toy News — TAS reissues (Sep 2026)",
+        "url": "https://marveltoynews.com/marvel-legends-mary-jane-aunt-may-smythe-carnage-reissues/"
+      },
+      "text": "The sold-out Pulse VHS-exclusive Animated Series figures escalated on the aftermarket — then Hasbro re-released the same figures on retro blister cards at $27.99. Sellout → spike → reissue → premium collapse, textbook and on schedule.",
+      "title": "The VHS premiums collapsed by design"
+    },
+    {
+      "source": {
+        "label": "actionfigure411 — Epic Heroes Dr. Doom white variant sold history",
+        "url": "https://www.actionfigure411.com/marvel/marvel-legends-epic-heroes-dr-doom-white-variant-3717.php"
+      },
+      "text": "The white-deco Epic Heroes Doctor Doom — the modern chase-adjacent standout — closed at $200 on August 10, 2026, the top of its $115–$200 reported band. The standard green Doom averaged $62.44 across 48 tracked sales; the premium is the variant, not the character.",
+      "title": "A white Doom sold for $200"
+    },
+    {
+      "source": {
+        "label": "Pre-order tracker: onslaught-target",
+        "url": "preorders.html"
+      },
+      "text": "X-Men Onslaught was 'extremely hit or miss in stores' — and Target cancelled many confirmed 2026 preorders, so in-hand beats preordered. Availability, not price, was the 2026 Target story.",
+      "title": "Target cancelled confirmed preorders"
+    },
+    {
+      "source": {
+        "label": "Pre-order tracker: bastion-trask-2pack",
+        "url": "preorders.html"
+      },
+      "text": "Bastion & Bolivar Trask: an 11.3-inch-winged Bastion, 10 accessories, $74.99, Hasbro Pulse only — and the order window closes November 20, 2026. Miss it and it's gone from retail; it ships November 2027.",
+      "title": "The year's biggest figure is made-to-order"
+    },
+    {
+      "source": {
+        "label": "Pre-order tracker records",
+        "url": "preorders.html"
+      },
+      "text": "First-ever Cypher. First-ever solo-carded 6-inch Aunt May. First red Elektra since 2018. First-ever Bastion (per the tracker research). 2026 kept handing collectors figures the line had never done.",
+      "title": "The year of firsts"
+    },
+    {
+      "source": {
+        "label": "Encyclopedia wave: hasbro-2026-exclusives",
+        "url": "waves/hasbro-2026-exclusives.html"
+      },
+      "text": "Moon Knight, Punisher, Spider-Man, Luna Snow, Venom, and Jeff the Land Shark — six Marvel Rivals (video game) versions, the first in the archive, all inside the 2026 exclusives.",
+      "title": "Marvel Rivals joins the line"
+    },
+    {
+      "source": {
+        "label": "Bleeding Cool — Retro Venom reissue (Aug 2026)",
+        "url": "https://bleedingcool.com/collectibles/marvel-legends-series-retro-venom-gets-a-reissue-from-hasbro/"
+      },
+      "text": "The 2021 Pulse Con cel-shaded TAS Venom — a convention exclusive — returns at Fan Channel retailers for $34.99, shipping December 2026. The reissue program isn't slowing down.",
+      "title": "Retro Venom comes back at $34.99"
+    },
+    {
+      "source": {
+        "label": "Market briefing — the chase era ends",
+        "url": "market-briefing.html"
+      },
+      "text": "Hasbro has 'largely abandoned' short-packed chase figures in modern Marvel Legends — no 2025–2026-era 6-inch chase was documented by the hobby press this year. The chase era is now history, and the Rarity Guide treats it that way.",
+      "title": "The modern chase is dead"
+    }
+  ],
+  "title": "2026: The State of Legends",
+  "top10": [
+    {
+      "blurb": "The reissue-cycle story of the year: the sold-out Pulse VHS exclusives return on retro blister cards at the standard $27.99 — with the first-ever solo-carded 6-inch Aunt May leading the wave.",
+      "display": "Spider-Man: The Animated Series retro wave",
+      "distinctions": [
+        {
+          "claim": "First-ever solo-carded 6-inch Aunt May",
+          "kind": "first-ever",
+          "source": "Pre-order tracker: tas-retro-wave"
+        },
+        {
+          "claim": "Reissues the sold-out Pulse VHS exclusives on retro blister cards",
+          "kind": "format",
+          "source": "Pre-order tracker: tas-retro-wave"
+        },
+        {
+          "claim": "Textbook sellout → aftermarket spike → reissue → premium collapse",
+          "kind": "market-story",
+          "source": "Market briefing: reissue section"
+        }
+      ],
+      "id": "tas-retro-wave",
+      "ref": {
+        "id": "tas-retro-wave",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "The biggest swing of 2026: an 11.3-inch-winged Bastion (documented as a first-ever figure in the tracker research) sold made-to-order — scarcity is the order window, not a chase ratio. Window closes November 20, 2026.",
+      "display": "X-Men '97 Bastion & Bolivar Trask 2-pack",
+      "distinctions": [
+        {
+          "claim": "First-ever Bastion figure per the tracker research (11.3-inch articulated wings); the archive's only other Bastion is the 2021 HasLab Sentinel X-Men Blue version",
+          "kind": "first-ever",
+          "source": "Pre-order tracker: bastion-trask-2pack"
+        },
+        {
+          "claim": "Made-to-order 2-pack at $74.99 — scarcity is the order window",
+          "kind": "format",
+          "source": "Pre-order tracker: bastion-trask-2pack"
+        }
+      ],
+      "id": "bastion-trask-2pack",
+      "ref": {
+        "id": "bastion-trask-2pack",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "The first-ever Cypher figure arrived via Target's 2026 Geek-Out event — and made the encyclopedia's 2026 exclusives the same year.",
+      "display": "Cypher — Target exclusive",
+      "distinctions": [
+        {
+          "claim": "First-ever Cypher figure",
+          "kind": "first-ever",
+          "source": "Pre-order tracker: cypher-target"
+        }
+      ],
+      "figureRef": "hasbro-2026-exclusives::Cypher",
+      "id": "cypher-target",
+      "ref": {
+        "id": "cypher-target",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "Every figure ships with a physical mini comic — and the wave delivers the first red Elektra since 2018 plus a Fraction/Aja-era Hawkeye straight out of Hawkeye #3 (2012).",
+      "display": "Mini Comics Wave 3",
+      "distinctions": [
+        {
+          "claim": "First red Elektra since 2018",
+          "kind": "first-since",
+          "source": "Pre-order tracker: mini-comics-wave-3"
+        },
+        {
+          "claim": "Physical mini comic packed with every figure",
+          "kind": "pack-in",
+          "source": "Pre-order tracker: mini-comics-wave-3"
+        }
+      ],
+      "id": "mini-comics-wave-3",
+      "ref": {
+        "id": "mini-comics-wave-3",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "Shipped October 2026 with a playable Magic: The Gathering card in every box — plus an Amazon-exclusive Black Panther on top of the Doom / Captain America / Malice core.",
+      "display": "Marvel Legends × Magic: The Gathering Wave 2",
+      "distinctions": [
+        {
+          "claim": "Playable Magic: The Gathering card with every figure",
+          "kind": "pack-in",
+          "source": "Pre-order tracker: mtg-wave-2"
+        },
+        {
+          "claim": "Shipped October 2026 with an Amazon-exclusive Black Panther",
+          "kind": "market-story",
+          "source": "Pre-order tracker: mtg-wave-2"
+        }
+      ],
+      "figureRef": "hasbro-2026-exclusives::Black Panther",
+      "id": "mtg-wave-2",
+      "ref": {
+        "id": "mtg-wave-2",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "The 2021 Pulse Con cel-shaded TAS Venom is back at Fan Channel retailers for $34.99 on a retro cardback — the reissue cycle resolving live, no themed outer box this time.",
+      "display": "Retro Venom reissue",
+      "distinctions": [
+        {
+          "claim": "2021 Pulse Con exclusive reissued at Fan Channel — reissue-radar candidate resolving live",
+          "kind": "market-story",
+          "source": "Market briefing: post-NYCC refresh"
+        },
+        {
+          "claim": "Retro cardback with no themed outer box",
+          "kind": "format",
+          "source": "Pre-order tracker: retro-venom-reissue"
+        }
+      ],
+      "id": "retro-venom-reissue",
+      "ref": {
+        "id": "retro-venom-reissue",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "The full wave on retro blister cards — Death Gambit with card-dealing effects, team-suit Cyclops, powered-up Jean — with its NYCC-confirmed roster and an October 21, 2026 pre-order date.",
+      "display": "X-Men '97 retro wave",
+      "distinctions": [
+        {
+          "claim": "Full wave on retro blister cards",
+          "kind": "format",
+          "source": "Pre-order tracker: xmen97-retro-wave"
+        },
+        {
+          "claim": "NYCC final-day panel confirmed the roster; pre-orders opened October 21, 2026",
+          "kind": "market-story",
+          "source": "Market briefing: post-NYCC refresh"
+        }
+      ],
+      "id": "xmen97-retro-wave",
+      "ref": {
+        "id": "xmen97-retro-wave",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "NYCC 2026's reissue play: the Astonishing X-Men two-pack returns with a reported October 28 pre-order — price not announced at reveal (single source).",
+      "display": "Astonishing X-Men Cyclops & Wolverine 2-pack",
+      "distinctions": [
+        {
+          "claim": "NYCC 2026 reissue with reported October 28 pre-order; price unannounced (single source)",
+          "kind": "market-story",
+          "source": "Pre-order tracker: astonishing-cyclops-wolverine-2pack"
+        }
+      ],
+      "id": "astonishing-cyclops-wolverine-2pack",
+      "ref": {
+        "id": "astonishing-cyclops-wolverine-2pack",
+        "kind": "preorder"
+      }
+    },
+    {
+      "blurb": "The MCU tie-in wave of the year — Thor with flight stand, Doctor Doom, Gambit, a James Marsden-likeness Cyclops (pre-orders opened July 27, 2026), Magneto, Shang-Chi, and Mr. Fantastic & H.E.R.B.I.E.",
+      "display": "Avengers: Doomsday wave",
+      "distinctions": [
+        {
+          "claim": "Avengers: Doomsday film tie-in wave; Cyclops pre-orders opened July 27, 2026 at $27.99",
+          "kind": "market-story",
+          "source": "Pre-order tracker: doomsday-wave"
+        }
+      ],
+      "id": "doomsday-wave",
+      "ref": {
+        "id": "doomsday-wave",
+        "kind": "preorder"
+      },
+      "waveRef": "hasbro-2026-doomsday-1"
+    },
+    {
+      "blurb": "Revealed on the NYCC 2026 final-day panel — Concept Series Lord Doom with open and closed spell books, a swappable-head Beast, and a fully-kitted Nightcrawler. Pre-orders opened October 14, 2026 for Spring 2027.",
+      "display": "Avengers: Doomsday Wave 2",
+      "distinctions": [
+        {
+          "claim": "NYCC 2026 final-day panel reveal; pre-orders opened October 14, 2026",
+          "kind": "market-story",
+          "source": "Market briefing: post-NYCC refresh"
+        }
+      ],
+      "id": "doomsday-wave-2",
+      "ref": {
+        "id": "doomsday-wave-2",
+        "kind": "preorder"
+      }
+    }
+  ]
+}

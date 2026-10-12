@@ -102,6 +102,84 @@ export function upcomingPreorders(items, today, daysAhead = 30) {
     .map((e) => e.item);
 }
 
+/* ---- pre-order window honesty check (wave 28) ----
+   The tracker's own scorecard: for each item with an exact preorderDate
+   inside a past/future window around today, one entry:
+   { id, name, date, daysUntil, kind, result, venue }
+   kind: "past-window" | "upcoming-window" | "sale-window" (revealed items
+   whose releaseWindow day is exact, e.g. a Pulse-exclusive sale date).
+   result (past windows only): "as-announced" | "retailers-partial" |
+   "delayed" | "missed" | "unscored" (no outcome researched yet — never a
+   silent pass). Upcoming windows carry result: "on-schedule" when the
+   latest research reconfirmed them, else "unscored". */
+export const WINDOW_RESULTS = ["as-announced", "retailers-partial", "delayed", "missed", "unscored"];
+export const SALE_DATE_BY_ID = { "yfns-spidey-rhino-2pack": "2026-11-01" };
+
+export function windowCheck(items, today, pastDays = 30, futureDays = 30) {
+  const out = [];
+  for (const it of items || []) {
+    if (!it) continue;
+    let date = it.preorderDate && parseYMD(it.preorderDate) ? it.preorderDate : null;
+    let kind = "upcoming-window";
+    if (date) {
+      const d = daysBetween(today, date);
+      if (d === null) continue;
+      if (d < 0 && -d > pastDays) continue;
+      if (d > futureDays) continue;
+      kind = d < 0 ? "past-window" : "upcoming-window";
+      out.push({
+        id: it.id, name: it.name, date, daysUntil: d, kind,
+        result: d < 0 ? (WINDOW_RESULTS.includes(it.windowResult) ? it.windowResult : "unscored") : "on-schedule",
+        venue: it.venue || null,
+      });
+    } else if (it.status === "revealed" && SALE_DATE_BY_ID[it.id]) {
+      /* Exact on-sale date reported (no pre-order window announced). */
+      const date2 = SALE_DATE_BY_ID[it.id];
+      const d = daysBetween(today, date2);
+      if (d === null || d < 0 || d > futureDays) continue;
+      out.push({
+        id: it.id, name: it.name, date: date2, daysUntil: d, kind: "sale-window",
+        result: "on-schedule", venue: it.venue || null,
+      });
+    }
+  }
+  return out.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+}
+
+/* Aggregate a windowCheck list into the tracker's scorecard:
+   { scored, correct, partial, delayed, missed, unscored, upcoming }.
+   "correct" = as-announced past windows; "upcoming" counts the future
+   windows still standing as confirmed. */
+export function windowScorecard(checks) {
+  const s = { scored: 0, correct: 0, partial: 0, delayed: 0, missed: 0, unscored: 0, upcoming: 0 };
+  for (const c of checks || []) {
+    if (!c) continue;
+    if (c.kind === "past-window") {
+      if (c.result === "as-announced") { s.scored++; s.correct++; }
+      else if (c.result === "retailers-partial") { s.scored++; s.partial++; }
+      else if (c.result === "delayed") { s.scored++; s.delayed++; }
+      else if (c.result === "missed") { s.scored++; s.missed++; }
+      else { s.unscored++; }
+    } else if (c.kind === "upcoming-window" || c.kind === "sale-window") {
+      s.upcoming++;
+    }
+  }
+  return s;
+}
+
+/* Items whose pre-order window opened recently (within daysBack days) —
+   the "fresh windows" hunts for Grail Quest: still at MSRP, still orderable. */
+export function recentlyOpened(items, today, daysBack = 14) {
+  const out = [];
+  for (const it of items || []) {
+    if (!it || it.status !== "preorder" || !it.preorderDate || !parseYMD(it.preorderDate)) continue;
+    const d = daysBetween(it.preorderDate, today); // positive once the window has opened
+    if (d === null || d <= 0 || d > daysBack) continue;
+    out.push({ item: it, daysOpen: d });
+  }
+  return out.sort((a, b) => a.daysOpen - b.daysOpen);
+}
+
 /** "YYYY-MM" key for an ISO date, or null. */
 export function monthKey(ymd) {
   const p = parseYMD(ymd);
