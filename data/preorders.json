@@ -142,7 +142,7 @@
       "venue": "Pre-order Aug 2026 → shipped Oct 2026"
     },
     {
-      "details": "Made-to-order 2-pack: Bastion Nimrod (first-ever figure, 11.3-inch articulated wings, 2 heads, 4 alt hands, 2 power FX) + Bolivar Trask (alt heads incl. Prime Sentinel form, purple energy FX). 10 accessories. Order window closes 11/20/2026 11:59 PM EDT; cancellations allowed until 12/7/2026. Hasbro Pulse only. Scarcity here is the order window, not a chase ratio. UK price £82.99 (Mephitsu). EU price €99.99 (Hasbro Pulse EU listing, ~Nov 1, 2027 ship — first EU price datapoint, Oct 12, 2026 research).",
+      "details": "Made-to-order 2-pack: Bastion Nimrod (first-ever figure, 11.3-inch articulated wings, 2 heads, 4 alt hands, 2 power FX) + Bolivar Trask (alt heads incl. Prime Sentinel form, purple energy FX). 10 accessories. Order window closes 11/20/2026 11:59 PM ET; cancellations allowed until 12/7/2026. Hasbro Pulse only. Scarcity here is the order window, not a chase ratio. UK price £82.99 (Mephitsu). EU price €99.99 (Hasbro Pulse EU listing, ~Nov 1, 2027 ship — first EU price datapoint, Oct 12, 2026 research).",
       "id": "bastion-trask-2pack",
       "name": "X-Men '97 Bastion & Bolivar Trask 2-pack",
       "preorderDate": "2026-10-07",
@@ -476,14 +476,14 @@
       "retailers": [
         "pulse"
       ],
-      "details": "NYCC 2026 reveal: animated-style cell-shaded Spider-Man (masked + unmasked Peter Parker heads, 4 alt hands, pair of glasses, web line, web-splat effect that attaches to his wrist or Rhino's face) vs. Rhino in his Carbonadium suit (alt head, 2 alt hands). Inspired by Season 2. 11 accessories. Pulse exclusive, on sale Nov 1, 2026 at 1 PM EDT (MarvelousNews). Oct 12 re-check: the Nov 1 Pulse-exclusive sale still stands; no pre-order window and no announced price.",
+      "details": "NYCC 2026 reveal: animated-style cell-shaded Spider-Man (masked + unmasked Peter Parker heads, 4 alt hands, pair of glasses, web line, web-splat effect that attaches to his wrist or Rhino's face) vs. Rhino in his Carbonadium suit (alt head, 2 alt hands). Inspired by Season 2. 11 accessories. Pulse exclusive, on sale Nov 1, 2026 at 1 PM ET (MarvelousNews wrote EDT; clocks are on standard time by Nov 1). Oct 12 re-check: the Nov 1 Pulse-exclusive sale still stands; no pre-order window and no announced price.",
       "sources": [
         {
           "label": "Mephitsu — NYCC 2026 Hasbro Marvel Legends panel (Oct 10, 2026)",
           "url": "https://www.mephitsu.co.uk/post/nycc-2026-hasbro-marvel-legends-panel"
         },
         {
-          "label": "MarvelousNews — YFNS 2-pack: Nov 1, 1 PM EDT (Oct 2026)",
+          "label": "MarvelousNews — YFNS 2-pack: Nov 1, 1 PM ET (Oct 2026)",
           "url": "https://marvelousnews.com/252-39296"
         }
       ]

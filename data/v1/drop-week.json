@@ -322,7 +322,7 @@
       "id": "targets",
       "phase": "before",
       "label": "Pick your targets \u2014 and only your targets",
-      "detail": "Three figures in this wave. Mark each one in your battle plan (tap a figure on its drop card below) so tomorrow is execution, not deliberation."
+      "detail": "Three figures in this wave. Mark each one in your battle plan (tap a figure on its drop card below) so Wed Oct 14 is execution, not deliberation."
     },
     {
       "id": "ceiling",
@@ -333,25 +333,25 @@
     {
       "id": "accounts",
       "phase": "before",
-      "label": "Sign in everywhere tonight, not at 12:59 tomorrow",
+      "label": "Sign in everywhere before drop day, not at 12:59 PM ET on Oct 14",
       "detail": "Hasbro Pulse and Amazon, payment method and shipping address saved on both. A checkout queue is no place to be typing a card number."
     },
     {
       "id": "backups",
       "phase": "before",
       "label": "Line up the backup doors",
-      "detail": "BigBadToyStore and Entertainment Earth are also carrying the wave (named in Oct 12 coverage). Open their search pages tonight so tomorrow is one click, not a search."
+      "detail": "BigBadToyStore and Entertainment Earth are also carrying the wave (named in Oct 12 coverage). Open their search pages before drop day so Oct 14 is one click, not a search."
     },
     {
       "id": "alarm",
       "phase": "before",
-      "label": "Set the alarm for 12:45 PM ET",
+      "label": "Set the alarm for 12:45 PM ET on Wed Oct 14",
       "detail": "Fifteen minutes early is the whole game. Every 2026 window in this sequence has opened at 1 PM ET sharp."
     },
     {
       "id": "tabs",
       "phase": "morning",
-      "label": "Tabs open by 12:50 PM ET, in attack order",
+      "label": "Tabs open by 12:50 PM ET on Wed Oct 14, in attack order",
       "detail": "Lord Doom first \u2014 a Doom in a movie wave, and Wave 1's Doom sold out at retailers within hours of the August launch. Then Nightcrawler, then Beast."
     },
     {
@@ -382,7 +382,7 @@
   "priceWatch": {
     "dropId": "doomsday-wave-2",
     "note": "Three lanes, never blended: what Hasbro announced, what sellers are asking, and what buyers have actually paid in reported solds. Before the window opens, the asking and sold lanes for this wave are empty \u2014 that is the honest state of the record, not a gap in it.",
-    "msrpNote": "Announced MSRP per the Chronicle pre-order tracker, re-checked Oct 12, 2026. Hasbro's own press copy for this wave lists no price \u2014 if a live listing disagrees at 1 PM tomorrow, the listing wins and this tracker gets corrected.",
+    "msrpNote": "Announced MSRP per the Chronicle pre-order tracker, re-checked Oct 12, 2026. Hasbro's own press copy for this wave lists no price \u2014 if a live listing disagrees at 1 PM ET on Wed Oct 14, the listing wins and this tracker gets corrected.",
     "figures": [
       {
         "name": "Marvel's Beast",
@@ -414,7 +414,7 @@
   },
   "radarPoll": {
     "polledAt": "2026-10-12",
-    "polledNote": "Poll run Mon Oct 12, 2026, about 3:05 PM PDT (22:05 UTC): the radar scanner swept Toyark, Marvel Toy News, Bleeding Cool and Google News and filed 10 new candidates to the Reveal Radar; a hand check of the NYCC panel reports added two more. What matters for tomorrow:",
+    "polledNote": "Poll run Mon Oct 12, 2026, about 3:05 PM PDT (22:05 UTC): the radar scanner swept Toyark, Marvel Toy News, Bleeding Cool and Google News and filed 10 new candidates to the Reveal Radar; a hand check of the NYCC panel reports added two more. What matters for Wed Oct 14:",
     "findings": [
       {
         "flag": "confirmed",
@@ -467,7 +467,7 @@
       {
         "flag": "uncertain",
         "headline": "Price-rise chatter \u2014 unproven until the listings post",
-        "detail": "One aggregator write-up claims Hasbro mentioned standard singles rising toward $30 at NYCC. No panel report, press release, or retailer listing repeats it, and Hasbro's press copy for this wave lists no price at all. The tracker keeps the announced $27.99; the first live listings tomorrow settle the question.",
+        "detail": "One aggregator write-up claims Hasbro mentioned standard singles rising toward $30 at NYCC. No panel report, press release, or retailer listing repeats it, and Hasbro's press copy for this wave lists no price at all. The tracker keeps the announced $27.99; the first live listings on Wed Oct 14 settle the question.",
         "sources": [
           {
             "label": "GhanaMMA aggregator write-up (unverified, single outlet)",

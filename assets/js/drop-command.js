@@ -499,7 +499,7 @@ export async function init() {
   if (!root) return;
   let data;
   try {
-    const res = await fetch("data/drop-week.json");
+    const res = await fetch("data/drop-week.json", { cache: "no-store" });
     data = await res.json();
   } catch {
     root.innerHTML = "";
@@ -803,7 +803,11 @@ function renderPriceWatch(pw) {
   }
   const dateInput = document.getElementById("dw-price-date");
   if (dateInput && !dateInput.value) {
-    dateInput.value = new Date().toISOString().slice(0, 10);
+    /* The reader's local date, not UTC's: an evening sighting on the US
+       West Coast is still that evening's sighting, not tomorrow's. */
+    const n = new Date();
+    const local = new Date(n.getTime() - n.getTimezoneOffset() * 60000);
+    dateInput.value = local.toISOString().slice(0, 10);
   }
 
   const render = () => {
@@ -830,7 +834,7 @@ function renderPriceWatch(pw) {
     if (list) {
       list.innerHTML = "";
       if (!sightings.length) {
-        list.appendChild(el("li", "dw-note", "No sightings logged yet. When a listing catches your eye tomorrow, put it here — asking or sold, never both at once."));
+        list.appendChild(el("li", "dw-note", "No sightings logged yet. When a listing catches your eye at the window, put it here — asking or sold, never both at once."));
       }
       for (const s of [...sightings].reverse()) {
         const li = el("li", "dw-sighting");
@@ -1042,7 +1046,7 @@ function renderCapture(proto, published, pw) {
     ].sort((a, b) => Date.parse(a.observedAt) - Date.parse(b.observedAt));
     list.innerHTML = "";
     if (!entries.length) {
-      list.appendChild(el("li", "dw-note", "Nothing captured yet. The first listing you see tomorrow becomes the first entry — price, door, and the real time you saw it."));
+      list.appendChild(el("li", "dw-note", "Nothing captured yet. The first listing you see at the window becomes the first entry — price, door, and the real time you saw it."));
     }
     for (const e of entries) {
       const li = el("li", "dw-sighting");

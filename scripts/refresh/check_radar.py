@@ -3,8 +3,16 @@
 check_radar.py — hobby-press reveal scanner for the Marvel Legends release radar.
 
 Polls hobby-press RSS feeds plus a multi-query Google News RSS search for
-Marvel Legends reveal / announcement items, filters by keyword, and writes
-NEW items to data/v1/radar-candidates.json.
+Marvel Legends reveal / announcement items, filters by keyword, and APPENDS
+new items to data/v1/radar-candidates.json, pruning entries whose
+detected_at is more than 90 days old (undated entries are kept).
+
+This matches api/cron/radar.js exactly. The pre-2026-10-12 version of this
+script OVERWROTE the candidates file with only the current run's finds —
+the Oct 12 evening poll erased the 193 candidates filed on Oct 11 that way
+(restored the same night from git history). A poll that finds nothing, or
+whose sources all fail, must leave the published record untouched, never
+empty it.
 
 Dedup is handled against data/v1/radar-seen.json (a persistent seen-URL store
 this script maintains itself). Nothing here ever touches radar.html — the
@@ -150,6 +158,38 @@ def save_json(path, obj):
     os.replace(tmp, path)
 
 
+RETENTION_MS = 90 * 24 * 3600 * 1000  # candidates kept 90 days (api/cron/radar.js)
+
+
+def merge_candidates(existing, fresh, now_ms):
+    """Append fresh candidates to the existing record and prune to 90 days.
+
+    Existing order is preserved, fresh finds go last — the same shape
+    api/cron/radar.js writes. Undated or unparseable entries are kept:
+    a timestamp we cannot read is not a reason to erase a detection.
+    Returns (merged, pruned_count).
+    """
+    if not isinstance(existing, list):
+        existing = []
+    merged = list(existing) + list(fresh)
+    cutoff = now_ms - RETENTION_MS
+    kept, pruned = [], 0
+    for c in merged:
+        stamp = c.get("detected_at") if isinstance(c, dict) else None
+        ms = None
+        if stamp:
+            try:
+                ms = datetime.datetime.fromisoformat(
+                    str(stamp).replace("Z", "+00:00")).timestamp() * 1000
+            except ValueError:
+                ms = None
+        if ms is not None and ms < cutoff:
+            pruned += 1
+        else:
+            kept.append(c)
+    return kept, pruned
+
+
 def main():
     seen = load_json(SEEN_PATH, [])           # list of {"url": ...} or plain urls
     seen_urls = set()
@@ -207,7 +247,10 @@ def main():
                        "error": err if mode == "failed" else None})
 
     os.makedirs(API_DIR, exist_ok=True)
-    save_json(CANDIDATES_PATH, new_candidates)
+    existing = load_json(CANDIDATES_PATH, [])
+    now_ms = datetime.datetime.now(datetime.timezone.utc).timestamp() * 1000
+    merged, pruned = merge_candidates(existing, new_candidates, now_ms)
+    save_json(CANDIDATES_PATH, merged)
     save_json(SEEN_PATH, sorted(seen_urls))
 
     # Summary to stdout; exit 0 always (per-source errors are reported, not fatal).
@@ -217,8 +260,9 @@ def main():
         if s["error"]:
             line += " error=%s" % s["error"]
         print(line)
-    print("wrote %d candidate(s) to %s" % (len(new_candidates),
-          os.path.relpath(CANDIDATES_PATH, ROOT)))
+    print("appended %d candidate(s), pruned %d, record now %d in %s"
+          % (len(new_candidates), pruned, len(merged),
+             os.path.relpath(CANDIDATES_PATH, ROOT)))
     print("seen store: %d url(s) at %s" % (len(seen_urls),
           os.path.relpath(SEEN_PATH, ROOT)))
     return 0

@@ -40,8 +40,17 @@ frontend live timeout and the 10s function budget.
 
 ## Known-good status (2026-10-12 snapshot)
 
-- `scripts/validate.sh`: 452/452 tests pass, 16,415 relative links checked across
-  277 pages (0 broken), all JSON parses, schemas validate.
+- `scripts/validate.sh`: 540/540 tests pass (2026-10-12 evening verification),
+  relative links checked across all pages (0 broken), all JSON parses, schemas validate.
+- Drop Week countdown verified independently 2026-10-12: Oct 14, 2026 is a
+  Wednesday, EDT (UTC−4) until Nov 1 — window instant `2026-10-14T13:00:00-04:00`
+  = 17:00 UTC = 10:00 AM PDT. Reader-facing copy names Wed Oct 14 explicitly
+  (no relative "tomorrow" — from Oct 12 that pointed at Oct 13).
+- Reveal Radar candidates record: 212 entries (193 from Oct 11 restored after
+  the Python scanner's overwrite was fixed to append + prune-to-90d, matching
+  `api/cron/radar.js`; 12 from the Oct 12 22:05 UTC poll; 7 from the 23:24 UTC
+  re-poll). Seen store: 409 URLs. One Google News query variant returned
+  HTTP 503 during the evening re-poll — the other sources answered.
 - Spot-check on local file server: `/`, `/quest.html`, `/radar.html`,
   `/data/v1/index.json`, `/data/v1/drop-week.json`, character/wave pages → all 200.
 - vercel.json parses; `functions` lists the 4 functions by explicit path with

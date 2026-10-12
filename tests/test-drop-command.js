@@ -224,6 +224,18 @@ suite("drop-command: buyer checklist", () => {
     }
     for (const i of ck) assert(i.label.length > 10 && i.detail.length > 20, `${i.id} has real copy`);
   });
+  test("window copy names the date, never a relative day (Oct 14 is not 'tomorrow' on Oct 12)", () => {
+    // Verified 2026-10-12: Oct 14, 2026 is a Wednesday, two days out — copy
+    // written as "tomorrow" sent readers to Oct 13. Every reader-facing
+    // string in the checklist, price tracker, and radar poll must carry the
+    // explicit date instead.
+    const blob = JSON.stringify([data.checklist, data.priceWatch, data.radarPoll]);
+    assert(!/tomorrow/i.test(blob), "no 'tomorrow' in window-facing copy");
+    const alarm = data.checklist.find((i) => i.id === "alarm");
+    assert(alarm.label.includes("Oct 14"), "alarm names the date");
+    const tabs = data.checklist.find((i) => i.id === "tabs");
+    assert(tabs.label.includes("Oct 14"), "tabs label names the date");
+  });
   test("checklist ceiling math is honest: 3 x $27.99 = $83.97", () => {
     const ceiling = data.checklist.find((i) => i.id === "ceiling");
     assert(ceiling.label.includes("$83.97"), "label carries the total");
