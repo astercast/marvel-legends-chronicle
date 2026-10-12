@@ -33,7 +33,7 @@ NAV = [
     ("preorders.html", "Pre-orders"),
     ("calendar.html", "Release Calendar"),
     ("compare.html", "Compare"),
-    ("grails.html", "Grails"),
+    ("grails.html", "Grails"), ("quest.html", "Grail Quest"),
     ("variants.html", "Variants"),
     ("variant-spotlight.html", "Variant Spotlight"),
     ("checklist.html", "Checklist"),

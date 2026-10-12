@@ -13,6 +13,7 @@ await import("./test-baf.js");
 await import("./test-listings.js");
 await import("./test-preorders.js");
 await import("./test-agents.js");
+await import("./test-quest.js");
 
 const failures = await runAll();
 process.exit(failures ? 1 : 0);

@@ -36,3 +36,16 @@ One line per wave, so a fresh mind can reconstruct the history.
 - **Validation:** `scripts/validate.sh` — VALIDATION PASSED (80/80 tests, 15 suites; 8,753 relative refs, 0 broken; JSON/schema/ids/storage/perf green).
 - Nav: `agents.html` added to canonical lists in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on 31 pages.
 - **Commit:** c77a421 (local) → pushed as GitHub commit `8c6be0c` on `main`
+
+## Wave 15 — FLAGSHIP: Grail Quest (2026-10-11)
+
+- **Quest system** (`quest.html` + `assets/js/quest.js`): reads the user's real localStorage state (`mlc_owned_v1`, `mlc_wanted_v1`, `mlc_watchlist_v1`, `mlc_hunt_v1`) and generates:
+  - **Active quests** auto-generated from data: "Finish BAF: <name>" (started-but-unfinished BAFs, nearest completion first; repeat BAF names disambiguated by year, e.g. Fin Fang Foom), "Complete the <series> run" (numbered waves grouped — "X-Men '97" spans Wave 1/2/3), "Close the gap: <character> run" (character pages' base-name grouping, ≥5 archive releases). Each quest: progress bar (progressbar ARIA), exact missing pieces (figure cards + wave-page + eBay-solds research links), difficulty tier (Quick win / Medium / Long haul).
+  - **Next-quest recommendations**: closest BAF to complete, cheapest missing piece of a character/series run (figure-type cost proxy 1–4, labeled honestly — never a price), nearest watchlist grail (lowest user-reported sighting, flagged as reported, never market data).
+  - **9 achievements** from archive signals only: First Steps, Chase Hunter (chase-flagged figures), Build-A-Master, Retro Royalty (retro notes), Variant Vault, Toy Biz Pioneer, Convention Floor (SDCC/NYCC/HASCON/PulseCon), Completionist, Century Shelf — each with CSS badge art, condition text, live progress.
+  - **Collector level**: XP = owned×1 + BAF×25 + achievement×10 → Rookie → Collector → Archivist → Curator → Living Legend, math shown.
+  - **Shareable quest card**: "Copy my quest status" — plain-text summary for forums/Discord.
+- Empty state for new users: 3-step onboarding (starter guide → checklist → watchlist).
+- Pure-logic exports tested: `tests/test-quest.js` (26 tests: quest generation, nearest-BAF ordering, achievement unlocks, XP/level math, share text) registered in `tests/run.js`; real-data smoke test (28 stubbed owned → 30 quests in 23ms).
+- Nav: `quest.html` ("Grail Quest", after Grails) added to canonical lists in `scripts/update_nav.py`, `scripts/build_waves.py`, `scripts/build_characters.py`; nav rebuilt on 32 pages. `llms.txt` + `README.md` updated.
+- **Validation:** `scripts/validate.sh` — VALIDATION PASSED (106/106 tests, 21 suites; 8,823 relative refs, 0 broken).
