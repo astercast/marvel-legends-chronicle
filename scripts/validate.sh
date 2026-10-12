@@ -126,7 +126,10 @@ for html in html_files:
         if u.startswith(("#", "http://", "https://", "//", "mailto:", "data:", "javascript:")) or not u:
             continue
         # Strip fragment and query string: "gift.html?budget=under25" -> "gift.html"
-        target = (html.parent / u.split("#")[0].split("?")[0])
+        # Leading-slash refs are site-root-absolute (the Vercel fallback contract
+        # client uses "/api/..." paths); resolve those against the repo root.
+        u_stripped = u.split("#")[0].split("?")[0]
+        target = (ROOT / u_stripped.lstrip("/")) if u_stripped.startswith("/") else (html.parent / u_stripped)
         checked += 1
         if not target.exists():
             fail(f"broken ref: {html.relative_to(ROOT)} -> {u}")

@@ -400,15 +400,69 @@ function cardHtml(item, today, states) {
   </article>`;
 }
 
-async function loadItems() {
+/* Live-first data load through the §3 fallback contract (Vercel Wave B):
+ * 1. Try the live function /api/preorders (7s timeout) — projects the
+ *    committed tracker into the §7.3 shape.
+ * 2. On failure, fall back to the static api/v1/preorders.json.
+ * 3. Both shapes normalize into the tracker's item shape; unknown fields
+ *    are ignored, missing optionals stay null. Never rejects to a blank
+ *    page: an empty array keeps the honest error line visible. */
+function normalizeLiveItem(p) {
+  return {
+    id: String(p.id || ""),
+    name: String(p.name || ""),
+    status: String(p.status || "revealed"),
+    preorderDate: typeof p.goes_live_at === "string" ? p.goes_live_at.slice(0, 10) : null,
+    releaseWindow: p.release_window != null ? String(p.release_window) : null,
+    price: typeof p.price === "number" && Number.isFinite(p.price) ? p.price : null,
+    venue: p.venue != null ? String(p.venue) : null,
+    details: p.details != null ? String(p.details) : null,
+    retailers: Array.isArray(p.retailers) ? p.retailers.map(String) : [],
+    sources: Array.isArray(p.sources) ? p.sources : [],
+  };
+}
+
+/* The static fallback carries its own freshness claim (`observed`,
+ * e.g. "2026-10-11") but no generated_at, so the api-client would badge it
+ * "unknown time". Refine with the file's honest date instead. */
+function refinePreorderBadge(badgeEl, result) {
+  if (!badgeEl || result.source !== "static") return;
+  const observed = result.data && typeof result.data.observed === "string"
+    ? result.data.observed : null;
+  if (!observed) return;
+  badgeEl.textContent = "cached · updated " + observed;
+  badgeEl.title = "Server unreachable — showing last published data · observed " + observed;
+}
+
+async function legacyStaticLoad() {
   try {
-    const res = await fetch(PATHS.preorders);
+    const res = await fetch("/api/v1/preorders.json");
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data.items) ? data.items : [];
   } catch {
     return [];
   }
+}
+
+async function loadItems() {
+  const client = typeof window !== "undefined" ? window.ApiClient : null;
+  const badgeEl = typeof document !== "undefined" ? document.getElementById("po-badge") : null;
+  if (!client || typeof client.fetchWithFallback !== "function") {
+    return legacyStaticLoad();
+  }
+  const result = await client.fetchWithFallback("/api/preorders", "/api/v1/preorders.json", {
+    badgeEl,
+  });
+  refinePreorderBadge(badgeEl, result);
+  if (!result.data) return [];
+  if (Array.isArray(result.data.preorders)) {
+    return result.data.preorders.map(normalizeLiveItem);
+  }
+  if (Array.isArray(result.data.items)) {
+    return result.data.items;
+  }
+  return [];
 }
 
 function applyFilters(list, statusF, personalF) {

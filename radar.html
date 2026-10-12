@@ -94,6 +94,11 @@
     </section>
 
     <div class="container">
+      <div id="radar-scan-wrap" class="radar-scan-wrap" style="margin-bottom:var(--space-6)">
+        <h2 id="radar-scan-title" style="font-size:1.05rem;margin-bottom:var(--space-1)">Latest press scan <span class="api-badge" id="radar-scan-badge" role="status" tabindex="0" data-api-state="waking"></span></h2>
+        <p class="chart-sub" style="margin-bottom:var(--space-3)">Fresh detections from the collector-press poll — a rumor until a second source confirms it; price is always TBA here, never assumed. Curated radar cards follow below.</p>
+        <div id="radar-scan" class="radar-list" aria-labelledby="radar-scan-title"></div>
+      </div>
       <div class="radar-list">
         <article class="card radar-card">
           <h2>Spider-Man (Marvel Holiday Special)</h2>
@@ -419,6 +424,8 @@
       </nav>
     </div>
   </footer>
+  <script src="assets/js/api-client.js" defer></script>
+  <script src="assets/js/radar-live.js" defer></script>
   <script src="assets/js/vault.js" defer></script>
 </body>
 </html>

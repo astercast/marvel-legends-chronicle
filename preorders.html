@@ -99,7 +99,7 @@
       <div class="container hero-inner">
         <span class="hero-kicker">Watch · Order · Skip</span>
         <h1 id="po-title">Pre-order <span class="accent">tracker.</span></h1>
-        <p class="lede">Every upcoming release the radar has researched, with its status, a live countdown, retailer search links, and your own call — ordered, watching, or skipped. Last updated <time datetime="2026-10-11">October 11, 2026</time>.</p>
+        <p class="lede">Every upcoming release the radar has researched, with its status, a live countdown, retailer search links, and your own call — ordered, watching, or skipped. Last updated <time datetime="2026-10-11">October 11, 2026</time>. <span class="api-badge" id="po-badge" role="status" tabindex="0" data-api-state="waking"></span></p>
       </div>
     </section>
 
@@ -116,7 +116,7 @@
         </div>
       </div>
 
-      <p class="chart-sub" id="po-error" hidden>The release list couldn't be loaded. Check that <code>data/preorders.json</code> is present and try again.</p>
+      <p class="chart-sub" id="po-error" hidden>The release list couldn't be loaded — neither the server (<code>/api/preorders</code>) nor the published data (<code>api/v1/preorders.json</code>) answered. Check your connection and try again.</p>
       <div class="po-list" id="po-list"></div>
 
       <div class="card radar-note" style="padding:var(--space-5);margin-bottom:var(--space-7)">
@@ -134,6 +134,7 @@
       </nav>
     </div>
   </footer>
+  <script src="assets/js/api-client.js"></script>
   <script type="module" src="assets/js/preorders.js"></script>
   <script src="assets/js/vault.js" defer></script>
 </body>

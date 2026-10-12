@@ -278,3 +278,43 @@ select.input {
 .fig-list .fig .fig-notes, .release-list .release-wave {
   font-variant-numeric: tabular-nums;
 }
+
+/* --- API freshness badge (ARCHITECTURE.md §3.2) ---
+ * Honesty mechanism: every dynamic widget shows live (green) / waking /
+ * cached (amber) / none states. Text colors are token brights on the dark
+ * vault background; dots + words are both present so state never depends
+ * on color alone. Still by default (reduced-motion-safe). */
+.api-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-left: 0.6em;
+  padding: 0.18em 0.6em 0.18em 0.55em;
+  border: 1px solid rgba(220, 174, 60, 0.35);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--ink-dim);
+  background: rgba(13, 12, 16, 0.55);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.api-badge::before {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background: var(--ink-dim);
+  flex: none;
+}
+.api-badge[data-api-state="live"] { color: var(--green); border-color: rgba(111, 227, 161, 0.45); }
+.api-badge[data-api-state="live"]::before { background: var(--green); }
+.api-badge[data-api-state="waking"] { color: var(--ink-dim); border-style: dashed; }
+.api-badge[data-api-state="waking"]::before { background: var(--ink-dim); }
+.api-badge[data-api-state="cached"] { color: var(--amber); border-color: rgba(255, 179, 127, 0.5); }
+.api-badge[data-api-state="cached"]::before { background: var(--amber); }
+.api-badge[data-api-state="none"] { display: none; }
+.api-badge:focus-visible { outline: none; box-shadow: var(--focus-ring); }

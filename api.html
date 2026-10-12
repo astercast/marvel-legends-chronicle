@@ -114,6 +114,19 @@
         </div>
       </section>
 
+      <section aria-labelledby="live-h">
+        <h2 id="live-h">Live server API <span class="api-badge" id="api-docs-badge" role="status" tabindex="0" data-api-state="waking"></span></h2>
+        <div class="guide-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-3);margin-bottom:var(--space-2);">
+          <article class="card"><h3 style="font-size:1rem;"><code>/api/health</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Service health (marvel-radar): <code>status</code> ok/degraded, function roster, per-file freshness with 24h SLA verdicts, boolean checks. Never 5xx.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>/api/reveals</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Latest reveals: <code>?since=</code> (ISO date, default 30d) + <code>?limit=</code> (default 50, 1–200). Press detections grouped by story — <code>status</code> rumor until 2+ sources confirm, wave/figures null until researched, <code>price_tbd</code> always true. Static twin: <code>api/v1/radar-candidates.json</code>.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>/api/preorders</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Upcoming pre-order dates: id, name, status, <code>goes_live_at</code> (midnight UTC — the file carries dates, never times), retailers, price or <code>price_tbd</code>, release window, sources. Static twin: <code>api/v1/preorders.json</code>.</p></article>
+          <article class="card"><h3 style="font-size:1rem;"><code>/api/cron/radar</code></h3><p style="font-size:0.88rem;color:var(--muted);margin:0;">Daily (15:00 UTC) collector-press poll — cron-only, <code>CRON_SECRET</code> bearer required. Polls press, dedupes, appends candidates, commits on change.</p></article>
+        </div>
+        <div class="card" style="margin-bottom:var(--space-6);">
+          <p style="font-size:0.92rem;color:var(--ink-dim);margin:0;">Every live endpoint returns the shared envelope (<code>ok</code> / <code>data</code> / <code>meta</code> with <code>request_id</code>; errors carry <code>error.code</code>). Schema: <code>api/v1/schema/envelope.json</code>. Edge-cached 10 minutes. The frontend tries the live endpoint first with a 7s timeout and falls back to the static twin — the <span class="api-badge" data-api-state="live" style="margin:0">live</span> / <span class="api-badge" data-api-state="cached" style="margin:0">cached · updated HH:MM</span> badge next to each widget says which one you're seeing.</p>
+        </div>
+      </section>
+
       <section aria-labelledby="console-h">
         <h2 id="console-h">Try the API</h2>
         <div class="card" style="margin-bottom:var(--space-6);">
@@ -162,6 +175,27 @@
     </div>
   </footer>
   <script src="assets/js/api-console.js"></script>
+  <script src="assets/js/api-client.js"></script>
+  <script>
+    /* Live API status badge on the docs page: /api/health first, nothing on failure. */
+    (function () {
+      var badge = document.getElementById("api-docs-badge");
+      if (!badge || !window.ApiClient) return;
+      window.ApiClient.fetchWithFallback("/api/health", "/api/v1/index.json", { badgeEl: badge })
+        .then(function (r) {
+          if (r.source === "live" && r.data && r.data.status === "ok") {
+            badge.textContent = "live · " + (r.data.functions ? r.data.functions.length : 0) + " functions";
+            badge.title = "marvel-radar healthy · " + new Date(r.generatedAt).toISOString().slice(11, 16) + " UTC";
+            badge.dataset.apiState = "live";
+          } else if (r.source === "live") {
+            badge.dataset.apiState = "cached";
+            badge.textContent = "server degraded";
+            badge.title = "The server answered but reports degraded status.";
+          }
+          /* static fallback already set an honest "cached" badge by the client */
+        });
+    })();
+  </script>
   <script src="assets/js/vault.js" defer></script>
 </body>
 </html>
