@@ -1,0 +1,90 @@
+===== refresh run: 2026-10-13 08:27:36 UTC =====
+radar refresh summary (UTC 2026-10-13T08:27:36Z)
+  Toyark           failed        new=0 error=HTTP Error 403: Forbidden
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    failed        new=0 error=HTTP Error 307: Temporary Redirect
+  Google News      rss           new=0
+appended 0 candidate(s), pruned 0, record now 218 in data/v1/radar-candidates.json
+seen store: 442 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 08:45:05 UTC =====
+radar refresh summary (UTC 2026-10-13T08:45:05Z)
+  Toyark           failed        new=0 error=HTTP Error 403: Forbidden
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=0
+appended 0 candidate(s), pruned 0, record now 218 in data/v1/radar-candidates.json
+seen store: 442 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 09:28:08 UTC =====
+radar refresh summary (UTC 2026-10-13T09:28:09Z)
+  Toyark           failed        new=0 error=HTTP Error 403: Forbidden
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=0
+appended 0 candidate(s), pruned 0, record now 218 in data/v1/radar-candidates.json
+seen store: 442 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 09:31:40 UTC =====
+radar refresh summary (UTC 2026-10-13T09:31:42Z)
+  Toyark           failed        new=0 error=HTTP Error 403: Forbidden
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=1
+appended 1 candidate(s), pruned 0, record now 219 in data/v1/radar-candidates.json
+seen store: 443 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 09:47:33 UTC =====
+radar refresh summary (UTC 2026-10-13T09:47:34Z)
+  Toyark           failed        new=0 error=HTTP Error 403: Forbidden
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=0
+appended 0 candidate(s), pruned 0, record now 219 in data/v1/radar-candidates.json
+seen store: 443 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 09:51:11 UTC =====
+radar refresh summary (UTC 2026-10-13T09:51:12Z)
+  Toyark           rss           new=0
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=0
+appended 0 candidate(s), pruned 0, record now 219 in data/v1/radar-candidates.json
+seen store: 443 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 09:54:57 UTC =====
+radar refresh summary (UTC 2026-10-13T09:54:59Z)
+  Toyark           rss           new=0
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=1
+appended 1 candidate(s), pruned 0, record now 220 in data/v1/radar-candidates.json
+seen store: 444 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 10:13:16 UTC =====
+radar refresh summary (UTC 2026-10-13T10:13:17Z)
+  Toyark           rss           new=0
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=0
+appended 0 candidate(s), pruned 0, record now 220 in data/v1/radar-candidates.json
+seen store: 444 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
+===== refresh run: 2026-10-13 10:35:06 UTC =====
+radar refresh summary (UTC 2026-10-13T10:35:07Z)
+  Toyark           rss           new=0
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=0
+appended 0 candidate(s), pruned 0, record now 220 in data/v1/radar-candidates.json
+seen store: 444 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+

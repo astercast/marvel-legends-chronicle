@@ -2,6 +2,11 @@
 
 One line per wave, so a fresh mind can reconstruct the history.
 
+## Rotation 13 — FC-001 + FC-002 closures + the Placement Pass + FLAGSHIP: First Appearances (2026-10-13)
+
+- **HEADLINE (stated before building):** this rotation closes the two Fleet Commons tickets (FC-001 test-harness, FC-002 nav idempotency), executes the Foundry Placement Pass (typographic OG card, generator-owned meta, favicon + theme-color, canonicals, honest JSON-LD), and ships the post-Completionist flagship: **First Appearances** — the debut ledger: every distinct character's first figure in the line, computed from the catalog alone (earliest release per character, catalog-order tie-break), grouped in the Archive Tour's four era chapters, no prices. The Oct 14 window (17:00 UTC) does not fall inside this run — it opens ~29 hours after this run starts — so the DROP WEEK CAPTURE stays armed for the rotation live at window time, per the checklist at the top of the Rotation 12 entry; radar record stands at 220/442+ as filed by the data-ops polls after Rotation 12 (218/442 at Rotation 12 close, +2 candidates since), terms unchanged, lanes still honestly empty.
+- (detail filled in at close, below)
+
 ## Rotation 12 — FINAL pre-window pass + FLAGSHIP: The Completionist + free-tier audit (2026-10-13 morning UTC)
 
 ### DROP-DAY CHECKLIST STATE — for the worker who runs on/after Wed Oct 14, 1 PM ET (17:00 UTC) — READ THIS FIRST
