@@ -132,6 +132,34 @@ button, input, select, textarea { font: inherit; color: inherit; }
   to { opacity: 1; transform: none; }
 }
 
+/* Cross-document view transitions — "the vault door" (rotation 14).
+   Shaped to this house, deliberately narrow: a root-only cross-fade —
+   the old page settles like a drawer closing, the new one lifts a
+   few pixels as it arrives — at the site's own durations and easing.
+   No named elements: across 283 heterogeneous pages, shared names
+   would risk duplicate-name failures for no gain a collector can
+   feel. Browsers without cross-document support ignore the opt-in
+   and navigate exactly as before. Stillness wins both ways it can
+   be asked for: under the OS reduced-motion preference, and under
+   the manual vault toggle (data-motion="reduce"), the transition
+   animations are removed outright, so the swap is instant. */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vault-close var(--dur-1) var(--ease) both; }
+::view-transition-new(root) { animation: vault-open var(--dur-2) var(--ease) both; }
+@keyframes vault-close {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes vault-open {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+}
+html[data-motion="reduce"] ::view-transition-old(root),
+html[data-motion="reduce"] ::view-transition-new(root) { animation: none !important; }
+
 /* Reduced-motion belt-and-braces: OS preference or the manual vault toggle
    both converge on stillness. */
 @media (prefers-reduced-motion: reduce) {

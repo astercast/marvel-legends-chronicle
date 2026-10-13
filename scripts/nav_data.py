@@ -15,12 +15,13 @@ registry for no-JS readers.
 """
 from html import escape
 
-# All 48 pages, in the canonical order. The footer registry + directory use this.
+# All 49 pages, in the canonical order. The footer registry + directory use this.
 NAV = [
     ("index.html", "Timeline"),
     ("timeline.html", "Legends Timeline"),
     ("archive-tour.html", "Archive Tour"),
     ("debuts.html", "First Appearances"),
+    ("long-wait.html", "The Long Wait"),
     ("2026-review.html", "2026 Review"),
     ("start.html", "Start"),
     ("waves/index.html", "Waves"),
@@ -91,6 +92,7 @@ HALLS = [
         ("2026-review.html", "2026 Review", "The year in the line, as it happened."),
         ("archive-tour.html", "Archive Tour", "A guided walk through the catalog's twenty-five years — four era chapters, their real counts, and curator picks chosen by printed rules."),
         ("debuts.html", "First Appearances", "The debut ledger — every distinct character's first figure in the line, its wave and its maker, counted from the catalog and filed by era."),
+        ("long-wait.html", "The Long Wait", "The returns ledger — every distinct character's longest silence between figures: the waits that ended, and the characters still waiting on a second figure."),
         ("stats.html", "Stats", "The archive by the numbers."),
     ]),
     ("The Hunt", "Pre-orders, drops, and the chase.", [
@@ -165,7 +167,7 @@ def primary_nav_html(current, prefix=""):
 
 
 def footer_nav_html(current="", prefix=""):
-    # The footer is the full 47-page registry — the current page is marked
+    # The footer is the full 49-page registry — the current page is marked
     # here, so every page keeps its orientation even when it isn't one of
     # the six front-desk doors.
     links = "".join(
