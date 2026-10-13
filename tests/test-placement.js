@@ -42,10 +42,10 @@ const pages = allPages();
 
 suite("placement — the head block on every page", () => {
   test("page census", () => {
-    assert.equal(pages.length, 287, `pages: ${pages.length}`);
+    assert.equal(pages.length, 289, `pages: ${pages.length}`);
   });
 
-  test("og card, theme-color and favicon links on all 287 pages", () => {
+  test("og card, theme-color and favicon links on all 289 pages", () => {
     for (const rel of pages) {
       const html = read(rel);
       assert.equal((html.match(/property="og:image" content="([^"]+)"/g) || []).length, 1, `${rel}: one og:image`);
