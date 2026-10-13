@@ -18,6 +18,7 @@ import {
   CAPTURE_KEY, CAPTURE_RETAILERS, CAPTURE_KINDS, newCaptureLog,
   makeCaptureEntry, addCaptureEntry, removeCaptureEntry, firstListing,
   captureSpread, selloutTimeline, thirtyClaimVerdict, buildWindowReport,
+  intelText,
 } from "../assets/js/drop-command.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -430,6 +431,35 @@ suite("drop-command: post-window report scaffold", () => {
     assert(JSON.stringify(api.captureProtocol) === JSON.stringify(data.captureProtocol), "captureProtocol deep-equal");
     assert(JSON.stringify(api.captureLog) === JSON.stringify(data.captureLog), "captureLog deep-equal");
     assert(JSON.stringify(api.windowReport) === JSON.stringify(data.windowReport), "windowReport deep-equal");
+  });
+});
+
+suite("drop-command: VP-0009 — price intel renders its text", () => {
+  test("every real price-intel item renders as its .text, never [object Object]", () => {
+    const items = data.intel.price;
+    assert(items.length === 5, `5 price-intel entries, got ${items.length}`);
+    for (const item of items) {
+      assert(item && typeof item === "object" && typeof item.text === "string",
+        "price-intel items are {text} objects in the data (unchanged by the fix)");
+      const rendered = intelText(item);
+      assert(rendered === item.text, "rendered text is the item's own text");
+      assert(rendered.length > 20 && !rendered.includes("[object Object]"),
+        `rendered entry is real text: ${rendered.slice(0, 40)}…`);
+    }
+    assert(intelText(items[0]).includes("$27.99"), "the MSRP entry renders its amount");
+    assert(intelText(items[4]).includes("Gargantos"), "the fifth entry renders in full");
+  });
+  test("plain-string intel items (KO watch) still render as themselves", () => {
+    for (const item of data.intel.koWatch) {
+      assert(typeof item === "string", "koWatch items are strings");
+      assert(intelText(item) === item, "string items pass through untouched");
+    }
+    assert(intelText(null) === "" && intelText({}) === "", "empty items render empty, not [object Object]");
+  });
+  test("the renderer routes intel items through intelText (the scarcity path's rule)", () => {
+    const src = readFileSync(join(ROOT, "assets/js/drop-command.js"), "utf8");
+    assert(src.includes("intelText(t)"), "intelList renders intelText(t)");
+    assert(!src.includes('el("li", null, t)'), "the object-as-text bug does not return");
   });
 });
 

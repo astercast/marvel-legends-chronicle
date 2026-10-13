@@ -15,7 +15,7 @@ registry for no-JS readers.
 """
 from html import escape
 
-# All 51 pages, in the canonical order. The footer registry + directory use this.
+# All 52 pages, in the canonical order. The footer registry + directory use this.
 NAV = [
     ("index.html", "Timeline"),
     ("timeline.html", "Legends Timeline"),
@@ -24,6 +24,7 @@ NAV = [
     ("long-wait.html", "The Long Wait"),
     ("build-ledger.html", "The Build Ledger"),
     ("two-houses.html", "The Two Houses"),
+    ("roll-call.html", "The Roll Call"),
     ("2026-review.html", "2026 Review"),
     ("start.html", "Start"),
     ("waves/index.html", "Waves"),
@@ -97,6 +98,7 @@ HALLS = [
         ("long-wait.html", "The Long Wait", "The returns ledger — every distinct character's longest silence between figures: the waits that ended, and the characters still waiting on a second figure."),
         ("build-ledger.html", "The Build Ledger", "The build ledger — every Build-A-Figure in the line: the waves that carried each build, the figures that carried its pieces, and the gaps filed as gaps."),
         ("two-houses.html", "The Two Houses", "The makers' ledger — the whole line filed under the two houses that made it: Toy Biz, 2002–2006, and Hasbro, 2007–2026, with the handover seam filed exactly where the catalog puts it."),
+        ("roll-call.html", "The Roll Call", "The returns census — every distinct character called by how many figures the line gives them: the handful who anchor the roll, and the hundreds called exactly once."),
         ("stats.html", "Stats", "The archive by the numbers."),
     ]),
     ("The Hunt", "Pre-orders, drops, and the chase.", [
@@ -171,7 +173,7 @@ def primary_nav_html(current, prefix=""):
 
 
 def footer_nav_html(current="", prefix=""):
-    # The footer is the full 51-page registry — the current page is marked
+    # The footer is the full 52-page registry — the current page is marked
     # here, so every page keeps its orientation even when it isn't one of
     # the six front-desk doors.
     links = "".join(

@@ -655,9 +655,21 @@ function renderDrops(drops, plan) {
   }
 }
 
+/**
+ * The display text of one intel item. Price-intel items are objects
+ * ({"text": …}) in the data — the same shape the scarcity list carries —
+ * while KO-watch items are plain strings. Reading the item itself as
+ * text renders an object item literally as "[object Object]" (VP-0009);
+ * the renderer must read `.text`, mirroring the scarcity path.
+ */
+export function intelText(item) {
+  if (item && typeof item === "object") return item.text || "";
+  return item == null ? "" : String(item);
+}
+
 function intelList(items) {
   const ul = el("ul", "dw-intel-list");
-  for (const t of items || []) ul.appendChild(el("li", null, t));
+  for (const t of items || []) ul.appendChild(el("li", null, intelText(t)));
   return ul;
 }
 
