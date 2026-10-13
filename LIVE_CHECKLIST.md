@@ -41,24 +41,33 @@ frontend live timeout and the 10s function budget.
 ## Known-good status (2026-10-12 snapshot)
 
 - `scripts/validate.sh`: 552/552 tests pass (2026-10-13 pre-window verification,
-  rotation 4), relative links checked across all pages (0 broken), all JSON
+  rotations 4 and 5; rotation 5: 17,409 refs across 278 pages, 0 broken),
+  relative links checked across all pages (0 broken), all JSON
   parses, schemas validate.
 - Drop Week countdown verified independently 2026-10-12 and re-verified
   2026-10-13 00:21 UTC (rotation 4): Oct 14, 2026 is a Wednesday, EDT (UTC−4)
   until Nov 1 — window instant `2026-10-14T13:00:00-04:00` = 17:00 UTC =
   10:00 AM PDT. Headless hero read "1d 16h 38m" — exactly the independent
-  span. Reader-facing copy names Wed Oct 14 explicitly (no relative
+  span. Re-verified rotation 5 (2026-10-13 00:46 UTC): hero "1d 16h 14m 1s"
+  vs independent 1d 16h 14m 0s — exact to the minute; atrium teaser agreed.
+  Reader-facing copy names Wed Oct 14 explicitly (no relative
   "tomorrow" — from Oct 12 that pointed at Oct 13).
-- Drop-day capture workflow armed and rehearsed 2026-10-13 (rotation 4):
+- Drop-day capture workflow armed and rehearsed 2026-10-13 (rotations 4
+  and 5; rotation 5 re-rehearsed the full lane discipline end to end):
   4 doors in order (Pulse, Amazon, BigBadToyStore, Entertainment Earth);
   browser-local capture log fills the post-window report from real entries
   only (sellouts stored price-less). Published `captureLog` still
   `awaiting-window` and empty — correct until Wed Oct 14, 1 PM ET.
-- Reveal Radar candidates record: 212 entries (193 from Oct 11 restored after
+- Reveal Radar candidates record: 213 entries (193 from Oct 11 restored after
   the Python scanner's overwrite was fixed to append + prune-to-90d, matching
   `api/cron/radar.js`; 12 from the Oct 12 22:05 UTC poll; 7 from the 23:24 UTC
-  re-poll). Rotation 4 poll Oct 13 00:20 UTC: all four sources answered,
-  0 new candidates, 0 pruned. Seen store: 433 URLs. One Google News query
+  re-poll; 1 X-Men '97 Jean Grey candidate from the Oct 13 00:42 UTC poll —
+  a racing parallel write dropped it and it was restored verbatim from that
+  run's own output, rotation 5). Rotation 4 poll Oct 13 00:20 UTC: all four
+  sources answered (Bleeding Cool via HTML fallback), 0 new candidates,
+  0 pruned. Rotation 5 polls Oct 13: run 1 filed the Jean Grey candidate
+  (Toyark feed HTTP 308 in that run only); run 2 (00:44 UTC) all four via RSS,
+  0 new, 0 pruned. Seen store: 434 URLs. One Google News query
   variant returned HTTP 503 during the Oct 12 evening re-poll — the other
   sources answered.
 - Spot-check on local file server: `/`, `/quest.html`, `/radar.html`,
