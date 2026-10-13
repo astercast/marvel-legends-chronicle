@@ -43,6 +43,52 @@ def nav(current):
 FOOTER_NAV = nav_data.footer_nav_html("waves/index.html", prefix="../")
 DIRECTORY_TEMPLATE = nav_data.directory_template_html(prefix="../")
 
+SITE_ORIGIN = "https://marvel-legends-chronicle-live.vercel.app"
+OG_IMAGE = SITE_ORIGIN + "/assets/og-card.png"
+
+
+def canonical_url(rel):
+    """Absolute cleanUrls canonical for a generated page path."""
+    p = rel[:-len(".html")] if rel.endswith(".html") else rel
+    if p == "index":
+        p = ""
+    elif p.endswith("/index"):
+        p = p[:-len("index")]
+    return f"{SITE_ORIGIN}/{p}" if p else f"{SITE_ORIGIN}/"
+
+
+def head_meta(title, desc, rel, ld=None):
+    """Placement Pass (rotation 13): the shared head block — canonical,
+    Open Graph / Twitter card (typographic OG card, absolute URL),
+    theme-color + favicon from the site's own tokens, and honest
+    JSON-LD built from real catalog data only. og:title mirrors the
+    page's own <title>; og:description mirrors its meta description."""
+    full = f"{escape(title)} — Marvel Legends Chronicle"
+    url = canonical_url(rel)
+    lines = [
+        f'  <link rel="canonical" href="{url}">',
+        '  <meta property="og:type" content="website">',
+        f'  <meta property="og:title" content="{full}">',
+        f'  <meta property="og:description" content="{escape(desc)}">',
+        f'  <meta property="og:url" content="{url}">',
+        f'  <meta property="og:image" content="{OG_IMAGE}">',
+        '  <meta property="og:image:width" content="1200">',
+        '  <meta property="og:image:height" content="630">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{full}">',
+        f'  <meta name="twitter:description" content="{escape(desc)}">',
+        f'  <meta name="twitter:image" content="{OG_IMAGE}">',
+        '  <meta name="theme-color" content="#0d0c10">',
+        '  <link rel="icon" href="/favicon.ico" sizes="48x48">',
+        '  <link rel="icon" href="/favicon.svg" type="image/svg+xml">',
+        '  <link rel="apple-touch-icon" href="/apple-touch-icon.png">',
+    ]
+    if ld:
+        lines.append('  <script type="application/ld+json">'
+                     + json.dumps(ld, ensure_ascii=False) + "</script>")
+    return "\n".join(lines) + "\n"
+
+
 PAGE_CSS = """    .wave-hero { padding-block: var(--space-7); }
     .wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
     .wave-baf-callout { border: 1px solid var(--line); border-left: 4px solid var(--gold);
@@ -93,7 +139,7 @@ PAGE_CSS = """    .wave-hero { padding-block: var(--space-7); }
 """
 
 
-def page(title, desc, current, body, extra_head=""):
+def page(title, desc, current, body, extra_head="", rel_path="waves/index.html", ld=None):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,7 +147,7 @@ def page(title, desc, current, body, extra_head=""):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{escape(title)} — Marvel Legends Chronicle</title>
   <meta name="description" content="{escape(desc)}">
-  <link rel="preload" href="../assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+{head_meta(title, desc, rel_path, ld)}  <link rel="preload" href="../assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
@@ -315,7 +361,14 @@ def main():
             page(f"{w['series']} ({w['year']})",
                  f"Every figure in the {w['series']} Marvel Legends wave ({w['year']}, {w['manufacturer']}).",
                  "waves/index.html", body,
-                 extra_head='  <script type="module" src="../assets/js/wave-page.js"></script>\n'))
+                 extra_head='  <script type="module" src="../assets/js/wave-page.js"></script>\n',
+                 rel_path=f"waves/{wid}.html",
+                 ld={"@context": "https://schema.org", "@type": "ItemList",
+                     "name": f"{w['series']} ({w['year']})",
+                     "numberOfItems": n,
+                     "itemListElement": [
+                         {"@type": "ListItem", "position": j + 1, "name": f["name"]}
+                         for j, f in enumerate(figs)]}))
 
     # waves/index.html — grouped by year
     by_year = defaultdict(list)
@@ -346,7 +399,16 @@ def main():
     </div>"""
     (OUT / "index.html").write_text(
         page("Waves", "All 167 Marvel Legends waves 2002–2026, each with its figures and BAF breakdown.",
-             "waves/index.html", index_body))
+             "waves/index.html", index_body,
+             rel_path="waves/index.html",
+             ld={"@context": "https://schema.org", "@type": "ItemList",
+                 "name": "Marvel Legends waves, 2002-2026",
+                 "numberOfItems": len(manifest),
+                 "itemListElement": [
+                     {"@type": "ListItem", "position": j + 1,
+                      "name": f"{m['series']} ({m['year']})",
+                      "url": canonical_url(f"waves/{m['id']}.html")}
+                     for j, m in enumerate(manifest)]}))
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 
     print(f"wave pages: {len(manifest)}")
