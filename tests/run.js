@@ -41,6 +41,7 @@ await import("./test-archive-tour.js");
 await import("./test-completionist.js");
 await import("./test-debuts.js");
 await import("./test-long-wait.js");
+await import("./test-build-ledger.js");
 await import("./test-placement.js");
 
 const failures = await runAll();

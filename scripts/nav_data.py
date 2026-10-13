@@ -15,13 +15,14 @@ registry for no-JS readers.
 """
 from html import escape
 
-# All 49 pages, in the canonical order. The footer registry + directory use this.
+# All 50 pages, in the canonical order. The footer registry + directory use this.
 NAV = [
     ("index.html", "Timeline"),
     ("timeline.html", "Legends Timeline"),
     ("archive-tour.html", "Archive Tour"),
     ("debuts.html", "First Appearances"),
     ("long-wait.html", "The Long Wait"),
+    ("build-ledger.html", "The Build Ledger"),
     ("2026-review.html", "2026 Review"),
     ("start.html", "Start"),
     ("waves/index.html", "Waves"),
@@ -93,6 +94,7 @@ HALLS = [
         ("archive-tour.html", "Archive Tour", "A guided walk through the catalog's twenty-five years — four era chapters, their real counts, and curator picks chosen by printed rules."),
         ("debuts.html", "First Appearances", "The debut ledger — every distinct character's first figure in the line, its wave and its maker, counted from the catalog and filed by era."),
         ("long-wait.html", "The Long Wait", "The returns ledger — every distinct character's longest silence between figures: the waits that ended, and the characters still waiting on a second figure."),
+        ("build-ledger.html", "The Build Ledger", "The build ledger — every Build-A-Figure in the line: the waves that carried each build, the figures that carried its pieces, and the gaps filed as gaps."),
         ("stats.html", "Stats", "The archive by the numbers."),
     ]),
     ("The Hunt", "Pre-orders, drops, and the chase.", [
