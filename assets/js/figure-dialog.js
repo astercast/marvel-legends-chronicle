@@ -1,6 +1,6 @@
 /* Figure detail dialog — specs, BAF piece, notes, tracker, marketplace links. */
 import { openModal } from "./modal.js";
-import { trackerButtons, owned, wanted } from "./tracker.js";
+import { trackerButtons, owned, wanted, watching } from "./tracker.js";
 import { renderMarketplaceLinks, renderResearchLinks } from "./listings.js";
 import { STORE_KEYS } from "./config.js";
 import { load } from "./store.js";
@@ -74,6 +74,7 @@ export function openFigureDialog(fig) {
     const flags = [];
     if (owned.has(fig.id)) flags.push("in your collection");
     if (wanted.has(fig.id)) flags.push("on your want list");
+    if (watching.has(fig.id)) flags.push("on your watch list");
     status.textContent = flags.length ? `Status: ${flags.join(", ")}.` : "Not tracked yet.";
     bodyEl.appendChild(status);
 

@@ -33,7 +33,7 @@ def slug(s):
 # Navigation comes from the canonical source — scripts/nav_data.py.
 # (The old per-script NAV_LINKS / PRIMARY_NAV_LINKS duplication is retired —
 # the hardcoded footer this script used to carry was missing pages; nav_data
-# restores the full 44-page registry here too.)
+# restores the full 45-page registry here too.)
 NAV_LINKS = nav_data.NAV
 
 

@@ -12,6 +12,7 @@ export const PATHS = {
 export const STORE_KEYS = {
   owned: "mlc_owned_v1",
   wanted: "mlc_wanted_v1",
+  watching: "mlc_watching_v1", // [figId] — figures the collector is keeping an eye on; My Vault's third shelf (Owned clears it, Wanted leaves it)
   social: "mlc_social_v1", // { profile, posts, likes, follows, comments }
   journal: "mlc_journal_v1", // [{ id, figId, name, condition, price, date, url, note }]
   buys: "mlc_buys_v1", // [{ id, figId, name, wave, condition, price, date, where, note }] — purchases the user made
