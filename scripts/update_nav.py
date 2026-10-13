@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Rewrite primary + footer nav on every root HTML page from the canonical list.
 - Primary nav is the front desk: six doors + the Index of Halls button.
-- Footer nav is the full 46-page registry (no-JS readers get everything).
+- Footer nav is the full 47-page registry (no-JS readers get everything).
 - The Index of Halls <template> is injected after </header> (idempotent).
 Idempotent: nav blocks + template are rebuilt from scratch each run.
 Uses scripts/nav_data.py as the single source of truth — keep in sync with

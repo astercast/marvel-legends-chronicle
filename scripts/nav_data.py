@@ -15,7 +15,7 @@ registry for no-JS readers.
 """
 from html import escape
 
-# All 46 pages, in the canonical order. The footer registry + directory use this.
+# All 47 pages, in the canonical order. The footer registry + directory use this.
 NAV = [
     ("index.html", "Timeline"),
     ("timeline.html", "Legends Timeline"),
@@ -34,6 +34,7 @@ NAV = [
     ("auth-wizard.html", "Auth Wizard"),
     ("shelf.html", "Your Shelf"),
     ("my-vault.html", "My Vault"),
+    ("completionist.html", "The Completionist"),
     ("journal.html", "Journal"),
     ("baf-economics.html", "BAF Economics"),
     ("hunt.html", "Hunt Planner"),
@@ -103,6 +104,7 @@ HALLS = [
     ("Your Shelf", "The collection at home.", [
         ("shelf.html", "Your Shelf", "Your figures, your display, your rules."),
         ("my-vault.html", "My Vault", "Every figure you've marked — Owned, Wanted, Watching — plated like a museum wall, with your completion ledgers by year and wave."),
+        ("completionist.html", "The Completionist", "Set completion over your shelves — the waves you are one or two figures from finishing, the exact pieces still missing, and completion by era."),
         ("checklist.html", "Checklist", "The grand checklist — mark them off as they come home."),
         ("journal.html", "Journal", "Field notes from the hunt — log the pickups and the near-misses."),
         ("showcase.html", "Showcase", "Put your best shelf on display."),
@@ -161,7 +163,7 @@ def primary_nav_html(current, prefix=""):
 
 
 def footer_nav_html(current="", prefix=""):
-    # The footer is the full 46-page registry — the current page is marked
+    # The footer is the full 47-page registry — the current page is marked
     # here, so every page keeps its orientation even when it isn't one of
     # the six front-desk doors.
     links = "".join(

@@ -38,6 +38,7 @@ await import("./test-drawer-search.js");
 await import("./test-makeover.js");
 await import("./test-my-vault.js");
 await import("./test-archive-tour.js");
+await import("./test-completionist.js");
 
 const failures = await runAll();
 process.exit(failures ? 1 : 0);

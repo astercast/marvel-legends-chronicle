@@ -38,8 +38,71 @@ frontend live timeout and the 10s function budget.
 | `GITHUB_BRANCH` | no | defaults to production branch. |
 | `REPO_STATIC_PREFIX` | yes | empty string (root-served). |
 
+## Free-tier / best-pattern audit (rotation 12, 2026-10-13)
+
+Measured on the working repo with the real handlers under local Node 24
+(this VM), against the committed `data/v1/` payloads.
+
+- **Function count: 4 of the 12-function Hobby cap** (`api/health.js`,
+  `api/reveals.js`, `api/preorders.js`, `api/cron/radar.js`) — zero npm
+  dependencies, `{"maxDuration": 10}` each, no `runtime` pins, no static
+  `.js` under `api/`, all static data in `data/v1/` (17 endpoints).
+- **Worst-case function duration vs the 10s ceiling:** public handlers
+  measured cold/warm — health ~13ms / ~4.5ms; preorders ~13ms cold;
+  reveals ~58–68ms cold (reads + groups the 99KB candidates file).
+  Worst public case ≈ **68ms, under 1% of the 10s ceiling**. The cron is
+  bounded by construction: 4 press sources polled in parallel at a 4s
+  per-source timeout, then parallel GitHub read/write — design bound
+  ≈ 6s, still under the ceiling; if GitHub ever hung past it, the
+  platform would stop the run with nothing committed (writes go last).
+- **Fix shipped this rotation — per-request re-parse eliminated:**
+  `api/reveals.js` and `api/preorders.js` re-read, re-parsed and
+  re-projected their bundle JSON on every invocation. Both now memoize
+  at module scope keyed by the file's mtime+size (the file is immutable
+  within a deployment; a changed file is picked up on the next request,
+  never served stale; read errors keep the honest 502 path). Warm
+  timings after the fix: reveals ~0.3ms, preorders ~0.2ms per hit.
+- **Estimated monthly invocations (stated assumption: 10,000 visits/mo):**
+  only the Radar and Pre-orders pages probe live functions (7s client
+  timeout, static fallback); edge caching (`s-maxage=600`, health 60,
+  `stale-while-revalidate=86400`) collapses repeat probes between
+  visitors. Estimate ≈ **4,700 executions/mo — about 5% of the Hobby
+  100k cap** (reveals ~1,500, preorders ~1,200, health ~2,000, cron 30).
+  Even with zero cache hits, probes cannot exceed visits by much:
+  ≤ ~15k/mo (15%). Bandwidth at ~350KB average page weight ≈ 3.5GB/mo
+  vs the 100GB cap. Build minutes: a full rebuild is Python over ~281
+  pages — seconds-to-minutes per push vs 6,000 min/mo. **Nothing in the
+  stack can bill**: no paid APIs, no Turbo (Standard builds only), and
+  Hobby pauses at caps instead of charging overage.
+- **Best-pattern alignment:** static-first (every page paints complete
+  static content; the live swap is progressive enhancement);
+  precomputed JSON for everything heavy (catalog, compare, drop-week);
+  request coalescing (cron 60s duplicate-delivery cooldown, parallel
+  source polling, the new handler memoization); honest upstream-failure
+  fallbacks (`api-client.js` live/waking/cached/none states; handlers
+  502 with an envelope, pages serve the committed static copy); small
+  handlers (single-file, builtins + `lib/` only); per-IP rate limiting
+  (60/min public bucket, hashed-IP logging). **Health surfacing** is
+  the site's own story: `/api/health` never 5xxs — it reports
+  `ok`/`degraded`, per-file data freshness against a 24h SLA, and
+  config checks; on the reader side, the Radar badge and the Drop Week
+  status surfaces show the same live/cached honesty.
+- **What degrades first near limits:** (1) cron poll quality — press
+  sources timing out (Toyark already 403s/times out regularly) flips
+  the run's `degraded` flag and narrows coverage; no cost, no breakage.
+  (2) At ~20× the assumed traffic, the invocation cap pauses the live
+  probes — pages keep serving the committed static JSON in full, with
+  the badge honestly reading "cached". (3) The GitHub commit-back path:
+  without `GITHUB_REPO_TOKEN` the cron is read-only by design, so the
+  candidates file only moves when the wave engine polls — a freshness
+  limit, not a failure.
+
 ## Known-good status (2026-10-12 snapshot)
 
+- Rotation 12 (2026-10-13): `scripts/validate.sh` green at 588/588
+  (158 suites; 18,408 refs across 281 pages, 0 broken; 17 endpoints,
+  22 storage keys). Radar record 218 candidates / 442 seen after the
+  final pre-window poll. Registry at 47 doors (The Completionist).
 - `scripts/validate.sh`: 552/552 tests pass (2026-10-13 pre-window verification,
   rotations 4 and 5; rotation 5: 17,409 refs across 278 pages, 0 broken),
   relative links checked across all pages (0 broken), all JSON

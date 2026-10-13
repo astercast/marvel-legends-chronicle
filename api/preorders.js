@@ -28,6 +28,34 @@ const VERSION = "1.0.0";
 
 const STATUS_ORDER = { preorder: 0, revealed: 1, available: 2 };
 
+/* Memoized bundle read (rotation 12 audit): the tracker file is
+ * immutable within a deployment, so re-reading + re-parsing it on every
+ * request is wasted work on a free-tier function budget. Cache key is
+ * mtime+size — a changed file is picked up on the next request, never
+ * served stale. Errors propagate to the handler's existing 502 path. */
+let bundleCache = null; // { mtimeMs, size, raw, projected }
+function readPreorders() {
+  const p = path.join(__dirname, "..", "data", "v1", "preorders.json");
+  const st = fs.statSync(p);
+  if (bundleCache && bundleCache.mtimeMs === st.mtimeMs && bundleCache.size === st.size) {
+    return bundleCache;
+  }
+  const raw = JSON.parse(fs.readFileSync(p, "utf8"));
+  const items = Array.isArray(raw.items) ? raw.items : [];
+  const projected = items.map(projectItem);
+  // Upcoming first: status order, then earliest goes_live_at (nulls last).
+  projected.sort((a, b) => {
+    const so = (STATUS_ORDER[a.status] ?? 9) - (STATUS_ORDER[b.status] ?? 9);
+    if (so !== 0) return so;
+    if (a.goes_live_at && b.goes_live_at) return a.goes_live_at.localeCompare(b.goes_live_at);
+    if (a.goes_live_at) return -1;
+    if (b.goes_live_at) return 1;
+    return 0;
+  });
+  bundleCache = { mtimeMs: st.mtimeMs, size: st.size, raw, projected };
+  return bundleCache;
+}
+
 function toGoesLiveAt(preorderDate) {
   if (!preorderDate || typeof preorderDate !== "string") return null;
   // Source carries YYYY-MM-DD only. Midnight UTC is the honest boundary —
@@ -76,9 +104,9 @@ module.exports = (req, res) => {
     });
   }
 
-  let raw;
+  let bundle;
   try {
-    raw = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "v1", "preorders.json"), "utf8"));
+    bundle = readPreorders();
   } catch (e) {
     console.log(`[upstream] preorders.json fail error=${String((e && e.message) || e).slice(0, 120)}`);
     return err(
@@ -88,17 +116,8 @@ module.exports = (req, res) => {
     );
   }
 
-  const items = Array.isArray(raw.items) ? raw.items : [];
-  const projected = items.map(projectItem);
-  // Upcoming first: status order, then earliest goes_live_at (nulls last).
-  projected.sort((a, b) => {
-    const so = (STATUS_ORDER[a.status] ?? 9) - (STATUS_ORDER[b.status] ?? 9);
-    if (so !== 0) return so;
-    if (a.goes_live_at && b.goes_live_at) return a.goes_live_at.localeCompare(b.goes_live_at);
-    if (a.goes_live_at) return -1;
-    if (b.goes_live_at) return 1;
-    return 0;
-  });
+  const raw = bundle.raw;
+  const projected = bundle.projected;
 
   const upcomingCount = projected.filter((p) => p.status === "preorder").length;
 

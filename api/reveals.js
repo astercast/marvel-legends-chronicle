@@ -90,6 +90,25 @@ function badInput(res, fields, message) {
   return err(res, SERVICE, VERSION, 400, "BAD_INPUT", message, { fields });
 }
 
+/* Memoized bundle read (rotation 12 audit): the candidates file is
+ * immutable within a deployment, so re-reading + re-parsing + regrouping
+ * it on every request is wasted work on a free-tier function budget.
+ * The cache key is the file's mtime+size — a changed file (new deploy,
+ * local test fixture) is picked up on the next request, never served
+ * stale. Errors propagate to the handler's existing 502 path. */
+let bundleCache = null; // { mtimeMs, size, rawList, normalized }
+function readCandidates() {
+  const p = path.join(__dirname, "..", "data", "v1", "radar-candidates.json");
+  const st = fs.statSync(p);
+  if (bundleCache && bundleCache.mtimeMs === st.mtimeMs && bundleCache.size === st.size) {
+    return bundleCache;
+  }
+  const raw = JSON.parse(fs.readFileSync(p, "utf8"));
+  const rawList = Array.isArray(raw) ? raw : [];
+  bundleCache = { mtimeMs: st.mtimeMs, size: st.size, rawList, normalized: normalizeReveals(rawList) };
+  return bundleCache;
+}
+
 module.exports = (req, res) => {
   if (req.method !== "GET") {
     return badInput(res, ["method"], "Only GET is supported on /api/reveals.");
@@ -132,9 +151,9 @@ module.exports = (req, res) => {
     limit = Math.min(200, Math.max(1, Math.floor(n)));
   }
 
-  let raw;
+  let bundle;
   try {
-    raw = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "v1", "radar-candidates.json"), "utf8"));
+    bundle = readCandidates();
   } catch (e) {
     console.log(`[upstream] radar-candidates.json fail error=${String((e && e.message) || e).slice(0, 120)}`);
     return err(
@@ -144,8 +163,8 @@ module.exports = (req, res) => {
     );
   }
 
-  const rawList = Array.isArray(raw) ? raw : [];
-  const all = normalizeReveals(rawList);
+  const rawList = bundle.rawList;
+  const all = bundle.normalized;
   const filtered = all.filter(
     (r) => r.announced_at && Date.parse(r.announced_at) >= sinceMs
   );
