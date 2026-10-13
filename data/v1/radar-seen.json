@@ -103,6 +103,7 @@
   "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5uVlVFRHo5ajB3dkVFRjBsd0xHOFhmd0JtaHRCZDBEZ1ltTHEwSUZGcFdVSW1ETU9iTl8zV04zeWJBakluU1A2YzNFY29kcmRsdXlZZzI5cHJDeW96?oc=5",
   "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBDSG5IaklJaXhPRUJWTlotY1NqR04zdzVTQktJTmVjcktmUnVDcXc0SFJIVUd3LUsyaEJtZDlpY3BKSExneGNNLWh4UXc2cFI0M1lLbkZvZUlQdC0w?oc=5",
   "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBPaV81WmVDYmNMYk5DXzRMeVE5R3J3cHcySWpxc2RvR0lOT3BER3BIMER2WXotSm5hV1J3RGlobnhKTVBUTkluUElnQ3NxUGdCWklaOG1TMExkTjNa?oc=5",
+  "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBrN2tDdXdJSVlkRHJFbm1HTTlVR1E1a1VqakxGTlA2N2dKX1ZRb0dQUU94cVoxaFpBbXk2V0xaY3k5Mm54TzlCUmRjMnZzV1RhQXFKUThHN09qMnk3?oc=5",
   "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBZUncwQjhTRGd2bFY3MkczVC10Yk1xLUlXOVBNZ0NPUzNTQkhVRjRBOWgxODU5VTRSUHBzZzhqWnp3WThpXzBCcFZhZld0dGcyYjB0X1dYZXN2WkhRSldORg?oc=5",
   "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5ialJvNnF6TUVwdG5DMzJrN0dJQTcyd28ybEJwUzh5TjFKR3cxaERyeEwxZUI2WXhhOVE1Y1JFdnR5Qld0TVR4VHZnWnFJbmp2cmpHOHAwVlVPWHdFZXNIOHh3?oc=5",
   "https://news.google.com/rss/articles/CBMiYkFVX3lxTE93dktNa19SampSZDhZSnYyNEd2OW96S0ZlR2hzclJnZHF2UF82MFFaYm5Rc2NJS01SNE12TWZKT2VRejRSQ2QtdE00UWJvUWZfZmx6WmhxQ3RNRmhHVlo4cjB3?oc=5",
@@ -294,7 +295,9 @@
   "https://news.google.com/rss/articles/CBMiowFBVV95cUxPNUNBdDJTaV9aZTlUc3dpeVR4eG9Nc0F3SzF0VW9iRjZOMjNpa2h3UVMyNkRHRjV4ZlI3WHV3RGxJcGZLUnhLOEd0SElibWk5M0J1NjIwTzctTTlpdVRBQ1RibS1seXdwSHBmb29NWkRaREFYVnNOUWxVY201UGlCSXhWZnhleWNfZmNfUHlIMEpOdEtCZ2ZndUppQ3dkRng1bzdv?oc=5",
   "https://news.google.com/rss/articles/CBMiowFBVV95cUxPOGhDVUx1aHRRQWRwQVBGSXl2OXZKLXZBRWQ2ejNLeXMtczJvNktRWkxmcWVoa2JuWUNjdkxyczh4ajVwdVlVQTl1azh5RjhGZkZFLTZ1RV9fQnhEdWxoYWNjLU5WTVJScW5qOU9hb0ZDVUN5aHY1X2lMdlJrb0hZeFE2YTZqQzVISjNZdlRxZUViOVZodkc1bXJya3VmeTRxUWFR?oc=5",
   "https://news.google.com/rss/articles/CBMiowFBVV95cUxPUjdEYU9XR3ZCbXJuNnhaUF9oRWNKRTM0OExEcnl1dHZIN3o5Vk85THlmNTJTeEpCVU5EUW9aRXR4T1E0MEd0YV94RlJ2ZmJOODVyN2Y3QU00REJTRFB5cW1PY2Rra2locWxNeExYVEFFOUluNlQySUs2UG9LRS1YdGxXWEhpTldNNUlLYV9GWTJWaU9YaE52U3NZV3EzeXVMbjZn?oc=5",
+  "https://news.google.com/rss/articles/CBMiowFBVV95cUxPVW5Ba2dySTIzZVpEWTBhRUlrVHNDV0tzYWJFd2s5VEpGLTR1V09UYVlNX2FJRVN1V0tRa3AxRVJkUzQyRHhWOHJGUVdKZDlxa1JiODNDVzUtd3lzRjRDa1lFN0JWdnZfM2h5cERNYmNfeVRpS0pZQnREdHNOOE84S1V5UGtQelROUmw5UGxUd1BocVN0YnE3WU9qZ2Y0OXdaQzE4?oc=5",
   "https://news.google.com/rss/articles/CBMiowFBVV95cUxQSDF5Z1p1NHdubExHdi1BaVFoTXpCWWUtRGltRWZESUYycXlmSXhLaGlwZ21YTWg3cXNkVzN1NFFxSTZzNlctbnFCSmNlV0R5dVcwQ2RZZ1RVSUxCbW1SWml2SklVYzFBRGNCRXJHZHRfRm5aczVIRW9CS1FhNTdOczdkRVcxQ1lpdkxnZ1hRZlFidmR5LWwxZ3V4WldLdkppVGFJ?oc=5",
+  "https://news.google.com/rss/articles/CBMiowFBVV95cUxQYmlVMWZoU3J0OGZEal92V3I3LVF6cDRmNjNzUU9TR1lkcnF4Y0d5X2tYVGlERkRVVE1nN3RDZzRmQVdPa0RWVllOUXRFS2xYZ2t6VER1VUFUaXJqa1ZzVkpBdnNXR1MyU3ozb19ZREx3by1WUk4taTkxdXc0U0xCTVFaYk1vdjJwajZBVEtsUXhHcTVaN0F4MDF1UnNtYnNOSlVB?oc=5",
   "https://news.google.com/rss/articles/CBMiowFBVV95cUxQa0YwUTgzTFFJN2ZkVEJHakI2Zk1OeEZ3N2R2bWVWTHl6QU5UNFdLTm9rcUQtbE1pSl84aDl2ZHViSXRZc2dpWUNtajRaWFFGWm9Cd2ozZVRPZmdJbXBOcTVlUzN6VEtCSmlZdXY4ZXljTXhzdVRSV0IxUHdGWnlQN3NYN0ROU2xSN3RMVXpVTlppT2p3UEl5ZFJseENGem9BRmxN?oc=5",
   "https://news.google.com/rss/articles/CBMipAFBVV95cUxNQzd5ZVhDeEp6UWRHcjViUGFwY2xrZFNEYmFoend4UlppTlBvMUt0aWJSV3M4R2tpYUowbXhyQWpzeVZ5R0Z1TW9BQTJXUURWMEZFQkNiX1hZRVBhU1AxVDBkYlFSM2NOaG02b3AxZk1uZlVTRUJjZjNXUnRhbWRUemQ4V05MV09tQ3R6U21WU0NEVWMxNGVncnhjYTZ4dTRnbzRIWA?oc=5",
   "https://news.google.com/rss/articles/CBMipAFBVV95cUxNSVdIUzVhbGRIWGxPelA0WTNQdmFmRkVPaV9zT2YzTEo1VmxnSkFucWRyb3B1VW5hVm5aX0JkYmZneTNEekxMcHNidkh0X0g1eXFtTkNOUFM2UnhrMU9Wa1hUQmp2dVl4Y05rcDhsMUdzejVpVDlBeHpBRGlObkZfdnF0TGd3eWdnb0N4am5MYkpYOGxGR1dkRENjMXBteDNPMkJmTA?oc=5",
@@ -442,5 +445,8 @@
   "https://www.toyark.com/2026/10/10/masters-of-the-universe-200x-mondo-mer-man-1-12-scale-figure-601144",
   "https://www.toyark.com/2026/10/10/the-muppets-neca-ultimate-gonzo-with-camilla-set-601129",
   "https://www.toyark.com/2026/10/11/nycc-2026-marvel-legends-panel-official-images-details-601179",
-  "https://www.toyark.com/2026/10/11/nycc-2026-star-wars-panel-official-images-details-601180"
+  "https://www.toyark.com/2026/10/11/nycc-2026-star-wars-panel-official-images-details-601180",
+  "https://www.toyark.com/2026/10/13/diablo-immortal-spawn-warlock-mcfarlane-elite-edition-601361",
+  "https://www.toyark.com/2026/10/13/neca-ultramate-ghost-face-figure-601334",
+  "https://www.toyark.com/2026/10/13/tfsource-news-mpg-20-hot-rod-movie-masterpiece-dramatic-capture-new-legends-and-more-601379"
 ]

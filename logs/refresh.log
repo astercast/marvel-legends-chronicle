@@ -88,3 +88,13 @@ appended 0 candidate(s), pruned 0, record now 220 in data/v1/radar-candidates.js
 seen store: 444 url(s) at data/v1/radar-seen.json
 check_radar.py: OK
 
+===== refresh run: 2026-10-13 12:59:38 UTC =====
+radar refresh summary (UTC 2026-10-13T12:59:39Z)
+  Toyark           rss           new=0
+  Marvel Toy News  rss           new=0
+  Bleeding Cool    rss           new=0
+  Google News      rss           new=3
+appended 3 candidate(s), pruned 0, record now 223 in data/v1/radar-candidates.json
+seen store: 450 url(s) at data/v1/radar-seen.json
+check_radar.py: OK
+
