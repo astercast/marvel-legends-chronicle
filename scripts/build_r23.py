@@ -71,7 +71,7 @@ def state_btns(slug):
             f'<button class="statebtn" data-state="wanted" data-slug="{slug}" aria-pressed="false">Wanted</button></div>')
 
 def row_html(r, prefix=""):
-    media = (f'<img class="thumb" src="{escape(r["img"])}" alt="" loading="lazy">' if r["img"]
+    media = (f'<img class="thumb" src="{escape(r["img"])}" alt="" loading="lazy" referrerpolicy="no-referrer">' if r["img"]
              else '<span class="notpic">Not pictured</span>')
     return (f'<li class="row">{media}<div><div class="pid">{escape(r["pid"])}</div>'
             f'<div class="name"><a href="{prefix}spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></div>'
@@ -127,6 +127,9 @@ def write(rel, text):
     p = ROOT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     assert "::" not in text, f"schema string leaked into {rel}"
+    assert not re.search(r"`[A-Za-z_]+:[A-Za-z0-9_]+`", text), f"backticked schema literal leaked into {rel}"
+    visible = re.sub(r"<script.*?</script>", " ", text, flags=re.S)
+    assert "`" not in visible, f"backticked field literal in presented copy of {rel}"
     p.write_text(text)
     return rel
 
@@ -203,7 +206,7 @@ def home():
 <h2>Browse</h2>
 <ul class="indexlines">{index_lines}</ul>
 <h2>Newest additions</h2>
-<figure class="plate"><div class="frame"><img src="{escape(lead["img"])}" alt="{escape(lead["name"])} figure photograph"></div>
+<figure class="plate"><div class="frame"><img src="{escape(lead["img"])}" alt="{escape(lead["name"])} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div>
 <figcaption><div class="pid">{escape(lead["pid"])}</div>
 <div class="name" style="font-size:24px;font-weight:600"><a href="spec-sheet.html?f={lead["slug"]}" style="color:var(--ink);text-decoration:none">{escape(lead["name"])}</a></div>
 <div class="fact" style="color:var(--muted)">{escape(lead["fact"])}</div></figcaption></figure>
@@ -296,7 +299,7 @@ async function apply(){{
 }}
 function renderMore(){{
   const ul=document.getElementById("rows"); const next=view.slice(shown,shown+50);
-  ul.insertAdjacentHTML("beforeend", next.map(r=>`<li class="row">${{r.img?`<img class="thumb" src="${{esc(r.img)}}" alt="" loading="lazy">`:`<span class="notpic">Not pictured</span>`}}<div><div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.fact)}}</div><div class="path">${{esc(r.path)}}</div></div>${{stateButtons(r.slug)}}</li>`).join(""));
+  ul.insertAdjacentHTML("beforeend", next.map(r=>`<li class="row">${{r.img?`<img class="thumb" src="${{esc(r.img)}}" alt="" loading="lazy" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}}<div><div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.fact)}}</div><div class="path">${{esc(r.path)}}</div></div>${{stateButtons(r.slug)}}</li>`).join(""));
   shown+=next.length;
   document.getElementById("shown").textContent=`Showing ${{shown.toLocaleString()}} of ${{view.length.toLocaleString()}} · ${{(view.length-shown).toLocaleString()}} remain`;
   document.getElementById("more").style.display=shown<view.length?"":"none";
@@ -347,7 +350,7 @@ try{
   const s=await getJSON(`data/v1/figures/${slug}.json`);
   document.title=`${s.name} — Marvel Legends Chronicle`;
   const media=s.img
-    ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph"></div></figure>`
+    ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>`
     : `<div class="notplate"><div class="np-name">${esc(s.name)}</div><p class="micro">Not pictured</p></div>`;
   const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold — ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
     : `<p> No reported sales recorded for this figure.</p>`.replace(" ","");
@@ -573,7 +576,7 @@ const completeWaves=[...waves.values()].filter(ws=>ws.every(r=>loadSet("owned").
 const bafWaves=[...waves.entries()].filter(([,ws])=>ws.some(r=>r.baf));
 const bafDone=bafWaves.filter(([,ws])=>ws.filter(r=>r.baf).every(r=>loadSet("owned").has(r.slug))).length;
 document.getElementById("summary").innerHTML=`Owned <b>${owned.length}</b> · Wanted <b>${wanted.length}</b> · Waves complete <b>${completeWaves}</b> · Build A Figures complete <b>${bafDone}</b>`;
-function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${r.img?`<img class="thumb" src="${esc(r.img)}" alt="">`:`<span class="notpic">Not pictured</span>`}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
+function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${r.img?`<img class="thumb" src="${esc(r.img)}" alt="" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
 const targets=JSON.parse(localStorage.getItem("mlc_targets_r23")||"{}");
 document.getElementById("owned").innerHTML=rowList(owned)||document.getElementById("owned").innerHTML;
 document.getElementById("wanted").innerHTML=rowList(wanted, r=>`<p><label>Target price ($) <input type="number" step="0.01" min="0" data-target="${r.slug}" value="${targets[r.slug]??""}"></label></p>`)||document.getElementById("wanted").innerHTML;
@@ -656,7 +659,7 @@ def help_page():
 <li>1,939 figures in 167 waves, released 2002–2026.</li>
 <li>Two makers: Toy Biz (229 figures) and Hasbro (1,710 figures).</li>
 <li>66 character pages cover the most-collected characters; every figure is in the catalog and on its wave page.</li>
-<li>Pictures: 31 figures have a verified retailer photograph. The other 1,908 are listed without a picture and are never shown with a substitute image.</li>
+<li>Pictures: {len(IMAGES):,} figures have a verified retailer photograph. The other {len(FIGS)-len(IMAGES):,} are listed without a picture and are never shown with a substitute image.</li>
 <li>Prices: reported sales are partial — 10 figures carry a reported sold range. A figure with no reported sales says so on its page.</li>
 </ul>
 </div>

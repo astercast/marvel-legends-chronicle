@@ -1,12 +1,14 @@
 /* R23 — the collector's database, set like a premium instrument.
    System: warm paper #FAF6EC, ink #1E1B16, Marvel red only for new/live/radar,
    catalogue blue only for text links inside records. 4px scale: 4/8/16/24/48.
-   Ruled lines, not boxes. Radius 4px on controls + search field only. No shadows. */
+   Ruled lines, not boxes. Square corners everywhere (FINDINGS §5.1 shape;
+   R24 Finding B: the radius token is 0 — no presented element rounds).
+   No shadows. */
 :root{
   --paper:#FAF6EC; --paper2:#F3EDDC; --ink:#1E1B16; --muted:#5C574C;
   --line:#D8D0BE; --line-soft:#E6DFCE; --red:#B3271E; --blue:#2456A6;
   --serif:"Newsreader",Georgia,serif; --sans:"Archivo",-apple-system,"Helvetica Neue",Arial,sans-serif;
-  --r:4px;
+  --r:0px;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -45,7 +47,7 @@ button.red{background:var(--red);border-color:var(--red);color:#fff}
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .row{display:grid;grid-template-columns:64px 1fr auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
 .row .thumb{width:64px;height:80px;object-fit:contain;background:#fff;border:1px solid var(--line-soft)}
-.row .notpic{width:64px;height:80px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--sans);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:4px;background:var(--paper2)}
+.row .notpic{width:64px;height:80px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:4px;background:var(--paper2)}
 .row .pid{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
 .row .name{font-size:21px;font-weight:600;line-height:1.2}
 .row .name a{color:var(--ink);text-decoration:none}

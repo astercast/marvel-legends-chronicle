@@ -48,7 +48,7 @@ const completeWaves=[...waves.values()].filter(ws=>ws.every(r=>loadSet("owned").
 const bafWaves=[...waves.entries()].filter(([,ws])=>ws.some(r=>r.baf));
 const bafDone=bafWaves.filter(([,ws])=>ws.filter(r=>r.baf).every(r=>loadSet("owned").has(r.slug))).length;
 document.getElementById("summary").innerHTML=`Owned <b>${owned.length}</b> · Wanted <b>${wanted.length}</b> · Waves complete <b>${completeWaves}</b> · Build A Figures complete <b>${bafDone}</b>`;
-function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${r.img?`<img class="thumb" src="${esc(r.img)}" alt="">`:`<span class="notpic">Not pictured</span>`}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
+function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${r.img?`<img class="thumb" src="${esc(r.img)}" alt="" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
 const targets=JSON.parse(localStorage.getItem("mlc_targets_r23")||"{}");
 document.getElementById("owned").innerHTML=rowList(owned)||document.getElementById("owned").innerHTML;
 document.getElementById("wanted").innerHTML=rowList(wanted, r=>`<p><label>Target price ($) <input type="number" step="0.01" min="0" data-target="${r.slug}" value="${targets[r.slug]??""}"></label></p>`)||document.getElementById("wanted").innerHTML;

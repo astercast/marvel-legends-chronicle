@@ -27,7 +27,7 @@ try{
   const s=await getJSON(`data/v1/figures/${slug}.json`);
   document.title=`${s.name} — Marvel Legends Chronicle`;
   const media=s.img
-    ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph"></div></figure>`
+    ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>`
     : `<div class="notplate"><div class="np-name">${esc(s.name)}</div><p class="micro">Not pictured</p></div>`;
   const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold — ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
     : `<p> No reported sales recorded for this figure.</p>`.replace(" ","");
