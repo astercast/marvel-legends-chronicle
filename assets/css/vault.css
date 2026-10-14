@@ -42,28 +42,20 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
 
 /* ---------- Hero: the vault wall ---------- */
 .hero {
-  background:
-    radial-gradient(1200px 420px at 50% -12%, rgba(220, 174, 60, 0.1), transparent 60%),
-    radial-gradient(1100px 380px at 12% -10%, rgba(230, 36, 41, 0.08), transparent 60%),
-    var(--bg-soft);
+  /* C7 (R21): flat ground. The two radial washes that stood here lit
+     nothing that could be named; the hero ground is flat, and identity
+     is carried by rules, borders, furniture, and type. */
+  background: var(--bg-soft);
 }
-/* One-shot vault-light sweep on load — no loop, so no pause control needed. */
-html.vault-motion .hero { position: relative; }
-html.vault-motion .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent 42%, rgba(220, 174, 60, 0.09) 50%, transparent 58%);
-  transform: translateX(-100%);
-  animation: vault-sweep 1.6s var(--ease-emphasis) 0.3s 1;
-}
-@keyframes vault-sweep { to { transform: translateX(100%); } }
+/* R21 motion census fix: the one-shot light sweep over the hero is
+   REMOVED. The sweep performed on entrance; Marvel's single permitted
+   motion is the plinth light, warming once as a figure becomes featured
+   (assets/css/museum.css, .plinth-light), never on load, never on scroll. */
 
 /* ---------- Exhibit placards (paper on the dark wall) ---------- */
 .placard {
   position: relative;
-  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+  background: var(--paper);
   color: var(--ink-on-paper);
   border: 1px solid var(--line-on-paper);
   outline: 3px double rgba(143, 107, 28, 0.5);
@@ -100,7 +92,7 @@ html.vault-motion .hero::before {
 
 /* Stat strips become paper placards */
 .stat {
-  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+  background: var(--paper);
   border: 1px solid var(--line-on-paper);
   border-top: 3px solid var(--gold-deep);
   color: var(--ink-on-paper);
@@ -177,7 +169,7 @@ html.vault-motion .hero::before {
 .fig-list > .fig,
 .release-list > .release {
   position: relative;
-  background: linear-gradient(180deg, rgba(246, 240, 224, 0.03), rgba(246, 240, 224, 0.008));
+  background: rgba(246, 240, 224, 0.03);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-s);
   margin-bottom: var(--space-2);
@@ -200,7 +192,7 @@ html.vault-motion .hero::before {
 .fig-list > .fig:hover,
 .release-list > .release:hover {
   border-color: var(--gold-deep);
-  background: linear-gradient(180deg, rgba(246, 240, 224, 0.055), rgba(246, 240, 224, 0.015));
+  background: rgba(246, 240, 224, 0.055);
 }
 .fig-list > .fig .fig-name,
 .release-list > .release .release-name {
@@ -213,7 +205,7 @@ html.vault-motion .hero::before {
 .badge {
   font-size: 0.7rem;
   letter-spacing: 0.18em;
-  background: linear-gradient(180deg, rgba(246, 240, 224, 0.05), rgba(246, 240, 224, 0.015));
+  background: rgba(246, 240, 224, 0.05);
 }
 
 /* ---------- Buttons ---------- */
@@ -238,7 +230,7 @@ html.vault-motion .hero::before {
 /* ---------- Modal: the archive drawer, pulled open ---------- */
 .modal {
   position: relative;
-  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+  background: var(--paper);
   color: var(--ink-on-paper);
   border: 1px solid var(--line-on-paper);
   border-top: 3px solid var(--gold-deep);
@@ -397,38 +389,13 @@ html.vault-motion [data-reveal].is-in {
    gated on html.vault-motion (reduced-motion-first, still default).
    ============================================================ */
 
-/* ---------- Entrance choreography: kicker → title → lede → rest ----------
-   One-shot, backwards-filled so late JS class-add never flashes. */
-@keyframes vault-hero-in {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; }
-}
-html.vault-motion .hero .hero-inner > *,
-html.vault-motion .curve-hero > *,
-html.vault-motion .dw-hero > *,
-html.vault-motion .page-head > * {
-  animation: vault-hero-in var(--dur-3) var(--ease-emphasis) backwards;
-}
-html.vault-motion .hero .hero-inner > :nth-child(1),
-html.vault-motion .curve-hero > :nth-child(1),
-html.vault-motion .dw-hero > :nth-child(1),
-html.vault-motion .page-head > :nth-child(1) { animation-delay: 0.05s; }
-html.vault-motion .hero .hero-inner > :nth-child(2),
-html.vault-motion .curve-hero > :nth-child(2),
-html.vault-motion .dw-hero > :nth-child(2),
-html.vault-motion .page-head > :nth-child(2) { animation-delay: 0.14s; }
-html.vault-motion .hero .hero-inner > :nth-child(3),
-html.vault-motion .curve-hero > :nth-child(3),
-html.vault-motion .dw-hero > :nth-child(3),
-html.vault-motion .page-head > :nth-child(3) { animation-delay: 0.23s; }
-html.vault-motion .hero .hero-inner > :nth-child(4),
-html.vault-motion .curve-hero > :nth-child(4),
-html.vault-motion .dw-hero > :nth-child(4),
-html.vault-motion .page-head > :nth-child(4) { animation-delay: 0.32s; }
-html.vault-motion .hero .hero-inner > :nth-child(n+5),
-html.vault-motion .curve-hero > :nth-child(n+5),
-html.vault-motion .dw-hero > :nth-child(n+5),
-html.vault-motion .page-head > :nth-child(n+5) { animation-delay: 0.41s; }
+/* ---------- Entrance choreography: REMOVED (R21 motion census) ----------
+   Round 4 census: the hero entered twice over (the entrance block that
+   stood here and the base rise-in in layout.css), both the generic
+   fade-rise. Marvel's signature is stillness with one plinth light, so
+   both entrances are removed at source: hero and page-head furniture is
+   present at full contrast the instant it is on screen. No entrance
+   choreography remains on figure or collection pages. */
 
 /* ---------- Wax-seal stamp: pressed on, once ---------- */
 @keyframes seal-press {
@@ -685,7 +652,7 @@ pre, .code-block {
   overflow: hidden;
   border: 1px solid var(--gold-deep);
   border-radius: var(--radius-m);
-  background: linear-gradient(180deg, rgba(220, 174, 60, 0.06), rgba(220, 174, 60, 0.015));
+  background: rgba(220, 174, 60, 0.045);
   padding: var(--space-5) var(--space-5) var(--space-4);
 }
 .desk-kicker {
@@ -748,7 +715,7 @@ pre, .code-block {
 .hall {
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-m);
-  background: linear-gradient(180deg, rgba(246, 240, 224, 0.035), rgba(246, 240, 224, 0.008));
+  background: rgba(246, 240, 224, 0.03);
   overflow: hidden;
 }
 .hall[open] { border-color: var(--gold-deep); }
@@ -935,8 +902,12 @@ pre, .code-block {
 .dir-body .dir-colophon { color: var(--muted-on-paper); border-top-color: rgba(26, 22, 16, 0.25); }
 .dir-body .dir-pages li { border-bottom-color: rgba(26, 22, 16, 0.18); }
 
-/* The directory button must never scroll out of reach on small screens:
-   it leads the nav row instead of trailing it. */
+/* VP-0013 (R21): the directory button must NOT lead the phone nav.
+   The old rule set order: -1 here, which put Index of Halls first on
+   every phone, ahead of the errand doors, and pushed Encyclopedia and
+   Radar off the settled frame. The button now keeps its desktop order
+   (last, the single quiet action), and layout.css wraps the phone nav
+   so all five doors are reachable inside the header's settled frame. */
 @media (max-width: 720px) {
-  .site-nav .directory-button { order: -1; margin-left: 0; margin-right: 0.35rem; }
+  .site-nav .directory-button { order: 5; margin-left: 0; }
 }

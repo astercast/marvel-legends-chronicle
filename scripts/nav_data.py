@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""scripts/nav_data.py — canonical navigation data for the Chronicle.
+"""scripts/nav_data.py, canonical navigation data for the Chronicle.
 
 Single source of truth for every nav surface. Imported by:
   - scripts/update_nav.py      (41 root pages)
   - scripts/build_waves.py     (167 wave pages)
   - scripts/build_characters.py (66 character pages)
-All three must import from here — never redefine these lists locally.
+All three must import from here, never redefine these lists locally.
 
 EXTREME MAKEOVER (2026-10-12): the primary nav is the front desk —
 six doors, not forty-four. The full Index of Halls lives behind the
@@ -84,34 +84,34 @@ PRIMARY_NAV = [
 ]
 
 # The Index of Halls: every page, grouped the way a museum groups its rooms.
-# Blurbs are hand-written registrar's-desk copy — no counts (the copy-count
+# Blurbs are hand-written registrar's-desk copy, no counts (the copy-count
 # guard pins archive totals; years are fine), no AI filler.
 HALLS = [
-    ("The Archive", "The record itself — every figure, in order.", [
-        ("index.html", "Timeline", "The complete chronological register — every figure, oldest to newest."),
-        ("vault-room.html", "Vault Room", "Walk the room shelf by shelf — twenty-five years of drawers, each one pullable."),
+    ("The Archive", "The record itself, every figure, in order.", [
+        ("index.html", "Timeline", "The complete chronological register, every figure, oldest to newest."),
+        ("vault-room.html", "Vault Room", "Walk the room shelf by shelf, twenty-five years of drawers, each one pullable."),
         ("waves/index.html", "Waves", "Every wave on its own shelf board, with its Build-A-Figure and release notes."),
         ("characters/index.html", "Characters", "The most-released characters, each with every one of their figures."),
-        ("encyclopedia.html", "Encyclopedia", "The reference desk — packaging eras, the hall of fame, and how the line actually works."),
+        ("encyclopedia.html", "Encyclopedia", "The reference desk, packaging eras, the hall of fame, and how the line actually works."),
         ("timeline.html", "Legends Timeline", "The year-by-year history, from Toy Biz's 2002 launch to the retro-blister era."),
         ("2026-review.html", "2026 Review", "The year in the line, as it happened."),
-        ("archive-tour.html", "Archive Tour", "A guided walk through the catalog's twenty-five years — four era chapters, their real counts, and curator picks chosen by printed rules."),
-        ("debuts.html", "First Appearances", "The debut ledger — every distinct character's first figure in the line, its wave and its maker, counted from the catalog and filed by era."),
-        ("long-wait.html", "The Long Wait", "The returns ledger — every distinct character's longest silence between figures: the waits that ended, and the characters still waiting on a second figure."),
-        ("build-ledger.html", "The Build Ledger", "The build ledger — every Build-A-Figure in the line: the waves that carried each build, the figures that carried its pieces, and the gaps filed as gaps."),
-        ("two-houses.html", "The Two Houses", "The makers' ledger — the whole line filed under the two houses that made it: Toy Biz, 2002–2006, and Hasbro, 2007–2026, with the handover seam filed exactly where the catalog puts it."),
-        ("roll-call.html", "The Roll Call", "The returns census — every distinct character called by how many figures the line gives them: the handful who anchor the roll, and the hundreds called exactly once."),
-        ("wave-ledger.html", "The Wave Ledger", "The waves census — every wave in the line counted by the figures filed under it: the standard wave runs seven figures deep, while thirteen annual exclusives buckets hold 890 figures between them."),
-        ("year-ledger.html", "The Year Ledger", "The years census — every release year of the line counted by the figures dated to it: 2023 shipped 181 figures, 2011 shipped one, and every year from 2018 on has shipped a hundred or more."),
-        ("spec-sheet.html", "The Spec Sheet", "The per-figure spec record — one structured sheet for every figure in the catalog, built only from fields the catalog holds, with the fields it does not hold named as recorded-absent, never invented."),
-        ("visual-database.html", "The Visual Database", "The picture census — every figure with a verified product photograph, embedded from its retailer or manufacturer source with places to buy outbound, and every figure still waiting named in the fill-in queue. A database only: nothing is sold here."),
+        ("archive-tour.html", "Archive Tour", "A guided walk through the catalog's twenty-five years, four era chapters, their real counts, and curator picks chosen by printed rules."),
+        ("debuts.html", "First Appearances", "The debut ledger, every distinct character's first figure in the line, its wave and its maker, counted from the catalog and filed by era."),
+        ("long-wait.html", "The Long Wait", "The returns ledger, every distinct character's longest silence between figures: the waits that ended, and the characters still waiting on a second figure."),
+        ("build-ledger.html", "The Build Ledger", "The build ledger, every Build-A-Figure in the line: the waves that carried each build, the figures that carried its pieces, and the gaps filed as gaps."),
+        ("two-houses.html", "The Two Houses", "The makers' ledger, the whole line filed under the two houses that made it: Toy Biz, 2002–2006, and Hasbro, 2007–2026, with the handover seam filed exactly where the catalog puts it."),
+        ("roll-call.html", "The Roll Call", "The returns census, every distinct character called by how many figures the line gives them: the handful who anchor the roll, and the hundreds called exactly once."),
+        ("wave-ledger.html", "The Wave Ledger", "The waves census, every wave in the line counted by the figures filed under it: the standard wave runs seven figures deep, while thirteen annual exclusives buckets hold 890 figures between them."),
+        ("year-ledger.html", "The Year Ledger", "The years census, every release year of the line counted by the figures dated to it: 2023 shipped 181 figures, 2011 shipped one, and every year from 2018 on has shipped a hundred or more."),
+        ("spec-sheet.html", "The Spec Sheet", "The per-figure spec record, one structured sheet for every figure in the catalog, built only from fields the catalog holds, with the fields it does not hold named as recorded-absent, never invented."),
+        ("visual-database.html", "The Visual Database", "The picture census, every figure with a verified product photograph, embedded from its retailer or manufacturer source with places to buy outbound, and every figure still waiting named in the fill-in queue. A database only: nothing is sold here."),
         ("stats.html", "Stats", "The archive by the numbers."),
     ]),
     ("The Hunt", "Pre-orders, drops, and the chase.", [
-        ("drop-week.html", "Drop Week", "The command center for what's going live — countdowns, prices, battle plans."),
+        ("drop-week.html", "Drop Week", "The command center for what's going live, countdowns, prices, battle plans."),
         ("preorders.html", "Pre-orders", "Everything you can still order, with the windows that matter."),
-        ("calendar.html", "Release Calendar", "Dates on the wall — what's due when."),
-        ("radar.html", "Radar", "The press scan — rumors and reveals as they're spotted."),
+        ("calendar.html", "Release Calendar", "Dates on the wall, what's due when."),
+        ("radar.html", "Radar", "The press scan, rumors and reveals as they're spotted."),
         ("hunt.html", "Hunt Planner", "Plan the hunt: where to look, what to pay, when to pounce."),
         ("watchlist.html", "Watchlist", "Your personal stakeout list."),
         ("auth-wizard.html", "Auth Wizard", "Spot the knockoffs before they spot your wallet."),
@@ -119,22 +119,22 @@ HALLS = [
     ]),
     ("Your Shelf", "The collection at home.", [
         ("shelf.html", "Your Shelf", "Your figures, your display, your rules."),
-        ("my-vault.html", "My Vault", "Every figure you've marked — Owned, Wanted, Watching — plated like a museum wall, with your completion ledgers by year and wave."),
-        ("completionist.html", "The Completionist", "Set completion over your shelves — the waves you are one or two figures from finishing, the exact pieces still missing, and completion by era."),
-        ("checklist.html", "Checklist", "The grand checklist — mark them off as they come home."),
-        ("journal.html", "Journal", "Field notes from the hunt — log the pickups and the near-misses."),
+        ("my-vault.html", "My Vault", "Every figure you've marked, Owned, Wanted, Watching, plated like a museum wall, with your completion ledgers by year and wave."),
+        ("completionist.html", "The Completionist", "Set completion over your shelves, the waves you are one or two figures from finishing, the exact pieces still missing, and completion by era."),
+        ("checklist.html", "Checklist", "The grand checklist, mark them off as they come home."),
+        ("journal.html", "Journal", "Field notes from the hunt, log the pickups and the near-misses."),
         ("showcase.html", "Showcase", "Put your best shelf on display."),
         ("display.html", "Display", "How to show them: lighting, risers, dust, and common sense."),
         ("grading.html", "Grading", "What the grades mean, and when they actually matter."),
-        ("rarity.html", "Rarity Guide", "What's genuinely hard to find — and what's just expensive."),
+        ("rarity.html", "Rarity Guide", "What's genuinely hard to find, and what's just expensive."),
         ("variants.html", "Variants", "Chase variants, running changes, and the art of telling them apart."),
         ("variant-spotlight.html", "Variant Spotlight", "One variant, under the lamp."),
     ]),
     ("The Market", "Money, honestly tracked.", [
-        ("market-briefing.html", "Market Briefing", "The week's market in plain language — no hype."),
+        ("market-briefing.html", "Market Briefing", "The week's market in plain language, no hype."),
         ("launch-curve.html", "Launch Curve", "What new figures actually sold for, plotted honestly."),
         ("price-guide.html", "Price Guide", "Going rates, with the receipts."),
-        ("collection-value.html", "Ledger", "What your collection's worth — your numbers, your business."),
+        ("collection-value.html", "Ledger", "What your collection's worth, your numbers, your business."),
         ("baf-economics.html", "BAF Economics", "Is building that figure cheaper than buying it loose? The math."),
         ("baf-planner.html", "BAF Planner", "Plan your Build-A-Figure, piece by piece."),
         ("budget.html", "Budget", "Collect on a budget, without the guilt."),
@@ -142,18 +142,18 @@ HALLS = [
         ("holiday.html", "Holiday Guide", "Seasonal hunting without the seasonal-markup panic."),
     ]),
     ("The Game", "Play with the archive.", [
-        ("quest.html", "Grail Quest", "Twenty accessioned honors, exhibition commissions, and the growing exhibit — the collector's game."),
+        ("quest.html", "Grail Quest", "Twenty accessioned honors, exhibition commissions, and the growing exhibit, the collector's game."),
         ("compare.html", "Compare", "Two figures, side by side. No contest rigged."),
-        ("grails.html", "Grails", "The ones that got away — and how close they are."),
+        ("grails.html", "Grails", "The ones that got away, and how close they are."),
         ("retro.html", "Retro", "The old days: Toy Biz glory and the figures that started it."),
         ("explore.html", "Explore", "Wander the archive with no destination."),
     ]),
     ("The Desk", "Tools and the fine print.", [
         ("start.html", "Start", "New here? Start here."),
         ("skills.html", "Skills", "Teach your assistant to hunt with you."),
-        ("agents.html", "Agents", "The agent playbooks — for the machine collectors."),
+        ("agents.html", "Agents", "The agent playbooks, for the machine collectors."),
         ("community.html", "Community", "The town square."),
-        ("api.html", "API", "The archive as data — for builders."),
+        ("api.html", "API", "The archive as data, for builders."),
     ]),
 ]
 
@@ -179,7 +179,7 @@ def primary_nav_html(current, prefix=""):
 
 
 def footer_nav_html(current="", prefix=""):
-    # The footer is the full 53-page registry — the current page is marked
+    # The footer is the full 53-page registry, the current page is marked
     # here, so every page keeps its orientation even when it isn't one of
     # the six front-desk doors.
     links = "".join(
@@ -217,7 +217,7 @@ def directory_template_html(prefix=""):
         '<p class="dir-intro">Every hall in the Chronicle, the way the registrar files them. '
         f"Six rooms, {n_doors} doors.</p>"
         '<div class="dir-halls">' + "".join(halls) + "</div>"
-        '<p class="dir-colophon">The registrar files new doors here first — '
+        '<p class="dir-colophon">The registrar files new doors here first, '
         "this index is never more than one wave behind the archive.</p>"
         "</template>"
     )

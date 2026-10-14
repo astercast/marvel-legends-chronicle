@@ -20,8 +20,11 @@ const els = {
 
 const fmt = (n) => n.toLocaleString("en-US");
 
-function kpi(label, value, sub) {
-  return `<div class="db-stat"><div class="db-stat-value">${value}</div><div class="db-stat-label">${label}</div>${sub ? `<div class="db-stat-sub">${sub}</div>` : ""}</div>`;
+/* The census as margin label lines in the tombstone manner (R21):
+   a value and its label on one line, beside the pictured core.
+   The KPI tile grid that headed this page is gone (interior L3). */
+function censusLine(value, label) {
+  return `<p class="census-line"><span class="census-value">${value}</span><span class="census-label">${label}</span></p>`;
 }
 
 function row(label, fig, count) {
@@ -40,13 +43,14 @@ async function main() {
     const figById = new Map(catalog.figures.map((f) => [f.id, f]));
 
     els.kpis.innerHTML = [
-      kpi("Pictured", fmt(m.picturedCount), `of ${fmt(m.total)} figures in the catalog — the census, counted from the manifest`),
-      kpi("Waves with pictures", fmt(m.coveredWaves), `of ${fmt(m.waveRows.length)} waves — ${fmt(m.completeWaves)} of them pictured whole`),
-      kpi("Buy links priced", fmt(m.priced), "pictured figures whose retailer listing carried a price when it was recorded — the price lives outbound, at the retailer"),
-      kpi("Still typographic", fmt(m.unpicturedCount), "figures in the fill-in queue — they render in type, never as a broken box"),
+      censusLine(`${fmt(m.picturedCount)} of ${fmt(m.total)}`, "figures pictured, counted from the manifest"),
+      censusLine(`${fmt(m.coveredWaves)} of ${fmt(m.waveRows.length)}`, `waves with pictures, ${fmt(m.completeWaves)} of them pictured whole`),
+      censusLine(fmt(m.priced), "buy links priced, the price lives outbound, at the retailer"),
+      censusLine(fmt(m.unpicturedCount), "figures still typographic, in the fill-in queue, never a broken box"),
     ].join("");
 
     // The pictured core, wave by wave, oldest first.
+    let featuredUsed = false;
     els.core.innerHTML = m.waveRows.filter((w) => w.pictured.length).map((w) => `
       <div class="db-chapter">
         <div class="db-chapter-head">
@@ -57,10 +61,14 @@ async function main() {
           ${w.pictured.map((id) => {
             const fig = figById.get(id);
             const entry = m.pictured.get(id);
-            return `<article class="vd-card">
+            const featured = !featuredUsed;
+            featuredUsed = true;
+            return `<article class="vd-card${featured ? " vd-card-featured" : ""}">
+              ${featured ? `<span class="plinth-light" aria-hidden="true"></span>` : ""}
               ${plateHtml(entry, fig.name)}
               <h4 class="vd-card-name">${escapeHtml(fig.name)}</h4>
               <p class="vd-card-meta">${escapeHtml(w.series)} · ${w.year}</p>
+              <span class="cat-no">${escapeHtml(id)}</span>
               ${buyLinksHtml(entry)}
             </article>`;
           }).join("")}
@@ -74,22 +82,22 @@ async function main() {
     for (const w of m.waveRows) {
       if (!w.pictured.length) continue;
       for (const name of w.missing) {
-        shelfRows.push(row(name, `${escapeHtml(w.series)} · ${w.year}`, "no picture yet — filed typographic"));
+        shelfRows.push(row(name, `${escapeHtml(w.series)} · ${w.year}`, "no picture yet, filed typographic"));
       }
     }
     els.shelf.innerHTML = shelfRows.length
       ? `<ul class="db-rows">${shelfRows.join("")}</ul>`
-      : `<p class="db-none">Every figure in the pictured waves has its picture — the shelf is empty.</p>`;
+      : `<p class="db-none">Every figure in the pictured waves has its picture: the shelf is empty.</p>`;
 
     // The fill-in queue: every wave with figures still unpictured,
     // nearest complete first, then most recent first.
     els.queue.innerHTML = `<ul class="db-rows">${m.queue.map((w) =>
       row(`${w.series} (${w.year})`,
-        `${w.pictured.length} of ${w.total} pictured — still to file: ${escapeHtml(w.missing.join(", "))}`,
+        `${w.pictured.length} of ${w.total} pictured, still to file: ${escapeHtml(w.missing.join(", "))}`,
         `${w.missing.length} to go`)).join("")}</ul>`;
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The visual database could not be counted. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The visual database could not be counted. The archive itself is unaffected; try reloading the page.";
   }
 }
 

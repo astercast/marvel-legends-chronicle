@@ -64,7 +64,7 @@ def head_meta(title, desc, rel, ld=None):
     theme-color + favicon from the site's own tokens, and honest
     JSON-LD built from real catalog data only. og:title mirrors the
     page's own <title>; og:description mirrors its meta description."""
-    full = f"{escape(title)} — Marvel Legends Chronicle"
+    full = f"{escape(title)}: Marvel Legends Chronicle"
     url = canonical_url(rel)
     lines = [
         f'  <link rel="canonical" href="{url}">',
@@ -96,17 +96,10 @@ PAGE_CSS = """    .char-hero { padding-block: var(--space-7); }
     .release-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
     .release-year { font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
       color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
-    .release { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3);
-      padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
-    .release-name { font-weight: 700; }
-    .release-wave { color: var(--muted); font-size: 0.85rem; }
-    .release .tag-row { display: inline-flex; gap: var(--space-1); }
-    .research { margin-left: auto; font-size: 0.8rem; }
-    .research summary { cursor: pointer; color: var(--gold); font-weight: 600; }
-    .research summary:hover { text-decoration: underline; }
-    .research-list { list-style: none; margin: var(--space-2) 0; padding: 0;
-      display: flex; gap: var(--space-3); flex-wrap: wrap; }
-    .research-note { color: var(--muted); font-size: 0.75rem; margin: 0; max-width: 60ch; }
+    .release { padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
+    /* Row anatomy, record and research-apparatus styles live in
+       assets/css/museum.css (the R21 museum sheet): three-line rows,
+       the catalog number at its fixed position, one apparatus. */
     .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: var(--space-3); margin-bottom: var(--space-7); }
     .char-card { display: block; }
@@ -140,7 +133,7 @@ def page(title, desc, current, body, extra_scripts="", rel_path="characters/inde
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{escape(title)} — Marvel Legends Chronicle</title>
+  <title>{escape(title)}: Marvel Legends Chronicle</title>
   <meta name="description" content="{escape(desc)}">
 {head_meta(title, desc, rel_path, ld)}  <link rel="preload" href="../assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/tokens.css">
@@ -148,6 +141,7 @@ def page(title, desc, current, body, extra_scripts="", rel_path="characters/inde
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/vault.css">
+  <link rel="stylesheet" href="../assets/css/museum.css">
   <style>
 {PAGE_CSS}  </style>
 </head>
@@ -173,47 +167,51 @@ def page(title, desc, current, body, extra_scripts="", rel_path="characters/inde
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <p>Marvel Legends Chronicle, a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
       <nav aria-label="Footer">{FOOTER_NAV}</nav>
     </div>
   </footer>
   <script src="../assets/js/vault.js" defer></script>
+  <script src="../assets/js/research-apparatus.js" defer></script>
 {extra_scripts}</body>
 </html>
 """
 
 
-def badges(variant, exclusive):
-    out = []
+def third_line(variant, exclusive):
+    """The row's third TEXT line, present only when the catalog carries
+    a variant or an exclusive channel for the figure. Plain text, the
+    Rijksmuseum label manner: no badges on the listing surface."""
+    parts = []
     if variant:
-        out.append(f'<span class="badge badge-variant">{escape(variant)}</span>')
+        parts.append(f"Variant: {escape(variant)}")
     if exclusive:
-        out.append(f'<span class="badge badge-exclusive">{escape(exclusive)}</span>')
-    return f'<span class="tag-row">{"".join(out)}</span>' if out else ""
+        parts.append(f"Exclusive: {escape(exclusive)}")
+    if not parts:
+        return ""
+    return f'<span class="release-variant">{" · ".join(parts)}</span>'
 
 
-def research_details(name, variant):
-    """Per-release research affordance: three pre-filled external searches.
-    Same URL patterns as assets/js/listings.js — no prices scraped, no reviews
-    invented."""
-    q = " ".join(["Marvel Legends", name] + ([variant] if variant else []))
-    links = [
-        ("eBay sold listings",
-         f"https://www.ebay.com/sch/i.html?_nkw={quote_plus(q)}&LH_Sold=1&LH_Complete=1"),
-        ("YouTube reviews",
-         f"https://www.youtube.com/results?search_query={quote_plus(q + ' review')}"),
-        ("Web search",
-         f"https://www.google.com/search?q={quote_plus(q)}"),
-    ]
-    items = "".join(
-        f'<li><a href="{url}" target="_blank" rel="noopener noreferrer">{label}</a></li>'
-        for label, url in links)
-    return (
-        '<details class="research"><summary>Research</summary>'
-        f'<ul class="research-list">{items}</ul>'
-        '<p class="research-note">External searches — eBay solds show actual sale prices, '
-        'not asking prices. Reviews and web results are third-party content; unverified.</p>'
-        '</details>')
+def research_button(name, variant):
+    """One Research button per row. The links themselves are generated
+    on interaction by assets/js/research-apparatus.js, from this row's
+    own data, into the page's single research apparatus (L13 fix: the
+    explanatory note and link set are no longer repeated per figure)."""
+    v = f' data-variant="{escape(variant, quote=True)}"' if variant else ""
+    return (f'<span class="release-tools"><button type="button" class="research-btn" '
+            f'data-name="{escape(name, quote=True)}"{v}>Research</button></span>')
+
+
+def apparatus_html(char):
+    """The one-per-page research apparatus: the note printed once, in
+    the margin, with the generated links landing beside it."""
+    return f"""      <aside class="research-apparatus" id="research-apparatus" aria-label="Research for {escape(char)} figures">
+        <h2>Research</h2>
+        <p class="research-note">External searches: eBay sold listings show actual sale prices, not asking prices. Reviews and web results are third-party content, unverified.</p>
+        <p class="research-target" aria-live="polite">Choose Research on any figure below and its links appear here, generated from that figure's own row.</p>
+        <ul class="research-links"></ul>
+        <noscript><p>Research links are generated in your browser; without JavaScript, search any figure's name together with its catalog number, printed at the right of its row.</p></noscript>
+      </aside>"""
 
 
 def main():
@@ -255,12 +253,13 @@ def main():
         for y in sorted(by_year):
             rels = []
             for r in by_year[y]:
-                era_cls = "badge-toybiz" if r["manufacturer"] == "Toy Biz" else ""
                 rels.append(
-                    f'          <li class="release" data-fig-id="{escape(r["fid"])}"><span class="release-name">{escape(r["name"])}</span>'
-                    f'{badges(r["variant"], r["exclusive"])}'
-                    f'<span class="release-wave">{escape(r["series"])} · <span class="badge {era_cls}">{escape(r["manufacturer"])}</span></span>'
-                    f'{research_details(r["name"], r["variant"])}</li>')
+                    f'          <li class="release" data-fig-id="{escape(r["fid"])}">'
+                    f'<span class="release-main"><span class="release-name">{escape(r["name"])}</span>'
+                    f'<span class="release-wave">{escape(r["series"])}, {escape(r["manufacturer"])} · {y}</span>'
+                    f'{third_line(r["variant"], r["exclusive"])}</span>'
+                    f'<span class="cat-no">{escape(r["fid"])}</span>'
+                    f'{research_button(r["name"], r["variant"])}</li>')
             sections.append(f'        <h2 class="release-year">{y}</h2>\n        <ul class="release-list">\n' + "\n".join(rels) + "\n        </ul>")
         body = f"""    <section class="hero char-hero" aria-labelledby="char-title">
       <div class="container hero-inner">
@@ -269,18 +268,26 @@ def main():
         <p class="lede">{n} Marvel Legends releases, {min(years)}–{max(years)}, in chronological order.</p>
         <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">{escape(s)}</span></p>
         <div class="char-meta">
-          <span class="badge badge-baf">{n} releases</span>
-          <span class="badge">{min(years)}–{max(years)}</span>
-          <a class="badge" href="index.html" style="text-decoration:none;">← All characters</a>
+          <span>{n} releases</span>
+          <span>{min(years)}–{max(years)}</span>
+          <a href="index.html">← All characters</a>
         </div>
       </div>
     </section>
     <div class="container">
+      <aside class="tombstone" aria-label="Register label for {escape(char)}">
+        <p class="tombstone-name">{escape(char)}</p>
+        <p class="tombstone-line">Character register, Marvel Legends</p>
+        <span class="cat-no">Archive No. {escape(s)}</span>
+        <p class="tombstone-year">{min(years)}–{max(years)}</p>
+        <p class="tombstone-variant">{n} releases in the line</p>
+      </aside>
       <section class="card run-panel" id="run-panel" data-char="{escape(char)}" aria-label="Your {escape(char)} run">
         <h2 class="run-title">Your {escape(char)} run</h2>
         <p class="run-summary">Reading your tracker…</p>
-        <noscript><p class="method-note">Run progress needs JavaScript — it reads your on-device tracker (nothing is uploaded).</p></noscript>
+        <noscript><p class="method-note">Run progress needs JavaScript: it reads your on-device tracker (nothing is uploaded).</p></noscript>
       </section>
+{apparatus_html(char)}
 {chr(10).join(sections)}
     </div>"""
         (OUT / f"{s}.html").write_text(
@@ -306,7 +313,7 @@ def main():
       <div class="container hero-inner">
         <span class="hero-kicker">Browse by character</span>
         <h1 id="chars-title">Characters, <span class="accent">complete.</span></h1>
-        <p class="lede">Every release of the line's most-collected characters, in chronological order — the "every Spider-Man ever" view. Generated from the figure database.</p>
+        <p class="lede">Every release of the line's most-collected characters, in chronological order: the "every Spider-Man ever" view. Generated from the figure database.</p>
       </div>
     </section>
     <div class="container">

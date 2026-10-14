@@ -85,7 +85,7 @@ function renderEraPlacard(searching) {
     `<h3 class="era-title">${escapeHtml(era.title)}</h3>` +
     `<p class="era-note">${escapeHtml(era.note)} ` +
     `<a href="${escapeHtml(era.learnMore)}">Packaging history&nbsp;→</a>` +
-    (searching ? ` <span class="era-search-note">Searching the whole archive — era tabs resume when the search clears.</span>` : "") +
+    (searching ? ` <span class="era-search-note">Searching the whole archive; era tabs resume when the search clears.</span>` : "") +
     `</p>`;
 }
 
@@ -106,7 +106,9 @@ function figureCard(fig) {
   card.dataset.figId = fig.id;
   card.innerHTML = `
     <h3>${escapeHtml(fig.name)}</h3>
-    <div class="sub">${escapeHtml([fig.variant, fig.exclusive].filter(Boolean).join(" · ") || fig.waveSeries)}</div>
+    <div class="sub">${escapeHtml(fig.waveSeries)} · ${fig.year}</div>
+    ${fig.variant || fig.exclusive ? `<div class="sub">${escapeHtml([fig.variant ? "Variant: " + fig.variant : "", fig.exclusive ? "Exclusive: " + fig.exclusive : ""].filter(Boolean).join(" · "))}</div>` : ""}
+    <div class="cat-no">${escapeHtml(fig.id)}</div>
     <div class="tag-row">${badgeFor(fig)}</div>`;
   if (owned.has(fig.id)) {
     card.insertAdjacentHTML("beforeend", `<span class="owned-dot" aria-hidden="true"></span>`);
@@ -260,7 +262,7 @@ function renderStats(stats) {
     if (o + w > 0) {
       els.cabinet.hidden = false;
       els.cabinet.innerHTML =
-        `Your cabinet: <strong>${o}</strong> owned · <strong>${w}</strong> wanted — ` +
+        `Your cabinet: <strong>${o}</strong> owned · <strong>${w}</strong> wanted: ` +
         `<a href="shelf.html">open your shelf</a>`;
     } else {
       els.cabinet.hidden = true;
@@ -281,7 +283,7 @@ async function init() {
       const { classified, total } = sourceCoverage(figures);
       const pct = Math.round((classified / total) * 100);
       els.sourceNote.textContent =
-        `“Featured In” classifies ${classified.toLocaleString()} of ${total.toLocaleString()} figures (${pct}% of the archive) — only where the wave name itself names the source. Everything else is Unclassified; we don't guess.`;
+        `“Featured In” classifies ${classified.toLocaleString()} of ${total.toLocaleString()} figures (${pct}% of the archive), only where the wave name itself names the source. Everything else is Unclassified; we don't guess.`;
     }
 
     renderEraTabs((id) => { setEra(id); renderTimeline(waves, figures); });

@@ -32,9 +32,9 @@ export function plateHtml(entry, name) {
   if (!entry || !entry.imageUrl) return "";
   return `<figure class="fig-plate">
       <a href="${escapeHtml(entry.sourceUrl)}" target="_blank" rel="noopener noreferrer" title="Product page at ${escapeHtml(entry.imageSource)}">
-        <img src="${escapeHtml(entry.imageUrl)}" alt="${escapeHtml(name)} — product photograph from ${escapeHtml(entry.imageSource)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.fig-plate').remove()">
+        <img src="${escapeHtml(entry.imageUrl)}" alt="${escapeHtml(name)}, product photograph from ${escapeHtml(entry.imageSource)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.fig-plate').remove()">
       </a>
-      <figcaption>Product photograph — ${escapeHtml(entry.imageSource)} · Hasbro product photography, embedded from the retailer</figcaption>
+      <figcaption>Product photograph, ${escapeHtml(entry.imageSource)} · Hasbro product photography, embedded from the retailer</figcaption>
     </figure>`;
 }
 
@@ -45,8 +45,8 @@ export function buyLinksHtml(entry) {
   if (!entry || !Array.isArray(entry.buy) || !entry.buy.length) return "";
   const links = entry.buy.map((b) => {
     const price = typeof b.priceUSD === "number"
-      ? ` — $${b.priceUSD.toFixed(2)} listed ${escapeHtml(b.priceSeen || "")}`.trimEnd()
-      : " — price at the retailer";
+      ? `, $${b.priceUSD.toFixed(2)} listed ${escapeHtml(b.priceSeen || "")}`.trimEnd()
+      : ", price at the retailer";
     return `<a class="buy-link" href="${escapeHtml(b.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(b.retailer)}${price} ↗</a>`;
   }).join("");
   return `<p class="fig-buy"><span class="fig-buy-label">Places to buy</span>${links}</p>`;

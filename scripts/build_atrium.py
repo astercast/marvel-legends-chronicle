@@ -23,7 +23,7 @@ END = "<!-- HALLS:END -->"
 RE = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.S)
 
 
-def hall_card(i, title, note, pages):
+def hall_card(i, title, note, pages):  # note unused on the homepage band since R21: hall names stand in department voice, engraved caps, no sentence under them (the note still runs in the Index of Halls directory)
     links = "".join(
         f'<li><a href="{escape(href)}">'
         f'<span class="dir-page">{escape(label)}</span>'
@@ -34,8 +34,7 @@ def hall_card(i, title, note, pages):
     return f"""      <details class="hall" name="halls">
         <summary>
           <span class="hall-seal" aria-hidden="true">{seal}</span>
-          <span><span class="hall-title">{escape(title)}</span>
-          <span class="hall-note">{escape(note)}</span></span>
+          <span><span class="hall-title">{escape(title)}</span></span>
           <span class="hall-pull" aria-hidden="true">+</span>
         </summary>
         <ul class="hall-pages">{links}

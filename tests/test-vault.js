@@ -79,11 +79,11 @@ suite("vault identity — components", () => {
     assert(vaultCss.includes("scrollbar-gutter: stable"), "stable gutter");
   });
 
-  test("hero sweep is a gated one-shot (no ambient loop to pause)", () => {
-    const gated = vaultCss.match(/html\.vault-motion \.hero::before\s*\{[^}]*\}/);
-    assert(gated, "sweep lives under the vault-motion gate");
-    assert(/animation:\s*vault-sweep/.test(gated[0]), "sweep keyframes referenced in the gated block");
-    assert(/1\.6s/.test(gated[0]) && / 1;/.test(gated[0]), "single iteration, no infinite loop");
+  test("hero sweep is REMOVED (R21 motion census: stillness with one plinth light)", () => {
+    assert(!/vault-sweep/.test(vaultCss), "no sweep keyframes or use remains in vault.css");
+    assert(!/html\.vault-motion \.hero::before/.test(vaultCss), "the hero carries no entrance layer");
+    const museumCss = read("assets/css/museum.css");
+    assert(/\.plinth-light/.test(museumCss), "the sweep's named replacement is the plinth light in museum.css");
   });
 });
 

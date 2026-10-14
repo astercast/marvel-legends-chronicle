@@ -48,9 +48,14 @@ function characterLinkFor(name) {
 export function openFigureDialog(fig) {
   openModal((titleEl, bodyEl) => {
     titleEl.textContent = fig.name;
+    const catLine = document.createElement("p");
+    catLine.className = "cat-no";
+    catLine.textContent = fig.id;
+    bodyEl.appendChild(catLine);
     const dl = document.createElement("dl");
     dl.className = "kv";
     const rows = [
+      ["Catalog No.", fig.id],
       ["Wave", fig.waveSeries],
       ["Year", fig.year],
       ["Manufacturer", fig.manufacturer],
@@ -122,7 +127,7 @@ export function openFigureDialog(fig) {
         wrap.insertAdjacentHTML("beforeend",
           `<p class="link-note">${entries.length} logged ${entries.length === 1 ? "sale" : "sales"} · median $${med.toFixed(2)}${trend ? ` · ${directionBadge(trend.direction)} <span class="muted">(${trend.changePct >= 0 ? "+" : ""}${trend.changePct.toFixed(0)}% first→last)</span>` : ""}</p>` +
           (sparklineSVG(entries) || "") +
-          `<p class="link-note">From sales you logged — <a href="journal.html">open the journal</a>.</p>`);
+          `<p class="link-note">From sales you logged: <a href="journal.html">open the journal</a>.</p>`);
         bodyEl.appendChild(wrap);
       }
     } catch { /* journal unreadable — skip silently */ }

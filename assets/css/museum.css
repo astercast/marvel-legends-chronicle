@@ -1,0 +1,290 @@
+/* ============================================================
+   MUSEUM (R21 identity pass, composition first)
+   Loaded last on the rebuilt surfaces: homepage, character
+   registers, the Spec Sheet (the per-figure record), and the
+   Visual Database. The identity is the museum's own grammar:
+   the object first, a tombstone label beside it, the catalog
+   number printed as a refrain, and stillness. Nothing here
+   decorates; every rule below is one of the pass's devices.
+
+   Fixed furniture (P11): the tombstone label, the catalog
+   number in its three positions, the vault band names.
+   Motion (P12): stillness with one plinth light. No entrance
+   choreography on these surfaces, no crossfade between pages
+   (the cut replaces it), no reveal classes. The one permitted
+   motion is the featured figure's light, once, in
+   visual-database rendering (see .vd-card-featured below).
+   ============================================================ */
+
+/* The cut, not the crossfade: page changes on these surfaces
+   are instant, the way a slide changes in a lecture. */
+@view-transition { navigation: none; }
+
+/* No entrance choreography: hero furniture is present at full
+   contrast the instant it is on screen (M5 sharpened). */
+.hero-kicker, .hero h1, .hero p.lede, .stat-strip,
+.char-hero .hero-kicker, .char-hero h1, .char-hero .lede { animation: none; }
+[data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+/* ---------- The catalog number: the refrain ----------
+   One setting everywhere it is printed: small mono, tabular,
+   muted, never styled up, never varied. Its sameness is the
+   authority. Printed three times per figure: in the tombstone,
+   at the foot of the record, and in any listing or citation. */
+.cat-no {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- Tombstone label (Rijksmuseum order) ----------
+   Name and years; line; catalog number; year or scale;
+   variant note. It sits directly with the object, before any
+   prose. Plain lines, no card, no border doing the talking. */
+.tombstone {
+  margin: 0 0 var(--space-6);
+  max-width: 62ch;
+}
+.tombstone-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0 0 var(--space-2);
+}
+.tombstone-line { color: var(--ink-dim); margin: 0 0 var(--space-1); }
+.tombstone .cat-no { display: block; margin: var(--space-2) 0; font-size: 0.78rem; }
+.tombstone-year { color: var(--ink-dim); margin: 0 0 var(--space-1); }
+.tombstone-variant { color: var(--muted); font-style: italic; margin: 0; }
+
+/* ---------- The record: one fixed-order list in the margin ----------
+   Identification, Creation, Material and technique, Subject,
+   Acquisition and rights, Documentation, Persistent URL.
+   Small mono labels, reading-size values, one list, fixed order. */
+.figure-record {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: var(--space-7);
+  align-items: start;
+  margin-bottom: var(--space-7);
+}
+.figure-object { min-width: 0; }
+.figure-object .fig-plate { margin: 0 0 var(--space-5); }
+.figure-object .fig-plate img {
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  background: var(--panel);
+}
+.figure-typographic {
+  border: 1px solid var(--line-soft);
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+.figure-typographic .tombstone { margin-bottom: 0; }
+.record-list { margin: 0; }
+.record-list section { margin-bottom: var(--space-5); }
+.record-list h3 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 var(--space-2);
+}
+.record-list p, .record-list ul { margin: 0 0 var(--space-2); font-size: 0.9rem; color: var(--ink-dim); }
+.record-list ul { list-style: none; padding: 0; }
+.record-list li { margin-bottom: var(--space-1); }
+.record-provenance { max-width: 62ch; color: var(--ink-dim); }
+.record-foot {
+  border-top: 1px solid var(--line-soft);
+  padding-top: var(--space-4);
+  margin-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  align-items: baseline;
+}
+.record-foot .cat-no { font-size: 0.78rem; }
+.record-cite { color: var(--muted); font-size: 0.85rem; margin: 0; }
+@media (max-width: 860px) {
+  .figure-record { grid-template-columns: 1fr; gap: var(--space-5); }
+}
+
+/* ---------- Character registers: three-line rows ----------
+   Name / line and year / variant as a third text line when
+   present. The maker is plain text inside the line. No badges
+   on the listing surface. The catalog number sits at a fixed
+   position at the row's right edge, in the refrain setting. */
+.release {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1) var(--space-4);
+  align-items: baseline;
+}
+.release-main { display: block; min-width: 0; }
+.release-name { display: block; font-weight: 700; }
+.release-wave { display: block; color: var(--muted); font-size: 0.85rem; }
+.release-variant { display: block; color: var(--ink-dim); font-size: 0.85rem; font-style: italic; }
+.release .cat-no { grid-row: 1; grid-column: 2; text-align: right; }
+.release-tools { grid-column: 1 / -1; display: block; }
+.research-btn {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.research-btn:hover { text-decoration: underline; }
+@media (max-width: 560px) {
+  .release { grid-template-columns: 1fr; }
+  .release .cat-no { grid-row: auto; grid-column: 1; text-align: left; }
+  .cat-no { white-space: normal; overflow-wrap: anywhere; }
+}
+
+/* One research apparatus per page (L13 fix): the note prints
+   once, in the margin voice; per-figure links are generated
+   from the row's own data when its Research button is used. */
+.research-apparatus {
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  padding: var(--space-4) 0;
+  margin: 0 0 var(--space-6);
+  max-width: 75ch;
+}
+.research-apparatus h2 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 var(--space-2);
+}
+.research-apparatus p { color: var(--muted); font-size: 0.85rem; margin: 0 0 var(--space-2); }
+.research-apparatus ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+.research-apparatus .research-for { color: var(--ink); font-weight: 700; }
+
+/* Character hero furniture without badges: plain text items. */
+.char-meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: var(--space-4) 0; color: var(--muted); font-size: 0.9rem; }
+.char-meta a { color: var(--gold); }
+
+/* ---------- Homepage: provenance line, not a stat strip ----------
+   The archive totals become one quiet line under the lede, in
+   small mono, wrapping whole: no numeral can ever be cut in
+   half at a viewport edge (VP-0013). */
+.engraved-stats {
+  display: block;
+  flex-wrap: wrap;
+  overflow-x: visible;
+  border-top: 0;
+  padding-top: 0;
+  margin: var(--space-4) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  white-space: normal;
+}
+.engraved-stats .stat-num { font-variant-numeric: tabular-nums; color: var(--ink-dim); }
+.engraved-stats .stat-word { font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.02em; text-transform: none; color: var(--muted); margin-right: 0; }
+.engraved-stats .stat-sep { color: var(--gold-deep); font-size: 0.82rem; }
+
+/* Hero figures carry their catalog numbers (the refrain in a
+   listing), set under the name in the identical setting. */
+.hero-fig .cat-no { display: block; margin-top: 2px; white-space: normal; overflow-wrap: anywhere; }
+
+/* ---------- The vault band: hall names in department voice ----------
+   Plainly named, engraved caps, tracking positive and small,
+   leading 1.0, and no sentence under the name. Plinth spacing:
+   the halls do not march in one cadence; the first hall (the
+   Archive) takes roughly double its neighbours' room, and the
+   rest alternate close and open so the directory reads as a
+   directory, not a rhythm (L5 guard). */
+.hall > summary { padding: var(--space-4) 0; }
+.hall:first-child > summary { padding: var(--space-7) 0; }
+.hall:nth-child(3) > summary, .hall:nth-child(5) > summary { padding: var(--space-5) 0; }
+.hall-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.0;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hall-note { display: none; }
+.halls-head h2, #halls-h {
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.0;
+}
+
+/* ---------- Visual Database: census as margin label lines ----------
+   The KPI tile grid is gone (interior L3). The census stands
+   beside the pictured core as label lines in the tombstone
+   manner: a fact, its label, one line each, no tiles. */
+.db-kpis {
+  display: block;
+  margin: 0 0 var(--space-6);
+  max-width: 75ch;
+}
+.census-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  align-items: baseline;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line-soft);
+  margin: 0;
+}
+.census-line .census-value {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.census-line .census-label { color: var(--muted); font-size: 0.85rem; }
+
+/* Pictured core: plinth spacing. The featured figure (the
+   first pictured figure of the first pictured wave) stands at
+   roughly double its neighbours' breathing room, and carries
+   the one permitted motion: its light warms and lifts slowly,
+   once, as it becomes featured. Never on scroll. */
+.vd-grid { gap: var(--space-5) var(--space-4); }
+.vd-card-featured {
+  grid-column: span 2;
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+  position: relative;
+}
+@media (max-width: 560px) { .vd-card-featured { grid-column: span 1; padding: var(--space-4); } }
+.vd-card .cat-no { display: block; margin-top: var(--space-1); white-space: normal; overflow-wrap: anywhere; }
+.plinth-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(600px 300px at 50% 0%, rgba(220, 174, 60, 0.16), transparent 65%);
+  opacity: 0.35;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .plinth-light { animation: plinth-warm 2.8s var(--ease) 1 both; }
+}
+@keyframes plinth-warm {
+  from { opacity: 0.12; }
+  to { opacity: 0.35; }
+}
+html[data-motion="reduce"] .plinth-light { animation: none; }

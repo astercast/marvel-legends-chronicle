@@ -319,6 +319,19 @@ select.input {
 .api-badge[data-api-state="none"] { display: none; }
 .api-badge:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
+/* The catalog number, printed (R21): one setting everywhere it
+   appears, small mono, tabular, muted, never styled up or varied.
+   Its sameness is the authority; it is the site's refrain. */
+.cat-no {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 /* Figure plates — the Visual Database (rotation 20). A pictured
    figure's embedded product photograph, in the museum-vault
    register: quiet frame, gold rule, caption naming the source.

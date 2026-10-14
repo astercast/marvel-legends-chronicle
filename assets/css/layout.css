@@ -108,9 +108,7 @@
   position: relative;
   overflow: clip;
   border-bottom: 1px solid var(--line-soft);
-  background:
-    radial-gradient(1100px 380px at 12% -10%, rgba(230, 36, 41, 0.1), transparent 60%),
-    var(--bg-soft);
+  background: var(--bg-soft); /* C7: flat ground, the red wash lit nothing nameable */
 }
 .hero::after {
   content: "";
@@ -133,7 +131,6 @@
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: var(--space-4);
-  animation: rise-in var(--dur-3) var(--ease) both;
 }
 .hero h1 {
   font-family: var(--font-cond);
@@ -143,14 +140,12 @@
   text-transform: uppercase;
   line-height: 0.98;
   margin-bottom: var(--space-4);
-  animation: rise-in var(--dur-3) var(--ease) 0.06s both;
 }
 .hero h1 .accent { color: var(--gold); }
 .hero p.lede {
   font-size: var(--text-lg);
   color: var(--ink-dim);
   max-width: 62ch;
-  animation: rise-in var(--dur-3) var(--ease) 0.12s both;
 }
 
 /* --- Stat placards --- */
@@ -159,7 +154,6 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: var(--space-3);
   margin-top: var(--space-6);
-  animation: rise-in var(--dur-3) var(--ease) 0.18s both;
 }
 .stat {
   position: relative;
@@ -233,7 +227,11 @@
 
 @media (max-width: 720px) {
   .header-bar { flex-wrap: wrap; gap: var(--space-3); }
-  .site-nav { margin-left: 0; order: 3; flex-basis: 100%; }
+  /* VP-0013: on phone the nav wraps inside the header instead of
+     scrolling sideways off-frame, so Timeline, Vault Room,
+     Encyclopedia, Radar and Index of Halls (last) are all reachable
+     in the settled frame, in errand order. */
+  .site-nav { margin-left: 0; order: 3; flex-basis: 100%; flex-wrap: wrap; overflow-x: visible; }
   .hero-inner { padding-block: var(--space-6) var(--space-5); }
   .stat-strip { grid-template-columns: repeat(2, 1fr); }
 }

@@ -16,22 +16,19 @@ const encyclopediaJs = read("assets/js/encyclopedia.js");
 const dropJs = read("assets/js/drop-command.js");
 
 suite("identity wave 2 — signature motion (reduced-motion-first)", () => {
-  test("entrance choreography is one-shot and motion-gated", () => {
-    assert(/@keyframes vault-hero-in/.test(vaultCss), "vault-hero-in keyframes exist");
-    assert(
-      /html\.vault-motion \.hero \.hero-inner > \*/.test(vaultCss),
-      "hero entrance runs only under html.vault-motion"
-    );
-    assert(/animation: vault-hero-in var\(--dur-3\) var\(--ease-emphasis\) backwards/.test(vaultCss),
-      "Premium emphasis easing, backwards fill");
-    // Staggered delays across the hero child order
-    for (const d of ["0.05s", "0.14s", "0.23s", "0.32s", "0.41s"]) {
-      assert(vaultCss.includes(`animation-delay: ${d}`), `stagger delay ${d} present`);
-    }
-    // Choreography covers every hero variant page type
-    for (const sel of [".curve-hero > *", ".dw-hero > *", ".page-head > *"]) {
-      assert(vaultCss.includes(sel), `entrance covers ${sel}`);
-    }
+  test("entrance choreography is REMOVED (R21 motion census: stillness)", () => {
+    // Round 4 census + the R21 identity pass: the hero entered twice over
+    // (this block's fade-rise and the base rise-in in layout.css). Marvel's
+    // signature is stillness with one plinth light, so both entrances are
+    // removed at source and this test now guards their absence.
+    assert(!/@keyframes vault-hero-in/.test(vaultCss), "vault-hero-in keyframes are gone");
+    assert(!/animation:\s*vault-hero-in/.test(vaultCss), "vault-hero-in is never used");
+    assert(!/vault-sweep/.test(vaultCss), "the hero light sweep is gone with it");
+    const layoutCss = read("assets/css/layout.css");
+    assert(!/animation:\s*rise-in/.test(layoutCss), "layout.css hero furniture carries no rise-in");
+    const museumCss = read("assets/css/museum.css");
+    assert(/\.plinth-light/.test(museumCss), "the one permitted motion, the plinth light, lives in museum.css");
+    assert(/plinth-warm 2\.8s var\(--ease\) 1 both/.test(museumCss), "plinth light warms once, never loops");
   });
 
   test("hover physics is lift + brass, motion-gated, with an always-on color fallback", () => {
@@ -60,7 +57,9 @@ suite("identity wave 2 — signature motion (reduced-motion-first)", () => {
   test("no raw transition/animation shorthand outside the vault-motion gate for entrances", () => {
     // Every keyframes block added in wave 34 is referenced only under
     // html.vault-motion — the finished state stays the CSS default.
-    for (const name of ["vault-hero-in", "seal-press"]) {
+    // (vault-hero-in was removed entirely by the R21 census fix; the
+    // entrance test above guards its absence.)
+    for (const name of ["seal-press"]) {
       const uses = vaultCss.match(new RegExp(`animation:[^;]*${name}[^;]*;`, "g")) || [];
       assert(uses.length > 0, `${name} is used`);
       for (const u of uses) {

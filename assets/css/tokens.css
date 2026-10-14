@@ -1,13 +1,41 @@
-/* Self-hosted variable fonts (all SIL OFL, from google/fonts).
-   Cinzel [wght] — Roman inscriptional caps, display voice.
-   Newsreader [opsz,wght] — book serif, body voice.
-   font-display: swap with metric-safe serif fallbacks (see --font-*). */
+/* Self-hosted variable fonts (all SIL OFL, from google/fonts), hardened
+   for iPhone Safari (aesthetics ROUND-001 section 5, all five rules,
+   rule 5 complete):
+   1. Variable files declare their FULL measured weight range and the
+      variations format. Measured with fontTools from the shipped files:
+      Cinzel fvar wght 400 to 900 (upm 1000); Newsreader fvar wght 200 to
+      800 plus opsz 6 to 72 (upm 2000). Newsreader previously declared
+      only 400 800, which is how Safari drops to a single default weight.
+   2. Weight is set only with the font-weight property, never with
+      font-variation-settings (no such declaration exists in this site).
+      The opsz axis is handled by font-optical-sizing: auto in base.css.
+   3. No face here is single-weight: both shipped files are variable, so
+      no exact-weight static declaration applies. Display settings use
+      real weights inside the declared Cinzel range; nothing is asked to
+      synthesize a weight the file does not carry (rule 4).
+   4. font-synthesis-weight: none on the root (below), so iOS never
+      swaps in a system face or a smeared weight.
+   5. font-display: swap on every face; the display face (Cinzel latin)
+      is preloaded in every presented page head; and EVERY face has a
+      metric-adjusted fallback @font-face wired into its stack (below).
+      Fallback metrics measured with fontTools against Liberation Serif
+      (the Arial-class proxy available locally): Liberation Serif upm
+      2048, cap height 1341, x-height 940, ascent 1825, descent 443.
+      Cinzel (cap 700, ascent 976, descent 372, per upm 1000): adjusted
+      on cap height, size-adjust 106.9% (0.700 / 0.6548).
+      Newsreader (x-height 852, ascent 1470, descent 530, per upm 2000):
+      adjusted on x-height, size-adjust 92.8% (0.426 / 0.4590).
+      Ascent and descent overrides carry the shipped face's own ratios,
+      so the swap keeps line boxes instead of shifting the page.
+   Rule 6 (round 1 numbering): no weight under 400 is used under 18px
+   anywhere on the rebuilt surfaces; the 200 end of the Newsreader
+   range is declared for completeness of the file, never set small. */
 @font-face {
   font-family: "Cinzel";
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;
-  src: url("../fonts/cinzel-latin-normal.woff2") format("woff2");
+  src: url("../fonts/cinzel-latin-normal.woff2") format("woff2-variations");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -15,41 +43,68 @@
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;
-  src: url("../fonts/cinzel-latin-ext-normal.woff2") format("woff2");
+  src: url("../fonts/cinzel-latin-ext-normal.woff2") format("woff2-variations");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cinzel Fallback";
+  src: local("Georgia"), local("Palatino"), local("Palatino Linotype"), local("Times New Roman");
+  size-adjust: 106.9%;
+  ascent-override: 97.6%;
+  descent-override: 37.2%;
+  line-gap-override: 0%;
 }
 @font-face {
   font-family: "Newsreader";
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 200 800;
   font-display: swap;
-  src: url("../fonts/newsreader-latin-normal.woff2") format("woff2");
+  src: url("../fonts/newsreader-latin-normal.woff2") format("woff2-variations");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Newsreader";
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 200 800;
   font-display: swap;
-  src: url("../fonts/newsreader-latin-ext-normal.woff2") format("woff2");
+  src: url("../fonts/newsreader-latin-ext-normal.woff2") format("woff2-variations");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: "Newsreader";
   font-style: italic;
-  font-weight: 400 800;
+  font-weight: 200 800;
   font-display: swap;
-  src: url("../fonts/newsreader-latin-italic.woff2") format("woff2");
+  src: url("../fonts/newsreader-latin-italic.woff2") format("woff2-variations");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Newsreader";
   font-style: italic;
-  font-weight: 400 800;
+  font-weight: 200 800;
   font-display: swap;
-  src: url("../fonts/newsreader-latin-ext-italic.woff2") format("woff2");
+  src: url("../fonts/newsreader-latin-ext-italic.woff2") format("woff2-variations");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+@font-face {
+  font-family: "Newsreader Fallback";
+  font-style: normal;
+  src: local("Georgia"), local("Iowan Old Style"), local("Palatino"), local("Times New Roman");
+  size-adjust: 92.8%;
+  ascent-override: 73.5%;
+  descent-override: 26.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Newsreader Fallback";
+  font-style: italic;
+  src: local("Georgia"), local("Iowan Old Style"), local("Palatino"), local("Times New Roman");
+  size-adjust: 92.8%;
+  ascent-override: 73.5%;
+  descent-override: 26.5%;
+  line-gap-override: 0%;
+}
+html { font-synthesis-weight: none; }
 
 /* ============================================================
    Design tokens — Marvel Legends Chronicle, "The Collector's Vault"
@@ -107,10 +162,10 @@
   --radius-pill: 999px;
 
   /* --- Type system --- */
-  --font-display: "Cinzel", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  --font-cond: "Cinzel", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-display: "Cinzel", "Cinzel Fallback", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-cond: "Cinzel", "Cinzel Fallback", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
   /* ^^ vault identity: the "condensed label" voice is engraved caps, not a grotesque */
-  --font-body: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-body: "Newsreader", "Newsreader Fallback", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 
   --text-xs: 0.72rem;

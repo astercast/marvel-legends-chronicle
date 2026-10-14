@@ -37,7 +37,7 @@ import { baseName } from "./debuts-model.js";
 
 export const SPEC_ABSENT_FIELDS = [
   { key: "upc", label: "UPC / SKU", note: "not recorded in the catalog" },
-  { key: "msrp", label: "MSRP", note: "not recorded in the catalog — the Drop Week capture lane will file the first asking prices here, from real captures only" },
+  { key: "msrp", label: "MSRP", note: "not recorded in the catalog; the Drop Week capture lane will file the first asking prices here, from real captures only" },
   { key: "accessories", label: "Accessories", note: "not recorded in the catalog" },
 ];
 
