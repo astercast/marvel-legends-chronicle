@@ -1,174 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thanos Wave (2015): Marvel Legends Chronicle</title>
-  <meta name="description" content="Every figure in the Thanos Wave Marvel Legends wave (2015, Hasbro).">
-  <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/waves/hasbro-2015-thanos">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Thanos Wave (2015): Marvel Legends Chronicle">
-  <meta property="og:description" content="Every figure in the Thanos Wave Marvel Legends wave (2015, Hasbro).">
-  <meta property="og:url" content="https://marvel-legends-chronicle-live.vercel.app/waves/hasbro-2015-thanos">
-  <meta property="og:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Thanos Wave (2015): Marvel Legends Chronicle">
-  <meta name="twitter:description" content="Every figure in the Thanos Wave Marvel Legends wave (2015, Hasbro).">
-  <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#FAF6EC">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Thanos Wave (2015)", "numberOfItems": 6, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Captain America"}, {"@type": "ListItem", "position": 2, "name": "Iron Man"}, {"@type": "ListItem", "position": 3, "name": "Hulk"}, {"@type": "ListItem", "position": 4, "name": "Batroc"}, {"@type": "ListItem", "position": 5, "name": "Hellcat"}, {"@type": "ListItem", "position": 6, "name": "Spider-Woman (Jessica Drew)"}]}</script>
-  <link rel="preload" href="../assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/vault.css">
-  <link rel="stylesheet" href="../assets/css/museum.css">
-  <style>
-    .wave-hero { padding-block: var(--space-7); }
-    .wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
-    .wave-baf-callout { border: 1px solid var(--line); border-left: 4px solid var(--ink);
-      padding: var(--space-4); margin: 0 0 var(--space-6); background: transparent; }
-    .wave-baf-callout p { margin: 0; }
-    .wave-baf-callout .baf-name { font-weight: 800; }
-    .fig-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
-    .fig { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3);
-      padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
-    .fig-name { font-weight: 700; }
-    .fig-notes { color: var(--muted); font-size: 0.85rem; flex-basis: 100%; }
-    .fig-facts { color: var(--muted); font-size: 0.85rem; flex-basis: 100%; }
-    .fig .cat-no { white-space: normal; overflow-wrap: anywhere; }
-    .track-slot { margin-left: auto; display: inline-flex; gap: var(--space-1); }
-    .fig-tools { flex-basis: 100%; }
-    .research-btn { font: inherit; font-size: 0.78rem; font-weight: 600;
-      color: var(--blue); background: none; border: 0; padding: 0; cursor: pointer; }
-    .research-btn:hover { text-decoration: underline; }
-    .research-apparatus { border-top: 1px solid var(--line-soft);
-      border-bottom: 1px solid var(--line-soft); padding: var(--space-4) 0;
-      margin: 0 0 var(--space-6); max-width: 75ch; }
-    .research-apparatus h2 { font-family: var(--font-body); font-size: 0.72rem;
-      font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); margin: 0 0 var(--space-2); }
-    .research-apparatus p { color: var(--muted); font-size: 0.85rem; margin: 0 0 var(--space-2); }
-    .research-apparatus ul { list-style: none; margin: 0; padding: 0;
-      display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
-    .research-apparatus .research-for { color: var(--ink); font-weight: 700; }
-    .research-note { color: var(--muted); font-size: 0.75rem; margin: 0; max-width: 60ch; }
-    .wave-nav { display: flex; justify-content: space-between; gap: var(--space-3);
-      margin: var(--space-7) 0; flex-wrap: wrap; }
-    .wave-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-5); }
-    .wave-index-year { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem;
-      color: var(--muted); margin: var(--space-6) 0 var(--space-3); }
-    /* The waves index: ruled rows grouped by year, count at the right */
-    .wave-rows { list-style: none; margin: 0 0 var(--space-4); padding: 0; }
-    .wave-row { border-bottom: 1px solid var(--line); }
-    .wave-row a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-2) var(--space-5);
-      align-items: baseline; padding: var(--space-3) 0; text-decoration: none; color: var(--ink); }
-    .wave-row-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
-    .wave-row-note { color: var(--muted); font-style: italic; font-size: 0.88rem; }
-    .wave-row-count { font-variant-numeric: tabular-nums; text-align: right; }
-    .wave-row a:hover .wave-row-name { color: var(--blue); }
-    /* The chapter census (hero) + the chapter plate's spacing */
-    .wave-census { max-width: 75ch; margin: var(--space-4) 0; }
-    .wave-owned { color: var(--muted); font-size: 0.9rem; margin: var(--space-3) 0 0; }
-    .chapter-plate { margin: 0 0 var(--space-6); max-width: 560px; }
-    /* Wave 26 deep-link overhaul: per-figure anchors + cross-link rows. */
-    .fig { scroll-margin-top: 90px; border-radius: var(--radius-m); }
-    .fig:target { outline: 2px solid var(--line-bright); outline-offset: 6px;
-      background: rgba(30, 27, 22, 0.04); }
-    .fig-xref { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3);
-      margin-top: var(--space-2); font-size: 0.8rem; }
-    .xref-link { color: var(--ink-dim); text-decoration: none;
-      border-bottom: 1px dotted var(--line); white-space: nowrap; }
-    .xref-link:hover { color: var(--blue); border-bottom-style: solid; }
-    .fig-ko { margin: var(--space-2) 0 0; font-size: 0.82rem; color: var(--ink-dim);
-      border-left: 3px solid var(--ink); padding-left: var(--space-2); }
-    @media print {
-      .site-header, .site-footer, .wave-nav, .wave-actions, .research-apparatus,
-      .fig-tools, .track-slot, .skip-link { display: none !important; }
-      .wave-hero { padding-block: 0; }
-      .fig { break-inside: avoid; }
-    }
-  </style>
-  <script type="module" src="../assets/js/wave-page.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanos Wave (2015) — Marvel Legends Chronicle</title>
+<meta name="description" content="Every figure in Thanos Wave (2015, Hasbro).">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/r23.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar"><a class="wordmark" href="../index.html">Marvel Legends Chronicle</a>
+<nav><a href="../index.html">Catalog</a><a href="../radar.html">Upcoming</a><a href="../compare.html">Compare</a><a href="../my-vault.html">My Collection</a><a href="../encyclopedia.html">Help</a></nav>
+<form action="../visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures"></form></header>
+<main>
 
-  <header class="site-header">
-    <div class="container header-bar">
-      <a class="brand" href="../index.html" aria-label="Marvel Legends Chronicle home">
-        <span class="brand-mark" aria-hidden="true">ML</span>
-        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
-      </a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="../index.html">Timeline</a>
-        <a href="../vault-room.html">Vault Room</a>
-        <a href="../encyclopedia.html">Encyclopedia</a>
-        <a href="../radar.html">Radar</a>
-        <button type="button" id="directory-button" class="directory-button" aria-haspopup="dialog"><span class="directory-button-mark" aria-hidden="true">❧</span> Index of Halls</button>
-      </nav>
-    </div>
-  </header>
-<template id="directory-panel"><p class="dir-intro">Every hall in the Chronicle, the way the registrar files them. Six rooms, 56 doors.</p><div class="dir-halls"><section class="dir-hall" aria-label="The Archive"><h3 class="dir-hall-title">The Archive</h3><p class="dir-hall-note">The record itself, every figure, in order.</p><ul class="dir-pages"><li><a href="../index.html"><span class="dir-page">Timeline</span><span class="dir-blurb">The complete chronological register, every figure, oldest to newest.</span></a></li><li><a href="../vault-room.html"><span class="dir-page">Vault Room</span><span class="dir-blurb">Walk the room shelf by shelf, twenty-five years of drawers, each one pullable.</span></a></li><li><a href="../waves/index.html"><span class="dir-page">Waves</span><span class="dir-blurb">Every wave on its own shelf board, with its Build-A-Figure and release notes.</span></a></li><li><a href="../characters/index.html"><span class="dir-page">Characters</span><span class="dir-blurb">The most-released characters, each with every one of their figures.</span></a></li><li><a href="../encyclopedia.html"><span class="dir-page">Encyclopedia</span><span class="dir-blurb">The reference desk, packaging eras, the hall of fame, and how the line actually works.</span></a></li><li><a href="../timeline.html"><span class="dir-page">Legends Timeline</span><span class="dir-blurb">The year-by-year history, from Toy Biz&#x27;s 2002 launch to the retro-blister era.</span></a></li><li><a href="../2026-review.html"><span class="dir-page">2026 Review</span><span class="dir-blurb">The year in the line, as it happened.</span></a></li><li><a href="../archive-tour.html"><span class="dir-page">Archive Tour</span><span class="dir-blurb">A guided walk through the catalog&#x27;s twenty-five years, four era chapters, their real counts, and curator picks chosen by printed rules.</span></a></li><li><a href="../debuts.html"><span class="dir-page">First Appearances</span><span class="dir-blurb">The debut ledger, every distinct character&#x27;s first figure in the line, its wave and its maker, counted from the catalog and filed by era.</span></a></li><li><a href="../long-wait.html"><span class="dir-page">The Long Wait</span><span class="dir-blurb">The returns ledger, every distinct character&#x27;s longest silence between figures: the waits that ended, and the characters still waiting on a second figure.</span></a></li><li><a href="../build-ledger.html"><span class="dir-page">The Build Ledger</span><span class="dir-blurb">The build ledger, every Build-A-Figure in the line: the waves that carried each build, the figures that carried its pieces, and the gaps filed as gaps.</span></a></li><li><a href="../two-houses.html"><span class="dir-page">The Two Houses</span><span class="dir-blurb">The makers&#x27; ledger, the whole line filed under the two houses that made it: Toy Biz, 2002–2006, and Hasbro, 2007–2026, with the handover seam filed exactly where the catalog puts it.</span></a></li><li><a href="../roll-call.html"><span class="dir-page">The Roll Call</span><span class="dir-blurb">The returns census, every distinct character called by how many figures the line gives them: the handful who anchor the roll, and the hundreds called exactly once.</span></a></li><li><a href="../wave-ledger.html"><span class="dir-page">The Wave Ledger</span><span class="dir-blurb">The waves census, every wave in the line counted by the figures filed under it: the standard wave runs seven figures deep, while thirteen annual exclusives buckets hold 890 figures between them.</span></a></li><li><a href="../year-ledger.html"><span class="dir-page">The Year Ledger</span><span class="dir-blurb">The years census, every release year of the line counted by the figures dated to it: 2023 shipped 181 figures, 2011 shipped one, and every year from 2018 on has shipped a hundred or more.</span></a></li><li><a href="../spec-sheet.html"><span class="dir-page">The Spec Sheet</span><span class="dir-blurb">The per-figure spec record, one structured sheet for every figure in the catalog, built only from fields the catalog holds, with the fields it does not hold named as recorded-absent, never invented.</span></a></li><li><a href="../visual-database.html"><span class="dir-page">The Visual Database</span><span class="dir-blurb">The picture census, every figure with a verified product photograph, embedded from its retailer or manufacturer source with places to buy outbound, and every figure still waiting named in the fill-in queue. A database only: nothing is sold here.</span></a></li><li><a href="../stats.html"><span class="dir-page">Stats</span><span class="dir-blurb">The archive by the numbers.</span></a></li></ul></section><section class="dir-hall" aria-label="The Hunt"><h3 class="dir-hall-title">The Hunt</h3><p class="dir-hall-note">Pre-orders, drops, and the chase.</p><ul class="dir-pages"><li><a href="../drop-week.html"><span class="dir-page">Drop Week</span><span class="dir-blurb">The command center for what&#x27;s going live, countdowns, prices, battle plans.</span></a></li><li><a href="../preorders.html"><span class="dir-page">Pre-orders</span><span class="dir-blurb">Everything you can still order, with the windows that matter.</span></a></li><li><a href="../calendar.html"><span class="dir-page">Release Calendar</span><span class="dir-blurb">Dates on the wall, what&#x27;s due when.</span></a></li><li><a href="../radar.html"><span class="dir-page">Radar</span><span class="dir-blurb">The press scan, rumors and reveals as they&#x27;re spotted.</span></a></li><li><a href="../hunt.html"><span class="dir-page">Hunt Planner</span><span class="dir-blurb">Plan the hunt: where to look, what to pay, when to pounce.</span></a></li><li><a href="../watchlist.html"><span class="dir-page">Watchlist</span><span class="dir-blurb">Your personal stakeout list.</span></a></li><li><a href="../auth-wizard.html"><span class="dir-page">Auth Wizard</span><span class="dir-blurb">Spot the knockoffs before they spot your wallet.</span></a></li><li><a href="../exclusives.html"><span class="dir-page">Exclusives</span><span class="dir-blurb">The retailer-only and convention pieces, all in one drawer.</span></a></li></ul></section><section class="dir-hall" aria-label="Your Shelf"><h3 class="dir-hall-title">Your Shelf</h3><p class="dir-hall-note">The collection at home.</p><ul class="dir-pages"><li><a href="../shelf.html"><span class="dir-page">Your Shelf</span><span class="dir-blurb">Your figures, your display, your rules.</span></a></li><li><a href="../my-vault.html"><span class="dir-page">My Vault</span><span class="dir-blurb">Every figure you&#x27;ve marked, Owned, Wanted, Watching, plated like a museum wall, with your completion ledgers by year and wave.</span></a></li><li><a href="../completionist.html"><span class="dir-page">The Completionist</span><span class="dir-blurb">Set completion over your shelves, the waves you are one or two figures from finishing, the exact pieces still missing, and completion by era.</span></a></li><li><a href="../checklist.html"><span class="dir-page">Checklist</span><span class="dir-blurb">The grand checklist, mark them off as they come home.</span></a></li><li><a href="../journal.html"><span class="dir-page">Journal</span><span class="dir-blurb">Field notes from the hunt, log the pickups and the near-misses.</span></a></li><li><a href="../showcase.html"><span class="dir-page">Showcase</span><span class="dir-blurb">Put your best shelf on display.</span></a></li><li><a href="../display.html"><span class="dir-page">Display</span><span class="dir-blurb">How to show them: lighting, risers, dust, and common sense.</span></a></li><li><a href="../grading.html"><span class="dir-page">Grading</span><span class="dir-blurb">What the grades mean, and when they actually matter.</span></a></li><li><a href="../rarity.html"><span class="dir-page">Rarity Guide</span><span class="dir-blurb">What&#x27;s genuinely hard to find, and what&#x27;s just expensive.</span></a></li><li><a href="../variants.html"><span class="dir-page">Variants</span><span class="dir-blurb">Chase variants, running changes, and the art of telling them apart.</span></a></li><li><a href="../variant-spotlight.html"><span class="dir-page">Variant Spotlight</span><span class="dir-blurb">One variant, under the lamp.</span></a></li></ul></section><section class="dir-hall" aria-label="The Market"><h3 class="dir-hall-title">The Market</h3><p class="dir-hall-note">Money, honestly tracked.</p><ul class="dir-pages"><li><a href="../market-briefing.html"><span class="dir-page">Market Briefing</span><span class="dir-blurb">The week&#x27;s market in plain language, no hype.</span></a></li><li><a href="../launch-curve.html"><span class="dir-page">Launch Curve</span><span class="dir-blurb">What new figures actually sold for, plotted honestly.</span></a></li><li><a href="../price-guide.html"><span class="dir-page">Price Guide</span><span class="dir-blurb">Going rates, with the receipts.</span></a></li><li><a href="../collection-value.html"><span class="dir-page">Ledger</span><span class="dir-blurb">What your collection&#x27;s worth, your numbers, your business.</span></a></li><li><a href="../baf-economics.html"><span class="dir-page">BAF Economics</span><span class="dir-blurb">Is building that figure cheaper than buying it loose? The math.</span></a></li><li><a href="../baf-planner.html"><span class="dir-page">BAF Planner</span><span class="dir-blurb">Plan your Build-A-Figure, piece by piece.</span></a></li><li><a href="../budget.html"><span class="dir-page">Budget</span><span class="dir-blurb">Collect on a budget, without the guilt.</span></a></li><li><a href="../gift.html"><span class="dir-page">Gift Finder</span><span class="dir-blurb">The right figure for the right person.</span></a></li><li><a href="../holiday.html"><span class="dir-page">Holiday Guide</span><span class="dir-blurb">Seasonal hunting without the seasonal-markup panic.</span></a></li></ul></section><section class="dir-hall" aria-label="The Game"><h3 class="dir-hall-title">The Game</h3><p class="dir-hall-note">Play with the archive.</p><ul class="dir-pages"><li><a href="../quest.html"><span class="dir-page">Grail Quest</span><span class="dir-blurb">Twenty accessioned honors, exhibition commissions, and the growing exhibit, the collector&#x27;s game.</span></a></li><li><a href="../compare.html"><span class="dir-page">Compare</span><span class="dir-blurb">Two figures, side by side. No contest rigged.</span></a></li><li><a href="../grails.html"><span class="dir-page">Grails</span><span class="dir-blurb">The ones that got away, and how close they are.</span></a></li><li><a href="../retro.html"><span class="dir-page">Retro</span><span class="dir-blurb">The old days: Toy Biz glory and the figures that started it.</span></a></li><li><a href="../explore.html"><span class="dir-page">Explore</span><span class="dir-blurb">Wander the archive with no destination.</span></a></li></ul></section><section class="dir-hall" aria-label="The Desk"><h3 class="dir-hall-title">The Desk</h3><p class="dir-hall-note">Tools and the fine print.</p><ul class="dir-pages"><li><a href="../start.html"><span class="dir-page">Start</span><span class="dir-blurb">New here? Start here.</span></a></li><li><a href="../skills.html"><span class="dir-page">Skills</span><span class="dir-blurb">Teach your assistant to hunt with you.</span></a></li><li><a href="../agents.html"><span class="dir-page">Agents</span><span class="dir-blurb">The agent playbooks, for the machine collectors.</span></a></li><li><a href="../community.html"><span class="dir-page">Community</span><span class="dir-blurb">The town square.</span></a></li><li><a href="../api.html"><span class="dir-page">API</span><span class="dir-blurb">The archive as data, for builders.</span></a></li></ul></section></div><p class="dir-colophon">The registrar files new doors here first, this index is never more than one wave behind the archive.</p></template>
-
-  <main id="main">
-    <section class="hero wave-hero" aria-labelledby="wave-title" data-wave-id="hasbro-2015-thanos">
-      <div class="container hero-inner">
-        <span class="hero-kicker">Wave archive</span>
-        <h1 id="wave-title">Thanos Wave</h1>
-        <p class="lede">2015 · Hasbro · 6 figures</p>
-        <div class="wave-census">
-          <p class="census-line"><span class="census-value">6</span><span class="census-label">figures in this wave</span></p>
-          <p class="census-line"><span class="census-value">0</span><span class="census-label">pictured in the Visual Database</span></p>
-          <p class="census-line"><span class="census-value">5</span><span class="census-label">figures carry a piece of the Build-A-Figure: Thanos (Infinity)</span></p>
-          <p class="wave-owned" id="owned-count" aria-live="polite">You own 0 of 6</p>
-        </div>
-        <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">hasbro-2015-thanos</span></p>
-        <div class="wave-actions">
-          <button type="button" class="btn btn-sm" id="print-checklist">Print checklist</button>
-          <a class="btn btn-sm" href="index.html">← All waves</a>
-          <a class="btn btn-sm" href="../timeline.html#year-2015">📜 2015 in the Legends Timeline</a>
-        </div>
-      </div>
-    </section>
-    <div class="container">
-      <div class="wave-baf-callout" role="note"><p>Build-A-Figure: <span class="baf-name">Thanos (Infinity)</span>, 5 of 6 figures in this wave include a piece. <a href="../baf-planner.html">Open the BAF planner</a> to track your pieces.</p></div>
-      <aside class="research-apparatus" id="research-apparatus" aria-label="Research for figures in Thanos Wave">
-        <h2>Research</h2>
-        <p class="research-note">External searches: eBay sold listings show actual sale prices, not asking prices. Reviews and web results are third-party content, unverified.</p>
-        <p class="research-target" aria-live="polite">Choose Research on any figure in this wave and its links appear here, generated from that figure's own row.</p>
-        <ul class="research-links"></ul>
-        <noscript><p>Research links are generated in your browser; without JavaScript, search any figure's name together with its catalog number, printed at the right of its row.</p></noscript>
-      </aside>
-
-      <ul class="fig-list" aria-label="Figures in this wave">
-          <li class="fig" id="fig-captain-america" data-fig-id="hasbro-2015-thanos::Captain America"><span class="fig-name">Captain America</span><span class="fig-facts">Builds: Right leg</span><span class="track-slot" data-track-for="hasbro-2015-thanos::Captain America"></span><span class="cat-no">hasbro-2015-thanos::Captain America</span><span class="fig-notes">Avengers: Age of Ultron (film) version</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-captain-america" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=hasbro-2015-thanos%3A%3ACaptain%20America">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Captain America">Research</button></span></li>
-          <li class="fig" id="fig-iron-man" data-fig-id="hasbro-2015-thanos::Iron Man"><span class="fig-name">Iron Man</span><span class="fig-facts">Builds: Left leg</span><span class="track-slot" data-track-for="hasbro-2015-thanos::Iron Man"></span><span class="cat-no">hasbro-2015-thanos::Iron Man</span><span class="fig-notes">Age of Ultron (Mark 43) version</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-iron-man" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=hasbro-2015-thanos%3A%3AIron%20Man">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Iron Man">Research</button></span></li>
-          <li class="fig" id="fig-hulk" data-fig-id="hasbro-2015-thanos::Hulk"><span class="fig-name">Hulk</span><span class="fig-facts">Builds: Right arm</span><span class="track-slot" data-track-for="hasbro-2015-thanos::Hulk"></span><span class="cat-no">hasbro-2015-thanos::Hulk</span><span class="fig-notes">Age of Ultron (film) version</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-hulk" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=hasbro-2015-thanos%3A%3AHulk">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Hulk">Research</button></span></li>
-          <li class="fig" id="fig-batroc" data-fig-id="hasbro-2015-thanos::Batroc"><span class="fig-name">Batroc</span><span class="fig-facts">Builds: Torso</span><span class="track-slot" data-track-for="hasbro-2015-thanos::Batroc"></span><span class="cat-no">hasbro-2015-thanos::Batroc</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-batroc" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=hasbro-2015-thanos%3A%3ABatroc">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Batroc">Research</button></span></li>
-          <li class="fig" id="fig-hellcat" data-fig-id="hasbro-2015-thanos::Hellcat"><span class="fig-name">Hellcat</span><span class="fig-facts">Builds: Left arm and head</span><span class="track-slot" data-track-for="hasbro-2015-thanos::Hellcat"></span><span class="cat-no">hasbro-2015-thanos::Hellcat</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-hellcat" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=hasbro-2015-thanos%3A%3AHellcat">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Hellcat">Research</button></span></li>
-          <li class="fig" id="fig-spider-woman-jessica-drew" data-fig-id="hasbro-2015-thanos::Spider-Woman (Jessica Drew)"><span class="fig-name">Spider-Woman (Jessica Drew)</span><span class="track-slot" data-track-for="hasbro-2015-thanos::Spider-Woman (Jessica Drew)"></span><span class="cat-no">hasbro-2015-thanos::Spider-Woman (Jessica Drew)</span><span class="fig-notes">Classic version; BAF piece unverified</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-spider-woman-jessica-drew" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=hasbro-2015-thanos%3A%3ASpider-Woman%20%28Jessica%20Drew%29">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Spider-Woman (Jessica Drew)">Research</button></span></li>
-      </ul>
-      <nav class="wave-nav" aria-label="Previous and next wave">
-        <a class="btn" href="hasbro-2015-hobgoblin.html" rel="prev">← Hobgoblin Wave (2015)</a>
-        <a class="btn" href="hasbro-2015-hulkbuster.html" rel="next">Hulkbuster Wave (2015) →</a>
-      </nav>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>Marvel Legends Chronicle, a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
-      <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../timeline.html">Legends Timeline</a><a href="../archive-tour.html">Archive Tour</a><a href="../debuts.html">First Appearances</a><a href="../long-wait.html">The Long Wait</a><a href="../build-ledger.html">The Build Ledger</a><a href="../two-houses.html">The Two Houses</a><a href="../roll-call.html">The Roll Call</a><a href="../wave-ledger.html">The Wave Ledger</a><a href="../year-ledger.html">The Year Ledger</a><a href="../spec-sheet.html">The Spec Sheet</a><a href="../visual-database.html">The Visual Database</a><a href="../2026-review.html">2026 Review</a><a href="../start.html">Start</a><a href="../waves/index.html" aria-current="page">Waves</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../market-briefing.html">Market Briefing</a><a href="../launch-curve.html">Launch Curve</a><a href="../drop-week.html">Drop Week</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../my-vault.html">My Vault</a><a href="../completionist.html">The Completionist</a><a href="../journal.html">Journal</a><a href="../baf-economics.html">BAF Economics</a><a href="../hunt.html">Hunt Planner</a><a href="../gift.html">Gift Finder</a><a href="../holiday.html">Holiday Guide</a><a href="../grading.html">Grading</a><a href="../display.html">Display</a><a href="../collection-value.html">Ledger</a><a href="../exclusives.html">Exclusives</a><a href="../watchlist.html">Watchlist</a><a href="../budget.html">Budget</a><a href="../radar.html">Radar</a><a href="../preorders.html">Pre-orders</a><a href="../calendar.html">Release Calendar</a><a href="../compare.html">Compare</a><a href="../grails.html">Grails</a><a href="../quest.html">Grail Quest</a><a href="../variants.html">Variants</a><a href="../variant-spotlight.html">Variant Spotlight</a><a href="../rarity.html">Rarity Guide</a><a href="../checklist.html">Checklist</a><a href="../explore.html">Explore</a><a href="../retro.html">Retro</a><a href="../showcase.html">Showcase</a><a href="../vault-room.html">Vault Room</a><a href="../skills.html">Skills</a><a href="../agents.html">Agents</a><a href="../community.html">Community</a><a href="../api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button></nav>
-    </div>
-  </footer>
-  <script src="../assets/js/vault.js" defer></script>
-  <script src="../assets/js/research-apparatus.js" defer></script>
+<p class="backline">Catalog · Waves · Thanos Wave</p>
+<h1>Thanos Wave</h1>
+<p class="factline">Hasbro, 2015, 6 figures</p>
+<ul class="rows"><li class="row"><span class="notpic">Not pictured</span><div><div class="pid">2015 · Hasbro Thanos Wave · No. 1</div><div class="name"><a href="../spec-sheet.html?f=hasbro-2015-thanos-captain-america">Captain America</a></div><div class="fact">Thanos Wave, 2015, Hasbro, Build A Figure piece: Right leg</div><div class="path">Captain America · Thanos Wave · 2015</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-captain-america" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-captain-america" aria-pressed="false">Wanted</button></div></li><li class="row"><span class="notpic">Not pictured</span><div><div class="pid">2015 · Hasbro Thanos Wave · No. 2</div><div class="name"><a href="../spec-sheet.html?f=hasbro-2015-thanos-iron-man">Iron Man</a></div><div class="fact">Thanos Wave, 2015, Hasbro, Build A Figure piece: Left leg</div><div class="path">Iron Man · Thanos Wave · 2015</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-iron-man" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-iron-man" aria-pressed="false">Wanted</button></div></li><li class="row"><span class="notpic">Not pictured</span><div><div class="pid">2015 · Hasbro Thanos Wave · No. 3</div><div class="name"><a href="../spec-sheet.html?f=hasbro-2015-thanos-hulk">Hulk</a></div><div class="fact">Thanos Wave, 2015, Hasbro, Build A Figure piece: Right arm</div><div class="path">Hulk · Thanos Wave · 2015</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-hulk" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-hulk" aria-pressed="false">Wanted</button></div></li><li class="row"><span class="notpic">Not pictured</span><div><div class="pid">2015 · Hasbro Thanos Wave · No. 4</div><div class="name"><a href="../spec-sheet.html?f=hasbro-2015-thanos-batroc">Batroc</a></div><div class="fact">Thanos Wave, 2015, Hasbro, Build A Figure piece: Torso</div><div class="path">Batroc · Thanos Wave · 2015</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-batroc" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-batroc" aria-pressed="false">Wanted</button></div></li><li class="row"><span class="notpic">Not pictured</span><div><div class="pid">2015 · Hasbro Thanos Wave · No. 5</div><div class="name"><a href="../spec-sheet.html?f=hasbro-2015-thanos-hellcat">Hellcat</a></div><div class="fact">Thanos Wave, 2015, Hasbro, Build A Figure piece: Left arm and head</div><div class="path">Hellcat · Thanos Wave · 2015</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-hellcat" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-hellcat" aria-pressed="false">Wanted</button></div></li><li class="row"><span class="notpic">Not pictured</span><div><div class="pid">2015 · Hasbro Thanos Wave · No. 6</div><div class="name"><a href="../spec-sheet.html?f=hasbro-2015-thanos-spider-woman-jessica-drew">Spider-Woman (Jessica Drew)</a></div><div class="fact">Thanos Wave, 2015, Hasbro</div><div class="path">Spider-Woman · Thanos Wave · 2015</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-spider-woman-jessica-drew" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-spider-woman-jessica-drew" aria-pressed="false">Wanted</button></div></li></ul>
+<h2>Build A Figure — Thanos (Infinity)</h2><ul class="rows"><li class="row"><div><div class="name">Captain America</div><div class="fact">Piece: Right leg</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-captain-america" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-captain-america" aria-pressed="false">Wanted</button></div></li><li class="row"><div><div class="name">Iron Man</div><div class="fact">Piece: Left leg</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-iron-man" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-iron-man" aria-pressed="false">Wanted</button></div></li><li class="row"><div><div class="name">Hulk</div><div class="fact">Piece: Right arm</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-hulk" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-hulk" aria-pressed="false">Wanted</button></div></li><li class="row"><div><div class="name">Batroc</div><div class="fact">Piece: Torso</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-batroc" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-batroc" aria-pressed="false">Wanted</button></div></li><li class="row"><div><div class="name">Hellcat</div><div class="fact">Piece: Left arm and head</div></div><div class="state"><button class="statebtn" data-state="owned" data-slug="hasbro-2015-thanos-hellcat" aria-pressed="false">Owned</button><button class="statebtn" data-state="wanted" data-slug="hasbro-2015-thanos-hellcat" aria-pressed="false">Wanted</button></div></li></ul><p class="method">Pieces you still need are the rows above not marked Owned.</p>
+<p class="sourceline">Summary: 6 figures · 0 exclusives · 0 pictured<br>
+Source: Chronicle census record for this wave; checked 14 October 2026.<br>
+Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
+<script type="module">
+import { wireState, loadSet, guardImages } from "../assets/js/r23.js";
+guardImages();
+document.querySelectorAll("[data-slug]").forEach(b=>{
+  const set = loadSet(b.dataset.state); b.setAttribute("aria-pressed", set.has(b.dataset.slug));
+});
+wireState(document);
+</script>
+</main>
+<footer class="site">Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</footer>
 </body>
 </html>

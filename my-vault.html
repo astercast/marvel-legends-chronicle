@@ -1,148 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Vault: Marvel Legends Chronicle</title>
-  <meta name="description" content="Your personal collection tracker: every figure you have marked Owned, Wanted or Watching, plated like a museum wall, with completion ledgers by year and by wave. Your marks stay in this browser.">
-  <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/my-vault">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="My Vault: Marvel Legends Chronicle">
-  <meta property="og:description" content="Your personal collection tracker: every figure you have marked Owned, Wanted or Watching, plated like a museum wall, with completion ledgers by year and by wave. Your marks stay in this browser.">
-  <meta property="og:url" content="https://marvel-legends-chronicle-live.vercel.app/my-vault">
-  <meta property="og:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="My Vault: Marvel Legends Chronicle">
-  <meta name="twitter:description" content="Your personal collection tracker: every figure you have marked Owned, Wanted or Watching, plated like a museum wall, with completion ledgers by year and by wave. Your marks stay in this browser.">
-  <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#FAF6EC">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "My Vault: Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/my-vault", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
-  <link rel="preload" href="assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-<link rel="stylesheet" href="assets/css/vault.css">
-  <style>
-    .mv-hero { padding-block: var(--space-7); }
-    .mv-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-5); }
-    .mv-stat { border: 1px solid var(--line-soft); border-top: 3px solid var(--gold); padding: var(--space-4); background: var(--panel); }
-    .mv-stat-value { font-family: var(--font-display); font-size: 1.7rem; color: var(--ink); line-height: 1.1; }
-    .mv-stat-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; color: var(--muted); margin-top: var(--space-1); }
-    .mv-stat-sub { color: var(--muted); font-size: 0.8rem; margin-top: var(--space-1); }
-    .mv-filter-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-6); }
-    .mv-filter-row label { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .mv-filter { flex: 1 1 260px; background: var(--panel); border: 1px solid var(--line-soft); color: var(--ink); padding: var(--space-2) var(--space-3); font: inherit; }
-    .mv-filter:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-    .mv-hall { margin-bottom: var(--space-7); }
-    .mv-hall-head { display: flex; align-items: baseline; gap: var(--space-3); border-bottom: 1px solid var(--line-soft); padding-bottom: var(--space-2); }
-    .mv-hall-head h2 { font-size: 1.35rem; margin: 0; }
-    .mv-hall-count { font-family: var(--font-mono); color: var(--gold); font-size: 0.85rem; }
-    .mv-hall-note { color: var(--muted); font-size: 0.9rem; margin: var(--space-2) 0 var(--space-4); }
-    .mv-hall-empty { color: var(--muted); border: 1px dashed var(--line-soft); padding: var(--space-4); }
-    .mv-plates { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-3); }
-    .mv-plate { border: 1px solid var(--line-soft); border-top: 3px solid var(--gold); background: var(--panel); padding: var(--space-4); display: flex; flex-direction: column; }
-    .mv-plate-owned { border-top-color: var(--green); }
-    .mv-plate-wanted { border-top-color: var(--gold); }
-    .mv-plate-watching { border-top-color: var(--ink); }
-    .mv-plate-kicker { display: flex; justify-content: space-between; gap: var(--space-2); font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    .mv-plate-state { color: var(--ink-dim); }
-    .mv-plate-name { font-size: 1.12rem; margin: var(--space-2) 0 var(--space-1); }
-    .mv-plate-meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 var(--space-2); }
-    .mv-plate-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: var(--space-2); }
-    .mv-plate-tags .badge { white-space: normal; overflow-wrap: anywhere; }
-    .mv-plate-notes { color: var(--ink-dim); font-size: 0.85rem; margin: 0 0 var(--space-2); }
-    .mv-plate-btns { margin-top: auto; }
-    .mv-plate-link { font-size: 0.85rem; margin-top: var(--space-3); }
-    .mv-nomatch { color: var(--muted); font-size: 0.9rem; }
-    .mv-ledger { margin-bottom: var(--space-7); }
-    .mv-ledger h2 { font-size: 1.15rem; margin-bottom: var(--space-2); }
-    .mv-ledger-note { color: var(--muted); font-size: 0.9rem; margin: 0 0 var(--space-4); max-width: 75ch; }
-    .mv-bar { height: 10px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
-    .mv-bar > span { display: block; height: 100%; background: var(--ink); transition: width 0.35s var(--ease); }
-    @media (prefers-reduced-motion: reduce) { .mv-bar > span { transition: none; } }
-    .mv-year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--space-2) var(--space-4); }
-    .mv-year-row { display: grid; grid-template-columns: 44px 1fr 58px; gap: var(--space-2); align-items: center; font-size: 0.82rem; }
-    .mv-year-label { font-family: var(--font-mono); color: var(--ink-dim); }
-    .mv-year-count { font-family: var(--font-mono); color: var(--muted); text-align: right; }
-    .mv-year-extra { grid-column: 2 / 4; color: var(--muted); font-size: 0.75rem; min-height: 1em; }
-    .mv-wave-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
-    .mv-wave-row { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(120px, 2fr) auto; gap: var(--space-3); align-items: center; border-bottom: 1px solid var(--line-soft); padding-bottom: var(--space-3); }
-    @media (max-width: 700px) { .mv-wave-row { grid-template-columns: 1fr; gap: var(--space-2); } }
-    .mv-wave-main a { font-weight: 600; }
-    .mv-wave-meta { color: var(--muted); font-size: 0.8rem; margin-left: var(--space-2); }
-    .mv-wave-count { font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; text-align: right; }
-    @media print { .site-header, .site-footer { display: none !important; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Collection — Marvel Legends Chronicle</title>
+<meta name="description" content="Your own figures and numbers: owned, wanted, Build A Figure progress, spending, and your top 10. Stored in your browser only.">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/r23.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to your vault</a>
-  <header class="site-header">
-    <div class="container header-bar">
-      <a class="brand" href="index.html" aria-label="Marvel Legends Chronicle home">
-        <span class="brand-mark" aria-hidden="true">ML</span>
-        <span class="brand-name">MARVEL LEGENDS<small>CHRONICLE</small></span>
-      </a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="index.html">Timeline</a>
-        <a href="vault-room.html">Vault Room</a>
-        <a href="encyclopedia.html">Encyclopedia</a>
-        <a href="radar.html">Radar</a>
-        <button type="button" id="directory-button" class="directory-button" aria-haspopup="dialog"><span class="directory-button-mark" aria-hidden="true">❧</span> Index of Halls</button>
-      </nav>
-    </div>
-  </header>
-<template id="directory-panel"><p class="dir-intro">Every hall in the Chronicle, the way the registrar files them. Six rooms, 56 doors.</p><div class="dir-halls"><section class="dir-hall" aria-label="The Archive"><h3 class="dir-hall-title">The Archive</h3><p class="dir-hall-note">The record itself, every figure, in order.</p><ul class="dir-pages"><li><a href="index.html"><span class="dir-page">Timeline</span><span class="dir-blurb">The complete chronological register, every figure, oldest to newest.</span></a></li><li><a href="vault-room.html"><span class="dir-page">Vault Room</span><span class="dir-blurb">Walk the room shelf by shelf, twenty-five years of drawers, each one pullable.</span></a></li><li><a href="waves/index.html"><span class="dir-page">Waves</span><span class="dir-blurb">Every wave on its own shelf board, with its Build-A-Figure and release notes.</span></a></li><li><a href="characters/index.html"><span class="dir-page">Characters</span><span class="dir-blurb">The most-released characters, each with every one of their figures.</span></a></li><li><a href="encyclopedia.html"><span class="dir-page">Encyclopedia</span><span class="dir-blurb">The reference desk, packaging eras, the hall of fame, and how the line actually works.</span></a></li><li><a href="timeline.html"><span class="dir-page">Legends Timeline</span><span class="dir-blurb">The year-by-year history, from Toy Biz&#x27;s 2002 launch to the retro-blister era.</span></a></li><li><a href="2026-review.html"><span class="dir-page">2026 Review</span><span class="dir-blurb">The year in the line, as it happened.</span></a></li><li><a href="archive-tour.html"><span class="dir-page">Archive Tour</span><span class="dir-blurb">A guided walk through the catalog&#x27;s twenty-five years, four era chapters, their real counts, and curator picks chosen by printed rules.</span></a></li><li><a href="debuts.html"><span class="dir-page">First Appearances</span><span class="dir-blurb">The debut ledger, every distinct character&#x27;s first figure in the line, its wave and its maker, counted from the catalog and filed by era.</span></a></li><li><a href="long-wait.html"><span class="dir-page">The Long Wait</span><span class="dir-blurb">The returns ledger, every distinct character&#x27;s longest silence between figures: the waits that ended, and the characters still waiting on a second figure.</span></a></li><li><a href="build-ledger.html"><span class="dir-page">The Build Ledger</span><span class="dir-blurb">The build ledger, every Build-A-Figure in the line: the waves that carried each build, the figures that carried its pieces, and the gaps filed as gaps.</span></a></li><li><a href="two-houses.html"><span class="dir-page">The Two Houses</span><span class="dir-blurb">The makers&#x27; ledger, the whole line filed under the two houses that made it: Toy Biz, 2002–2006, and Hasbro, 2007–2026, with the handover seam filed exactly where the catalog puts it.</span></a></li><li><a href="roll-call.html"><span class="dir-page">The Roll Call</span><span class="dir-blurb">The returns census, every distinct character called by how many figures the line gives them: the handful who anchor the roll, and the hundreds called exactly once.</span></a></li><li><a href="wave-ledger.html"><span class="dir-page">The Wave Ledger</span><span class="dir-blurb">The waves census, every wave in the line counted by the figures filed under it: the standard wave runs seven figures deep, while thirteen annual exclusives buckets hold 890 figures between them.</span></a></li><li><a href="year-ledger.html"><span class="dir-page">The Year Ledger</span><span class="dir-blurb">The years census, every release year of the line counted by the figures dated to it: 2023 shipped 181 figures, 2011 shipped one, and every year from 2018 on has shipped a hundred or more.</span></a></li><li><a href="spec-sheet.html"><span class="dir-page">The Spec Sheet</span><span class="dir-blurb">The per-figure spec record, one structured sheet for every figure in the catalog, built only from fields the catalog holds, with the fields it does not hold named as recorded-absent, never invented.</span></a></li><li><a href="visual-database.html"><span class="dir-page">The Visual Database</span><span class="dir-blurb">The picture census, every figure with a verified product photograph, embedded from its retailer or manufacturer source with places to buy outbound, and every figure still waiting named in the fill-in queue. A database only: nothing is sold here.</span></a></li><li><a href="stats.html"><span class="dir-page">Stats</span><span class="dir-blurb">The archive by the numbers.</span></a></li></ul></section><section class="dir-hall" aria-label="The Hunt"><h3 class="dir-hall-title">The Hunt</h3><p class="dir-hall-note">Pre-orders, drops, and the chase.</p><ul class="dir-pages"><li><a href="drop-week.html"><span class="dir-page">Drop Week</span><span class="dir-blurb">The command center for what&#x27;s going live, countdowns, prices, battle plans.</span></a></li><li><a href="preorders.html"><span class="dir-page">Pre-orders</span><span class="dir-blurb">Everything you can still order, with the windows that matter.</span></a></li><li><a href="calendar.html"><span class="dir-page">Release Calendar</span><span class="dir-blurb">Dates on the wall, what&#x27;s due when.</span></a></li><li><a href="radar.html"><span class="dir-page">Radar</span><span class="dir-blurb">The press scan, rumors and reveals as they&#x27;re spotted.</span></a></li><li><a href="hunt.html"><span class="dir-page">Hunt Planner</span><span class="dir-blurb">Plan the hunt: where to look, what to pay, when to pounce.</span></a></li><li><a href="watchlist.html"><span class="dir-page">Watchlist</span><span class="dir-blurb">Your personal stakeout list.</span></a></li><li><a href="auth-wizard.html"><span class="dir-page">Auth Wizard</span><span class="dir-blurb">Spot the knockoffs before they spot your wallet.</span></a></li><li><a href="exclusives.html"><span class="dir-page">Exclusives</span><span class="dir-blurb">The retailer-only and convention pieces, all in one drawer.</span></a></li></ul></section><section class="dir-hall" aria-label="Your Shelf"><h3 class="dir-hall-title">Your Shelf</h3><p class="dir-hall-note">The collection at home.</p><ul class="dir-pages"><li><a href="shelf.html"><span class="dir-page">Your Shelf</span><span class="dir-blurb">Your figures, your display, your rules.</span></a></li><li><a href="my-vault.html"><span class="dir-page">My Vault</span><span class="dir-blurb">Every figure you&#x27;ve marked, Owned, Wanted, Watching, plated like a museum wall, with your completion ledgers by year and wave.</span></a></li><li><a href="completionist.html"><span class="dir-page">The Completionist</span><span class="dir-blurb">Set completion over your shelves, the waves you are one or two figures from finishing, the exact pieces still missing, and completion by era.</span></a></li><li><a href="checklist.html"><span class="dir-page">Checklist</span><span class="dir-blurb">The grand checklist, mark them off as they come home.</span></a></li><li><a href="journal.html"><span class="dir-page">Journal</span><span class="dir-blurb">Field notes from the hunt, log the pickups and the near-misses.</span></a></li><li><a href="showcase.html"><span class="dir-page">Showcase</span><span class="dir-blurb">Put your best shelf on display.</span></a></li><li><a href="display.html"><span class="dir-page">Display</span><span class="dir-blurb">How to show them: lighting, risers, dust, and common sense.</span></a></li><li><a href="grading.html"><span class="dir-page">Grading</span><span class="dir-blurb">What the grades mean, and when they actually matter.</span></a></li><li><a href="rarity.html"><span class="dir-page">Rarity Guide</span><span class="dir-blurb">What&#x27;s genuinely hard to find, and what&#x27;s just expensive.</span></a></li><li><a href="variants.html"><span class="dir-page">Variants</span><span class="dir-blurb">Chase variants, running changes, and the art of telling them apart.</span></a></li><li><a href="variant-spotlight.html"><span class="dir-page">Variant Spotlight</span><span class="dir-blurb">One variant, under the lamp.</span></a></li></ul></section><section class="dir-hall" aria-label="The Market"><h3 class="dir-hall-title">The Market</h3><p class="dir-hall-note">Money, honestly tracked.</p><ul class="dir-pages"><li><a href="market-briefing.html"><span class="dir-page">Market Briefing</span><span class="dir-blurb">The week&#x27;s market in plain language, no hype.</span></a></li><li><a href="launch-curve.html"><span class="dir-page">Launch Curve</span><span class="dir-blurb">What new figures actually sold for, plotted honestly.</span></a></li><li><a href="price-guide.html"><span class="dir-page">Price Guide</span><span class="dir-blurb">Going rates, with the receipts.</span></a></li><li><a href="collection-value.html"><span class="dir-page">Ledger</span><span class="dir-blurb">What your collection&#x27;s worth, your numbers, your business.</span></a></li><li><a href="baf-economics.html"><span class="dir-page">BAF Economics</span><span class="dir-blurb">Is building that figure cheaper than buying it loose? The math.</span></a></li><li><a href="baf-planner.html"><span class="dir-page">BAF Planner</span><span class="dir-blurb">Plan your Build-A-Figure, piece by piece.</span></a></li><li><a href="budget.html"><span class="dir-page">Budget</span><span class="dir-blurb">Collect on a budget, without the guilt.</span></a></li><li><a href="gift.html"><span class="dir-page">Gift Finder</span><span class="dir-blurb">The right figure for the right person.</span></a></li><li><a href="holiday.html"><span class="dir-page">Holiday Guide</span><span class="dir-blurb">Seasonal hunting without the seasonal-markup panic.</span></a></li></ul></section><section class="dir-hall" aria-label="The Game"><h3 class="dir-hall-title">The Game</h3><p class="dir-hall-note">Play with the archive.</p><ul class="dir-pages"><li><a href="quest.html"><span class="dir-page">Grail Quest</span><span class="dir-blurb">Twenty accessioned honors, exhibition commissions, and the growing exhibit, the collector&#x27;s game.</span></a></li><li><a href="compare.html"><span class="dir-page">Compare</span><span class="dir-blurb">Two figures, side by side. No contest rigged.</span></a></li><li><a href="grails.html"><span class="dir-page">Grails</span><span class="dir-blurb">The ones that got away, and how close they are.</span></a></li><li><a href="retro.html"><span class="dir-page">Retro</span><span class="dir-blurb">The old days: Toy Biz glory and the figures that started it.</span></a></li><li><a href="explore.html"><span class="dir-page">Explore</span><span class="dir-blurb">Wander the archive with no destination.</span></a></li></ul></section><section class="dir-hall" aria-label="The Desk"><h3 class="dir-hall-title">The Desk</h3><p class="dir-hall-note">Tools and the fine print.</p><ul class="dir-pages"><li><a href="start.html"><span class="dir-page">Start</span><span class="dir-blurb">New here? Start here.</span></a></li><li><a href="skills.html"><span class="dir-page">Skills</span><span class="dir-blurb">Teach your assistant to hunt with you.</span></a></li><li><a href="agents.html"><span class="dir-page">Agents</span><span class="dir-blurb">The agent playbooks, for the machine collectors.</span></a></li><li><a href="community.html"><span class="dir-page">Community</span><span class="dir-blurb">The town square.</span></a></li><li><a href="api.html"><span class="dir-page">API</span><span class="dir-blurb">The archive as data, for builders.</span></a></li></ul></section></div><p class="dir-colophon">The registrar files new doors here first, this index is never more than one wave behind the archive.</p></template>
+<header class="topbar"><a class="wordmark" href="index.html">Marvel Legends Chronicle</a>
+<nav><a href="index.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html" aria-current="page">My Collection</a><a href="encyclopedia.html">Help</a></nav>
+<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures"></form></header>
+<main>
 
-  <main id="main">
-    <section class="hero mv-hero" aria-labelledby="vault-title">
-      <div class="container hero-inner">
-        <span class="hero-kicker">Your collection, accessioned</span>
-        <h1 id="vault-title">My <span class="accent">vault.</span></h1>
-        <p class="lede">Every figure you have marked, <strong>Owned</strong> on the shelf, <strong>Wanted</strong> on the hunt, <strong>Watching</strong> under an eye, plated like a museum wall, with the ledgers to prove it. Mark any figure from its card anywhere in the archive; the plates hang themselves here. Your marks never leave this browser.</p>
-      </div>
-    </section>
-
-    <div class="container">
-      <div class="empty-state" id="vault-empty" hidden>
-        <h2>Your vault is empty</h2>
-        <p>No plates hang here yet. Open any figure, on the timeline, in the Vault Room, on its wave page, and mark it <strong>Owned</strong>, <strong>Wanted</strong> or <strong>Watching</strong>. Owned clears the other two: once a figure comes home, the hunt and the watch are over.</p>
-        <p><a class="btn" href="index.html">Open the timeline</a> <a class="btn" href="vault-room.html">Walk the Vault Room</a></p>
-      </div>
-
-      <div id="vault-dash">
-        <div class="mv-kpis" id="vault-kpis" aria-label="Vault totals"></div>
-
-        <div class="mv-filter-row">
-          <label for="vault-filter">Find a plate</label>
-          <input class="mv-filter" type="search" id="vault-filter" placeholder="Figure, wave, year…" autocomplete="off">
-        </div>
-
-        <div id="vault-halls"></div>
-
-        <section class="mv-ledger" id="vault-years" aria-label="Completion by year"></section>
-
-        <section class="mv-ledger" id="vault-waves" aria-label="Completion by wave"></section>
-
-        <p class="chart-sub" style="margin-bottom:var(--space-7);">All data is local to this browser (keys <code>mlc_owned_v1</code> / <code>mlc_wanted_v1</code> / <code>mlc_watching_v1</code>). Clearing site data empties your vault. The vault keeps no prices and no values, it is a record of what you hold, not an appraisal. For roll-up stats across your whole shelf, see <a href="shelf.html">Your Shelf</a>.</p>
-      </div>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>Marvel Legends Chronicle, a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
-      <nav aria-label="Footer">
-        <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="archive-tour.html">Archive Tour</a><a href="debuts.html">First Appearances</a><a href="long-wait.html">The Long Wait</a><a href="build-ledger.html">The Build Ledger</a><a href="two-houses.html">The Two Houses</a><a href="roll-call.html">The Roll Call</a><a href="wave-ledger.html">The Wave Ledger</a><a href="year-ledger.html">The Year Ledger</a><a href="spec-sheet.html">The Spec Sheet</a><a href="visual-database.html">The Visual Database</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="drop-week.html">Drop Week</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="my-vault.html" aria-current="page">My Vault</a><a href="completionist.html">The Completionist</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="vault-room.html">Vault Room</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button>
-      </nav>
-    </div>
-  </footer>
-  <script type="module" src="assets/js/my-vault.js"></script>
-  <script src="assets/js/vault.js" defer></script>
+<h1>My Collection</h1>
+<p class="census" id="summary">Owned 0 · Wanted 0 · Waves complete 0 · Build A Figures complete 0</p>
+<h2>Owned</h2>
+<div id="owned"><p class="method">Nothing marked Owned yet. Mark figures Owned in the <a href="visual-database.html">catalog</a>.</p></div>
+<p><button class="plain" type="button" onclick="window.print()">Print checklist</button></p>
+<h2>Wanted</h2>
+<div id="wanted"><p class="method">Nothing marked Wanted yet.</p></div>
+<p><button class="plain" type="button" onclick="window.print()">Print hunt list</button></p>
+<h2>Build A Figures</h2>
+<div id="baf"></div>
+<h2>Your numbers</h2>
+<form id="logform">
+<label class="f" for="lf-name">Figure</label><input type="text" id="lf-name" required>
+<label class="f" for="lf-date">Date</label><input type="date" id="lf-date" required>
+<label class="f" for="lf-amt">Amount paid ($)</label><input type="number" id="lf-amt" step="0.01" min="0" required>
+<p><button type="submit">Add to log</button></p></form>
+<div id="numbers"></div>
+<h2>Top figures</h2>
+<p class="method">Your top 10, in your order. Add figures from the Owned list above.</p>
+<div id="top"></div>
+<div class="printonly" id="printarea"></div>
+<script type="module">
+import { getJSON, esc, loadSet } from "./assets/js/r23.js";
+const index=await getJSON("data/v1/search-index.json");
+const bySlug=new Map(index.map(r=>[r.slug,r]));
+const owned=[...loadSet("owned")].map(s=>bySlug.get(s)).filter(Boolean);
+const wanted=[...loadSet("wanted")].map(s=>bySlug.get(s)).filter(Boolean);
+const waves=new Map(); for(const r of index){ if(!waves.has(r.wave)) waves.set(r.wave,[]); waves.get(r.wave).push(r); }
+const completeWaves=[...waves.values()].filter(ws=>ws.every(r=>loadSet("owned").has(r.slug))).length;
+const bafWaves=[...waves.entries()].filter(([,ws])=>ws.some(r=>r.baf));
+const bafDone=bafWaves.filter(([,ws])=>ws.filter(r=>r.baf).every(r=>loadSet("owned").has(r.slug))).length;
+document.getElementById("summary").innerHTML=`Owned <b>${owned.length}</b> · Wanted <b>${wanted.length}</b> · Waves complete <b>${completeWaves}</b> · Build A Figures complete <b>${bafDone}</b>`;
+function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${r.img?`<img class="thumb" src="${esc(r.img)}" alt="">`:`<span class="notpic">Not pictured</span>`}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
+const targets=JSON.parse(localStorage.getItem("mlc_targets_r23")||"{}");
+document.getElementById("owned").innerHTML=rowList(owned)||document.getElementById("owned").innerHTML;
+document.getElementById("wanted").innerHTML=rowList(wanted, r=>`<p><label>Target price ($) <input type="number" step="0.01" min="0" data-target="${r.slug}" value="${targets[r.slug]??""}"></label></p>`)||document.getElementById("wanted").innerHTML;
+document.querySelectorAll("[data-target]").forEach(inp=>inp.addEventListener("change",()=>{ targets[inp.dataset.target]=inp.value; localStorage.setItem("mlc_targets_r23",JSON.stringify(targets)); }));
+document.getElementById("baf").innerHTML=bafWaves.map(([w,ws])=>{ const pieces=ws.filter(r=>r.baf); const have=pieces.filter(r=>loadSet("owned").has(r.slug)); return `<p><b>${esc(w)}</b> — pieces have ${have.length} of ${pieces.length}; still need: ${pieces.filter(r=>!loadSet("owned").has(r.slug)).map(r=>esc(r.name)).join(", ")||"none"}</p>`; }).join("");
+let log=JSON.parse(localStorage.getItem("mlc_log_r23")||"[]");
+function renderNumbers(){
+  const total=log.reduce((a,x)=>a+ +x.amt,0);
+  const byYear={}; for(const x of log){ const y=x.date.slice(0,4); byYear[y]=(byYear[y]||0)+ +x.amt; }
+  document.getElementById("numbers").innerHTML=
+   `<p>Spending logged: <span class="num">$${total.toFixed(2)}</span> across ${log.length} entries.</p>`+
+   Object.entries(byYear).map(([y,v])=>`<p>${y}: <span class="num">$${v.toFixed(2)}</span></p>`).join("")+
+   `<p class="method">Collection value here is the total of your own logged purchase prices. Figures with no logged price count as $0; no market value is estimated.</p>`+
+   (log.length?`<ul>${log.map(x=>`<li>${esc(x.date)} — ${esc(x.name)} — <span class="num">$${(+x.amt).toFixed(2)}</span></li>`).join("")}</ul>`:"");
+}
+document.getElementById("logform").addEventListener("submit",e=>{ e.preventDefault();
+  log.push({name:document.getElementById("lf-name").value,date:document.getElementById("lf-date").value,amt:document.getElementById("lf-amt").value});
+  localStorage.setItem("mlc_log_r23",JSON.stringify(log)); renderNumbers(); e.target.reset(); });
+renderNumbers();
+let top=JSON.parse(localStorage.getItem("mlc_top10_r23")||"[]");
+function renderTop(){
+  document.getElementById("top").innerHTML=(top.map((s,i)=>{ const r=bySlug.get(s); return r?`<p>${i+1}. ${esc(r.name)} <button class="plain" data-rm="${i}" type="button">Remove</button></p>`:""; }).join("")||"")+
+   (owned.length&&top.length<10?`<label class="f">Add an owned figure <select id="addtop">${owned.filter(r=>!top.includes(r.slug)).map(r=>`<option value="${r.slug}">${esc(r.name)}</option>`).join("")}</select></label><p><button class="plain" id="addbtn" type="button">Add to top figures</button></p>`:"");
+  document.querySelectorAll("[data-rm]").forEach(b=>b.addEventListener("click",()=>{ top.splice(+b.dataset.rm,1); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); }));
+  const ab=document.getElementById("addbtn"); if(ab) ab.addEventListener("click",()=>{ top.push(document.getElementById("addtop").value); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); });
+}
+renderTop();
+document.getElementById("printarea").innerHTML=`<h2>Checklist — Owned and Wanted by wave</h2>`+
+ [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} — ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
+</script>
+</main>
+<footer class="site">Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</footer>
 </body>
 </html>

@@ -144,3 +144,17 @@ Measured on the working repo with the real handlers under local Node 24
 - Vercel functions entries need ≥1 valid property — use `{"maxDuration": 10}` per explicit function path; never set `runtime` for Node (omit it); never broad globs (2026-10-12: both `nodejs22.x` and `nodejs20.x` fail build validation; empty `{}` fails with "Function must contain at least one property"; `runtime` is only for community runtimes like `vercel-php@0.5.2`). Vercel auto-detects Node from the `api/` directory.
 - No static `.js` data files under `api/` ever — Vercel deploys every `.js` there as a function (the `functions` map is not an allowlist); basename collisions (`x.js` + `x.json` in one dir) fail the build (2026-10-12). Audited 2026-10-12: only the 4 real functions exist, zero collisions.
 - Vercel never serves static files under `api/` — all static data lives in `data/v1/`; only real function handlers under `api/` (2026-10-12).
+
+## R23 correction build (2026-10-14, working track)
+
+- Surfaces: 9 top-level files (index, visual-database, spec-sheet, radar,
+  compare, my-vault, encyclopedia=Help, api=Developers, 404) + waves/
+  (168 files) + characters/ (67 files) = 244 HTML, down from 290.
+  The other 46 top-level pages are deleted; vercel.json carries a
+  redirect for each merged/cut URL to its new home.
+- Build: `python3 scripts/build_r23.py` only (vercel.json buildCommand).
+  It regenerates every surface plus data/v1/browse/chunk-*.json (50-row
+  chunks), data/v1/search-index.json, and data/v1/figures/<slug>.json
+  per-figure shards. Static data stays under data/v1/ only.
+- Functions unchanged: 4 explicit paths, {"maxDuration": 10} each, no
+  runtime pin. Reveal Radar cron and handlers untouched.

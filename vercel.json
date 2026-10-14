@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "python3 scripts/build_quest_market.py && python3 scripts/build_api.py && python3 scripts/build_waves.py && python3 scripts/build_characters.py && python3 scripts/build_timeline.py && python3 scripts/build_rarity.py && python3 scripts/build_launch.py && python3 scripts/build_review.py && python3 scripts/build_dropweek.py && python3 scripts/build_skills.py && python3 scripts/update_nav.py",
+  "buildCommand": "python3 scripts/build_r23.py",
   "cleanUrls": true,
   "crons": [
     {
@@ -51,5 +51,237 @@
     }
   ],
   "installCommand": "echo 'no dependencies'",
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/2026-review.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/agents.html",
+      "destination": "/api.html",
+      "permanent": false
+    },
+    {
+      "source": "/archive-tour.html",
+      "destination": "/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/auth-wizard.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/baf-economics.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/baf-planner.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/budget.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/build-ledger.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/calendar.html",
+      "destination": "/radar.html",
+      "permanent": false
+    },
+    {
+      "source": "/checklist.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/collection-value.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/community.html",
+      "destination": "/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/completionist.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/debuts.html",
+      "destination": "/visual-database.html",
+      "permanent": false
+    },
+    {
+      "source": "/display.html",
+      "destination": "/spec-sheet.html",
+      "permanent": false
+    },
+    {
+      "source": "/drop-week.html",
+      "destination": "/radar.html",
+      "permanent": false
+    },
+    {
+      "source": "/exclusives.html",
+      "destination": "/visual-database.html?exclusive=1",
+      "permanent": false
+    },
+    {
+      "source": "/explore.html",
+      "destination": "/visual-database.html",
+      "permanent": false
+    },
+    {
+      "source": "/gift.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/grading.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/grails.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/holiday.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/hunt.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/journal.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/launch-curve.html",
+      "destination": "/spec-sheet.html",
+      "permanent": false
+    },
+    {
+      "source": "/long-wait.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/market-briefing.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/preorders.html",
+      "destination": "/radar.html",
+      "permanent": false
+    },
+    {
+      "source": "/price-guide.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/quest.html",
+      "destination": "/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/rarity.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/retro.html",
+      "destination": "/visual-database.html",
+      "permanent": false
+    },
+    {
+      "source": "/roll-call.html",
+      "destination": "/visual-database.html",
+      "permanent": false
+    },
+    {
+      "source": "/shelf.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/showcase.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/skills.html",
+      "destination": "/api.html",
+      "permanent": false
+    },
+    {
+      "source": "/start.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/stats.html",
+      "destination": "/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/timeline.html",
+      "destination": "/visual-database.html",
+      "permanent": false
+    },
+    {
+      "source": "/two-houses.html",
+      "destination": "/visual-database.html",
+      "permanent": false
+    },
+    {
+      "source": "/variant-spotlight.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/variants.html",
+      "destination": "/encyclopedia.html",
+      "permanent": false
+    },
+    {
+      "source": "/vault-room.html",
+      "destination": "/visual-database.html",
+      "permanent": false
+    },
+    {
+      "source": "/watchlist.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/wave-ledger.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    },
+    {
+      "source": "/year-ledger.html",
+      "destination": "/my-vault.html",
+      "permanent": false
+    }
+  ]
 }
