@@ -272,9 +272,48 @@ def research_details(name, variant):
         '</details>')
 
 
+def fig_plate(entry, name):
+    """The Visual Database plate (rotation 20): a pictured figure's
+    embedded product photograph + outbound places to buy, generated
+    from data/v1/figure-images.json. Static twin of
+    assets/js/figure-images.js — same fallback law: the img's error
+    handler removes the plate, leaving the typographic row. A
+    figure with no manifest entry gets no plate at all."""
+    if not entry:
+        return ""
+    img = escape(entry["imageUrl"], quote=True)
+    src = escape(entry["sourceUrl"], quote=True)
+    source = escape(entry["imageSource"])
+    buys = ""
+    links = []
+    for b in entry.get("buy") or []:
+        price = (f' — ${b["priceUSD"]:.2f} listed {escape(b.get("priceSeen") or "")}'.rstrip()
+                 if isinstance(b.get("priceUSD"), (int, float)) else " — price at the retailer")
+        links.append(
+            f'<a class="buy-link" href="{escape(b["url"], quote=True)}" target="_blank" '
+            f'rel="noopener noreferrer">{escape(b["retailer"])}{price} ↗</a>')
+    if links:
+        buys = (f'<p class="fig-buy"><span class="fig-buy-label">Places to buy</span>'
+                f'{"".join(links)}</p>')
+    return (
+        f'<figure class="fig-plate"><a href="{src}" target="_blank" rel="noopener noreferrer" '
+        f'title="Product page at {source}">'
+        f'<img src="{img}" alt="{escape(name, quote=True)} — product photograph from {source}" '
+        f'loading="lazy" decoding="async" referrerpolicy="no-referrer" '
+        f'onerror="this.closest(\'.fig-plate\').remove()"></a>'
+        f'<figcaption>Product photograph — {source} · Hasbro product photography, '
+        f'embedded from the retailer</figcaption></figure>{buys}')
+
+
 def main():
     figures = json.loads((DATA / "figures.json").read_text())
     waves = figures["waves"]
+
+    images_path = DATA / "v1" / "figure-images.json"
+    image_entries = {}
+    if images_path.exists():
+        image_doc = json.loads(images_path.read_text())
+        image_entries = {e["figureId"]: e for e in image_doc.get("entries", [])}
 
     OUT.mkdir(parents=True, exist_ok=True)
     for f in OUT.glob("*.html"):
@@ -306,6 +345,7 @@ def main():
                 f'{badges(f)}'
                 f'<span class="track-slot" data-track-for="{escape(fig_id, quote=True)}"></span>'
                 f'{note}'
+                f'{fig_plate(image_entries.get(fig_id), f["name"])}'
                 f'{fig_xref(prof)}'
                 f'{research_details(f["name"], f.get("variant"))}</li>')
 

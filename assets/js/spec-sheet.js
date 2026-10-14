@@ -8,6 +8,9 @@
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
 import { buildSpecSheetModel, SPEC_ABSENT_FIELDS } from "./spec-sheet-model.js";
+import { loadFigureImages, plateHtml, buyLinksHtml } from "./figure-images.js";
+
+let images = new Map();
 
 const els = {
   kpis: document.getElementById("spec-sheet-kpis"),
@@ -44,7 +47,14 @@ function renderSheet(r) {
       ? `${escapeHtml(r.build.build)} — this figure carries: ${escapeHtml(r.build.piece)}`
       : `${escapeHtml(r.build.build)} — no piece recorded for this figure`)
     : "No build — this figure's wave carries no Build-A-Figure";
+  const entry = images.get(r.id);
   const rows = [
+    ...(entry ? [
+      row("Picture", plateHtml(entry, r.name)),
+      row("Places to buy", buyLinksHtml(entry) || "Not recorded"),
+    ] : [
+      row("Picture", "No verified picture yet — this figure renders typographically, and is filed in the Visual Database's fill-in queue"),
+    ]),
     row("Figure", escapeHtml(r.name)),
     row("Character", escapeHtml(r.character)),
     row("Wave", `<a href="waves/${escapeHtml(r.wave.id)}.html">${escapeHtml(r.wave.series)}</a>`),
@@ -66,6 +76,7 @@ function renderSheet(r) {
 async function main() {
   try {
     const catalog = await loadData();
+    try { images = await loadFigureImages(); } catch { images = new Map(); }
     const m = buildSpecSheetModel(catalog.figures);
     const byId = new Map(m.records.map((r) => [r.id, r]));
 

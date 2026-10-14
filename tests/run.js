@@ -47,6 +47,7 @@ await import("./test-roll-call.js");
 await import("./test-wave-ledger.js");
 await import("./test-year-ledger.js");
 await import("./test-spec-sheet.js");
+await import("./test-visual-database.js");
 await import("./test-placement.js");
 
 const failures = await runAll();

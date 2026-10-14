@@ -318,3 +318,18 @@ select.input {
 .api-badge[data-api-state="cached"]::before { background: var(--amber); }
 .api-badge[data-api-state="none"] { display: none; }
 .api-badge:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* Figure plates — the Visual Database (rotation 20). A pictured
+   figure's embedded product photograph, in the museum-vault
+   register: quiet frame, gold rule, caption naming the source.
+   If the embed fails, the plate element removes itself (see
+   figure-images.js) and the typographic treatment stands alone —
+   there is no broken-image state. */
+.fig-plate { margin: var(--space-3) 0; max-width: 320px; }
+.fig-plate a { display: block; border: 1px solid var(--line-soft); border-top: 3px solid var(--gold); background: var(--panel); padding: var(--space-2); }
+.fig-plate img { display: block; width: 100%; height: auto; max-height: 320px; object-fit: contain; background: #fff; }
+.fig-plate figcaption { color: var(--muted); font-size: 0.75rem; margin-top: var(--space-1); }
+.fig-buy { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); margin: var(--space-2) 0 0; font-size: 0.85rem; }
+.fig-buy-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; color: var(--muted); }
+.buy-link { color: var(--gold); font-weight: 600; }
+.db-fig .fig-plate img { max-height: 240px; }

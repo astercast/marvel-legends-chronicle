@@ -1,0 +1,567 @@
+{
+ "version": 1,
+ "updatedAt": "2026-10-13",
+ "doctrine": "Embeds only: manufacturer/retailer product photography referenced by URL, never copied, never AI-generated. Every entry was verified live (HTTP 200, image content-type, cross-origin referer accepted) on verifiedAt. A figure with no entry renders in the typographic museum-vault treatment \u2014 never a broken-image box. Buy links are outbound only; this archive sells nothing.",
+ "entries": [
+  {
+   "figureId": "hasbro-2024-the-void::Crystar",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129813/b9093e22-404c-44a6-921f-ec8f7f6cb856/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/saga-crystar-marvel-legends-marvels-crystar-action-figure-marvels-void-baf-129813?variation=254026",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/saga-crystar-marvel-legends-marvels-crystar-action-figure-marvels-void-baf-129813?variation=254026",
+     "priceUSD": 28.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-the-void::Justice",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129814/b51cf681-0504-4c6e-8f51-b14f87cb70ef/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/new-warriors-marvel-legends-justice-action-figure-marvels-void-baf-129814?variation=269764",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/new-warriors-marvel-legends-justice-action-figure-marvels-void-baf-129814?variation=269764",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-the-void::Namor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129818/920550c2-abed-47fd-b42f-5e940f7ed2f7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/namor-sub-mariner-marvel-legends-namor-action-figure-marvels-void-baf-129818",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/namor-sub-mariner-marvel-legends-namor-action-figure-marvels-void-baf-129818",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-the-void::Namorita",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129817/b49666d7-d745-492f-9f70-b792edb70e11/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/new-warriors-marvel-legends-namorita-action-figure-marvels-void-baf-129817?variation=254039&o=3",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/new-warriors-marvel-legends-namorita-action-figure-marvels-void-baf-129817?variation=254039&o=3",
+     "priceUSD": 24.69,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-the-void::Power Princess",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129812/8461275b-a2b5-45b0-b6c1-b923c78230af/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/Product/VariationDetails/254021?o=4",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/Product/VariationDetails/254021?o=4",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-the-void::Vision",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129815/f8f29cb9-e684-41ec-afa5-76be525bf8be/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/vision-marvel-legends-vision-action-figure-marvels-void-baf-129815?variation=254030&o=1",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/vision-marvel-legends-vision-action-figure-marvels-void-baf-129815?variation=254030&o=1",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-xmen-97-2::Magneto",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/135740/a543c715-a4ac-4d8a-ab55-585cbe1e3b56/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-magneto-action-figure-135740?variation=266943&o=3",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-magneto-action-figure-135740?variation=266943&o=3",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-xmen-97-2::X-Cutioner",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/135743/b03c5179-1757-4310-9dba-12840864d095/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-x-cutioner-action-figure-135743?variation=266952",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-x-cutioner-action-figure-135743?variation=266952",
+     "priceUSD": 28.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-zabu::Cable",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/136310/72302c92-9e94-4df1-88d5-b9b03d9febcf/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-cable-action-figure-marvels-zabu-baf-136310?variation=268250",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-cable-action-figure-marvels-zabu-baf-136310?variation=268250",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-zabu::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/136304/21334ecb-12e1-40db-85fb-9af9aa97444a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/superior-iron-man-marvel-legends-superior-iron-man-action-figure-marvels-zabu-baf-136304?variation=268280",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/superior-iron-man-marvel-legends-superior-iron-man-action-figure-marvels-zabu-baf-136304?variation=268280",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-zabu::Ka-Zar",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/136307/443194db-99c6-49ab-b665-8525ff7ea4f6/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/uncanny-x-men-marvel-legends-ka-zar-action-figure-marvels-zabu-baf-136307?variation=268267",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/uncanny-x-men-marvel-legends-ka-zar-action-figure-marvels-zabu-baf-136307?variation=268267",
+     "priceUSD": 28.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2024-zabu::Red Widow",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/136308/0c279c3e-a214-498e-b524-155229d4bf04/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvels-avengers-marvel-legends-red-widow-action-figure-marvels-zabu-baf-136308?variation=268263&o=4",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvels-avengers-marvel-legends-red-widow-action-figure-marvels-zabu-baf-136308?variation=268263&o=4",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted; source URL scheme upgraded http->https (same BBTS page; BBTS serves https)"
+  },
+  {
+   "figureId": "hasbro-2024-zabu::Wolfsbane",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/136306/f20aceb5-a849-44ff-9dec-700be5a879be/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolfsbane-action-figure-marvels-zabu-baf-136306?variation=268269",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolfsbane-action-figure-marvels-zabu-baf-136306?variation=268269",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-executioner::Iron Man",
+   "imageUrl": "https://i5.walmartimages.com/seo/Marvel-Legends-Executioner-Series-Iron-Man-Mark-72-Action-Figure_0308bd4e-712d-4547-b227-466cc7a4ba03.0c9578a8448636e4cf857b4aa870ab8a.jpeg",
+   "imageSource": "Walmart",
+   "sourceUrl": "https://www.walmart.com/ip/Marvel-Legends-Executioner-Series-Iron-Man-Mark-72-Action-Figure/18956771975?athAsset=eyJhdGhjcGlkIjoiMTg5NTY3NzE5NzUiLCJhdGhzdGlkIjoiQ1M0Nzh%2BQ1MwMDQiLCJhdGhlZSI6eyJhIjoxMi40MiwiYiI6NTM2LjMzLCJ3IjowLjAxNDIxODU2NzEzNzAxMjEwNCwibCI6MC41fSwiYXRocG9zYiI6Ii0zIiwiYXRoYW5jaWQiOiIxNTI2MzQ3MDI1NCIsImF0aHJrIjowLjB9&athena=true",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "Walmart",
+     "url": "https://www.walmart.com/ip/Marvel-Legends-Executioner-Series-Iron-Man-Mark-72-Action-Figure/18956771975?athAsset=eyJhdGhjcGlkIjoiMTg5NTY3NzE5NzUiLCJhdGhzdGlkIjoiQ1M0Nzh%2BQ1MwMDQiLCJhdGhlZSI6eyJhIjoxMi40MiwiYiI6NTM2LjMzLCJ3IjowLjAxNDIxODU2NzEzNzAxMjEwNCwibCI6MC41fSwiYXRocG9zYiI6Ii0zIiwiYXRoYW5jaWQiOiIxNTI2MzQ3MDI1NCIsImF0aHJrIjowLjB9&athena=true",
+     "priceUSD": null,
+     "priceSeen": null,
+     "note": "Walmart product page is bot-walled to automated readers; the listed price was not recorded rather than guessed."
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-executioner::Logan",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/169061/5b9304c0-1527-40dc-8352-cadf9bda1964/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolverine-wwii-logan-action-figure-executioner-baf-169061?variation=334120",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolverine-wwii-logan-action-figure-executioner-baf-169061?variation=334120",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-executioner::Phantom Rider",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/169067/e9a629c4-09fe-4a4d-8ce6-0ef9cb685291/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/ghost-rider-marvel-legends-phantom-rider-action-figure-executioner-baf-169067?variation=334119",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/ghost-rider-marvel-legends-phantom-rider-action-figure-executioner-baf-169067?variation=334119",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-executioner::Warbow",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/169066/a14b3898-cc87-4aec-80c9-7451cc47cc86/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/saga-crystar-marvel-legends-warbow-action-figure-executioner-baf-169066",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/saga-crystar-marvel-legends-warbow-action-figure-executioner-baf-169066",
+     "priceUSD": 25.19,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-executioner::Werewolf by Night",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/169063/a1b2548e-8b8e-4784-a06d-0a9342c2c109/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/werewolf-night-marvel-legends-werewolf-night-action-figure-executioner-baf-169063?variation=334122",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/werewolf-night-marvel-legends-werewolf-night-action-figure-executioner-baf-169063?variation=334122",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-fantastic-four-first-steps::Human Torch",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/159312/44ac1ed9-d8b1-46ce-8756-e512c19c2706/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-first-steps-marvel-legends-human-torch-action-figure-159312?variation=316938",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/fantastic-four-first-steps-marvel-legends-human-torch-action-figure-159312?variation=316938",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-fantastic-four-first-steps::Invisible Woman",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/159309/cf6b7ceb-0d5c-4072-a369-a56c6b0961ef/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-first-steps-marvel-legends-marvels-invisible-woman-action-figure-159309?variation=316941",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/fantastic-four-first-steps-marvel-legends-marvels-invisible-woman-action-figure-159309?variation=316941",
+     "priceUSD": 28.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-fantastic-four-first-steps::The Thing",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/159308/155b094a-adab-4c93-97cc-3fbccc0f9883/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-first-steps-marvel-legends-thing-action-figure-159308?variation=316934&o=1",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/fantastic-four-first-steps-marvel-legends-thing-action-figure-159308?variation=316934&o=1",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-nemesis::Cyclops",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/151510/caab8a57-97d7-42d1-8048-a59014fd238b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-cyclops-x-factor-action-figure-marvels-nemesis-baf-151510?variation=301857",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-cyclops-x-factor-action-figure-marvels-nemesis-baf-151510?variation=301857",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-nemesis::Fabian Cortez",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/151507/98e1e4b2-8aa9-4980-841b-953d8cac920b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-fabian-cortez-action-figure-marvels-nemesis-baf-151507?variation=301848&o=17",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-fabian-cortez-action-figure-marvels-nemesis-baf-151507?variation=301848&o=17",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-nemesis::Gambit",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/151506/4be9eadd-4314-4bbf-ba7b-5add217ea777/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-gambit-age-apocalypse-action-figure-marvels-nemesis-baf-151506?variation=301842&o=3",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-gambit-age-apocalypse-action-figure-marvels-nemesis-baf-151506?variation=301842&o=3",
+     "priceUSD": 23.79,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-nemesis::Husk",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/151509/197cc2dc-bf2e-4c09-b123-936495f88ba7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://bigbadtoystore.com/product/x-men-marvel-legends-marvels-husk-action-figure-marvels-nemesis-baf-151509",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://bigbadtoystore.com/product/x-men-marvel-legends-marvels-husk-action-figure-marvels-nemesis-baf-151509",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-nemesis::Marrow",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/151508/a1c4f0b5-637b-425b-97c9-8e44b36e0761/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marrow-action-figure-marvels-nemesis-baf-151508?variation=301851",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marrow-action-figure-marvels-nemesis-baf-151508?variation=301851",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-nemesis::Wolverine",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/151504/393ee86c-a39a-4f79-9513-2016824a5f37/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolverine-x-treme-x-men-action-figure-marvels-nemesis-baf-151504?variation=301835",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolverine-x-treme-x-men-action-figure-marvels-nemesis-baf-151504?variation=301835",
+     "priceUSD": 18.19,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-xmen-97-3::Emma Frost",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/165643/cab50fde-9ae5-49a3-a416-47c566e15d2b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-emma-frost-action-figure-165643?variation=326881",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-emma-frost-action-figure-165643?variation=326881",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-xmen-97-3::Jubilee",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/165642/fbab31e3-a6f6-4715-951b-d27c122b75e2/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-jubilee-action-figure-165642?variation=326890",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-97-marvel-legends-jubilee-action-figure-165642?variation=326890",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-xmen-97-3::Morph",
+   "imageUrl": "https://media.entertainmentearth.com/assets/images/dbdeb27b1f084a218d695c06cd003d78xl.jpg",
+   "imageSource": "Entertainment Earth",
+   "sourceUrl": "https://www.entertainmentearth.com/product/xmen-97-marvel-legends-6inch-action-figures-wave-3-case-of-6/hsg0631a",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "Entertainment Earth",
+     "url": "https://www.entertainmentearth.com/product/xmen-97-marvel-legends-6inch-action-figures-wave-3-case-of-6/hsg0631a",
+     "priceUSD": null,
+     "priceSeen": null,
+     "note": "Entertainment Earth sells this figure in the X-Men 97 Wave 3 case of 6 ($149.99 for the case, seen 2026-10-13) \u2014 no per-figure price recorded."
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2025-xmen-97-3::Sunspot",
+   "imageUrl": "https://media.entertainmentearth.com/assets/images/5dd7d9ac669d4714a2c693f47ff8775flg.jpg",
+   "imageSource": "Entertainment Earth",
+   "sourceUrl": "https://www.entertainmentearth.com/product/xmen-97-marvel-legends-6inch-sunspot-action-figure/hsg0810",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "Entertainment Earth",
+     "url": "https://www.entertainmentearth.com/product/xmen-97-marvel-legends-6inch-sunspot-action-figure/hsg0810",
+     "priceUSD": 27.99,
+     "priceSeen": "2026-10-13"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-13",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  }
+ ]
+}

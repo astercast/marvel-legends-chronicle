@@ -1,7 +1,7 @@
 /* EXTREME MAKEOVER (2026-10-12) — the atrium edition.
    Guards the first-impression redesign:
    - front-desk nav: six doors + the Index of Halls button on every page
-   - the directory template carries all 55 pages, grouped in 6 halls
+   - the directory template carries all 56 pages, grouped in 6 halls
    - footer registry keeps aria-current on the current page
    - homepage: hero CTA, drop-week teaser mount, halls, era tabs, registrar note
    - vault room hero: no duplicated counts, find-a-drawer CTA wired
@@ -70,7 +70,7 @@ suite("makeover — front-desk nav", () => {
 });
 
 suite("makeover — index of halls", () => {
-  test("directory template holds all 55 pages in 6 halls", () => {
+  test("directory template holds all 56 pages in 6 halls", () => {
     const page = read("index.html");
     const tpl = page.match(/<template id="directory-panel">([\s\S]*?)<\/template>/);
     assert(tpl, "directory template present");
@@ -78,8 +78,8 @@ suite("makeover — index of halls", () => {
     const halls = [...body.matchAll(/class="dir-hall-title">([^<]+)</g)].map((m) => m[1]);
     assert.equal(halls.length, 6, `halls: ${halls.join(", ")}`);
     const links = [...body.matchAll(/<li><a href="([^"]+)">/g)].map((m) => m[1]);
-    assert.equal(links.length, 55, `directory links: ${links.length}`);
-    assert.equal(new Set(links).size, 55, "no duplicate directory links");
+    assert.equal(links.length, 56, `directory links: ${links.length}`);
+    assert.equal(new Set(links).size, 56, "no duplicate directory links");
   });
 
   test("vault.js wires the directory button to the shared modal", () => {

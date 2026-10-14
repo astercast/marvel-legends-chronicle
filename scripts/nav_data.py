@@ -15,7 +15,7 @@ registry for no-JS readers.
 """
 from html import escape
 
-# All 55 pages, in the canonical order. The footer registry + directory use this.
+# All 56 pages, in the canonical order. The footer registry + directory use this.
 NAV = [
     ("index.html", "Timeline"),
     ("timeline.html", "Legends Timeline"),
@@ -28,6 +28,7 @@ NAV = [
     ("wave-ledger.html", "The Wave Ledger"),
     ("year-ledger.html", "The Year Ledger"),
     ("spec-sheet.html", "The Spec Sheet"),
+    ("visual-database.html", "The Visual Database"),
     ("2026-review.html", "2026 Review"),
     ("start.html", "Start"),
     ("waves/index.html", "Waves"),
@@ -105,6 +106,7 @@ HALLS = [
         ("wave-ledger.html", "The Wave Ledger", "The waves census — every wave in the line counted by the figures filed under it: the standard wave runs seven figures deep, while thirteen annual exclusives buckets hold 890 figures between them."),
         ("year-ledger.html", "The Year Ledger", "The years census — every release year of the line counted by the figures dated to it: 2023 shipped 181 figures, 2011 shipped one, and every year from 2018 on has shipped a hundred or more."),
         ("spec-sheet.html", "The Spec Sheet", "The per-figure spec record — one structured sheet for every figure in the catalog, built only from fields the catalog holds, with the fields it does not hold named as recorded-absent, never invented."),
+        ("visual-database.html", "The Visual Database", "The picture census — every figure with a verified product photograph, embedded from its retailer or manufacturer source with places to buy outbound, and every figure still waiting named in the fill-in queue. A database only: nothing is sold here."),
         ("stats.html", "Stats", "The archive by the numbers."),
     ]),
     ("The Hunt", "Pre-orders, drops, and the chase.", [
