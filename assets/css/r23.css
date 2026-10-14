@@ -136,10 +136,12 @@ section.blk{margin:0 0 48px}
   .details li{grid-template-columns:120px 1fr;gap:8px}
   .plate img{height:300px}
   .topbar{gap:0 16px;padding:8px}
+  .wordmark{display:inline-flex;align-items:center;min-height:44px}
   .topbar form{margin-left:auto;flex:1;max-width:170px}
   .topbar form input[type=search]{width:100%}
-  .topbar nav{order:3;width:100%;justify-content:space-between;gap:4px}
-  .topbar nav a{min-height:44px;padding:4px 2px;font-size:13px}
+  .topbar nav{order:3;width:100%;justify-content:space-between;gap:0}
+  .topbar nav a{min-height:44px;padding:4px 2px;font-size:13px;flex:1 1 auto;justify-content:center}
+  .topbar nav a:last-child{min-width:44px}
   .bigsearch{min-width:0}
   .bigsearch input{font-size:16px;min-width:0;flex:1 1 auto}
   .bigsearch button{flex:0 0 auto}
