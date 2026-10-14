@@ -347,7 +347,7 @@
   },
   {
    "figureId": "hasbro-2024-zabu::Wolfsbane",
-   "imageUrl": "https://images.bigbadtoystore.com/images/product/136306/f20aceb5-a849-44ff-9dec-700be5a879be/original.jpg",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/136306/4d868f04-e245-4f4e-a40d-61f0e2a23be8/original.jpg",
    "imageSource": "BigBadToyStore",
    "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolfsbane-action-figure-marvels-zabu-baf-136306?variation=268269",
    "rightsHolder": "Hasbro (product photography via retailer)",
@@ -356,11 +356,11 @@
      "retailer": "BigBadToyStore",
      "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolfsbane-action-figure-marvels-zabu-baf-136306?variation=268269",
      "priceUSD": 25.99,
-     "priceSeen": "2026-10-13"
+     "priceSeen": "2026-10-14"
     }
    ],
    "fallback": "typographic",
-   "verifiedAt": "2026-10-13",
+   "verifiedAt": "2026-10-14",
    "verify": "HEAD 200, image content-type, cross-origin referer accepted"
   },
   {
