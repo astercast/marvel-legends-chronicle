@@ -2182,6 +2182,366 @@
    "fallback": "typographic",
    "verifiedAt": "2026-10-14",
    "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-attuma::Namor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/109901/1dcf98d5-feb0-4234-a17a-9b116e2a4159/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-wakanda-forever-marvel-legends-namor-action-figure-attuma-baf-109901?variation=211928",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/black-panther-wakanda-forever-marvel-legends-namor-action-figure-attuma-baf-109901?variation=211928",
+     "priceUSD": 17.28,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-attuma::Nakia",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/109902/e768410e-80b2-49cc-bf26-b1be6be99b1e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-wakanda-forever-marvel-legends-nakia-action-figure-attuma-baf-109902?variation=211911",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/black-panther-wakanda-forever-marvel-legends-nakia-action-figure-attuma-baf-109902?variation=211911",
+     "priceUSD": 15.59,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-attuma::Okoye",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/109903/f73fe9ac-8e14-4aca-b51c-a9ae52991e11/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-wakanda-forever-marvel-legends-okoye-action-figure-attuma-baf-109903?variation=211912",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/black-panther-wakanda-forever-marvel-legends-okoye-action-figure-attuma-baf-109903?variation=211912",
+     "priceUSD": 15.59,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-attuma::Hatut Zeraze Trooper",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/109904/77551cf0-4355-4c56-bd4b-0e67b3eca7fe/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-hatut-zeraze-action-figure-attuma-baf-109904?variation=211931",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-hatut-zeraze-action-figure-attuma-baf-109904?variation=211931",
+     "priceUSD": 16.14,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-attuma::Black Panther",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/109905/8bf69d8a-8d2d-47b0-b4aa-e993ac31129a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-black-panther-action-figure-attuma-baf-109905?variation=211914",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-black-panther-action-figure-attuma-baf-109905?variation=211914",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-attuma::Everett K. Ross",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/109906/1f7622df-b841-48c4-ac62-6f35fe66f9a4/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-legacy-collection-everett-ross-action-figure-attuma-baf-109906?variation=211916",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-legacy-collection-everett-ross-action-figure-attuma-baf-109906?variation=211916",
+     "priceUSD": 14.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-khonshu::Zombie Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111584/939a5f9b-5cdc-4823-b858-4cf5b73fab88/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-zombie-iron-man-action-figure-khonshu-baf-111584?variation=215237",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/what-marvel-legends-zombie-iron-man-action-figure-khonshu-baf-111584?variation=215237",
+     "priceUSD": 10.4,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-khonshu::Jimmy Woo",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111585/5d2a4306-e1b9-4394-ad79-d1be5223b469/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/wandavision-marvel-legends-agent-jimmy-woo-action-figure-khonshu-baf-111585?variation=215240",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/wandavision-marvel-legends-agent-jimmy-woo-action-figure-khonshu-baf-111585?variation=215240",
+     "priceUSD": 20.79,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-khonshu::Classic Loki",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111586/e7326e26-7d91-462b-828f-c12f4f3b47e5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/loki-marvel-legends-classic-loki-action-figure-khonshu-baf-111586?variation=215243",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/loki-marvel-legends-classic-loki-action-figure-khonshu-baf-111586?variation=215243",
+     "priceUSD": 13.0,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-khonshu::Zombie Scarlet Witch",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111587/750f06fa-3d30-4e9b-ae80-753cb9a9e556/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-zombie-scarlet-witch-action-figure-khonshu-baf-111587?variation=215246",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/what-marvel-legends-zombie-scarlet-witch-action-figure-khonshu-baf-111587?variation=215246",
+     "priceUSD": 20.79,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-khonshu::He Who Remains",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111588/4f9a92ef-b537-4403-9a97-496592415113/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/loki-marvel-legends-he-who-remains-action-figure-khonshu-baf-111588?variation=215249",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/loki-marvel-legends-he-who-remains-action-figure-khonshu-baf-111588?variation=215249",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-khonshu::Howard the Duck",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111589/ee72c93f-58f7-4487-a5dc-1f6b23d96c08/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-howard-duck-action-figure-khonshu-baf-111589?variation=215252",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/what-marvel-legends-howard-duck-action-figure-khonshu-baf-111589?variation=215252",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-khonshu::Red Skull",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111590/5a087de8-0873-405d-a430-16d2e8aa25e0/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-red-skull-action-figure-khonshu-baf-111590?variation=215255",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/what-marvel-legends-red-skull-action-figure-khonshu-baf-111590?variation=215255",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hydra-stomper-mk2::Kingpin",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/127139/5d110357-6a52-4b04-a7a9-450b209b3887/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/hawkeye-marvel-legends-kingpin-action-figure-hydra-stomper-baf-127139?variation=248081",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/hawkeye-marvel-legends-kingpin-action-figure-hydra-stomper-baf-127139?variation=248081",
+     "priceUSD": 18.19,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hydra-stomper-mk2::Warrior Gamora",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/127140/f16f9f88-b5bf-4f44-8e3c-9600463d4bdd/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-warrior-gamora-action-figure-hydra-stomper-baf-127140?variation=248084",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/what-marvel-legends-warrior-gamora-action-figure-hydra-stomper-baf-127140?variation=248084",
+     "priceUSD": 10.4,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hydra-stomper-mk2::Talos",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/127141/0d250c8d-b955-4725-94aa-87e835189c9c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/secret-invasion-marvel-legends-talos-action-figure-hydra-stomper-baf-127141?variation=248087",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/secret-invasion-marvel-legends-talos-action-figure-hydra-stomper-baf-127141?variation=248087",
+     "priceUSD": 13.0,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hydra-stomper-mk2::Nick Fury",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/127142/8684cacc-48c2-4bb1-b842-04faabdad0e1/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/secret-invasion-marvel-legends-nick-fury-action-figure-hydra-stomper-baf-127142?variation=248090",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/secret-invasion-marvel-legends-nick-fury-action-figure-hydra-stomper-baf-127142?variation=248090",
+     "priceUSD": 16.89,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hydra-stomper-mk2::Agatha Harkness",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/127143/dd9a2e6e-a034-4e99-817b-2eb040a36bbc/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/wandavision-marvel-legends-agatha-harkness-action-figure-hydra-stomper-baf-127143?variation=248093",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/wandavision-marvel-legends-agatha-harkness-action-figure-hydra-stomper-baf-127143?variation=248093",
+     "priceUSD": 7.8,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hydra-stomper-mk2::Goliath (Bill Foster)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/127144/9b0698a7-2343-4acf-9e02-8b7616e0c77b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-marvels-goliath-action-figure-hydra-stomper-baf-127144?variation=248096",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/what-marvel-legends-marvels-goliath-action-figure-hydra-stomper-baf-127144?variation=248096",
+     "priceUSD": 7.8,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hydra-stomper-mk2::Yelena Belova",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/127145/dcd6d173-47d0-4f86-9116-f9281fa2be2d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/hawkeye-marvel-legends-yelena-belova-action-figure-hydra-stomper-baf-127145?variation=248099",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/hawkeye-marvel-legends-yelena-belova-action-figure-hydra-stomper-baf-127145?variation=248099",
+     "priceUSD": 11.7,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
   }
  ]
 }

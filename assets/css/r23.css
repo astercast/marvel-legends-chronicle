@@ -46,6 +46,10 @@ button.red{background:var(--red);border-color:var(--red);color:#fff}
 /* rows — §9.2 anatomy */
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .row{display:grid;grid-template-columns:64px 1fr auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+/* Build-A-Figure piece rows carry no plate: a two-column row (text 1fr,
+   state auto) — the plated row's anatomy minus the plate column, so the
+   name takes the room the row actually has instead of the 64px plate slot */
+.row.baf{grid-template-columns:1fr auto}
 .row .thumb{width:64px;height:80px;object-fit:contain;background:#fff;border:1px solid var(--line-soft)}
 .row .notpic{width:64px;height:80px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:4px;background:var(--paper2)}
 .row .pid{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -121,6 +125,7 @@ section.blk{margin:0 0 48px}
   .facets.open{display:block;position:fixed;inset:0;background:var(--paper);overflow:auto;padding:24px 16px;z-index:30;animation:sheetfade .15s ease}
   #filtersBtn{display:inline-flex}
   .row{grid-template-columns:64px 1fr;gap:8px 16px;padding:16px 0}
+  .row.baf{grid-template-columns:64px 1fr}
   .row .thumb,.row .notpic{width:64px;height:80px}
   .row .notpic{font-size:10px;letter-spacing:.02em}
   /* plate-less rows (Build-A-Figure pieces) have no plate to sit beside:

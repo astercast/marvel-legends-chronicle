@@ -406,7 +406,7 @@ def wave_pages():
         excl = sum(1 for f, _ in rows if f.get("exclusive"))
         bafsec = ""
         if w.get("baf"):
-            pieces = "".join(f'<li class="row"><div><div class="name">{escape(f["name"])}</div><div class="fact">Piece: {escape(f.get("bafPiece") or "—")}</div></div>{state_btns(r["slug"])}</li>' for f, r in rows if f.get("bafPiece"))
+            pieces = "".join(f'<li class="row baf"><div><div class="name">{escape(f["name"])}</div><div class="fact">Piece: {escape(f.get("bafPiece") or "—")}</div></div>{state_btns(r["slug"])}</li>' for f, r in rows if f.get("bafPiece"))
             bafsec = f'<h2>Build A Figure — {escape(w["baf"])}</h2><ul class="rows">{pieces}</ul><p class="method">Pieces you still need are the rows above not marked Owned.</p>'
         body = f"""
 <p class="backline">Catalog · Waves · {escape(w["series"])}</p>
