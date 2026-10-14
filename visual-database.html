@@ -28,16 +28,17 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/vault.css">
+  <link rel="stylesheet" href="assets/css/r21.css">
   <style>
-    .db-hero { padding-block: var(--space-7); }
+    .db-hero { padding-block: var(--space-6) var(--space-4); }
     @media (max-width: 560px) { #visual-database-title { font-size: 2.05rem; } }
     .db-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-6); }
-    .db-stat { border: 1px solid var(--line-soft); border-top: 3px solid var(--gold); padding: var(--space-4); background: var(--panel); }
+    .db-stat { padding: var(--space-4) var(--space-4) var(--space-4) 0; }
     .db-stat-value { font-family: var(--font-display); font-size: 1.7rem; color: var(--ink); line-height: 1.1; }
     .db-stat-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; color: var(--muted); margin-top: var(--space-1); }
     .db-stat-sub { color: var(--muted); font-size: 0.8rem; margin-top: var(--space-1); }
     .db-block { margin-bottom: var(--space-7); }
-    .db-block-head { display: flex; align-items: baseline; gap: var(--space-3); border-bottom: 1px solid var(--line-soft); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
+    .db-block-head { display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-4); }
     .db-block-head h2 { font-size: 1.35rem; margin: 0; }
     .db-chapter { margin-bottom: var(--space-6); }
     .db-chapter-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-2); }
@@ -51,7 +52,7 @@
     .db-none { color: var(--muted); border: 1px dashed var(--line-soft); padding: var(--space-4); }
     .db-method { color: var(--muted); font-size: 0.9rem; max-width: 75ch; margin: 0 0 var(--space-7); }
     .vd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-3); }
-    .vd-card { border: 1px solid var(--line-soft); background: var(--panel); padding: var(--space-3); }
+    .vd-card { padding: 0 0 var(--space-4); }
     .vd-card-name { font-family: var(--font-display); font-size: 1rem; margin: var(--space-2) 0 0; color: var(--ink); }
     .vd-card-meta { color: var(--muted); font-size: 0.82rem; margin: var(--space-1) 0 0; }
     @media print { .site-header, .site-footer { display: none !important; } }
@@ -68,10 +69,8 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html">Timeline</a>
         <a href="vault-room.html">Vault Room</a>
-        <a href="drop-week.html">Drop Week</a>
-        <a href="preorders.html">Pre-orders</a>
         <a href="encyclopedia.html">Encyclopedia</a>
-        <a href="quest.html">Grail Quest</a>
+        <a href="radar.html">Radar</a>
         <button type="button" id="directory-button" class="directory-button" aria-haspopup="dialog"><span class="directory-button-mark" aria-hidden="true">❧</span> Index of Halls</button>
       </nav>
     </div>
@@ -81,8 +80,7 @@
   <main id="main">
     <section class="hero db-hero" aria-labelledby="visual-database-title">
       <div class="container hero-inner">
-        <span class="hero-kicker">The archive, pictured</span>
-        <h1 id="visual-database-title">The Visual <span class="accent">Database.</span></h1>
+        <h1 id="visual-database-title">The Visual Database</h1>
         <p class="lede">The Chronicle was a typographic archive for fifty-five doors — every figure filed in type. This door opens the picture room: each figure with a verified product photograph hangs here as an embed from the retailer or manufacturer that shot it, with its places to buy as outbound links and the price the retailer listed when the picture was filed. Nothing is sold here, nothing is checked out here — a database, the way BrickLink is a database. And every figure without a verified picture is not hidden: it is filed by name in the queue below, and everywhere else in this archive it renders in the same plain type it always did.</p>
       </div>
     </section>

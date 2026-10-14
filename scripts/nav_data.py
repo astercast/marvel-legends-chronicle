@@ -79,10 +79,8 @@ NAV = [
 PRIMARY_NAV = [
     ("index.html", "Timeline"),
     ("vault-room.html", "Vault Room"),
-    ("drop-week.html", "Drop Week"),
-    ("preorders.html", "Pre-orders"),
     ("encyclopedia.html", "Encyclopedia"),
-    ("quest.html", "Grail Quest"),
+    ("radar.html", "Radar"),
 ]
 
 # The Index of Halls: every page, grouped the way a museum groups its rooms.
@@ -166,7 +164,7 @@ assert len(_HALL_HREFS) == len(set(_HALL_HREFS)), "duplicate page in HALLS"
 
 
 def primary_nav_html(current, prefix=""):
-    """Six front-desk links + the directory button. `current` is the page's
+    """Four front-desk links + the directory button (R21 nav standard: <=5 visible items). `current` is the page's
     own href (site-root-relative); `prefix` is "../" on subdir pages."""
     items = []
     for href, label in PRIMARY_NAV:

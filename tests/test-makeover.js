@@ -1,6 +1,6 @@
 /* EXTREME MAKEOVER (2026-10-12) — the atrium edition.
    Guards the first-impression redesign:
-   - front-desk nav: six doors + the Index of Halls button on every page
+   - front-desk nav (R21): four doors + the Index of Halls button on every page
    - the directory template carries all 56 pages, grouped in 6 halls
    - footer registry keeps aria-current on the current page
    - homepage: hero CTA, drop-week teaser mount, halls, era tabs, registrar note
@@ -15,13 +15,12 @@ import { suite, test, assert } from "./assert.js";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
 
+/* R21 nav standard: <=5 visible primary items — four doors + the directory button. */
 const FRONT_DESK = [
   "index.html",
   "vault-room.html",
-  "drop-week.html",
-  "preorders.html",
   "encyclopedia.html",
-  "quest.html",
+  "radar.html",
 ];
 
 function rootPages() {
@@ -31,7 +30,7 @@ function rootPages() {
 }
 
 suite("makeover — front-desk nav", () => {
-  test("primary nav is six doors + the directory button", () => {
+  test("primary nav is four doors + the directory button (R21)", () => {
     const page = read("index.html");
     const nav = page.match(/<nav class="site-nav" aria-label="Primary">([\s\S]*?)<\/nav>/)[1];
     const links = [...nav.matchAll(/<a href="([^"]+)"/g)].map((m) => m[1]);
@@ -102,7 +101,7 @@ suite("makeover — homepage atrium", () => {
 
   test("hero: one primary action + engraved stats + live counts in copy", () => {
     const p = page();
-    assert(p.includes('class="btn btn-seal" href="vault-room.html">Enter the Vault Room'),
+    assert(p.includes('class="btn btn-primary" href="vault-room.html">Enter the Vault Room'),
       "single primary CTA to the Vault Room");
     assert(p.includes('id="stat-strip"'), "stat mount present");
     assert(p.includes("1,939 figures across 167 waves"), "live archive totals in the lede");
@@ -153,10 +152,12 @@ suite("makeover — homepage atrium", () => {
     }
   });
 
-  test("identity markers survive the redesign", () => {
+  test("R21 markers: hero figures in, furniture out", () => {
     const p = page();
-    assert(p.includes("rope-rule"), "rope-rule marker");
-    assert(p.includes('<p class="accession"'), "accession marker");
+    assert(p.includes('class="hero-figures"'), "hero surfaces Visual Database embeds");
+    assert(!p.includes("rope-rule"), "rope-rule furniture removed (R21)");
+    assert(!p.includes('<p class="accession"'), "hero accession line removed (R21)");
+    assert(!p.includes("mock-note"), "hero disclaimer moved to footer (R21)");
     assert(p.includes('id="history-strip"'), "history strip kept");
   });
 });

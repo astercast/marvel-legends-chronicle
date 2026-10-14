@@ -28,18 +28,16 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/vault.css">
+  <link rel="stylesheet" href="assets/css/r21.css">
   <style>
-    .radar-hero { padding-block: var(--space-7); }
-    .radar-list { display: grid; gap: var(--space-4); margin-bottom: var(--space-6); }
-    .radar-card { padding: var(--space-5); }
+    .radar-hero { padding-block: var(--space-6) var(--space-4); }
+    .radar-list { display: grid; gap: 0; margin-bottom: var(--space-6); }
+    .radar-card { padding: var(--space-5) 0; }
     .radar-card h2 { font-size: 1.2rem; margin: 0 0 var(--space-2); }
     .radar-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-bottom: var(--space-3); }
-    .status { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
-    .status-revealed { color: var(--gold); border-color: rgba(245, 179, 1, 0.5); background: rgba(245, 179, 1, 0.08); }
-    .status-preorder { color: #7db4ff; border-color: rgba(125, 180, 255, 0.45); background: rgba(125, 180, 255, 0.08); }
-    .status-available { color: var(--green); border-color: rgba(93, 255, 143, 0.4); background: rgba(93, 255, 143, 0.07); }
+    .status { font-size: 0.78rem; font-weight: 600; color: var(--gold); }
     .radar-card .venue { color: var(--ink-dim); font-size: 0.9rem; }
-    .radar-card .price { font-family: var(--font-mono); color: var(--gold); font-size: 0.9rem; }
+    .radar-card .price { color: var(--ink); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
     .radar-card p { color: var(--ink-dim); font-size: 0.92rem; margin: var(--space-2) 0 var(--space-3); }
     .radar-card .src { font-size: 0.82rem; }
     .radar-note { margin-bottom: var(--space-7); }
@@ -56,10 +54,8 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html">Timeline</a>
         <a href="vault-room.html">Vault Room</a>
-        <a href="drop-week.html">Drop Week</a>
-        <a href="preorders.html">Pre-orders</a>
         <a href="encyclopedia.html">Encyclopedia</a>
-        <a href="quest.html">Grail Quest</a>
+        <a href="radar.html" aria-current="page">Radar</a>
         <button type="button" id="directory-button" class="directory-button" aria-haspopup="dialog"><span class="directory-button-mark" aria-hidden="true">❧</span> Index of Halls</button>
       </nav>
     </div>
@@ -69,8 +65,7 @@
   <main id="main">
     <section class="hero radar-hero" aria-labelledby="radar-title">
       <div class="container hero-inner">
-        <span class="hero-kicker">Revealed · Upcoming · Watch list</span>
-        <h1 id="radar-title">Release <span class="accent">radar.</span></h1>
+        <h1 id="radar-title">Release Radar</h1>
         <p class="lede">Figures revealed but not yet in the archive — con exclusives, retailer drops, and reissues, each with its source. Last updated <time datetime="2026-10-11">October 11, 2026</time>.</p>
       </div>
     </section>

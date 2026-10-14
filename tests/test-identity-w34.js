@@ -80,7 +80,6 @@ suite("identity wave 2 — per-page-type coverage", () => {
 
   test("signature pages carry accession lines", () => {
     const expected = {
-      "index.html": "2002–2026",
       "quest.html": "grail-quest",
       "drop-week.html": "drop-week",
       "launch-curve.html": "launch-curves",
@@ -95,9 +94,9 @@ suite("identity wave 2 — per-page-type coverage", () => {
     }
   });
 
-  test("index fronts the gallery with a rope-rule divider", () => {
-    assert(pages["index.html"].includes('class="rope-rule"'), "rope-rule on index");
-    assert(/\.rope-rule/.test(vaultCss), "rope-rule component exists");
+  test("index hero surfaces the Visual Database, no rope-rule (R21)", () => {
+    assert(pages["index.html"].includes('class="hero-figures"'), "hero figures on index");
+    assert(!pages["index.html"].includes('class="rope-rule"'), "rope-rule removed from index (R21)");
   });
 
   test("quest achievements are wax-seal medals", () => {

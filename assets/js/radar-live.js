@@ -40,6 +40,19 @@
     return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
   }
 
+  var ACRONYMS = { MARVEL:1, HASBRO:1, SDCC:1, NYCC:1, MCU:1, TAS:1, BAF:1, X:1, "X-MEN":1, "'97":1, II:1, III:1 };
+  /* Presentation transform only: raw syndicated titles arrive in
+     ALL-CAPS; set them in readable case, same words, same data. */
+  function readableCase(title) {
+    var s = String(title == null ? "" : title);
+    return s.split(" - ").map(function (seg) {
+      var letters = seg.replace(/[^A-Za-z]/g, "");
+      if (!letters || letters.replace(/[a-z]/g, "").length / letters.length < 0.65) return seg;
+      return seg.toLowerCase().replace(/(^|[^a-z0-9'])([a-z])/g, function (m, p1, p2) { return p1 + p2.toUpperCase(); })
+        .replace(/\b(Marvel|Hasbro|Sdcc|Nycc|Mcu|Tas|Baf)\b/g, function (m) { return m.toUpperCase(); });
+    }).join(" - ");
+  }
+
   var STATUS_LABEL = {
     rumor: "Rumor",
     confirmed: "Confirmed",
@@ -60,7 +73,7 @@
       })
       .filter(Boolean).join("<br>");
     return '<article class="card radar-card">' +
-      "<h3>" + esc(r.title || "Untitled reveal") + "</h3>" +
+      "<h3>" + esc(readableCase(r.title) || "Untitled reveal") + "</h3>" +
       '<div class="radar-meta">' +
         '<span class="status ' + esc(statusClass) + '">' + esc(status) + "</span>" +
         (announced ? '<span class="venue">Spotted ' + esc(announced) + "</span>" : "") +
@@ -81,7 +94,7 @@
         esc(c.source || "source") + " →</a>"
       : '<span class="venue">' + esc(c.source || "source") + "</span>";
     return '<article class="card radar-card">' +
-      "<h3>" + esc(c.title || "Untitled detection") + "</h3>" +
+      "<h3>" + esc(readableCase(c.title) || "Untitled detection") + "</h3>" +
       '<div class="radar-meta">' +
         '<span class="status status-rumor">Unverified</span>' +
         (detected ? '<span class="venue">Detected ' + esc(detected) + "</span>" : "") +

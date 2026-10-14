@@ -39,15 +39,15 @@
   place-items: center;
   width: 42px;
   height: 42px;
-  background: var(--red);
-  color: #fff;
+  background: var(--bg-deep);
+  color: var(--gold);
   font-family: var(--font-cond);
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.04em;
   border-radius: var(--radius-s);
   box-shadow: var(--edge-light), var(--shadow-1);
-  border: 1px solid var(--red-deep);
+  border: 1px solid var(--gold-deep);
 }
 
 .brand-name {
@@ -76,8 +76,6 @@
   overflow-x: auto;
   max-width: 100%;
   scrollbar-width: none;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
 .site-nav::-webkit-scrollbar { display: none; }
 .site-nav a {
@@ -147,7 +145,7 @@
   margin-bottom: var(--space-4);
   animation: rise-in var(--dur-3) var(--ease) 0.06s both;
 }
-.hero h1 .accent { color: var(--red); }
+.hero h1 .accent { color: var(--gold); }
 .hero p.lede {
   font-size: var(--text-lg);
   color: var(--ink-dim);

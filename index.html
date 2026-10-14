@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/vault.css">
+  <link rel="stylesheet" href="assets/css/r21.css">
   <link rel="stylesheet" href="assets/css/timeline.css">
   <link rel="stylesheet" href="assets/css/print.css" media="print">
 </head>
@@ -44,10 +45,8 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html" aria-current="page">Timeline</a>
         <a href="vault-room.html">Vault Room</a>
-        <a href="drop-week.html">Drop Week</a>
-        <a href="preorders.html">Pre-orders</a>
         <a href="encyclopedia.html">Encyclopedia</a>
-        <a href="quest.html">Grail Quest</a>
+        <a href="radar.html">Radar</a>
         <button type="button" id="directory-button" class="directory-button" aria-haspopup="dialog"><span class="directory-button-mark" aria-hidden="true">❧</span> Index of Halls</button>
       </nav>
     </div>
@@ -57,28 +56,29 @@
   <main id="main">
     <section class="hero atrium-hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
-        <span class="hero-kicker">The complete archive · 2002–2026</span>
         <h1 id="hero-title">Every Marvel Legend.<br><span class="accent">In order.</span></h1>
         <p class="lede">Twenty-four years of Marvel Legends — every wave, every exclusive, every chase variant nobody else bothered to catalogue — kept like the museum it is. 1,939 figures across 167 waves, and not a single invented entry.</p>
-        <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">2002–2026</span></p>
         <div class="hero-actions">
-          <a class="btn btn-seal" href="vault-room.html">Enter the Vault Room</a>
-          <a class="hero-secondary" href="#on-the-desk">What's dropping this week ↓</a>
+          <a class="btn btn-primary" href="vault-room.html">Enter the Vault Room</a>
         </div>
         <div class="engraved-stats" id="stat-strip" aria-label="Archive totals"></div>
         <p class="cabinet-note" id="cabinet-note" hidden></p>
-        <p class="mock-note" role="note">Collection tracking and marketplace links are client-side mock-ups — nothing here is a live store or a real order.</p>
+        <div class="hero-figures" aria-label="Figures from the Visual Database">
+<a class="hero-fig" href="visual-database.html"><img src="https://images.bigbadtoystore.com/images/product/129813/b9093e22-404c-44a6-921f-ec8f7f6cb856/original.jpg" alt="Crystar — product photograph from BigBadToyStore" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span>Crystar</span></a>
+<a class="hero-fig" href="visual-database.html"><img src="https://images.bigbadtoystore.com/images/product/129814/b51cf681-0504-4c6e-8f51-b14f87cb70ef/original.jpg" alt="Justice — product photograph from BigBadToyStore" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span>Justice</span></a>
+<a class="hero-fig" href="visual-database.html"><img src="https://images.bigbadtoystore.com/images/product/129818/920550c2-abed-47fd-b42f-5e940f7ed2f7/original.jpg" alt="Namor — product photograph from BigBadToyStore" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span>Namor</span></a>
+<a class="hero-fig" href="visual-database.html"><img src="https://images.bigbadtoystore.com/images/product/129817/b49666d7-d745-492f-9f70-b792edb70e11/original.jpg" alt="Namorita — product photograph from BigBadToyStore" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span>Namorita</span></a>
+<a class="hero-fig" href="visual-database.html"><img src="https://images.bigbadtoystore.com/images/product/129812/8461275b-a2b5-45b0-b6c1-b923c78230af/original.jpg" alt="Power Princess — product photograph from BigBadToyStore" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span>Power Princess</span></a>
+<a class="hero-fig" href="visual-database.html"><img src="https://images.bigbadtoystore.com/images/product/129815/f8f29cb9-e684-41ec-afa5-76be525bf8be/original.jpg" alt="Vision — product photograph from BigBadToyStore" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span>Vision</span></a>
+<p class="hero-fig-note">From the Visual Database — product photographs embedded from their retailers. <a href="visual-database.html">Browse all 31 pictured figures</a></p></div>
       </div>
     </section>
-
-    <hr class="rope-rule" aria-hidden="true">
 
     <div id="history-strip" class="history-strip" hidden></div>
 
     <section class="on-the-desk" id="on-the-desk" aria-labelledby="desk-h">
       <div class="container">
         <div class="desk-placard" id="desk-drop">
-          <p class="desk-kicker">On the desk this week</p>
           <h2 class="desk-drop-name" id="desk-h">The Drop Week Command Center</h2>
           <p class="desk-drop-meta">Countdowns, prices, and battle plans for every announced window — the next one lands here the moment the archive wakes up.</p>
           <p class="desk-cta"><a class="btn btn-seal" href="drop-week.html">Open the Drop Week Command Center</a></p>
@@ -88,9 +88,8 @@
 
     <section class="halls" aria-labelledby="halls-h">
       <div class="container">
-        <p class="section-kicker">The floor plan</p>
         <div class="halls-head"><h2 id="halls-h">Choose a hall</h2></div>
-        <p class="section-lede">Forty-four rooms behind six doors. The archive is large on purpose — but you never have to see all of it at once. Pull a drawer.</p>
+        <p class="section-lede">Six halls, every door in the archive. Open only the one you came for.</p>
 <!-- HALLS:BEGIN -->
       <div class="hall-grid">
       <details class="hall" name="halls">
@@ -158,7 +157,6 @@
       </div>
     </section>
 
-    <hr class="rope-rule" aria-hidden="true">
 
     <section class="register" aria-labelledby="register-h">
       <div class="container">
@@ -223,7 +221,6 @@
       </div>
     </section>
 
-    <hr class="rope-rule" aria-hidden="true">
 
     <section class="registrar" aria-labelledby="registrar-h">
       <div class="container">

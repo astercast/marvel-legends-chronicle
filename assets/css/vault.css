@@ -29,8 +29,8 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
 /* ---------- Masthead: the brand mark becomes a wax seal ---------- */
 .brand-mark {
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #c33a43, var(--red) 45%, var(--red-deep) 80%);
-  border: 2px solid #7d0e13;
+  background: var(--bg-deep);
+  border: 1px solid var(--gold-deep);
   box-shadow:
     inset 0 2px 3px rgba(255, 255, 255, 0.28),
     inset 0 -2px 4px rgba(0, 0, 0, 0.45),
@@ -217,16 +217,15 @@ html.vault-motion .hero::before {
 }
 
 /* ---------- Buttons ---------- */
-.btn-seal {
-  background: linear-gradient(180deg, #a52a32, var(--wax) 60%, var(--wax-deep));
-  border-color: var(--wax-deep);
-  color: #f6ead0;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+.btn-seal, .btn-primary {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: #171307;
 }
-.btn-seal:hover {
-  background: linear-gradient(180deg, #b23340, #a1252d 60%, #6b171d);
-  border-color: var(--wax-deep);
-  color: #fff4dd;
+.btn-seal:hover, .btn-primary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #171307;
 }
 
 /* ---------- Ledger tables ---------- */
@@ -548,10 +547,10 @@ pre, .code-block {
   gap: 0.45rem;
   margin-left: 0.35rem;
   padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--gold-deep);
-  border-radius: var(--radius-s);
+  border: 0;
+  border-radius: 0;
   background: transparent;
-  color: var(--gold);
+  color: var(--ink);
   font-size: 0.86rem;
   font-weight: 600;
   white-space: nowrap;
