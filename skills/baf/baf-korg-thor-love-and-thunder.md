@@ -17,7 +17,7 @@ You want to build the Korg (Thor: Love and Thunder) BAF from the 2022 Korg Wave 
 ## Procedure
 
 1. The BAF: **Korg (Thor: Love and Thunder)** (2022, Korg Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Gorr → Right leg
   - [ ] King Valkyrie → Head and blaster
   - [ ] Ravager Thor → Left arm
@@ -26,7 +26,7 @@ You want to build the Korg (Thor: Love and Thunder) BAF from the 2022 Korg Wave 
   - [ ] Thor (Jane Foster) → Left leg
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Korg (Thor: Love and Thunder) torso? Find which figure above carries
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

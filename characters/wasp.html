@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Every Wasp Marvel Legends release: Marvel Legends Chronicle">
   <meta name="twitter:description" content="All 7 Marvel Legends Wasp figures (2006–2024) in chronological order.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -33,28 +33,47 @@
     .char-hero { padding-block: var(--space-7); }
     .char-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
     .release-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
-    .release-year { font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
-      color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
+    .release-year { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem;
+      color: var(--muted); margin: var(--space-6) 0 var(--space-3); }
     .release { padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
     /* Row anatomy, record and research-apparatus styles live in
        assets/css/museum.css (the R21 museum sheet): three-line rows,
        the catalog number at its fixed position, one apparatus. */
-    .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: var(--space-3); margin-bottom: var(--space-7); }
-    .char-card { display: block; }
-    .char-card:hover { text-decoration: none; border-color: var(--red); }
-    .char-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
-    .char-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
-    .run-panel { padding: var(--space-5); margin-bottom: var(--space-6); }
-    .run-title { font-size: 1.15rem; margin: 0 0 var(--space-2); }
+    /* The characters index: ruled contents rows (name, note, count at right) */
+    .char-index { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
+    .char-index-row { border-bottom: 1px solid var(--line); }
+    .char-index-row:first-child { border-top: 1px solid var(--line); }
+    .char-index-row a { display: grid; grid-template-columns: minmax(8rem, auto) minmax(0, 1fr) auto;
+      gap: var(--space-2) var(--space-5); align-items: baseline; padding: var(--space-4) 0;
+      text-decoration: none; color: var(--ink); }
+    .char-index-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+    .char-index-note { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+    .char-index-count { font-variant-numeric: tabular-nums; text-align: right; }
+    .char-index-row a:hover .char-index-name { color: var(--blue); }
+    @media (max-width: 640px) { .char-index-row a { grid-template-columns: minmax(0, 1fr) auto; } .char-index-note { grid-column: 1 / -1; } }
+    /* The character head is a tombstone on Board (MARVEL-LIGHT 3.6) */
+    .char-tombstone { background: var(--board); border: 1px solid var(--line); padding: var(--space-5); }
+    .char-tombstone .accession { margin: var(--space-2) 0; }
+    /* The run tracker is an ownership BOOKPLATE on Board: an ex libris
+       panel whose inscription renders in full, in normal flow, with
+       room at the foot. It replaces the dark run panel wholesale;
+       the R21 capture's clipped closing line closes here, by
+       replacement (no fixed height, no hidden overflow, generous
+       foot padding). */
+    .bookplate { background: var(--board); border: 1px solid var(--line-bright);
+      outline: 3px double var(--line-bright); outline-offset: 4px;
+      padding: var(--space-6); margin-bottom: var(--space-7); overflow: visible; }
+    .bookplate-mark { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 var(--space-2); }
+    .run-title { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 0 0 var(--space-2); }
     .run-summary { margin: 0 0 var(--space-3); }
     .run-bar { height: 10px; border-radius: 999px; background: var(--line-soft);
       overflow: hidden; margin-bottom: var(--space-3); }
-    .run-fill { height: 100%; background: var(--gold); border-radius: 999px;
+    .run-fill { height: 100%; background: var(--ink); border-radius: 0;
       transition: width 0.4s ease; }
     @media (prefers-reduced-motion: reduce) { .run-fill { transition: none; } }
     .run-missing { margin-top: var(--space-3); }
-    .run-missing summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .run-missing summary { cursor: pointer; color: var(--ink); font-weight: 600; }
     .run-missing summary:hover { text-decoration: underline; }
     .run-missing-list { list-style: none; margin: var(--space-3) 0 0; padding: 0;
       display: grid; gap: var(--space-2); }
@@ -62,7 +81,7 @@
       justify-content: space-between; gap: var(--space-2);
       padding: var(--space-2) 0; border-bottom: 1px solid var(--line-soft); }
     .run-missing-name { font-size: 0.9rem; }
-    .run-complete { color: var(--gold); font-weight: 700; margin: var(--space-3) 0 0; }
+    .run-complete { color: var(--ink); font-weight: 700; margin: var(--space-3) 0 0; }
   </style>
 </head>
 <body>
@@ -88,26 +107,22 @@
   <main id="main">
     <section class="hero char-hero" aria-labelledby="char-title">
       <div class="container hero-inner">
-        <span class="hero-kicker">Character archive</span>
-        <h1 id="char-title">Every Wasp <span class="accent">ever.</span></h1>
-        <p class="lede">7 Marvel Legends releases, 2006–2024, in chronological order.</p>
-        <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">wasp</span></p>
-        <div class="char-meta">
-          <span>7 releases</span>
-          <span>2006–2024</span>
-          <a href="index.html">← All characters</a>
+        <div class="char-tombstone">
+          <span class="hero-kicker">Character archive</span>
+          <h1 id="char-title">Every Wasp <span class="accent">ever.</span></h1>
+          <p class="tombstone-line">Character register, Marvel Legends</p>
+          <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">wasp</span></p>
+          <p class="tombstone-year">2006–2024</p>
+          <p class="tombstone-variant">7 releases in the line, in chronological order</p>
+          <div class="char-meta">
+            <a href="index.html">← All characters</a>
+          </div>
         </div>
       </div>
     </section>
     <div class="container">
-      <aside class="tombstone" aria-label="Register label for Wasp">
-        <p class="tombstone-name">Wasp</p>
-        <p class="tombstone-line">Character register, Marvel Legends</p>
-        <span class="cat-no">Archive No. wasp</span>
-        <p class="tombstone-year">2006–2024</p>
-        <p class="tombstone-variant">7 releases in the line</p>
-      </aside>
-      <section class="card run-panel" id="run-panel" data-char="Wasp" aria-label="Your Wasp run">
+      <section class="bookplate" id="run-panel" data-char="Wasp" aria-label="Your Wasp run">
+        <p class="bookplate-mark">Ex Libris: this copy belongs to its collector</p>
         <h2 class="run-title">Your Wasp run</h2>
         <p class="run-summary">Reading your tracker…</p>
         <noscript><p class="method-note">Run progress needs JavaScript: it reads your on-device tracker (nothing is uploaded).</p></noscript>
@@ -117,29 +132,29 @@
         <p class="research-note">External searches: eBay sold listings show actual sale prices, not asking prices. Reviews and web results are third-party content, unverified.</p>
         <p class="research-target" aria-live="polite">Choose Research on any figure below and its links appear here, generated from that figure's own row.</p>
         <ul class="research-links"></ul>
-        <noscript><p>Research links are generated in your browser; without JavaScript, search any figure's name together with its catalog number, printed at the right of its row.</p></noscript>
+        <noscript><p>Research links are generated in your browser; without JavaScript, search any figure's name together with its catalog number, printed at the head of its row.</p></noscript>
       </aside>
         <h2 class="release-year">2006</h2>
         <ul class="release-list">
-          <li class="release" data-fig-id="toybiz-2006-series-15-modok::Wasp"><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Series 15 - MODOK, Toy Biz · 2006</span></span><span class="cat-no">toybiz-2006-series-15-modok::Wasp</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
-          <li class="release" data-fig-id="toybiz-2006-series-15-modok::Wasp"><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Series 15 - MODOK, Toy Biz · 2006</span><span class="release-variant">Variant: Red costume, shoulder-length hair</span></span><span class="cat-no">toybiz-2006-series-15-modok::Wasp</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp" data-variant="Red costume, shoulder-length hair">Research</button></span></li>
-          <li class="release" data-fig-id="toybiz-2006-series-15-modok::Wasp"><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Series 15 - MODOK, Toy Biz · 2006</span><span class="release-variant">Variant: Blue costume</span></span><span class="cat-no">toybiz-2006-series-15-modok::Wasp</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp" data-variant="Blue costume">Research</button></span></li>
+          <li class="release" data-fig-id="toybiz-2006-series-15-modok::Wasp"><span class="cat-no">toybiz-2006-series-15-modok::Wasp</span><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Series 15 - MODOK, Toy Biz</span></span><span class="release-year-cell">2006</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
+          <li class="release" data-fig-id="toybiz-2006-series-15-modok::Wasp"><span class="cat-no">toybiz-2006-series-15-modok::Wasp</span><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Series 15 - MODOK, Toy Biz</span><span class="release-variant">Variant: Red costume, shoulder-length hair</span></span><span class="release-year-cell">2006</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp" data-variant="Red costume, shoulder-length hair">Research</button></span></li>
+          <li class="release" data-fig-id="toybiz-2006-series-15-modok::Wasp"><span class="cat-no">toybiz-2006-series-15-modok::Wasp</span><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Series 15 - MODOK, Toy Biz</span><span class="release-variant">Variant: Blue costume</span></span><span class="release-year-cell">2006</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp" data-variant="Blue costume">Research</button></span></li>
         </ul>
         <h2 class="release-year">2015</h2>
         <ul class="release-list">
-          <li class="release" data-fig-id="hasbro-2015-ultron-prime::Wasp"><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Ultron Prime Wave, Hasbro · 2015</span></span><span class="cat-no">hasbro-2015-ultron-prime::Wasp</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
+          <li class="release" data-fig-id="hasbro-2015-ultron-prime::Wasp"><span class="cat-no">hasbro-2015-ultron-prime::Wasp</span><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Ultron Prime Wave, Hasbro</span></span><span class="release-year-cell">2015</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
         </ul>
         <h2 class="release-year">2021</h2>
         <ul class="release-list">
-          <li class="release" data-fig-id="hasbro-2021-exclusives::Wasp"><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Store &amp; Convention Exclusives, Hasbro · 2021</span></span><span class="cat-no">hasbro-2021-exclusives::Wasp</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
+          <li class="release" data-fig-id="hasbro-2021-exclusives::Wasp"><span class="cat-no">hasbro-2021-exclusives::Wasp</span><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Store &amp; Convention Exclusives, Hasbro</span></span><span class="release-year-cell">2021</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
         </ul>
         <h2 class="release-year">2023</h2>
         <ul class="release-list">
-          <li class="release" data-fig-id="hasbro-2023-cassie-lang::Wasp (Hope van Dyne)"><span class="release-main"><span class="release-name">Wasp (Hope van Dyne)</span><span class="release-wave">Cassie Lang Wave, Hasbro · 2023</span></span><span class="cat-no">hasbro-2023-cassie-lang::Wasp (Hope van Dyne)</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp (Hope van Dyne)">Research</button></span></li>
+          <li class="release" data-fig-id="hasbro-2023-cassie-lang::Wasp (Hope van Dyne)"><span class="cat-no">hasbro-2023-cassie-lang::Wasp (Hope van Dyne)</span><span class="release-main"><span class="release-name">Wasp (Hope van Dyne)</span><span class="release-wave">Cassie Lang Wave, Hasbro</span></span><span class="release-year-cell">2023</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp (Hope van Dyne)">Research</button></span></li>
         </ul>
         <h2 class="release-year">2024</h2>
         <ul class="release-list">
-          <li class="release" data-fig-id="hasbro-2024-exclusives::Wasp"><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Store &amp; Convention Exclusives, Hasbro · 2024</span></span><span class="cat-no">hasbro-2024-exclusives::Wasp</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
+          <li class="release" data-fig-id="hasbro-2024-exclusives::Wasp"><span class="cat-no">hasbro-2024-exclusives::Wasp</span><span class="release-main"><span class="release-name">Wasp</span><span class="release-wave">Store &amp; Convention Exclusives, Hasbro</span></span><span class="release-year-cell">2024</span><span class="release-tools"><button type="button" class="research-btn" data-name="Wasp">Research</button></span></li>
         </ul>
     </div>
   </main>

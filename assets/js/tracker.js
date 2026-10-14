@@ -1,8 +1,8 @@
-/* Collection tracker — Owned / Wanted / Watching state per figure id.
+/* Collection tracker, Owned / Wanted / Watching state per figure id.
    Owned and Wanted are mutually exclusive (a figure is on your shelf or on
    your want list, never both). Watching is the third shelf: an eye kept on a
    figure you neither own nor actively hunt. Marking a figure Owned clears
-   both other shelves for it — it came home, so the hunt and the watch end. */
+   both other shelves for it, it came home, so the hunt and the watch end. */
 import { STORE_KEYS } from "./config.js";
 import { makeIdSet } from "./store.js";
 

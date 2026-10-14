@@ -1,4 +1,4 @@
-/* api-client.js — shared fallback contract client.
+/* api-client.js, shared fallback contract client.
  *
  * ARCHITECTURE.md §3.2 reference implementation. Copy verbatim per repo;
  * do not fork behavior. Zero dependencies, vanilla JS, ES5-safe.
@@ -7,7 +7,7 @@
  * timeout; on success the badge reads "live". On timeout / network error /
  * non-ok envelope it falls back to the static data/v1/*.json file and the
  * badge reads "cached · updated HH:MM" (honest timestamp from the data).
- * The badge is the honesty mechanism — never hidden when the data is stale.
+ * The badge is the honesty mechanism, never hidden when the data is stale.
  *
  * fetchWithFallback never rejects. Worst case: { data: null, source: "none" }.
  */
@@ -27,7 +27,7 @@
   // opts: { timeoutMs, staticPath, badgeEl }
   // livePath like "/api/trends"; staticPath like "/data/v1/trends.flat.json"
   // resolves { data, source: "live"|"static", generatedAt, degraded, note }
-  // never rejects — worst case returns { data: null, source: "none" }
+  // never rejects, worst case returns { data: null, source: "none" }
   function fetchWithFallback(livePath, staticPath, opts) {
     opts = opts || {};
     var timeoutMs = opts.timeoutMs || LIVE_TIMEOUT_MS;
@@ -41,7 +41,7 @@
         badgeEl.title = "Fresh from the server · " + fmtTime(generatedAt);
       } else if (state === "cached") {
         badgeEl.textContent = "cached · updated " + fmtTime(generatedAt);
-        badgeEl.title = (note || "Server unreachable — showing last published data.") +
+        badgeEl.title = (note || "Server unreachable, showing last published data.") +
           " · " + fmtTime(generatedAt);
       } else if (state === "waking") {
         badgeEl.textContent = "waking server…";

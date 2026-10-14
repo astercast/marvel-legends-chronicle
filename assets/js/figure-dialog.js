@@ -1,4 +1,4 @@
-/* Figure detail dialog — specs, BAF piece, notes, tracker, marketplace links. */
+/* Figure detail dialog, specs, BAF piece, notes, tracker, marketplace links. */
 import { openModal } from "./modal.js";
 import { trackerButtons, owned, wanted, watching } from "./tracker.js";
 import { renderMarketplaceLinks, renderResearchLinks } from "./listings.js";
@@ -25,10 +25,10 @@ export function escapeHtml(s) {
   })[c]);
 }
 
-/* Character pages (characters/<slug>.html) — lazy index so the dialog can link
+/* Character pages (characters/<slug>.html), lazy index so the dialog can link
    "Every <character> release →" when one exists.
    Resolved against this module's own URL (always <root>/assets/js/) so the
-   fetch works at any page depth — a document-relative "characters/…"
+   fetch works at any page depth, a document-relative "characters/…"
    path 404s on characters/*.html. */
 const charIndex = new Map();
 const manifestUrl = new URL("../../characters/manifest.json", import.meta.url);
@@ -109,7 +109,7 @@ export function openFigureDialog(fig) {
     bodyEl.appendChild(renderMarketplaceLinks(fig));
     bodyEl.appendChild(renderResearchLinks(fig));
 
-    /* Your logged prices — from the user's own journal entries only. */
+    /* Your logged prices, from the user's own journal entries only. */
     try {
       const entries = entriesForFigure(load(STORE_KEYS.journal, []), fig.id, fig.name);
       if (entries.length) {
@@ -130,6 +130,6 @@ export function openFigureDialog(fig) {
           `<p class="link-note">From sales you logged: <a href="journal.html">open the journal</a>.</p>`);
         bodyEl.appendChild(wrap);
       }
-    } catch { /* journal unreadable — skip silently */ }
+    } catch { /* journal unreadable, skip silently */ }
   });
 }

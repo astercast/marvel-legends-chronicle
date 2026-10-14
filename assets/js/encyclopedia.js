@@ -1,4 +1,4 @@
-/* Encyclopedia page — history, hall of fame, bootleg guide, resources. */
+/* Encyclopedia page, history, hall of fame, bootleg guide, resources. */
 import { PATHS } from "./config.js";
 import { escapeHtml } from "./figure-dialog.js";
 
@@ -65,7 +65,7 @@ function hofCard(h, stopNo) {
   const card = document.createElement("article");
   card.className = "card hof-card";
   const radar = h.reissueRadar
-    ? `<p class="radar-line">Reissue radar: <span class="${h.reissueRadar.level === "resilient" ? "radar-res" : "radar-vul"}">${escapeHtml(h.reissueRadar.level)}</span> <span class="radar-note">— ${escapeHtml(h.reissueRadar.note)}</span></p>`
+    ? `<p class="radar-line">Reissue radar: <span class="${h.reissueRadar.level === "resilient" ? "radar-res" : "radar-vul"}">${escapeHtml(h.reissueRadar.level)}</span> <span class="radar-note">${escapeHtml(h.reissueRadar.note)}</span></p>`
     : "";
   card.innerHTML = `
     <span class="stop-no">Audio-guide stop № ${stopNo}</span>

@@ -1,52 +1,54 @@
 /* ============================================================
-   R21 — Museum Vault, restraint standard (Film/Mash v2 floor).
-   Loaded last on the re-presented surfaces (home, radar, visual
-   database). Identity: archival serif voice, ONE accent (brass
-   gold), museum order — dense, scannable, tabular calm under a
-   quiet hero. Everything here removes furniture: no drawer
-   pulls, no seals, no grain, no bordered card grids, no pills.
-   Sections are separated by space, never by borders.
+   R21 surfaces (the light catalogue): the re-presented pages
+   (home, radar, visual database). Serif voice, color only in
+   its named jobs, print order: dense, scannable, tabular calm.
+   Sections are separated by rules and space, never by fills.
    ============================================================ */
 
-/* --- Hero: headline + subline + ONE action + the objects --- */
+/* --- Frontispiece + heroes: the objects carry the page --- */
 .atrium-hero .hero-inner, .db-hero .hero-inner, .radar-hero .hero-inner { max-width: 1280px; }
-.hero h1 { text-transform: none; letter-spacing: 0; }
+.hero h1 { letter-spacing: 0; }
+
+/* The pictured figures beyond the frontispiece plate: an
+   unplated row of small photographs, name and number under
+   each. No mat, no frame but a hairline: the plate is rationed
+   to one, and this row is a listing (MARVEL-LIGHT 3.4). */
 .hero-figures {
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-3);
-  margin-top: var(--space-7);
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3);
+  margin-top: var(--space-6);
 }
-.hero-fig { text-decoration: none; color: var(--ink-dim); }
-.hero-fig img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; background: var(--panel); }
+.hero-fig { text-decoration: none; color: var(--ink); }
+.hero-fig img { width: 100%; aspect-ratio: 3/4; object-fit: contain; display: block; border: 1px solid var(--line); padding: var(--space-1); }
 .hero-fig span { display: block; margin-top: var(--space-2); font-size: 0.82rem; }
-.hero-fig:hover span { color: var(--gold); }
+.hero-fig:hover span { color: var(--blue); }
 .hero-fig-note { grid-column: 1 / -1; color: var(--muted); font-size: 0.85rem; margin: var(--space-2) 0 0; }
-.hero-fig-note a { color: var(--gold); }
+.hero-fig-note a { color: var(--blue); }
 @media (max-width: 720px) { .hero-figures { grid-template-columns: repeat(3, 1fr); } }
 
-/* --- Engraved stats: one line, never an orphaned wrap --- */
-.engraved-stats { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-.engraved-stats::-webkit-scrollbar { display: none; }
-.engraved-stats .stat-item, .engraved-stats > span { white-space: nowrap; }
-.engraved-stats { border-top: 0; padding-top: 0; }
+/* --- The colophon census on the home page (JS emits ruled
+   census lines; nothing is ever cut in half at a viewport
+   edge, VP-0013 discipline) --- */
+.engraved-stats { overflow-x: visible; }
 
-/* --- On the desk / halls: borderless, space does the separating --- */
-.desk-placard { border: 0; background: none; padding: 0; border-radius: 0; }
-.hall { border: 0; background: none; border-radius: 0; }
-.hall[open] { border: 0; }
-.hall-seal, .hall-pull { display: none; }
-.hall > summary { grid-template-columns: 1fr; padding: var(--space-4) 0; }
-.hall-pages a::before, .dir-pages a::before { display: none; }
-.hall-pages a, .dir-pages a { padding-left: 0; }
-.hall-pages li { border-top: 0; }
-.registrar .wax-seal { display: none; }
-.rope-rule { display: none; }
-
-/* --- Radar: a calm sorted list, not a wall of cards --- */
-.radar-card { border: 0; background: none; border-radius: 0; box-shadow: none; }
+/* --- Radar: the sale room. Entries as lots: the lot number
+   in blue at the head, the title line, the source line, and
+   the status word, with live state words in Plate Red. A calm
+   sorted list, not a wall of cards. --- */
+.radar-card { border: 0; background: none; border-radius: 0; box-shadow: none; border-bottom: 1px solid var(--line); padding: var(--space-4) 0; }
 .radar-card h2, .radar-card h3 { font-family: var(--font-body); font-weight: 700; font-size: 1.12rem; margin: 0 0 var(--space-2); }
+.lot-no {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--catalogue-blue);
+  margin: 0 0 var(--space-1);
+}
+.lot-status { color: var(--muted); }
+.lot-status-live { color: var(--plate-red); font-weight: 700; }
 .desk-kicker { font-family: var(--font-body); letter-spacing: 0; text-transform: none; font-size: 0.85rem; color: var(--muted); }
 .radar-note { border: 0; background: none; box-shadow: none; padding: var(--space-5) 0 !important; }
 #radar-scan-badge { font-size: 0.78rem; color: var(--muted); }
+#radar-scan-badge[data-live="true"] { color: var(--plate-red); }
 
 /* --- Visual database: the object carries the hierarchy --- */
 .vd-grid { gap: var(--space-5) var(--space-4); }
@@ -55,6 +57,7 @@
 .db-row { border-bottom: 0; padding: var(--space-1) 0; }
 .db-chapter-count { font-family: var(--font-body); font-variant-numeric: tabular-nums; }
 
-/* --- One accent: gold only. Red survives nowhere on these surfaces. --- */
-.accent { color: var(--gold); }
-::selection { background: var(--gold); color: #171307; }
+/* --- Accents under light: a headline accent is ink; a link
+   accent is Catalogue Blue. Nothing else colors a word. --- */
+.accent { color: inherit; }
+::selection { background: var(--board); color: var(--ink); }

@@ -1,11 +1,11 @@
-/* First Appearances — the debut ledger.
+/* First Appearances, the debut ledger.
    Every distinct character in the catalog, filed under the year of
    their first Marvel Legends figure: the exact debut figure, its
    wave and its maker, counted from the catalog itself and laid out
    in the Archive Tour's four era chapters. A character links to its
    character page only when the archive publishes one; the rest are
    named in full and left unlinked rather than pointed at pages that
-   do not exist. No prices — a ledger of firsts, not a market. */
+   do not exist. No prices, a ledger of firsts, not a market. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
 import { buildDebutsModel } from "./debuts-model.js";
@@ -52,7 +52,7 @@ async function main() {
 
     els.kpis.innerHTML = [
       kpi("Characters catalogued", fmt(m.total), `first appearances ${m.span[0]}–${m.span[1]}`),
-      kpi("Most recent debut year", m.latestYear ?? "—", `${m.latest.length} first appearance${m.latest.length === 1 ? "" : "s"} in ${m.latestYear}`),
+      kpi("Most recent debut year", m.latestYear ?? "n/a", `${m.latest.length} first appearance${m.latest.length === 1 ? "" : "s"} in ${m.latestYear}`),
       kpi("Debuts in the modern era", fmt(m.byChapter[3].debuts.length), `${m.byChapter[3].years[0]}–${m.byChapter[3].years[1]} · the largest chapter`),
       kpi("With a character page", fmt(m.debuts.filter((d) => d.hasPage).length), "the archive's most-collected, linked below"),
     ].join("");
@@ -76,7 +76,7 @@ async function main() {
       `<li><span class="db-year">${r.year}</span> <span class="db-year-count">${r.count} debut${r.count === 1 ? "" : "s"}</span></li>`).join("");
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The debut ledger could not be read from the catalog. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The debut ledger could not be read from the catalog. The archive itself is unaffected, try reloading the page.";
   }
 }
 

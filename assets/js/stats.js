@@ -1,4 +1,4 @@
-/* Stats dashboard — figures-per-year chart from data/v1/stats.json. */
+/* Stats dashboard, figures-per-year chart from data/v1/stats.json. */
 (function () {
   "use strict";
   var els = {
@@ -10,7 +10,7 @@
   if (!els.chart) return;
 
   function barColor(year) {
-    return year <= 2006 ? "#ffb37f" : "#e62429"; /* Toy Biz era vs Hasbro era */
+    return year <= 2006 ? "#6E6353" : "#1E1B16"; /* Toy Biz era vs Hasbro era */
   }
 
   fetch("data/v1/stats.json")

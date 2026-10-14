@@ -17,7 +17,7 @@ You want to build the Red Onslaught BAF from the 2016 Red Onslaught Wave wave. 7
 ## Procedure
 
 1. The BAF: **Red Onslaught** (2016, Red Onslaught Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Captain America → Cape
   - [ ] Cottonmouth (Burchell Clemens) → Right arm
   - [ ] Mockingbird → Torso
@@ -27,7 +27,7 @@ You want to build the Red Onslaught BAF from the 2016 Red Onslaught Wave wave. 7
   - [ ] Whirlwind → Left arm
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -39,5 +39,5 @@ Missing the Red Onslaught torso? Find which figure above carries it, check sold 
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

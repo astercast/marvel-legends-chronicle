@@ -1,4 +1,4 @@
-/* Bootleg authentication wizard — step-by-step pass/fail flow with verdict.
+/* Bootleg authentication wizard, step-by-step pass/fail flow with verdict.
    Checks derived from the encyclopedia bootleg guide + counterfeit-market research.
    Vanilla JS, keyboard-navigable, reduced-motion safe. */
 (function () {
@@ -7,7 +7,7 @@
   var STEPS = [
     {
       id: "packaging",
-      title: "Step 1 — Packaging",
+      title: "Step 1, Packaging",
       intro: "Knockoffs fail at the card first. Compare against a known-authentic photo if you can.",
       checks: [
         { id: "pkg-print", q: "Is the card/box printing crisp, with correct colors and logos?",
@@ -20,10 +20,10 @@
     },
     {
       id: "paint",
-      title: "Step 2 — Paint & sculpt",
+      title: "Step 2, Paint & sculpt",
       intro: "Authentic Legends have crisp, consistent deco throughout.",
       checks: [
-        { id: "paint-clean", q: "Is the paint clean — no rough edges, slop, or missing applications?",
+        { id: "paint-clean", q: "Is the paint clean, no rough edges, slop, or missing applications?",
           hint: "Fail: sloppy or missing paint, rough edges, wrong accessory details." },
         { id: "paint-sculpt", q: "Are the parts well-formed with no misshapen pieces?",
           hint: "Fail: misshapen parts, soft detail, parts that don't match reference photos." },
@@ -31,33 +31,33 @@
     },
     {
       id: "joints",
-      title: "Step 3 — Joints",
+      title: "Step 3, Joints",
       intro: "Joints are the fingerprint: KOs differ at the pegs.",
       checks: [
         { id: "joint-pegs", q: "Do the neck ball peg, elbow/knee pegs, and hand pegs match the authentic design?",
-          hint: "Fail: peg shapes differ from reference photos — the most reliable KO tell." },
+          hint: "Fail: peg shapes differ from reference photos, the most reliable KO tell." },
         { id: "joint-gaps", q: "Are there no unexplained gaps at the elbows and knees?",
           hint: "Fail: visible gaps at elbows/knees. Example: the KO Carnage is also betrayed by silver eyes vs. authentic paint." },
       ],
     },
     {
       id: "listing",
-      title: "Step 4 — Listing & seller",
+      title: "Step 4, Listing & seller",
       intro: "Bootlegs cluster at impossible prices from familiar seller patterns.",
       checks: [
         { id: "list-photos", q: "Does the listing show real photos of the actual figure?",
           hint: "Fail: stock photos only, or 'no box' offered on a supposedly mint exclusive." },
         { id: "list-seller", q: "Is the seller pattern clean?",
-          hint: "Fail: seller in China/Hong Kong with $10–40 pricing on a $25+ figure. Also beware near-genuine pricing on SE Asia marketplaces (e.g. Shopee) — KOs priced like genuine are fraud, not deals." },
+          hint: "Fail: seller in China/Hong Kong with $10–40 pricing on a $25+ figure. Also beware near-genuine pricing on SE Asia marketplaces (e.g. Shopee), KOs priced like genuine are fraud, not deals." },
       ],
     },
     {
       id: "price",
-      title: "Step 5 — Price logic",
+      title: "Step 5, Price logic",
       intro: "The market is the lie detector.",
       checks: [
         { id: "price-sane", q: "Is the price within reach of 90-day eBay SOLD listings for the same condition?",
-          hint: "Fail: 40%+ under 90-day solds — assume bootleg until proven otherwise. Asking prices are wishes; only solds count." },
+          hint: "Fail: 40%+ under 90-day solds, assume bootleg until proven otherwise. Asking prices are wishes; only solds count." },
       ],
     },
   ];
@@ -195,16 +195,16 @@
     var cls, title, body;
     if (fails.length >= 2) {
       cls = "verdict-fail";
-      title = "Likely bootleg — walk away";
+      title = "Likely bootleg, walk away";
       body = "Two or more corroborating fails. No matter the price, pass: another listing always comes.";
     } else if (fails.length === 1) {
       cls = "verdict-warn";
-      title = "Inconclusive — investigate";
+      title = "Inconclusive, investigate";
       body = "One fail doesn't convict, but don't buy until the flagged check is resolved with better photos or a second opinion.";
     } else {
       cls = "verdict-auth";
       title = "Likely authentic";
-      body = "Every answered check passed." + (skips ? " " + skips + " check" + (skips === 1 ? "" : "s") + " skipped — the verdict is only as strong as the checks you answered." : " Run the 90-day sold price check before paying.");
+      body = "Every answered check passed." + (skips ? " " + skips + " check" + (skips === 1 ? "" : "s") + " skipped, the verdict is only as strong as the checks you answered." : " Run the 90-day sold price check before paying.");
     }
 
     root.innerHTML = renderProgress();

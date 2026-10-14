@@ -5,7 +5,7 @@ Validates every curve (figId resolves in the archive, every point has an ISO
 date + numeric price + labeled kind, every source is a labeled well-formed URL,
 >=3 points per curve), computes peak/latest/drop stats, and regenerates the
 per-curve sections of launch-curve.html between markers (static HTML + static
-SVG — works without JS, no animation, reduced-motion safe).
+SVG, works without JS, no animation, reduced-motion safe).
 """
 import json
 import re
@@ -105,7 +105,7 @@ def render_curve(curve):
         f'<tr><td>{p["date"]}</td><td class="num">${p["price"]:.2f}</td>'
         f'<td><span class="kind-badge">{p["kind"]}</span></td></tr>' for p in pts)
     events = "\n".join(
-        f"<li><strong>{e['date']}</strong> — {escape(e['label'])}</li>" for e in curve["events"])
+        f"<li><strong>{e['date']}</strong>, {escape(e['label'])}</li>" for e in curve["events"])
     src = curve["source"]
     return f"""<article class="curve-card card" aria-labelledby="curve-{curve['id']}">
 <span class="curve-kicker">{escape(curve['waveName'])}</span>

@@ -16,13 +16,13 @@ Convention season.
 ## Procedure
 
 1. List every convention exclusive at the start of the season.
-2. PulseCon is the accessible one — no travel needed.
+2. PulseCon is the accessible one, no travel needed.
 3. International exclusives: proxy services or community trades.
 
 ## Worked example
 
-PulseCon exclusive ordered from the couch — zero travel, retail price.
+PulseCon exclusive ordered from the couch, zero travel, retail price.
 
 ## Pitfalls
 
-- Forgetting PulseCon — it's the easiest exclusive of the year.
+- Forgetting PulseCon, it's the easiest exclusive of the year.

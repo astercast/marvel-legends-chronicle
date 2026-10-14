@@ -22,8 +22,8 @@ Chasing retailer exclusives.
 
 ## Worked example
 
-Target exclusive restocked three times in a month — the patient got it at retail.
+Target exclusive restocked three times in a month, the patient got it at retail.
 
 ## Pitfalls
 
-- Paying scalper prices during wave one — waves two and three exist.
+- Paying scalper prices during wave one, waves two and three exist.

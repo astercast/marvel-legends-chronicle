@@ -7,7 +7,7 @@ description: Authenticate a figure via packaging: the guide's red flags as a che
 
 ## Use when
 
-Authenticating a figure or listing — run all six bootleg skills, not just one.
+Authenticating a figure or listing, run all six bootleg skills, not just one.
 
 ## Inputs
 
@@ -15,11 +15,11 @@ Authenticating a figure or listing — run all six bootleg skills, not just one.
 
 ## Procedure
 
-1. Work the checklist — one fail doesn't convict, two corroborating fails do:
+1. Work the checklist, one fail doesn't convict, two corroborating fails do:
 2.   - [ ] Blurry printing or off-color logos on the card/box
   - [ ] Missing Hasbro or Marvel markings and legal text
   - [ ] Flimsy cardstock or thin, cloudy blisters
-3. Cross-check with the listing/price-logic skill — bootlegs cluster at impossible prices.
+3. Cross-check with the listing/price-logic skill, bootlegs cluster at impossible prices.
 
 ## Worked example
 
@@ -31,4 +31,4 @@ Blurry card printing + wrong plastic sheen = walk away, no matter the price.
 
 ## Pitfalls
 
-- Authenticating from one blurry photo — demand clear shots or pass.
+- Authenticating from one blurry photo, demand clear shots or pass.

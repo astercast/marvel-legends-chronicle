@@ -1,4 +1,4 @@
-/* api-console.js — "Try the API" console on api.html.
+/* api-console.js, "Try the API" console on api.html.
    Page-specific: fetches data/v1/index.json for the endpoint list, then
    fetches + pretty-prints the chosen endpoint. All failures are graceful:
    file:// fetches fail in some browsers, so the error path says exactly
@@ -54,7 +54,7 @@
     list.forEach(function (e) {
       var opt = document.createElement("option");
       opt.value = e.path;
-      opt.textContent = e.path + " — " + (e.records != null ? e.records + " record" + (e.records === 1 ? "" : "s") : "");
+      opt.textContent = e.path + ", " + (e.records != null ? e.records + " record" + (e.records === 1 ? "" : "s") : "");
       picker.appendChild(opt);
     });
   }
@@ -77,7 +77,7 @@
       .catch(function () {
         endpoints = FALLBACK;
         fillPicker(endpoints);
-        setStatus("Could not load the manifest — showing a built-in endpoint list. Serve the site over HTTP for live data.");
+        setStatus("Could not load the manifest, showing a built-in endpoint list. Serve the site over HTTP for live data.");
       });
   }
 
@@ -96,12 +96,12 @@
         var lines = rawJson.split("\n");
         var shown = lines.slice(0, MAX_LINES).join("\n");
         var note = lines.length > MAX_LINES
-          ? "\n… (" + (lines.length - MAX_LINES).toLocaleString() + " more lines truncated — full payload is " +
+          ? "\n… (" + (lines.length - MAX_LINES).toLocaleString() + " more lines truncated, full payload is " +
             (text.length / 1024).toFixed(0) + " KB)"
           : "";
         code.innerHTML = highlight(shown) + (note ? esc(note) : "");
         var count = Array.isArray(data) ? data.length + " records" : "object";
-        setStatus(path + " — " + count + ", " + (text.length / 1024).toFixed(1) + " KB, " +
+        setStatus(path + ", " + count + ", " + (text.length / 1024).toFixed(1) + " KB, " +
           lines.length.toLocaleString() + " lines" +
           (lines.length > MAX_LINES ? " (truncated at " + MAX_LINES.toLocaleString() + ")" : "") + ".");
         copyBtn.disabled = false;
@@ -125,10 +125,10 @@
     var done = function () { setStatus("JSON copied to clipboard."); };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(rawJson).then(done, function () {
-        setStatus("Copy failed — select the output and copy manually.");
+        setStatus("Copy failed, select the output and copy manually.");
       });
     } else {
-      setStatus("Clipboard unavailable — select the output and copy manually.");
+      setStatus("Clipboard unavailable, select the output and copy manually.");
     }
   });
 

@@ -7,7 +7,7 @@ description: Authenticate a figure via price logic: the guide's red flags as a c
 
 ## Use when
 
-Authenticating a figure or listing — run all six bootleg skills, not just one.
+Authenticating a figure or listing, run all six bootleg skills, not just one.
 
 ## Inputs
 
@@ -15,9 +15,9 @@ Authenticating a figure or listing — run all six bootleg skills, not just one.
 
 ## Procedure
 
-1. Work the checklist — one fail doesn't convict, two corroborating fails do:
+1. Work the checklist, one fail doesn't convict, two corroborating fails do:
 2.   - [ ] If it is far below retail or secondary market for a popular wave or variant, investigate before buying
-3. Cross-check with the listing/price-logic skill — bootlegs cluster at impossible prices.
+3. Cross-check with the listing/price-logic skill, bootlegs cluster at impossible prices.
 
 ## Worked example
 
@@ -29,4 +29,4 @@ Blurry card printing + wrong plastic sheen = walk away, no matter the price.
 
 ## Pitfalls
 
-- Authenticating from one blurry photo — demand clear shots or pass.
+- Authenticating from one blurry photo, demand clear shots or pass.

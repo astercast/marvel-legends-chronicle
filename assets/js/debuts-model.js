@@ -1,12 +1,12 @@
-/* debuts-model.js — the pure math behind First Appearances
+/* debuts-model.js, the pure math behind First Appearances
    (debuts.html). No DOM, no storage: given the catalog's flat figure
    list, it works out every distinct character's first figure in the
-   line — their debut — and lays the debuts out in the Archive Tour's
+   line, their debut, and lays the debuts out in the Archive Tour's
    four era chapters.
 
    WHAT COUNTS AS A CHARACTER: the archive's own rule, the same one
    the character pages are built with (scripts/build_characters.py):
-   a figure's character is its name with any parenthetical removed —
+   a figure's character is its name with any parenthetical removed,
    "Spider-Man (No Way Home)" files under "Spider-Man". Nothing else
    is normalized: "The Punisher" and "Punisher" are two entries in
    the catalog and stay two entries here, because that is what the
@@ -14,13 +14,13 @@
 
    THE DEBUT RULE (deterministic, catalog data only, printed on the
    page): a character's debut is their earliest figure in the catalog
-   — lowest year, ties broken by catalog order. The debut names the
+  , lowest year, ties broken by catalog order. The debut names the
    exact figure, its wave and its manufacturer, all carried by the
    catalog itself.
 
    HONESTY: no prices anywhere (a debut ledger is the record, not the
    market); a character links to its character page only when the
-   archive actually publishes one (the top-66 manifest) — the model
+   archive actually publishes one (the top-66 manifest), the model
    takes that slug set as an input and leaves the rest unlinked
    rather than pointing at pages that do not exist. */
 import { CHAPTERS } from "./archive-tour-model.js";
@@ -40,7 +40,7 @@ export function chapterForYear(year) {
 /* figures: the catalog's flat figure list (data/v1/figures.json shape).
    characterSlugs: Set of slugs with a published character page.
    Returns { total, debuts, byChapter, byYear, latestYear, latest,
-             span } — debuts sorted by (year, catalog order). */
+             span }, debuts sorted by (year, catalog order). */
 export function buildDebutsModel(figures, characterSlugs = new Set()) {
   const first = new Map(); // base name -> { fig, idx }
   const counts = new Map(); // base name -> release count

@@ -1,4 +1,4 @@
-/* Price guide page — renders the transparent price methodology from data/encyclopedia.json. */
+/* Price guide page, renders the transparent price methodology from data/encyclopedia.json. */
 (function () {
   "use strict";
 

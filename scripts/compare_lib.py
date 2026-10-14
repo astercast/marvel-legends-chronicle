@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""compare_lib.py — shared logic for Wave 26's VS mode + encyclopedia deep-link overhaul.
+"""compare_lib.py, shared logic for Wave 26's VS mode + encyclopedia deep-link overhaul.
 
 Single source of truth for:
   * figure deep-link anchors:  waves/<waveId>.html#fig-<slug>  (stable, derived from
@@ -7,11 +7,11 @@ Single source of truth for:
   * per-figure cross-link data: rarity tier (w23), reported price signal (w25),
     KO-spotter note (encyclopedia bootleg guide / holiday guide research)
   * "upgrade paths": other documented releases of the same character (real archive
-    data only — variants, documented reissues, exclusives), with honest relations
+    data only, variants, documented reissues, exclusives), with honest relations
 
 Used by scripts/build_waves.py (wave-page anchors + per-figure xref blocks) and
 scripts/build_api.py (the data/v1/compare.json endpoint). Nothing here invents
-figures, dates, or prices — every field is derived from committed data files.
+figures, dates, or prices, every field is derived from committed data files.
 
 ABSOLUTE RULE: no invented figures/dates/prices. Articulation counts and
 accessory lists are NOT in the archive; the compare UI says so honestly instead
@@ -46,7 +46,7 @@ def wave_anchors(figures):
 
     Base form: fig-<slug(name)>. When a name repeats inside one wave (e.g. two
     Hulks in Toy Biz Series 1), disambiguate with the variant slug when present,
-    else a 1-based index. Deterministic — depends only on the data.
+    else a 1-based index. Deterministic, depends only on the data.
     """
     seen = {}
     anchors = {}
@@ -79,26 +79,26 @@ def compare_url(fig_id):
     return f"compare.html?a={quote(fig_id, safe='')}"
 
 
-# KO targets — MUST stay in sync with assets/js/ko-targets.js (the JS is the
+# KO targets, MUST stay in sync with assets/js/ko-targets.js (the JS is the
 # display copy; this is the build-time copy). tests/test-compare.js cross-checks.
 KO_TARGETS = [
     {"match": "dragon man",
-     "note": "Known KO target — buy at retail or run the Auth Wizard before paying.",
+     "note": "Known KO target, buy at retail or run the Auth Wizard before paying.",
      "source": "Encyclopedia bootleg guide"},
     {"match": "ronan",
-     "note": "Known KO target — buy at retail or run the Auth Wizard before paying.",
+     "note": "Known KO target, buy at retail or run the Auth Wizard before paying.",
      "source": "Encyclopedia bootleg guide"},
     {"match": "juggernaut",
-     "note": "Juggernaut BAF recast is a known KO target — verify the piece before buying.",
+     "note": "Juggernaut BAF recast is a known KO target, verify the piece before buying.",
      "source": "Encyclopedia bootleg guide"},
     {"match": "carnage",
      "note": "KO tell documented: silver eyes on the fake. Compare before buying.",
      "source": "Encyclopedia bootleg guide"},
     {"match": "maximum spider-man",
-     "note": "Maximum Series Spider-Man KO reviewed in video (Apr 2026) — retail or Hasbro Pulse only.",
+     "note": "Maximum Series Spider-Man KO reviewed in video (Apr 2026), retail or Hasbro Pulse only.",
      "source": "2026 Holiday Guide"},
     {"match": "x-men '97 cyclops",
-     "note": "X-Men '97 Cyclops KO (Mustang Toyz) reviewed in video (Sep 2026) — retail or Hasbro Pulse only.",
+     "note": "X-Men '97 Cyclops KO (Mustang Toyz) reviewed in video (Sep 2026), retail or Hasbro Pulse only.",
      "source": "2026 Holiday Guide"},
 ]
 
@@ -137,7 +137,7 @@ def rarity_map(rarity):
 
 def price_map(prices):
     """figId -> [reported price signals] (list: wave 25 keyed two Doom signals to one
-    archive id — a list loses nothing; each signal's own label disambiguates)."""
+    archive id, a list loses nothing; each signal's own label disambiguates)."""
     out = {}
     for s in prices["signals"]:
         out.setdefault(s["figId"], []).append({
@@ -159,7 +159,7 @@ def price_map(prices):
 def _relation(self_fig, cand):
     """Honest relation label between two same-named figures. Real data only.
     The human-readable trade-off note is generated client-side from the relation
-    (see assets/js/compare-guide.js UPGRADE_NOTES) — the path record stays lean."""
+    (see assets/js/compare-guide.js UPGRADE_NOTES), the path record stays lean."""
     notes = (cand.get("notes") or "").lower()
     if re.search(r"\bre-?issue[ds]?\b", notes):
         return "reissue"

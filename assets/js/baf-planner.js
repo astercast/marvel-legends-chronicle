@@ -1,4 +1,4 @@
-/* BAF planner — mark owned figures, see missing BAF pieces + acquisition guidance.
+/* BAF planner, mark owned figures, see missing BAF pieces + acquisition guidance.
    Ownership syncs with the timeline tracker via the shared mlc_owned_v1 store. */
 import { PATHS, STORE_KEYS } from "./config.js";
 import { makeIdSet, load } from "./store.js";
@@ -15,7 +15,7 @@ let selected = null;
 
 /* Sold-listings URL shared from listings.js (same pattern, single source). */
 
-/* Build BAF entries from waves — same piece-carrier mapping as the BAF skills.
+/* Build BAF entries from waves, same piece-carrier mapping as the BAF skills.
    Exported for tests (tests/test-baf.js). */
 export function buildBafs(waves) {
   const out = [];
@@ -56,11 +56,11 @@ export function bafProgress(baf) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Wave 19 — Grail Quest 2.0: purchase-backed ownership, journal-priced
+/* Wave 19, Grail Quest 2.0: purchase-backed ownership, journal-priced
    cheapest-path math, and "closest BAF to complete" rankings.
    - Ownership: tracker marks (mlc_owned_v1) + logged purchases
      (mlc_buys_v1, the ledger). The price journal (mlc_journal_v1) is a
-     SOLD-price log — sold figures are NOT owned, so it never feeds
+     SOLD-price log, sold figures are NOT owned, so it never feeds
      ownership; it feeds the cheapest-path prices.
    - Every price-flavored number below is the user's OWN journal sold price
      (user-logged, never an index); figure-type tiers are an
@@ -78,7 +78,7 @@ export function ownedUnion() {
 }
 
 /* Median user-logged SOLD price per figure id, from the price journal.
-   A sold price is a real transaction the user recorded — the cheapest
+   A sold price is a real transaction the user recorded, the cheapest
    honest "what does this carrier go for" signal on hand. Exported for tests. */
 export function journalPriceMap() {
   const entries = load(STORE_KEYS.journal, []);
@@ -98,7 +98,7 @@ export function journalPriceMap() {
   return out;
 }
 
-/* Figure-type cost tier for ranking piece carriers — mirrors costTier() in
+/* Figure-type cost tier for ranking piece carriers, mirrors costTier() in
    quest-core.js, kept local so this module stays import-light. */
 export function carrierTier(c) {
   const ex = c.exclusive ?? "";
@@ -109,12 +109,12 @@ export function carrierTier(c) {
   return 1;
 }
 
-/* cheapestPath(baf, priceMap) — for each missing piece, the cheapest carrier:
+/* cheapestPath(baf, priceMap), for each missing piece, the cheapest carrier:
    journal-logged SOLD prices first (real transactions the user recorded),
    figure-type tier as the tiebreak/proxy.
    Returns { legs: [{ piece, carrier, journalPrice|null, tier }],
    totalKnown (sum of journal-priced legs), unknownCount }.
-   totalKnown is the user's own sold prices — an estimate, never a quote. */
+   totalKnown is the user's own sold prices, an estimate, never a quote. */
 export function cheapestPath(baf, priceMap) {
   const u = ownedUnion();
   const legs = [];
@@ -145,7 +145,7 @@ export function cheapestPath(baf, priceMap) {
   };
 }
 
-/* closestBafs(bafs, ownedIds) — started-but-incomplete BAFs, fewest missing
+/* closestBafs(bafs, ownedIds), started-but-incomplete BAFs, fewest missing
    pieces first: the "closest BAF to complete" quest recommendations.
    Exported for tests. */
 export function closestBafs(bafs, ownedIds) {
@@ -185,7 +185,7 @@ function renderList() {
   renderClosest();
 }
 
-/* "Closest to complete" — started BAFs ranked by fewest missing pieces.
+/* "Closest to complete", started BAFs ranked by fewest missing pieces.
    Rendered above the full list; owned marks plus logged purchases count. */
 function renderClosest() {
   if (!closestEl) return;
@@ -205,7 +205,7 @@ function renderClosest() {
         <span class="entry-name">${escapeHtml(r.baf.name)}</span>
         <span class="entry-wave">${escapeHtml(r.baf.series)} · ${r.baf.year}</span>
       </div>
-      <p class="gift-why">${r.got}/${r.total} pieces — <strong>${r.missing} to go</strong>.</p>`;
+      <p class="gift-why">${r.got}/${r.total} pieces, <strong>${r.missing} to go</strong>.</p>`;
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "btn btn-sm";
@@ -286,25 +286,25 @@ function renderDetail() {
     acq.className = "acquire";
     acq.setAttribute("aria-label", "Acquisition guidance");
     /* Cheapest-path math: journal-logged prices first, figure-type tier as
-       the proxy tiebreak. "Known" dollars are the user's own journal — an
+       the proxy tiebreak. "Known" dollars are the user's own journal, an
        estimate, never a market quote. */
     const plan = cheapestPath(selected, journalPriceMap());
     const items = plan.legs.map(({ piece, carrier, journalPrice }) => {
       const c = carrier;
       const q = `Marvel Legends ${c.name} BAF piece ${selected.name}`;
       const path = journalPrice != null
-        ? `cheapest journal-logged path: <em>${escapeHtml(c.name)}</em> — your journal logs a sale at <strong>$${journalPrice.toFixed(2)}</strong>`
-        : `cheapest path: <em>${escapeHtml(c.name)}</em>${c.variant ? ` (${escapeHtml(c.variant)})` : ""} — no journal price, verify with solds`;
-      return `<li><strong>${escapeHtml(piece)}</strong> — ${path}. <a href="${soldSearchUrl(q)}" target="_blank" rel="noopener noreferrer">Check 90-day eBay solds ↗</a></li>`;
+        ? `cheapest journal-logged path: <em>${escapeHtml(c.name)}</em>, your journal logs a sale at <strong>$${journalPrice.toFixed(2)}</strong>`
+        : `cheapest path: <em>${escapeHtml(c.name)}</em>${c.variant ? ` (${escapeHtml(c.variant)})` : ""}, no journal price, verify with solds`;
+      return `<li><strong>${escapeHtml(piece)}</strong>, ${path}. <a href="${soldSearchUrl(q)}" target="_blank" rel="noopener noreferrer">Check 90-day eBay solds ↗</a></li>`;
     }).join("");
     const knownNote = plan.totalKnown > 0
-      ? `<p style="font-size:0.9rem;margin:var(--space-3) 0 0;"><strong>Known-path estimate: $${plan.totalKnown.toFixed(2)}</strong> across ${plan.legs.length - plan.unknownCount} of ${plan.legs.length} pieces — from your journal's sold prices, not market data.${plan.unknownCount ? ` ${plan.unknownCount} piece${plan.unknownCount === 1 ? "" : "s"} need${plan.unknownCount === 1 ? "s" : ""} research.` : ""}</p>`
-      : `<p style="font-size:0.9rem;margin:var(--space-3) 0 0;">No journal sales logged for these pieces yet — log sales in the <a href="journal.html">journal</a> and this plan prices itself from your own transactions.</p>`;
+      ? `<p style="font-size:0.9rem;margin:var(--space-3) 0 0;"><strong>Known-path estimate: $${plan.totalKnown.toFixed(2)}</strong> across ${plan.legs.length - plan.unknownCount} of ${plan.legs.length} pieces, from your journal's sold prices, not market data.${plan.unknownCount ? ` ${plan.unknownCount} piece${plan.unknownCount === 1 ? "" : "s"} need${plan.unknownCount === 1 ? "s" : ""} research.` : ""}</p>`
+      : `<p style="font-size:0.9rem;margin:var(--space-3) 0 0;">No journal sales logged for these pieces yet, log sales in the <a href="journal.html">journal</a> and this plan prices itself from your own transactions.</p>`;
     acq.innerHTML = `
-      <h3>Acquisition plan — ${missing.length} piece${missing.length === 1 ? "" : "s"} to go</h3>
+      <h3>Acquisition plan, ${missing.length} piece${missing.length === 1 ? "" : "s"} to go</h3>
       <ul>${items}</ul>
       ${knownNote}
-      <p style="font-size:0.85rem;color:var(--muted);margin:var(--space-3) 0 0;">Buy the figure, keep the piece: prioritize figures you want anyway, then the cheapest piece-carriers. Verify the variant carries the piece before buying — and authenticate first.</p>`;
+      <p style="font-size:0.85rem;color:var(--muted);margin:var(--space-3) 0 0;">Buy the figure, keep the piece: prioritize figures you want anyway, then the cheapest piece-carriers. Verify the variant carries the piece before buying, and authenticate first.</p>`;
     detailEl.appendChild(acq);
   } else {
     const done = document.createElement("div");
@@ -334,6 +334,6 @@ async function init() {
   }
 }
 
-/* Only auto-run on the BAF Planner page itself — other pages (quest-core)
+/* Only auto-run on the BAF Planner page itself, other pages (quest-core)
    import this module for buildBafs only. */
 if (listEl && detailEl) init();

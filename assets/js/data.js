@@ -1,4 +1,4 @@
-/* Data layer — loads the figure database once, exposes query helpers.
+/* Data layer, loads the figure database once, exposes query helpers.
    figId format: "<waveId>::<figureName>" (stable, derived from wave + name). */
 import { PATHS } from "./config.js";
 

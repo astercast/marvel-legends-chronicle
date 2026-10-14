@@ -1,10 +1,10 @@
-/* The Build Ledger — every Build-A-Figure in the line.
+/* The Build Ledger, every Build-A-Figure in the line.
    Every distinct build the catalog records, the waves that carried
    it, and the figures that carried its pieces: counted from the
    catalog itself, filed by the Archive Tour's era chapters. Piece-
    carrying figures and distinct piece labels are counted apart and
    never merged. Where the catalog records no piece assignments,
-   the page files the gap as a gap. No prices — a ledger of builds,
+   the page files the gap as a gap. No prices, a ledger of builds,
    not a market. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
@@ -49,8 +49,8 @@ async function main() {
       kpi("Builds catalogued", fmt(m.total), "one per distinct Build-A-Figure the catalog names"),
       kpi("Waves carrying a build", fmt(m.waveCount), `of ${fmt(catalog.waves.length)} waves in the archive`),
       kpi("Figures carrying a piece", fmt(m.carrierCount), `of ${fmt(m.figureCount)} figures in build waves`),
-      kpi("The first build", first ? `${first.firstYear}` : "—",
-        first ? `${first.name} — the Build-A-Figure arrives in ${first.firstYear}` : "no builds recorded"),
+      kpi("The first build", first ? `${first.firstYear}` : "n/a",
+        first ? `${first.name}, the Build-A-Figure arrives in ${first.firstYear}` : "no builds recorded"),
     ].join("");
 
     els.front.innerHTML = m.largest.length
@@ -59,7 +59,7 @@ async function main() {
 
     els.chapters.innerHTML = m.byChapter.map((c) => `
       <div class="db-chapter">
-        <div class="db-chapter-head"><h3>${escapeHtml(c.kicker)} — ${escapeHtml(c.title)}</h3><span class="db-chapter-count">${c.builds.length} builds</span></div>
+        <div class="db-chapter-head"><h3>${escapeHtml(c.kicker)}, ${escapeHtml(c.title)}</h3><span class="db-chapter-count">${c.builds.length} builds</span></div>
         ${c.builds.length
           ? `<ul class="db-rows">${c.builds.map(buildRow).join("")}</ul>`
           : `<p class="db-none">No build in the catalog begins in this chapter.</p>`}
@@ -77,7 +77,7 @@ async function main() {
         .map((w) => `<li class="db-row">
           <span class="db-year">${w.year}</span>
           <span class="db-name">${escapeHtml(w.baf)}</span>
-          <span class="db-fig">this wave's figures record no pieces — the build's pieces are recorded under its other wave</span>
+          <span class="db-fig">this wave's figures record no pieces, the build's pieces are recorded under its other wave</span>
           <span class="db-wave"><a href="waves/${escapeHtml(w.waveId)}.html">${escapeHtml(w.waveSeries)}</a></span>
           <span class="db-count">filed as recorded</span>
         </li>`),
@@ -87,7 +87,7 @@ async function main() {
       : `<p class="db-none">Every build in the catalog carries at least one recorded piece assignment.</p>`;
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The build ledger could not be read from the catalog. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The build ledger could not be read from the catalog. The archive itself is unaffected, try reloading the page.";
   }
 }
 

@@ -16,21 +16,21 @@ You collect Human Torch. 16 releases are catalogued from 2002 to 2026.
 
 ## Procedure
 
-1. Work the list chronologically — oldest first, they appreciate fastest:
-2.   - 2002 — Series 2: Human Torch
-  - 2002 — Series 2: Human Torch [No "4" on chest]
-  - 2004 — Box Set - Fantastic Four: Human Torch
-  - 2004 — Box Set - Fantastic Four: Human Torch [Translucent] (Box set exclusive)
-  - 2007 — Ronan the Accuser Wave: Human Torch
-  - 2007 — Icons Series 6: Human Torch
-  - 2007 — Icons Series 6: Human Torch [Phasing (transparent)]
-  - 2008 — Ares Wave (Walmart Exclusive): Human Torch (Walmart)
-  - 2008 — Ares Wave (Walmart Exclusive): Human Torch [Semi-translucent (Nova flame)] (Walmart)
-  - 2009 — 2-Packs Series 2: Human Torch
-  - 2017 — Store & Convention Exclusives: Human Torch (Walgreens)
-  - 2020 — Super-Skrull Wave: Human Torch
-  - 2021 — Store & Convention Exclusives: Human Torch
-  - 2022 — Store & Convention Exclusives: Human Torch (Hasbro Pulse)
+1. Work the list chronologically, oldest first, they appreciate fastest:
+2.   - 2002, Series 2: Human Torch
+  - 2002, Series 2: Human Torch [No "4" on chest]
+  - 2004, Box Set - Fantastic Four: Human Torch
+  - 2004, Box Set - Fantastic Four: Human Torch [Translucent] (Box set exclusive)
+  - 2007, Ronan the Accuser Wave: Human Torch
+  - 2007, Icons Series 6: Human Torch
+  - 2007, Icons Series 6: Human Torch [Phasing (transparent)]
+  - 2008, Ares Wave (Walmart Exclusive): Human Torch (Walmart)
+  - 2008, Ares Wave (Walmart Exclusive): Human Torch [Semi-translucent (Nova flame)] (Walmart)
+  - 2009, 2-Packs Series 2: Human Torch
+  - 2017, Store & Convention Exclusives: Human Torch (Walgreens)
+  - 2020, Super-Skrull Wave: Human Torch
+  - 2021, Store & Convention Exclusives: Human Torch
+  - 2022, Store & Convention Exclusives: Human Torch (Hasbro Pulse)
   - …and 2 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
@@ -47,4 +47,4 @@ Starting a Human Torch run? Grab the most recent mainline release first (cheapes
 ## Pitfalls
 
 - No completion rule = endless spending. Define 'complete' before you start.
-- Variant rabbit holes — some characters have 5+ releases of one sculpt.
+- Variant rabbit holes, some characters have 5+ releases of one sculpt.

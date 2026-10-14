@@ -1,4 +1,4 @@
-/* Retro line browser — retro-carded figures identified from the archive's
+/* Retro line browser, retro-carded figures identified from the archive's
    own figure notes. Retro status is never guessed: a figure is listed only
    when its notes or variant text mentions "retro". Line tags are parsed from
    the note text with ordered patterns; anything unmatched lands in
@@ -87,7 +87,7 @@ function render() {
   if (list.length > CAP) {
     const more = document.createElement("p");
     more.className = "chart-sub";
-    more.textContent = `Showing the first ${CAP} of ${list.length} — narrow the search or pick a line.`;
+    more.textContent = `Showing the first ${CAP} of ${list.length}, narrow the search or pick a line.`;
     els.grid.appendChild(more);
   }
   els.chips.querySelectorAll("[data-line]").forEach((c) => {
@@ -117,7 +117,7 @@ async function main() {
   els.coverage.innerHTML =
     `<strong>${allRetro.length}</strong> retro-carded figures identified from the archive's own notes · ` +
     `<strong>${lines.length}</strong> retro lines. ` +
-    `Retro status is never guessed — figures without a retro note aren't listed. ` +
+    `Retro status is never guessed, figures without a retro note aren't listed. ` +
     `Era context: <a href="encyclopedia.html#packaging">encyclopedia → packaging guide</a>.`;
 
   const frag = document.createDocumentFragment();

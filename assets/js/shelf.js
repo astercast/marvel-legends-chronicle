@@ -1,4 +1,4 @@
-/* Your Shelf — read-only dashboard over the existing owned/wanted tracker data.
+/* Your Shelf, read-only dashboard over the existing owned/wanted tracker data.
    Storage keys are the shared ones from config.js (mlc_owned_v1 / mlc_wanted_v1);
    this page never writes tracking data, it only aggregates it. */
 import { PATHS, STORE_KEYS } from "./config.js";
@@ -125,7 +125,7 @@ async function main() {
     <div class="baf-summary"><strong>${bafPct.toFixed(1)}%</strong> of BAF pieces owned · <strong>${bafsComplete}</strong> of ${bafs.length} BAFs complete</div>
     ${bar(bafPct)}
     ${topBafs.length ? `<ul class="baf-mini">${topBafs.map((b) => `<li><span>${escapeHtml(b.name)} <span class="muted">${b.year}</span></span><span class="count">${b.got}/${b.total}</span></li>`).join("")}</ul>
-    <p class="chart-sub">Finish them in the <a href="baf-planner.html">BAF Planner</a>.</p>` : `<p class="chart-sub">No BAF pieces owned yet — the <a href="baf-planner.html">BAF Planner</a> shows what you're missing.</p>`}`;
+    <p class="chart-sub">Finish them in the <a href="baf-planner.html">BAF Planner</a>.</p>` : `<p class="chart-sub">No BAF pieces owned yet, the <a href="baf-planner.html">BAF Planner</a> shows what you're missing.</p>`}`;
 
   /* Almost-there recommendations */
   renderComplete(figures, waves, ownedIds, byId);
@@ -134,7 +134,7 @@ async function main() {
 /* ---------- "Almost there" recommendations ----------
    Read-only over the user's tracker data: BAFs missing 1–2 pieces, waves
    past 50%, characters nearly complete. Missing pieces link out to eBay
-   solds via listings.js — no prices shown, just the search. */
+   solds via listings.js, no prices shown, just the search. */
 function baseName(n) {
   return n.replace(/\s*\(.*?\)\s*/g, "").trim();
 }
@@ -192,7 +192,7 @@ function renderComplete(figures, waves, ownedIds, byId) {
     cards.push(`<article class="card complete-card">
       <span class="complete-kicker">Wave · ${r.w.year} · ${escapeHtml(r.w.manufacturer)}</span>
       <h3><strong>${Math.round(r.pct * 100)}%</strong> of ${escapeHtml(r.w.series)}</h3>
-      <p class="miss-meta" style="margin:0 0 var(--space-3)">${r.got} of ${r.total} owned — ${r.total - r.got} to go.</p>
+      <p class="miss-meta" style="margin:0 0 var(--space-3)">${r.got} of ${r.total} owned, ${r.total - r.got} to go.</p>
       <a class="btn btn-sm" href="checklist.html">Checklist it</a>
     </article>`);
   }
@@ -215,14 +215,14 @@ function renderComplete(figures, waves, ownedIds, byId) {
     cards.push(`<article class="card complete-card">
       <span class="complete-kicker">Character run</span>
       <h3><strong>${Math.round(r.pct * 100)}%</strong> of every ${escapeHtml(r.name)}</h3>
-      <p class="miss-meta" style="margin:0 0 var(--space-3)">${r.got} of ${r.total} owned — ${r.total - r.got} to go.</p>
+      <p class="miss-meta" style="margin:0 0 var(--space-3)">${r.got} of ${r.total} owned, ${r.total - r.got} to go.</p>
       <a class="btn btn-sm" href="index.html">Hunt on the timeline</a>
     </article>`);
   }
 
   els.complete.innerHTML = `<h2>Almost there</h2>
     ${cards.length
-      ? `<p class="chart-sub">The closest finishes in your tracker — knock these out next.</p><div class="complete-grid">${cards.join("")}</div>`
+      ? `<p class="chart-sub">The closest finishes in your tracker, knock these out next.</p><div class="complete-grid">${cards.join("")}</div>`
       : `<p class="chart-sub">Nothing close yet. Mark more figures <strong>Owned</strong> on the timeline and your nearest completions will appear here.</p>`}`;
 }
 

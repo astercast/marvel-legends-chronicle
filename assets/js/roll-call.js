@@ -1,9 +1,9 @@
-/* The Roll Call — the returns census.
+/* The Roll Call, the returns census.
    Every distinct character in the catalog, called by how many
    figures the line gives them: the handful who anchor the line,
    and the hundreds who appear exactly once. Every count comes
-   from the catalog itself — figures per character, the bands
-   they fall in, the waves they span. No prices — a census of
+   from the catalog itself, figures per character, the bands
+   they fall in, the waves they span. No prices, a census of
    the roll, not a market. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
@@ -43,7 +43,7 @@ async function main() {
       kpi("Characters on the roll", fmt(m.characterCount), `across ${fmt(m.figureCount)} figures in the catalog`),
       kpi("Called exactly once", fmt(m.singletons.characters), "characters with a single figure to their name"),
       kpi("The returners", fmt(m.returners.characters), `characters holding ${fmt(m.returners.figures)} figures between them`),
-      kpi("Head of the roll", head ? escapeHtml(head.name) : "—",
+      kpi("Head of the roll", head ? escapeHtml(head.name) : "n/a",
         head ? `${fmt(head.count)} figures across ${fmt(head.waveCount)} waves` : "the roll is empty"),
     ].join("");
 
@@ -63,7 +63,7 @@ async function main() {
     const tailRows = [
       `<li class="db-row">
         <span class="db-name">The long tail</span>
-        <span class="db-fig">${fmt(m.singletons.characters)} characters appear exactly once — ${fmt(m.singletons.figures)} figures, one apiece</span>
+        <span class="db-fig">${fmt(m.singletons.characters)} characters appear exactly once, ${fmt(m.singletons.figures)} figures, one apiece</span>
         <span class="db-count">filed as recorded</span>
       </li>`,
       `<li class="db-row">
@@ -75,7 +75,7 @@ async function main() {
     els.tail.innerHTML = `<ul class="db-rows">${tailRows.join("")}</ul>`;
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The roll could not be called from the catalog. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The roll could not be called from the catalog. The archive itself is unaffected, try reloading the page.";
   }
 }
 

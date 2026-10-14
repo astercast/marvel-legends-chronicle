@@ -17,7 +17,7 @@ You want to build the Khonshu (Moon Knight) BAF from the 2022 Khonshu Wave wave.
 ## Procedure
 
 1. The BAF: **Khonshu (Moon Knight)** (2022, Khonshu Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Classic Loki → Left leg
   - [ ] He Who Remains → Head
   - [ ] Howard the Duck → Torso
@@ -26,7 +26,7 @@ You want to build the Khonshu (Moon Knight) BAF from the 2022 Khonshu Wave wave.
   - [ ] Zombie Scarlet Witch → Right leg
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Khonshu (Moon Knight) torso? Find which figure above carries it, che
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

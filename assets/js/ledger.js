@@ -1,15 +1,15 @@
-/* Collection Ledger — what you paid vs what it's worth.
+/* Collection Ledger, what you paid vs what it's worth.
    Storage: mlc_buys_v1 (purchases the user logs). Tracked values come from
    mlc_journal_v1 (sold-listing sightings). Every number shown here traces to
-   a user-logged entry — no scraped data, no invented prices. */
+   a user-logged entry, no scraped data, no invented prices. */
 import { STORE_KEYS } from "./config.js";
 import { loadData } from "./data.js";
 import { load, save } from "./store.js";
 import { escapeHtml } from "./figure-dialog.js";
 
 const CONDITIONS = {
-  "loose-complete": "Loose — complete",
-  "loose-incomplete": "Loose — incomplete",
+  "loose-complete": "Loose, complete",
+  "loose-incomplete": "Loose, incomplete",
   "mib": "Mint in box",
   "moc": "Mint on card",
   "graded": "Graded",
@@ -188,7 +188,7 @@ function renderLedger() {
   els.totGain.style.color = totalGain > 0 ? "var(--gold)" : totalGain < 0 ? "#ff8a8a" : "";
   els.ledgerNote.textContent = rows.length || unvalued.length
     ? `Cost basis from ${buys.length} logged ${buys.length === 1 ? "purchase" : "purchases"}. Tracked value from ${sightings.length} sold-listing ${sightings.length === 1 ? "sighting" : "sightings"} in your price journal (median per figure, all conditions). Gain/loss = tracked value − what you paid.`
-    : "Log purchases above — and sold sightings in the price journal — and your ledger appears here.";
+    : "Log purchases above, and sold sightings in the price journal, and your ledger appears here.";
   els.breakdown.innerHTML = rows.map((r) => `
     <tr>
       <td>${escapeHtml(r.name)}<br><span class="muted" style="font-size:0.78rem">${escapeHtml(r.wave)}${r.n > 1 ? ` · ${r.n} purchases` : ""}</span></td>
@@ -197,7 +197,7 @@ function renderLedger() {
       <td class="num" style="color:${r.gain > 0 ? "var(--gold)" : r.gain < 0 ? "#ff8a8a" : ""}">${signed(r.gain)}</td>
     </tr>`).join("");
   els.unvalued.textContent = unvalued.length
-    ? `No sold sightings yet (${unvalued.length} ${unvalued.length === 1 ? "figure" : "figures"}, ${money(unvalued.reduce((s, u) => s + u.paid, 0))} paid): ${unvalued.slice(0, 12).map((u) => u.name).join(", ")}${unvalued.length > 12 ? `, +${unvalued.length - 12} more` : ""} — log eBay solds in the price journal to value them.`
+    ? `No sold sightings yet (${unvalued.length} ${unvalued.length === 1 ? "figure" : "figures"}, ${money(unvalued.reduce((s, u) => s + u.paid, 0))} paid): ${unvalued.slice(0, 12).map((u) => u.name).join(", ")}${unvalued.length > 12 ? `, +${unvalued.length - 12} more` : ""}, log eBay solds in the price journal to value them.`
     : "";
 }
 
@@ -237,7 +237,7 @@ function importJson(file) {
       renderLedger();
       els.error.textContent = "";
     } catch {
-      els.error.textContent = "Import failed — that file isn't a valid purchase-log export.";
+      els.error.textContent = "Import failed, that file isn't a valid purchase-log export.";
     }
   };
   reader.readAsText(file);
@@ -257,7 +257,7 @@ async function main() {
   const frag = document.createDocumentFragment();
   labelToFig = new Map();
   for (const f of figures) {
-    const label = `${f.name} — ${f.waveSeries} (${f.year})`;
+    const label = `${f.name}, ${f.waveSeries} (${f.year})`;
     if (labelToFig.has(label)) continue;
     labelToFig.set(label, f);
     const opt = document.createElement("option");
@@ -302,10 +302,10 @@ async function main() {
       els.cancelEdit.hidden = false;
       els.error.textContent = "";
       els.figure.focus();
-      document.getElementById("buy-heading").scrollIntoView({ behavior: "smooth", block: "center" });
+      document.getElementById("buy-heading").scrollIntoView({ block: "center" });
     } else if (delBtn) {
       const entry = getBuys().find((x) => x.id === delBtn.dataset.del);
-      if (entry && confirm(`Delete this purchase?\n${entry.name} — $${entry.price} (${entry.date})`)) {
+      if (entry && confirm(`Delete this purchase?\n${entry.name}, $${entry.price} (${entry.date})`)) {
         setBuys(getBuys().filter((x) => x.id !== entry.id));
         renderList();
         renderLedger();

@@ -1,6 +1,6 @@
-/* Figure compare (VS mode) — pick 2–4 figures from the real archive and compare
+/* Figure compare (VS mode), pick 2–4 figures from the real archive and compare
    side by side: release info, archive notes, BAF/exclusive/variant, reported
-   price bands (w25 reported signals — never invented), rarity signals (w23),
+   price bands (w25 reported signals, never invented), rarity signals (w23),
    KO-spotter notes, documented upgrade paths, and honest "which to buy"
    guidance. No winner is ever declared.
 
@@ -58,7 +58,7 @@ function badges(f) {
 function priceCell(f) {
   const p = profFor(f);
   const sigs = p?.priceSignals ?? [];
-  if (!sigs.length) return "No reported signal — check eBay solds";
+  if (!sigs.length) return "No reported signal, check eBay solds";
   return sigs.map((s) =>
     `<div class="cmp-signal"><strong>${escapeHtml(s.display)}</strong><br>` +
     `<span class="chart-sub">${escapeHtml(s.label)} · ${escapeHtml(s.kind.replace(/-/g, " "))} · ${escapeHtml(s.source)}` +
@@ -68,14 +68,14 @@ function priceCell(f) {
 
 function rarityCell(f) {
   const r = profFor(f)?.rarity;
-  if (!r) return "—";
+  if (!r) return "Not recorded";
   return `<a href="rarity.html#tier-${escapeHtml(r.tier)}">${escapeHtml(r.tierName)}</a>` +
     (r.questAchievement ? `<br><span class="chart-sub">Quest: ${escapeHtml(r.questAchievement)}</span>` : "");
 }
 
 function koCell(f) {
   const k = profFor(f)?.koWatch;
-  if (!k) return "—";
+  if (!k) return "None recorded";
   return `⚠️ ${escapeHtml(k.note)} <a href="auth-wizard.html">Auth Wizard →</a>`;
 }
 
@@ -96,15 +96,15 @@ function attrRows(f) {
   return [
     ["Release", `${escapeHtml(f.waveSeries)} (${f.year}) · ${escapeHtml(f.manufacturer)}`],
     ["Deep link", `<a href="${escapeHtml(deepLink)}">Open in the wave archive →</a>`],
-    ["Archive notes", f.notes ? escapeHtml(f.notes) : "—"],
-    ["BAF piece", f.bafPiece ? escapeHtml(f.bafPiece) : "—"],
-    ["Exclusive", f.exclusive ? escapeHtml(f.exclusive) : "—"],
-    ["Variant", f.variant ? escapeHtml(f.variant) : "—"],
+    ["Archive notes", f.notes ? escapeHtml(f.notes) : "Not recorded"],
+    ["BAF piece", f.bafPiece ? escapeHtml(f.bafPiece) : "Not recorded"],
+    ["Exclusive", f.exclusive ? escapeHtml(f.exclusive) : "Not recorded"],
+    ["Variant", f.variant ? escapeHtml(f.variant) : "Not recorded"],
     ["Reported price band", priceCell(f)],
     ["Rarity signal", rarityCell(f)],
     ["KO watch", koCell(f)],
-    ["Articulation", `Not documented in the archive — <a href="${reviewSearchUrl(f.name, f.variant)}" target="_blank" rel="noopener noreferrer">video reviews</a> cover it`],
-    ["Accessories / pack-ins", `Not documented as a separate field — pack-in notes appear in Archive notes above when the archive records them`],
+    ["Articulation", `Not documented in the archive, <a href="${reviewSearchUrl(f.name, f.variant)}" target="_blank" rel="noopener noreferrer">video reviews</a> cover it`],
+    ["Accessories / pack-ins", `Not documented as a separate field, pack-in notes appear in Archive notes above when the archive records them`],
     ["Upgrade path", upgradeCell(f)],
   ];
 }
@@ -121,7 +121,7 @@ function render() {
         <span class="slot-wave">${escapeHtml(f.waveSeries)} · ${f.year}</span>
         <button type="button" class="btn btn-sm btn-ghost" data-remove="${escapeHtml(f.id)}" aria-label="Remove ${escapeHtml(f.name)} from comparison">✕</button>`;
     } else {
-      slot.innerHTML = `<span class="slot-empty">Slot ${i + 1} — search below</span>`;
+      slot.innerHTML = `<span class="slot-empty">Slot ${i + 1}, search below</span>`;
     }
     els.slots.appendChild(slot);
   }
@@ -159,7 +159,7 @@ function render() {
     </article>`;
   }).join("");
 
-  /* Table — highlight rows where values differ */
+  /* Table, highlight rows where values differ */
   const firstRows = attrRows(selected[0]);
   const rows = firstRows.map(([label], i) => {
     const vals = selected.map((f) => attrRows(f)[i][1]);
@@ -168,23 +168,23 @@ function render() {
   }).join("");
   els.table.innerHTML = `
     <table class="cmp-table">
-      <caption>Side-by-side comparison — highlighted rows differ between figures. No winner declared; the data is the verdict.</caption>
+      <caption>Side-by-side comparison, highlighted rows differ between figures. No winner declared; the data is the verdict.</caption>
       <thead><tr><th scope="col"><span class="visually-hidden">Attribute</span></th>${selected.map((f) => `<th scope="col">${escapeHtml(f.name)}</th>`).join("")}</tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
 
-  /* Guidance — honest, data-grounded, never a winner */
+  /* Guidance, honest, data-grounded, never a winner */
   const guide = guidanceFor(selected, profiles ?? new Map());
   els.guide.innerHTML = `
     <h2>Reading the data</h2>
-    <p class="chart-sub">Which to buy, grounded in what's actually documented — no hype, no winner.</p>
+    <p class="chart-sub">Which to buy, grounded in what's actually documented, no hype, no winner.</p>
     <ul class="cmp-guide-list">${guide.map((g) => `<li class="cmp-guide-${g.kind}">${g.html}</li>`).join("")}</ul>`;
 }
 
 function renderResults(list) {
   els.results.innerHTML = "";
   if (!list.length) {
-    els.results.innerHTML = `<li class="chart-sub">No matches — try a character, wave, or BAF name.</li>`;
+    els.results.innerHTML = `<li class="chart-sub">No matches, try a character, wave, or BAF name.</li>`;
     return;
   }
   for (const f of list.slice(0, 12)) {
@@ -221,7 +221,7 @@ async function loadProfiles() {
     }
     if (selected.length >= 2) render(); // enrich rows once profiles land
   } catch {
-    /* enrichment is progressive — the archive fields render without it */
+    /* enrichment is progressive, the archive fields render without it */
   }
 }
 
@@ -256,7 +256,7 @@ async function main() {
   }
   if (unknown.length) {
     els.notice.hidden = false;
-    els.notice.innerHTML = `<p>Ignored ${unknown.length === 1 ? "an unknown figure id" : `${unknown.length} unknown figure ids`} from the link — the archive has no such figure.</p>`;
+    els.notice.innerHTML = `<p>Ignored ${unknown.length === 1 ? "an unknown figure id" : `${unknown.length} unknown figure ids`} from the link, the archive has no such figure.</p>`;
   }
   render();
   if (selected.length) announce(`${selected.length} figures loaded from the compare link.`);
@@ -291,7 +291,7 @@ async function main() {
   });
   els.share.addEventListener("click", copyLink);
 
-  loadProfiles(); // lazy enrichment — archive fields render immediately
+  loadProfiles(); // lazy enrichment, archive fields render immediately
 }
 
 main();

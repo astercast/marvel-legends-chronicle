@@ -1,12 +1,12 @@
-/* build-ledger-model.js — the pure math behind The Build Ledger
+/* build-ledger-model.js, the pure math behind The Build Ledger
    (build-ledger.html). No DOM, no storage: given the catalog's flat
    figure list, it files every Build-A-Figure the line ever offered
-   — one build per distinct BAF name the catalog records — with the
+  , one build per distinct BAF name the catalog records, with the
    waves that carried it and the figures that carried its pieces.
 
    WHAT COUNTS AS A BUILD: a distinct value of the catalog's own
    waveBaf field (the same field the wave pages and figures carry,
-   cross-checked in the test suite against waves.json's baf field —
+   cross-checked in the test suite against waves.json's baf field,
    the two agree on every wave). Builds are keyed by that name and
    nothing else is normalized: "Fin Fang Foom" was split across two
    2008 waves, so it is one build carried by two waves, and the
@@ -15,16 +15,16 @@
    THE COUNTING RULES (deterministic, catalog data only, printed on
    the page): a figure "carries a piece" when the catalog records a
    bafPiece for it. The ledger counts piece-carrying figures and,
-   separately, the distinct piece labels recorded — the two are not
+   separately, the distinct piece labels recorded, the two are not
    the same number (two figures can carry the same labelled piece,
    as variant carriers do), and the ledger never merges them.
    A build's era chapter is the Archive Tour chapter of its first
-   year — the model imports the tour's CHAPTERS via the debut
+   year, the model imports the tour's CHAPTERS via the debut
    ledger's chapter rule, so the pages cannot disagree.
 
    HONESTY: no prices anywhere (a build ledger is the record, not
    the market). Where the catalog records no piece assignments at
-   all — the Bonebreaker build, and Fin Fang Foom's second wave —
+   all, the Bonebreaker build, and Fin Fang Foom's second wave,
    the ledger files the gap as a gap: counted, named, and never
    filled in by hand. */
 import { CHAPTERS } from "./archive-tour-model.js";
@@ -33,7 +33,7 @@ import { chapterForYear } from "./debuts-model.js";
 /* figures: the catalog's flat figure list (data/v1/figures.json shape).
    Returns { total, waveCount, figureCount, carrierCount, span,
              builds, largest, byChapter, unrecordedBuilds,
-             unrecordedWaves } — `builds` sorted by (first year,
+             unrecordedWaves }, `builds` sorted by (first year,
    catalog order); `largest` sorted by piece-carrying figures desc
    (ties: earlier first year, then name); `byChapter` partitions
    the builds by the era chapter of each build's first year. */

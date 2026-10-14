@@ -7,7 +7,7 @@ description: Turn the pre-order tracker and radar into a timed hunt plan: what's
 
 ## Use when
 
-You want to know what's coming, when pre-orders open, and where to look — this month or next.
+You want to know what's coming, when pre-orders open, and where to look, this month or next.
 
 ## Inputs
 
@@ -16,16 +16,16 @@ You want to know what's coming, when pre-orders open, and where to look — this
 
 ## Procedure
 
-1. Load `data/v1/preorders.json` — 23 researched upcoming releases (observed 2026-10-12). Each item: `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact YYYY-MM-DD when reported, `null` when unreported — never invented), `releaseWindow`, `price` (announced MSRP at reveal, never a market price), `retailers` (retailer search-pattern ids), `sources` (hobby-press links), `windowResult` (past-window outcome: `as-announced` | `retailers-partial` | `delayed` | `missed` | `unscored`).
+1. Load `data/v1/preorders.json`, 23 researched upcoming releases (observed 2026-10-12). Each item: `status` (`preorder`/`revealed`/`available`), `preorderDate` (exact YYYY-MM-DD when reported, `null` when unreported, never invented), `releaseWindow`, `price` (announced MSRP at reveal, never a market price), `retailers` (retailer search-pattern ids), `sources` (hobby-press links), `windowResult` (past-window outcome: `as-announced` | `retailers-partial` | `delayed` | `missed` | `unscored`).
 2. Sort by status then date: exact-`preorderDate` items first ('pre-order opens in N days'), then `revealed` items by `releaseWindow`, then `available` items to buy now.
-3. Cross-check the radar (`radar.html`) for newly spotted items not yet in the tracker — radar cards are research notes; the tracker is the canonical schedule.
-4. For each target, use the item's `query` with the retailer search patterns to find listings — the archive links search pages, never product URLs, so links don't rot.
-5. Cite the tracker's own record honestly: `windowResult` says whether past pre-order windows fired as announced — `unscored` means no outcome researched yet, not a pass.
+3. Cross-check the radar (`radar.html`) for newly spotted items not yet in the tracker, radar cards are research notes; the tracker is the canonical schedule.
+4. For each target, use the item's `query` with the retailer search patterns to find listings, the archive links search pages, never product URLs, so links don't rot.
+5. Cite the tracker's own record honestly: `windowResult` says whether past pre-order windows fired as announced, `unscored` means no outcome researched yet, not a pass.
 6. Report what you know vs. don't: exact-date items are actionable, season-only items are watchlist material, `null` preorderDate means no date has been reported yet.
 
 ## Worked example
 
-Asked 'what should I pre-order this month': Mini Comics Wave 3 (pre-order opened 2026-10-06, $27.99 MSRP) is available now via retailer search; the X-Men '97 retro wave pre-order opens 2026-10-21 — set the reminder; the Avengers: Doomsday wave (Fall 2026, revealed) goes on the watchlist.
+Asked 'what should I pre-order this month': Mini Comics Wave 3 (pre-order opened 2026-10-06, $27.99 MSRP) is available now via retailer search; the X-Men '97 retro wave pre-order opens 2026-10-21, set the reminder; the Avengers: Doomsday wave (Fall 2026, revealed) goes on the watchlist.
 
 ## API references
 
@@ -33,5 +33,5 @@ Asked 'what should I pre-order this month': Mini Comics Wave 3 (pre-order opened
 
 ## Pitfalls
 
-- Treating `releaseWindow` as a pre-order date — only `preorderDate` is a real date; everything else is a watch.
-- Quoting `price` as market value — it's the announced MSRP at reveal, not what the item is worth now.
+- Treating `releaseWindow` as a pre-order date, only `preorderDate` is a real date; everything else is a watch.
+- Quoting `price` as market value, it's the announced MSRP at reveal, not what the item is worth now.

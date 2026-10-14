@@ -4,7 +4,7 @@
      twitter:image), with the packet's 1200x630 dimensions declared
    - og:title mirrors the page's own <title>; og:description mirrors
      its meta description (no invented copy)
-   - theme-color is the site's own --bg token value (#0d0c10)
+   - theme-color is the site's own --bg token value (#FAF6EC, Paper)
    - the favicon set is linked, and the files exist (the OG card's
      PNG header really is 1200x630)
    - rel="canonical" is absolute, self-referential, cleanUrls form —
@@ -53,7 +53,7 @@ suite("placement — the head block on every page", () => {
       assert(html.includes(`name="twitter:image" content="${OG}"`), `${rel}: absolute twitter:image`);
       assert(html.includes('property="og:image:width" content="1200"'), `${rel}: og width`);
       assert(html.includes('property="og:image:height" content="630"'), `${rel}: og height`);
-      assert(html.includes('<meta name="theme-color" content="#0d0c10">'), `${rel}: theme-color is the --bg token`);
+      assert(html.includes('<meta name="theme-color" content="#FAF6EC">'), `${rel}: theme-color is the --bg token`);
       assert(html.includes('<link rel="icon" href="/favicon.ico" sizes="48x48">'), `${rel}: favicon.ico`);
       assert(html.includes('<link rel="icon" href="/favicon.svg" type="image/svg+xml">'), `${rel}: favicon.svg`);
       assert(html.includes('<link rel="apple-touch-icon" href="/apple-touch-icon.png">'), `${rel}: apple-touch-icon`);

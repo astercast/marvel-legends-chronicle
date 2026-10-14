@@ -1,4 +1,4 @@
-/* "Copy my quest" export — the shareable quest-card text shared by Grail Quest
+/* "Copy my quest" export, the shareable quest-card text shared by Grail Quest
    and the Showcase. Pure function: every number comes from the caller's
    tracker/archive data; nothing is invented.
    input: {
@@ -15,7 +15,7 @@ export function buildQuestShareText({
 }) {
   const ach = Array.isArray(achievements) ? achievements : [];
   const lines = [
-    `🏆 My Marvel Legends Grail Quest — ${level.title} (Level ${level.level + 1}, ${level.xp} XP)`,
+    `🏆 My Marvel Legends Grail Quest, ${level.title} (Level ${level.level + 1}, ${level.xp} XP)`,
   ];
   let progress = `${ownedCount} figures owned`;
   if (archiveCount && archiveCount > 0) {
@@ -35,14 +35,14 @@ export function buildQuestShareText({
   if (recs) {
     const next = [];
     if (recs.baf) {
-      next.push(`Closest BAF: ${recs.baf.title} — ${recs.baf.missingCount} to go`);
+      next.push(`Closest BAF: ${recs.baf.title}, ${recs.baf.missingCount} to go`);
     }
     if (recs.cheapPiece) {
       next.push(`Cheapest gap-fill: ${recs.cheapPiece.fig.name} (fills: ${recs.cheapPiece.quest.title})`);
     }
     if (recs.grail) {
       const name = recs.grail.entry.name ?? "watchlist item";
-      const price = recs.grail.price != null ? ` — reported as low as $${recs.grail.price}` : "";
+      const price = recs.grail.price != null ? `, reported as low as $${recs.grail.price}` : "";
       next.push(`Watchlist grail: ${name}${price}`);
     }
     if (next.length) {
@@ -54,6 +54,6 @@ export function buildQuestShareText({
   if (latestAchievement) {
     lines.push(`🎖️ Latest achievement: ${latestAchievement.icon} ${latestAchievement.name}`);
   }
-  lines.push("Tracked with the Marvel Legends Chronicle — Grail Quest.");
+  lines.push("Tracked with the Marvel Legends Chronicle, Grail Quest.");
   return lines.join("\n");
 }

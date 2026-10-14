@@ -1,6 +1,6 @@
-/* Price Journal — personal sold-price log.
+/* Price Journal, personal sold-price log.
    Storage: mlc_journal_v1 (array of entries). Every value shown on this page
-   is computed from the user's own logged entries — no scraped data, no
+   is computed from the user's own logged entries, no scraped data, no
    invented prices. */
 import { PATHS, STORE_KEYS } from "./config.js";
 import { loadData } from "./data.js";
@@ -10,8 +10,8 @@ import { soldSearchUrl } from "./listings.js";
 import { entriesForFigure, trendStats, sparklineSVG, directionBadge } from "./price-trends.js";
 
 const CONDITIONS = {
-  "loose-complete": "Loose — complete",
-  "loose-incomplete": "Loose — incomplete",
+  "loose-complete": "Loose, complete",
+  "loose-incomplete": "Loose, incomplete",
   "mib": "Mint in box",
   "moc": "Mint on card",
   "graded": "Graded",
@@ -173,7 +173,7 @@ function renderValue(figures) {
   els.total.textContent = money(total);
   els.valueNote.textContent = rows.length
     ? `Based on ${entries.length} logged ${entries.length === 1 ? "entry" : "entries"} across ${rows.length} of your ${ownedIds.size} owned figures · median per figure${cond === "all" ? "" : ` · ${CONDITIONS[cond]}`}.`
-    : "Log sold listings above and mark figures Owned on the timeline — your tracked value appears here.";
+    : "Log sold listings above and mark figures Owned on the timeline, your tracked value appears here.";
   els.breakdown.innerHTML = rows.map((r) => `
     <tr>
       <td>${escapeHtml(r.fig.name)}<br><span class="muted" style="font-size:0.78rem">${escapeHtml(r.fig.waveSeries)} (${r.fig.year})</span></td>
@@ -183,13 +183,13 @@ function renderValue(figures) {
       <td><span class="src-links">${r.urls.map((u, i) => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">sale ${i + 1} ↗</a>`).join("")}${r.more ? `<span class="muted">+${r.more}</span>` : ""}</span></td>
     </tr>`).join("");
   els.unpriced.textContent = unpriced.length
-    ? `Unpriced owned figures (${unpriced.length}): ${unpriced.slice(0, 12).map((f) => f.name).join(", ")}${unpriced.length > 12 ? `, +${unpriced.length - 12} more` : ""} — valued at $0 until you log a sale.`
+    ? `Unpriced owned figures (${unpriced.length}): ${unpriced.slice(0, 12).map((f) => f.name).join(", ")}${unpriced.length > 12 ? `, +${unpriced.length - 12} more` : ""}, valued at $0 until you log a sale.`
     : "";
 }
 
 /* ---------- price trends ----------
    Figures with 3+ logged sales, ranked by absolute movement. Every number
-   comes from the user's own entries — labeled as such, never a market index. */
+   comes from the user's own entries, labeled as such, never a market index. */
 function renderTrends(figures) {
   const entries = getEntries();
   // Group entries per figure: matched archive figures by id, free-text names by name.
@@ -234,7 +234,7 @@ function renderTrends(figures) {
         <span class="entry-date">${r.trend.n} logged sales · ${escapeHtml(r.trend.from)} → ${escapeHtml(r.trend.to)}</span>
         <span class="entry-price">${r.trend.changePct >= 0 ? "+" : ""}${r.trend.changePct.toFixed(0)}%</span>
       </div>
-      <p class="link-note" style="margin:0">From your ${r.trend.n} logged sales — not a market index.</p>
+      <p class="link-note" style="margin:0">From your ${r.trend.n} logged sales, not a market index.</p>
     </li>`).join("") + `</ul>`;
 }
 
@@ -275,7 +275,7 @@ function importJson(file) {
       renderTrends(window.__figures);
       els.error.textContent = "";
     } catch {
-      els.error.textContent = "Import failed — that file isn't a valid journal export.";
+      els.error.textContent = "Import failed, that file isn't a valid journal export.";
     }
   };
   reader.readAsText(file);
@@ -293,11 +293,11 @@ async function main() {
   }
   window.__figures = figures;
 
-  // Datalist for figure matching: "Name — Series (Year)"
+  // Datalist for figure matching: "Name, Series (Year)"
   const frag = document.createDocumentFragment();
   labelToFig = new Map();
   for (const f of figures) {
-    const label = `${f.name} — ${f.waveSeries} (${f.year})`;
+    const label = `${f.name}, ${f.waveSeries} (${f.year})`;
     if (labelToFig.has(label)) continue;
     labelToFig.set(label, f);
     const opt = document.createElement("option");
@@ -343,10 +343,10 @@ async function main() {
       els.cancelEdit.hidden = false;
       els.error.textContent = "";
       els.figure.focus();
-      document.getElementById("log-heading").scrollIntoView({ behavior: "smooth", block: "center" });
+      document.getElementById("log-heading").scrollIntoView({ block: "center" });
     } else if (delBtn) {
       const entry = getEntries().find((x) => x.id === delBtn.dataset.del);
-      if (entry && confirm(`Delete this entry?\n${entry.name} — $${entry.price} (${entry.date})`)) {
+      if (entry && confirm(`Delete this entry?\n${entry.name}, $${entry.price} (${entry.date})`)) {
         setEntries(getEntries().filter((x) => x.id !== entry.id));
         renderList();
         renderValue(figures);

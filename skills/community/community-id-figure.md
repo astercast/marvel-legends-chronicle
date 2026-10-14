@@ -18,7 +18,7 @@ Mystery figures, lot finds, childhood toys.
 1. Note: costume details, accessories, articulation, base/stand, copyright stamps.
 2. Search the Chronicle by character, then filter by year.
 3. Copyright stamp year + sculpt style narrows it to a wave.
-4. Ask the community with the details you gathered — ID posts get fast answers.
+4. Ask the community with the details you gathered, ID posts get fast answers.
 
 ## Worked example
 
@@ -30,4 +30,4 @@ Mystery figures, lot finds, childhood toys.
 
 ## Pitfalls
 
-- 'It's Spider-Man, which one?' — details or it didn't happen.
+- 'It's Spider-Man, which one?', details or it didn't happen.

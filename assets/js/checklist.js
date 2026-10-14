@@ -1,4 +1,4 @@
-/* Printable checklist — renders mlc_owned_v1 / mlc_wanted_v1 as a paper-ready,
+/* Printable checklist, renders mlc_owned_v1 / mlc_wanted_v1 as a paper-ready,
    wave-grouped checklist. Checkboxes sync with the shared tracker. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
@@ -78,7 +78,7 @@ function render() {
       const block = document.createElement("div");
       block.className = "check-wave";
       const head = document.createElement("h3");
-      head.textContent = `${wave.series}${wave.baf ? ` — BAF: ${wave.baf}` : ""}`;
+      head.textContent = `${wave.series}${wave.baf ? `, BAF: ${wave.baf}` : ""}`;
       const ul = document.createElement("ul");
       ul.className = "check-list";
       for (const f of figs) {
@@ -93,7 +93,7 @@ function render() {
   }
 
   if (!shown) {
-    els.list.innerHTML = `<div class="empty-state"><p>Nothing matches. Try a different filter — or track some figures on the <a href="index.html">timeline</a> first.</p></div>`;
+    els.list.innerHTML = `<div class="empty-state"><p>Nothing matches. Try a different filter, or track some figures on the <a href="index.html">timeline</a> first.</p></div>`;
   }
   updateSummary(shown, ownedShown);
 }

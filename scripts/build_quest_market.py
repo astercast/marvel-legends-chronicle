@@ -2,7 +2,7 @@
 """Build the quest-market endpoint from the editorial market-intel source.
 
 Reads data/quest-market.json (the machine-readable mirror of the 2026 Market
-Briefing research — every number already published on the Chronicle), validates
+Briefing research, every number already published on the Chronicle), validates
 it hard, and writes:
   data/v1/quest-market.json          (API envelope; "tiers" is the first list,
                                       so the manifest-driven validator takes
@@ -97,7 +97,7 @@ def main():
     if not doom_signals:
         fail("white-Doom sold-band signal missing from data/price-signals.json")
     if not any(s["low"] == 115 and s["high"] == 200 for s in doom_signals):
-        fail("white-Doom band no longer matches data/price-signals.json — fix one of them, never both silently")
+        fail("white-Doom band no longer matches data/price-signals.json, fix one of them, never both silently")
 
     # --- launch-curve cross-checks ---
     curves = {c["figId"]: c for c in load(ROOT / "data" / "launch-curves.json")["curves"]}
@@ -194,7 +194,7 @@ def main():
         },
     }, indent=2) + "\n")
 
-    print(f"build_quest_market: OK — {len(tier_records)} tiers, envelope -> {V1}")
+    print(f"build_quest_market: OK, {len(tier_records)} tiers, envelope -> {V1}")
 
 
 if __name__ == "__main__":

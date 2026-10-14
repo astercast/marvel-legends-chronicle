@@ -17,12 +17,12 @@ Buying, selling, or cataloguing variants.
 
 1. Check the Chronicle entry's variant notes first.
 2. Deco vs sculpt: repaints are common, resculpts are the valuable ones.
-3. Packaging variants: same figure, different card — decide if you care.
+3. Packaging variants: same figure, different card, decide if you care.
 4. Photograph the differences for your records.
 
 ## Worked example
 
-Two Wolverines, different belt paint — deco variant, note it, move on.
+Two Wolverines, different belt paint, deco variant, note it, move on.
 
 ## Data references
 

@@ -7,7 +7,7 @@ Single source of truth for every nav surface. Imported by:
   - scripts/build_characters.py (66 character pages)
 All three must import from here, never redefine these lists locally.
 
-EXTREME MAKEOVER (2026-10-12): the primary nav is the front desk —
+EXTREME MAKEOVER (2026-10-12): the primary nav is the front desk,
 six doors, not forty-four. The full Index of Halls lives behind the
 directory button (a real <template> injected into every page, opened
 in the shared modal by assets/js/vault.js). The footer stays the full

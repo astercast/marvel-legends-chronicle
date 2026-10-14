@@ -17,8 +17,8 @@ You're considering buying, selling, or hunting the Black Widow + Winter Soldier 
 ## Procedure
 
 1. Why it matters: Comic-costume variant of the movie 2-pack; store-exclusive rarity.
-2. Price evidence: ~$300 (UNVERIFIED — treat as collector lore, not market data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+2. Price evidence: ~$300 (UNVERIFIED, treat as collector lore, not market data).
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a Black Widow + Winter Soldier TRU variant 2-pack: run the bootle
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

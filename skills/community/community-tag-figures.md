@@ -15,7 +15,7 @@ Every figure-related post.
 
 ## Procedure
 
-1. Tag the exact figure — tags link to the entry with wave, year, and price context.
+1. Tag the exact figure, tags link to the entry with wave, year, and price context.
 2. Tag the BAF too when showing a completed build.
 3. Hashtags for discovery: #marvellegends + character tag.
 
@@ -29,4 +29,4 @@ Post tags: [Retro Spider-Man] #marvellegends #spiderman
 
 ## Pitfalls
 
-- Wrong-variant tags — check the entry before tagging.
+- Wrong-variant tags, check the entry before tagging.

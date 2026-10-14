@@ -17,7 +17,7 @@ You want to build the Ultimate Green Goblin BAF from the 2014 Ultimate Green Gob
 ## Procedure
 
 1. The BAF: **Ultimate Green Goblin** (2014, Ultimate Green Goblin Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Black Cat → Torso
   - [ ] Carnage → Head
   - [ ] Electro → Left arm
@@ -26,7 +26,7 @@ You want to build the Ultimate Green Goblin BAF from the 2014 Ultimate Green Gob
   - [ ] Ultimate Beetle → Left leg
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Ultimate Green Goblin torso? Find which figure above carries it, che
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

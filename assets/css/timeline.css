@@ -194,8 +194,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #7ea8d8; /* steel blue — the watch shelf's marker */
-  box-shadow: 0 0 8px rgba(126, 168, 216, 0.8);
+  background: var(--ink); /* the watch shelf's marker: an ink dot, no glow */
+  box-shadow: 0 0 0 2px var(--bg);
 }
 
 .search-results-meta {

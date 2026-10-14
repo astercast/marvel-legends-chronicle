@@ -1,8 +1,11 @@
-/* vault.js — Collector's Vault identity behaviors (wave 33).
+/* vault.js, the catalogue's shared behaviors.
    Classic script, loaded with defer on every page (hand + generated).
-   Reduced-motion-first: reveal + sheen only run when
-   (a) the OS reports no-preference, and (b) the visitor hasn't set the
-   manual reduce toggle (data-motion="reduce"). Still state is default. */
+   Under the light system the motion estate is the seal press and
+   hover transitions only: the scroll reveals and the vitrine sheen
+   of the dark build are REMOVED (their CSS went with them; nothing
+   here hides, reveals, or gleams). What remains: the manual motion
+   toggle (which gates the few transitions left) and the Index of
+   Halls directory. Still state is the default everywhere. */
 (function () {
   "use strict";
 
@@ -72,60 +75,6 @@
     }
   }
 
-  /* --- Scroll reveals: [data-reveal] elements start finished; JS adds the
-         hidden state only when motion is allowed, so no-JS/no-motion readers
-         always see the content. --- */
-  function initReveals() {
-    if (!("IntersectionObserver" in window)) return;
-    var targets = document.querySelectorAll(
-      ".page-head, .stat, .card, .wave-baf-callout, .placard, .fig-list > .fig, .release-list > .release"
-    );
-    if (!targets.length) return;
-    targets.forEach(function (el) { el.setAttribute("data-reveal", ""); });
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-    // Stagger within each parent's group (multiples of 0.05s, capped).
-    var groups = new Map();
-    targets.forEach(function (el) {
-      var key = el.parentNode;
-      var n = groups.get(key) || 0;
-      el.style.setProperty("--rd", Math.min(n * 0.05, 0.3).toFixed(2) + "s");
-      groups.set(key, n + 1);
-      io.observe(el);
-    });
-    // Elements already in view on load still animate in once.
-  }
-
-  /* --- Vitrine sheen: pointer-tracked glass highlight on placards/cards.
-         rAF-throttled; touch pointers ignored; never runs under reduce. --- */
-  function initSheen() {
-    if (!window.matchMedia || !window.matchMedia("(pointer: fine)").matches) return;
-    var pending = null;
-    function onMove(ev) {
-      var el = ev.currentTarget;
-      if (pending) return;
-      pending = requestAnimationFrame(function () {
-        pending = null;
-        if (!motionOK) return;
-        var r = el.getBoundingClientRect();
-        var x = ((ev.clientX - r.left) / r.width) * 100;
-        var y = ((ev.clientY - r.top) / r.height) * 100;
-        el.style.setProperty("--mx", x.toFixed(1) + "%");
-        el.style.setProperty("--my", y.toFixed(1) + "%");
-      });
-    }
-    Array.prototype.forEach.call(
-      document.querySelectorAll(".stat, .placard, a.card.wave-card, a.card.char-card"),
-      function (el) { el.addEventListener("pointermove", onMove, { passive: true }); }
-    );
-  }
-
   /* --- Index of Halls: the directory button opens the full 44-page
          index (a static <template> in every page) inside the shared modal.
          The modal module is dynamically imported so vault.js stays a
@@ -148,15 +97,12 @@
         /* Module import failed (very old browser): fall back to the footer
            registry, which lists every page with no JS at all. */
         var footer = document.querySelector(".site-footer nav");
-        if (footer) footer.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (footer) footer.scrollIntoView({ block: "start" });
       });
     });
   }
 
   initToggle();
   initDirectory();
-  if (syncMotionFlag()) {
-    initReveals();
-    initSheen();
-  }
+  syncMotionFlag();
 })();

@@ -1,4 +1,4 @@
-/* BAF economics — cost-to-complete per Build-A-Figure from the user's own
+/* BAF economics, cost-to-complete per Build-A-Figure from the user's own
    journal sold-sighting entries. No market claims: every dollar traces to
    mlc_journal_v1 entries. */
 import { PATHS, STORE_KEYS } from "./config.js";
@@ -121,10 +121,10 @@ function pieceRow(p) {
   ].filter(Boolean).join("");
   const priceCell = p.med !== null
     ? `<td class="num"><strong>${money(p.med)}</strong> <span class="no-data">(${p.n})</span></td>`
-    : `<td class="no-data">no data — <a href="${soldSearchUrl(q)}" target="_blank" rel="noopener noreferrer">find a sold ↗</a></td>`;
+    : `<td class="no-data">no data, <a href="${soldSearchUrl(q)}" target="_blank" rel="noopener noreferrer">find a sold ↗</a></td>`;
   return `
     <tr>
-      <td>${escapeHtml(p.piece)}<br><span class="no-data">${escapeHtml(p.fig.name)}${p.fig.variant ? ` — ${escapeHtml(p.fig.variant)}` : ""}</span> ${badges}</td>
+      <td>${escapeHtml(p.piece)}<br><span class="no-data">${escapeHtml(p.fig.name)}${p.fig.variant ? `, ${escapeHtml(p.fig.variant)}` : ""}</span> ${badges}</td>
       <td class="no-data">${escapeHtml(p.wave.series)} (${p.wave.year})</td>
       ${priceCell}
     </tr>`;
@@ -153,7 +153,7 @@ function render(analyzed) {
         <h2 class="baf-name" id="baf-${i}">${escapeHtml(a.name)}</h2>
         <div class="baf-cost">
           <div class="cost">${money(a.cost)}${partial ? "*" : ""}</div>
-          <div class="partial">${partial ? `*partial — ${a.total - a.pricedCount} piece${a.total - a.pricedCount === 1 ? "" : "s"} unpriced` : "fully priced"}</div>
+          <div class="partial">${partial ? `*partial, ${a.total - a.pricedCount} piece${a.total - a.pricedCount === 1 ? "" : "s"} unpriced` : "fully priced"}</div>
         </div>
       </div>
       <p class="baf-meta">

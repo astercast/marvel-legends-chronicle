@@ -1,44 +1,52 @@
 /* ============================================================
-   The Collector's Vault — identity layer (wave 33)
+   The catalogue layer (MARVEL-LIGHT, aesthetics round 10)
    Loaded AFTER components.css on every page (hand + generated).
-   Museum archive taken further: archival paper placards, accession
-   numbers, specimen-drawer grids, wax seals, brass trim.
+   The dark vault's identity layer, re-inked: the machinery the
+   R21 pass built (tombstone order, accession numbers, the seal,
+   the directory) carried onto paper. Color is jobs, not mood:
+   Paper grounds, Board furniture, Ink text, Pencil labels, Rule
+   hairlines, Catalogue Blue for numbers and links, Plate Red
+   rationed to the seal, the plate mark, and live state words.
 
    Conventions:
    - Still state is the default; motion lives behind
      html.vault-motion (set by vault.js only under
-     prefers-reduced-motion: no-preference and no manual reduce).
+     prefers-reduced-motion: no-preference and no manual reduce),
+     and the only motion left is the seal press and hover states.
    - One Premium easing (--ease); --ease-emphasis for signature moments.
-   - ::selection washes brass; focus halo stays gold (tactile signature).
    ============================================================ */
 
-:root { color-scheme: dark; }
+:root { color-scheme: light; }
 html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length */
 
 /* ---------- Custom scrollbars ---------- */
 ::-webkit-scrollbar { width: 12px; height: 12px; }
-::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: #3a3220;
+  background: var(--muted);
   border-radius: 8px;
-  border: 3px solid var(--bg-deep);
+  border: 3px solid var(--bg);
 }
-::-webkit-scrollbar-thumb:hover { background: var(--gold-deep); }
-* { scrollbar-color: var(--gold-deep) var(--bg-deep); }
+::-webkit-scrollbar-thumb:hover { background: var(--ink); }
+* { scrollbar-color: var(--muted) var(--bg); }
 
-/* ---------- Masthead: the brand mark becomes a wax seal ---------- */
+/* ---------- Masthead: the brand mark is the seal ----------
+   A printer's colophon stamp in Plate Red: double ring, the
+   archive's monogram, registration a touch imperfect, the way a
+   stamp never lands twice identically. It is present at full
+   strength on arrival (M5 residence clause): no press animation
+   on load; the press is an interaction (see .seal-stamp). */
 .brand-mark {
   border-radius: 50%;
-  background: var(--bg-deep);
-  border: 1px solid var(--gold-deep);
-  box-shadow:
-    inset 0 2px 3px rgba(255, 255, 255, 0.28),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.45),
-    0 2px 6px rgba(0, 0, 0, 0.5);
-  font-family: var(--font-display);
+  background: transparent;
+  border: 1.5px solid var(--plate-red);
+  box-shadow: inset 0 0 0 2px var(--bg), inset 0 0 0 3.5px var(--plate-red);
+  color: var(--plate-red);
+  font-family: var(--font-nameplate);
   letter-spacing: 0.02em;
+  transform: rotate(-3deg);
 }
-.site-nav a[aria-current="page"]::after { background: var(--gold); } /* engraved brass, not red */
+.site-nav a[aria-current="page"]::after { background: var(--ink); } /* an ink rule, not a color */
 
 /* ---------- Hero: the vault wall ---------- */
 .hero {
@@ -58,33 +66,17 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
   background: var(--paper);
   color: var(--ink-on-paper);
   border: 1px solid var(--line-on-paper);
-  outline: 3px double rgba(143, 107, 28, 0.5);
+  outline: 3px double var(--line-bright);
   outline-offset: 5px;
   border-radius: var(--radius-s);
   padding: var(--space-6);
   box-shadow: var(--shadow-2);
 }
-.placard::after { /* paper grain */
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0.55;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.placard::after { content: none; } /* no faked paper grain under light: the ground is the paper */
 .placard h2, .placard h3 { color: var(--ink-on-paper); }
 .placard .lede, .placard p { color: var(--ink-on-paper); }
 .placard .link-note, .placard .muted { color: var(--muted-on-paper); }
-.placard .bolt {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #f4d98c, var(--gold-deep) 70%, #4c3a10);
-  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.55), 0 1px 1px rgba(0, 0, 0, 0.25);
-  z-index: 1;
-}
+.placard .bolt { display: none; } /* the brass bolts retired with the brass */
 .placard .bolt.tl { top: 9px; left: 9px; }
 .placard .bolt.tr { top: 9px; right: 9px; }
 .placard .bolt.bl { bottom: 9px; left: 9px; }
@@ -94,18 +86,10 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
 .stat {
   background: var(--paper);
   border: 1px solid var(--line-on-paper);
-  border-top: 3px solid var(--gold-deep);
+  border-top: 3px solid var(--line-bright);
   color: var(--ink-on-paper);
 }
-.stat::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0.55;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.stat::after { content: none; }
 .stat-value { color: var(--ink-on-paper); }
 .stat-label { color: var(--muted-on-paper); }
 
@@ -127,72 +111,63 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
   color: var(--muted);
 }
 .acc-no {
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums lining-nums;
-  letter-spacing: 0.1em;
-  color: var(--gold);
+  letter-spacing: 0.06em;
+  color: var(--catalogue-blue);
 }
 
-/* ---------- Wax seal ---------- */
-.wax-seal {
+/* ---------- The seal, in ink (MARVEL-LIGHT 3.5) ----------
+   Redrawn from wax to a printer's colophon stamp: Plate Red
+   line work on Paper, the monogram inside a double ring, the
+   ring a touch irregular because a stamp never lands twice
+   identically. The seal is PRESENT on arrival, stamped, at full
+   strength (M5 residence clause); its one motion is the press,
+   an interaction: pressed, it presses. */
+.seal-stamp {
   --seal: 88px;
   width: var(--seal);
   height: var(--seal);
-  border-radius: 48% 52% 51% 49% / 52% 49% 51% 48%;
+  border-radius: 50%;
   display: grid;
   place-items: center;
   position: relative;
-  background: radial-gradient(circle at 35% 30%, #b23a42, var(--wax) 45%, var(--wax-deep) 78%, #471016);
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.6),
-    inset 0 2px 4px rgba(255, 255, 255, 0.28),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border: 2px solid var(--plate-red);
+  transform: rotate(-4deg);
 }
-.wax-seal::after {
+.seal-stamp::after {
   content: "";
   position: absolute;
-  inset: 11px;
-  border-radius: inherit;
-  border: 1px solid rgba(236, 225, 200, 0.4);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.45);
+  inset: 5px;
+  border-radius: 48% 52% 51% 49% / 52% 49% 51% 48%;
+  border: 1px solid var(--plate-red);
 }
-.wax-seal > span {
-  font-family: var(--font-display);
+.seal-stamp > span {
+  font-family: var(--font-nameplate);
   font-weight: 700;
   font-size: calc(var(--seal) * 0.34);
-  color: #f3e6c8;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 -1px 1px rgba(255, 255, 255, 0.2);
-  transform: rotate(-8deg);
+  color: var(--plate-red);
+  transform: rotate(-4deg);
 }
+.seal-stamp:active { transform: rotate(-4deg) scale(0.96); }
 
 /* ---------- Specimen drawers: figure + release rows ---------- */
 .fig-list > .fig,
 .release-list > .release {
   position: relative;
-  background: rgba(246, 240, 224, 0.03);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-s);
-  margin-bottom: var(--space-2);
-  padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-4) + 22px);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-soft);
+  border-radius: 0;
+  margin-bottom: 0;
+  padding: var(--space-3) 0;
   transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
-}
-.fig-list > .fig::before,
-.release-list > .release::before { /* brass drawer pull */
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  translate: 0 -50%;
-  width: 12px;
-  height: 30px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
-  box-shadow: inset 0 1px 1px rgba(255, 244, 214, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 .fig-list > .fig:hover,
 .release-list > .release:hover {
-  border-color: var(--gold-deep);
-  background: rgba(246, 240, 224, 0.055);
+  border-bottom-color: var(--line-bright);
+  background: rgba(30, 27, 22, 0.03);
 }
 .fig-list > .fig .fig-name,
 .release-list > .release .release-name {
@@ -205,44 +180,36 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
 .badge {
   font-size: 0.7rem;
   letter-spacing: 0.18em;
-  background: rgba(246, 240, 224, 0.05);
+  background: transparent;
 }
 
 /* ---------- Buttons ---------- */
 .btn-seal, .btn-primary {
-  background: var(--gold);
-  border: 1px solid var(--gold);
-  color: #171307;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: var(--bg);
 }
 .btn-seal:hover, .btn-primary:hover {
   background: var(--ink);
   border-color: var(--ink);
-  color: #171307;
+  color: var(--bg);
+  box-shadow: inset 0 0 0 2px var(--bg);
 }
 
 /* ---------- Ledger tables ---------- */
 .data-table thead th, .value-table thead th, .price-table thead th {
-  color: var(--gold);
-  border-bottom: 2px solid var(--gold-deep);
-  font-weight: 700;
+  color: var(--muted);
+  border-bottom: 2px solid var(--line-bright);
+  font-weight: 400;
 }
 
 /* ---------- Modal: the archive drawer, pulled open ---------- */
 .modal {
   position: relative;
-  background: var(--paper);
-  color: var(--ink-on-paper);
-  border: 1px solid var(--line-on-paper);
-  border-top: 3px solid var(--gold-deep);
-}
-.modal::after { /* paper grain */
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0.55;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--ink);
 }
 .modal-head { border-bottom: 1px solid var(--line-on-paper); }
 .modal-head h2 { color: var(--ink-on-paper); }
@@ -251,12 +218,12 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
 .kv dt { color: var(--muted-on-paper); }
 .link-note { color: var(--muted-on-paper); }
 .dialog-subhead { color: var(--ink-on-paper); }
-.modal .share-preview { background: var(--bg-deep); color: var(--ink); border-color: var(--line); }
+.modal .share-preview { background: var(--board); color: var(--ink); border-color: var(--line); }
 
 /* ---------- Footer: the vault register ---------- */
 .site-footer {
-  border-top: 3px double var(--gold-deep);
-  background: #0a090c;
+  border-top: 3px double var(--line-bright);
+  background: var(--bg);
 }
 .site-footer .footer-grid > p:first-child {
   font-family: var(--font-display);
@@ -282,13 +249,13 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
   white-space: nowrap;
   transition: border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
-.motion-toggle:hover { border-color: var(--gold-deep); color: var(--ink); }
+.motion-toggle:hover { border-color: var(--line-bright); color: var(--ink); }
 .motion-toggle-track {
   width: 30px;
   height: 16px;
   border-radius: 999px;
   border: 1px solid var(--line-bright);
-  background: var(--bg-deep);
+  background: var(--bg);
   position: relative;
   flex: 0 0 auto;
 }
@@ -302,84 +269,22 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
   background: var(--muted);
   transition: left var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
 }
-.motion-toggle[aria-pressed="true"] { border-color: var(--gold-deep); color: var(--gold); }
-.motion-toggle[aria-pressed="true"] .motion-toggle-thumb { left: 16px; background: var(--gold); }
+.motion-toggle[aria-pressed="true"] { border-color: var(--line-bright); color: var(--ink); }
+.motion-toggle[aria-pressed="true"] .motion-toggle-thumb { left: 16px; background: var(--ink); }
 .motion-toggle:focus-visible { box-shadow: var(--focus-ring); }
 
-/* ---------- Rope-rule exhibit divider ---------- */
+/* ---------- Divider: a printed double rule ---------- */
 .rope-rule {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin: var(--space-7) 0;
   border: 0;
+  border-top: 3px double var(--line-bright);
+  height: 0;
+  margin: var(--space-7) 0;
   padding: 0;
-}
-.rope-rule::before, .rope-rule::after {
-  content: "";
-  height: 6px;
-  flex: 1;
-  border-radius: 3px;
-  background: repeating-linear-gradient(45deg, #6b5a2e 0 6px, #8f6b1c 6px 12px, #54400f 12px 18px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-.rope-rule::before {
-  -webkit-mask: linear-gradient(to left, #000 30%, transparent);
-  mask: linear-gradient(to left, #000 30%, transparent);
-}
-.rope-rule::after {
-  -webkit-mask: linear-gradient(to right, #000 30%, transparent);
-  mask: linear-gradient(to right, #000 30%, transparent);
-}
-
-/* ---------- Vitrine sheen (pointer-tracked glass; JS sets --mx/--my) ---------- */
-html.vault-motion .stat,
-html.vault-motion .placard,
-html.vault-motion a.card.wave-card,
-html.vault-motion a.card.char-card {
-  position: relative;
-  --mx: 50%;
-  --my: 25%;
-}
-html.vault-motion .stat::before,
-html.vault-motion .placard::before,
-html.vault-motion a.card.wave-card::before,
-html.vault-motion a.card.char-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: radial-gradient(340px 220px at var(--mx) var(--my), rgba(246, 240, 224, 0.1), transparent 62%);
-  opacity: 0;
-  transition: opacity var(--dur-2) var(--ease);
-  z-index: 1;
-}
-html.vault-motion .stat:hover::before,
-html.vault-motion .placard:hover::before,
-html.vault-motion a.card.wave-card:hover::before,
-html.vault-motion a.card.char-card:hover::before,
-html.vault-motion .stat:focus-within::before,
-html.vault-motion a.card.wave-card:focus-within::before,
-html.vault-motion a.card.char-card:focus-within::before { opacity: 1; }
-
-/* ---------- Scroll reveals: finished state is the default ---------- */
-html.vault-motion [data-reveal] {
-  opacity: 0;
-  transform: translateY(10px);
-}
-html.vault-motion [data-reveal].is-in {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity var(--dur-3) var(--ease),
-    transform var(--dur-3) var(--ease-emphasis);
-  transition-delay: var(--rd, 0s);
 }
 
 /* ---------- Print: the checklist becomes a paper exhibit ---------- */
 @media print {
-  .fig-list > .fig::before, .release-list > .release::before { display: none; }
+  .fig-list > .fig, .release-list > .release { break-inside: avoid; }
 }
 
 /* ============================================================
@@ -403,65 +308,39 @@ html.vault-motion [data-reveal].is-in {
   60% { opacity: 1; transform: scale(1.015); }
   to { opacity: 1; transform: scale(1); }
 }
-html.vault-motion .wax-seal { animation: seal-press 0.55s var(--ease-emphasis) 0.25s backwards; }
+/* The seal does NOT animate on arrival (M5 residence clause): it
+   is present, stamped, at full strength. seal-press survives only
+   as the quest unlock event flourish below, fired by an action,
+   never by a page load. */
 
-/* ---------- Hover physics: the card lifts off the gallery wall ----------
-   Lift + shadow + brass edge; motion-gated, so reduce-motion readers get
-   instant border/color feedback only (declared in the always-on rule below). */
-html.vault-motion .card,
-html.vault-motion .dw-card,
-html.vault-motion .brief-card,
-html.vault-motion .curve-card,
-html.vault-motion .hof-card,
-html.vault-motion .guide-card,
-html.vault-motion .doc-card,
-html.vault-motion .resource-card,
-html.vault-motion .history-event {
-  transition:
-    transform var(--dur-2) var(--ease),
-    box-shadow var(--dur-2) var(--ease),
-    border-color var(--dur-1) var(--ease);
-}
-html.vault-motion .card:hover,
-html.vault-motion .dw-card:hover,
-html.vault-motion .brief-card:hover,
-html.vault-motion .curve-card:hover,
-html.vault-motion .hof-card:hover,
-html.vault-motion .guide-card:hover,
-html.vault-motion .doc-card:hover,
-html.vault-motion .resource-card:hover,
-html.vault-motion .history-event:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
-  border-color: var(--gold-deep);
-}
-/* Always-on (reduced-motion-safe): brass edge feedback without the lift. */
+/* ---------- Hover feedback: a border darkens, nothing lifts ----------
+   Stillness is the signature; cards do not levitate under light.
+   The only hover answer on the estate is the rule taking ink. */
 .card:hover, .dw-card:hover, .brief-card:hover, .curve-card:hover,
 .hof-card:hover, .guide-card:hover, .doc-card:hover, .resource-card:hover,
-.history-event:hover { border-color: var(--gold-deep); }
+.history-event:hover { border-color: var(--line-bright); }
 
 /* Pressed-in tactile buttons (vault-motion only) */
 html.vault-motion .btn:active, html.vault-motion .btn-seal:active {
   transform: translateY(1px);
 }
 
-/* ---------- Grail Quest: achievements become wax-seal medals ---------- */
+/* ---------- Grail Quest: achievements are stamp medallions ---------- */
 .ach-card .ach-icon {
-  background: radial-gradient(circle at 35% 30%, #b23a42, var(--wax) 45%, var(--wax-deep) 78%, #471016);
+  background: transparent;
+  border: 2px solid var(--plate-red);
   box-shadow:
     0 0 0 3px var(--panel),
-    0 0 0 5px var(--gold-deep),
-    0 4px 10px rgba(0, 0, 0, 0.5);
-  color: #f3e6c8;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+    0 0 0 4.5px var(--plate-red);
+  color: var(--plate-red);
 }
 .ach-card.ach-locked .ach-icon {
-  filter: grayscale(1) brightness(0.75);
+  border-color: var(--line);
   box-shadow: 0 0 0 3px var(--panel), 0 0 0 5px var(--line);
-  color: #cfc4ab;
+  color: var(--muted);
 }
 /* Seal-press flourish when an achievement unlocks (motion-gated) */
-html.vault-motion .ach-card.ach-unlocked .ach-icon { animation: seal-press 0.5s var(--ease-emphasis) backwards; }
+html.vault-motion .ach-card.ach-unlocked .ach-icon { animation: seal-press 0.5s var(--ease-emphasis) backwards; } /* unlock EVENT flourish, fired by the unlock, not by arrival */
 
 /* ---------- Encyclopedia: audio-guide stop numbers ---------- */
 .stop-no {
@@ -471,30 +350,26 @@ html.vault-motion .ach-card.ach-unlocked .ach-icon { animation: seal-press 0.5s 
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--muted);
   margin-bottom: var(--space-2);
 }
-.hof-card { border-top: 3px solid var(--gold-deep); }
+.hof-card { border-top: 3px solid var(--line-bright); }
 
 /* ---------- Drop Week: dispatch placards with registry numbers ---------- */
-.dw-card { border-top: 3px solid var(--gold-deep); }
+.dw-card { border-top: 3px solid var(--line-bright); }
 .dw-dispatch { margin: 0 0 var(--space-2); }
 
 /* ---------- Launch curve: the ledger page ---------- */
-.curve-list .curve-card svg {
-  background:
-    repeating-linear-gradient(0deg, transparent 0 23px, rgba(220, 174, 60, 0.07) 23px 24px),
-    var(--surface-1);
-}
-.curve-card { border-top: 3px solid var(--gold-deep); }
+.curve-list .curve-card svg { background: var(--bg); } /* the chart draws its own lines; no faked graph paper */
+.curve-card { border-top: 3px solid var(--line-bright); }
 
 /* ---------- Market briefing: placard cards ---------- */
-.brief-card { border-top: 3px solid var(--gold-deep); }
+.brief-card { border-top: 3px solid var(--line-bright); }
 
 /* ---------- API / agents docs: the registrar's desk ---------- */
-.card h3 code, .card h2 code { color: var(--gold); }
+.card h3 code, .card h2 code { color: var(--ink); }
 pre, .code-block {
-  border-left: 3px solid var(--gold-deep);
+  border-left: 3px solid var(--line-bright);
 }
 
 /* =====================================================================
@@ -526,8 +401,8 @@ pre, .code-block {
     color var(--dur-1) var(--ease);
 }
 .directory-button:hover {
-  border-color: var(--gold);
-  background: rgba(220, 174, 60, 0.08);
+  border-color: var(--line-bright);
+  background: rgba(30, 27, 22, 0.05);
   color: var(--ink);
 }
 .directory-button-mark { font-size: 1rem; line-height: 1; }
@@ -550,10 +425,10 @@ pre, .code-block {
   font-size: 0.95rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--ink);
   margin: 0 0 0.2rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--gold-deep);
+  border-bottom: 1px solid var(--line-bright);
 }
 .dir-hall-note { font-size: 0.82rem; font-style: italic; color: var(--muted); margin: 0 0 var(--space-2); }
 .dir-pages { list-style: none; margin: 0; padding: 0; }
@@ -562,22 +437,11 @@ pre, .code-block {
 .dir-pages a {
   position: relative;
   display: block;
-  padding: 0.5rem 0 0.5rem 1.6rem;
+  padding: 0.5rem 0;
   text-decoration: none;
   color: var(--ink);
 }
-.dir-pages a::before { /* brass drawer pull */
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  translate: 0 -50%;
-  width: 8px;
-  height: 20px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
-}
-.dir-pages a:hover .dir-page { color: var(--gold); }
+.dir-pages a:hover .dir-page { color: var(--blue); }
 .dir-page { display: block; font-weight: 600; font-size: 0.92rem; }
 .dir-blurb { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; line-height: 1.4; }
 .dir-colophon {
@@ -608,12 +472,12 @@ pre, .code-block {
   font-family: var(--font-display);
   font-size: 0.85rem;
   letter-spacing: 0.08em;
-  color: var(--gold);
+  color: var(--blue);
   text-decoration: none;
-  border-bottom: 1px solid var(--gold-deep);
+  border-bottom: 1px solid var(--line-bright);
   padding-bottom: 2px;
 }
-.hero-secondary:hover { color: var(--ink); border-color: var(--gold); }
+.hero-secondary:hover { color: var(--ink); border-color: var(--ink); }
 
 /* The engraved register line: one breath of numbers, not a tile wall. */
 .engraved-stats {
@@ -629,7 +493,7 @@ pre, .code-block {
   color: var(--ink);
 }
 .engraved-stats .stat-num { font-variant-numeric: tabular-nums; }
-.engraved-stats .stat-sep { color: var(--gold-deep); font-size: 0.8em; }
+.engraved-stats .stat-sep { color: var(--muted); font-size: 0.8em; }
 .engraved-stats .stat-word {
   font-family: var(--font-body);
   font-size: 0.8rem;
@@ -643,16 +507,16 @@ pre, .code-block {
   font-size: 0.85rem;
   color: var(--muted);
 }
-.cabinet-note a { color: var(--gold); }
+.cabinet-note a { color: var(--blue); }
 
 /* ---------- On the desk this week (drop-week teaser) ---------- */
 .on-the-desk { padding-block: var(--space-7); }
 .desk-placard {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--gold-deep);
+  border: 1px solid var(--line-bright);
   border-radius: var(--radius-m);
-  background: rgba(220, 174, 60, 0.045);
+  background: transparent;
   padding: var(--space-5) var(--space-5) var(--space-4);
 }
 .desk-kicker {
@@ -660,7 +524,7 @@ pre, .code-block {
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--muted);
   margin: 0 0 var(--space-2);
 }
 .desk-drop-name {
@@ -688,90 +552,13 @@ pre, .code-block {
   text-transform: uppercase;
   color: var(--muted);
 }
-.desk-countdown .cd-sep { color: var(--gold-deep); font-size: 1.6rem; }
+.desk-countdown .cd-sep { color: var(--muted); font-size: 1.6rem; }
 .desk-cta { margin-top: var(--space-2); }
 
-/* ---------- Choose a hall (specimen-drawer accordion) ---------- */
-.halls { padding-block: var(--space-6); }
-.halls-head h2, .register-head h2, .registrar-head h2 {
-  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
-  margin: 0 0 var(--space-2);
-  text-wrap: balance;
-}
-.section-kicker {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin: 0 0 var(--space-2);
-}
-.section-lede { color: var(--ink-dim); max-width: 68ch; margin: 0 0 var(--space-5); }
-.hall-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-3);
-}
-.hall {
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-m);
-  background: rgba(246, 240, 224, 0.03);
-  overflow: hidden;
-}
-.hall[open] { border-color: var(--gold-deep); }
-.hall > summary {
-  list-style: none;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4);
-}
-.hall > summary::-webkit-details-marker { display: none; }
-.hall-seal {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #c14b52, var(--wax) 60%, var(--wax-deep));
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(212, 175, 55, 0.45);
-  display: grid;
-  place-items: center;
-  color: #f3dfae;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-}
-.hall-title { font-family: var(--font-display); font-size: 1.05rem; margin: 0; letter-spacing: 0.04em; }
-.hall-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin: 0.15rem 0 0; }
-.hall-pull {
-  font-family: var(--font-display);
-  color: var(--gold);
-  font-size: 1.3rem;
-  line-height: 1;
-  transition: transform var(--dur-1) var(--ease);
-}
-.hall[open] .hall-pull { transform: rotate(45deg); }
-.hall-pages { list-style: none; margin: 0; padding: 0 var(--space-4) var(--space-4); }
-.hall-pages li { border-top: 1px dotted var(--line-soft); }
-.hall-pages a {
-  position: relative;
-  display: block;
-  padding: 0.55rem 0 0.55rem 1.6rem;
-  text-decoration: none;
-  color: var(--ink);
-}
-.hall-pages a::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  translate: 0 -50%;
-  width: 8px;
-  height: 20px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
-}
-.hall-pages a:hover .dir-page { color: var(--gold); }
+/* ---------- The Contents (home page) ----------
+   The specimen-drawer hall block that stood here is retired: the
+   departments are set as a contents roll call (museum.css), one
+   ruled line per department in the Letterform manner. */
 
 /* ---------- The Chronological Register (era tabs) ---------- */
 .register { padding-block: var(--space-6); }
@@ -799,7 +586,7 @@ pre, .code-block {
   font-family: var(--font-display);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: var(--gold);
+  color: var(--muted);
 }
 .era-tab .era-tab-title {
   display: block;
@@ -811,9 +598,9 @@ pre, .code-block {
 .era-tab:hover { color: var(--ink); }
 .era-tab[aria-selected="true"] {
   color: var(--ink);
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--ink);
 }
-.era-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.era-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 .era-placard { margin-bottom: var(--space-5); }
 .era-placard .era-note { max-width: 72ch; }
 
@@ -827,7 +614,7 @@ pre, .code-block {
   align-items: center;
   gap: var(--space-3);
 }
-.registrar-sign .wax-seal { flex: 0 0 auto; }
+.registrar-sign .seal-stamp { flex: 0 0 auto; }
 .registrar-sign cite {
   font-style: normal;
   font-family: var(--font-display);
@@ -845,7 +632,7 @@ pre, .code-block {
   line-height: 1;
   color: var(--ink);
   margin: 0;
-  text-shadow: 0 2px 0 var(--gold-deep);
+  text-shadow: none;
 }
 .lost-drawer .lede { max-width: 52ch; margin-inline: auto; }
 .lost-halls {
@@ -864,7 +651,7 @@ pre, .code-block {
   text-decoration: none;
   color: var(--ink);
 }
-.lost-halls a:hover { border-color: var(--gold-deep); }
+.lost-halls a:hover { border-color: var(--line-bright); }
 .lost-halls .dir-page { margin-bottom: 0.15rem; }
 
 /* ---------- Vault Room: hero focus ---------- */
@@ -873,14 +660,11 @@ pre, .code-block {
 /* ---------- Small screens ---------- */
 @media (max-width: 640px) {
   .dir-halls { grid-template-columns: 1fr; }
-  .hall-grid { grid-template-columns: 1fr; }
   .engraved-stats { font-size: 1.15rem; }
   .desk-countdown { gap: var(--space-2); }
 }
 
 /* ---------- Atrium refinements (from screenshot review) ---------- */
-.hall-title { display: block; }
-.hall-note { display: block; }
 .atrium-hero .mock-note {
   background: none;
   border: 0;
@@ -897,10 +681,10 @@ pre, .code-block {
 .dir-body .dir-hall-note { color: var(--muted-on-paper); }
 .dir-body .dir-pages a { color: var(--ink-on-paper); }
 .dir-body .dir-page { color: var(--ink-on-paper); }
-.dir-body .dir-pages a:hover .dir-page { color: var(--gold-deep); }
+.dir-body .dir-pages a:hover .dir-page { color: var(--blue); }
 .dir-body .dir-blurb { color: var(--muted-on-paper); }
-.dir-body .dir-colophon { color: var(--muted-on-paper); border-top-color: rgba(26, 22, 16, 0.25); }
-.dir-body .dir-pages li { border-bottom-color: rgba(26, 22, 16, 0.18); }
+.dir-body .dir-colophon { color: var(--muted-on-paper); border-top-color: var(--line); }
+.dir-body .dir-pages li { border-bottom-color: var(--line); }
 
 /* VP-0013 (R21): the directory button must NOT lead the phone nav.
    The old rule set order: -1 here, which put Index of Halls first on

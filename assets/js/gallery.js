@@ -1,11 +1,11 @@
-/* Shelf Gallery — the visual heart of Showcase 2.0.
+/* Shelf Gallery, the visual heart of Showcase 2.0.
    Photo slots per shelf: the user adds their OWN photos via file input.
-   Photos are stored as dataURLs in localStorage (client-side only — nothing
+   Photos are stored as dataURLs in localStorage (client-side only, nothing
    is ever uploaded anywhere). Canvas re-encoding strips EXIF on import.
    Captions + figure-tagging per photo (tags validated against real archive
    figure ids via gallery-core). Shelf layout templates (grid, character-run
    row, BAF centerpiece). Reorder by drag-free arrow buttons or Left/Right
-   arrow keys on a focused photo — keyboard is the full path.
+   arrow keys on a focused photo, keyboard is the full path.
    Quota handling: proactive soft-cap banner + graceful "storage full" with a
    one-click downscale option. Reduced-motion safe (no transitions). */
 import { STORE_KEYS } from "./config.js";
@@ -47,7 +47,7 @@ let state = defaultShelves();
 let quotaFull = false;
 
 function figLabel(fig) {
-  return `${fig.name} — ${fig.waveSeries} (${fig.year})`;
+  return `${fig.name}, ${fig.waveSeries} (${fig.year})`;
 }
 
 /* Persist with quota detection. Returns true on success; on quota
@@ -69,7 +69,7 @@ function persist() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Quest header strip — cross-links the Grail Quest into the gallery.  */
+/* Quest header strip, cross-links the Grail Quest into the gallery.  */
 
 function renderQuestStrip() {
   const ownedIds = owned.all();
@@ -84,15 +84,15 @@ function renderQuestStrip() {
 
   if (els.stripLevel) {
     els.stripLevel.innerHTML = `<strong>${escapeHtml(level.title)}</strong>`
-      + ` — Level ${level.level + 1} · ${level.xp} XP`;
+      + `, Level ${level.level + 1} · ${level.xp} XP`;
   }
   if (els.stripAch) {
     els.stripAch.textContent = `${unlocked.length}/${achievements.length} achievements unlocked`;
   }
   if (els.stripRarest) {
     els.stripRarest.textContent = rarest
-      ? `Rarest owned: ${rarest.name} — ${rarest.waveSeries} (${rarest.year})`
-      : "Rarest owned: — (tag a chase or convention exclusive)";
+      ? `Rarest owned: ${rarest.name}, ${rarest.waveSeries} (${rarest.year})`
+      : "Rarest owned:, (tag a chase or convention exclusive)";
   }
   return { level, achievements, unlocked, completedBafs, ownedIds };
 }
@@ -121,7 +121,7 @@ function showStorageBanner(status, hardFail) {
   if (!els.storage) return;
   els.storage.hidden = false;
   if (hardFail || status === "full") {
-    els.storageText.innerHTML = "<strong>Storage is full.</strong> Your photos stay on this device — "
+    els.storageText.innerHTML = "<strong>Storage is full.</strong> Your photos stay on this device, "
       + "the browser won't take more. Downscale every photo (smaller, still clear) or remove some photos.";
   } else {
     els.storageText.innerHTML = "<strong>Storage is getting full</strong> (over 75% of the gallery budget). "
@@ -140,7 +140,7 @@ function refreshStorageBanner() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Image import — file input → canvas re-encode (strips EXIF) → dataURL */
+/* Image import, file input → canvas re-encode (strips EXIF) → dataURL */
 
 function processImage(file, preset) {
   return new Promise((resolve, reject) => {
@@ -272,7 +272,7 @@ function photoEl(shelf, photo) {
     const id = labelToId.get(label);
     if (!id) {
       input.setAttribute("aria-invalid", "true");
-      input.title = "Pick a figure from the suggestions — tags must match the archive.";
+      input.title = "Pick a figure from the suggestions, tags must match the archive.";
       return;
     }
     input.removeAttribute("aria-invalid");
@@ -379,7 +379,7 @@ function shelfEl(shelf) {
       if (!persist()) { state = before; return; } // quota banner shown by persist()
       render();
     } catch {
-      alert("That file couldn't be read as an image — try a JPG or PNG.");
+      alert("That file couldn't be read as an image, try a JPG or PNG.");
     }
   });
 
@@ -392,7 +392,7 @@ function shelfEl(shelf) {
   if (!shelf.photos.length) {
     const empty = document.createElement("p");
     empty.className = "chart-sub";
-    empty.textContent = "No photos yet — add your own shelf photos with the button above.";
+    empty.textContent = "No photos yet, add your own shelf photos with the button above.";
     grid.appendChild(empty);
   }
   return article;
@@ -417,10 +417,10 @@ function copyText(text, statusEl) {
   const done = (msg) => { if (statusEl) statusEl.textContent = msg; };
   if (navigator.clipboard?.writeText) {
     navigator.clipboard.writeText(text).then(
-      () => done("Copied — paste it anywhere."),
-      () => done("Copy didn't work — select the text manually."));
+      () => done("Copied, paste it anywhere."),
+      () => done("Copy didn't work, select the text manually."));
   } else {
-    done("Copy isn't available — select the text manually.");
+    done("Copy isn't available, select the text manually.");
   }
 }
 

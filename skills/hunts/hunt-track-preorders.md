@@ -15,10 +15,10 @@ Ongoing.
 
 ## Procedure
 
-1. Preorder day-one at BBTS/EE/Pulse — no deposit, cancel anytime.
-2. Pile-of-loot (BBTS) batches shipping — saves a fortune.
+1. Preorder day-one at BBTS/EE/Pulse, no deposit, cancel anytime.
+2. Pile-of-loot (BBTS) batches shipping, saves a fortune.
 3. Set calendar alerts for known drop windows.
-4. Review preorders quarterly — kill what you've outgrown.
+4. Review preorders quarterly, kill what you've outgrown.
 
 ## Worked example
 
@@ -26,4 +26,4 @@ Ongoing.
 
 ## Pitfalls
 
-- Preordering everything — the pile becomes a bill.
+- Preordering everything, the pile becomes a bill.

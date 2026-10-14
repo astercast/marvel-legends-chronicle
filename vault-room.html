@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Vault Room — Marvel Legends Chronicle</title>
+  <title>The Vault Room: Marvel Legends Chronicle</title>
   <meta name="description" content="Walk the collector's vault: every Marvel Legends figure from 2002 to 2026 in specimen drawers, shelf by shelf, year by year. Pull a drawer open for its archive story.">
   <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/vault-room">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Vault Room — Marvel Legends Chronicle">
+  <meta property="og:title" content="The Vault Room: Marvel Legends Chronicle">
   <meta property="og:description" content="Walk the collector's vault: every Marvel Legends figure from 2002 to 2026 in specimen drawers, shelf by shelf, year by year. Pull a drawer open for its archive story.">
   <meta property="og:url" content="https://marvel-legends-chronicle-live.vercel.app/vault-room">
   <meta property="og:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Vault Room — Marvel Legends Chronicle">
+  <meta name="twitter:title" content="The Vault Room: Marvel Legends Chronicle">
   <meta name="twitter:description" content="Walk the collector's vault: every Marvel Legends figure from 2002 to 2026 in specimen drawers, shelf by shelf, year by year. Pull a drawer open for its archive story.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "The Vault Room — Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/vault-room", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "The Vault Room: Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/vault-room", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
   <link rel="preload" href="assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -29,38 +29,31 @@
   <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/vault.css">
   <style>
-    /* ---------- The Vault Room: shelf view, drawers, timeline journey ---------- */
+    /* ---------- The Vault Room: shelf view, drawers, timeline journey ----------
+       Under light the room is a reading room: flat Paper, ruled
+       shelves, drawers as listing rows. The dark room's parallax
+       wall layers and gold washes are removed outright; travel
+       between years is a cut (vault-room.js). */
     .vault-room-hero { padding-block: var(--space-7); position: relative; }
     .vault-room-hero h1 { text-wrap: balance; }
     .vault-room { position: relative; overflow: clip; }
-    /* Parallax vault-wall layers: transform-only, rAF-driven, JS-gated */
-    .room-layer { position: absolute; inset: -12% 0; pointer-events: none; z-index: 0;
-      transform: translate3d(0, calc(var(--py, 0px) * var(--ps, 0)), 0); will-change: transform; }
-    .room-layer-far { --ps: 0.06;
-      background:
-        radial-gradient(1200px 500px at 50% -80px, rgba(212, 175, 55, 0.07), transparent 70%),
-        repeating-linear-gradient(90deg, transparent 0 118px, rgba(212, 175, 55, 0.05) 118px 122px);
-      opacity: 0.9; }
-    .room-layer-near { --ps: -0.1;
-      background: radial-gradient(900px 260px at 50% 108%, rgba(0, 0, 0, 0.5), transparent 70%); }
     .room-inner { position: relative; z-index: 1; }
 
     /* The journey: 2002 -> 2026 year rail */
     .journey { position: sticky; top: 0; z-index: 40;
-      background: color-mix(in srgb, var(--bg-deep) 92%, transparent);
-      border-block: 1px solid var(--line-soft);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+      background: var(--bg);
+      border-block: 1px solid var(--line-soft); }
     .journey-inner { display: flex; align-items: center; gap: var(--space-3); padding-block: var(--space-2); }
     .journey-label { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.22em;
-      color: var(--gold); text-transform: uppercase; white-space: nowrap; }
+      color: var(--muted); text-transform: uppercase; white-space: nowrap; }
     .journey-list { display: flex; gap: 2px; overflow-x: auto; list-style: none; margin: 0; padding: 2px;
       scrollbar-width: thin; flex: 1; }
     .journey-list a { display: block; padding: 0.4rem 0.55rem; border-radius: var(--radius-s);
       font-family: var(--font-display); font-size: 0.82rem; color: var(--ink-dim); text-decoration: none;
       border-bottom: 2px solid transparent; white-space: nowrap;
       transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease); }
-    .journey-list a:hover { color: var(--ink); border-color: var(--gold-deep); }
-    .journey-list a[aria-current="true"] { color: var(--gold); border-color: var(--gold); }
+    .journey-list a:hover { color: var(--ink); border-color: var(--line-bright); }
+    .journey-list a[aria-current="true"] { color: var(--ink); border-color: var(--ink); }
     .journey-list .journey-era { display: none; } /* era shows in the "now" readout */
     .journey-summary { display: none; }
     .journey-now { font-size: 0.8rem; color: var(--muted); white-space: nowrap; min-width: 9ch; text-align: right; }
@@ -68,11 +61,11 @@
     /* Year shelves */
     .year-shelf { margin-bottom: var(--space-7); scroll-margin-top: 96px; }
     .year-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2) var(--space-4);
-      border-bottom: 3px double var(--gold-deep); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
+      border-bottom: 3px double var(--line-bright); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
     .year-head h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem);
       margin: 0; color: var(--ink); }
     .year-era { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--gold); }
+      text-transform: uppercase; color: var(--muted); }
     .year-count { margin-left: auto; font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
     .year-story { max-width: 78ch; color: var(--ink-dim); }
     .year-story .headline { font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); margin: 0 0 0.3rem; }
@@ -84,64 +77,50 @@
     .wave-shelf-head { display: flex; align-items: baseline; gap: var(--space-3); flex-wrap: wrap;
       margin-bottom: var(--space-2); }
     .wave-shelf-head h3 { font-family: var(--font-display); font-size: 1rem; margin: 0; }
-    .wave-shelf-head h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
-    .wave-shelf-head h3 a:hover { color: var(--gold); }
+    .wave-shelf-head h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-bright); }
+    .wave-shelf-head h3 a:hover { color: var(--blue); }
     .wave-baf { font-size: 0.78rem; color: var(--muted); }
     .shelf-board { position: relative; display: grid;
       grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--space-2);
       padding: var(--space-3); border: 1px solid var(--line-soft); border-radius: var(--radius-m);
-      background: rgba(246, 240, 224, 0.03); }
-    .shelf-board::after { /* the wooden shelf board the drawers sit on */
-      content: ""; position: absolute; left: 0; right: 0; bottom: -9px; height: 10px;
-      background: linear-gradient(180deg, #3d2f17, #241b0c 70%, #171106);
-      border-top: 1px solid var(--gold-deep); border-radius: 0 0 4px 4px;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5); }
+      background: transparent; }
+    .shelf-board::after { content: none; } /* no wooden board under light: the shelf is a rule */
 
     /* The drawers */
     .drawer { position: relative; text-align: left; cursor: pointer;
-      background: rgba(246, 240, 224, 0.04);
+      background: transparent;
       border: 1px solid var(--line-soft); border-radius: var(--radius-s);
-      padding: 0.6rem 0.7rem 0.6rem 2.1rem; color: var(--ink);
+      padding: 0.6rem 0.7rem; color: var(--ink);
       font-family: var(--font-body); font-size: 0.86rem;
-      transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease),
-        transform var(--dur-1) var(--ease); }
-    .drawer::before { /* brass drawer pull */
-      content: ""; position: absolute; left: 10px; top: 50%; translate: 0 -50%;
-      width: 12px; height: 30px; border-radius: 6px;
-      background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
-      box-shadow: inset 0 1px 1px rgba(255, 244, 214, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6); }
-    .drawer:hover, .drawer:focus-visible { border-color: var(--gold-deep);
-      background: rgba(246, 240, 224, 0.08); }
-    .drawer:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+      transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease); }
+    .drawer:hover, .drawer:focus-visible { border-color: var(--line-bright);
+      background: rgba(30, 27, 22, 0.04); }
+    .drawer:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
     .drawer-name { display: block; font-weight: 600; line-height: 1.25; }
     .drawer-sub { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .drawer-spot { border-color: var(--gold-deep); }
-    .drawer-spot::after { /* wax seal on spotlight drawers */
-      content: ""; position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #c14b52, var(--wax) 60%, var(--wax-deep));
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(212, 175, 55, 0.5); }
+    .drawer-spot { border-color: var(--line-bright); }
+    .drawer-spot::after { /* the spotlight mark: a small red ring, the seal's miniature */
+      content: ""; position: absolute; top: 6px; right: 6px; width: 12px; height: 12px; border-radius: 50%;
+      border: 2px solid var(--plate-red); background: transparent; }
 
-    /* High-contrast links on the paper drawer story (--blue is built for dark) */
-    .modal.drawer-story a:not(.btn) { color: #174a75; text-decoration: underline;
+    /* Links in the drawer story are Catalogue Blue, the link job */
+    .modal.drawer-story a:not(.btn) { color: var(--blue); text-decoration: underline;
       text-underline-offset: 2px; }
-    .modal.drawer-story a:not(.btn):hover { color: #0e3454; }
+    .modal.drawer-story a:not(.btn):hover { color: var(--ink); }
 
     /* The pulled-open drawer: an archive-drawer dialog */
-    .modal.drawer-story { border-top: 3px solid var(--gold-deep); max-width: 720px; }
-    .modal.drawer-story .drawer-acc { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold);
+    .modal.drawer-story { border-top: 3px solid var(--ink); max-width: 720px; }
+    .modal.drawer-story .drawer-acc { font-family: var(--font-mono); font-size: 0.75rem; color: var(--catalogue-blue);
       letter-spacing: 0.08em; margin: 0 0 0.4rem; }
-    .drawer-why { border-left: 3px solid var(--gold-deep); padding: 0.6rem 0.9rem; margin: 0 0 var(--space-4);
-      background: rgba(212, 175, 55, 0.06); font-style: italic; color: var(--ink-on-paper); }
+    .drawer-why { border-left: 3px solid var(--line-bright); padding: 0.6rem 0.9rem; margin: 0 0 var(--space-4);
+      background: transparent; font-style: italic; color: var(--ink-on-paper); }
     .drawer-why cite { display: block; font-style: normal; font-size: 0.78rem; color: var(--muted-on-paper); margin-top: 0.3rem; }
     .drawer-year-story h3 { font-family: var(--font-display); font-size: 0.95rem; margin: var(--space-4) 0 0.3rem;
       color: var(--ink-on-paper); }
     .drawer-year-story p { font-size: 0.88rem; color: var(--ink-on-paper); margin: 0 0 0.5rem; }
     .drawer-links { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
-    html.vault-motion .modal.drawer-story { animation: drawer-slide var(--dur-3) var(--ease-emphasis); }
-    @keyframes drawer-slide {
-      from { opacity: 0; transform: translateX(48px); }
-      to { opacity: 1; transform: none; } }
+    /* The drawer dialog opens present, never sliding in (stillness). */
 
     /* The drawer index: full-text search across every drawer */
     .drawer-index { border-top: 1px solid var(--line-soft); padding-block: var(--space-6); }
@@ -150,34 +129,25 @@
     .drawer-index .chart-sub { max-width: 78ch; }
     .drawer-search { margin-top: var(--space-4); max-width: 720px; }
     .drawer-search-label { display: block; font-family: var(--font-display); font-size: 0.78rem;
-      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
     .drawer-search-box { position: relative; }
-    .drawer-search-box::before { /* brass drawer pull, the index is a drawer too */
-      content: ""; position: absolute; left: 12px; top: 50%; translate: 0 -50%; z-index: 2;
-      width: 12px; height: 30px; border-radius: 6px; pointer-events: none;
-      background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
-      box-shadow: inset 0 1px 1px rgba(255, 244, 214, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6); }
     #drawer-search-input { width: 100%; font-family: var(--font-body); font-size: 1.05rem; color: var(--ink);
-      background: rgba(246, 240, 224, 0.05);
+      background: transparent;
       border: 1px solid var(--line-soft); border-radius: var(--radius-m);
-      padding: 0.8rem 1rem 0.8rem 2.6rem; }
-    #drawer-search-input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
-      border-color: var(--gold-deep); }
+      padding: 0.8rem 1rem; }
+    #drawer-search-input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px;
+      border-color: var(--line-bright); }
     .drawer-search-panel { position: relative; }
     #drawer-search-results { position: absolute; top: 6px; left: 0; right: 0; z-index: 60;
       max-height: min(52vh, 380px); overflow-y: auto; padding: 0.35rem;
-      background: var(--panel); border: 1px solid var(--gold-deep); border-radius: var(--radius-m);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55); }
+      background: var(--panel); border: 1px solid var(--line-bright); border-radius: var(--radius-m);
+      box-shadow: 0 18px 44px rgba(30, 27, 22, 0.18); }
     #drawer-search-results[hidden] { display: none; }
-    .dsr-option { position: relative; padding: 0.55rem 0.7rem 0.55rem 2.1rem;
+    .dsr-option { position: relative; padding: 0.55rem 0.7rem;
       border-radius: var(--radius-s); cursor: pointer; border: 1px solid transparent; }
-    .dsr-option::before { content: ""; position: absolute; left: 10px; top: 50%; translate: 0 -50%;
-      width: 10px; height: 24px; border-radius: 5px;
-      background: linear-gradient(90deg, #5c4712, var(--gold) 40%, #a8842a 55%, #4c3a10);
-      box-shadow: inset 0 1px 1px rgba(255, 244, 214, 0.55), 0 1px 3px rgba(0, 0, 0, 0.6); }
     .dsr-option:hover { border-color: var(--line-soft);
-      background: rgba(246, 240, 224, 0.05); }
-    .dsr-option[aria-selected="true"] { border-color: var(--gold-deep); background: rgba(212, 175, 55, 0.09); }
+      background: rgba(30, 27, 22, 0.04); }
+    .dsr-option[aria-selected="true"] { border-color: var(--line-bright); background: rgba(30, 27, 22, 0.06); }
     .dsr-name { display: block; font-weight: 600; line-height: 1.25; color: var(--ink); }
     .dsr-sub { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -189,13 +159,12 @@
 
     /* Reduced motion: the journey becomes the full readable timeline list */
     @media (prefers-reduced-motion: reduce) {
-      .room-layer { display: none; }
       .journey { position: static; }
       .journey-inner { flex-direction: column; align-items: stretch; }
       .journey-list { flex-direction: column; overflow: visible; gap: var(--space-3); }
       .journey-list li { border: 1px solid var(--line-soft); border-radius: var(--radius-m);
         padding: var(--space-3); background: var(--panel); }
-      .journey-list a { display: inline; padding: 0; font-size: 1.1rem; border: 0; color: var(--gold);
+      .journey-list a { display: inline; padding: 0; font-size: 1.1rem; border: 0; color: var(--blue);
         white-space: normal; }
       .journey-summary { display: block; margin-top: 0.4rem; font-size: 0.9rem; color: var(--ink-dim);
         font-family: var(--font-body); }
@@ -203,7 +172,6 @@
         display: block; margin-bottom: 0.2rem; }
       .journey-now { display: none; }
       .drawer, .drawer:hover, .drawer:focus-visible { transition: none; }
-      html.vault-motion .modal.drawer-story { animation: none; }
     }
 
     /* Mobile: tuned, not broken */
@@ -216,10 +184,10 @@
       .modal-backdrop { padding: var(--space-2); align-items: end; }
       .modal.drawer-story { width: 100%; max-height: 92vh; border-radius: var(--radius-l) var(--radius-l) 0 0; }
     }
-    .drawer-quest-strip { margin-top: var(--space-3); padding: var(--space-3); border: 1px solid var(--gold); border-radius: var(--radius); font-size: 0.88rem; color: var(--ink-dim); background: var(--panel); }
+    .drawer-quest-strip { margin-top: var(--space-3); padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.88rem; color: var(--ink-dim); background: var(--panel); }
     .drawer-quest-strip strong { color: var(--ink); }
-    .drawer-quest-strip a { color: var(--gold); white-space: nowrap; }
-    .drawer-quest-strip.completes { border-color: var(--wax, #8e2b32); }
+    .drawer-quest-strip a { color: var(--blue); white-space: nowrap; }
+    .drawer-quest-strip.completes { border-color: var(--ink); }
     .drawer-quest-strip[hidden] { display: none; }
   </style>
 </head>
@@ -247,7 +215,7 @@
       <div class="container hero-inner">
         <span class="hero-kicker">The Collector's Vault</span>
         <h1 id="vault-room-title">The Vault <span class="accent">Room</span>.</h1>
-        <p class="lede">Twenty-five years of Marvel Legends, shelf by shelf. Every figure in the archive has a drawer — pull one open and read its story.</p>
+        <p class="lede">Twenty-five years of Marvel Legends, shelf by shelf. Every figure in the archive has a drawer, pull one open and read its story.</p>
         <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">vault-room</span></p>
         <p class="chart-sub" id="vault-room-coverage" aria-live="polite"></p>
         <div class="hero-actions">
@@ -260,7 +228,7 @@
     <section class="drawer-index" aria-labelledby="drawer-index-h">
       <div class="container">
         <h2 id="drawer-index-h">The drawer index</h2>
-        <p class="chart-sub">Every drawer, searchable — name a figure, wave, variant, exclusive, or BAF piece and the index reads all 1,939 drawers at once. <span aria-hidden="true">↑↓</span><span class="visually-hidden">Up and down arrows</span> to browse, Enter to pull a drawer open.</p>
+        <p class="chart-sub">Every drawer, searchable, name a figure, wave, variant, exclusive, or BAF piece and the index reads all 1,939 drawers at once. <span aria-hidden="true">↑↓</span><span class="visually-hidden">Up and down arrows</span> to browse, Enter to pull a drawer open.</p>
         <form class="drawer-search" id="drawer-search-form" role="search">
           <label class="drawer-search-label" for="drawer-search-input">Find a drawer</label>
           <div class="drawer-search-box">
@@ -291,8 +259,6 @@
     </nav>
 
     <div class="vault-room" id="vault-room">
-      <div class="room-layer room-layer-far" data-parallax aria-hidden="true"></div>
-      <div class="room-layer room-layer-near" data-parallax aria-hidden="true"></div>
       <div class="container room-inner">
         <div id="room-years">
           <p class="room-loading" id="room-loading" role="status">Opening the vault…</p>
@@ -308,7 +274,7 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <p>Marvel Legends Chronicle, a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
       <nav aria-label="Footer">
         <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="archive-tour.html">Archive Tour</a><a href="debuts.html">First Appearances</a><a href="long-wait.html">The Long Wait</a><a href="build-ledger.html">The Build Ledger</a><a href="two-houses.html">The Two Houses</a><a href="roll-call.html">The Roll Call</a><a href="wave-ledger.html">The Wave Ledger</a><a href="year-ledger.html">The Year Ledger</a><a href="spec-sheet.html">The Spec Sheet</a><a href="visual-database.html">The Visual Database</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="drop-week.html">Drop Week</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="my-vault.html">My Vault</a><a href="completionist.html">The Completionist</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="vault-room.html" aria-current="page">Vault Room</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button>
       </nav>

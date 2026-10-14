@@ -1,4 +1,4 @@
-/* Marvel skills browser — loads skills/index.json, groups by category, live filter. */
+/* Marvel skills browser, loads skills/index.json, groups by category, live filter. */
 (function () {
   "use strict";
 

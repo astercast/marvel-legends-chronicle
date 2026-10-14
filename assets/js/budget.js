@@ -1,4 +1,4 @@
-/* Budget Tracker — spend ledger, not a financial planner. Reads the
+/* Budget Tracker, spend ledger, not a financial planner. Reads the
    purchases the user already logs (mlc_buys_v1, via the Ledger page),
    compares month/year spend against the user's own budget targets
    (mlc_budget_v1), and shows plain arithmetic stats. A mirror, not a
@@ -56,7 +56,7 @@ function monthName(key) {
 
 function barHtml(status) {
   if (!status.set) {
-    return `<p class="chart-sub">No budget set — pick a number in the budget box to track against.</p>`;
+    return `<p class="chart-sub">No budget set, pick a number in the budget box to track against.</p>`;
   }
   const pct = Math.min(status.pct, 100);
   const cls = status.over ? "over" : "";
@@ -68,7 +68,7 @@ function barHtml(status) {
          aria-valuenow="${Math.round(status.pct)}" aria-label="Budget used">
       <span style="width:${pct}%"></span>
     </div>
-    <p class="budget-line"><strong>${money(status.spent)}</strong> of <strong>${money(status.limit)}</strong> — ${Math.round(status.pct)}% used.</p>
+    <p class="budget-line"><strong>${money(status.spent)}</strong> of <strong>${money(status.limit)}</strong>, ${Math.round(status.pct)}% used.</p>
     ${note}`;
 }
 
@@ -85,9 +85,9 @@ function render() {
   const mStatus = budgetStatus(totalFor(monthBuys), budget.monthly);
   const yStatus = budgetStatus(totalFor(yearBuys), budget.annual);
 
-  els.monthTitle.textContent = month ? `This month — ${monthName(month)}` : "This month";
+  els.monthTitle.textContent = month ? `This month, ${monthName(month)}` : "This month";
   els.monthBar.innerHTML = barHtml(mStatus);
-  els.yearTitle.textContent = year ? `This year — ${year}` : "This year";
+  els.yearTitle.textContent = year ? `This year, ${year}` : "This year";
   els.yearBar.innerHTML = barHtml(yStatus);
 
   const stats = budgetStats(buys);
@@ -96,8 +96,8 @@ function render() {
     `<div class="stat"><div class="stat-value">${money(stats.total)}</div><div class="stat-label">All-time spend</div></div>` +
     `<div class="stat"><div class="stat-value">${money(monthBuys.length ? totalFor(monthBuys) : 0)}</div><div class="stat-label">Spent this month</div></div>`;
   const maxLine = stats.maxBuy
-    ? `${escapeHtml(stats.maxBuy.name ?? "Unknown figure")} — ${money(stats.max)}`
-    : "—";
+    ? `${escapeHtml(stats.maxBuy.name ?? "Unknown figure")}, ${money(stats.max)}`
+    : "n/a";
   els.stats.innerHTML =
     `<div class="stat"><div class="stat-value">${money(stats.avg)}</div><div class="stat-label">Average per figure</div></div>` +
     `<div class="stat"><div class="stat-value">${money(stats.max)}</div><div class="stat-label">Most expensive</div></div>` +
@@ -117,7 +117,7 @@ function render() {
       <span class="buy-name">${escapeHtml(b.name ?? "Unknown figure")}</span>
       <span class="buy-date">${escapeHtml(b.date ?? "")}</span>
       <span class="buy-where">${escapeHtml(b.where ?? "")}</span>
-      <span class="buy-price">${Number.isFinite(price) && price > 0 ? money(price) : "—"}</span>`;
+      <span class="buy-price">${Number.isFinite(price) && price > 0 ? money(price) : "n/a"}</span>`;
     els.recent.appendChild(li);
   }
 }
@@ -142,7 +142,7 @@ function main() {
       monthly: els.monthly.value ? Math.round(monthly * 100) / 100 : null,
       annual: els.annual.value ? Math.round(annual * 100) / 100 : null,
     });
-    els.saveStatus.textContent = "Budget saved — this is your own number, change it anytime.";
+    els.saveStatus.textContent = "Budget saved, this is your own number, change it anytime.";
     render();
   });
 

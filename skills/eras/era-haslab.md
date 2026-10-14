@@ -16,9 +16,9 @@ Evaluating HasLab projects and their aftermarket.
 
 ## Procedure
 
-1. HasLab = limited by backers, not by retail — scarcity is real.
+1. HasLab = limited by backers, not by retail, scarcity is real.
 2. Aftermarket peaks 6–12 months post-delivery, then settles.
-3. Never back what you can't afford to keep — flipping HasLab is a gamble.
+3. Never back what you can't afford to keep, flipping HasLab is a gamble.
 
 ## Worked example
 
@@ -30,4 +30,4 @@ Galactus: backer-count scarcity drove a 2× aftermarket before settling.
 
 ## Pitfalls
 
-- Backing for flip profit — the settle hurts.
+- Backing for flip profit, the settle hurts.

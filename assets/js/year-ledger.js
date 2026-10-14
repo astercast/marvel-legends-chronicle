@@ -1,8 +1,8 @@
-/* The Year Ledger — the years census.
+/* The Year Ledger, the years census.
    Every year of the line counted by what the catalog dates to it:
    the flood years that ship a hundred figures and more, and the
-   lean years — 2011 shipped exactly one figure. Every count comes
-   from the catalog itself. No prices — a ledger of years, not a
+   lean years, 2011 shipped exactly one figure. Every count comes
+   from the catalog itself. No prices, a ledger of years, not a
    market. Years render bare, never with a thousands separator. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
@@ -30,9 +30,9 @@ async function main() {
     els.kpis.innerHTML = [
       kpi("Years in the ledger", fmt(m.yearCount),
         `${m.firstYear}–${m.lastYear}, no gap year, holding ${fmt(m.figureCount)} figures`),
-      kpi("The busiest year", m.busiest ? `${m.busiest.year}` : "—",
+      kpi("The busiest year", m.busiest ? `${m.busiest.year}` : "n/a",
         m.busiest ? `${fmt(m.busiest.figures)} figures across ${fmt(m.busiest.waves)} waves` : ""),
-      kpi("The median year", m.median === null ? "—" : `${fmt(m.median)} figures`,
+      kpi("The median year", m.median === null ? "n/a" : `${fmt(m.median)} figures`,
         "the middle year when all twenty-five are ordered by output"),
       kpi("The flood years", fmt(m.flood.years),
         `years of 100 figures or more, holding ${fmt(m.flood.figures)} figures between them`),
@@ -61,7 +61,7 @@ async function main() {
     if (m.flood.years) {
       swingRows.push(`<li class="db-row">
         <span class="db-name">The flood</span>
-        <span class="db-fig">every year from ${m.flood.firstYear} to ${m.flood.lastYear} in the ledger's flood band shipped 100 figures or more — ${fmt(m.flood.years)} years holding ${fmt(m.flood.figures)} figures, the bulk of the line</span>
+        <span class="db-fig">every year from ${m.flood.firstYear} to ${m.flood.lastYear} in the ledger's flood band shipped 100 figures or more, ${fmt(m.flood.years)} years holding ${fmt(m.flood.figures)} figures, the bulk of the line</span>
         <span class="db-count">filed as recorded</span>
       </li>`);
     }
@@ -69,7 +69,7 @@ async function main() {
       swingRows.push(`<li class="db-row">
         <span class="db-year">${m.busiest.year}</span>
         <span class="db-name">The busiest year</span>
-        <span class="db-fig">${fmt(m.busiest.figures)} figures — the most the line has ever shipped in a single year</span>
+        <span class="db-fig">${fmt(m.busiest.figures)} figures, the most the line has ever shipped in a single year</span>
         <span class="db-count">${escapeHtml(m.busiest.manufacturer)}</span>
       </li>`);
     }
@@ -77,7 +77,7 @@ async function main() {
       swingRows.push(`<li class="db-row">
         <span class="db-year">${m.quietest.year}</span>
         <span class="db-name">The quietest year</span>
-        <span class="db-fig">${fmt(m.quietest.figures)} ${m.quietest.figures === 1 ? "figure" : "figures"} — the least the line has ever shipped in a single year, in ${fmt(m.quietest.waves)} ${m.quietest.waves === 1 ? "wave" : "waves"}</span>
+        <span class="db-fig">${fmt(m.quietest.figures)} ${m.quietest.figures === 1 ? "figure" : "figures"}, the least the line has ever shipped in a single year, in ${fmt(m.quietest.waves)} ${m.quietest.waves === 1 ? "wave" : "waves"}</span>
         <span class="db-count">${escapeHtml(m.quietest.manufacturer)}</span>
       </li>`);
     }
@@ -85,7 +85,7 @@ async function main() {
       swingRows.push(`<li class="db-row">
         <span class="db-year">${m.biggestRise.fromYear} → ${m.biggestRise.toYear}</span>
         <span class="db-name">The biggest rise</span>
-        <span class="db-fig">+${fmt(m.biggestRise.delta)} figures year over year — the steepest climb in the ledger</span>
+        <span class="db-fig">+${fmt(m.biggestRise.delta)} figures year over year, the steepest climb in the ledger</span>
         <span class="db-count">between consecutive years</span>
       </li>`);
     }
@@ -93,7 +93,7 @@ async function main() {
       swingRows.push(`<li class="db-row">
         <span class="db-year">${m.biggestFall.fromYear} → ${m.biggestFall.toYear}</span>
         <span class="db-name">The biggest fall</span>
-        <span class="db-fig">${fmt(m.biggestFall.delta)} figures year over year — the steepest drop in the ledger</span>
+        <span class="db-fig">${fmt(m.biggestFall.delta)} figures year over year, the steepest drop in the ledger</span>
         <span class="db-count">between consecutive years</span>
       </li>`);
     }
@@ -102,7 +102,7 @@ async function main() {
       : `<p class="db-none">No swings to file.</p>`;
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The year ledger could not be counted from the catalog. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The year ledger could not be counted from the catalog. The archive itself is unaffected, try reloading the page.";
   }
 }
 

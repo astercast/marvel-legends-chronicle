@@ -1,6 +1,6 @@
-/* budget-core.js — pure Budget Tracker math. No DOM, no storage: callers
+/* budget-core.js, pure Budget Tracker math. No DOM, no storage: callers
    supply the purchase list (mlc_buys_v1 rows: { price, date, ... }) and the
-   budget object ({ monthly, annual } in dollars). A mirror, not a planner —
+   budget object ({ monthly, annual } in dollars). A mirror, not a planner,
    no advice, just arithmetic. */
 
 function num(v) {

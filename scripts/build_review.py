@@ -75,7 +75,7 @@ def splice(page, begin, end, content):
 
 def money(n):
     if n is None:
-        return "—"
+        return "n/a"
     return f"${n:,.2f}".rstrip("0").rstrip(".")
 
 
@@ -132,7 +132,7 @@ def validate(review, waves, items, signals):
         if e.get("waveRef"):
             assert e["waveRef"] in waves, f"waveRef does not resolve: {e['waveRef']}"
     # criteria honesty: recompute the ranking and require the file's set to be
-    # the top of the computed order — the builder sorts, so just assert the
+    # the top of the computed order, the builder sorts, so just assert the
     # scoring function is total and deterministic.
     scores = {e["id"]: score(e, scoring) for e in review["top10"]}
     assert all(s > 0 for s in scores.values()), "every top10 entry needs a positive score"
@@ -235,7 +235,7 @@ def render_stats(stats, signals):
     for val, label in cells:
         out.append(f'  <div class="yr-stat"><dt class="yr-stat-n">{esc(val)}</dt><dd class="yr-stat-l">{esc(label)}</dd></div>')
     out.append("</dl>")
-    out.append('<p class="yr-stats-note">As documented in the Chronicle — <a href="#yr-gaps">gaps labeled below</a>. Observed <time datetime="2026-10-11">October 11, 2026</time>.</p>')
+    out.append('<p class="yr-stats-note">As documented in the Chronicle, <a href="#yr-gaps">gaps labeled below</a>. Observed <time datetime="2026-10-11">October 11, 2026</time>.</p>')
     return "\n".join(out)
 
 
@@ -299,7 +299,7 @@ def render_top10(review, waves, scores):
     entries = sorted(review["top10"], key=lambda e: (-scores[e["id"]], e["display"].lower()))
     out = []
     out.append('<p class="yr-criteria"><strong>Criteria (shown, not hidden):</strong> each entry is scored on documented '
-               "distinctions — " + ", ".join(f"{esc(k)} = {v} pt{'s' if v != 1 else ''}" for k, v in scoring.items()) +
+               "distinctions, " + ", ".join(f"{esc(k)} = {v} pt{'s' if v != 1 else ''}" for k, v in scoring.items()) +
                ". Ties break alphabetically by display name. Every distinction cites its Chronicle record.</p>")
     out.append('<ol class="yr-top10">')
     for rank, e in enumerate(entries, 1):
@@ -311,7 +311,7 @@ def render_top10(review, waves, scores):
         out.append('  <ul class="yr-dist">')
         for d in e["distinctions"]:
             out.append(f'    <li><strong>{esc(d["kind"])}</strong> (+{scoring[d["kind"]]}): {esc(d["claim"])} '
-                       f'<span class="yr-dsrc">— {esc(d["source"])}</span></li>')
+                       f'<span class="yr-dsrc">{esc(d["source"])}</span></li>')
         out.append("  </ul>")
         out.append('  <p class="yr-entry-links">' + " · ".join(entry_links(e, waves)) + "</p>")
         out.append("</li>")
@@ -332,7 +332,7 @@ def render_value(review, items):
     out.append("</tbody></table>")
     out.append('<h3>Singles at the $27.99 standard</h3>\n<ul class="yr-singles">')
     for s in [x for x in singles if x["price"] <= 27.99][:8]:
-        out.append(f'  <li><a href="preorders.html">{esc(s["name"])}</a> — {money(s["price"])}</li>')
+        out.append(f'  <li><a href="preorders.html">{esc(s["name"])}</a>, {money(s["price"])}</li>')
     out.append("</ul>")
     out.append(f'<p class="yr-value-note">{esc(review["bestValue"]["note"])}</p>')
     return "\n".join(out)
@@ -340,17 +340,17 @@ def render_value(review, items):
 
 def render_prices(review, signals):
     out = ['<p class="yr-criteria"><strong>Coverage:</strong> reported-price data exists for '
-           f'{len(signals)} figures — none of them 2026 releases. Every number below is a reported sold, '
+           f'{len(signals)} figures, none of them 2026 releases. Every number below is a reported sold, '
            "average, listing, or claim with a named source. The Chronicle publishes no price index.</p>"]
     for pm in review["priceMovements"]:
         s = signals[pm["signalId"]]
         m = movement_math(pm["solds"])
         seq = ", ".join(f'{d}: {money(p)}' for d, p in pm["solds"])
-        arrow = "▲" if m["delta"] > 0 else ("▼" if m["delta"] < 0 else "—")
+        arrow = "▲" if m["delta"] > 0 else ("▼" if m["delta"] < 0 else "•")
         out.append(f'<section class="yr-move" aria-labelledby="mv-{esc(pm["signalId"])}">')
         out.append(f'  <h3 id="mv-{esc(pm["signalId"])}">{esc(s["label"])} <span class="yr-move-delta">{arrow} {money(m["delta"])} ({m["pct"]:+.1f}%)</span></h3>')
         out.append(f'  <p>Reported solds: {esc(seq)}. First → last: {money(m["first"])} → {money(m["last"])}, '
-                   f'a {money(abs(m["delta"]))} move ({m["pct"]:+.1f}%). <span class="yr-dsrc">— {esc(pm["note"])} Source: {esc(s["source"])}</span></p>')
+                   f'a {money(abs(m["delta"]))} move ({m["pct"]:+.1f}%). <span class="yr-dsrc">{esc(pm["note"])} Source: {esc(s["source"])}</span></p>')
         out.append("</section>")
     out.append("<h3>Other reported bands (no sold sequence documented)</h3>\n<ul>")
     moved = {pm["signalId"] for pm in review["priceMovements"]}
@@ -361,8 +361,8 @@ def render_prices(review, signals):
                 "listing": "listing (not a sale)", "claimed": "claimed (single-source)"}.get(s["kind"], s["kind"])
         band = s.get("display") or ""
         flag = ' <span class="yr-flag">single-source</span>' if s.get("singleSource") else ""
-        out.append(f'  <li><strong>{esc(s["label"])}</strong> — {esc(kind)} {esc(band)}{flag} '
-                   f'<span class="yr-dsrc">— {esc(s["source"])}</span></li>')
+        out.append(f'  <li><strong>{esc(s["label"])}</strong>, {esc(kind)} {esc(band)}{flag} '
+                   f'<span class="yr-dsrc">{esc(s["source"])}</span></li>')
     out.append("</ul>")
     return "\n".join(out)
 
@@ -410,19 +410,19 @@ def render_narrative(review):
 def render_cross(stats):
     out = ["<ul class=\"yr-links\">"]
     links = [
-        ("timeline.html", "Legends Timeline — the year-by-year line history"),
-        ("market-briefing.html", "2026 Market Briefing — the market narrative in full"),
-        ("rarity.html", "Rarity Guide — chase vs variant vs exclusive vs limited"),
-        ("radar.html", "Radar — what's coming next"),
-        ("preorders.html", "Pre-order tracker — statuses and countdowns"),
-        ("calendar.html", "Release Calendar — dates on a grid"),
-        ("encyclopedia.html", "Encyclopedia — the full archive"),
-        ("compare.html", "VS mode — compare the contenders side by side"),
-        ("quest.html", "Grail Quest — turn 2026's standouts into quests"),
-        ("watchlist.html", "Watchlist — Price Watch with reported bands"),
-        ("price-guide.html", "Price Guide — how to value your own figures"),
-        ("gift.html", "Gift Finder — 2026 picks by recipient"),
-        ("api.html", "API — the year-review endpoint for agents"),
+        ("timeline.html", "Legends Timeline, the year-by-year line history"),
+        ("market-briefing.html", "2026 Market Briefing, the market narrative in full"),
+        ("rarity.html", "Rarity Guide, chase vs variant vs exclusive vs limited"),
+        ("radar.html", "Radar, what's coming next"),
+        ("preorders.html", "Pre-order tracker, statuses and countdowns"),
+        ("calendar.html", "Release Calendar, dates on a grid"),
+        ("encyclopedia.html", "Encyclopedia, the full archive"),
+        ("compare.html", "VS mode, compare the contenders side by side"),
+        ("quest.html", "Grail Quest, turn 2026's standouts into quests"),
+        ("watchlist.html", "Watchlist, Price Watch with reported bands"),
+        ("price-guide.html", "Price Guide, how to value your own figures"),
+        ("gift.html", "Gift Finder, 2026 picks by recipient"),
+        ("api.html", "API, the year-review endpoint for agents"),
     ]
     for href, label in links:
         out.append(f'  <li><a href="{href}">{esc(label)} →</a></li>')

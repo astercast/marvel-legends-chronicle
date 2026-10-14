@@ -16,21 +16,21 @@ You collect Captain America. 54 releases are catalogued from 2002 to 2026.
 
 ## Procedure
 
-1. Work the list chronologically — oldest first, they appreciate fastest:
-2.   - 2002 — Series 1: Captain America
-  - 2004 — Series 8: Captain America
-  - 2004 — Series 8: Captain America [Earth-616 version]
-  - 2006 — Face-Off Series 1: Captain America
-  - 2006 — Face-Off Series 1: Captain America [Unmasked]
-  - 2006 — Icons Series 1: Captain America
-  - 2006 — Icons Series 1: Captain America [Unmasked]
-  - 2007 — Brood Queen Wave: Captain America
-  - 2012 — Arnim Zola Wave (Return of Marvel Legends): Captain America (Bucky Barnes)
-  - 2014 — Mandroid Wave (Infinite Series): Captain America
-  - 2014 — Mandroid Wave (Infinite Series): Captain America
-  - 2014 — Mandroid Wave (Infinite Series): Captain America
-  - 2015 — Thanos Wave: Captain America
-  - 2015 — Store & Convention Exclusives: Captain America (Disney Store)
+1. Work the list chronologically, oldest first, they appreciate fastest:
+2.   - 2002, Series 1: Captain America
+  - 2004, Series 8: Captain America
+  - 2004, Series 8: Captain America [Earth-616 version]
+  - 2006, Face-Off Series 1: Captain America
+  - 2006, Face-Off Series 1: Captain America [Unmasked]
+  - 2006, Icons Series 1: Captain America
+  - 2006, Icons Series 1: Captain America [Unmasked]
+  - 2007, Brood Queen Wave: Captain America
+  - 2012, Arnim Zola Wave (Return of Marvel Legends): Captain America (Bucky Barnes)
+  - 2014, Mandroid Wave (Infinite Series): Captain America
+  - 2014, Mandroid Wave (Infinite Series): Captain America
+  - 2014, Mandroid Wave (Infinite Series): Captain America
+  - 2015, Thanos Wave: Captain America
+  - 2015, Store & Convention Exclusives: Captain America (Disney Store)
   - …and 40 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
@@ -47,4 +47,4 @@ Starting a Captain America run? Grab the most recent mainline release first (che
 ## Pitfalls
 
 - No completion rule = endless spending. Define 'complete' before you start.
-- Variant rabbit holes — some characters have 5+ releases of one sculpt.
+- Variant rabbit holes, some characters have 5+ releases of one sculpt.

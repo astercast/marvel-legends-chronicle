@@ -1,4 +1,4 @@
-/* figure-images.js — the Visual Database's shared rendering kit.
+/* figure-images.js, the Visual Database's shared rendering kit.
    The archive's figure pictures live in data/v1/figure-images.json:
    one entry per pictured figure, holding the embed URL of the
    manufacturer's/retailer's own product photography (referenced,
@@ -10,7 +10,7 @@
    typographic museum-vault treatment, exactly as the whole archive
    did before pictures. A pictured figure whose embed fails to load
    removes its own plate (the img's error handler) and falls back
-   the same way — never a broken-image box, never a placeholder
+   the same way, never a broken-image box, never a placeholder
    graphic. Pictures are lazy-loaded outbound references: no
    proxying, no per-image function calls. */
 import { escapeHtml } from "./figure-dialog.js";
@@ -38,9 +38,36 @@ export function plateHtml(entry, name) {
     </figure>`;
 }
 
+/* The PLATE (MARVEL-LIGHT 3.4): the one featured figure per
+   surface group, presented as a printed plate. The photograph
+   centers on a Mat of true white inside a thin Ink keyline; a
+   Plate Red plate mark stands at the mat's lower right; the
+   caption under the mat runs in the Rijksmuseum order (maker,
+   title, date) and closes with the catalog number in blue.
+   A plate is printed, not lit: it never animates. If the embed
+   fails, the whole plate removes itself (the fallback law) and
+   the listing or typographic treatment stands alone. */
+export function plateFigureHtml(entry, name, opts = {}) {
+  if (!entry || !entry.imageUrl) return "";
+  const mark = opts.mark || "PLATE 1";
+  const captionParts = [opts.maker, name, opts.year].filter(Boolean).map((s) => escapeHtml(String(s)));
+  const caption = captionParts.length
+    ? `<figcaption class="plate-caption">${captionParts.join(", ")}${opts.id ? `<span class="cat-no">${escapeHtml(opts.id)}</span>` : ""}</figcaption>`
+    : "";
+  return `<figure class="plate">
+      <div class="plate-mat">
+        <a href="${escapeHtml(entry.sourceUrl)}" target="_blank" rel="noopener noreferrer" title="Product page at ${escapeHtml(entry.imageSource)}">
+          <img src="${escapeHtml(entry.imageUrl)}" alt="${escapeHtml(name)}, product photograph from ${escapeHtml(entry.imageSource)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.plate').remove()">
+        </a>
+        <span class="plate-mark" aria-hidden="true">${escapeHtml(mark)}</span>
+      </div>
+      ${caption}
+    </figure>`;
+}
+
 /* Places to buy: outbound links only. The price shown is the price
    the retailer itself listed on priceSeen, and the link is where it
-   is checked — this archive sells nothing and checks nothing out. */
+   is checked, this archive sells nothing and checks nothing out. */
 export function buyLinksHtml(entry) {
   if (!entry || !Array.isArray(entry.buy) || !entry.buy.length) return "";
   const links = entry.buy.map((b) => {

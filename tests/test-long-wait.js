@@ -113,21 +113,25 @@ suite("long-wait — page wiring", () => {
   });
 });
 
-suite("view transitions — the vault door (rotation 14 adoption)", () => {
+suite("view transitions — the cut (MARVEL-LIGHT navigation remainder closed)", () => {
   const css = read("assets/css/base.css");
 
-  test("cross-document transitions are opted in, root-only, in the shared stylesheet", () => {
-    assert(css.includes("@view-transition { navigation: auto; }"), "opt-in present");
-    assert(css.includes("::view-transition-old(root)"), "old root styled");
-    assert(css.includes("::view-transition-new(root)"), "new root styled");
-    assert(!/view-transition-name/.test(css), "no named elements — root-only by design");
+  test("cross-document transitions are OFF, estate default, in the shared stylesheet", () => {
+    // The rotation-14 vault door (crossfade) is retired: the study's
+    // navigation remainder closes in the light build. Pages cut at
+    // the estate default on all ~220 pages, no crossfade under any
+    // name, not per-page overrides.
+    assert(css.includes("@view-transition { navigation: none; }"), "the cut is the estate default");
+    assert(!css.includes("::view-transition-old(root)"), "no old-root crossfade styling remains");
+    assert(!css.includes("::view-transition-new(root)"), "no new-root crossfade styling remains");
+    assert(!/vault-close|vault-open/.test(css), "the door keyframes are gone");
+    assert(!/view-transition-name/.test(css), "no named elements");
   });
 
-  test("stillness wins under the OS preference and the manual toggle", () => {
-    assert(/@media \(prefers-reduced-motion: reduce\) \{\s*::view-transition-old\(root\), ::view-transition-new\(root\) \{ animation: none !important; \}/.test(css),
-      "OS reduced-motion removes the transition animations");
-    assert(css.includes('html[data-motion="reduce"] ::view-transition-old(root)'),
-      "manual vault toggle removes the transition animations");
+  test("no page re-opts into a crossfade locally", () => {
+    assert(!read("assets/css/museum.css").includes("navigation: auto"), "museum surfaces keep the cut");
+    assert(read("assets/css/museum.css").includes("@view-transition { navigation: none; }"),
+      "museum.css restates the cut so its surfaces never regress");
   });
 
   test("every page loads the shared stylesheet that carries the block", () => {

@@ -1,9 +1,9 @@
-/* Timeline era bands — packaging eras of the Marvel Legends line.
+/* Timeline era bands, packaging eras of the Marvel Legends line.
    Year ranges follow the transitions documented in data/encyclopedia.json
    (packagingGuide): Toy Biz 2002–2006, Hasbro takeover 2007, Infinite Series
    window-box relaunch 2014, windowless 2022–2023, windows return late 2023→2024.
    The one-line notes are summaries of the encyclopedia's sourced items.
-   Boundaries are the documented transitions — nothing is invented. */
+   Boundaries are the documented transitions, nothing is invented. */
 import { escapeHtml } from "./figure-dialog.js";
 
 export const ERAS = [
@@ -12,7 +12,7 @@ export const ERAS = [
     startYear: 2002,
     endYear: 2006,
     title: "Toy Biz era",
-    note: "Clamshell packaging with a 32-page reprint comic — plus a display stand — in every box.",
+    note: "Clamshell packaging with a 32-page reprint comic, plus a display stand, in every box.",
     learnMore: "encyclopedia.html#packaging",
   },
   {
@@ -20,7 +20,7 @@ export const ERAS = [
     startYear: 2007,
     endYear: 2013,
     title: "Hasbro takes over",
-    note: "The comic pack-in is dropped and Toy Biz's finger joints go with it — but the Build-A-Figure carries on.",
+    note: "The comic pack-in is dropped and Toy Biz's finger joints go with it, but the Build-A-Figure carries on.",
     learnMore: "encyclopedia.html#packaging",
   },
   {
@@ -36,7 +36,7 @@ export const ERAS = [
     startYear: 2022,
     endYear: 2023,
     title: "Windowless era",
-    note: "Plastic windows removed in a sustainability push — printed box art by real comic artists instead.",
+    note: "Plastic windows removed in a sustainability push, printed box art by real comic artists instead.",
     learnMore: "encyclopedia.html#packaging",
   },
   {

@@ -1,4 +1,4 @@
-/* Exclusives browser — browse the 587 retailer exclusives by retailer.
+/* Exclusives browser, browse the 587 retailer exclusives by retailer.
    Retailer comes straight from the figure's `exclusive` field; values that
    name no retailer ("Box set exclusive", "Made-to-order") are grouped as
    "Other / retailer unconfirmed" rather than guessed. */
@@ -73,7 +73,7 @@ function render() {
   if (list.length > 400) {
     const more = document.createElement("p");
     more.className = "chart-sub";
-    more.textContent = `Showing the first 400 of ${list.length} — narrow the search or pick a retailer.`;
+    more.textContent = `Showing the first 400 of ${list.length}, narrow the search or pick a retailer.`;
     els.grid.appendChild(more);
   }
   els.chips.querySelectorAll("[data-ret]").forEach((c) => {
@@ -105,7 +105,7 @@ async function main() {
     `<strong>${allExclusives.length}</strong> exclusives in the archive · ` +
     `<strong>${named}</strong> with a named retailer · ` +
     `<strong>${allExclusives.length - named}</strong> grouped as "retailer unconfirmed" ` +
-    `(<em>Box set exclusive</em> / <em>Made-to-order</em> — we don't guess). ` +
+    `(<em>Box set exclusive</em> / <em>Made-to-order</em>, we don't guess). ` +
     `Retailer taxonomy: <a href="encyclopedia.html#variants">encyclopedia → variants &amp; exclusives</a>.`;
 
   const frag = document.createDocumentFragment();

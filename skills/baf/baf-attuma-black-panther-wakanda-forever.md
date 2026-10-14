@@ -17,7 +17,7 @@ You want to build the Attuma (Black Panther: Wakanda Forever) BAF from the 2022 
 ## Procedure
 
 1. The BAF: **Attuma (Black Panther: Wakanda Forever)** (2022, Attuma Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Black Panther → Left leg
   - [ ] Everett K. Ross → Right arm and 2 weapons
   - [ ] Hatut Zeraze Trooper → Right leg
@@ -26,7 +26,7 @@ You want to build the Attuma (Black Panther: Wakanda Forever) BAF from the 2022 
   - [ ] Okoye → Head
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Attuma (Black Panther: Wakanda Forever) torso? Find which figure abo
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

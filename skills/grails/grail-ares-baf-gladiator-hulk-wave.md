@@ -17,8 +17,8 @@ You're considering buying, selling, or hunting the Ares BAF (Gladiator Hulk wave
 ## Procedure
 
 1. Why it matters: Walmart-exclusive BAF wave; lesser-known character, rarely reprinted.
-2. Price evidence: ~$50 (UNVERIFIED — treat as collector lore, not market data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+2. Price evidence: ~$50 (UNVERIFIED, treat as collector lore, not market data).
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a Ares BAF (Gladiator Hulk wave): run the bootleg checklist, pull
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

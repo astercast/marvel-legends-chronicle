@@ -1,4 +1,4 @@
-/* Variant & chase identifier — wave-by-wave index from figures.json. */
+/* Variant & chase identifier, wave-by-wave index from figures.json. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
 
@@ -51,7 +51,7 @@ function render(waves) {
         <div class="v-name">${escapeHtml(fig.name)}</div>
         <div class="tag-row"><span class="badge badge-variant">${escapeHtml(fig.variant)}</span>${extras.map((e) => `<span class="badge">${escapeHtml(e)}</span>`).join("")}</div>
         ${fig.notes ? `<p class="v-notes">${escapeHtml(fig.notes)}</p>` : ""}
-        <p class="v-desc">Regular release: the standard <strong>${escapeHtml(fig.name)}</strong> from this wave — compare deco, sculpt, and packaging against the variant described above.</p>`;
+        <p class="v-desc">Regular release: the standard <strong>${escapeHtml(fig.name)}</strong> from this wave, compare deco, sculpt, and packaging against the variant described above.</p>`;
       list.appendChild(li);
     }
     section.appendChild(list);

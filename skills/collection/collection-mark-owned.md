@@ -15,9 +15,9 @@ Keeping a real inventory instead of a mental one.
 
 ## Procedure
 
-1. Mark owned per figure — the tracker lives in your browser (localStorage).
+1. Mark owned per figure, the tracker lives in your browser (localStorage).
 2. Mark wanted for hunt-list figures; review the list monthly.
-3. Export or screenshot quarterly — browsers get wiped.
+3. Export or screenshot quarterly, browsers get wiped.
 
 ## Worked example
 
@@ -25,4 +25,4 @@ Sunday audit: 10 minutes marking the week's pickups, wanted list reprioritized.
 
 ## Pitfalls
 
-- No backup — localStorage is not a cloud.
+- No backup, localStorage is not a cloud.

@@ -27,7 +27,7 @@ async function main() {
     if (!res.ok) throw new Error("fetch failed");
     waves = (await res.json()).waves ?? [];
   } catch {
-    return; // fail silently — the strip is decorative
+    return; // fail silently, the strip is decorative
   }
   const year = new Date().getFullYear();
   const picks = waves
@@ -45,7 +45,7 @@ async function main() {
     <div class="container history-inner">
       <span class="history-kicker" aria-hidden="true">⏳</span>
       <p><strong>Milestone anniversaries:</strong> ${shown.map((w) =>
-        `<span class="history-item"><strong>${w.ago} years ago</strong> — ${esc(w.series)} (${w.year}) · ${esc(w.manufacturer)}</span>`
+        `<span class="history-item"><strong>${w.ago} years ago</strong>, ${esc(w.series)} (${w.year}) · ${esc(w.manufacturer)}</span>`
       ).join('<span class="history-sep" aria-hidden="true"> · </span>')}
       <span class="history-note">Waves are dated by release year in the archive.</span></p>
     </div>`;

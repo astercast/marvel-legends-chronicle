@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Grail Quest — Marvel Legends Chronicle</title>
+  <title>Grail Quest: Marvel Legends Chronicle</title>
   <meta name="description" content="Turn your Marvel Legends collection into a game: auto-generated quests from your real tracker data, unlockable achievements, collector levels, and a shareable quest card.">
   <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/quest">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Grail Quest — Marvel Legends Chronicle">
+  <meta property="og:title" content="Grail Quest: Marvel Legends Chronicle">
   <meta property="og:description" content="Turn your Marvel Legends collection into a game: auto-generated quests from your real tracker data, unlockable achievements, collector levels, and a shareable quest card.">
   <meta property="og:url" content="https://marvel-legends-chronicle-live.vercel.app/quest">
   <meta property="og:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Grail Quest — Marvel Legends Chronicle">
+  <meta name="twitter:title" content="Grail Quest: Marvel Legends Chronicle">
   <meta name="twitter:description" content="Turn your Marvel Legends collection into a game: auto-generated quests from your real tracker data, unlockable achievements, collector levels, and a shareable quest card.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Grail Quest — Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/quest", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Grail Quest: Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/quest", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
   <link rel="preload" href="assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -37,7 +37,7 @@
     .level-xp { color: var(--ink-dim); font-size: 0.95rem; }
     .level-math { font-size: 0.85rem; color: var(--muted); margin: 0; }
     .progress-bar { height: 10px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
-    .progress-bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.35s var(--ease); }
+    .progress-bar > span { display: block; height: 100%; background: var(--ink); transition: width 0.35s var(--ease); }
     @media (prefers-reduced-motion: reduce) { .progress-bar > span { transition: none; } }
     .quest-prog { font-size: 0.85rem; color: var(--ink-dim); margin: var(--space-2) 0 0; }
     .chart-sub { font-size: 0.85rem; color: var(--muted); margin: 0 0 var(--space-3); }
@@ -49,7 +49,7 @@
     @media (min-width: 1100px) { .quest-grid { grid-template-columns: repeat(3, 1fr); } }
     .quest-card h3 { font-size: 1.05rem; margin: var(--space-2) 0; }
     .quest-top { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-    .badge-difficulty { background: var(--gold); color: #1a1206; }
+    .badge-difficulty { background: var(--gold); color: var(--bg); }
     .quest-missing { margin-top: var(--space-3); }
     .quest-missing summary { cursor: pointer; font-size: 0.9rem; color: var(--gold); }
     .missing-list { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
@@ -67,9 +67,9 @@
     @media (min-width: 900px) { .ach-grid { grid-template-columns: repeat(3, 1fr); } }
     .ach-card { text-align: left; }
     .ach-card h3 { font-size: 1rem; margin: var(--space-2) 0; }
-    .ach-icon { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; font-size: 1.6rem; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--gold), #7a5b17); box-shadow: 0 0 0 3px var(--panel), 0 0 0 5px var(--gold); }
+    .ach-icon { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; font-size: 1.6rem; border-radius: 50%; background: transparent; border: 2px solid var(--plate-red); color: var(--plate-red); box-shadow: 0 0 0 3px var(--panel), 0 0 0 4.5px var(--plate-red); }
     .ach-locked { opacity: 0.75; }
-    .ach-locked .ach-icon { filter: grayscale(1); background: radial-gradient(circle at 35% 30%, var(--panel-2), var(--line)); box-shadow: 0 0 0 3px var(--panel), 0 0 0 5px var(--line); }
+    .ach-locked .ach-icon { border-color: var(--line); color: var(--muted); box-shadow: 0 0 0 3px var(--panel), 0 0 0 5px var(--line); }
     .share-box { display: grid; gap: var(--space-3); }
     .share-box textarea { width: 100%; min-height: 9rem; font-family: var(--font-mono, monospace); font-size: 0.85rem; padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel-2); color: var(--ink); resize: vertical; }
     .share-row { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; }
@@ -77,7 +77,7 @@
     @media (min-width: 720px) { .onboard-steps { grid-template-columns: repeat(3, 1fr); } }
     .onboard-steps .card { padding: var(--space-4); }
     .onboard-steps h3 { font-size: 1rem; margin: 0 0 var(--space-2); }
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--gold); color: #1a1206; font-weight: 900; margin-bottom: var(--space-2); }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--gold); color: var(--bg); font-weight: 900; margin-bottom: var(--space-2); }
     /* Collection insights (wave 29) */
     .ins-grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
     @media (min-width: 720px) { .ins-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -98,15 +98,15 @@
     .milestone-state { font-size: 0.85rem; color: var(--gold); font-weight: 700; }
     .milestone-done { border-color: var(--gold); }
     .milestone:not(.milestone-done) .ach-icon { filter: grayscale(1); }
-    /* Launch-day prep (wave 30): native checkboxes with the brand accent —
+    /* Launch-day prep (wave 30): native checkboxes with the brand accent,
        Baseline accent-color, no custom control needed. */
     .prep-steps { display: grid; gap: var(--space-1); margin-top: var(--space-2); }
     .prep-step { display: flex; gap: var(--space-2); align-items: center; padding: var(--space-1) 0; cursor: pointer; color: var(--ink-dim); font-size: 0.9rem; }
     .prep-step input { accent-color: var(--gold); width: 1.15rem; height: 1.15rem; flex: none; cursor: pointer; }
     .prep-step:has(input:checked) { color: var(--ink); text-decoration: line-through; text-decoration-color: var(--gold); }
-    /* Quest 6.0 — exhibition commissions */
+    /* Quest 6.0, exhibition commissions */
     .commission-no { font-family: var(--font-mono, monospace); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; align-self: center; margin-left: auto; }
-    .ko-flag { font-size: 0.82rem; color: var(--ink-dim); border-left: 3px solid var(--wax, #8e2b32); padding-left: var(--space-2); margin: var(--space-3) 0 0; }
+    .ko-flag { font-size: 0.82rem; color: var(--ink-dim); border-left: 3px solid var(--ink); padding-left: var(--space-2); margin: var(--space-3) 0 0; }
     .ko-flag a { color: var(--gold); }
     .jewel-line { font-size: 0.9rem; color: var(--ink-dim); margin: var(--space-2) 0 0; }
     .jewel-line:empty { display: none; }
@@ -122,22 +122,22 @@
     .plaque-wall { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: grid; gap: var(--space-2); grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); }
     .plaque { border: 1px solid var(--gold); border-radius: 2px; padding: var(--space-2); background: var(--panel-2); display: grid; gap: var(--space-1); box-shadow: inset 0 0 0 3px var(--panel), inset 0 0 0 4px var(--line); }
     .plaque-name { font-size: 0.82rem; font-weight: 700; line-height: 1.25; }
-    .plaque-piece { font-size: 0.72rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; }
+    .plaque-piece { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
     .plaque-more { display: grid; place-items: center; font-size: 0.82rem; color: var(--muted); border-style: dashed; box-shadow: none; }
     .done-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
     @media (min-width: 720px) { .done-list { grid-template-columns: repeat(2, 1fr); } }
-    .done-row { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1px solid var(--gold); border-radius: var(--radius); background: var(--panel); }
+    .done-row { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
     .done-row > div { display: grid; gap: var(--space-1); }
     .done-row strong { font-size: 0.95rem; }
-    .wax-dot { flex: none; width: 1.1rem; height: 1.1rem; margin-top: 0.2rem; border-radius: 48% 52% 51% 49% / 52% 49% 51% 48%; background: radial-gradient(circle at 35% 30%, #b23a42, var(--wax, #8e2b32) 45%, #471016); box-shadow: 0 2px 6px rgba(0,0,0,0.5); }
-    /* Quest-complete ceremony — native dialog, wax-seal press is motion-gated */
-    .ceremony-dialog { border: 1px solid var(--gold); border-radius: var(--radius); background: var(--paper, var(--panel)); color: var(--ink-on-paper, var(--ink)); padding: var(--space-6); max-width: 26rem; text-align: center; }
-    .ceremony-dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
+    .stamp-dot { flex: none; width: 1.1rem; height: 1.1rem; margin-top: 0.2rem; border-radius: 50%; border: 2px solid var(--plate-red); background: transparent; }
+    /* Quest-complete ceremony, native dialog; the seal press is motion-gated */
+    .ceremony-dialog { border: 1px solid var(--line-bright); border-radius: var(--radius); background: var(--paper, var(--panel)); color: var(--ink-on-paper, var(--ink)); padding: var(--space-6); max-width: 26rem; text-align: center; }
+    .ceremony-dialog::backdrop { background: rgba(30, 27, 22, 0.45); }
     .ceremony-seal { --seal: 96px; margin: 0 auto var(--space-4); }
-    .ceremony-kicker { font-family: var(--font-mono, monospace); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #7a5b17; margin: 0 0 var(--space-2); }
+    .ceremony-kicker { font-family: var(--font-mono, monospace); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-on-paper, var(--muted)); margin: 0 0 var(--space-2); }
     .ceremony-dialog h2 { font-size: 1.4rem; margin: 0 0 var(--space-2); color: var(--ink-on-paper, var(--ink)); }
     .ceremony-dialog p { color: var(--muted-on-paper, var(--ink-dim)); font-size: 0.92rem; }
-    .ceremony-acc { font-family: var(--font-mono, monospace); font-size: 0.78rem; color: #7a5b17; margin: var(--space-3) 0 var(--space-4); }
+    .ceremony-acc { font-family: var(--font-mono, monospace); font-size: 0.78rem; color: var(--catalogue-blue); margin: var(--space-3) 0 var(--space-4); }
   </style>
 </head>
 <body>
@@ -166,7 +166,7 @@
         <div class="container hero-inner">
           <span class="hero-kicker">From the registrar's desk</span>
           <h1 id="quest-title">Grail <span class="accent">Quest.</span></h1>
-          <p class="lede">The registrar issues commissions. You bring home the figures — the Chronicle turns them into exhibition wings: Build-A-Figures, character runs, series runs, and the Vault Room's own year-shelves. Completion percentages are quest progress; your rarest pieces become accessioned honors. Everything lives in your browser — the vault never phones home.</p>
+          <p class="lede">The registrar issues commissions. You bring home the figures, the Chronicle turns them into exhibition wings: Build-A-Figures, character runs, series runs, and the Vault Room's own year-shelves. Completion percentages are quest progress; your rarest pieces become accessioned honors. Everything lives in your browser, the vault never phones home.</p>
           <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">grail-quest</span></p>
         </div>
       </section>
@@ -174,7 +174,7 @@
       <div class="container">
         <section id="quest-empty" aria-labelledby="empty-title">
           <h2 id="empty-title">Your quest board is empty.</h2>
-          <p class="lede">Quests are generated from the figures you've marked <strong>owned</strong> — and you haven't marked any yet. Three steps to your first quest:</p>
+          <p class="lede">Quests are generated from the figures you've marked <strong>owned</strong>, and you haven't marked any yet. Three steps to your first quest:</p>
           <div class="onboard-steps">
             <div class="card">
               <span class="step-num" aria-hidden="true">1</span>
@@ -185,13 +185,13 @@
             <div class="card">
               <span class="step-num" aria-hidden="true">2</span>
               <h3>Mark your shelf</h3>
-              <p class="chart-sub">Check off what you own in the printable checklist — it syncs with every tool on this site.</p>
+              <p class="chart-sub">Check off what you own in the printable checklist, it syncs with every tool on this site.</p>
               <p><a class="btn" href="checklist.html">Open the checklist</a></p>
             </div>
             <div class="card">
               <span class="step-num" aria-hidden="true">3</span>
               <h3>Set a target</h3>
-              <p class="chart-sub">Add your grails to the watchlist with a max price — the quest board will point at the nearest one.</p>
+              <p class="chart-sub">Add your grails to the watchlist with a max price, the quest board will point at the nearest one.</p>
               <p><a class="btn" href="watchlist.html">Open the watchlist</a></p>
             </div>
           </div>
@@ -202,8 +202,8 @@
             <div class="level-head">
               <h2 id="level-heading">Registrar's rank</h2>
             </div>
-            <p class="level-title" id="level-title">—</p>
-            <p class="level-xp" id="level-xp">—</p>
+            <p class="level-title" id="level-title">…</p>
+            <p class="level-xp" id="level-xp">…</p>
             <p class="level-math" id="level-math"></p>
             <div id="level-bar"></div>
             <p class="jewel-line" id="jewel-line" aria-live="polite"></p>
@@ -228,7 +228,7 @@
 
           <section class="quest-section" aria-labelledby="rec-heading">
             <h2 id="rec-heading">The registrar's next commissions</h2>
-            <p class="section-sub">The closest finishes your data points at — recomputed live from your tracker.</p>
+            <p class="section-sub">The closest finishes your data points at, recomputed live from your tracker.</p>
             <div class="rec-grid">
               <div id="rec-baf"></div>
               <div id="rec-cheap"></div>
@@ -243,13 +243,13 @@
             <h2 id="alerts-heading">Pre-order alerts</h2>
             <p class="section-sub" id="alerts-sub" aria-live="polite"></p>
             <div class="missing-list" id="alerts-list" aria-live="polite"></div>
-            <p class="chart-sub">Dates are the exact pre-order days the hobby press reported — never invented. Announced-but-undated items (no pre-order date reported) don't get alerts; the full list lives on the <a href="preorders.html">pre-order tracker</a>.</p>
+            <p class="chart-sub">Dates are the exact pre-order days the hobby press reported, never invented. Announced-but-undated items (no pre-order date reported) don't get alerts; the full list lives on the <a href="preorders.html">pre-order tracker</a>.</p>
           </section>
           <section class="quest-section" aria-labelledby="prep-heading">
             <h2 id="prep-heading">Launch-day prep</h2>
             <p class="section-sub" id="prep-sub" aria-live="polite"></p>
             <div class="missing-list" id="prep-list" aria-live="polite"></div>
-            <p class="chart-sub">Wave-1 figures sold out within hours of pre-orders opening — the <a href="launch-curve.html">launch curve</a> shows why prep beats panic. Prep quests come from the same confirmed dates as the alerts above; your ticks stay in this browser.</p>
+            <p class="chart-sub">Wave-1 figures sold out within hours of pre-orders opening, the <a href="launch-curve.html">launch curve</a> shows why prep beats panic. Prep quests come from the same confirmed dates as the alerts above; your ticks stay in this browser.</p>
           </section>
 
           <section class="quest-section" aria-labelledby="ach-heading">
@@ -260,7 +260,7 @@
 
           <section class="quest-section" aria-labelledby="insights-heading">
             <h2 id="insights-heading">Collection insights</h2>
-            <p class="section-sub">Completion math over your real tracker data — by wave, by year, by character — plus duplicate checks and a shelf-value band built only from the Chronicle's reported price ranges. Nothing here is an appraisal.</p>
+            <p class="section-sub">Completion math over your real tracker data, by wave, by year, by character, plus duplicate checks and a shelf-value band built only from the Chronicle's reported price ranges. Nothing here is an appraisal.</p>
             <div class="ins-grid">
               <div class="card ins-card">
                 <h3>Completion by wave</h3>
@@ -301,7 +301,7 @@
 
           <section class="quest-section" aria-labelledby="export-heading">
             <h2 id="export-heading">Collection report</h2>
-            <p class="section-sub">A plain-text record of your collection for insurance and your own files — completion, shelf-value bands, gaps, milestones. Your records, not a valuation.</p>
+            <p class="section-sub">A plain-text record of your collection for insurance and your own files, completion, shelf-value bands, gaps, milestones. Your records, not a valuation.</p>
             <div class="share-box">
               <label class="visually-hidden" for="report-text">Collection report text</label>
               <textarea id="report-text" readonly></textarea>
@@ -315,7 +315,7 @@
 
           <section class="quest-section" aria-labelledby="share-heading">
             <h2 id="share-heading">Share your quest status</h2>
-            <p class="section-sub">A plain-text quest card for forums and Discord — level, archive progress, active quests, your next-quest list, latest achievement. The same export lives on the <a href="showcase.html">Showcase</a> page.</p>
+            <p class="section-sub">A plain-text quest card for forums and Discord, level, archive progress, active quests, your next-quest list, latest achievement. The same export lives on the <a href="showcase.html">Showcase</a> page.</p>
             <div class="share-box">
               <label class="visually-hidden" for="share-text">Quest status text</label>
               <textarea id="share-text" readonly></textarea>
@@ -328,7 +328,7 @@
         </div>
 
         <dialog id="ceremony" class="ceremony-dialog" aria-labelledby="ceremony-title">
-          <div class="wax-seal ceremony-seal" aria-hidden="true"><span>❖</span></div>
+          <div class="seal-stamp ceremony-seal" aria-hidden="true"><span>❖</span></div>
           <p class="ceremony-kicker">Commission complete · accessioned</p>
           <h2 id="ceremony-title"></h2>
           <p id="ceremony-body"></p>
@@ -341,7 +341,7 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <p>Marvel Legends Chronicle, a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
       <nav aria-label="Footer">
         <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="archive-tour.html">Archive Tour</a><a href="debuts.html">First Appearances</a><a href="long-wait.html">The Long Wait</a><a href="build-ledger.html">The Build Ledger</a><a href="two-houses.html">The Two Houses</a><a href="roll-call.html">The Roll Call</a><a href="wave-ledger.html">The Wave Ledger</a><a href="year-ledger.html">The Year Ledger</a><a href="spec-sheet.html">The Spec Sheet</a><a href="visual-database.html">The Visual Database</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="drop-week.html">Drop Week</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="my-vault.html">My Vault</a><a href="completionist.html">The Completionist</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html" aria-current="page">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="vault-room.html">Vault Room</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button>
       </nav>

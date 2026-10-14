@@ -198,7 +198,7 @@ def render_stats(counts):
     for val, label in cells:
         out.append(f'  <div class="rar-stat"><dt class="rar-stat-n">{esc(val)}</dt><dd class="rar-stat-l">{esc(label)}</dd></div>')
     out.append("</dl>")
-    out.append('<p class="rar-stats-note">Counts come straight from the archive — nothing estimated.</p>')
+    out.append('<p class="rar-stats-note">Counts come straight from the archive, nothing estimated.</p>')
     return "\n".join(out)
 
 
@@ -230,12 +230,12 @@ def render_tiers(tiers, figs):
         for e in t["examples"]:
             wid, _ = e["id"].split("::", 1)
             parts.append(f'    <li><a href="waves/{esc(wid)}.html">{esc(find_name(figs, e["id"]))}</a>'
-                         f' <span class="rar-ex-note">— {esc(e["note"])}</span></li>')
+                         f' <span class="rar-ex-note">{esc(e["note"])}</span></li>')
         parts.append("  </ul>")
         parts.append('  <h3>Sources</h3>\n  <ul class="rar-sources">')
         for s in t["sources"]:
             parts.append(f'    <li><a href="{esc(s["url"])}">{esc(s["label"])}</a>'
-                         f' <span class="rar-src-note">— {esc(s["note"])}</span></li>')
+                         f' <span class="rar-src-note">{esc(s["note"])}</span></li>')
         parts.append("  </ul>\n</section>")
         out.append("\n".join(parts))
     return "\n".join(out)

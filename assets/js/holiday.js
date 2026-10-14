@@ -1,4 +1,4 @@
-/* 2026 Holiday Buying Guide (wave 16) — recipient picks rendered from the
+/* 2026 Holiday Buying Guide (wave 16), recipient picks rendered from the
    archive's real data: data/preorders.json (wave-12 researched items only).
    No invented figures, prices, dates, or retailers anywhere.
    Pure functions are exported for unit tests; init() hydrates [data-picks]. */
@@ -13,13 +13,13 @@ const MONTHS = [
 
 /* ---- pure helpers ---- */
 
-/** "$27.99 · announced MSRP" — never a market price. */
+/** "$27.99 · announced MSRP", never a market price. */
 export function priceBandText(item) {
   const p = item && item.price;
   if (typeof p === "number" && Number.isFinite(p)) {
     return `$${p.toFixed(2)} · announced MSRP (at reveal, per research)`;
   }
-  return "Price not announced — check eBay solds";
+  return "Price not announced, check eBay solds";
 }
 
 /** "2026-10-06" -> "Oct 6, 2026"; strict parse, null-safe. */
@@ -53,55 +53,55 @@ export const PICKS = {
   new: [
     {
       itemId: "mini-comics-wave-3",
-      why: "Every figure ships with a physical mini comic, and the lineup spans comic eras — classic red Elektra (first since 2018), Fraction/Aja Hawkeye, Acroyear, Earth X Captain America.",
+      why: "Every figure ships with a physical mini comic, and the lineup spans comic eras, classic red Elektra (first since 2018), Fraction/Aja Hawkeye, Acroyear, Earth X Captain America.",
     },
     {
       itemId: "xmen97-retro-wave",
-      why: "The '97 character looks anyone recognizes — Death Gambit, team-suit Cyclops (2 heads), Jean Grey — on retro blister cards. One wave, instantly readable shelf.",
+      why: "The '97 character looks anyone recognizes, Death Gambit, team-suit Cyclops (2 heads), Jean Grey, on retro blister cards. One wave, instantly readable shelf.",
     },
     {
       itemId: "tas-retro-wave",
-      why: "First-ever solo-carded 6\" Aunt May, plus Mary Jane, Smythe, and Carnage — cartoon nostalgia that reads instantly to non-collectors.",
+      why: "First-ever solo-carded 6\" Aunt May, plus Mary Jane, Smythe, and Carnage, cartoon nostalgia that reads instantly to non-collectors.",
     },
     {
       itemId: "doomsday-wave",
-      why: "Doctor Doom, Magneto, Gambit, Cyclops — marquee characters with movie-adjacent momentum at the standard $27.99 MSRP.",
+      why: "Doctor Doom, Magneto, Gambit, Cyclops, marquee characters with movie-adjacent momentum at the standard $27.99 MSRP.",
     },
     {
       itemId: "final-swing-spidey",
-      why: "No Way Home \"Final Swing\" Spider-Man at the standard $27.99 — the iconic movie moment, available now instead of on a pre-order wait.",
+      why: "No Way Home \"Final Swing\" Spider-Man at the standard $27.99, the iconic movie moment, available now instead of on a pre-order wait.",
     },
   ],
   kid: [
     {
       itemId: "tas-retro-wave",
-      why: "The Spider-Man cartoon cast — the characters a kid points at on the box. Recognizable beats rare for young collectors.",
+      why: "The Spider-Man cartoon cast, the characters a kid points at on the box. Recognizable beats rare for young collectors.",
     },
     {
       itemId: "xmen97-retro-wave",
-      why: "Team-suit X-Men from the hit animated series — the whole crew in one wave, easy to ask for by name.",
+      why: "Team-suit X-Men from the hit animated series, the whole crew in one wave, easy to ask for by name.",
     },
     {
       itemId: "spidey-60s-3pack",
-      why: "Spider-Man, Lizard, and Electro in one box — an instant play set instead of a shelf piece.",
+      why: "Spider-Man, Lizard, and Electro in one box, an instant play set instead of a shelf piece.",
     },
     {
       itemId: "mtg-wave-2",
-      why: "Each figure includes a playable Magic: The Gathering card — two hobbies in one box if the kid already plays.",
+      why: "Each figure includes a playable Magic: The Gathering card, two hobbies in one box if the kid already plays.",
     },
   ],
   completionist: [
     {
       itemId: "mini-comics-wave-3",
-      why: "Real gap-fills: classic red Elektra (first since 2018), Elsa Bloodstone, Acroyear, Earth X Captain America — pre-order opened Oct 6, 2026.",
+      why: "Real gap-fills: classic red Elektra (first since 2018), Elsa Bloodstone, Acroyear, Earth X Captain America, pre-order opened Oct 6, 2026.",
     },
     {
       itemId: "xmen97-retro-wave",
-      why: "The '97 run continues: Death Gambit, Vindicator (Morph), X-Factor Havoc and Polaris — pre-order opened Oct 21, 2026.",
+      why: "The '97 run continues: Death Gambit, Vindicator (Morph), X-Factor Havoc and Polaris, pre-order opened Oct 21, 2026.",
     },
     {
       itemId: "tas-retro-wave",
-      why: "Fills the VHS-sellout gaps on retro cards — pre-order opened Sep 29, 2026. See the reissue note below before touching aftermarket listings.",
+      why: "Fills the VHS-sellout gaps on retro cards, pre-order opened Sep 29, 2026. See the reissue note below before touching aftermarket listings.",
     },
     {
       itemId: "bastion-trask-2pack",
@@ -109,11 +109,11 @@ export const PICKS = {
     },
     {
       itemId: "prof-x-hoverchair",
-      why: "SDCC 2026 exclusive headed to Hasbro Pulse — the '97 shelf centerpiece. Convention exclusives don't restock like retail waves.",
+      why: "SDCC 2026 exclusive headed to Hasbro Pulse, the '97 shelf centerpiece. Convention exclusives don't restock like retail waves.",
     },
     {
       itemId: "onslaught-target",
-      why: "X-Men Onslaught is reported \"extremely hit or miss in stores\" — and Target cancelled many confirmed 2026 preorders. In-hand beats preordered here.",
+      why: "X-Men Onslaught is reported \"extremely hit or miss in stores\", and Target cancelled many confirmed 2026 preorders. In-hand beats preordered here.",
     },
     {
       itemId: "cypher-target",
@@ -123,17 +123,17 @@ export const PICKS = {
   bargain: [
     {
       itemId: "tas-vhs-reissues",
-      why: "The Pulse \"VHS\" Animated Series sellouts (Mary Jane, Aunt May, Smythe, Maximum Carnage) spiked on the aftermarket — then Hasbro reissued them on retro cards at the standard $27.99. Buy retail; the old VHS premium is dead money.",
-      avoid: "Don't pay the aftermarket VHS markup — the reissue is the same shelf story at retail price. Check the Market Briefing's reissue-cooling section first.",
+      why: "The Pulse \"VHS\" Animated Series sellouts (Mary Jane, Aunt May, Smythe, Maximum Carnage) spiked on the aftermarket, then Hasbro reissued them on retro cards at the standard $27.99. Buy retail; the old VHS premium is dead money.",
+      avoid: "Don't pay the aftermarket VHS markup, the reissue is the same shelf story at retail price. Check the Market Briefing's reissue-cooling section first.",
     },
     {
       itemId: "tas-retro-wave",
-      why: "Standard $27.99 MSRP at retail, pre-ordered Sep 29, 2026. Retail is the price floor — anything far under it should raise KO questions, not celebration.",
+      why: "Standard $27.99 MSRP at retail, pre-ordered Sep 29, 2026. Retail is the price floor, anything far under it should raise KO questions, not celebration.",
       avoid: "Carnage is a documented KO target (silver-eyes telltale). Vet marketplace copies with the auth wizard.",
     },
     {
       itemId: "doomsday-wave",
-      why: "Fall 2026 waves hold the $27.99 standard — pre-ordering at retail beats every panic-buy later. Revealed items have no date yet, so watch the calendar, not eBay.",
+      why: "Fall 2026 waves hold the $27.99 standard, pre-ordering at retail beats every panic-buy later. Revealed items have no date yet, so watch the calendar, not eBay.",
     },
   ],
 };
@@ -192,7 +192,7 @@ export function byId(items) {
 
 /* ---- gift-finder deep links (one per recipient profile) ---- */
 
-/* Prefilled Gift Finder URLs — ?budget= filters by figure-type tier,
+/* Prefilled Gift Finder URLs, ?budget= filters by figure-type tier,
    ?for= weights the ranking for the recipient, ?character= seeds the
    character/team match. Exported for tests. */
 export const FINDER_LINKS = [
@@ -204,7 +204,7 @@ export const FINDER_LINKS = [
   {
     profile: "kid", label: "The Kid",
     href: "gift.html?budget=under25&for=kid&character=Spider-Man",
-    blurb: "Kid-weighted ranking, starting from Spider-Man — swap in their hero.",
+    blurb: "Kid-weighted ranking, starting from Spider-Man, swap in their hero.",
   },
   {
     profile: "completionist", label: "The Completionist",
@@ -237,7 +237,7 @@ export async function init() {
     items = await loadPreorders();
   } catch (e) {
     for (const m of mounts) {
-      m.innerHTML = `<p class="error-note">Picks couldn't be loaded — open <a href="preorders.html">the pre-order tracker</a> directly. (${esc(String(e.message || e))})</p>`;
+      m.innerHTML = `<p class="error-note">Picks couldn't be loaded, open <a href="preorders.html">the pre-order tracker</a> directly. (${esc(String(e.message || e))})</p>`;
     }
     return;
   }

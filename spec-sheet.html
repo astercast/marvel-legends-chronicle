@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="The Spec Sheet: Marvel Legends Chronicle">
   <meta name="twitter:description" content="The per-figure spec record: one structured spec sheet for every one of the catalog's 1,939 figures, built only from fields the catalog actually holds, and the fields it does not hold (UPC, MSRP, accessories) named as recorded-absent, never invented.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -33,21 +33,17 @@
     .db-hero { padding-block: var(--space-7); }
     #spec-sheet-picker { width: 100%; max-width: 36em; }
     @media (max-width: 560px) { #spec-sheet-title { font-size: 2.05rem; } }
-    .db-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-6); }
-    .db-stat { border: 1px solid var(--line-soft); border-top: 3px solid var(--gold); padding: var(--space-4); background: var(--panel); }
-    .db-stat-value { font-family: var(--font-display); font-size: 1.7rem; color: var(--ink); line-height: 1.1; }
-    .db-stat-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; color: var(--muted); margin-top: var(--space-1); }
-    .db-stat-sub { color: var(--muted); font-size: 0.8rem; margin-top: var(--space-1); }
+    .db-kpis { display: block; margin-bottom: var(--space-6); max-width: 75ch; } /* the census, as ruled lines (museum.css) */
     .db-block { margin-bottom: var(--space-7); }
     .db-block-head { display: flex; align-items: baseline; gap: var(--space-3); border-bottom: 1px solid var(--line-soft); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
     .db-block-head h2 { font-size: 1.35rem; margin: 0; }
     .db-chapter { margin-bottom: var(--space-6); }
     .db-chapter-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-2); }
     .db-chapter-head h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 0; color: var(--ink); }
-    .db-chapter-count { font-family: var(--font-mono); color: var(--gold); font-size: 0.8rem; }
+    .db-chapter-count { font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; }
     .db-rows { list-style: none; margin: 0; padding: 0; }
     .db-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); padding: var(--space-2) 0; border-bottom: 1px solid var(--line-soft); font-size: 0.9rem; }
-    .db-year { font-family: var(--font-mono); color: var(--gold); font-size: 0.8rem; min-width: 3.2em; }
+    .db-year { font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; min-width: 3.2em; }
     .db-name { font-weight: 700; }
     .db-fig { color: var(--ink-dim); }
     .db-wave { color: var(--muted); font-size: 0.85rem; }

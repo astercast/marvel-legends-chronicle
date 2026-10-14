@@ -1,4 +1,4 @@
-/* Shareable collection summary — builds a clean text snapshot of the shelf
+/* Shareable collection summary, builds a clean text snapshot of the shelf
    for pasting into forums/Discord. Read-only over existing localStorage. */
 import { STORE_KEYS } from "./config.js";
 import { loadData } from "./data.js";
@@ -53,11 +53,11 @@ function buildSummary(figures, waves, ownedIds, wantedIds) {
   const wanted = [...wantedIds].filter((id) => byId.has(id)).length;
 
   const lines = [
-    "My Marvel Legends shelf — via Marvel Legends Chronicle",
+    "My Marvel Legends shelf, via Marvel Legends Chronicle",
     `Owned: ${ownedFigs.length.toLocaleString()} / ${total.toLocaleString()} figures (${pct}%)`,
   ];
   if (topChars.length) lines.push(`Top characters: ${topChars.map(([n, c]) => `${n} ×${c}`).join(", ")}`);
-  lines.push(`BAFs complete: ${complete.length} of ${bafs.length}${complete.length ? ` — ${complete.slice(0, 5).map((b) => b.name).join(", ")}${complete.length > 5 ? ` +${complete.length - 5} more` : ""}` : ""}`);
+  lines.push(`BAFs complete: ${complete.length} of ${bafs.length}${complete.length ? `, ${complete.slice(0, 5).map((b) => b.name).join(", ")}${complete.length > 5 ? ` +${complete.length - 5} more` : ""}` : ""}`);
   lines.push(`By era: ${eraCounts.map((e) => `${e.name} ${e.got}/${e.total}`).join(" · ")}`);
   if (wanted) lines.push(`Want list: ${wanted} figures`);
   return lines.join("\n");
@@ -105,7 +105,7 @@ async function main() {
   els.preview.textContent = text;
   els.copy.addEventListener("click", async () => {
     const ok = await copyText(text);
-    els.status.textContent = ok ? "Copied to clipboard — paste it anywhere." : "Copy failed — select the text above and copy manually.";
+    els.status.textContent = ok ? "Copied to clipboard, paste it anywhere." : "Copy failed, select the text above and copy manually.";
   });
 }
 

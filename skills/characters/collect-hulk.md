@@ -16,21 +16,21 @@ You collect Hulk. 29 releases are catalogued from 2002 to 2026.
 
 ## Procedure
 
-1. Work the list chronologically — oldest first, they appreciate fastest:
-2.   - 2002 — Series 1: Hulk
-  - 2002 — Series 1: Hulk [Straight fingers, white shirt]
-  - 2002 — Walmart Exclusives: Hulk [Straight fingers, white shirt] (Walmart)
-  - 2005 — Series 9 - Galactus: Hulk
-  - 2005 — Series 9 - Galactus: Hulk [Green]
-  - 2006 — Box Set - House of M: Hulk (Box set exclusive)
-  - 2006 — Face-Off Series 1: Hulk
-  - 2006 — Face-Off Series 1: Hulk [Screaming]
-  - 2006 — Icons Series 2: Hulk
-  - 2006 — Icons Series 2: Hulk [Gray]
-  - 2008 — Fin Fang Foom Wave: Hulk
-  - 2008 — Fin Fang Foom Wave: Hulk
-  - 2008 — Fin Fang Foom Wave: Hulk
-  - 2008 — Fin Fang Foom Wave: Hulk [Classic green]
+1. Work the list chronologically, oldest first, they appreciate fastest:
+2.   - 2002, Series 1: Hulk
+  - 2002, Series 1: Hulk [Straight fingers, white shirt]
+  - 2002, Walmart Exclusives: Hulk [Straight fingers, white shirt] (Walmart)
+  - 2005, Series 9 - Galactus: Hulk
+  - 2005, Series 9 - Galactus: Hulk [Green]
+  - 2006, Box Set - House of M: Hulk (Box set exclusive)
+  - 2006, Face-Off Series 1: Hulk
+  - 2006, Face-Off Series 1: Hulk [Screaming]
+  - 2006, Icons Series 2: Hulk
+  - 2006, Icons Series 2: Hulk [Gray]
+  - 2008, Fin Fang Foom Wave: Hulk
+  - 2008, Fin Fang Foom Wave: Hulk
+  - 2008, Fin Fang Foom Wave: Hulk
+  - 2008, Fin Fang Foom Wave: Hulk [Classic green]
   - …and 15 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
@@ -47,4 +47,4 @@ Starting a Hulk run? Grab the most recent mainline release first (cheapest, in-s
 ## Pitfalls
 
 - No completion rule = endless spending. Define 'complete' before you start.
-- Variant rabbit holes — some characters have 5+ releases of one sculpt.
+- Variant rabbit holes, some characters have 5+ releases of one sculpt.

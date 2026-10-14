@@ -17,7 +17,7 @@ You want to build the Cassie Lang (Ant-Man and the Wasp: Quantumania) BAF from t
 ## Procedure
 
 1. The BAF: **Cassie Lang (Ant-Man and the Wasp: Quantumania)** (2023, Cassie Lang Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Crossfire → Left leg
   - [ ] Egghead → Torso
   - [ ] Future Ant-Man → Right arm and alternate hand
@@ -26,7 +26,7 @@ You want to build the Cassie Lang (Ant-Man and the Wasp: Quantumania) BAF from t
   - [ ] Wasp (Hope van Dyne) → Right leg
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Cassie Lang (Ant-Man and the Wasp: Quantumania) torso? Find which fi
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

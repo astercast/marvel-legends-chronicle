@@ -1,7 +1,7 @@
-/* quest-exhibits.js — pure exhibition-commission helpers for Grail Quest 6.0.
+/* quest-exhibits.js, pure exhibition-commission helpers for Grail Quest 6.0.
    No DOM, no storage, no fetch: safe to import from quest.js (the board) and
    vault-room.js (drawer quest hints). All signals derive from the archive
-   data and the caller's owned ids — nothing invented. */
+   data and the caller's owned ids, nothing invented. */
 import { buildBafs } from "./baf-planner.js";
 import {
   baseName, runKey, characterRuns, shelfCommissions, activeCommissions,
@@ -11,7 +11,7 @@ import { KO_TARGETS } from "./ko-targets.js";
 
 export { GRAIL_TIER_LABELS };
 
-/* Commission accession numbers — the registrar numbers every commission. */
+/* Commission accession numbers, the registrar numbers every commission. */
 const KIND_CODES = { baf: "BAF", run: "RUN", character: "CHR", shelf: "SHF" };
 export function commissionNo(kind, idx) {
   const code = KIND_CODES[kind] ?? "GEN";
@@ -20,13 +20,13 @@ export function commissionNo(kind, idx) {
 
 /* Which commissions are newly completed since the last celebration.
    `celebrated` is the stored { commissionId: isoDate } map; returns the ids
-   that finished but were never celebrated — the ceremony queue. */
+   that finished but were never celebrated, the ceremony queue. */
 export function detectNewCompletions(celebrated, completedIds) {
   const seen = celebrated && typeof celebrated === "object" ? celebrated : {};
   return (Array.isArray(completedIds) ? completedIds : []).filter((id) => !(id in seen));
 }
 
-/* Known-KO-target matches among a figure list — the evergreen KO market,
+/* Known-KO-target matches among a figure list, the evergreen KO market,
    wired into quest difficulty where it is honest: a missing piece that is a
    documented KO target gets an authenticate-first flag. Token matching
    follows ko-targets.js (name-contains). */
@@ -43,7 +43,7 @@ export function koTargetsIn(figs) {
   return hits;
 }
 
-/* The drawer's commission story — for the Vault Room drawer dialog. Given
+/* The drawer's commission story, for the Vault Room drawer dialog. Given
    one flat figure record and the flat archive, answer: is this drawer part
    of any started commission, and does pulling it complete one?
    Returns null when the figure starts no commission. */
@@ -51,7 +51,7 @@ export function drawerQuestHint(fig, figures, ownedIds) {
   const owned = new Set(Array.isArray(ownedIds) ? ownedIds : []);
   if (!fig || owned.has(fig.id)) {
     return owned.has(fig?.id)
-      ? { text: "Already accessioned — it's hanging on your exhibit wall.", completes: false }
+      ? { text: "Already accessioned, it's hanging on your exhibit wall.", completes: false }
       : null;
   }
   const cands = [];
@@ -69,7 +69,7 @@ export function drawerQuestHint(fig, figures, ownedIds) {
     ).length;
     const total = pieces.size;
     const mine = pieces.get(fig.bafPiece) ?? [];
-    /* Only started BAFs — the quest board never issues an unstarted
+    /* Only started BAFs, the quest board never issues an unstarted
        commission, and the drawer shouldn't either. */
     if (total && got > 0 && got < total && !mine.some((c) => owned.has(c.id))) {
       cands.push({
@@ -126,14 +126,14 @@ export function drawerQuestHint(fig, figures, ownedIds) {
   return {
     completes: c.completes,
     text: c.completes
-      ? `Pull this drawer and the “${c.title}” commission is complete — ${c.got}/${c.total} hung.`
-      : `One of ${c.missing} missing pieces for the “${c.title}” commission — ${c.got}/${c.total} hung so far.`,
+      ? `Pull this drawer and the “${c.title}” commission is complete, ${c.got}/${c.total} hung.`
+      : `One of ${c.missing} missing pieces for the “${c.title}” commission, ${c.got}/${c.total} hung so far.`,
   };
 }
 
 /* The growing exhibit: every commission with at least one owned piece,
    rendered as a wing with its hung pieces. Completed wings first, then by
-   progress — the collection as a museum that fills in as you log figures. */
+   progress, the collection as a museum that fills in as you log figures. */
 export function exhibitWings(figures, waves, ownedIds) {
   const owned = new Set(Array.isArray(ownedIds) ? ownedIds : []);
   const wings = [];

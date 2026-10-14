@@ -15,10 +15,10 @@ Whatnot streams.
 
 ## Procedure
 
-1. Set max bids before the stream — hype is the product.
-2. Watch two streams before bidding in one — learn the sellers.
+1. Set max bids before the stream, hype is the product.
+2. Watch two streams before bidding in one, learn the sellers.
 3. Factor shipping per order, not per item.
-4. Screenshot wins immediately — disputes need evidence.
+4. Screenshot wins immediately, disputes need evidence.
 
 ## Worked example
 
@@ -26,4 +26,4 @@ Watched two streams, bid in the third, won a lot at 60% of eBay solds.
 
 ## Pitfalls
 
-- The room's energy — it's designed to make you overbid.
+- The room's energy, it's designed to make you overbid.

@@ -23,7 +23,7 @@
         target.focus({ preventScroll: true });
         window.location.hash = "month-" + a.getAttribute("data-month");
       } else {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        target.scrollIntoView({ block: "start" });
         history.replaceState(null, "", "#month-" + a.getAttribute("data-month"));
       }
     });

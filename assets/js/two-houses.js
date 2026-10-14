@@ -1,10 +1,10 @@
-/* The Two Houses — the makers' ledger.
+/* The Two Houses, the makers' ledger.
    The whole line filed under the two houses that made it: Toy Biz,
    which opened the line in 2002, and Hasbro, which has carried it
-   since 2007. Every count comes from the catalog itself — figures,
-   waves, builds, characters, debuts, exclusives, variants — and the
+   since 2007. Every count comes from the catalog itself, figures,
+   waves, builds, characters, debuts, exclusives, variants, and the
    seam between the houses is reported exactly where the catalog
-   puts it. No prices — a ledger of makers, not a market. */
+   puts it. No prices, a ledger of makers, not a market. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
 import { buildTwoHousesModel } from "./two-houses-model.js";
@@ -24,7 +24,7 @@ function kpi(label, value, sub) {
 }
 
 function waveLink(w) {
-  return w ? `<a href="waves/${escapeHtml(w.waveId)}.html">${escapeHtml(w.waveSeries)}</a>` : "—";
+  return w ? `<a href="waves/${escapeHtml(w.waveId)}.html">${escapeHtml(w.waveSeries)}</a>` : "Not recorded";
 }
 
 function housePlate(h) {
@@ -36,7 +36,7 @@ function housePlate(h) {
       <span class="db-name">${escapeHtml(h.name)}</span>
       <span class="db-fig">${fmt(h.figureCount)} figures in ${fmt(h.waveCount)} waves · ${fmt(h.builds)} builds · ${fmt(h.characterCount)} characters, ${fmt(h.debutCount)} of them debuting here</span>
       <span class="db-wave">${fmt(h.exclusiveCount)} exclusives (${channels}) · ${fmt(h.variantCount)} catalogued variants</span>
-      <span class="db-count">busiest year ${h.busiestYear ? `${h.busiestYear.year} · ${fmt(h.busiestYear.figures)} figures` : "—"}</span>
+      <span class="db-count">busiest year ${h.busiestYear ? `${h.busiestYear.year} · ${fmt(h.busiestYear.figures)} figures` : "n/a"}</span>
     </li>`;
 }
 
@@ -49,8 +49,8 @@ async function main() {
     els.kpis.innerHTML = [
       kpi("Houses of the line", fmt(m.total), "every distinct maker the catalog records"),
       kpi("Figures filed", fmt(m.figureCount), `across ${fmt(m.waveCount)} waves, ${m.span[0]}–${m.span[1]}`),
-      kpi("The handover", seam ? `${seam.closingWave.year} → ${seam.openingWave.year}` : "—",
-        seam ? `${seam.from} closes; ${seam.to} opens — no year is shared` : "one house only"),
+      kpi("The handover", seam ? `${seam.closingWave.year} → ${seam.openingWave.year}` : "n/a",
+        seam ? `${seam.from} closes; ${seam.to} opens, no year is shared` : "one house only"),
       kpi("Characters in both houses", fmt(m.sharedCharacters),
         `of ${fmt(m.characterCount)} distinct characters in the archive`),
     ].join("");
@@ -61,7 +61,7 @@ async function main() {
 
     els.years.innerHTML = m.houses.map((h) => `
       <div class="db-chapter">
-        <div class="db-chapter-head"><h3>${escapeHtml(h.name)} — year by year</h3><span class="db-chapter-count">${fmt(h.figureCount)} figures</span></div>
+        <div class="db-chapter-head"><h3>${escapeHtml(h.name)}, year by year</h3><span class="db-chapter-count">${fmt(h.figureCount)} figures</span></div>
         <ul class="db-rows">${h.years.map((y) => `
           <li class="db-row">
             <span class="db-year">${y.year}</span>
@@ -91,10 +91,10 @@ async function main() {
       </li>`);
     els.seam.innerHTML = (seamRows.length || onlyRows.length)
       ? `<ul class="db-rows">${[...seamRows, ...onlyRows].join("")}</ul>`
-      : `<p class="db-none">The catalog records a single house — there is no seam to file.</p>`;
+      : `<p class="db-none">The catalog records a single house, there is no seam to file.</p>`;
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The makers' ledger could not be read from the catalog. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The makers' ledger could not be read from the catalog. The archive itself is unaffected, try reloading the page.";
   }
 }
 

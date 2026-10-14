@@ -1,4 +1,4 @@
-/* Timeline page — chronological waves, figure cards, search, filters. */
+/* Timeline page, chronological waves, figure cards, search, filters. */
 import { loadData, searchFigures, computeStats, sourceLabel, sourceCoverage } from "./data.js";
 import { openFigureDialog, badgeFor, escapeHtml } from "./figure-dialog.js";
 import { ERAS, eraYears } from "./era-bands.js";
@@ -20,7 +20,7 @@ const els = {
   eraPlacard: document.getElementById("era-placard"),
 };
 
-/* The register opens one era at a time — the packaging eras are the
+/* The register opens one era at a time, the packaging eras are the
    archive's canonical periodization (assets/js/era-bands.js). Default: the
    newest era, so first-timers meet the present, not a 25-year wall. */
 let activeEraId = ERAS[ERAS.length - 1].id;
@@ -246,17 +246,20 @@ function setupYearSpy() {
   sections.forEach(function (s) { yearObserver.observe(s); });
 }
 
+function censusLine(value, label) {
+  return `<p class="census-line"><span class="census-value">${value}</span><span class="census-label">${label}</span></p>`;
+}
+
 function renderStats(stats) {
-  /* The engraved register line: one breath of numbers, not a tile wall.
-     Owned/wanted live one line down — and only when there's something to say. */
+  /* The census as ruled lines (the colophon form): a value in
+     Catalogue Blue, its label in Pencil, one line each. The same
+     lines stand beside the Visual Database's pictured core.
+     Owned/wanted live one line down, and only when there's something to say. */
   els.stats.innerHTML =
-    `<span class="stat-num">${stats.figures.toLocaleString()}</span> <span class="stat-word">figures</span>` +
-    `<span class="stat-sep" aria-hidden="true">·</span>` +
-    `<span class="stat-num">${stats.waves}</span> <span class="stat-word">waves</span>` +
-    `<span class="stat-sep" aria-hidden="true">·</span>` +
-    `<span class="stat-num">${stats.yearMin}–${String(stats.yearMax).slice(2)}</span> <span class="stat-word">years</span>` +
-    `<span class="stat-sep" aria-hidden="true">·</span>` +
-    `<span class="stat-num">${stats.bafWaves}</span> <span class="stat-word">BAF waves</span>`;
+    censusLine(stats.figures.toLocaleString(), "figures catalogued in the archive") +
+    censusLine(stats.waves, "waves in the line") +
+    censusLine(`${stats.yearMin}–${String(stats.yearMax).slice(2)}`, "years, first release to latest") +
+    censusLine(stats.bafWaves, "waves carrying a Build-A-Figure");
   const o = owned.count(), w = wanted.count();
   if (els.cabinet) {
     if (o + w > 0) {

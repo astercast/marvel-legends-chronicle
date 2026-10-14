@@ -17,7 +17,7 @@ You want to build the Rintrah (Doctor Strange in the Multiverse of Madness) BAF 
 ## Procedure
 
 1. The BAF: **Rintrah (Doctor Strange in the Multiverse of Madness)** (2022, Rintrah Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] America Chavez → Torso
   - [ ] Astral Doctor Strange → Head
   - [ ] D'Spayre → Right leg
@@ -26,7 +26,7 @@ You want to build the Rintrah (Doctor Strange in the Multiverse of Madness) BAF 
   - [ ] Wong → Left arm and alternate hand
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Rintrah (Doctor Strange in the Multiverse of Madness) torso? Find wh
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

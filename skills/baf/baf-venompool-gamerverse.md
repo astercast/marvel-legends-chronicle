@@ -17,7 +17,7 @@ You want to build the Venompool (Gamerverse) BAF from the 2020 Venompool Wave (G
 ## Procedure
 
 1. The BAF: **Venompool (Gamerverse)** (2020, Venompool Wave (Gamerverse)).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Carnage → Head
   - [ ] Gwenom → Torso and katanas
   - [ ] Morbius the Living Vampire → Left arm and alternate fist
@@ -25,7 +25,7 @@ You want to build the Venompool (Gamerverse) BAF from the 2020 Venompool Wave (G
   - [ ] Spider-Man (Miles Morales) → Right arm and alternate fist
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -37,5 +37,5 @@ Missing the Venompool (Gamerverse) torso? Find which figure above carries it, ch
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

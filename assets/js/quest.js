@@ -1,9 +1,9 @@
-/* Grail Quest — turn your collection into a game.
+/* Grail Quest, turn your collection into a game.
    Reads your real browser-local state (owned, wanted, watchlist, hunt) and the
    archive data to generate quests, achievements, a collector level, and a
    shareable quest card. No invented figures, prices, or rarity: every signal
    (chase flags, retro notes, variants, exclusives, Toy Biz era, BAF pieces)
-   comes from data/figures.json. Market dollars are never invented — the only
+   comes from data/figures.json. Market dollars are never invented, the only
    dollars shown are the Chronicle's reported price signals (data/price-signals.json,
    labeled "reported ranges, not live prices"), the user's own watchlist
    targets, and the user's own logged purchases. The "cost" proxy stays a
@@ -56,7 +56,7 @@ import {
 
 
 /* ------------------------------------------------------------------ */
-/* Shareable quest card — plain text for forums/Discord. */
+/* Shareable quest card, plain text for forums/Discord. */
 
 export function shareCardText(input) {
   return buildQuestShareText(input);
@@ -115,7 +115,7 @@ const els = {
   shareStatus: document.getElementById("share-status"),
 };
 
-/* Reported market signals — a bonus layer, never a blocker. */
+/* Reported market signals, a bonus layer, never a blocker. */
 let priceSignals = [];
 async function loadSignals() {
   try {
@@ -160,7 +160,7 @@ function questCard(q, idx) {
     : q.kind === "character" ? "Character run"
     : q.kind === "shelf" ? "Year shelf" : "Series run";
   /* KO-market honesty: a missing piece that is a documented KO target gets
-     an authenticate-first flag — the evergreen KO trade, from the archive's
+     an authenticate-first flag, the evergreen KO trade, from the archive's
      own auth research, wired into quest difficulty. */
   const koHits = koTargetsIn(q.missing);
   const details = document.createElement("details");
@@ -174,7 +174,7 @@ function questCard(q, idx) {
   if (q.missing.length > 12) {
     const more = document.createElement("p");
     more.className = "chart-sub";
-    more.textContent = `+ ${q.missing.length - 12} more missing — see the wave pages for the full list.`;
+    more.textContent = `+ ${q.missing.length - 12} more missing, see the wave pages for the full list.`;
     list.appendChild(more);
   }
   details.appendChild(list);
@@ -209,7 +209,7 @@ function recCard(kind, title, bodyHtml) {
 }
 
 /* ------------------------------------------------------------------ */
-/* The growing exhibit — the collection as a museum that fills in. */
+/* The growing exhibit, the collection as a museum that fills in. */
 
 function wingCard(wing) {
   const card = document.createElement("article");
@@ -227,7 +227,7 @@ function wingCard(wing) {
   card.innerHTML = `
     <span class="badge">${escapeHtml(label)}</span>
     <h3>${escapeHtml(wing.title)}</h3>
-    <p class="chart-sub">${escapeHtml(wing.sub)} — ${hung}/${wing.total} hung · ${pct}%</p>
+    <p class="chart-sub">${escapeHtml(wing.sub)}, ${hung}/${wing.total} hung · ${pct}%</p>
     <ul class="plaque-wall">${plaques}${more}</ul>`;
   return card;
 }
@@ -238,8 +238,8 @@ function renderExhibit(figures, waves, ownedIds) {
   const done = completedCommissions(figures, waves, ownedIds);
   const celebrated = load(STORE_KEYS.questDone, {});
   els.exhibitSub.textContent = wings.length
-    ? `${wings.length} wing${wings.length === 1 ? "" : "s"} under construction — every figure you log hangs a new plaque.`
-    : "Log figures and your exhibit wall grows here — one plaque per figure, grouped into wings.";
+    ? `${wings.length} wing${wings.length === 1 ? "" : "s"} under construction, every figure you log hangs a new plaque.`
+    : "Log figures and your exhibit wall grows here, one plaque per figure, grouped into wings.";
   els.exhibitWall.innerHTML = "";
   for (const w of wings.slice(0, 12)) els.exhibitWall.appendChild(wingCard(w));
   if (wings.length > 12) {
@@ -249,21 +249,21 @@ function renderExhibit(figures, waves, ownedIds) {
     els.exhibitWall.appendChild(note);
   }
 
-  /* The permanent gallery — completed commissions, accessioned for good. */
+  /* The permanent gallery, completed commissions, accessioned for good. */
   if (!els.doneList) return;
   if (!done.length) {
-    els.doneSub.textContent = "No completed wings yet — finish a commission and the registrar hangs it here permanently.";
+    els.doneSub.textContent = "No completed wings yet, finish a commission and the registrar hangs it here permanently.";
     els.doneList.innerHTML = "";
     return;
   }
-  els.doneSub.textContent = `${done.length} completed commission${done.length === 1 ? "" : "s"} — accessioned into the permanent exhibit.`;
+  els.doneSub.textContent = `${done.length} completed commission${done.length === 1 ? "" : "s"}, accessioned into the permanent exhibit.`;
   els.doneList.innerHTML = done.map((c) => {
     const when = celebrated[c.id] ? ` · accessioned ${escapeHtml(String(celebrated[c.id]))}` : "";
-    return `<li class="done-row"><span class="wax-dot" aria-hidden="true"></span><div><strong>${escapeHtml(c.title)}</strong><span class="chart-sub">${escapeHtml(c.sub)} — ${c.total}/${c.total}${when}</span></div></li>`;
+    return `<li class="done-row"><span class="stamp-dot" aria-hidden="true"></span><div><strong>${escapeHtml(c.title)}</strong><span class="chart-sub">${escapeHtml(c.sub)}, ${c.total}/${c.total}${when}</span></div></li>`;
   }).join("");
 }
 
-/* Quest-complete ceremony — fires once per commission, the first time the
+/* Quest-complete ceremony, fires once per commission, the first time the
    board sees it finished. The wax seal replays the wave-34 seal-press; the
    dialog is native <dialog> (focus trap + Esc by construction). */
 function maybeCelebrate(figures, waves, ownedIds) {
@@ -279,7 +279,7 @@ function maybeCelebrate(figures, waves, ownedIds) {
   if (!first) return;
   els.ceremonyTitle.textContent = first.title;
   els.ceremonyBody.textContent =
-    `Every piece accounted for — ${first.total} of ${first.total}. ` +
+    `Every piece accounted for, ${first.total} of ${first.total}. ` +
     `The registrar has stamped it, filed it, and hung it in the permanent exhibit.`;
   els.ceremonyAcc.textContent = `Accession № ${first.id} · ${now}`;
   if (typeof els.ceremony.showModal === "function") els.ceremony.showModal();
@@ -287,7 +287,7 @@ function maybeCelebrate(figures, waves, ownedIds) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Market conditions — the 2026 briefing's intel, wired into quest
+/* Market conditions, the 2026 briefing's intel, wired into quest
    difficulty where it is honest: the dead chase era (grails are legacy
    hunts), the reissue program (availability premiums can collapse), and the
    evergreen KO trade (authenticate first). */
@@ -335,7 +335,7 @@ function achievementCard(a) {
 }
 
 /* Pre-order alerts: confirmed pre-order dates opening in the next 30 days.
-   Read from data/preorders.json, not from archive data — announced-but-unreleased
+   Read from data/preorders.json, not from archive data, announced-but-unreleased
    items live on the pre-order layer, never in the archive waves. */
 async function renderAlerts() {
   if (!els.alertList) return;
@@ -348,21 +348,21 @@ async function renderAlerts() {
     const raw = await res.json();
     items = raw.items ?? raw ?? [];
   } catch {
-    els.alertSub.textContent = "Pre-order data couldn't be loaded right now — the full tracker is at the pre-order page.";
+    els.alertSub.textContent = "Pre-order data couldn't be loaded right now, the full tracker is at the pre-order page.";
     return;
   }
   const today = todayStr();
   const upcoming = upcomingPreorders(items, today, 30);
-  /* Fresh windows: pre-orders that opened in the last 14 days — still at
+  /* Fresh windows: pre-orders that opened in the last 14 days, still at
      MSRP, still orderable, a hunt with a deadline. */
   const fresh = recentlyOpened(items, today, 14);
-  const freshHtml = fresh.length ? `<p class="chart-sub" style="margin:var(--space-3) 0 var(--space-2)">🟢 <strong>Fresh windows</strong> (opened in the last 14 days — orderable now, MSRP): ${fresh.map((f) => `${escapeHtml(f.item.name)} (${f.daysOpen}d ago)`).join("; ")}. Our alerts' track record is on the <a href="market-briefing.html#alert-accuracy-h">market briefing</a>.</p>` : "";
+  const freshHtml = fresh.length ? `<p class="chart-sub" style="margin:var(--space-3) 0 var(--space-2)">🟢 <strong>Fresh windows</strong> (opened in the last 14 days, orderable now, MSRP): ${fresh.map((f) => `${escapeHtml(f.item.name)} (${f.daysOpen}d ago)`).join("; ")}. Our alerts' track record is on the <a href="market-briefing.html#alert-accuracy-h">market briefing</a>.</p>` : "";
   if (upcoming.length === 0) {
     els.alertSub.textContent = "No confirmed pre-order dates in the next 30 days.";
-    els.alertList.innerHTML = `<p class="chart-sub" style="margin:0">Announced-but-undated items are on the <a href="preorders.html">pre-order tracker</a> — they open whenever Hasbro says so, and the dates there are reported, never invented.</p>` + freshHtml;
+    els.alertList.innerHTML = `<p class="chart-sub" style="margin:0">Announced-but-undated items are on the <a href="preorders.html">pre-order tracker</a>, they open whenever Hasbro says so, and the dates there are reported, never invented.</p>` + freshHtml;
     return;
   }
-  els.alertSub.textContent = `${upcoming.length} confirmed pre-order ${upcoming.length === 1 ? "date" : "dates"} in the next 30 days — your quest clock starts here.`;
+  els.alertSub.textContent = `${upcoming.length} confirmed pre-order ${upcoming.length === 1 ? "date" : "dates"} in the next 30 days, your quest clock starts here.`;
   for (const item of upcoming) {
     const row = document.createElement("div");
     row.className = "missing-row";
@@ -385,7 +385,7 @@ async function renderAlerts() {
 
 /* Launch-day prep quests (Grail Quest 5.0): for each upcoming exact-date
    pre-order/sale window within 14 days, a tickable prep checklist. Ticks
-   persist per quest in mlc_launchprep_v1 — browser-local only. */
+   persist per quest in mlc_launchprep_v1, browser-local only. */
 async function renderPrep() {
   if (!els.prepList) return;
   els.prepList.innerHTML = "";
@@ -397,17 +397,17 @@ async function renderPrep() {
     const raw = await res.json();
     items = raw.items ?? raw ?? [];
   } catch {
-    els.prepSub.textContent = "Prep data couldn't be loaded right now — the full tracker is at the pre-order page.";
+    els.prepSub.textContent = "Prep data couldn't be loaded right now, the full tracker is at the pre-order page.";
     return;
   }
   const today = todayStr();
   const quests = launchPrep(items, today, 14);
   if (quests.length === 0) {
-    els.prepSub.textContent = "No pre-order windows in the next 14 days — nothing to prep for yet.";
+    els.prepSub.textContent = "No pre-order windows in the next 14 days, nothing to prep for yet.";
     return;
   }
   const ticks = load(STORE_KEYS.launchPrep, {});
-  els.prepSub.textContent = `${quests.length} launch ${quests.length === 1 ? "window" : "windows"} in the next 14 days — run the checklist and beat the sellout.`;
+  els.prepSub.textContent = `${quests.length} launch ${quests.length === 1 ? "window" : "windows"} in the next 14 days, run the checklist and beat the sellout.`;
   for (const q of quests) {
     const done = Array.isArray(ticks[q.id]) ? ticks[q.id] : [];
     const got = q.steps.filter((_, i) => done[i]).length;
@@ -422,7 +422,7 @@ async function renderPrep() {
     card.innerHTML = `
       <div class="missing-info" style="flex:1 1 100%">
         <span class="missing-name">🎯 Be ready: ${escapeHtml(q.name)}</span>
-        <span class="missing-wave">${q.kind === "sale-window" ? "On sale" : "Pre-order opens"} ${when} (${q.date})${q.msrp ? ` · ${escapeHtml(money(q.msrp))} MSRP` : ""}${got === q.steps.length ? " — <strong>Ready ✓</strong>" : ""}</span>
+        <span class="missing-wave">${q.kind === "sale-window" ? "On sale" : "Pre-order opens"} ${when} (${q.date})${q.msrp ? ` · ${escapeHtml(money(q.msrp))} MSRP` : ""}${got === q.steps.length ? ", <strong>Ready ✓</strong>" : ""}</span>
         <div class="progress-bar" role="progressbar" aria-valuenow="${got}" aria-valuemin="0" aria-valuemax="${q.steps.length}" aria-label="Prep progress for ${escapeHtml(q.name)}" style="margin:var(--space-2) 0">
           <span style="width:${pct}%"></span>
         </div>
@@ -475,7 +475,7 @@ function progressRowHtml(label, sub, got, total, ariaLabel) {
 let latestReport = "";
 
 function renderInsights(figures, waves, ownedIds, buys, completedBafs, achievements) {
-  if (!els.insWave) return; /* section absent — older markup; degrade gracefully */
+  if (!els.insWave) return; /* section absent, older markup; degrade gracefully */
   const milestones = computeMilestones({ ownedCount: ownedIds.length, completedBafs, buys });
   const priceSigs = priceSignals;
 
@@ -484,7 +484,7 @@ function renderInsights(figures, waves, ownedIds, buys, completedBafs, achieveme
   const done = waveRows.filter((w) => w.pct === 100);
   const started = waveRows.filter((w) => w.got > 0 && w.pct < 100).slice(0, 8);
   els.insWave.innerHTML = done.length || started.length
-    ? `<p class="chart-sub">${done.length} wave${done.length === 1 ? "" : "s"} complete · ${started.length ? "your closest finishes:" : "no unfinished waves — everything you touch is complete."}</p>` +
+    ? `<p class="chart-sub">${done.length} wave${done.length === 1 ? "" : "s"} complete · ${started.length ? "your closest finishes:" : "no unfinished waves, everything you touch is complete."}</p>` +
       started.map((w) => progressRowHtml(w.series, String(w.year ?? ""), w.got, w.total, `${w.series} completion`)).join("")
     : `<p class="chart-sub">Mark figures owned and your wave-by-wave completion appears here.</p>`;
 
@@ -506,35 +506,35 @@ function renderInsights(figures, waves, ownedIds, buys, completedBafs, achieveme
   els.insGaps.innerHTML = gaps.length
     ? `<ul class="rec-list">` + gaps.slice(0, 6).map((g) => {
         const miss = g.missing[0];
-        return `<li><strong>${escapeHtml(g.name)}</strong> — ${g.got}/${g.total}; missing <strong>${escapeHtml(miss?.name ?? "unknown")}</strong> <span class="chart-sub">(${escapeHtml(miss?.waveSeries ?? "")} · ${miss?.year ?? ""})</span></li>`;
+        return `<li><strong>${escapeHtml(g.name)}</strong>, ${g.got}/${g.total}; missing <strong>${escapeHtml(miss?.name ?? "unknown")}</strong> <span class="chart-sub">(${escapeHtml(miss?.waveSeries ?? "")} · ${miss?.year ?? ""})</span></li>`;
       }).join("") + `</ul>
       <p class="honesty">The most-wanted list: complete one of these runs and the Character Loyalist achievement is yours.</p>`
     : `<p class="chart-sub">No character run is exactly one figure from complete.</p>`;
 
-  /* Duplicate detection — honest nudge, never an auto-delete. */
+  /* Duplicate detection, honest nudge, never an auto-delete. */
   const rawOwned = load(STORE_KEYS.owned, []);
   const dupes = findDuplicateIds(rawOwned);
   els.insDupes.innerHTML = dupes.length
     ? `<ul class="rec-list">` + dupes.map((d) => {
         const fig = figureById(figures, d.id);
-        return `<li><strong>${escapeHtml(fig?.name ?? d.id)}</strong> <span class="chart-sub">(${escapeHtml(d.id)})</span> logged ${d.count}× — did you mean to log it twice? The tracker treats it as one figure; remove the extra entry in the <a href="checklist.html">checklist</a> if it was an accident.</li>`;
+        return `<li><strong>${escapeHtml(fig?.name ?? d.id)}</strong> <span class="chart-sub">(${escapeHtml(d.id)})</span> logged ${d.count}×, did you mean to log it twice? The tracker treats it as one figure; remove the extra entry in the <a href="checklist.html">checklist</a> if it was an accident.</li>`;
       }).join("") + `</ul>`
-    : `<p class="chart-sub">Clean — no figure id logged twice.</p>`;
+    : `<p class="chart-sub">Clean, no figure id logged twice.</p>`;
 
-  /* Shelf value — reported ranges, not an appraisal. */
+  /* Shelf value, reported ranges, not an appraisal. */
   const shelf = shelfValueRange(figures, ownedIds, priceSigs);
   els.insShelf.innerHTML = `
-    <p class="shelf-band">${shelf.covered ? `${insightsMoney(shelf.low)}–${insightsMoney(shelf.high)}` : "—"}</p>
+    <p class="shelf-band">${shelf.covered ? `${insightsMoney(shelf.low)}–${insightsMoney(shelf.high)}` : "n/a"}</p>
     <p class="chart-sub">${shelf.covered
       ? `Reported band across ${shelf.covered} of your figures with reported market data.`
       : "No reported market data for the figures you own yet."}
-      ${shelf.uncovered ? `${shelf.uncovered} owned figure${shelf.uncovered === 1 ? "" : "s"} without a reported signal — excluded, never guessed.` : ""}</p>
-    <p class="honesty">Reported ranges, not an appraisal — summed from the Chronicle's published price signals. Not insurance-grade; see the export below for the full record.</p>`;
+      ${shelf.uncovered ? `${shelf.uncovered} owned figure${shelf.uncovered === 1 ? "" : "s"} without a reported signal, excluded, never guessed.` : ""}</p>
+    <p class="honesty">Reported ranges, not an appraisal, summed from the Chronicle's published price signals. Not insurance-grade; see the export below for the full record.</p>`;
 
-  /* Growth view — monthly buckets from the Ledger's purchase dates. */
+  /* Growth view, monthly buckets from the Ledger's purchase dates. */
   const months = growthByMonth(buys);
   if (!months.length) {
-    els.growthNote.textContent = "No dated purchases logged yet — add purchase dates in the Ledger and your growth chart fills in (\"since you started logging\").";
+    els.growthNote.textContent = "No dated purchases logged yet, add purchase dates in the Ledger and your growth chart fills in (\"since you started logging\").";
     els.growthTable.innerHTML = "";
   } else {
     const skipped = growthSeries(buys).skipped;
@@ -558,7 +558,7 @@ function renderInsights(figures, waves, ownedIds, buys, completedBafs, achieveme
       <span class="milestone-state">${escapeHtml(m.detail)}</span></div>
     </li>`).join("");
 
-  /* Export — the markdown report. */
+  /* Export, the markdown report. */
   latestReport = buildCollectionReport({
     generatedAt: new Date().toISOString().slice(0, 10),
     figures, waves, ownedIds, signals: priceSigs, buys, achievements, milestones,
@@ -573,11 +573,11 @@ function wireReportExport() {
   els.reportCopy.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(els.reportText.value);
-      els.reportStatus.textContent = "Copied — paste it anywhere.";
+      els.reportStatus.textContent = "Copied, paste it anywhere.";
     } catch {
       els.reportText.select();
-      try { document.execCommand("copy"); els.reportStatus.textContent = "Copied — paste it anywhere."; }
-      catch { els.reportStatus.textContent = "Copy didn't work — select the text manually."; }
+      try { document.execCommand("copy"); els.reportStatus.textContent = "Copied, paste it anywhere."; }
+      catch { els.reportStatus.textContent = "Copy didn't work, select the text manually."; }
     }
   });
   els.reportDownload.addEventListener("click", () => {
@@ -588,7 +588,7 @@ function wireReportExport() {
     document.body.appendChild(a);
     a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 100);
-    els.reportStatus.textContent = "Downloaded — keep it with your insurance records.";
+    els.reportStatus.textContent = "Downloaded, keep it with your insurance records.";
   });
 }
 
@@ -602,12 +602,12 @@ function renderAll(figures, waves) {
   });
   const unlocked = achievements.filter((a) => a.unlocked);
 
-  /* Active commissions — the registrar's issued quests: BAF finishes,
+  /* Active commissions, the registrar's issued quests: BAF finishes,
      series runs, character runs, and the Vault Room's year-shelves. */
   const commissions = activeCommissions(figures, waves, ownedIds);
   const quests = commissions; // share-card + gap copy keep the "quests" name
 
-  /* Collector level. (countCompletedBafs is the exported helper — quest.js
+  /* Collector level. (countCompletedBafs is the exported helper, quest.js
      once reached for quest-core's private piece check here and would have
      thrown a ReferenceError the moment the board rendered.) */
   const completedBafs = countCompletedBafs(figures, waves, ownedIds);
@@ -623,22 +623,22 @@ function renderAll(figures, waves) {
     <div class="progress-bar" role="progressbar" aria-valuenow="${level.xpIntoLevel}" aria-valuemin="0" aria-valuemax="${level.xpForNext}" aria-label="Progress to next collector level">
       <span style="width:${barPct}%"></span>
     </div>
-    <p class="quest-prog">${level.nextTitle ? `${level.nextXp - level.xp} XP to ${level.nextTitle}` : "Max level — Living Legend. Absolute unit."}</p>`;
+    <p class="quest-prog">${level.nextTitle ? `${level.nextXp - level.xp} XP to ${level.nextTitle}` : "Max level, Living Legend. Absolute unit."}</p>`;
 
-  /* Crown jewel — the rarest owned piece, by the Grail Ladder (documented
+  /* Crown jewel, the rarest owned piece, by the Grail Ladder (documented
      scarcity signals, never a value index). */
   if (els.jewelLine) {
     const jewel = rarestOwned(figures, ownedIds, priceSignals);
     els.jewelLine.innerHTML = jewel
-      ? `👑 <strong>Crown jewel:</strong> ${escapeHtml(jewel.fig.name)} <span class="chart-sub">— ${escapeHtml(GRAIL_TIER_LABELS[jewel.tier])} · ${escapeHtml(jewel.fig.waveSeries ?? "")} ${jewel.fig.year ?? ""}</span>`
+      ? `👑 <strong>Crown jewel:</strong> ${escapeHtml(jewel.fig.name)} <span class="chart-sub">${escapeHtml(GRAIL_TIER_LABELS[jewel.tier])} · ${escapeHtml(jewel.fig.waveSeries ?? "")} ${jewel.fig.year ?? ""}</span>`
       : "";
   }
 
   /* Active commissions. */
-  els.questCount.textContent = `${commissions.length} active commission${commissions.length === 1 ? "" : "s"} — issued by the registrar, progress from your tracker`;
+  els.questCount.textContent = `${commissions.length} active commission${commissions.length === 1 ? "" : "s"}, issued by the registrar, progress from your tracker`;
   els.questList.innerHTML = "";
   if (!commissions.length) {
-    els.questList.innerHTML = `<div class="empty-state"><p>No active commissions — everything you own is either complete or hasn't been started. Mark more figures owned in the <a href="checklist.html">checklist</a> or the <a href="vault-room.html">Vault Room</a> drawers to open new ones.</p></div>`;
+    els.questList.innerHTML = `<div class="empty-state"><p>No active commissions, everything you own is either complete or hasn't been started. Mark more figures owned in the <a href="checklist.html">checklist</a> or the <a href="vault-room.html">Vault Room</a> drawers to open new ones.</p></div>`;
   } else {
     commissions.forEach((q, i) => els.questList.appendChild(questCard(q, i)));
   }
@@ -653,7 +653,7 @@ function renderAll(figures, waves) {
   if (rec.baf) {
     els.recBaf.appendChild(recCard("Closest BAF",
       rec.baf.title,
-      `<p class="quest-prog">${rec.baf.got}/${rec.baf.total} pieces — just ${rec.baf.missingCount} to go.</p>
+      `<p class="quest-prog">${rec.baf.got}/${rec.baf.total} pieces, just ${rec.baf.missingCount} to go.</p>
        <ul class="rec-list">${rec.baf.missing.slice(0, 4).map((f) =>
          `<li>${escapeHtml(f.name)} <span class="chart-sub">(${escapeHtml(f.waveSeries)} · ${f.year})</span></li>`).join("")}</ul>`));
   } else {
@@ -680,13 +680,13 @@ function renderAll(figures, waves) {
     els.recGrail.appendChild(recCard("Watchlist grail",
       escapeHtml(e.name ?? fig?.name ?? "Watchlist item"),
       `<p class="quest-prog">${priceLine}</p>
-       <p class="honesty">Reported sighting — user-logged, not verified market data. <a href="watchlist.html">Open the watchlist</a>.</p>`));
+       <p class="honesty">Reported sighting, user-logged, not verified market data. <a href="watchlist.html">Open the watchlist</a>.</p>`));
   } else {
     els.recGrail.appendChild(recCard("Watchlist grail", "Watchlist empty",
       `<p>Add figures to your <a href="watchlist.html">grail watchlist</a> with target prices and sightings, and this slot will point at your nearest grail.</p>`));
   }
 
-  /* Rarest affordable grail — the highest rarity-per-cost in the archive you
+  /* Rarest affordable grail, the highest rarity-per-cost in the archive you
      don't own. Rarity from the Grail Ladder (documented scarcity signals);
      cost from the Chronicle's reported signal low, or the honest figure-type
      proxy when no reported data exists. Never an invented price. */
@@ -697,8 +697,8 @@ function renderAll(figures, waves) {
       f.name,
       `<p class="quest-prog">${escapeHtml(GRAIL_TIER_LABELS[g.rarity])} · rarity score ${g.score}</p>
        <ul class="rec-list"><li>${escapeHtml(f.waveSeries)} · ${f.year}${f.variant ? ` · ${escapeHtml(f.variant)}` : ""}${f.exclusive ? ` · ${escapeHtml(f.exclusive)}` : ""}</li></ul>
-       <p class="chart-sub">Why this one: the highest rarity-per-cost among the ${figures.length.toLocaleString("en-US")} archive figures you don't own — ${escapeHtml(g.costNote)}.</p>
-       <p class="honesty">The modern chase is effectively dead — grails are legacy hunts with finite supply. Never pay a premium the reissue program can erase: <a href="${escapeHtml(soldSearchUrl(marketplaceQuery(f)))}" target="_blank" rel="noopener">check eBay solds</a> first, and run KO targets through the <a href="auth-wizard.html">Auth Wizard</a>.</p>`));
+       <p class="chart-sub">Why this one: the highest rarity-per-cost among the ${figures.length.toLocaleString("en-US")} archive figures you don't own, ${escapeHtml(g.costNote)}.</p>
+       <p class="honesty">The modern chase is effectively dead, grails are legacy hunts with finite supply. Never pay a premium the reissue program can erase: <a href="${escapeHtml(soldSearchUrl(marketplaceQuery(f)))}" target="_blank" rel="noopener">check eBay solds</a> first, and run KO targets through the <a href="auth-wizard.html">Auth Wizard</a>.</p>`));
   } else {
     els.recAffordable.appendChild(recCard("Rarest affordable grail", "Nothing in reach",
       `<p>Every rare-or-better piece is either on your shelf already or priced out of the affordable band. Log more of the archive and this slot recalculates.</p>`));
@@ -714,32 +714,32 @@ function renderAll(figures, waves) {
       const line = v.status === "no-data" || v.status === "no-target"
         ? `<span class="chart-sub">${escapeHtml(verdictLine(v))}</span>`
         : `<span class="deal ${v.status === "above" ? "deal-bad" : "deal-good"} deal-inline">${escapeHtml(verdictLine(v))}</span>`;
-      return `<li><strong>${escapeHtml(e.name ?? e.figId)}</strong> — target <strong>${questMoney(e.target)}</strong> · ${band} · ${line}</li>`;
+      return `<li><strong>${escapeHtml(e.name ?? e.figId)}</strong>, target <strong>${questMoney(e.target)}</strong> · ${band} · ${line}</li>`;
     }).join("");
     els.recHunts.appendChild(recCard("Watchlist hunts",
       "Closest to your target",
       `<ul class="rec-list">${rows}</ul>
-       <p class="honesty">Reported ranges, not live prices — from the Chronicle's own research. <a href="watchlist.html">Open the price watch</a>.</p>`));
+       <p class="honesty">Reported ranges, not live prices, from the Chronicle's own research. <a href="watchlist.html">Open the price watch</a>.</p>`));
   } else {
     els.recHunts.appendChild(recCard("Watchlist hunts", "No hunts open",
       `<p>Add figures with target prices to your <a href="watchlist.html">watchlist</a> and this slot ranks them by how close the reported market is to your number.</p>`));
   }
 
   /* Insight-driven recommendation: the nearest one-figure-away character
-     run — the gap analysis feeds the quest board directly. */
+     run, the gap analysis feeds the quest board directly. */
   const gaps = oneFigureAway(figures, ownedIds);
   if (gaps.length) {
     const g = gaps[0];
     const miss = g.missing[0];
     els.recInsight.appendChild(recCard("Insight pick · one figure away",
       `Close the gap: ${g.name} run`,
-      `<p class="quest-prog">${g.got}/${g.total} secured — one figure stands between you and a complete run.</p>
+      `<p class="quest-prog">${g.got}/${g.total} secured, one figure stands between you and a complete run.</p>
        <ul class="rec-list"><li><strong>${escapeHtml(miss.name)}</strong> <span class="chart-sub">(${escapeHtml(miss.waveSeries ?? "")} · ${miss.year ?? ""})</span></li></ul>
-       <p class="honesty">From the collection insights below — computed from the archive and your tracker, no prices involved.</p>`));
+       <p class="honesty">From the collection insights below, computed from the archive and your tracker, no prices involved.</p>`));
   } else {
     els.recInsight.appendChild(recCard("Insight pick",
       "No one-figure-away runs",
-      `<p>No character run sits exactly one figure from complete. Start one by marking figures owned in the <a href="checklist.html">checklist</a> — the gap analysis in the insights section will light up when you're close.</p>`));
+      `<p>No character run sits exactly one figure from complete. Start one by marking figures owned in the <a href="checklist.html">checklist</a>, the gap analysis in the insights section will light up when you're close.</p>`));
   }
 
   /* The growing exhibit + the permanent gallery. Celebrate first so the
@@ -798,14 +798,14 @@ if (els.shareCopy) {
     const text = els.shareText.value;
     try {
       await navigator.clipboard.writeText(text);
-      els.shareStatus.textContent = "Copied — paste it anywhere.";
+      els.shareStatus.textContent = "Copied, paste it anywhere.";
     } catch {
       els.shareText.select();
       try {
         document.execCommand("copy");
-        els.shareStatus.textContent = "Copied — paste it anywhere.";
+        els.shareStatus.textContent = "Copied, paste it anywhere.";
       } catch {
-        els.shareStatus.textContent = "Copy didn't work — select the text manually.";
+        els.shareStatus.textContent = "Copy didn't work, select the text manually.";
       }
     }
   });

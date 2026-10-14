@@ -17,7 +17,7 @@ You want to build the Apocalypse (Classic and Black versions) BAF from the 2005 
 ## Procedure
 
 1. The BAF: **Apocalypse (Classic and Black versions)** (2005, Series 12 - Apocalypse).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Bishop → Lower torso
   - [ ] Iron Fist → Right leg
   - [ ] Maestro → Left arm and arm tube
@@ -27,7 +27,7 @@ You want to build the Apocalypse (Classic and Black versions) BAF from the 2005 
   - [ ] X-23 → Head and upper torso
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -39,5 +39,5 @@ Missing the Apocalypse (Classic and Black versions) torso? Find which figure abo
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

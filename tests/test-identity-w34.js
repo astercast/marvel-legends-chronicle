@@ -27,25 +27,30 @@ suite("identity wave 2 — signature motion (reduced-motion-first)", () => {
     const layoutCss = read("assets/css/layout.css");
     assert(!/animation:\s*rise-in/.test(layoutCss), "layout.css hero furniture carries no rise-in");
     const museumCss = read("assets/css/museum.css");
-    assert(/\.plinth-light/.test(museumCss), "the one permitted motion, the plinth light, lives in museum.css");
-    assert(/plinth-warm 2\.8s var\(--ease\) 1 both/.test(museumCss), "plinth light warms once, never loops");
+    assert(!/\.plinth-light/.test(museumCss), "the plinth light is RETIRED (MARVEL-LIGHT 3.4: a plate is printed, not lit)");
+    assert(!/plinth-warm/.test(museumCss), "no plinth keyframes survive");
+    assert(/\.plate-mark/.test(museumCss), "the printed plate, with its red plate mark, lives in museum.css");
   });
 
-  test("hover physics is lift + brass, motion-gated, with an always-on color fallback", () => {
-    assert(/html\.vault-motion \.card:hover/.test(vaultCss), "card lift gated on vault-motion");
-    assert(vaultCss.includes("translateY(-3px)"), "lift amount is -3px");
-    assert(/border-color: var\(--gold-deep\)/.test(vaultCss), "brass edge on hover");
-    // Reduced-motion readers still get instant border feedback (no transform)
+  test("hover physics is a border darkening only: nothing lifts under light", () => {
+    assert(!vaultCss.includes("translateY(-3px)"), "the card lift is removed");
+    assert(!/html\.vault-motion \.card:hover[^}]*transform/.test(vaultCss), "no motion-gated lift remains");
     const alwaysRule = vaultCss.match(/\.card:hover, [^{]*\{[^}]*\}/);
+    assert(alwaysRule && alwaysRule[0].includes("border-color: var(--line-bright)"),
+      "always-on hover rule darkens the rule to Pencil");
     assert(alwaysRule && !alwaysRule[0].includes("transform"),
       "always-on hover rule carries border-color, never transform");
   });
 
-  test("wax-seal stamp entrance is one-shot and motion-gated", () => {
+  test("the seal is a printer's stamp, present on arrival; the press is an interaction", () => {
     assert(/@keyframes seal-press/.test(vaultCss), "seal-press keyframes exist");
-    assert(/html\.vault-motion \.wax-seal/.test(vaultCss), "seal stamp gated on vault-motion");
+    assert(/\.seal-stamp\s*\{/.test(vaultCss), "the seal is drawn as .seal-stamp (double ring, Plate Red)");
+    assert(!/\.wax-seal/.test(vaultCss), "the wax seal is retired");
+    assert(!/html\.vault-motion \.seal-stamp \{ animation/.test(vaultCss),
+      "NO on-load seal animation: the seal is present in residence (M5 residence clause)");
+    assert(/\.seal-stamp:active/.test(vaultCss), "the press survives as an interaction");
     assert(/animation: seal-press 0\.5\d?s var\(--ease-emphasis\)/.test(vaultCss),
-      "seal uses the emphasis easing");
+      "the unlock flourish uses the emphasis easing");
   });
 
   test("motion still runs only when OS + manual toggle agree (unchanged contract)", () => {
@@ -98,9 +103,10 @@ suite("identity wave 2 — per-page-type coverage", () => {
     assert(!pages["index.html"].includes('class="rope-rule"'), "rope-rule removed from index (R21)");
   });
 
-  test("quest achievements are wax-seal medals", () => {
+  test("quest achievements are stamp medallions in red ink", () => {
     assert(/\.ach-card \.ach-icon/.test(vaultCss), "ach-icon identity override exists");
-    assert(vaultCss.includes("var(--wax)"), "seal uses the wax token");
+    assert(vaultCss.includes("var(--plate-red)"), "the medallion is stamped in Plate Red");
+    assert(!vaultCss.includes("var(--wax)"), "the wax token no longer styles anything in the identity layer");
     assert(/\.ach-card\.ach-locked \.ach-icon/.test(vaultCss), "locked state stays dimmed");
     assert(/\.ach-card\.ach-unlocked \.ach-icon[^}]*seal-press/.test(vaultCss),
       "unlock replays the seal press under motion");
@@ -121,21 +127,21 @@ suite("identity wave 2 — per-page-type coverage", () => {
   });
 
   test("launch curve reads as the ledger page", () => {
-    assert(/\.curve-list \.curve-card svg/.test(vaultCss), "curve svg ledger treatment");
-    assert(/repeating-linear-gradient/.test(vaultCss), "ledger ruling present");
-    assert(/\.curve-card \{ border-top: 3px solid var\(--gold-deep\)/.test(vaultCss),
-      "curve cards carry the brass edge");
+    assert(/\.curve-list \.curve-card svg/.test(vaultCss), "curve svg treatment");
+    assert(!/repeating-linear-gradient/.test(vaultCss), "the faked graph-paper ruling is REMOVED (flat grounds)");
+    assert(/\.curve-card \{ border-top: 3px solid var\(--line-bright\)/.test(vaultCss),
+      "curve cards carry the Pencil edge");
   });
 
-  test("market briefing cards carry the brass edge", () => {
-    assert(/\.brief-card \{ border-top: 3px solid var\(--gold-deep\)/.test(vaultCss),
-      "briefing cards carry the brass edge");
+  test("market briefing cards carry the Pencil edge", () => {
+    assert(/\.brief-card \{ border-top: 3px solid var\(--line-bright\)/.test(vaultCss),
+      "briefing cards carry the Pencil edge");
   });
 
   test("API/agents docs read as the registrar's desk", () => {
     assert(/\.card h3 code/.test(vaultCss), "endpoint code identity rule");
-    assert(/pre, \.code-block \{[^}]*border-left: 3px solid var\(--gold-deep\)/.test(vaultCss),
-      "code blocks carry the brass rule");
+    assert(/pre, \.code-block \{[^}]*border-left: 3px solid var\(--line-bright\)/.test(vaultCss),
+      "code blocks carry the Pencil rule");
   });
 });
 

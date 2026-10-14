@@ -1,4 +1,4 @@
-/* Shelf analytics v2 — deeper insights over the existing localStorage data.
+/* Shelf analytics v2, deeper insights over the existing localStorage data.
    Read-only: manufacturer split (owned + wanted), peak collecting year,
    collection growth trend (snapshot history), journal value over time, and
    shelf-vs-archive rarity per packaging era. Runs after shelf.js; if the
@@ -98,7 +98,7 @@ async function main() {
   const byId = new Map(figures.map((f) => [f.id, f]));
   const ownedFigs = [...ownedIds].map((id) => byId.get(id)).filter(Boolean);
 
-  /* 1. Manufacturer split — owned AND wanted per manufacturer */
+  /* 1. Manufacturer split, owned AND wanted per manufacturer */
   const mfrs = [...new Set(figures.map((f) => f.manufacturer))];
   els.mfr.innerHTML = `<h2>By manufacturer</h2>` + mfrs.map((m) => {
     const tot = figures.filter((f) => f.manufacturer === m).length;
@@ -114,7 +114,7 @@ async function main() {
   for (const f of ownedFigs) byYear[f.year] = (byYear[f.year] ?? 0) + 1;
   const ranked = Object.entries(byYear).map(([y, n]) => ({ y: Number(y), n })).sort((a, b) => b.n - a.n);
   els.peak.innerHTML = `<h2>Your peak years</h2>` + (ranked.length
-    ? `<p class="chart-sub" style="font-size:1rem">Your biggest year: <strong>${ranked[0].y}</strong> — ${ranked[0].n} figure${ranked[0].n === 1 ? "" : "s"}.</p>
+    ? `<p class="chart-sub" style="font-size:1rem">Your biggest year: <strong>${ranked[0].y}</strong>, ${ranked[0].n} figure${ranked[0].n === 1 ? "" : "s"}.</p>
        <ol class="char-list">${ranked.slice(0, 5).map((r) => `<li><span>${r.y}</span><span class="count">${r.n}</span></li>`).join("")}</ol>`
     : `<p class="chart-sub">Mark figures Owned and your collecting rhythm appears here.</p>`);
 
@@ -124,14 +124,14 @@ async function main() {
   const ownedPts = hist.map((h) => h.owned);
   els.trend.innerHTML = `<h2>Collection growth</h2>` + (hist.length >= 2
     ? `${sparkline(ownedPts, 520, 90)}
-       <p class="chart-sub">${ownedPts[0]} → ${ownedPts[ownedPts.length - 1]} owned across ${hist.length} snapshots (first ${hist[0].d}, latest ${hist[hist.length - 1].d}). BAFs completed: ${bs.bafsComplete} of ${bs.bafCount}. Snapshots record automatically when your shelf changes — one per day at most.</p>`
-    : `<p class="chart-sub">Not enough history yet — this page snapshots your shelf once a day whenever it changes, and the trend line grows from there. BAFs completed right now: <strong>${bs.bafsComplete}</strong> of ${bs.bafCount}.</p>`);
+       <p class="chart-sub">${ownedPts[0]} → ${ownedPts[ownedPts.length - 1]} owned across ${hist.length} snapshots (first ${hist[0].d}, latest ${hist[hist.length - 1].d}). BAFs completed: ${bs.bafsComplete} of ${bs.bafCount}. Snapshots record automatically when your shelf changes, one per day at most.</p>`
+    : `<p class="chart-sub">Not enough history yet, this page snapshots your shelf once a day whenever it changes, and the trend line grows from there. BAFs completed right now: <strong>${bs.bafsComplete}</strong> of ${bs.bafCount}.</p>`);
 
-  /* 4. Journal value over time — from YOUR logged sold listings only */
+  /* 4. Journal value over time, from YOUR logged sold listings only */
   const entries = load(STORE_KEYS.journal, []);
   const validEntries = Array.isArray(entries) ? entries.filter((e) => e && Number.isFinite(Number(e.price)) && Number(e.price) > 0 && typeof e.date === "string") : [];
   if (!validEntries.length) {
-    els.jval.innerHTML = `<h2>Journal value over time</h2><p class="chart-sub">No journal entries yet — log eBay solds in the <a href="journal.html">price journal</a> and this chart tracks what you logged, month by month. Every dollar here comes from your own entries.</p>`;
+    els.jval.innerHTML = `<h2>Journal value over time</h2><p class="chart-sub">No journal entries yet, log eBay solds in the <a href="journal.html">price journal</a> and this chart tracks what you logged, month by month. Every dollar here comes from your own entries.</p>`;
   } else {
     const byMonth = {};
     for (const e of validEntries) {
@@ -144,7 +144,7 @@ async function main() {
     const max = Math.max(...months.map((m) => byMonth[m].total), 1);
     const grand = validEntries.reduce((s, e) => s + Number(e.price), 0);
     els.jval.innerHTML = `<h2>Journal value over time</h2>
-      <p class="chart-sub">${money(grand)} logged across ${validEntries.length} sold ${validEntries.length === 1 ? "listing" : "listings"} — your entries, your numbers.</p>
+      <p class="chart-sub">${money(grand)} logged across ${validEntries.length} sold ${validEntries.length === 1 ? "listing" : "listings"}, your entries, your numbers.</p>
       <div class="month-bars">${months.map((m) => {
         const v = byMonth[m];
         return `<div class="month-bar"><div class="month-fill" style="height:${Math.max(3, (v.total / max) * 100).toFixed(1)}%" role="img" aria-label="${m}: ${money(v.total)} across ${v.n} listings"></div><span class="month-label">${m.slice(2)}</span></div>`;

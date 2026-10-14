@@ -1,13 +1,13 @@
-/* archive-tour-model.js — the pure math behind The Archive Tour
+/* archive-tour-model.js, the pure math behind The Archive Tour
    (archive-tour.html). No DOM, no storage: given the catalog (loadData
    shape), it cuts the 25-year archive into four era chapters and works
-   out exactly what each chapter spread renders — wave / figure / BAF /
+   out exactly what each chapter spread renders, wave / figure / BAF /
    exclusive / variant counts, a per-year ledger, and the curator picks.
 
    THE CHAPTER BREAKS (set from the catalog's own wave data, not from
    vibes):
    - 2002–2006 closes the Toy Biz run: all 31 waves in the chapter are
-     Toy Biz, and every 2007 wave is Hasbro — the manufacturer field
+     Toy Biz, and every 2007 wave is Hasbro, the manufacturer field
      itself draws the line. The Build-A-Figure arrives mid-chapter
      (first BAF wave: Series 9 - Galactus, 2005).
    - 2007–2012 is Hasbro's early, lean stretch: output bottoms out in
@@ -17,30 +17,30 @@
    - 2013–2019 is the rebuild: the BAF becomes the default architecture
      (46 of the chapter's 54 waves carry one) and annual output climbs
      from 36 figures (2013) to a 157-figure peak (2018). Recorded
-     variants nearly vanish — 4 in this chapter against 90 across the
+     variants nearly vanish, 4 in this chapter against 90 across the
      two before it.
    - 2020–2026 is the modern era: the largest chapter by figures (965),
      exclusives outnumber the three earlier chapters combined, the
      average wave is the biggest in the archive, and the catalog
      records no variants at all.
 
-   CURATOR-PICK SELECTION RULES (deterministic, catalog data only —
+   CURATOR-PICK SELECTION RULES (deterministic, catalog data only,
    the same rules are printed on the page; invent nothing, no prices):
-   1. "Opens the chapter" — the first figure, in catalog order, of the
+   1. "Opens the chapter", the first figure, in catalog order, of the
       chapter's earliest wave (ties: catalog order).
-   2. "Closes the chapter" — the first figure, in catalog order, of the
+   2. "Closes the chapter", the first figure, in catalog order, of the
       chapter's latest wave (ties: last in catalog order).
-   3. "Completes the first BAF" — the last piece-carrying figure, in
+   3. "Completes the first BAF", the last piece-carrying figure, in
       catalog order, of the chapter's earliest BAF wave: collect that
       wave in order and this is the piece that finishes the build.
-   4. "Completes the last BAF" — the same rule on the chapter's latest
+   4. "Completes the last BAF", the same rule on the chapter's latest
       BAF wave.
-   5. "First variant" — the first figure in the chapter, in catalog
+   5. "First variant", the first figure in the chapter, in catalog
       order, carrying a recorded variant.
-   6. "First exclusive" — the first figure in the chapter, in catalog
+   6. "First exclusive", the first figure in the chapter, in catalog
       order, carrying a recorded exclusive.
    Picks are de-duplicated by figure id (the earliest rule wins). A
-   rule that finds nothing in a chapter produces NO pick — the modern
+   rule that finds nothing in a chapter produces NO pick, the modern
    chapter's variant slot stands honestly empty, and the page says so. */
 
 export const CHAPTERS = [
@@ -49,21 +49,21 @@ export const CHAPTERS = [
     title: "Toy Biz Twilight",
     years: [2002, 2006],
     kicker: "Chapter I · 2002–2006",
-    why: "Every wave in this chapter is Toy Biz — and every wave after it is Hasbro. The catalog's own manufacturer field draws this line: 2006 is the last Toy Biz year, 2007 the first Hasbro one. The Build-A-Figure is born mid-chapter, in 2005.",
+    why: "Every wave in this chapter is Toy Biz, and every wave after it is Hasbro. The catalog's own manufacturer field draws this line: 2006 is the last Toy Biz year, 2007 the first Hasbro one. The Build-A-Figure is born mid-chapter, in 2005.",
   },
   {
     id: "hasbro-early",
     title: "Hasbro's Early Years",
     years: [2007, 2012],
     kicker: "Chapter II · 2007–2012",
-    why: "Hasbro takes over — and the line goes lean. Output bottoms out in 2009–2011, the thinnest three-year run in the archive, before the chapter closes on the wave the catalog itself names the Return of Marvel Legends.",
+    why: "Hasbro takes over, and the line goes lean. Output bottoms out in 2009–2011, the thinnest three-year run in the archive, before the chapter closes on the wave the catalog itself names the Return of Marvel Legends.",
   },
   {
     id: "the-rebuild",
     title: "The Rebuild",
     years: [2013, 2019],
     kicker: "Chapter III · 2013–2019",
-    why: "The rebuild makes the Build-A-Figure the default architecture of a wave and climbs, year on year, to the archive's then-biggest annual output. Recorded variants — everywhere in the first two chapters — nearly vanish.",
+    why: "The rebuild makes the Build-A-Figure the default architecture of a wave and climbs, year on year, to the archive's then-biggest annual output. Recorded variants, everywhere in the first two chapters, nearly vanish.",
   },
   {
     id: "modern-era",
@@ -176,7 +176,7 @@ export function buildTourModel(figures, waves) {
       seen.add(fig.id);
       picks.push({ kind: rule.kind, label: rule.label, rule: rule.rule, figure: fig });
     }
-    /* Rules that found nothing — named honestly on the page rather
+    /* Rules that found nothing, named honestly on the page rather
        than back-filled with a pick the rule did not select. A rule
        whose figure was already picked under an earlier rule is not
        empty; it simply shares its plate. */

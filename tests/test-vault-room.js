@@ -80,18 +80,11 @@ suite("vault room — drawers, keyboard, ARIA", () => {
 });
 
 suite("vault room — animation discipline", () => {
-  test("per-frame parallax updates are transform-only (no layout thrash)", () => {
-    assert(page.includes("translate3d(0, calc(var(--py"), "layers move via transform only");
-    const m = js.match(/function initParallax\(\) \{[\s\S]*?\n\}/);
-    assert(m, "initParallax found");
-    const body = m[0];
-    assert(
-      !/\.style\.(top|left|width|height|margin|padding)\s*=/.test(body),
-      "no layout writes inside the scroll loop"
-    );
-    assert(body.includes('setProperty("--py"'), "scroll loop drives a CSS var consumed by transform");
-    assert(body.includes("requestAnimationFrame"), "rAF throttle");
-    assert(body.includes("{ passive: true }"), "passive scroll listener");
+  test("parallax is REMOVED: the room is still (MARVEL-LIGHT motion estate)", () => {
+    assert(!page.includes("data-parallax"), "no parallax layers in the room");
+    assert(!page.includes("room-layer"), "the wall layers are gone from the page");
+    assert(!js.includes("initParallax"), "no parallax driver remains in vault-room.js");
+    assert(!js.includes('setProperty("--py"'), "no scroll-driven CSS var");
   });
 
   test("reduced-motion gates parallax and reveals the full timeline list", () => {
@@ -101,10 +94,11 @@ suite("vault room — animation discipline", () => {
     assert(page.includes("journey-summary"), "journey carries full summaries");
   });
 
-  test("drawer slide uses transform keyframes, disabled under reduced motion", () => {
-    assert(page.includes("@keyframes drawer-slide"), "drawer-slide keyframes");
-    assert(/translateX\(48px\)/.test(page), "transform-only slide");
-    assert(page.includes("html.vault-motion .modal.drawer-story"), "motion-gated");
+  test("the drawer dialog opens present: no slide entrance ships", () => {
+    assert(!page.includes("@keyframes drawer-slide"), "drawer-slide keyframes are removed");
+    assert(!/translateX\(48px\)/.test(page), "no slide transform remains");
+    assert(js.includes('scrollBehavior = "auto"'), "year travel is a cut, forced instant");
+    assert(!js.includes('behavior: "smooth"'), "no gliding scroll remains in the room");
   });
 });
 

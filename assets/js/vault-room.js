@@ -1,4 +1,4 @@
-/* The Vault Room — a browsable vault of every Marvel Legends figure, 2002-2026.
+/* The Vault Room, a browsable vault of every Marvel Legends figure, 2002-2026.
    Shelves are built from the real archive datasets (data/v1/figures.json,
    data/v1/waves.json, data/v1/timeline.json); nothing is invented. Drawers open
    into an archive-drawer dialog (shared accessible modal: focus trap, Esc,
@@ -12,7 +12,7 @@ import { renderResearchLinks } from "./listings.js";
 import { drawerQuestHint } from "./quest-exhibits.js";
 
 /* Module-level archive reference so the drawer dialog can compute quest
-   hints — set once init() loads the room data. */
+   hints, set once init() loads the room data. */
 let roomFigures = [];
 
 const els = {
@@ -29,7 +29,7 @@ const reduceMotion = () =>
   matchMedia("(prefers-reduced-motion: reduce)").matches ||
   document.documentElement.dataset.motion === "reduce";
 
-/* Character pages (characters/<slug>.html) — lazy index so a drawer story can
+/* Character pages (characters/<slug>.html), lazy index so a drawer story can
    link "Every <character> release" when one exists. Resolved against this
    module's own URL (always <root>/assets/js/), so the fetch works at any
    page depth. */
@@ -232,7 +232,7 @@ export function openDrawer(fig, yearCtx, spotlightWhy) {
     if (spotlightWhy) {
       const why = document.createElement("blockquote");
       why.className = "drawer-why";
-      why.innerHTML = `${escapeHtml(spotlightWhy)}<cite>— the archive's spotlight pick for ${fig.year}</cite>`;
+      why.innerHTML = `${escapeHtml(spotlightWhy)}<cite>the archive's spotlight pick for ${fig.year}</cite>`;
       bodyEl.appendChild(why);
     }
 
@@ -261,7 +261,7 @@ export function openDrawer(fig, yearCtx, spotlightWhy) {
 
     bodyEl.appendChild(trackerButtons(fig.id));
 
-    /* Quest strip — the drawers feed the quest board (same tracker state),
+    /* Quest strip, the drawers feed the quest board (same tracker state),
        and the strip reflects it back: which commission this drawer serves,
        and whether pulling it completes one. */
     const strip = document.createElement("p");
@@ -393,7 +393,7 @@ function initDrawerSearch(figures, yearByNum) {
     } else {
       const total = truncated ? "50+" : String(current.length);
       status.textContent =
-        `${total} drawer${current.length === 1 && !truncated ? "" : "s"} match — ` +
+        `${total} drawer${current.length === 1 && !truncated ? "" : "s"} match, ` +
         `↑↓ to browse, Enter to pull one open.`;
     }
   }
@@ -485,13 +485,13 @@ function showError(err) {
 }
 
 /* The hero's "Find a drawer" button: scrolls to the drawer index and
-   hands focus to the search input — the room's fastest door. */
+   hands focus to the search input, the room's fastest door. */
 function initFindDrawerCta() {
   const cta = document.getElementById("find-drawer-cta");
   const input = document.getElementById("drawer-search-input");
   if (!cta || !input) return;
   cta.addEventListener("click", () => {
-    input.scrollIntoView({ behavior: "smooth", block: "center" });
+    input.scrollIntoView({ block: "center" }); // a cut, like all travel here
     window.setTimeout(() => input.focus({ preventScroll: true }), 450);
   });
 }
@@ -517,9 +517,9 @@ async function init() {
   }
 
   els.coverage.textContent =
-    `${figures.length.toLocaleString()} drawers · ${waves.length} waves · ${timeline.length} years — every one from the archive.`;
+    `${figures.length.toLocaleString()} drawers · ${waves.length} waves · ${timeline.length} years, every one from the archive.`;
 
-  // Year shells first (cheap), then drawers per wave — lazily as shelves
+  // Year shells first (cheap), then drawers per wave, lazily as shelves
   // approach the viewport so the first paint stays fast.
   const pending = [];
   for (const y of timeline) {
@@ -574,25 +574,19 @@ async function init() {
     markActiveYear(year, job.era);
     const target = document.getElementById(`year-${year}`);
     if (target) {
-      // Long hauls jump; short hops glide. A multi-thousand-pixel smooth
-      // scroll is a blur that outruns the eye, so only nearby years animate.
-      // NOTE: this Chromium ignores the `behavior` scroll option when CSS
-      // scroll-behavior is smooth — drive it through the CSS property.
-      const dy = target.getBoundingClientRect().top;
-      if (reduceMotion() || Math.abs(dy) > innerHeight * 2) {
-        // Pre-render the neighboring years first: shelves rendered AFTER the
-        // jump would grow the document above the target and push it down.
-        for (const p of pending) {
-          if (Math.abs(p.year - year) <= 2) p.renderWaves();
-        }
-        const html = document.documentElement;
-        const prev = html.style.scrollBehavior;
-        html.style.scrollBehavior = "auto";
-        target.scrollIntoView({ block: "start" });
-        html.style.scrollBehavior = prev;
-      } else {
-        target.scrollIntoView({ block: "start" }); // CSS smooth applies
+      // Travel is a CUT, at every distance (the light system's
+      // stillness: moving between years, like moving between
+      // figures, never glides). Pre-render the neighboring years
+      // first: shelves rendered AFTER the jump would grow the
+      // document above the target and push it down.
+      for (const p of pending) {
+        if (Math.abs(p.year - year) <= 2) p.renderWaves();
       }
+      const html = document.documentElement;
+      const prev = html.style.scrollBehavior;
+      html.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start" });
+      html.style.scrollBehavior = prev;
     }
     history.replaceState(null, "", `#year-${year}`);
   };
@@ -633,7 +627,7 @@ async function init() {
     for (const p of pending) yearIO.observe(p.sec);
   }
 
-  initParallax();
+  /* No parallax: the room is still (the light system's motion estate is the seal press). */
   stickJourney();
   initDrawerSearch(figures, yearByNum);
   let stickT = null;
@@ -655,31 +649,6 @@ function openHashDrawer(figures, yearByNum, pending) {
   const yearCtx = yearByNum.get(fig.year);
   const why = (yearCtx?.spotlight ?? []).find((s) => s.id === fig.id)?.why ?? null;
   openDrawer(fig, yearCtx ?? null, why);
-}
-
-/* ---------- Parallax: transform-only, rAF-throttled, motion-gated ---------- */
-
-function initParallax() {
-  if (reduceMotion()) return;
-  let ticking = false;
-  const apply = () => {
-    ticking = false;
-    if (reduceMotion()) {
-      els.room.style.setProperty("--py", "0px");
-      return;
-    }
-    // The room's own offset keeps the layers glued to the room, not the page.
-    const y = window.scrollY - els.room.offsetTop;
-    els.room.style.setProperty("--py", `${Math.max(0, y)}px`);
-  };
-  const onScroll = () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(apply);
-    }
-  };
-  addEventListener("scroll", onScroll, { passive: true });
-  apply();
 }
 
 init();

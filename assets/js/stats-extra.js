@@ -1,13 +1,13 @@
-/* Stats dashboard extensions — BAF waves over time, top 25 characters,
+/* Stats dashboard extensions, BAF waves over time, top 25 characters,
    exclusives share, and wave-size KPIs. All computed live from the figure
    database via data.js; no invented numbers. Vanilla SVG, no libraries. */
 import { loadData } from "./data.js";
 
-var RED = "#e62429";
-var GOLD = "#f5b301";
-var TOYBIZ = "#ffb37f";
-var MUTED = "#8a8a9c";
-var GRID = "#1e1e2a";
+var RED = "#1E1B16"; /* Hasbro era: Ink */
+var GOLD = "#1E1B16"; /* the chart accent: Ink (gold abolished as a surface color) */
+var TOYBIZ = "#6E6353"; /* Toy Biz era: Pencil (Hasbro era reads in Ink) */
+var MUTED = "#6E6353";
+var GRID = "#D9CFB8";
 
 function baseName(n) {
   return String(n).replace(/\s*\(.*?\)\s*/g, "").trim();
@@ -60,7 +60,7 @@ function hBarChart(values, ariaLabel) {
   values.forEach(function (d, i) {
     var y = padT + i * rowH;
     var w = Math.max(3, (d.value / max) * cw);
-    svg += '<text x="' + (padL - 10) + '" y="' + (y + 19) + '" text-anchor="end" font-size="13" fill="#e8e8f0">' +
+    svg += '<text x="' + (padL - 10) + '" y="' + (y + 19) + '" text-anchor="end" font-size="13" fill="#1E1B16">' +
       esc(d.label) + "</text>";
     svg += '<rect x="' + padL + '" y="' + (y + 6) + '" width="' + w.toFixed(1) + '" height="16" fill="' + RED + '" rx="3">' +
       "<title>" + esc(d.label) + ": " + d.value + " figures</title></rect>";
@@ -85,7 +85,7 @@ function donut(parts, ariaLabel) {
       "<title>" + esc(p.label) + ": " + p.value.toLocaleString() + " (" + Math.round(frac * 100) + "%)</title></circle>";
     off += frac;
   });
-  svg += '<text x="' + cx + '" y="' + (cy - 6) + '" text-anchor="middle" font-size="26" font-weight="800" fill="#e8e8f0">' +
+  svg += '<text x="' + cx + '" y="' + (cy - 6) + '" text-anchor="middle" font-size="26" font-weight="800" fill="#1E1B16">' +
     total.toLocaleString() + "</text>";
   svg += '<text x="' + cx + '" y="' + (cy + 18) + '" text-anchor="middle" font-size="12" fill="' + MUTED + '">figures</text>';
   return svg + "</svg>";
@@ -136,8 +136,8 @@ function render() {
         { label: "Exclusives", value: excl, color: GOLD },
         { label: "Mainline releases", value: figures.length - excl, color: RED },
       ], "Share of exclusive versus mainline Marvel Legends figures") +
-        '<div class="legend"><span><i style="background:' + GOLD + '"></i>Exclusives — ' + excl.toLocaleString() +
-        '</span><span><i style="background:' + RED + '"></i>Mainline — ' + (figures.length - excl).toLocaleString() + "</span></div>";
+        '<div class="legend"><span><i style="background:' + GOLD + '"></i>Exclusives, ' + excl.toLocaleString() +
+        '</span><span><i style="background:' + RED + '"></i>Mainline, ' + (figures.length - excl).toLocaleString() + "</span></div>";
     }
 
     if (sizeEl) {

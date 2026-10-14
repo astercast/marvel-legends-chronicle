@@ -16,9 +16,9 @@ You're considering buying, selling, or hunting the Red Skull (Series 5 chase) (T
 
 ## Procedure
 
-1. Why it matters: Chase figure never pictured on the box back — the template for ML chase culture.
+1. Why it matters: Chase figure never pictured on the box back, the template for ML chase culture.
 2. Price evidence: $59.99 listing (verified price data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a Red Skull (Series 5 chase): run the bootleg checklist, pull 90-
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

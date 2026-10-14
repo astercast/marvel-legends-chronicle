@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Characters: Marvel Legends Chronicle">
   <meta name="twitter:description" content="Every release of Marvel Legends&#x27; most-collected characters, chronological.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -33,28 +33,47 @@
     .char-hero { padding-block: var(--space-7); }
     .char-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
     .release-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
-    .release-year { font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
-      color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
+    .release-year { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem;
+      color: var(--muted); margin: var(--space-6) 0 var(--space-3); }
     .release { padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
     /* Row anatomy, record and research-apparatus styles live in
        assets/css/museum.css (the R21 museum sheet): three-line rows,
        the catalog number at its fixed position, one apparatus. */
-    .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: var(--space-3); margin-bottom: var(--space-7); }
-    .char-card { display: block; }
-    .char-card:hover { text-decoration: none; border-color: var(--red); }
-    .char-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
-    .char-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
-    .run-panel { padding: var(--space-5); margin-bottom: var(--space-6); }
-    .run-title { font-size: 1.15rem; margin: 0 0 var(--space-2); }
+    /* The characters index: ruled contents rows (name, note, count at right) */
+    .char-index { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
+    .char-index-row { border-bottom: 1px solid var(--line); }
+    .char-index-row:first-child { border-top: 1px solid var(--line); }
+    .char-index-row a { display: grid; grid-template-columns: minmax(8rem, auto) minmax(0, 1fr) auto;
+      gap: var(--space-2) var(--space-5); align-items: baseline; padding: var(--space-4) 0;
+      text-decoration: none; color: var(--ink); }
+    .char-index-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+    .char-index-note { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+    .char-index-count { font-variant-numeric: tabular-nums; text-align: right; }
+    .char-index-row a:hover .char-index-name { color: var(--blue); }
+    @media (max-width: 640px) { .char-index-row a { grid-template-columns: minmax(0, 1fr) auto; } .char-index-note { grid-column: 1 / -1; } }
+    /* The character head is a tombstone on Board (MARVEL-LIGHT 3.6) */
+    .char-tombstone { background: var(--board); border: 1px solid var(--line); padding: var(--space-5); }
+    .char-tombstone .accession { margin: var(--space-2) 0; }
+    /* The run tracker is an ownership BOOKPLATE on Board: an ex libris
+       panel whose inscription renders in full, in normal flow, with
+       room at the foot. It replaces the dark run panel wholesale;
+       the R21 capture's clipped closing line closes here, by
+       replacement (no fixed height, no hidden overflow, generous
+       foot padding). */
+    .bookplate { background: var(--board); border: 1px solid var(--line-bright);
+      outline: 3px double var(--line-bright); outline-offset: 4px;
+      padding: var(--space-6); margin-bottom: var(--space-7); overflow: visible; }
+    .bookplate-mark { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 var(--space-2); }
+    .run-title { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 0 0 var(--space-2); }
     .run-summary { margin: 0 0 var(--space-3); }
     .run-bar { height: 10px; border-radius: 999px; background: var(--line-soft);
       overflow: hidden; margin-bottom: var(--space-3); }
-    .run-fill { height: 100%; background: var(--gold); border-radius: 999px;
+    .run-fill { height: 100%; background: var(--ink); border-radius: 0;
       transition: width 0.4s ease; }
     @media (prefers-reduced-motion: reduce) { .run-fill { transition: none; } }
     .run-missing { margin-top: var(--space-3); }
-    .run-missing summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .run-missing summary { cursor: pointer; color: var(--ink); font-weight: 600; }
     .run-missing summary:hover { text-decoration: underline; }
     .run-missing-list { list-style: none; margin: var(--space-3) 0 0; padding: 0;
       display: grid; gap: var(--space-2); }
@@ -62,7 +81,7 @@
       justify-content: space-between; gap: var(--space-2);
       padding: var(--space-2) 0; border-bottom: 1px solid var(--line-soft); }
     .run-missing-name { font-size: 0.9rem; }
-    .run-complete { color: var(--gold); font-weight: 700; margin: var(--space-3) 0 0; }
+    .run-complete { color: var(--ink); font-weight: 700; margin: var(--space-3) 0 0; }
   </style>
 </head>
 <body>
@@ -94,74 +113,74 @@
       </div>
     </section>
     <div class="container">
-      <div class="char-grid">
-      <a class="card char-card" href="spider-man.html"><h3>Spider-Man</h3><p>88 releases · 2003–2026</p></a>
-      <a class="card char-card" href="iron-man.html"><h3>Iron Man</h3><p>77 releases · 2002–2026</p></a>
-      <a class="card char-card" href="wolverine.html"><h3>Wolverine</h3><p>56 releases · 2002–2026</p></a>
-      <a class="card char-card" href="captain-america.html"><h3>Captain America</h3><p>54 releases · 2002–2026</p></a>
-      <a class="card char-card" href="hulk.html"><h3>Hulk</h3><p>29 releases · 2002–2026</p></a>
-      <a class="card char-card" href="thor.html"><h3>Thor</h3><p>29 releases · 2002–2026</p></a>
-      <a class="card char-card" href="daredevil.html"><h3>Daredevil</h3><p>22 releases · 2002–2026</p></a>
-      <a class="card char-card" href="deadpool.html"><h3>Deadpool</h3><p>22 releases · 2010–2026</p></a>
-      <a class="card char-card" href="punisher.html"><h3>Punisher</h3><p>21 releases · 2003–2026</p></a>
-      <a class="card char-card" href="black-widow.html"><h3>Black Widow</h3><p>21 releases · 2004–2026</p></a>
-      <a class="card char-card" href="cyclops.html"><h3>Cyclops</h3><p>19 releases · 2005–2026</p></a>
-      <a class="card char-card" href="jean-grey.html"><h3>Jean Grey</h3><p>17 releases · 2004–2025</p></a>
-      <a class="card char-card" href="black-panther.html"><h3>Black Panther</h3><p>17 releases · 2005–2026</p></a>
-      <a class="card char-card" href="human-torch.html"><h3>Human Torch</h3><p>16 releases · 2002–2026</p></a>
-      <a class="card char-card" href="venom.html"><h3>Venom</h3><p>16 releases · 2004–2026</p></a>
-      <a class="card char-card" href="doctor-doom.html"><h3>Doctor Doom</h3><p>13 releases · 2002–2026</p></a>
-      <a class="card char-card" href="storm.html"><h3>Storm</h3><p>13 releases · 2004–2025</p></a>
-      <a class="card char-card" href="war-machine.html"><h3>War Machine</h3><p>13 releases · 2005–2025</p></a>
-      <a class="card char-card" href="magneto.html"><h3>Magneto</h3><p>12 releases · 2002–2026</p></a>
-      <a class="card char-card" href="beast.html"><h3>Beast</h3><p>12 releases · 2003–2026</p></a>
-      <a class="card char-card" href="hawkeye.html"><h3>Hawkeye</h3><p>12 releases · 2004–2026</p></a>
-      <a class="card char-card" href="ghost-rider.html"><h3>Ghost Rider</h3><p>11 releases · 2002–2026</p></a>
-      <a class="card char-card" href="vision.html"><h3>Vision</h3><p>11 releases · 2004–2026</p></a>
-      <a class="card char-card" href="doctor-strange.html"><h3>Doctor Strange</h3><p>11 releases · 2005–2024</p></a>
-      <a class="card char-card" href="ant-man.html"><h3>Ant-Man</h3><p>11 releases · 2006–2023</p></a>
-      <a class="card char-card" href="captain-marvel.html"><h3>Captain Marvel</h3><p>11 releases · 2006–2023</p></a>
-      <a class="card char-card" href="star-lord.html"><h3>Star-Lord</h3><p>11 releases · 2014–2023</p></a>
-      <a class="card char-card" href="rogue.html"><h3>Rogue</h3><p>10 releases · 2003–2025</p></a>
-      <a class="card char-card" href="invisible-woman.html"><h3>Invisible Woman</h3><p>10 releases · 2004–2026</p></a>
-      <a class="card char-card" href="scarlet-witch.html"><h3>Scarlet Witch</h3><p>10 releases · 2005–2026</p></a>
-      <a class="card char-card" href="she-hulk.html"><h3>She-Hulk</h3><p>10 releases · 2007–2025</p></a>
-      <a class="card char-card" href="gambit.html"><h3>Gambit</h3><p>9 releases · 2003–2026</p></a>
-      <a class="card char-card" href="mister-fantastic.html"><h3>Mister Fantastic</h3><p>9 releases · 2003–2026</p></a>
-      <a class="card char-card" href="green-goblin.html"><h3>Green Goblin</h3><p>9 releases · 2004–2026</p></a>
-      <a class="card char-card" href="loki.html"><h3>Loki</h3><p>9 releases · 2006–2022</p></a>
-      <a class="card char-card" href="psylocke.html"><h3>Psylocke</h3><p>9 releases · 2006–2026</p></a>
-      <a class="card char-card" href="moon-knight.html"><h3>Moon Knight</h3><p>9 releases · 2006–2026</p></a>
-      <a class="card char-card" href="spider-woman.html"><h3>Spider-Woman</h3><p>9 releases · 2006–2025</p></a>
-      <a class="card char-card" href="silver-surfer.html"><h3>Silver Surfer</h3><p>9 releases · 2007–2025</p></a>
-      <a class="card char-card" href="winter-soldier.html"><h3>Winter Soldier</h3><p>9 releases · 2010–2022</p></a>
-      <a class="card char-card" href="red-skull.html"><h3>Red Skull</h3><p>8 releases · 2003–2022</p></a>
-      <a class="card char-card" href="sabretooth.html"><h3>Sabretooth</h3><p>8 releases · 2003–2024</p></a>
-      <a class="card char-card" href="cable.html"><h3>Cable</h3><p>8 releases · 2004–2025</p></a>
-      <a class="card char-card" href="professor-x.html"><h3>Professor X</h3><p>8 releases · 2005–2026</p></a>
-      <a class="card char-card" href="ultron.html"><h3>Ultron</h3><p>8 releases · 2005–2023</p></a>
-      <a class="card char-card" href="emma-frost.html"><h3>Emma Frost</h3><p>8 releases · 2007–2026</p></a>
-      <a class="card char-card" href="iron-spider.html"><h3>Iron Spider</h3><p>8 releases · 2018–2026</p></a>
-      <a class="card char-card" href="elektra.html"><h3>Elektra</h3><p>7 releases · 2003–2023</p></a>
-      <a class="card char-card" href="doctor-octopus.html"><h3>Doctor Octopus</h3><p>7 releases · 2004–2023</p></a>
-      <a class="card char-card" href="iceman.html"><h3>Iceman</h3><p>7 releases · 2004–2025</p></a>
-      <a class="card char-card" href="electro.html"><h3>Electro</h3><p>7 releases · 2004–2026</p></a>
-      <a class="card char-card" href="carnage.html"><h3>Carnage</h3><p>7 releases · 2005–2024</p></a>
-      <a class="card char-card" href="wasp.html"><h3>Wasp</h3><p>7 releases · 2006–2024</p></a>
-      <a class="card char-card" href="ms-marvel.html"><h3>Ms. Marvel</h3><p>7 releases · 2014–2025</p></a>
-      <a class="card char-card" href="logan.html"><h3>Logan</h3><p>7 releases · 2018–2025</p></a>
-      <a class="card char-card" href="thing.html"><h3>Thing</h3><p>6 releases · 2002–2008</p></a>
-      <a class="card char-card" href="colossus.html"><h3>Colossus</h3><p>6 releases · 2003–2026</p></a>
-      <a class="card char-card" href="nick-fury.html"><h3>Nick Fury</h3><p>6 releases · 2003–2025</p></a>
-      <a class="card char-card" href="mystique.html"><h3>Mystique</h3><p>6 releases · 2005–2025</p></a>
-      <a class="card char-card" href="iron-fist.html"><h3>Iron Fist</h3><p>6 releases · 2005–2024</p></a>
-      <a class="card char-card" href="sentry.html"><h3>Sentry</h3><p>6 releases · 2006–2025</p></a>
-      <a class="card char-card" href="luke-cage.html"><h3>Luke Cage</h3><p>6 releases · 2006–2024</p></a>
-      <a class="card char-card" href="quicksilver.html"><h3>Quicksilver</h3><p>6 releases · 2007–2026</p></a>
-      <a class="card char-card" href="spider-man-2099.html"><h3>Spider-Man 2099</h3><p>6 releases · 2015–2026</p></a>
-      <a class="card char-card" href="falcon.html"><h3>Falcon</h3><p>6 releases · 2016–2025</p></a>
-      <a class="card char-card" href="the-thing.html"><h3>The Thing</h3><p>6 releases · 2018–2026</p></a>
-      </div>
+      <ul class="char-index">
+      <li class="char-index-row"><a href="spider-man.html"><span class="char-index-name">Spider-Man</span><span class="char-index-note">Character register</span><span class="char-index-count">88 releases · 2003–2026</span></a></li>
+      <li class="char-index-row"><a href="iron-man.html"><span class="char-index-name">Iron Man</span><span class="char-index-note">Character register</span><span class="char-index-count">77 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="wolverine.html"><span class="char-index-name">Wolverine</span><span class="char-index-note">Character register</span><span class="char-index-count">56 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="captain-america.html"><span class="char-index-name">Captain America</span><span class="char-index-note">Character register</span><span class="char-index-count">54 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="hulk.html"><span class="char-index-name">Hulk</span><span class="char-index-note">Character register</span><span class="char-index-count">29 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="thor.html"><span class="char-index-name">Thor</span><span class="char-index-note">Character register</span><span class="char-index-count">29 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="daredevil.html"><span class="char-index-name">Daredevil</span><span class="char-index-note">Character register</span><span class="char-index-count">22 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="deadpool.html"><span class="char-index-name">Deadpool</span><span class="char-index-note">Character register</span><span class="char-index-count">22 releases · 2010–2026</span></a></li>
+      <li class="char-index-row"><a href="punisher.html"><span class="char-index-name">Punisher</span><span class="char-index-note">Character register</span><span class="char-index-count">21 releases · 2003–2026</span></a></li>
+      <li class="char-index-row"><a href="black-widow.html"><span class="char-index-name">Black Widow</span><span class="char-index-note">Character register</span><span class="char-index-count">21 releases · 2004–2026</span></a></li>
+      <li class="char-index-row"><a href="cyclops.html"><span class="char-index-name">Cyclops</span><span class="char-index-note">Character register</span><span class="char-index-count">19 releases · 2005–2026</span></a></li>
+      <li class="char-index-row"><a href="jean-grey.html"><span class="char-index-name">Jean Grey</span><span class="char-index-note">Character register</span><span class="char-index-count">17 releases · 2004–2025</span></a></li>
+      <li class="char-index-row"><a href="black-panther.html"><span class="char-index-name">Black Panther</span><span class="char-index-note">Character register</span><span class="char-index-count">17 releases · 2005–2026</span></a></li>
+      <li class="char-index-row"><a href="human-torch.html"><span class="char-index-name">Human Torch</span><span class="char-index-note">Character register</span><span class="char-index-count">16 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="venom.html"><span class="char-index-name">Venom</span><span class="char-index-note">Character register</span><span class="char-index-count">16 releases · 2004–2026</span></a></li>
+      <li class="char-index-row"><a href="doctor-doom.html"><span class="char-index-name">Doctor Doom</span><span class="char-index-note">Character register</span><span class="char-index-count">13 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="storm.html"><span class="char-index-name">Storm</span><span class="char-index-note">Character register</span><span class="char-index-count">13 releases · 2004–2025</span></a></li>
+      <li class="char-index-row"><a href="war-machine.html"><span class="char-index-name">War Machine</span><span class="char-index-note">Character register</span><span class="char-index-count">13 releases · 2005–2025</span></a></li>
+      <li class="char-index-row"><a href="magneto.html"><span class="char-index-name">Magneto</span><span class="char-index-note">Character register</span><span class="char-index-count">12 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="beast.html"><span class="char-index-name">Beast</span><span class="char-index-note">Character register</span><span class="char-index-count">12 releases · 2003–2026</span></a></li>
+      <li class="char-index-row"><a href="hawkeye.html"><span class="char-index-name">Hawkeye</span><span class="char-index-note">Character register</span><span class="char-index-count">12 releases · 2004–2026</span></a></li>
+      <li class="char-index-row"><a href="ghost-rider.html"><span class="char-index-name">Ghost Rider</span><span class="char-index-note">Character register</span><span class="char-index-count">11 releases · 2002–2026</span></a></li>
+      <li class="char-index-row"><a href="vision.html"><span class="char-index-name">Vision</span><span class="char-index-note">Character register</span><span class="char-index-count">11 releases · 2004–2026</span></a></li>
+      <li class="char-index-row"><a href="doctor-strange.html"><span class="char-index-name">Doctor Strange</span><span class="char-index-note">Character register</span><span class="char-index-count">11 releases · 2005–2024</span></a></li>
+      <li class="char-index-row"><a href="ant-man.html"><span class="char-index-name">Ant-Man</span><span class="char-index-note">Character register</span><span class="char-index-count">11 releases · 2006–2023</span></a></li>
+      <li class="char-index-row"><a href="captain-marvel.html"><span class="char-index-name">Captain Marvel</span><span class="char-index-note">Character register</span><span class="char-index-count">11 releases · 2006–2023</span></a></li>
+      <li class="char-index-row"><a href="star-lord.html"><span class="char-index-name">Star-Lord</span><span class="char-index-note">Character register</span><span class="char-index-count">11 releases · 2014–2023</span></a></li>
+      <li class="char-index-row"><a href="rogue.html"><span class="char-index-name">Rogue</span><span class="char-index-note">Character register</span><span class="char-index-count">10 releases · 2003–2025</span></a></li>
+      <li class="char-index-row"><a href="invisible-woman.html"><span class="char-index-name">Invisible Woman</span><span class="char-index-note">Character register</span><span class="char-index-count">10 releases · 2004–2026</span></a></li>
+      <li class="char-index-row"><a href="scarlet-witch.html"><span class="char-index-name">Scarlet Witch</span><span class="char-index-note">Character register</span><span class="char-index-count">10 releases · 2005–2026</span></a></li>
+      <li class="char-index-row"><a href="she-hulk.html"><span class="char-index-name">She-Hulk</span><span class="char-index-note">Character register</span><span class="char-index-count">10 releases · 2007–2025</span></a></li>
+      <li class="char-index-row"><a href="gambit.html"><span class="char-index-name">Gambit</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2003–2026</span></a></li>
+      <li class="char-index-row"><a href="mister-fantastic.html"><span class="char-index-name">Mister Fantastic</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2003–2026</span></a></li>
+      <li class="char-index-row"><a href="green-goblin.html"><span class="char-index-name">Green Goblin</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2004–2026</span></a></li>
+      <li class="char-index-row"><a href="loki.html"><span class="char-index-name">Loki</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2006–2022</span></a></li>
+      <li class="char-index-row"><a href="psylocke.html"><span class="char-index-name">Psylocke</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2006–2026</span></a></li>
+      <li class="char-index-row"><a href="moon-knight.html"><span class="char-index-name">Moon Knight</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2006–2026</span></a></li>
+      <li class="char-index-row"><a href="spider-woman.html"><span class="char-index-name">Spider-Woman</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2006–2025</span></a></li>
+      <li class="char-index-row"><a href="silver-surfer.html"><span class="char-index-name">Silver Surfer</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2007–2025</span></a></li>
+      <li class="char-index-row"><a href="winter-soldier.html"><span class="char-index-name">Winter Soldier</span><span class="char-index-note">Character register</span><span class="char-index-count">9 releases · 2010–2022</span></a></li>
+      <li class="char-index-row"><a href="red-skull.html"><span class="char-index-name">Red Skull</span><span class="char-index-note">Character register</span><span class="char-index-count">8 releases · 2003–2022</span></a></li>
+      <li class="char-index-row"><a href="sabretooth.html"><span class="char-index-name">Sabretooth</span><span class="char-index-note">Character register</span><span class="char-index-count">8 releases · 2003–2024</span></a></li>
+      <li class="char-index-row"><a href="cable.html"><span class="char-index-name">Cable</span><span class="char-index-note">Character register</span><span class="char-index-count">8 releases · 2004–2025</span></a></li>
+      <li class="char-index-row"><a href="professor-x.html"><span class="char-index-name">Professor X</span><span class="char-index-note">Character register</span><span class="char-index-count">8 releases · 2005–2026</span></a></li>
+      <li class="char-index-row"><a href="ultron.html"><span class="char-index-name">Ultron</span><span class="char-index-note">Character register</span><span class="char-index-count">8 releases · 2005–2023</span></a></li>
+      <li class="char-index-row"><a href="emma-frost.html"><span class="char-index-name">Emma Frost</span><span class="char-index-note">Character register</span><span class="char-index-count">8 releases · 2007–2026</span></a></li>
+      <li class="char-index-row"><a href="iron-spider.html"><span class="char-index-name">Iron Spider</span><span class="char-index-note">Character register</span><span class="char-index-count">8 releases · 2018–2026</span></a></li>
+      <li class="char-index-row"><a href="elektra.html"><span class="char-index-name">Elektra</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2003–2023</span></a></li>
+      <li class="char-index-row"><a href="doctor-octopus.html"><span class="char-index-name">Doctor Octopus</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2004–2023</span></a></li>
+      <li class="char-index-row"><a href="iceman.html"><span class="char-index-name">Iceman</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2004–2025</span></a></li>
+      <li class="char-index-row"><a href="electro.html"><span class="char-index-name">Electro</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2004–2026</span></a></li>
+      <li class="char-index-row"><a href="carnage.html"><span class="char-index-name">Carnage</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2005–2024</span></a></li>
+      <li class="char-index-row"><a href="wasp.html"><span class="char-index-name">Wasp</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2006–2024</span></a></li>
+      <li class="char-index-row"><a href="ms-marvel.html"><span class="char-index-name">Ms. Marvel</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2014–2025</span></a></li>
+      <li class="char-index-row"><a href="logan.html"><span class="char-index-name">Logan</span><span class="char-index-note">Character register</span><span class="char-index-count">7 releases · 2018–2025</span></a></li>
+      <li class="char-index-row"><a href="thing.html"><span class="char-index-name">Thing</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2002–2008</span></a></li>
+      <li class="char-index-row"><a href="colossus.html"><span class="char-index-name">Colossus</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2003–2026</span></a></li>
+      <li class="char-index-row"><a href="nick-fury.html"><span class="char-index-name">Nick Fury</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2003–2025</span></a></li>
+      <li class="char-index-row"><a href="mystique.html"><span class="char-index-name">Mystique</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2005–2025</span></a></li>
+      <li class="char-index-row"><a href="iron-fist.html"><span class="char-index-name">Iron Fist</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2005–2024</span></a></li>
+      <li class="char-index-row"><a href="sentry.html"><span class="char-index-name">Sentry</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2006–2025</span></a></li>
+      <li class="char-index-row"><a href="luke-cage.html"><span class="char-index-name">Luke Cage</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2006–2024</span></a></li>
+      <li class="char-index-row"><a href="quicksilver.html"><span class="char-index-name">Quicksilver</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2007–2026</span></a></li>
+      <li class="char-index-row"><a href="spider-man-2099.html"><span class="char-index-name">Spider-Man 2099</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2015–2026</span></a></li>
+      <li class="char-index-row"><a href="falcon.html"><span class="char-index-name">Falcon</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2016–2025</span></a></li>
+      <li class="char-index-row"><a href="the-thing.html"><span class="char-index-name">The Thing</span><span class="char-index-note">Character register</span><span class="char-index-count">6 releases · 2018–2026</span></a></li>
+      </ul>
     </div>
   </main>
 

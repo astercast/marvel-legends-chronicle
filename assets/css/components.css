@@ -1,5 +1,5 @@
-/* Components — buttons, inputs, cards, badges, toolbar, modal, tables
-   ("The Archive" v2): tactile lot-catalog cards, disciplined accents. */
+/* Components: buttons, inputs, cards, badges, toolbar, modal, tables
+   (the light catalogue): print furniture, disciplined color jobs. */
 
 /* --- Buttons --- */
 .btn {
@@ -21,23 +21,27 @@
     transform var(--dur-1) var(--ease), box-shadow var(--dur-2) var(--ease);
   text-decoration: none;
 }
-.btn:hover { background: var(--panel-3); border-color: #3d3d4d; text-decoration: none; }
+.btn:hover { background: var(--panel-3); border-color: var(--line-bright); text-decoration: none; }
 .btn:active { transform: translateY(1px); box-shadow: var(--shadow-1); }
 .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
 
+/* The primary action is an ink block: Plate Red never fills a
+   surface, and gold no longer exists to fill one with. */
 .btn-primary {
-  background: var(--red);
-  border-color: var(--red-deep);
-  color: #fff;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
 }
-.btn-primary:hover { background: #d11f24; border-color: var(--red-deep); }
+.btn-primary:hover { background: var(--ink); border-color: var(--ink); box-shadow: inset 0 0 0 2px var(--bg); }
 
+/* The old brass button, retired with the brass: it survives as a
+   quiet Board-toned action for secondary emphasis. */
 .btn-gold {
-  background: var(--gold);
-  border-color: var(--gold-deep);
-  color: #171204;
+  background: var(--board);
+  border-color: var(--line-bright);
+  color: var(--ink);
 }
-.btn-gold:hover { background: #d6a224; border-color: var(--gold-deep); }
+.btn-gold:hover { background: var(--board); border-color: var(--ink); }
 
 .btn-ghost { background: transparent; box-shadow: none; }
 .btn-sm { padding: var(--space-1) var(--space-3); font-size: 0.8rem; }
@@ -55,46 +59,45 @@
 .input::placeholder { color: var(--muted); }
 .input:hover { border-color: var(--line-bright); }
 .input:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(232, 179, 42, 0.16);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(30, 27, 22, 0.14);
   outline: none;
 }
 textarea.input { resize: vertical; min-height: 84px; }
 select.input {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238e8a7e' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236E6353' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 32px;
 }
 
-/* --- Badges: lot tags --- */
+/* --- Badges: printed lot tags ---
+   One form for every tag under light: letterspaced Newsreader
+   capitals in Pencil inside a Rule hairline. The dark scheme's
+   tint-per-meaning zoo is abolished; the tag's WORDS carry the
+   fact, the way a printed lot tag's words do. Listing surfaces
+   on the rebuilt families carry no badges at all (R21); these
+   serve the long tail's tools and tables. */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-family: var(--font-cond);
   font-size: 0.66rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 3px 9px;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--line-bright);
-  color: var(--ink-dim);
-  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: transparent;
   white-space: nowrap;
-  box-shadow: var(--edge-light);
 }
-.badge-baf { color: var(--gold); border-color: rgba(232, 179, 42, 0.5); background: rgba(232, 179, 42, 0.08); }
-.badge-exclusive { color: var(--blue); border-color: rgba(143, 214, 255, 0.4); background: rgba(143, 214, 255, 0.07); }
-.badge-variant { color: var(--violet); border-color: rgba(201, 167, 255, 0.4); background: rgba(201, 167, 255, 0.07); }
-.badge-toybiz { color: var(--amber); border-color: rgba(255, 179, 127, 0.4); background: rgba(255, 179, 127, 0.07); }
-.badge-source { color: var(--green); border-color: rgba(111, 227, 161, 0.4); background: rgba(111, 227, 161, 0.07); }
-.badge-flag { color: var(--gold); border-color: rgba(232, 179, 42, 0.5); background: transparent; }
-.badge-trend-up { color: var(--green); border-color: rgba(111, 227, 161, 0.4); background: rgba(111, 227, 161, 0.07); }
-.badge-trend-down { color: #ff9a9a; border-color: rgba(255, 154, 154, 0.4); background: rgba(255, 154, 154, 0.07); }
-.badge-trend-stable { color: var(--ink-dim); }
+.badge-baf, .badge-exclusive, .badge-variant, .badge-toybiz,
+.badge-source, .badge-flag, .badge-trend-up, .badge-trend-down,
+.badge-trend-stable { color: var(--muted); border-color: var(--line); background: transparent; }
 .sparkline { display: block; margin: var(--space-2) 0; }
 .logged-prices .link-note { margin-bottom: var(--space-1); }
 .share-preview {
@@ -148,7 +151,7 @@ select.input {
   position: fixed;
   inset: 0;
   z-index: 150;
-  background: rgba(5, 5, 9, 0.78);
+  background: rgba(250, 246, 236, 0.84);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: grid;
@@ -172,7 +175,7 @@ select.input {
   overflow: auto;
   background: var(--panel);
   border: 1px solid var(--line-bright);
-  border-top: 2px solid var(--red);
+  border-top: 2px solid var(--ink);
   border-radius: var(--radius-l);
   padding: var(--space-6);
   box-shadow: var(--shadow-3);
@@ -208,7 +211,7 @@ select.input {
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
 
 .tracker-btns { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
-.tracker-btns .btn[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+.tracker-btns .btn[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
 
 .empty-state {
   text-align: center;
@@ -223,7 +226,7 @@ select.input {
 .year-rail a.active {
   color: var(--ink);
   background: var(--panel-2);
-  box-shadow: inset 0 -2px 0 var(--red);
+  box-shadow: inset 0 -2px 0 var(--ink);
 }
 
 /* --- Figure dialog: research links --- */
@@ -257,7 +260,7 @@ select.input {
   transition: background var(--dur-1) var(--ease);
 }
 .data-table tbody tr:hover, .value-table tbody tr:hover, .price-table tbody tr:hover {
-  background: rgba(232, 179, 42, 0.045);
+  background: rgba(30, 27, 22, 0.04);
 }
 .data-table td.num, .value-table td.num, .price-table td.num,
 .data-table td:last-child, .value-table td:last-child {
@@ -270,7 +273,7 @@ select.input {
   border-radius: var(--radius-s);
 }
 .fig-list .fig:hover, .release-list .release:hover {
-  background: rgba(245, 241, 232, 0.025);
+  background: rgba(30, 27, 22, 0.03);
 }
 .fig-list .fig-name, .release-list .release-name {
   letter-spacing: 0.005em;
@@ -290,7 +293,7 @@ select.input {
   gap: 0.4em;
   margin-left: 0.6em;
   padding: 0.18em 0.6em 0.18em 0.55em;
-  border: 1px solid rgba(220, 174, 60, 0.35);
+  border: 1px solid var(--line);
   border-radius: 999px;
   font-family: var(--font-body);
   font-size: 0.72rem;
@@ -298,7 +301,7 @@ select.input {
   letter-spacing: 0.04em;
   line-height: 1.4;
   color: var(--ink-dim);
-  background: rgba(13, 12, 16, 0.55);
+  background: var(--bg);
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -310,25 +313,26 @@ select.input {
   background: var(--ink-dim);
   flex: none;
 }
-.api-badge[data-api-state="live"] { color: var(--green); border-color: rgba(111, 227, 161, 0.45); }
-.api-badge[data-api-state="live"]::before { background: var(--green); }
+.api-badge[data-api-state="live"] { color: var(--plate-red); border-color: rgba(163, 39, 27, 0.45); }
+.api-badge[data-api-state="live"]::before { background: var(--plate-red); }
 .api-badge[data-api-state="waking"] { color: var(--ink-dim); border-style: dashed; }
 .api-badge[data-api-state="waking"]::before { background: var(--ink-dim); }
-.api-badge[data-api-state="cached"] { color: var(--amber); border-color: rgba(255, 179, 127, 0.5); }
-.api-badge[data-api-state="cached"]::before { background: var(--amber); }
+.api-badge[data-api-state="cached"] { color: var(--muted); border-color: var(--line); }
+.api-badge[data-api-state="cached"]::before { background: var(--muted); }
 .api-badge[data-api-state="none"] { display: none; }
 .api-badge:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
-/* The catalog number, printed (R21): one setting everywhere it
-   appears, small mono, tabular, muted, never styled up or varied.
-   Its sameness is the authority; it is the site's refrain. */
+/* The catalog number, printed (R21, light): one setting
+   everywhere it appears, small mono, tabular, in Catalogue Blue,
+   never styled up or varied. Its sameness is the authority; it
+   is the site's refrain, and blue is how the eye learns it. */
 .cat-no {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
-  color: var(--muted);
+  color: var(--catalogue-blue);
   white-space: nowrap;
 }
 
@@ -339,10 +343,10 @@ select.input {
    figure-images.js) and the typographic treatment stands alone —
    there is no broken-image state. */
 .fig-plate { margin: var(--space-3) 0; max-width: 320px; }
-.fig-plate a { display: block; border: 1px solid var(--line-soft); border-top: 3px solid var(--gold); background: var(--panel); padding: var(--space-2); }
-.fig-plate img { display: block; width: 100%; height: auto; max-height: 320px; object-fit: contain; background: #fff; }
+.fig-plate a { display: block; border: 1px solid var(--ink); background: var(--bg); padding: var(--space-2); }
+.fig-plate img { display: block; width: 100%; height: auto; max-height: 320px; object-fit: contain; }
 .fig-plate figcaption { color: var(--muted); font-size: 0.75rem; margin-top: var(--space-1); }
 .fig-buy { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); margin: var(--space-2) 0 0; font-size: 0.85rem; }
 .fig-buy-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; color: var(--muted); }
-.buy-link { color: var(--gold); font-weight: 600; }
+.buy-link { color: var(--blue); font-weight: 600; }
 .db-fig .fig-plate img { max-height: 240px; }

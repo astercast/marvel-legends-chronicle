@@ -22,8 +22,8 @@ Every eBay purchase.
 
 ## Worked example
 
-Stale $80 listing → $65 offer accepted — sold data said $62.
+Stale $80 listing → $65 offer accepted, sold data said $62.
 
 ## Pitfalls
 
-- Bidding wars — set your max from solds and walk away at it.
+- Bidding wars, set your max from solds and walk away at it.

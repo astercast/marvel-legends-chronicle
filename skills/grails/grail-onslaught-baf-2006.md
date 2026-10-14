@@ -18,7 +18,7 @@ You're considering buying, selling, or hunting the Onslaught BAF (2006) (Toy Biz
 
 1. Why it matters: Final Toy Biz BAF; massive villain centerpiece.
 2. Price evidence: Catalogued (verified price data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a Onslaught BAF (2006): run the bootleg checklist, pull 90-day so
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

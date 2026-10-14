@@ -1,4 +1,4 @@
-/* Gift Finder 2.0 — budget + character/team + recipient → ranked gift picks
+/* Gift Finder 2.0, budget + character/team + recipient → ranked gift picks
    from the REAL archive data.
    - Ranking: scoreGift() from archive signals only (character/team match,
      recency, figure type, rarity signals, KO-risk penalties, recipient
@@ -25,27 +25,27 @@ import { koNoteFor } from "./ko-targets.js";
 import { journalPriceMap } from "./baf-planner.js";
 
 /* ------------------------------------------------------------------ */
-/* Recipient profiles — scoring weights over archive signals. */
+/* Recipient profiles, scoring weights over archive signals. */
 
 export const RECIPIENTS = {
   kid: {
     label: "a kid",
-    blurb: "Recent, recognizable, retail-easy — play over provenance.",
+    blurb: "Recent, recognizable, retail-easy, play over provenance.",
     weights: { recent: 6, standard: 6, bafPiece: 4, exclusive: -10, variant: -5, chase: -4, retro: 1, toyBiz: -8, ko: -8 },
   },
   casual: {
     label: "a casual fan",
-    blurb: "Recent releases of the character they love — no hunting required.",
+    blurb: "Recent releases of the character they love, no hunting required.",
     weights: { recent: 4, standard: 3, bafPiece: 3, exclusive: 0, variant: 0, chase: 0, retro: 1, toyBiz: -4, ko: -6 },
   },
   collector: {
     label: "a collector",
-    blurb: "Rarity signals first — exclusives, variants, chases, shelf centerpieces.",
+    blurb: "Rarity signals first, exclusives, variants, chases, shelf centerpieces.",
     weights: { recent: 1, standard: -2, bafPiece: 4, exclusive: 8, variant: 6, chase: 8, retro: 5, toyBiz: 5, ko: -4 },
   },
 };
 
-/* Team matching — matched against figure NAME + wave SERIES text, labeled as
+/* Team matching, matched against figure NAME + wave SERIES text, labeled as
    a keyword match. Exported for tests. */
 export const TEAMS = {
   "X-Men": ["x-men", "mutant"],
@@ -84,25 +84,25 @@ export function bandAllows(band, fig) {
   return true; // under50 + splurge allow everything
 }
 
-/* Figure-type price tier — a class, never a price. Exported for tests. */
+/* Figure-type price tier, a class, never a price. Exported for tests. */
 export function priceTier(fig) {
   const ex = fig.exclusive ?? "";
   if (ex === "HasLab" || ex === "Made-to-order") {
-    return { tier: 4, label: "Made-to-order tier — the dearest class" };
+    return { tier: 4, label: "Made-to-order tier, the dearest class" };
   }
   if (ex === "Box set exclusive") {
-    return { tier: 2, label: "Box set tier — multi-pack value" };
+    return { tier: 2, label: "Box set tier, multi-pack value" };
   }
-  if (ex) return { tier: 3, label: `Exclusive tier — ${ex}, above retail` };
-  if (fig.variant) return { tier: 3, label: `Variant tier — “${fig.variant}”, above retail` };
+  if (ex) return { tier: 3, label: `Exclusive tier, ${ex}, above retail` };
+  if (fig.variant) return { tier: 3, label: `Variant tier, “${fig.variant}”, above retail` };
   const series = fig.waveSeries ?? "";
   if (/^(box set|2-packs?|3-packs?)\b/i.test(series) || /\bdeluxe\b/i.test(series)) {
-    return { tier: 2, label: "Multi-pack tier — more plastic per dollar" };
+    return { tier: 2, label: "Multi-pack tier, more plastic per dollar" };
   }
-  return { tier: 1, label: "Standard single — the retail class" };
+  return { tier: 1, label: "Standard single, the retail class" };
 }
 
-/* scoreGift(fig, ctx) — pure ranking score from archive signals.
+/* scoreGift(fig, ctx), pure ranking score from archive signals.
    ctx: { charQ, teamKeys, recipient }. Exported for tests. */
 export function scoreGift(fig, { charQ = "", teamKeys = [], recipient = "casual" } = {}) {
   const w = (RECIPIENTS[recipient] ?? RECIPIENTS.casual).weights;
@@ -130,7 +130,7 @@ export function scoreGift(fig, { charQ = "", teamKeys = [], recipient = "casual"
   return s;
 }
 
-/* rankGifts(figures, opts) — filter then score-sort. opts: band, charQ,
+/* rankGifts(figures, opts), filter then score-sort. opts: band, charQ,
    recipient, ownedIds, hideOwned, source. Exported for tests. */
 export function rankGifts(figures, {
   band = "under50", charQ = "", recipient = "casual",
@@ -159,7 +159,7 @@ export function rankGifts(figures, {
   return scored;
 }
 
-/* notThat(fig, poolFigs) — same-character alternate to SKIP: a pricier
+/* notThat(fig, poolFigs), same-character alternate to SKIP: a pricier
    variant, an exclusive at markup, or a known KO target. Returns
    { fig, reason } | null. Exported for tests. */
 export function notThat(fig, poolFigs) {
@@ -173,7 +173,7 @@ export function notThat(fig, poolFigs) {
     ?? null;
   if (!that) return null;
   if (koNoteFor(that.name)) {
-    return { fig: that, reason: "known KO target — buy the standard at retail, not a marketplace copy" };
+    return { fig: that, reason: "known KO target, buy the standard at retail, not a marketplace copy" };
   }
   if (that.exclusive) return { fig: that, reason: `skip the ${that.exclusive} at a premium` };
   if (that.variant) return { fig: that, reason: `skip the “${that.variant}” variant at markup` };
@@ -204,15 +204,15 @@ export function marketNote(fig, map) {
   const e = map.get(baseName(fig.name));
   const level = e?.reissueRadar?.level;
   if (level === "vulnerable") {
-    return "Market briefing: this premium is vulnerable to reissues — don't pay over retail.";
+    return "Market briefing: this premium is vulnerable to reissues, don't pay over retail.";
   }
   if (level === "resilient") {
-    return "Market briefing: true-rarity premium — reissues don't touch this one.";
+    return "Market briefing: true-rarity premium, reissues don't touch this one.";
   }
   return null;
 }
 
-/* findPreorder(fig, items) — a preorder/available preorders.json item whose
+/* findPreorder(fig, items), a preorder/available preorders.json item whose
    name+details mention every token of the figure's base name. Exported for
    tests. */
 export function findPreorder(fig, items) {
@@ -250,23 +250,23 @@ function recipient() {
 function whyLine(fig, recip) {
   const bits = [];
   if (recip === "kid") {
-    if (!fig.exclusive && !fig.variant) bits.push("Standard mainline single — easy to find at retail, built for play.");
-    else if (fig.variant) bits.push("A variant — fine for play, but the standard is the cheaper gift.");
-    else bits.push(`${fig.exclusive} — harder to find; check availability before promising it.`);
+    if (!fig.exclusive && !fig.variant) bits.push("Standard mainline single, easy to find at retail, built for play.");
+    else if (fig.variant) bits.push("A variant, fine for play, but the standard is the cheaper gift.");
+    else bits.push(`${fig.exclusive}, harder to find; check availability before promising it.`);
   } else if (recip === "collector") {
-    if (fig.exclusive) bits.push(`${fig.exclusive} exclusive — the shelf-centerpiece class.`);
-    else if (fig.variant) bits.push(`Variant (“${fig.variant}”) — for the collector who has everything.`);
-    else if (isChaseFig(fig)) bits.push("Archive-flagged chase — genuinely scarce.");
-    else bits.push("Standard release — the affordable way in.");
+    if (fig.exclusive) bits.push(`${fig.exclusive} exclusive, the shelf-centerpiece class.`);
+    else if (fig.variant) bits.push(`Variant (“${fig.variant}”), for the collector who has everything.`);
+    else if (isChaseFig(fig)) bits.push("Archive-flagged chase, genuinely scarce.");
+    else bits.push("Standard release, the affordable way in.");
   } else if (fig.exclusive) {
-    bits.push(`${fig.exclusive} exclusive — harder to find, feels special.`);
+    bits.push(`${fig.exclusive} exclusive, harder to find, feels special.`);
   } else if (fig.variant) {
-    bits.push(`Variant (“${fig.variant}”) — for the fan who has everything.`);
+    bits.push(`Variant (“${fig.variant}”), for the fan who has everything.`);
   } else {
-    bits.push("Standard mainline single — the affordable way in.");
+    bits.push("Standard mainline single, the affordable way in.");
   }
-  if (fig.bafPiece) bits.push("Includes a Build-A-Figure piece — two gifts in one.");
-  if (fig.year >= 2024) bits.push("Recent release — easier to find at retail.");
+  if (fig.bafPiece) bits.push("Includes a Build-A-Figure piece, two gifts in one.");
+  if (fig.year >= 2024) bits.push("Recent release, easier to find at retail.");
   return bits.join(" ");
 }
 
@@ -292,11 +292,11 @@ function giftCard(fig, { poolFigs, hof, preorders, journalPrices }) {
   }
   if (market) extra.push(`<p class="gift-why">📈 ${escapeHtml(market)}</p>`);
   if (pre) {
-    const msrp = typeof pre.price === "number" ? ` — announced MSRP $${pre.price.toFixed(2)}` : "";
+    const msrp = typeof pre.price === "number" ? `, announced MSRP $${pre.price.toFixed(2)}` : "";
     extra.push(`<p class="gift-why">🎁 Pre-orderable now: <strong>${escapeHtml(pre.name)}</strong>${msrp}. See the <a href="preorders.html">pre-order tracker</a>.</p>`);
   }
   if (alt) {
-    extra.push(`<p class="gift-notthat"><strong>Buy this, not that:</strong> skip the <em>${escapeHtml(alt.fig.name)}</em> — ${escapeHtml(alt.reason)}.</p>`);
+    extra.push(`<p class="gift-notthat"><strong>Buy this, not that:</strong> skip the <em>${escapeHtml(alt.fig.name)}</em>, ${escapeHtml(alt.reason)}.</p>`);
   }
 
   card.innerHTML = `

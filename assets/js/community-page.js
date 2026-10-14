@@ -1,4 +1,4 @@
-/* Community page UI — feed, composer, discovery, profiles. */
+/* Community page UI, feed, composer, discovery, profiles. */
 import { loadData, figureById, searchFigures } from "./data.js";
 import { openFigureDialog, escapeHtml } from "./figure-dialog.js";
 import {
@@ -20,7 +20,7 @@ const els = {
 
 function avatarHtml(user, size = "") {
   const initial = escapeHtml(user.name.charAt(0).toUpperCase());
-  return `<span class="avatar ${size}" style="background:hsl(${user.avatarHue},55%,38%)" aria-hidden="true">${initial}</span>`;
+  return `<span class="avatar ${size}" aria-hidden="true">${initial}</span>`;
 }
 
 function captionHtml(caption) {
@@ -47,7 +47,7 @@ function postCard(post) {
   const comments = social.comments[post.id] ?? [];
   const art = post.image
     ? `<div class="post-photo"><img src="${post.image}" alt="Fan photo for: ${escapeHtml(post.caption.slice(0, 80))}"></div>`
-    : `<div class="post-photo" style="background:linear-gradient(135deg,hsl(${post.art.hue},45%,26%),hsl(${post.art.hue2},50%,16%))" aria-hidden="true"></div>`;
+    : `<div class="post-photo" style="background:var(--board)" aria-hidden="true"></div>`;
 
   const el = document.createElement("article");
   el.className = "post";
@@ -151,7 +151,7 @@ function renderFeed() {
   feed.className = "feed";
   const posts = getFeed(social, view.feedFilter);
   if (!posts.length) {
-    feed.innerHTML = `<div class="empty-state"><p>Nothing here yet — follow collectors in Discover, or share your first post above.</p></div>`;
+    feed.innerHTML = `<div class="empty-state"><p>Nothing here yet, follow collectors in Discover, or share your first post above.</p></div>`;
   } else {
     for (const p of posts) feed.appendChild(postCard(p));
   }
@@ -242,7 +242,7 @@ function renderProfile() {
     if (p.image) {
       tile.innerHTML = `<img src="${p.image}" alt="">`;
     } else {
-      tile.style.background = `linear-gradient(135deg,hsl(${p.art.hue},45%,26%),hsl(${p.art.hue2},50%,16%))`;
+      tile.style.background = "var(--board)";
       tile.textContent = "";
     }
     tile.addEventListener("click", () => openPostDialog(p));
@@ -258,7 +258,7 @@ function renderProfile() {
 function openPostDialog(post) {
   import("./modal.js").then(({ openModal }) => {
     openModal((titleEl, bodyEl) => {
-      titleEl.textContent = `${getUser(social, post.userId).name} — post`;
+      titleEl.textContent = `${getUser(social, post.userId).name}, post`;
       bodyEl.appendChild(postCard(post));
       wirePostInteractions(bodyEl);
     });
@@ -315,7 +315,7 @@ function wireComposer(root) {
         const b = document.createElement("button");
         b.type = "button";
         b.setAttribute("role", "option");
-        b.textContent = `${m.name}${m.variant ? ` (${m.variant})` : ""} — ${m.waveSeries} ${m.year}`;
+        b.textContent = `${m.name}${m.variant ? ` (${m.variant})` : ""}, ${m.waveSeries} ${m.year}`;
         b.addEventListener("click", () => {
           if (!composerTags.includes(m.id)) composerTags.push(m.id);
           renderPicks();
@@ -339,7 +339,7 @@ function wireComposer(root) {
   });
 }
 
-/* Downscale uploads to a max 1080px JPEG dataURL — keeps localStorage small. */
+/* Downscale uploads to a max 1080px JPEG dataURL, keeps localStorage small. */
 function downscaleImage(file) {
   return new Promise((resolve, reject) => {
     const img = new Image();

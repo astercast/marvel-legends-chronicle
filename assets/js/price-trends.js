@@ -1,4 +1,4 @@
-/* Per-figure price trends — computed from the user's OWN journal entries
+/* Per-figure price trends, computed from the user's OWN journal entries
    (mlc_journal_v1). Never a market index: every number traces to a sale the
    user logged. Figures need 3+ dated entries before a trend is shown. */
 import { escapeHtml } from "./figure-dialog.js";

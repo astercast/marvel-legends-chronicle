@@ -1,4 +1,4 @@
-/* Character run completion — "Your Spider-Man run: 12 of 86 (14%)".
+/* Character run completion, "Your Spider-Man run: 12 of 86 (14%)".
    Read-only over the existing mlc_owned_v1 / mlc_wanted_v1 tracker data.
    Release rows carry data-fig-id matching the canonical `${wave.id}::${name}`
    ids from data.js, so this stays in sync with the timeline tracker. */
@@ -29,16 +29,17 @@ function render() {
   const missing = rows.filter((li) => !owned.has(li.dataset.figId));
 
   panel.innerHTML = `
+    <p class="bookplate-mark">Ex Libris: this copy belongs to its collector</p>
     <h2 class="run-title">Your ${escapeHtml(char)} run</h2>
     <p class="run-summary" aria-live="polite"><strong>${n} of ${total}</strong> (${pct}%) owned${wantedCount ? ` · ${wantedCount} wanted` : ""}</p>
     <div class="run-bar" role="progressbar" aria-label="${escapeHtml(char)} run completion"
          aria-valuenow="${n}" aria-valuemin="0" aria-valuemax="${total}">
       <div class="run-fill" style="width:${pct}%"></div>
     </div>
-    ${n === 0 ? `<p class="method-note">Mark figures <strong>Owned</strong> on the timeline and this run fills in. Nothing here changes your tracker — it only reads it.</p>` : ""}
+    ${n === 0 ? `<p class="method-note">Mark figures <strong>Owned</strong> on the timeline and this run fills in. Nothing here changes your tracker, it only reads it.</p>` : ""}
     ${missing.length ? `
     <details class="run-missing" ${n === 0 ? "" : "open"}>
-      <summary>Missing from your run (${missing.length}) — complete-the-run checklist</summary>
+      <summary>Missing from your run (${missing.length}): the complete-the-run checklist</summary>
       <ul class="run-missing-list">
         ${missing.map((li) => {
           const id = li.dataset.figId;

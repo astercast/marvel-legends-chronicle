@@ -16,7 +16,7 @@ Every July.
 
 ## Procedure
 
-1. Hasbro Pulse usually gets shared stock — watch the drop time.
+1. Hasbro Pulse usually gets shared stock, watch the drop time.
 2. Aftermarket day-one is peak hype; prices dip in September.
 3. Authenticate: exclusives are bootleg magnets (see bootleg skills).
 
@@ -26,4 +26,4 @@ SDCC exclusive at $60 retail → $120 day-one aftermarket → $80 by October.
 
 ## Pitfalls
 
-- Day-one aftermarket — patience saves 40%.
+- Day-one aftermarket, patience saves 40%.

@@ -17,7 +17,7 @@ You want to build the M'Baku (Black Panther) BAF from the 2019 M'Baku Wave wave.
 ## Procedure
 
 1. The BAF: **M'Baku (Black Panther)** (2019, M'Baku Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Ayo → Left leg
   - [ ] Black Panther → Left arm, Right arm
   - [ ] Erik Killmonger → Head and staff
@@ -25,7 +25,7 @@ You want to build the M'Baku (Black Panther) BAF from the 2019 M'Baku Wave wave.
   - [ ] Ulysses Klaue → Torso
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -37,5 +37,5 @@ Missing the M'Baku (Black Panther) torso? Find which figure above carries it, ch
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

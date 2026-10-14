@@ -16,20 +16,20 @@ You collect Doctor Doom. 13 releases are catalogued from 2002 to 2026.
 
 ## Procedure
 
-1. Work the list chronologically — oldest first, they appreciate fastest:
-2.   - 2002 — Series 2: Doctor Doom
-  - 2004 — Box Set - Fantastic Four: Doctor Doom
-  - 2007 — Ronan the Accuser Wave: Doctor Doom
-  - 2007 — Icons Series 5: Doctor Doom
-  - 2013 — Epic Heroes: Doctor Doom
-  - 2013 — Epic Heroes: Doctor Doom [Future Foundation]
-  - 2019 — Store & Convention Exclusives: Doctor Doom (Walgreens)
-  - 2020 — Super-Skrull Wave: Doctor Doom
-  - 2020 — Store & Convention Exclusives: Doctor Doom (Fan channel)
-  - 2023 — Store & Convention Exclusives: Doctor Doom
-  - 2024 — Store & Convention Exclusives: Doctor Doom
-  - 2026 — Avengers: Doomsday Wave 1: Doctor Doom
-  - 2026 — Store & Convention Exclusives: Doctor Doom (Walmart)
+1. Work the list chronologically, oldest first, they appreciate fastest:
+2.   - 2002, Series 2: Doctor Doom
+  - 2004, Box Set - Fantastic Four: Doctor Doom
+  - 2007, Ronan the Accuser Wave: Doctor Doom
+  - 2007, Icons Series 5: Doctor Doom
+  - 2013, Epic Heroes: Doctor Doom
+  - 2013, Epic Heroes: Doctor Doom [Future Foundation]
+  - 2019, Store & Convention Exclusives: Doctor Doom (Walgreens)
+  - 2020, Super-Skrull Wave: Doctor Doom
+  - 2020, Store & Convention Exclusives: Doctor Doom (Fan channel)
+  - 2023, Store & Convention Exclusives: Doctor Doom
+  - 2024, Store & Convention Exclusives: Doctor Doom
+  - 2026, Avengers: Doomsday Wave 1: Doctor Doom
+  - 2026, Store & Convention Exclusives: Doctor Doom (Walmart)
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).
@@ -45,4 +45,4 @@ Starting a Doctor Doom run? Grab the most recent mainline release first (cheapes
 ## Pitfalls
 
 - No completion rule = endless spending. Define 'complete' before you start.
-- Variant rabbit holes — some characters have 5+ releases of one sculpt.
+- Variant rabbit holes, some characters have 5+ releases of one sculpt.

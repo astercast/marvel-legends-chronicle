@@ -276,7 +276,7 @@ suite("drop-command: price tracker lanes never mix", () => {
     assert(markup.includes("over MSRP") && markup.includes("not a sale"), markup);
     const soldLow = priceVerdict({ asking: { count: 0, low: null, high: null }, sold: { count: 1, low: 25, high: 25 } }, 27.99);
     assert(soldLow.includes("Reported solds"), soldLow);
-    assert(fmtMoney(27.99) === "$27.99" && fmtMoney(null) === "—", "money formatting");
+    assert(fmtMoney(27.99) === "$27.99" && fmtMoney(null) === "n/a", "money formatting");
   });
   test("real priceWatch: figures match the drop, MSRPs pinned, context is Wave 1 solds", () => {
     const pw = data.priceWatch;

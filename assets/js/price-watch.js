@@ -1,8 +1,8 @@
-/* price-watch.js — pure Price Watch logic: compare a user's target price
+/* price-watch.js, pure Price Watch logic: compare a user's target price
    against the Chronicle's reported market signals. No DOM, no storage,
    no fetch: callers supply the watchlist entries and the signals array
    (from data/price-signals.json or data/v1/price-signals.json). Every
-   number shown traces to a reported listing/sold — never scraped, never
+   number shown traces to a reported listing/sold, never scraped, never
    invented. "Reported ranges, not live prices." */
 
 export function money(n) {
@@ -43,7 +43,7 @@ export function watchVerdict(signal, target) {
 
 /* How close the user's target is to the reported market: target/low,
    capped at 1 (1 = the target covers the cheapest reported price).
-   Used to weight Grail Quest recommendations — never presented as a price. */
+   Used to weight Grail Quest recommendations, never presented as a price. */
 export function closenessToTarget(signal, target) {
   const t = num(target);
   const low = num(signal?.low);
@@ -88,20 +88,20 @@ export function rankWatchHunts(entries, ownedIds, signals) {
 export function verdictLine(verdict) {
   switch (verdict.status) {
     case "in-range": return "Your target sits inside the reported range.";
-    case "above": return `Cheapest reported ${money(verdict.low)} — ${money(verdict.delta)} above your target.`;
-    case "below": return `Top of the reported range is ${money(verdict.delta)} under your target — patience could pay off.`;
+    case "above": return `Cheapest reported ${money(verdict.low)}, ${money(verdict.delta)} above your target.`;
+    case "below": return `Top of the reported range is ${money(verdict.delta)} under your target, patience could pay off.`;
     case "no-target": return "Set a target price to get a verdict.";
     default: return "No reported market data for this figure yet.";
   }
 }
 
-/* Plain-text export of the watchlist for forums/Discord — targets and
+/* Plain-text export of the watchlist for forums/Discord, targets and
    reported ranges only, no live prices claimed. */
 export function shareWatchlistText(entries, signals) {
-  const lines = ["My Price Watch — Marvel Legends Chronicle", "Reported ranges, not live prices.", ""];
+  const lines = ["My Price Watch: Marvel Legends Chronicle", "Reported ranges, not live prices.", ""];
   const list = Array.isArray(entries) ? entries : [];
   if (!list.length) {
-    lines.push("Watchlist is empty — add figures on the Watchlist page.");
+    lines.push("Watchlist is empty, add figures on the Watchlist page.");
     return lines.join("\n");
   }
   for (const e of list) {
@@ -110,7 +110,7 @@ export function shareWatchlistText(entries, signals) {
     const band = sigs.length
       ? sigs.map((s) => `${s.label}: ${s.display}`).join("; ")
       : "no reported market data";
-    lines.push(`• ${e.name ?? e.figId} — target ${target} | reported: ${band}`);
+    lines.push(`• ${e.name ?? e.figId}, target ${target} | reported: ${band}`);
   }
   return lines.join("\n");
 }

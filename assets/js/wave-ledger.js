@@ -1,9 +1,9 @@
-/* The Wave Ledger — the waves census.
+/* The Wave Ledger, the waves census.
    Every wave in the catalog counted by the figures filed under
    it: the handful of giant annual buckets that hold nearly half
    the line, and the standard waves that run six or seven figures
-   deep. Every count comes from the catalog itself — waves, sizes,
-   bands, the median and the ceiling. No prices — a ledger of
+   deep. Every count comes from the catalog itself, waves, sizes,
+   bands, the median and the ceiling. No prices, a ledger of
    waves, not a market. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
@@ -39,11 +39,11 @@ async function main() {
 
     els.kpis.innerHTML = [
       kpi("Waves in the ledger", fmt(m.waveCount), `holding ${fmt(m.figureCount)} figures in the catalog`),
-      kpi("The typical wave", m.median === null ? "—" : `${fmt(m.median)} figures`,
-        m.mode ? `the median wave — and the commonest size, ${fmt(m.mode.waves)} waves strong` : "the median wave"),
+      kpi("The typical wave", m.median === null ? "n/a" : `${fmt(m.median)} figures`,
+        m.mode ? `the median wave, and the commonest size, ${fmt(m.mode.waves)} waves strong` : "the median wave"),
       kpi("The giant buckets", fmt(m.buckets.annualWaves),
         `annual exclusives buckets holding ${fmt(m.buckets.annualFigures)} figures between them`),
-      kpi("The standard ceiling", m.standard.ceiling === null ? "—" : `${fmt(m.standard.ceiling)} figures`,
+      kpi("The standard ceiling", m.standard.ceiling === null ? "n/a" : `${fmt(m.standard.ceiling)} figures`,
         "the largest wave that is not a bucket"),
     ].join("");
 
@@ -68,7 +68,7 @@ async function main() {
       </li>`,
       `<li class="db-row">
         <span class="db-name">The bucket series whole</span>
-        <span class="db-fig">${fmt(m.buckets.waves)} waves under that name, ${m.buckets.firstYear}–${m.buckets.lastYear}, hold ${fmt(m.buckets.figures)} figures — the 2008 shelf of six stands apart from the annual run</span>
+        <span class="db-fig">${fmt(m.buckets.waves)} waves under that name, ${m.buckets.firstYear}–${m.buckets.lastYear}, hold ${fmt(m.buckets.figures)} figures, the 2008 shelf of six stands apart from the annual run</span>
         <span class="db-count">the rest of the line files under standard waves</span>
       </li>`,
       `<li class="db-row">
@@ -80,21 +80,21 @@ async function main() {
       <li class="db-row">
         <span class="db-year">${w.year}</span>
         <span class="db-name"><a href="waves/${escapeHtml(w.waveId)}.html">${escapeHtml(w.waveSeries)}</a></span>
-        <span class="db-fig">${fmt(w.size)} figures — at the standard ceiling</span>
+        <span class="db-fig">${fmt(w.size)} figures, at the standard ceiling</span>
         <span class="db-count">${escapeHtml(w.manufacturer)}</span>
       </li>`),
       ...m.standard.singleWaves.map((w) => `
       <li class="db-row">
         <span class="db-year">${w.year}</span>
         <span class="db-name"><a href="waves/${escapeHtml(w.waveId)}.html">${escapeHtml(w.waveSeries)}</a></span>
-        <span class="db-fig">1 figure — the only single-figure wave in the ledger</span>
+        <span class="db-fig">1 figure, the only single-figure wave in the ledger</span>
         <span class="db-count">${escapeHtml(w.manufacturer)}</span>
       </li>`),
     ];
     els.buckets.innerHTML = `<ul class="db-rows">${bucketRows.join("")}</ul>`;
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The wave ledger could not be counted from the catalog. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The wave ledger could not be counted from the catalog. The archive itself is unaffected, try reloading the page.";
   }
 }
 

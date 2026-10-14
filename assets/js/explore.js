@@ -1,4 +1,4 @@
-/* Archive Explorer — serendipitous discovery.
+/* Archive Explorer, serendipitous discovery.
    - "Surprise me": seeded shuffle (mulberry32) over all figures, no repeats
      until the deck is exhausted; seed + seen ids persist in localStorage.
    - Curated rabbit holes, all computed from the archive at runtime:
@@ -132,7 +132,7 @@ function renderCurated(waves) {
   for (const f of oneFigs.slice(0, CAP)) frag3.appendChild(figureCard(f));
   els.gridOnefig.appendChild(frag3);
   if (oneFigs.length > CAP) {
-    els.onefigMore.textContent = `Showing ${CAP} of ${oneFigs.length.toLocaleString()} — search the timeline for the rest.`;
+    els.onefigMore.textContent = `Showing ${CAP} of ${oneFigs.length.toLocaleString()}, search the timeline for the rest.`;
   }
 
   // Forgotten BAFs: the ten oldest BAF waves.

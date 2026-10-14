@@ -1,11 +1,11 @@
-/* The Long Wait — the returns ledger.
+/* The Long Wait, the returns ledger.
    Every distinct character in the catalog, filed by the longest
    silence between one of their figures and the next: the waits that
    ended when a second figure finally arrived, and the waits still
    running for the characters the line has visited exactly once.
    Counted from the catalog itself, using the archive's own
    character rule. A character links to its character page only when
-   the archive publishes one. No prices — a ledger of returns, not
+   the archive publishes one. No prices, a ledger of returns, not
    a market. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
@@ -69,7 +69,7 @@ async function main() {
       kpi("Characters catalogued", fmt(m.total), "the archive's own character rule"),
       kpi("Waits that ended", fmt(m.returnedCount), "characters with a second figure or more"),
       kpi("Still waiting", fmt(m.waitingCount), `one figure each, through ${m.latestYear}`),
-      kpi("Longest wait, ended", m.longest ? `${m.longest.longestGap.years} years` : "—",
+      kpi("Longest wait, ended", m.longest ? `${m.longest.longestGap.years} years` : "n/a",
         m.longest ? `${m.longest.name}: ${m.longest.longestGap.fromYear} → ${m.longest.longestGap.toYear}` : "no returns yet"),
     ].join("");
 
@@ -86,7 +86,7 @@ async function main() {
       : `<p class="db-none">Every character in the catalog has returned at least once.</p>`;
   } catch (err) {
     els.error.hidden = false;
-    els.error.textContent = "The returns ledger could not be read from the catalog. The archive itself is unaffected — try reloading the page.";
+    els.error.textContent = "The returns ledger could not be read from the catalog. The archive itself is unaffected, try reloading the page.";
   }
 }
 

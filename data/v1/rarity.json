@@ -6,18 +6,18 @@
    "icon": "🎯",
    "tagline": "Short-packed figures hidden in the regular assortment.",
    "body": [
-    "Chase figures are the rarest thing Marvel Legends ever did on a mass scale: standard-assortment figures packed at a fraction of the regular case ratio, sometimes unpictured on the box back so collectors had to hunt blind. Toy Biz ran the program in the line's middle years — its April 2004 statement named the Red Skull in Series 5 as the chase kicking off the 2004 line, and said a finite amount of previously released chase figures would be redistributed into later assortments.",
-    "The archive's chase flags are all Toy Biz-era (two figures, both flagged chase-style in their notes). A community-compiled Toyark list documents more short-packed figures from the era — Series 4 Goliath, the Series 6 unmasked Wolverine, the Series 7 phasing Vision, the Series 8 Doombot re-release, the Series 12 unmasked Wolverine and red-costume Iron Fist, the Series 13 unmasked Green Goblin and alternate-crown Loki, the Series 14 unmasked Baron Zemo — but those come from collector consensus, not Hasbro documentation. The archive only flags what its own notes record.",
+    "Chase figures are the rarest thing Marvel Legends ever did on a mass scale: standard-assortment figures packed at a fraction of the regular case ratio, sometimes unpictured on the box back so collectors had to hunt blind. Toy Biz ran the program in the line's middle years, its April 2004 statement named the Red Skull in Series 5 as the chase kicking off the 2004 line, and said a finite amount of previously released chase figures would be redistributed into later assortments.",
+    "The archive's chase flags are all Toy Biz-era (two figures, both flagged chase-style in their notes). A community-compiled Toyark list documents more short-packed figures from the era, Series 4 Goliath, the Series 6 unmasked Wolverine, the Series 7 phasing Vision, the Series 8 Doombot re-release, the Series 12 unmasked Wolverine and red-costume Iron Fist, the Series 13 unmasked Green Goblin and alternate-crown Loki, the Series 14 unmasked Baron Zemo, but those come from collector consensus, not Hasbro documentation. The archive only flags what its own notes record.",
     "Hasbro-era Legends effectively retired the chase mechanic. The Chronicle's 2026 market briefing treats the chase era as over: Hasbro-era scarcity moved to exclusives and made-to-order windows instead."
    ],
    "howToSpot": [
-    "Archive notes say 'chase-style' or 'chase' — check the figure's wave page.",
+    "Archive notes say 'chase-style' or 'chase', check the figure's wave page.",
     "Not pictured on the packaging back (the Red Skull is the documented case).",
-    "Toy Biz box art sometimes lists the assortment without the chase — the figure surprises you in the case."
+    "Toy Biz box art sometimes lists the assortment without the chase, the figure surprises you in the case."
    ],
    "valueNote": [
-    "The encyclopedia's hall of fame carries the Series 5 Red Skull chase with a $59.99 ToyWiz listing (listing, not sold) and calls it 'the template for ML chase culture' — its premium is structural (a true short-pack) rather than availability-driven, which is why it's flagged reissue-resilient.",
-    "The Series 3 unmasked Wolverine variant (a chase-adjacent variant) moved between $20.50 and $62.00 in 2026 eBay solds tracked by actionfigure411 — a wide band that shows how condition and timing dominate even for desirable Toy Biz figures.",
+    "The encyclopedia's hall of fame carries the Series 5 Red Skull chase with a $59.99 ToyWiz listing (listing, not sold) and calls it 'the template for ML chase culture', its premium is structural (a true short-pack) rather than availability-driven, which is why it's flagged reissue-resilient.",
+    "The Series 3 unmasked Wolverine variant (a chase-adjacent variant) moved between $20.50 and $62.00 in 2026 eBay solds tracked by actionfigure411, a wide band that shows how condition and timing dominate even for desirable Toy Biz figures.",
     "No exact production numbers exist for any Toy Biz chase variant (encyclopedia honest gaps). Any seller quoting an exact ratio is inventing it."
    ],
    "archiveSignal": "notes/variant text says 'chase'",
@@ -71,13 +71,13 @@
    "icon": "🔄",
    "tagline": "Mid-production fixes and tweaks, both versions shipped at retail.",
    "body": [
-    "A running change is a tweak Hasbro or Toy Biz made mid-production — a deco fix, a swapped hand, a corrected paint mask. Both the before and after versions ship at regular retail, so neither is a chase in the structural sense; but the scarcer of the two (usually the earlier, shorter run) becomes the one collectors hunt.",
+    "A running change is a tweak Hasbro or Toy Biz made mid-production, a deco fix, a swapped hand, a corrected paint mask. Both the before and after versions ship at regular retail, so neither is a chase in the structural sense; but the scarcer of the two (usually the earlier, shorter run) becomes the one collectors hunt.",
     "The archive documents running changes in the variant field. Classic cases: the Series 2 Human Torch with and without the '4' on the chest, and the Series 1 Hulk's straight-fingers white-shirt version. Spotting them takes side-by-side comparison, which is exactly why the Variant Spotlight page exists for the hardest ones."
    ],
    "howToSpot": [
     "Variant text on the archive names the change ('No 4 on chest', 'Straight fingers, white shirt').",
     "Compare against the Variant Spotlight page's tells for that figure.",
-    "Running changes are the sneakiest fakes target — run the Auth Wizard on any expensive one."
+    "Running changes are the sneakiest fakes target, run the Auth Wizard on any expensive one."
    ],
    "valueNote": [
     "Running-change premiums are modest and fragile: a later production run can wash the scarcity away, and nothing about a running change prevents a reissue. Check the market briefing's reissue radar before paying up."
@@ -92,7 +92,7 @@
      "year": 2002,
      "series": "Series 2",
      "wavePage": "waves/toybiz-2002-series-2.html",
-     "note": "The 'No 4 on chest' variant — the documented running change."
+     "note": "The 'No 4 on chest' variant, the documented running change."
     },
     {
      "id": "toybiz-2002-series-1::Hulk",
@@ -121,17 +121,17 @@
    "id": "deco-variant",
    "name": "Deco variants",
    "icon": "🎨",
-   "tagline": "Same sculpt, new paint — sometimes deliberately scarce.",
+   "tagline": "Same sculpt, new paint, sometimes deliberately scarce.",
    "body": [
-    "Deco variants reuse a sculpt with a new paint job: stealth armor, gold finishes, alternate-costume repaints. Toy Biz's April 2004 statement is explicit about the strategy — it planned 'beautifully crafted art deco variants' produced 'with scarcity in mind, making fewer available than their mass-produced counterparts.' Scarcity by design, not by accident.",
+    "Deco variants reuse a sculpt with a new paint job: stealth armor, gold finishes, alternate-costume repaints. Toy Biz's April 2004 statement is explicit about the strategy, it planned 'beautifully crafted art deco variants' produced 'with scarcity in mind, making fewer available than their mass-produced counterparts.' Scarcity by design, not by accident.",
     "The Series 1 Iron Man's stealth-armor and gold Model 2 (horned) variants are the archive's early examples: same assortment, same sculpt, visibly different figure."
    ],
    "howToSpot": [
     "The archive's variant field names the deco ('Stealth armor', 'Gold Model 2 (horned) version').",
-    "Deco variants are prime KO targets — rare paint is easy to fake. The Carnage silver-eyes tell is the classic deco-KO case."
+    "Deco variants are prime KO targets, rare paint is easy to fake. The Carnage silver-eyes tell is the classic deco-KO case."
    ],
    "valueNote": [
-    "The encyclopedia flags the stealth-armor Iron Man variant as reissue-vulnerable: 'a reissue would collapse the premium' — the value is in the deco, and a re-deco is one production run away.",
+    "The encyclopedia flags the stealth-armor Iron Man variant as reissue-vulnerable: 'a reissue would collapse the premium', the value is in the deco, and a re-deco is one production run away.",
     "Deco-variant demand is character-driven: popular characters hold their premium longer; obscure ones don't."
    ],
    "archiveSignal": "variant field (deco)",
@@ -154,7 +154,7 @@
      "url": "http://www.toymania.com/news/messages/4849.shtml"
     },
     {
-     "label": "Chronicle encyclopedia — hall of fame",
+     "label": "Chronicle encyclopedia, hall of fame",
      "note": "Internal: stealth Iron Man reissue-radar flag.",
      "url": "encyclopedia.html"
     }
@@ -164,17 +164,17 @@
    "id": "unmasked",
    "name": "Unmasked variants",
    "icon": "😶",
-   "tagline": "The masked figure, minus the mask — a whole sub-economy.",
+   "tagline": "The masked figure, minus the mask, a whole sub-economy.",
    "body": [
-    "Unmasked variants are Legends' most consistent variant type: the same figure with an alternate unmasked head. Toy Biz made them chase-adjacent — the Series 3 unmasked Wolverine and the community-flagged Series 12 unmasked Wolverine, Series 13 unmasked Green Goblin, and Series 14 unmasked Baron Zemo all ride the chase conversation.",
-    "They work because the mask is a real sculpt change, not just paint — harder to fake cleanly, and the alternate head reads as a genuinely different figure on the shelf."
+    "Unmasked variants are Legends' most consistent variant type: the same figure with an alternate unmasked head. Toy Biz made them chase-adjacent, the Series 3 unmasked Wolverine and the community-flagged Series 12 unmasked Wolverine, Series 13 unmasked Green Goblin, and Series 14 unmasked Baron Zemo all ride the chase conversation.",
+    "They work because the mask is a real sculpt change, not just paint, harder to fake cleanly, and the alternate head reads as a genuinely different figure on the shelf."
    ],
    "howToSpot": [
-    "Variant field says 'Unmasked' — check the figure's wave page for which head ships.",
+    "Variant field says 'Unmasked', check the figure's wave page for which head ships.",
     "Series 3 Wolverine's unmasked variant is the reference example for the whole type."
    ],
    "valueNote": [
-    "2026 eBay solds for the Series 3 Wolverine (tracked by actionfigure411) ran $20.50–$62.00 across masked, unmasked, and gold-foil versions — the unmasked variant sat at the top of the band ($50–$62). Unmasked variants command the clearest, most repeatable premium in the Toy Biz catalog."
+    "2026 eBay solds for the Series 3 Wolverine (tracked by actionfigure411) ran $20.50–$62.00 across masked, unmasked, and gold-foil versions, the unmasked variant sat at the top of the band ($50–$62). Unmasked variants command the clearest, most repeatable premium in the Toy Biz catalog."
    ],
    "archiveSignal": "variant field says 'Unmasked'",
    "questAchievement": "variant-vault",
@@ -186,7 +186,7 @@
      "year": 2002,
      "series": "Series 3",
      "wavePage": "waves/toybiz-2002-series-3.html",
-     "note": "The unmasked variant — top of the 2026 sold band for the figure."
+     "note": "The unmasked variant, top of the 2026 sold band for the figure."
     }
    ],
    "sources": [
@@ -203,16 +203,16 @@
    "icon": "🎪",
    "tagline": "SDCC and friends: one weekend, one booth, then the aftermarket.",
    "body": [
-    "Convention exclusives are Legends' loudest scarcity events. The pattern is old and stable: a set announced in June, sold at the show, and sometimes offered afterward in limited quantities online. SDCC 2007 paired a Stan Lee figure (with Spider-Man and Peter Parker heads, per the Fwoosh's review) with a She-Hulk in her Fantastic Four costume, new ponytail head sculpt, and a full lawyering kit — skirt, sport coat, glasses, briefcase. SDCC 2008 brought the Savage Land set (Ka-Zar, Shanna the She-Devil, Zabu). SDCC 2012's Uncanny X-Force three-pack was, in MarvelToyNews' words at the time, 'insanely popular and difficult to acquire'. SDCC 2013's Thunderbolts five-pack (Luke Cage, Ghost, Moonstone, Crossbones, Judith Chambers) retailed at $89.99 at the Hasbro booth and later went up on HasbroToyShop.com in limited supplies.",
-    "The archive records 74 San Diego Comic-Con figures — the deepest single-exclusive pool in the catalog. PulseCon and HASCON entries exist too, and the Grail Quest's Convention Floor achievement tracks SDCC, NYCC, HASCON, and PulseCon ownership."
+    "Convention exclusives are Legends' loudest scarcity events. The pattern is old and stable: a set announced in June, sold at the show, and sometimes offered afterward in limited quantities online. SDCC 2007 paired a Stan Lee figure (with Spider-Man and Peter Parker heads, per the Fwoosh's review) with a She-Hulk in her Fantastic Four costume, new ponytail head sculpt, and a full lawyering kit, skirt, sport coat, glasses, briefcase. SDCC 2008 brought the Savage Land set (Ka-Zar, Shanna the She-Devil, Zabu). SDCC 2012's Uncanny X-Force three-pack was, in MarvelToyNews' words at the time, 'insanely popular and difficult to acquire'. SDCC 2013's Thunderbolts five-pack (Luke Cage, Ghost, Moonstone, Crossbones, Judith Chambers) retailed at $89.99 at the Hasbro booth and later went up on HasbroToyShop.com in limited supplies.",
+    "The archive records 74 San Diego Comic-Con figures, the deepest single-exclusive pool in the catalog. PulseCon and HASCON entries exist too, and the Grail Quest's Convention Floor achievement tracks SDCC, NYCC, HASCON, and PulseCon ownership."
    ],
    "howToSpot": [
     "Exclusive field reads 'San Diego Comic-Con' (or NYCC / HASCON / Hasbro PulseCon).",
-    "Con sets often have show-specific packaging (the Thunderbolts Tower box) — repro boxes are a known fake vector."
+    "Con sets often have show-specific packaging (the Thunderbolts Tower box), repro boxes are a known fake vector."
    ],
    "valueNote": [
-    "The SDCC 2007 Stan Lee's 2025–26 eBay solds tracked by actionfigure411 ranged $43–$119.99 — a 3x spread by condition and timing. Even marquee con exclusives are volatile; buy the figure, not the hype.",
-    "Con exclusives hold premiums better than retailer exclusives because they were never restocked at retail — but limited online leftovers (Thunderbolts 2013) can quietly extend the window."
+    "The SDCC 2007 Stan Lee's 2025–26 eBay solds tracked by actionfigure411 ranged $43–$119.99, a 3x spread by condition and timing. Even marquee con exclusives are volatile; buy the figure, not the hype.",
+    "Con exclusives hold premiums better than retailer exclusives because they were never restocked at retail, but limited online leftovers (Thunderbolts 2013) can quietly extend the window."
    ],
    "archiveSignal": "exclusive in {SDCC, NYCC, HASCON, PulseCon}",
    "questAchievement": "convention-floor",
@@ -224,7 +224,7 @@
      "year": 2007,
      "series": "San Diego Comic-Con Exclusives",
      "wavePage": "waves/hasbro-2007-sdcc.html",
-     "note": "SDCC 2007 — 2025–26 solds $43–$119.99 (actionfigure411)."
+     "note": "SDCC 2007, 2025–26 solds $43–$119.99 (actionfigure411)."
     },
     {
      "id": "hasbro-2007-sdcc::She-Hulk",
@@ -233,7 +233,7 @@
      "year": 2007,
      "series": "San Diego Comic-Con Exclusives",
      "wavePage": "waves/hasbro-2007-sdcc.html",
-     "note": "SDCC 2007 — FF costume, ponytail head, lawyering accessories."
+     "note": "SDCC 2007, FF costume, ponytail head, lawyering accessories."
     },
     {
      "id": "hasbro-2012-sdcc-xforce::Wolverine",
@@ -256,27 +256,27 @@
    ],
    "sources": [
     {
-     "label": "The Fwoosh — SDCC She-Hulk review",
+     "label": "The Fwoosh, SDCC She-Hulk review",
      "note": "2014 review of the 2007 exclusive: new head, FF costume, lawyering kit.",
      "url": "https://thefwoosh.com/2014/07/hasbro-marvel-legends-sdcc-she-hulk/"
     },
     {
-     "label": "Toyark — SDCC 2013 Thunderbolts reveal",
+     "label": "Toyark, SDCC 2013 Thunderbolts reveal",
      "note": "$89.99 set; Judith Chambers, Ghost, Crossbones, Luke Cage, Moonstone.",
      "url": "https://www.toyark.com/2013/06/05/usa-today-reveals-hasbro-sdcc-exclusives-89031"
     },
     {
-     "label": "Mint Condition Customs — Thunderbolts follow-up",
+     "label": "Mint Condition Customs, Thunderbolts follow-up",
      "note": "Later offered on HasbroToyShop.com in limited supplies.",
      "url": "https://mintconditioncustom.com/2013/06/05/news-2013-sdcc-exclusive-marvel-legends-thunderbolts-set-revealed/"
     },
     {
-     "label": "MarvelToyNews — SDCC 2013 exclusives",
+     "label": "MarvelToyNews, SDCC 2013 exclusives",
      "note": "2012 X-Force set 'insanely popular and difficult to acquire'.",
      "url": "http://marveltoynews.com/marvel-legends-sdcc-2013-exclusives-thunderbolts-box-set-revealed/"
     },
     {
-     "label": "Marvel Toys Wiki — Marvel Legends",
+     "label": "Marvel Toys Wiki, Marvel Legends",
      "note": "Con-exclusive set lists (SDCC 2007/2008/2012).",
      "url": "https://marveltoys.fandom.com/wiki/Marvel_Legends"
     },
@@ -291,18 +291,18 @@
    "id": "retailer",
    "name": "Store exclusives",
    "icon": "🏪",
-   "tagline": "Walmart, Target, Walgreens, TRU, Amazon — wide, but gated.",
+   "tagline": "Walmart, Target, Walgreens, TRU, Amazon, wide, but gated.",
    "body": [
-    "Store exclusives are the biggest exclusive category by count: Amazon (82 figures in the archive), Walmart (81), Target (76), Toys 'R' Us (44), Walgreens (26). They're widely available for a window — then gone, and the aftermarket decides. Walgreens' 2019 exclusives (Dani Moonstar and company) are a recent example of a chain-gated figure becoming a hunt item.",
+    "Store exclusives are the biggest exclusive category by count: Amazon (82 figures in the archive), Walmart (81), Target (76), Toys 'R' Us (44), Walgreens (26). They're widely available for a window, then gone, and the aftermarket decides. Walgreens' 2019 exclusives (Dani Moonstar and company) are a recent example of a chain-gated figure becoming a hunt item.",
     "The archive's Exclusives browser (exclusives.html) slices all 587 exclusives by retailer. The honesty rule there holds here: figures whose exclusive field names no retailer ('Box set exclusive', 'Made-to-order') are grouped as unconfirmed, never guessed."
    ],
    "howToSpot": [
     "Exclusive field names the retailer ('Walmart', 'Target', 'Walgreens', \"Toys 'R' Us\", 'Amazon').",
-    "Chain exclusives sometimes get a second life as Fan Channel releases — check the market briefing before paying a premium."
+    "Chain exclusives sometimes get a second life as Fan Channel releases, check the market briefing before paying a premium."
    ],
    "valueNote": [
     "Store-exclusive premiums are the most reissue-fragile tier in the guide. The encyclopedia's reissue-effect research is blunt: reissue announced → speculative listings undercut each other → asking prices fall within days. The 2026 VHS → Retro reissue case (sellout, aftermarket spike, then Retro reissues at $27.99) is the clean documented example.",
-    "Originals keep a premium only when the value driver is rarity or provenance — prototypes, true limited runs — not mere availability."
+    "Originals keep a premium only when the value driver is rarity or provenance, prototypes, true limited runs, not mere availability."
    ],
    "archiveSignal": "exclusive names a retailer",
    "questAchievement": null,
@@ -314,7 +314,7 @@
      "year": 2025,
      "series": "Store & Convention Exclusives",
      "wavePage": "waves/hasbro-2025-exclusives.html",
-     "note": "2025 chain-exclusive-adjacent release — and a documented KO target."
+     "note": "2025 chain-exclusive-adjacent release, and a documented KO target."
     }
    ],
    "sources": [
@@ -324,7 +324,7 @@
      "url": "exclusives.html"
     },
     {
-     "label": "Chronicle encyclopedia — reissue effect",
+     "label": "Chronicle encyclopedia, reissue effect",
      "note": "Internal: documented reissue cases + the rarity/provenance rule.",
      "url": "encyclopedia.html"
     },
@@ -342,11 +342,11 @@
    "tagline": "Direct-to-collector: the specialist channel.",
    "body": [
     "Hasbro Pulse (70 figures in the archive) and the Fan Channel (56) are the direct-to-collector lanes: specialist-retailer and Pulse-only figures that skip mass retail. Fan Channel exclusives were routing through specialist retailers by 2021, and the 20th Anniversary Series 1 (2022) was a Fan Channel showcase.",
-    "These sit between store exclusives and made-to-order: produced for the collector channel, but in standard production quantities — scarcity comes from channel gating, not a fixed run."
+    "These sit between store exclusives and made-to-order: produced for the collector channel, but in standard production quantities, scarcity comes from channel gating, not a fixed run."
    ],
    "howToSpot": [
     "Exclusive field reads 'Hasbro Pulse' or 'Fan channel'.",
-    "Fan Channel figures often reappear at general retail years later — check preorders and the radar before treating one as scarce."
+    "Fan Channel figures often reappear at general retail years later, check preorders and the radar before treating one as scarce."
    ],
    "valueNote": [
     "Pulse/Fan Channel premiums erode on reissue: the 2026 Retro Venom reissue (a 2021 PulseCon cel-shaded figure reissued at Fan Channel for $34.99) is the documented case. Channel-gated is not limited."
@@ -361,7 +361,7 @@
      "year": 2023,
      "series": "Store & Convention Exclusives",
      "wavePage": "waves/hasbro-2023-exclusives.html",
-     "note": "Fan Channel exclusive — channel-gated, not a limited run."
+     "note": "Fan Channel exclusive, channel-gated, not a limited run."
     }
    ],
    "sources": [
@@ -381,17 +381,17 @@
    "id": "haslab",
    "name": "HasLab",
    "icon": "🏗️",
-   "tagline": "Crowdfunded, funded-only production — the true limited run.",
+   "tagline": "Crowdfunded, funded-only production, the true limited run.",
    "body": [
-    "HasLab is Legends' only true limited-run tier: a figure (or figure set) is produced only if backers fund it in the window. No funding, no figure — the 2022 Engine of Vengeance failed to fund and never existed. Funded runs: the Sentinel (2020, $349.99), Galactus (2021, $399.99, ~14,000 backers), and Giant-Man (2023, $199.99, 13,876 backers), per the encyclopedia's HasLab research.",
-    "The archive records 8 HasLab figures — the three headline pieces plus stretch-goal figures (Bastion and a Female Prime Sentinel for the Sentinel campaign; Nova, Silver Surfer, and Morg for Galactus). Everything else in Legends got a production run; HasLab got a backer count."
+    "HasLab is Legends' only true limited-run tier: a figure (or figure set) is produced only if backers fund it in the window. No funding, no figure, the 2022 Engine of Vengeance failed to fund and never existed. Funded runs: the Sentinel (2020, $349.99), Galactus (2021, $399.99, ~14,000 backers), and Giant-Man (2023, $199.99, 13,876 backers), per the encyclopedia's HasLab research.",
+    "The archive records 8 HasLab figures, the three headline pieces plus stretch-goal figures (Bastion and a Female Prime Sentinel for the Sentinel campaign; Nova, Silver Surfer, and Morg for Galactus). Everything else in Legends got a production run; HasLab got a backer count."
    ],
    "howToSpot": [
     "Exclusive field reads 'HasLab'.",
     "Every HasLab piece ships with backer-tier extras (stretch-goal figures); loose 'HasLab' figures without the full campaign context deserve extra scrutiny."
    ],
    "valueNote": [
-    "HasLab premiums are the sturdiest in the guide: funded-only production can't be reissued at retail without a new campaign, and backer counts are public. Even so, the driver is still demand — a character nobody wants is a limited run nobody chases."
+    "HasLab premiums are the sturdiest in the guide: funded-only production can't be reissued at retail without a new campaign, and backer counts are public. Even so, the driver is still demand, a character nobody wants is a limited run nobody chases."
    ],
    "archiveSignal": "exclusive is 'HasLab'",
    "questAchievement": "haslab-backer",
@@ -403,7 +403,7 @@
      "year": 2021,
      "series": "Store & Convention Exclusives",
      "wavePage": "waves/hasbro-2021-exclusives.html",
-     "note": "HasLab 2020 — $349.99 at backing."
+     "note": "HasLab 2020, $349.99 at backing."
     },
     {
      "id": "hasbro-2022-exclusives::Galactus",
@@ -412,7 +412,7 @@
      "year": 2022,
      "series": "Store & Convention Exclusives",
      "wavePage": "waves/hasbro-2022-exclusives.html",
-     "note": "HasLab 2021 — $399.99, ~14,000 backers."
+     "note": "HasLab 2021, $399.99, ~14,000 backers."
     },
     {
      "id": "hasbro-2024-exclusives::Giant-Man (Hank Pym)",
@@ -443,7 +443,7 @@
    ],
    "howToSpot": [
     "Exclusive field reads 'Made-to-order'.",
-    "The radar and preorders pages track live windows — the rarity is the deadline."
+    "The radar and preorders pages track live windows, the rarity is the deadline."
    ],
    "valueNote": [
     "Made-to-order premiums are deadline-driven: the window's closing date is the only scarcity signal, and long ship dates (a year out) mean the aftermarket trades on promises, not plastic. Treat pre-ship listings like pre-orders, not inventory."
@@ -458,7 +458,7 @@
      "year": 2025,
      "series": "Store & Convention Exclusives",
      "wavePage": "waves/hasbro-2025-exclusives.html",
-     "note": "2025 made-to-order — and a documented KO target."
+     "note": "2025 made-to-order, and a documented KO target."
     },
     {
      "id": "hasbro-2025-exclusives::Sentinel",
@@ -485,11 +485,11 @@
   }
  ],
  "title": "The Rarity Guide",
- "lede": "What makes a Marvel Legends figure rare — chase vs variant vs exclusive vs limited — how to spot each, what rarity does (and doesn't) mean for value, and how rarity feeds the Grail Quest.",
+ "lede": "What makes a Marvel Legends figure rare, chase vs variant vs exclusive vs limited, how to spot each, what rarity does (and doesn't) mean for value, and how rarity feeds the Grail Quest.",
  "observed": "2026-10-11",
  "methodology": [
   "Every example links to a real figure in the Chronicle archive (id form <waveId>::<figureName>); a build script asserts each one resolves.",
-  "Chase flags come from the archive's own notes/variant text — the archive documents 2 chase-style figures, both Toy Biz-era. Community chase lists are labeled as such.",
+  "Chase flags come from the archive's own notes/variant text, the archive documents 2 chase-style figures, both Toy Biz-era. Community chase lists are labeled as such.",
   "No production numbers or chase ratios appear anywhere below, because none were ever officially documented (encyclopedia honest gaps).",
   "Every dollar figure is a reported listing or sold price from a named source, never a Chronicle price index."
  ],
@@ -508,7 +508,7 @@
   {
    "body": [
     "Rarity and fakery travel together: the bootleg guide's known-KO-target list names Dragon Man, Ronan, and the Juggernaut BAF recast outright, and the KO Carnage's silver-eyes tell is the classic deco-fake case. The guide's first rule of price logic is the rarity rule in one line: if a rare figure sells at a common price, be suspicious.",
-    "Before buying any figure this guide flags as rare, run the Auth Wizard — packaging, paint, joints, and listing red flags, in order."
+    "Before buying any figure this guide flags as rare, run the Auth Wizard, packaging, paint, joints, and listing red flags, in order."
    ],
    "icon": "🕵️",
    "id": "rare-faked",
@@ -529,7 +529,7 @@
     "Rarity is a supply fact; value is a supply-and-demand fact. The Chronicle keeps them separate on purpose: every dollar in this guide is a reported listing or sold price, never a Chronicle price index.",
     "The encyclopedia's reissue research states the rule plainly: originals keep a premium only when the value driver is rarity or provenance (prototypes, true limited runs), not mere availability. Documented cases: the VHS Animated Series sellout → aftermarket spike → 2026 Retro reissues at $27.99; the Super-Skrull 'previously an exclusive' reissue at $46.99; the 2021 PulseCon cel-shaded Retro Venom reissued at Fan Channel for $34.99. In each case the spike belonged to availability, and the reissue took it back.",
     "The reissue radar marks each grail resilient or vulnerable. Structural scarcity (short-packs, funded-only runs) is resilient; availability scarcity (sold-out-at-retail) is vulnerable. Check the radar before paying a premium.",
-    "The Chronicle's Price Watch keeps the same discipline: your watchlist targets are compared against reported sold and listing bands only — reported ranges, not live prices, never a Chronicle valuation."
+    "The Chronicle's Price Watch keeps the same discipline: your watchlist targets are compared against reported sold and listing bands only, reported ranges, not live prices, never a Chronicle valuation."
    ],
    "icon": "💹",
    "id": "rarity-not-value",
@@ -555,7 +555,7 @@
   },
   {
    "body": [
-    "The honest note the whole guide rests on: a rare figure is not automatically a good figure. Some of the line's most sought-after pieces are mediocre toys with great stories, and some of its best sculpts are commons. Chase the figure you want on the shelf, not the tier — the Grail Quest rewards hunting, but the shelf is yours."
+    "The honest note the whole guide rests on: a rare figure is not automatically a good figure. Some of the line's most sought-after pieces are mediocre toys with great stories, and some of its best sculpts are commons. Chase the figure you want on the shelf, not the tier, the Grail Quest rewards hunting, but the shelf is yours."
    ],
    "icon": "⚖️",
    "id": "rarity-not-quality",
@@ -569,10 +569,10 @@
   },
   {
    "body": [
-    "Every tier in this guide maps to a quest achievement, all computed from the archive's own signals — nothing invented. Own the archive's chase-flagged figures for Chase Hunter, 10+ documented variants for Variant Vault, 5+ convention exclusives (SDCC, NYCC, HASCON, PulseCon) for Convention Floor — plus the wave-23 additions below.",
-    "New in this wave: HasLab Backer (own any HasLab exclusive figure), Made To Order (own a made-to-order figure), and Rarity Trifecta (own a chase, a convention exclusive, and a HasLab figure — one of each tier).",
+    "Every tier in this guide maps to a quest achievement, all computed from the archive's own signals, nothing invented. Own the archive's chase-flagged figures for Chase Hunter, 10+ documented variants for Variant Vault, 5+ convention exclusives (SDCC, NYCC, HASCON, PulseCon) for Convention Floor, plus the wave-23 additions below.",
+    "New in this wave: HasLab Backer (own any HasLab exclusive figure), Made To Order (own a made-to-order figure), and Rarity Trifecta (own a chase, a convention exclusive, and a HasLab figure, one of each tier).",
     "Wave 25 adds three more: Patient Hunter (a watched figure's reported market low drops into your target range), Deal Day (you log a purchase below your watchlist target), and Budget Keeper (10+ purchases logged while this month's spend stays at or under your own monthly budget). The Budget Tracker page mirrors your logged ledger purchases against the budgets you set.",
-    "Wave 29 adds two more: Character Loyalist (own every archive release of one character's full run — 5+ releases, the same grouping the character pages use) and Archivist (log 50 figures in the tracker). The wave's spec also named Completionist (100% of a wave) and First BAF — both already existed as the Completionist and Build-A-Master achievements, so no duplicates were added."
+    "Wave 29 adds two more: Character Loyalist (own every archive release of one character's full run, 5+ releases, the same grouping the character pages use) and Archivist (log 50 figures in the tracker). The wave's spec also named Completionist (100% of a wave) and First BAF, both already existed as the Completionist and Build-A-Master achievements, so no duplicates were added."
    ],
    "icon": "🏆",
    "id": "quest-hook",

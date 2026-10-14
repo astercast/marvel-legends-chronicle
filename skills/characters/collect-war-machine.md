@@ -16,20 +16,20 @@ You collect War Machine. 13 releases are catalogued from 2005 to 2025.
 
 ## Procedure
 
-1. Work the list chronologically — oldest first, they appreciate fastest:
-2.   - 2005 — Series 9 - Galactus: War Machine
-  - 2006 — Face-Off Series 2: War Machine
-  - 2008 — Ares Wave (Walmart Exclusive): War Machine (Walmart)
-  - 2015 — Hulkbuster Wave: War Machine
-  - 2016 — Store & Convention Exclusives: War Machine (Target)
-  - 2016 — Store & Convention Exclusives: War Machine
-  - 2017 — Store & Convention Exclusives: War Machine
-  - 2019 — Smart Hulk Wave: War Machine
-  - 2020 — Store & Convention Exclusives: War Machine
-  - 2022 — Store & Convention Exclusives: War Machine
-  - 2023 — Store & Convention Exclusives: War Machine
-  - 2023 — Store & Convention Exclusives: War Machine (Fan channel)
-  - 2025 — Store & Convention Exclusives: War Machine (Walmart)
+1. Work the list chronologically, oldest first, they appreciate fastest:
+2.   - 2005, Series 9 - Galactus: War Machine
+  - 2006, Face-Off Series 2: War Machine
+  - 2008, Ares Wave (Walmart Exclusive): War Machine (Walmart)
+  - 2015, Hulkbuster Wave: War Machine
+  - 2016, Store & Convention Exclusives: War Machine (Target)
+  - 2016, Store & Convention Exclusives: War Machine
+  - 2017, Store & Convention Exclusives: War Machine
+  - 2019, Smart Hulk Wave: War Machine
+  - 2020, Store & Convention Exclusives: War Machine
+  - 2022, Store & Convention Exclusives: War Machine
+  - 2023, Store & Convention Exclusives: War Machine
+  - 2023, Store & Convention Exclusives: War Machine (Fan channel)
+  - 2025, Store & Convention Exclusives: War Machine (Walmart)
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).
@@ -45,4 +45,4 @@ Starting a War Machine run? Grab the most recent mainline release first (cheapes
 ## Pitfalls
 
 - No completion rule = endless spending. Define 'complete' before you start.
-- Variant rabbit holes — some characters have 5+ releases of one sculpt.
+- Variant rabbit holes, some characters have 5+ releases of one sculpt.

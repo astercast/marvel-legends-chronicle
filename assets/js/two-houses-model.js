@@ -1,35 +1,35 @@
-/* two-houses-model.js — the pure math behind The Two Houses
+/* two-houses-model.js, the pure math behind The Two Houses
    (two-houses.html). No DOM, no storage: given the catalog's flat
    figure list, it files the whole line under the houses that made
-   it — one house per distinct manufacturer the catalog records.
+   it, one house per distinct manufacturer the catalog records.
 
    WHAT COUNTS AS A HOUSE: a distinct value of the catalog's own
    manufacturer field, the same field the wave pages carry (a test
    cross-checks it against waves.json's manufacturer field on all
-   167 waves — the two agree everywhere). Nothing else is
+   167 waves, the two agree everywhere). Nothing else is
    normalized: the catalog's handover is clean, Toy Biz closing in
    2006 and Hasbro opening in 2007, and the ledger reports the
    seam exactly where the catalog puts it rather than smoothing it.
 
    THE COUNTING RULES (deterministic, catalog data only, printed on
-   the page): a character is the debut ledger's own rule — the name
-   with any parenthetical removed — imported from debuts-model.js
+   the page): a character is the debut ledger's own rule, the name
+   with any parenthetical removed, imported from debuts-model.js
    so the pages cannot disagree. A character "debuts under" the
    house that made its first figure (earliest year, ties by catalog
-   order — the debut ledger's rule again). An exclusive is a figure
+   order, the debut ledger's rule again). An exclusive is a figure
    whose catalog record names an exclusive channel; a variant is a
    figure whose record names a variant. A house's first and last
    waves are ordered by year, ties by catalog order.
 
    HONESTY: no prices anywhere (a makers' ledger is the record, not
-   the market). Counts are the catalog's own fields, counted — a
+   the market). Counts are the catalog's own fields, counted, a
    figure the catalog leaves unmarked as exclusive or variant is
    counted as unmarked, never reclassified by hand. */
 import { baseName } from "./debuts-model.js";
 
 /* figures: the catalog's flat figure list (data/v1/figures.json shape).
    Returns { total, figureCount, waveCount, span, houses, succession,
-             sharedCharacters, houseCount } — `houses` in the order
+             sharedCharacters, houseCount }, `houses` in the order
    the catalog first meets them; each house carries its own counts,
    its year-by-year table, its first/last waves, its top exclusive
    channels, and how many characters are its alone. `succession`
@@ -131,7 +131,7 @@ export function buildTwoHousesModel(figures) {
   houses.sort((a, b) => a._firstIdx - b._firstIdx);
 
   /* characters under more than one house, and each house's own-only
-     count — the overlap is a fact of the catalog, counted once. */
+     count, the overlap is a fact of the catalog, counted once. */
   const housesPerChar = new Map();
   for (const h of houses) {
     for (const c of h._characters) {

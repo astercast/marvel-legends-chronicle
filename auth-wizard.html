@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootleg Authentication Wizard — Marvel Legends Chronicle</title>
-  <meta name="description" content="Step-by-step interactive bootleg authentication: packaging, paint, joints, listing, and price logic — a pass/fail flow with a verdict.">
+  <title>Bootleg Authentication Wizard: Marvel Legends Chronicle</title>
+  <meta name="description" content="Step-by-step interactive bootleg authentication: packaging, paint, joints, listing, and price logic, a pass/fail flow with a verdict.">
   <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/auth-wizard">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Bootleg Authentication Wizard — Marvel Legends Chronicle">
-  <meta property="og:description" content="Step-by-step interactive bootleg authentication: packaging, paint, joints, listing, and price logic — a pass/fail flow with a verdict.">
+  <meta property="og:title" content="Bootleg Authentication Wizard: Marvel Legends Chronicle">
+  <meta property="og:description" content="Step-by-step interactive bootleg authentication: packaging, paint, joints, listing, and price logic, a pass/fail flow with a verdict.">
   <meta property="og:url" content="https://marvel-legends-chronicle-live.vercel.app/auth-wizard">
   <meta property="og:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bootleg Authentication Wizard — Marvel Legends Chronicle">
-  <meta name="twitter:description" content="Step-by-step interactive bootleg authentication: packaging, paint, joints, listing, and price logic — a pass/fail flow with a verdict.">
+  <meta name="twitter:title" content="Bootleg Authentication Wizard: Marvel Legends Chronicle">
+  <meta name="twitter:description" content="Step-by-step interactive bootleg authentication: packaging, paint, joints, listing, and price logic, a pass/fail flow with a verdict.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Bootleg Authentication Wizard — Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/auth-wizard", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Bootleg Authentication Wizard: Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/auth-wizard", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
   <link rel="preload" href="assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -32,7 +32,7 @@
     .wizard-hero { padding-block: var(--space-7); }
     .wizard { max-width: 720px; margin: 0 auto var(--space-7); }
     .wizard-progress { height: 8px; background: var(--panel-2); border-radius: 999px; overflow: hidden; margin-bottom: var(--space-2); }
-    .wizard-progress > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.3s var(--ease); }
+    .wizard-progress > span { display: block; height: 100%; background: var(--ink); transition: width 0.3s var(--ease); }
     @media (prefers-reduced-motion: reduce) { .wizard-progress > span { transition: none; } }
     .wizard-step-label { font-size: 0.8rem; color: var(--muted); margin-bottom: var(--space-5); }
     .check-card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius-m); padding: var(--space-4); margin-bottom: var(--space-3); }
@@ -44,7 +44,7 @@
     .verdict h2 { font-size: 1.6rem; margin-bottom: var(--space-2); }
     .verdict-auth { border-color: rgba(93, 255, 143, 0.5); }
     .verdict-auth h2 { color: var(--green); }
-    .verdict-warn { border-color: rgba(245, 179, 1, 0.6); }
+    .verdict-warn { border-color: rgba(30, 27, 22, 0.6); }
     .verdict-warn h2 { color: var(--gold); }
     .verdict-fail { border-color: rgba(230, 36, 41, 0.7); }
     .verdict-fail h2 { color: var(--red); }
@@ -76,7 +76,7 @@
       <div class="container hero-inner">
         <span class="hero-kicker">Interactive tool</span>
         <h1 id="wizard-title">Is it <span class="accent">authentic?</span></h1>
-        <p class="lede">Five steps — packaging, paint, joints, listing, price logic. Answer each check honestly; one fail doesn't convict, two corroborating fails do. Authenticating something rare? <a href="rarity.html#cc-rare-faked">Read the Rarity Guide's rare = faked section first</a> — scarce figures attract the most convincing counterfeits.</p>
+        <p class="lede">Five steps, packaging, paint, joints, listing, price logic. Answer each check honestly; one fail doesn't convict, two corroborating fails do. Authenticating something rare? <a href="rarity.html#cc-rare-faked">Read the Rarity Guide's rare = faked section first</a>, scarce figures attract the most convincing counterfeits.</p>
       </div>
     </section>
 
@@ -87,7 +87,7 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <p>Marvel Legends Chronicle, a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
       <nav aria-label="Footer">
         <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="archive-tour.html">Archive Tour</a><a href="debuts.html">First Appearances</a><a href="long-wait.html">The Long Wait</a><a href="build-ledger.html">The Build Ledger</a><a href="two-houses.html">The Two Houses</a><a href="roll-call.html">The Roll Call</a><a href="wave-ledger.html">The Wave Ledger</a><a href="year-ledger.html">The Year Ledger</a><a href="spec-sheet.html">The Spec Sheet</a><a href="visual-database.html">The Visual Database</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="drop-week.html">Drop Week</a><a href="auth-wizard.html" aria-current="page">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="my-vault.html">My Vault</a><a href="completionist.html">The Completionist</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="vault-room.html">Vault Room</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button>
       </nav>

@@ -1,7 +1,7 @@
-/* vault-model.js — the pure ledger math behind My Vault (my-vault.html).
+/* vault-model.js, the pure ledger math behind My Vault (my-vault.html).
    No DOM, no storage: given the catalog and the three tracker shelves
    (Owned / Wanted / Watching id sets), it works out exactly what the page
-   renders — the halls, the counts, and completion by year and by wave.
+   renders, the halls, the counts, and completion by year and by wave.
    Everything here is derived from the reader's own marks and the archive's
    own totals. Nothing is estimated, and there are no prices anywhere:
    a vault is a record of what you hold, not a valuation. */
@@ -9,7 +9,7 @@
 export const HALLS = [
   { kind: "owned", title: "Owned", note: "On your shelf, in hand." },
   { kind: "wanted", title: "Wanted", note: "The active hunt." },
-  { kind: "watching", title: "Watching", note: "An eye kept on them — no chase, no commitment." },
+  { kind: "watching", title: "Watching", note: "An eye kept on them, no chase, no commitment." },
 ];
 
 const pct = (got, total) => (total ? (got / total) * 100 : 0);
@@ -47,7 +47,7 @@ export function buildVaultModel(figures, waves, marks) {
   counts.marked = counts.owned + counts.wanted + counts.watching;
   counts.ownedPct = pct(counts.owned, total);
 
-  /* Completion by year — every archive year, marked or not. */
+  /* Completion by year, every archive year, marked or not. */
   const yearMap = new Map();
   for (const f of figures) {
     if (!yearMap.has(f.year)) yearMap.set(f.year, { year: f.year, total: 0, owned: 0, wanted: 0, watching: 0 });
@@ -60,7 +60,7 @@ export function buildVaultModel(figures, waves, marks) {
     .sort((a, b) => a.year - b.year)
     .map((r) => ({ ...r, pct: pct(r.owned, r.total) }));
 
-  /* Completion by wave — only waves the reader has touched get a ledger
+  /* Completion by wave, only waves the reader has touched get a ledger
      line; a wave is complete when every one of its figures is Owned.
      Totals come from the catalog itself (the figures array is the same
      source the by-year ledger uses); a wave summary's figureCount is

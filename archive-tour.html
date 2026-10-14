@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Archive Tour — Marvel Legends Chronicle</title>
-  <meta name="description" content="A guided museum tour through 25 years of Marvel Legends: four era chapters — Toy Biz twilight, Hasbro's early years, the rebuild, the modern era — with each era's real counts and curator picks chosen by printed rules from the catalog itself.">
+  <title>The Archive Tour: Marvel Legends Chronicle</title>
+  <meta name="description" content="A guided museum tour through 25 years of Marvel Legends: four era chapters, Toy Biz twilight, Hasbro's early years, the rebuild, the modern era, with each era's real counts and curator picks chosen by printed rules from the catalog itself.">
   <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/archive-tour">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Archive Tour — Marvel Legends Chronicle">
-  <meta property="og:description" content="A guided museum tour through 25 years of Marvel Legends: four era chapters — Toy Biz twilight, Hasbro's early years, the rebuild, the modern era — with each era's real counts and curator picks chosen by printed rules from the catalog itself.">
+  <meta property="og:title" content="The Archive Tour: Marvel Legends Chronicle">
+  <meta property="og:description" content="A guided museum tour through 25 years of Marvel Legends: four era chapters, Toy Biz twilight, Hasbro's early years, the rebuild, the modern era, with each era's real counts and curator picks chosen by printed rules from the catalog itself.">
   <meta property="og:url" content="https://marvel-legends-chronicle-live.vercel.app/archive-tour">
   <meta property="og:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Archive Tour — Marvel Legends Chronicle">
-  <meta name="twitter:description" content="A guided museum tour through 25 years of Marvel Legends: four era chapters — Toy Biz twilight, Hasbro's early years, the rebuild, the modern era — with each era's real counts and curator picks chosen by printed rules from the catalog itself.">
+  <meta name="twitter:title" content="The Archive Tour: Marvel Legends Chronicle">
+  <meta name="twitter:description" content="A guided museum tour through 25 years of Marvel Legends: four era chapters, Toy Biz twilight, Hasbro's early years, the rebuild, the modern era, with each era's real counts and curator picks chosen by printed rules from the catalog itself.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "The Archive Tour — Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/archive-tour", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "The Archive Tour: Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/archive-tour", "isPartOf": {"@type": "WebSite", "name": "Marvel Legends Chronicle", "url": "https://marvel-legends-chronicle-live.vercel.app/"}}</script>
   <link rel="preload" href="assets/fonts/cinzel-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -51,7 +51,7 @@
     .at-year-label { font-family: var(--font-mono); color: var(--ink-dim); }
     .at-year-count { font-family: var(--font-mono); color: var(--muted); font-size: 0.78rem; }
     .at-bar { height: 10px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
-    .at-bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--gold)); }
+    .at-bar > span { display: block; height: 100%; background: var(--ink); }
     .at-picks-title { font-size: 1.3rem; margin: 0 0 var(--space-1); }
     .at-picks-note { color: var(--muted); font-size: 0.9rem; margin: 0 0 var(--space-4); max-width: 75ch; }
     .at-picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-3); }
@@ -97,14 +97,14 @@
       <div class="container hero-inner">
         <span class="hero-kicker">A guided tour · 2002–2026</span>
         <h1 id="tour-title">The Archive <span class="accent">Tour.</span></h1>
-        <p class="lede">Twenty-five years of Marvel Legends, walked the way a museum walks them: <strong>four era chapters</strong>, each one a room of its own — the counts the catalog itself carries, the year-by-year ledger, and curator picks chosen by printed rules from the record, never by hand-waving. Start at the first stop and walk, or jump straight to your era.</p>
+        <p class="lede">Twenty-five years of Marvel Legends, walked the way a museum walks them: <strong>four era chapters</strong>, each one a room of its own, the counts the catalog itself carries, the year-by-year ledger, and curator picks chosen by printed rules from the record, never by hand-waving. Start at the first stop and walk, or jump straight to your era.</p>
       </div>
     </section>
 
     <div class="container">
       <div class="empty-state" id="tour-error" hidden>
         <h2>The tour could not start</h2>
-        <p>The figure archive did not load, so there is nothing honest to walk you through. The chapters are counted from that archive — without it, this page says so rather than guessing.</p>
+        <p>The figure archive did not load, so there is nothing honest to walk you through. The chapters are counted from that archive, without it, this page says so rather than guessing.</p>
       </div>
 
       <nav class="at-route" id="tour-route" aria-label="Tour stops"></nav>
@@ -114,25 +114,25 @@
       <div id="tour-chapters"></div>
 
       <section class="at-method" id="how-picks-work" aria-labelledby="how-picks-title">
-        <h2 id="how-picks-title">How the picks work — and why the chapters break where they do</h2>
-        <p>The chapter breaks are set from the catalog's own wave data. <strong>2002–2006</strong> is the Toy Biz run: every wave in it is Toy Biz and every 2007 wave is Hasbro, so the manufacturer field draws the line — and the Build-A-Figure is born inside it, in 2005. <strong>2007–2012</strong> is Hasbro's lean early stretch, bottoming out in 2009–2011 and closing on the wave the catalog itself names the Return of Marvel Legends. <strong>2013–2019</strong> is the rebuild: the Build-A-Figure becomes the default architecture of a wave (46 of its 54 waves carry one) and annual output climbs to a 157-figure peak in 2018. <strong>2020–2026</strong> is the modern era — the largest chapter, with exclusives outnumbering the three earlier chapters combined. The four chapters partition the archive: every wave and every figure belongs to exactly one chapter.</p>
+        <h2 id="how-picks-title">How the picks work, and why the chapters break where they do</h2>
+        <p>The chapter breaks are set from the catalog's own wave data. <strong>2002–2006</strong> is the Toy Biz run: every wave in it is Toy Biz and every 2007 wave is Hasbro, so the manufacturer field draws the line, and the Build-A-Figure is born inside it, in 2005. <strong>2007–2012</strong> is Hasbro's lean early stretch, bottoming out in 2009–2011 and closing on the wave the catalog itself names the Return of Marvel Legends. <strong>2013–2019</strong> is the rebuild: the Build-A-Figure becomes the default architecture of a wave (46 of its 54 waves carry one) and annual output climbs to a 157-figure peak in 2018. <strong>2020–2026</strong> is the modern era, the largest chapter, with exclusives outnumbering the three earlier chapters combined. The four chapters partition the archive: every wave and every figure belongs to exactly one chapter.</p>
         <p>Curator picks are selected by rule, the same six rules in every chapter, applied in this order and de-duplicated by figure:</p>
         <ol>
-          <li><strong>Opens the chapter</strong> — the first figure of the chapter's earliest wave.</li>
-          <li><strong>Closes the chapter</strong> — the first figure of the chapter's latest wave.</li>
-          <li><strong>Completes the first BAF</strong> — the last piece-carrying figure of the chapter's earliest Build-A-Figure wave: collect that wave in catalog order and this piece finishes the build.</li>
-          <li><strong>Completes the last BAF</strong> — the same rule on the chapter's latest Build-A-Figure wave.</li>
-          <li><strong>First variant</strong> — the first figure in the chapter carrying a recorded variant.</li>
-          <li><strong>First exclusive</strong> — the first figure in the chapter carrying a recorded exclusive.</li>
+          <li><strong>Opens the chapter</strong>, the first figure of the chapter's earliest wave.</li>
+          <li><strong>Closes the chapter</strong>, the first figure of the chapter's latest wave.</li>
+          <li><strong>Completes the first BAF</strong>, the last piece-carrying figure of the chapter's earliest Build-A-Figure wave: collect that wave in catalog order and this piece finishes the build.</li>
+          <li><strong>Completes the last BAF</strong>, the same rule on the chapter's latest Build-A-Figure wave.</li>
+          <li><strong>First variant</strong>, the first figure in the chapter carrying a recorded variant.</li>
+          <li><strong>First exclusive</strong>, the first figure in the chapter carrying a recorded exclusive.</li>
         </ol>
-        <p>A rule that finds nothing produces no pick, and the chapter says so on its face — the modern era records no variants, so its variant slot stands empty rather than filled by hand. Every count on this page is counted from the catalog itself, and there are no prices anywhere on the tour: this is the record, not the market. For the raw archive behind the tour, see the <a href="index.html">Timeline</a> or walk the <a href="vault-room.html">Vault Room</a>.</p>
+        <p>A rule that finds nothing produces no pick, and the chapter says so on its face, the modern era records no variants, so its variant slot stands empty rather than filled by hand. Every count on this page is counted from the catalog itself, and there are no prices anywhere on the tour: this is the record, not the market. For the raw archive behind the tour, see the <a href="index.html">Timeline</a> or walk the <a href="vault-room.html">Vault Room</a>.</p>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>Marvel Legends Chronicle — a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
+      <p>Marvel Legends Chronicle, a fan-made collector archive. Not affiliated with Marvel or Hasbro.</p>
       <nav aria-label="Footer">
         <a href="index.html">Timeline</a><a href="timeline.html">Legends Timeline</a><a href="archive-tour.html" aria-current="page">Archive Tour</a><a href="debuts.html">First Appearances</a><a href="long-wait.html">The Long Wait</a><a href="build-ledger.html">The Build Ledger</a><a href="two-houses.html">The Two Houses</a><a href="roll-call.html">The Roll Call</a><a href="wave-ledger.html">The Wave Ledger</a><a href="year-ledger.html">The Year Ledger</a><a href="spec-sheet.html">The Spec Sheet</a><a href="visual-database.html">The Visual Database</a><a href="2026-review.html">2026 Review</a><a href="start.html">Start</a><a href="waves/index.html">Waves</a><a href="stats.html">Stats</a><a href="encyclopedia.html">Encyclopedia</a><a href="baf-planner.html">BAF Planner</a><a href="characters/index.html">Characters</a><a href="price-guide.html">Price Guide</a><a href="market-briefing.html">Market Briefing</a><a href="launch-curve.html">Launch Curve</a><a href="drop-week.html">Drop Week</a><a href="auth-wizard.html">Auth Wizard</a><a href="shelf.html">Your Shelf</a><a href="my-vault.html">My Vault</a><a href="completionist.html">The Completionist</a><a href="journal.html">Journal</a><a href="baf-economics.html">BAF Economics</a><a href="hunt.html">Hunt Planner</a><a href="gift.html">Gift Finder</a><a href="holiday.html">Holiday Guide</a><a href="grading.html">Grading</a><a href="display.html">Display</a><a href="collection-value.html">Ledger</a><a href="exclusives.html">Exclusives</a><a href="watchlist.html">Watchlist</a><a href="budget.html">Budget</a><a href="radar.html">Radar</a><a href="preorders.html">Pre-orders</a><a href="calendar.html">Release Calendar</a><a href="compare.html">Compare</a><a href="grails.html">Grails</a><a href="quest.html">Grail Quest</a><a href="variants.html">Variants</a><a href="variant-spotlight.html">Variant Spotlight</a><a href="rarity.html">Rarity Guide</a><a href="checklist.html">Checklist</a><a href="explore.html">Explore</a><a href="retro.html">Retro</a><a href="showcase.html">Showcase</a><a href="vault-room.html">Vault Room</a><a href="skills.html">Skills</a><a href="agents.html">Agents</a><a href="community.html">Community</a><a href="api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button>
       </nav>

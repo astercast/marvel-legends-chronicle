@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""scripts/audit_identity.py — wave 34 consistency audit of the Collector's Vault identity.
+"""scripts/audit_identity.py, wave 34 consistency audit of the Collector's Vault identity.
 
 Checks every HTML page (277: 42 root + 168 waves + 67 characters) for the
 identity wiring that makes the site recognizable blind:

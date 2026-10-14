@@ -1,14 +1,14 @@
-/* The Spec Sheet — the per-figure structured spec record
+/* The Spec Sheet, the per-figure structured spec record
    (ticket T-MARVEL-1). Pick any figure in the catalog and read
    its museum-vault spec sheet: every field the catalog actually
    records, verbatim, and the fields it does not record named as
-   recorded-absent — never invented. The capture slot on each
+   recorded-absent, never invented. The capture slot on each
    record stays empty until the Drop Week capture files real
    asking prices, limits and ship dates from the day itself. */
 import { loadData } from "./data.js";
 import { escapeHtml } from "./figure-dialog.js";
 import { buildSpecSheetModel, SPEC_ABSENT_FIELDS } from "./spec-sheet-model.js";
-import { loadFigureImages, plateHtml, buyLinksHtml } from "./figure-images.js";
+import { loadFigureImages, plateFigureHtml, buyLinksHtml } from "./figure-images.js";
 
 let images = new Map();
 
@@ -22,8 +22,8 @@ const els = {
 
 const fmt = (n) => n.toLocaleString("en-US");
 
-function kpi(label, value, sub) {
-  return `<div class="db-stat"><div class="db-stat-value">${value}</div><div class="db-stat-label">${label}</div>${sub ? `<div class="db-stat-sub">${sub}</div>` : ""}</div>`;
+function kpi(value, label) {
+  return `<p class="census-line"><span class="census-value">${value}</span><span class="census-label">${label}</span></p>`;
 }
 
 function row(label, valueHtml) {
@@ -66,9 +66,12 @@ function recordSection(title, inner) {
    in a margin column as ONE fixed-order list (Identification,
    Creation, Material and technique, Subject, Acquisition and
    rights, Documentation, Persistent URL); provenance as one
-   running prose chain; and the catalog number printed three
-   times in the identical .cat-no setting: tombstone, foot of
-   the record, and the citation / persistent URL line. */
+   running prose chain inside the Catalogue Note, the headed
+   essay room between the tombstone and the fact list; the
+   catalog number printed three times in the identical .cat-no
+   setting (tombstone, foot, citation / persistent URL line),
+   and the house seal stamped at the foot beside the third
+   printing, in red ink, present on arrival. */
 function renderSheet(r) {
   const entry = images.get(r.id);
   const waveLine = `${r.wave.series}, ${r.manufacturer}`;
@@ -80,7 +83,7 @@ function renderSheet(r) {
       ${r.variant ? `<p class="tombstone-variant">Variant: ${escapeHtml(r.variant)}</p>` : ""}
     </div>`;
   const objectHtml = entry
-    ? `${plateHtml(entry, r.name)}${tombstone}`
+    ? `${plateFigureHtml(entry, r.name, { maker: r.manufacturer, year: r.year, id: r.id, mark: "PLATE 1" })}${tombstone}`
     : `<div class="figure-typographic">${tombstone}<p class="record-provenance">No verified picture yet: this figure renders typographically, the archive's standard treatment, and is filed in the Visual Database's fill-in queue.</p></div>`;
 
   const buildValue = r.build.build
@@ -100,22 +103,32 @@ function renderSheet(r) {
     ? `<p class="record-provenance">Provenance: this record was ${chain.join("; ")}.</p>`
     : `<p class="record-provenance">Provenance: the catalog names no source for this figure, and this sheet invents none.</p>`;
 
+  /* The Catalogue Note: a headed short prose essay in the Lot
+     Essay position (Christie's anatomy), carrying the figure's
+     story and the archive's position in the archive's voice.
+     It is composed from the record's own matter: the provenance
+     chain as prose, then the catalog's note where one stands. */
+  const noteParas = [provenance
+    .replace(/^<p class="record-provenance">Provenance: this record was /, "<p>This record was ")
+    .replace(/^<p class="record-provenance">Provenance: the catalog names /, "<p>The catalog names ")];
+  if (r.notes) noteParas.push(`<p>${escapeHtml(r.notes)}</p>`);
+  const catalogueNote = `<div class="catalogue-note"><h2>Catalogue Note</h2>${noteParas.join("")}</div>`;
+
   const record = `<div class="record-list" role="list" aria-label="The record for ${escapeHtml(r.name)}">
     ${recordSection("Identification", `<p>${escapeHtml(r.name)}</p><p>Catalog number ${catNo(r.id)}</p>`)}
     ${recordSection("Creation", `<p>${escapeHtml(r.manufacturer)}, ${r.year}</p><p>Wave: <a href="waves/${escapeHtml(r.wave.id)}.html">${escapeHtml(r.wave.series)}</a></p><p>Build-A-Figure: ${buildValue}</p>`)}
     ${recordSection("Material and technique", `<p>Not recorded: the catalog holds no material or technique field for any figure, and this sheet names that absence rather than inventing one.</p>`)}
     ${recordSection("Subject", `<p>${escapeHtml(r.character)}</p>`)}
     ${recordSection("Acquisition and rights", `<p>${r.exclusive ? `Exclusive: ${escapeHtml(r.exclusive)}` : "No exclusive channel recorded for this figure."}</p>${entry ? buyLinksHtml(entry) : ""}<p>Photography, where pictured, is the manufacturer's own, embedded from its retailer source with the source recorded on the plate.</p>`)}
-    ${recordSection("Documentation", `<p>${r.notes ? escapeHtml(r.notes) : "The catalog carries no note for this figure."}</p><p>${r.source ? `Source: ${escapeHtml(r.source)}` : "The catalog names no source for this figure."}</p><p>${r.capture ? `Capture: ${escapeHtml(JSON.stringify(r.capture))}` : "Capture: awaiting capture, no asking price, limit or ship date has been captured for this figure yet."}</p>${SPEC_ABSENT_FIELDS.map((f) => `<p>${escapeHtml(f.label)}: not recorded, ${escapeHtml(f.note)}</p>`).join("")}`)}
+    ${recordSection("Documentation", `<p>${r.source ? `Source: ${escapeHtml(r.source)}` : "The catalog names no source for this figure."}</p><p>${r.capture ? `Capture: ${escapeHtml(JSON.stringify(r.capture))}` : "Capture: awaiting capture, no asking price, limit or ship date has been captured for this figure yet."}</p>${SPEC_ABSENT_FIELDS.map((f) => `<p>${escapeHtml(f.label)}: not recorded, ${escapeHtml(f.note)}</p>`).join("")}`)}
     ${recordSection("Persistent URL", `<p><a href="${escapeHtml(persistentUrl(r.id))}">${escapeHtml(persistentUrl(r.id))}</a></p>`)}
   </div>`;
 
   els.sheet.innerHTML = `<article class="figure-record">
-      <div class="figure-object">${objectHtml}${entry ? provenance : ""}</div>
+      <div class="figure-object">${objectHtml}${catalogueNote}</div>
       <div class="figure-margin">${record}</div>
     </article>
-    ${entry ? "" : provenance}
-    <footer class="record-foot">${catNo(r.id)}<p class="record-cite">Cite as: Marvel Legends Chronicle, catalog number ${escapeHtml(r.id)}, ${escapeHtml(r.name)}, ${escapeHtml(waveLine)}, ${r.year}.</p></footer>`;
+    <footer class="record-foot">${catNo(r.id)}<p class="record-cite">Cite as: Marvel Legends Chronicle, catalog number ${escapeHtml(r.id)}, ${escapeHtml(r.name)}, ${escapeHtml(waveLine)}, ${r.year}.</p><span class="seal-stamp" aria-hidden="true"><span>R</span></span></footer>`;
   if ("replaceState" in history) history.replaceState(null, "", `#${encodeURIComponent(r.id)}`);
 }
 
@@ -127,10 +140,10 @@ async function main() {
     const byId = new Map(m.records.map((r) => [r.id, r]));
 
     els.kpis.innerHTML = [
-      kpi("Spec records", fmt(m.total), "one structured record per figure in the catalog"),
-      kpi("Piece carriers", fmt(m.carriers), `of ${fmt(m.buildWaveFigures)} figures in build waves, the catalog records a piece for these`),
-      kpi("Exclusives recorded", fmt(m.exclusives), "figures whose record names an exclusive channel"),
-      kpi("Recorded-absent fields", fmt(m.absentFields.length), "UPC / SKU, MSRP and accessories, named on every sheet, never invented"),
+      kpi(fmt(m.total), "spec records, one structured record per figure in the catalog"),
+      kpi(fmt(m.carriers), `piece carriers, of ${fmt(m.buildWaveFigures)} figures in build waves`),
+      kpi(fmt(m.exclusives), "exclusives recorded, figures whose record names an exclusive channel"),
+      kpi(fmt(m.absentFields.length), "recorded-absent fields, UPC / SKU, MSRP and accessories, named on every sheet, never invented"),
     ].join("");
 
     els.picker.innerHTML = m.records.map((r) =>

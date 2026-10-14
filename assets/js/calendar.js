@@ -22,7 +22,7 @@ function friendlyDate(ymd) {
 
 function detailHtml(items, ymd, today) {
   if (!items.length) {
-    return `<p>No pre-order dates reported for this day. Some releases are only dated to a season — see the list below.</p>`;
+    return `<p>No pre-order dates reported for this day. Some releases are only dated to a season, see the list below.</p>`;
   }
   return items.map((it) => {
     const st = itemStatus(it, today);
@@ -46,12 +46,12 @@ function monthHtml(m, items, today) {
       const mark = dayItems.length
         ? `<span class="cal-dots" aria-hidden="true">${"●".repeat(Math.min(dayItems.length, 3))}</span><span class="visually-hidden">: ${dayItems.length} release${dayItems.length === 1 ? "" : "s"}</span>`
         : "";
-      return `<td class="${isToday ? "cal-today" : ""}"><button type="button" class="cal-day${dayItems.length ? " has-items" : ""}" data-date="${ymd}" aria-label="${friendlyDate(ymd)}${dayItems.length ? ` — ${dayItems.length} release${dayItems.length === 1 ? "" : "s"}: ${dayItems.map((i) => i.name).join(", ")}` : ""}">${Number(ymd.slice(8))}${mark}</button></td>`;
+      return `<td class="${isToday ? "cal-today" : ""}"><button type="button" class="cal-day${dayItems.length ? " has-items" : ""}" data-date="${ymd}" aria-label="${friendlyDate(ymd)}${dayItems.length ? `, ${dayItems.length} release${dayItems.length === 1 ? "" : "s"}: ${dayItems.map((i) => i.name).join(", ")}` : ""}">${Number(ymd.slice(8))}${mark}</button></td>`;
     }).join("")}</tr>`
   ).join("");
   return `<section class="cal-month card" aria-labelledby="cal-${m.key}">
     <h2 id="cal-${m.key}" class="cal-month-title">${m.label}${isCurrent ? ' <span class="status status-preorder">This month</span>' : ""}</h2>
-    <table class="cal-grid" role="grid" aria-label="${m.label} — arrow keys move between days">
+    <table class="cal-grid" role="grid" aria-label="${m.label}, arrow keys move between days">
       <thead><tr>${WEEKDAYS.map((w) => `<th scope="col">${w}</th>`).join("")}</tr></thead>
       <tbody>${rows}</tbody>
     </table>
@@ -62,9 +62,9 @@ function undatedHtml(items) {
   if (!items.length) return `<p>Every tracked release carries an exact date.</p>`;
   const rows = items.map((it) => {
     const st = itemStatus(it, todayStr());
-    return `<li><strong>${escapeAttr(it.name)}</strong> — ${escapeAttr(st.detail)} <span class="venue">(${escapeAttr(it.venue || "")})</span></li>`;
+    return `<li><strong>${escapeAttr(it.name)}</strong>, ${escapeAttr(st.detail)} <span class="venue">(${escapeAttr(it.venue || "")})</span></li>`;
   }).join("");
-  return `<p class="chart-sub">These carry only a season or year from the research — plotted nowhere above, listed here so nothing slips.</p>
+  return `<p class="chart-sub">These carry only a season or year from the research, plotted nowhere above, listed here so nothing slips.</p>
     <ul>${rows}</ul>`;
 }
 
@@ -92,7 +92,7 @@ export async function initCalendar() {
   const today = todayStr();
   const months = calendarMonths(WINDOW_START, WINDOW_MONTHS);
 
-  document.getElementById("cal-range").textContent = `${months[0].label} – ${months[months.length - 1].label}`;
+  document.getElementById("cal-range").textContent = `${months[0].label}, ${months[months.length - 1].label}`;
   wrap.innerHTML = months.map((m) => monthHtml(m, items, today)).join("");
 
   const undated = document.getElementById("cal-undated-body");
@@ -103,7 +103,7 @@ export async function initCalendar() {
   if (jumper) {
     const dated = items.filter((it) => parseYMD(it.preorderDate));
     jumper.innerHTML = `<option value="">Jump to a dated release…</option>` +
-      dated.map((it) => `<option value="${escapeAttr(it.preorderDate)}">${escapeAttr(it.preorderDate)} — ${escapeAttr(it.name)}</option>`).join("");
+      dated.map((it) => `<option value="${escapeAttr(it.preorderDate)}">${escapeAttr(it.preorderDate)}, ${escapeAttr(it.name)}</option>`).join("");
     jumper.addEventListener("change", () => {
       if (!jumper.value) return;
       const btn = wrap.querySelector(`button[data-date="${jumper.value}"]`);

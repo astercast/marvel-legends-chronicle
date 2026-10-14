@@ -17,7 +17,7 @@ You want to build the Juggernaut BAF from the 2016 Juggernaut Wave wave. 7 figur
 ## Procedure
 
 1. The BAF: **Juggernaut** (2016, Juggernaut Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Cable → Lower torso
   - [ ] Havok → Right leg
   - [ ] Iceman → Left arm
@@ -27,7 +27,7 @@ You want to build the Juggernaut BAF from the 2016 Juggernaut Wave wave. 7 figur
   - [ ] Wolverine → Head
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -39,5 +39,5 @@ Missing the Juggernaut torso? Find which figure above carries it, check sold lis
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

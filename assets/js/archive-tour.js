@@ -1,4 +1,4 @@
-/* The Archive Tour — a guided museum tour through the catalog's
+/* The Archive Tour, a guided museum tour through the catalog's
    25 years. Four era chapters, each a designed editorial spread:
    the counts the catalog itself carries, a per-year ledger, and
    curator picks chosen by the printed selection rules (see
@@ -37,7 +37,7 @@ function pickCard(pick) {
     <p class="at-pick-meta">${escapeHtml(fig.waveSeries)} · ${escapeHtml(fig.manufacturer)}${fig.waveBaf ? ` · builds ${escapeHtml(fig.waveBaf)}` : ""}</p>
     ${badges(fig)}
     ${fig.notes ? `<p class="at-pick-notes">${escapeHtml(fig.notes)}</p>` : ""}
-    <p class="at-pick-rule">Selection rule — ${escapeHtml(pick.rule.toLowerCase())}.</p>
+    <p class="at-pick-rule">Selection rule, ${escapeHtml(pick.rule.toLowerCase())}.</p>
     <a class="at-pick-link" href="waves/${escapeHtml(fig.waveId)}.html">View its wave in the archive →</a>
   </article>`;
 }
@@ -71,9 +71,9 @@ function chapterSection(ch, i, total) {
         </div>`).join("")}
     </div>
     <h3 class="at-picks-title">Curator picks</h3>
-    <p class="at-picks-note">Chosen by the selection rules printed under <a href="#how-picks-work">How the picks work</a> — catalog data only, the same rules in every chapter.</p>
+    <p class="at-picks-note">Chosen by the selection rules printed under <a href="#how-picks-work">How the picks work</a>, catalog data only, the same rules in every chapter.</p>
     <div class="at-picks">${ch.picks.map(pickCard).join("")}</div>
-    ${ch.emptyRules.length ? `<p class="at-empty-rules">${ch.emptyRules.map((r) => `No <strong>${escapeHtml(r.label.toLowerCase())}</strong> pick hangs in this chapter — the rule (${escapeHtml(r.rule.toLowerCase())}) found nothing in the catalog for these years, so the slot stands empty rather than filled by hand.`).join(" ")}</p>` : ""}
+    ${ch.emptyRules.length ? `<p class="at-empty-rules">${ch.emptyRules.map((r) => `No <strong>${escapeHtml(r.label.toLowerCase())}</strong> pick hangs in this chapter, the rule (${escapeHtml(r.rule.toLowerCase())}) found nothing in the catalog for these years, so the slot stands empty rather than filled by hand.`).join(" ")}</p>` : ""}
     <nav class="at-chapter-nav" aria-label="Tour route">${prev}<span class="at-chapter-step">Stop ${i + 1} of ${total}</span>${next}</nav>
   </section>`;
 }

@@ -16,9 +16,9 @@ You're considering buying, selling, or hunting the Marvel Monsters box set (2006
 
 ## Procedure
 
-1. Why it matters: Dracula, Frankenstein's Monster, Werewolf by Night, Zombie — beloved horror box set.
+1. Why it matters: Dracula, Frankenstein's Monster, Werewolf by Night, Zombie, beloved horror box set.
 2. Price evidence: Catalogued (verified price data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a Marvel Monsters box set (2006): run the bootleg checklist, pull
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

@@ -1,11 +1,11 @@
-/* year-ledger-model.js — the pure math behind The Year Ledger
+/* year-ledger-model.js, the pure math behind The Year Ledger
    (year-ledger.html). No DOM, no storage: given the catalog's flat
    figure list, it files every figure under its release year and
-   counts the years themselves — how much the line shipped in each
+   counts the years themselves, how much the line shipped in each
    of its twenty-five years, and where the figures actually sit.
 
    WHAT COUNTS AS A YEAR: the catalog's own `year` field on each
-   figure — every figure in the catalog carries one, the span runs
+   figure, every figure in the catalog carries one, the span runs
    2002–2026 with no gap year, and a test cross-checks each year's
    wave count and figure count against waves.json (whose years
    agree with the figures' years on all 167 waves).
@@ -15,7 +15,7 @@
    are the figures the catalog dates to it; its waves are the
    distinct waves those figures file under; its characters are the
    distinct characters among them and its debuts the characters
-   whose first figure in the line falls in it — both under the
+   whose first figure in the line falls in it, both under the
    debut ledger's own character rule (name minus parenthetical,
    imported from debuts-model.js, so the pages cannot disagree).
    The bands are fixed ranges of the annual figure count (1–24 ·
@@ -27,8 +27,8 @@
    years of the span.
 
    HONESTY: no prices anywhere (a ledger of years is the record,
-   not the market). Quiet years are reported at their true size —
-   2011 shipped a single figure — never folded into neighbours. */
+   not the market). Quiet years are reported at their true size,
+   2011 shipped a single figure, never folded into neighbours. */
 import { baseName } from "./debuts-model.js";
 
 export const YEAR_BANDS = [
@@ -45,7 +45,7 @@ export const FLOOD_MIN = 100;
 /* figures: the catalog's flat figure list (data/v1/figures.json shape).
    Returns { figureCount, waveCount, yearCount, firstYear, lastYear,
              years, bands, median, busiest, quietest, flood,
-             biggestRise, biggestFall } — `years` is every year of the
+             biggestRise, biggestFall }, `years` is every year of the
    span in chronological order ({ year, figures, waves, characters,
    debuts, exclusives, bafWaves, manufacturer }); `flood` covers the
    years at FLOOD_MIN figures or more; rises and falls name the two
@@ -54,7 +54,7 @@ export function buildYearLedgerModel(figures) {
   const list = figures || [];
 
   // Debuts: a character's first figure (earliest year, catalog-order
-  // tie-break — the debut ledger's rule) files its debut year.
+  // tie-break, the debut ledger's rule) files its debut year.
   const first = new Map(); // base name -> { fig, idx }
   list.forEach((fig, idx) => {
     const base = baseName(fig.name);

@@ -1,10 +1,10 @@
-/* insights.js — pure Collection Insights logic (Grail Quest 4.0).
+/* insights.js, pure Collection Insights logic (Grail Quest 4.0).
    No DOM, no storage, no fetch: callers supply the archive figures/waves,
    the user's owned ids, ledger purchase rows, and the Chronicle's reported
    price signals. Completion math is arithmetic over the archive + the user's
    own state. Every dollar is either a reported band from
    data/price-signals.json (labeled "reported ranges, not live prices") or
-   the user's own logged purchase price — never an appraisal, never a
+   the user's own logged purchase price, never an appraisal, never a
    Chronicle price index. Safe to import from any page or test. */
 import { characterRuns } from "./quest-core.js";
 import { signalForFigure, money } from "./price-watch.js";
@@ -17,10 +17,10 @@ function ownedSetOf(ownedIds) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Completion math — by wave, by year, by character. */
+/* Completion math, by wave, by year, by character. */
 
 /* Per-wave completion, sorted most-complete first (ties: more owned, then
-   series name — deterministic for tests and share text). */
+   series name, deterministic for tests and share text). */
 export function completionByWave(figures, waves, ownedIds) {
   const owned = ownedSetOf(ownedIds);
   const byWave = new Map();
@@ -70,7 +70,7 @@ export function completionByYear(figures, ownedIds) {
 }
 
 /* Per-character completion for characters with >= minReleases archive
-   releases (default 5 — the same bar the quest generator uses). Sorted by
+   releases (default 5, the same bar the quest generator uses). Sorted by
    fewest missing first, then most owned. `missing` lists the figures to
    close the run. */
 export function characterCompletions(figures, ownedIds, minReleases = 5) {
@@ -88,7 +88,7 @@ export function characterCompletions(figures, ownedIds, minReleases = 5) {
 }
 
 /* Most-wanted gap analysis: character runs exactly ONE figure away from
-   complete. Sorted by run size (biggest run first — the meatiest finish). */
+   complete. Sorted by run size (biggest run first, the meatiest finish). */
 export function oneFigureAway(figures, ownedIds, minReleases = 5) {
   return characterCompletions(figures, ownedIds, minReleases)
     .filter((c) => c.missingCount === 1)
@@ -96,7 +96,7 @@ export function oneFigureAway(figures, ownedIds, minReleases = 5) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Duplicate detection — the raw owned array as stored (pre-dedupe), so a
+/* Duplicate detection, the raw owned array as stored (pre-dedupe), so a
    figure id logged twice surfaces honestly. Returns [{ id, count }],
    count-descending. The page turns this into a "did you mean to log this
    twice?" nudge; it never auto-deletes anything. */
@@ -113,19 +113,19 @@ export function findDuplicateIds(rawOwned) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Shelf value — summed ONLY from the Chronicle's reported price bands.
+/* Shelf value, summed ONLY from the Chronicle's reported price bands.
    Labeled "reported ranges, not an appraisal" wherever shown. Figures
    without a reported signal are counted, never guessed: they contribute
    nothing to the band and are reported as `uncovered`. When one figure
    carries several reported signals (e.g. two decos tracked separately),
    the band for that figure spans the lowest reported low to the highest
-   reported high — the widest honest reading of what the Chronicle has
+   reported high, the widest honest reading of what the Chronicle has
    actually published. */
 export function shelfValueRange(figures, ownedIds, signals) {
   const owned = ownedSetOf(ownedIds);
   const list = Array.isArray(signals) ? signals : [];
   /* Dedupe by figure id: a wave can list the same name twice (two decos
-     under one id), but one owned id is one shelf figure — its band spans
+     under one id), but one owned id is one shelf figure, its band spans
      every reported signal for that id. */
   const byId = new Map();
   for (const f of figures ?? []) {
@@ -153,8 +153,8 @@ export function shelfValueRange(figures, ownedIds, signals) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Growth view — cumulative figures added over time from the Ledger's
-   purchase dates. Honest framing: "since you started logging" — rows
+/* Growth view, cumulative figures added over time from the Ledger's
+   purchase dates. Honest framing: "since you started logging", rows
    without a parseable date are excluded and counted, never guessed.
    Returns ascending-date points: { date, added, spend, totalCount,
    totalSpend }. */
@@ -210,7 +210,7 @@ export function growthByMonth(buys) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Milestones — unlock state from the user's own counts. Each carries an
+/* Milestones, unlock state from the user's own counts. Each carries an
    honest `detail` ("23 of 50") so a locked milestone reads as progress,
    not failure. Dates are never invented: milestone cards show when a
    count was reached only where the data supports it. */
@@ -251,7 +251,7 @@ export function computeMilestones({ ownedCount = 0, completedBafs = 0, buys = []
     },
     {
       id: "ledger-10", name: "Ledger Regular", icon: "📒",
-      blurb: "10 purchases logged with dates — the growth chart needs them.",
+      blurb: "10 purchases logged with dates, the growth chart needs them.",
       got: Math.min(buyCount, 10), need: 10,
     },
   ];
@@ -263,7 +263,7 @@ export function computeMilestones({ ownedCount = 0, completedBafs = 0, buys = []
 }
 
 /* ------------------------------------------------------------------ */
-/* Collection report — plain-text/markdown export for insurance and
+/* Collection report, plain-text/markdown export for insurance and
    records. Honest throughout: completion math from the archive + the
    user's own state; shelf bands from reported ranges only; the
    disclaimer up front and repeated at the shelf-value section. */
@@ -286,10 +286,10 @@ export function buildCollectionReport({
   const unlocked = achievements.filter((a) => a.unlocked);
 
   const L = [];
-  L.push("# Marvel Legends Chronicle — Collection Report");
+  L.push("# Marvel Legends Chronicle, Collection Report");
   L.push(`Generated ${generatedAt} · from your browser-local tracker data.`);
   L.push("");
-  L.push("> Your records, not a valuation. Completion math comes from the archive and your own logged state. Shelf-value bands are summed from the Chronicle's reported price ranges only — reported ranges, not an appraisal, never a price index.");
+  L.push("> Your records, not a valuation. Completion math comes from the archive and your own logged state. Shelf-value bands are summed from the Chronicle's reported price ranges only, reported ranges, not an appraisal, never a price index.");
   L.push("");
   L.push("## Snapshot");
   L.push(`- Figures owned: ${owned.size} of ${arch} in the archive (${pct}%)`);
@@ -304,12 +304,12 @@ export function buildCollectionReport({
     L.push(`- Reported band across your collection: ${money(shelf.low)}–${money(shelf.high)}`);
     L.push(`- Based on ${shelf.covered} figure${shelf.covered === 1 ? "" : "s"} with reported market data`);
   } else {
-    L.push("- No reported market data for the figures you own yet — nothing to band.");
+    L.push("- No reported market data for the figures you own yet, nothing to band.");
   }
   if (shelf.uncovered) {
-    L.push(`- ${shelf.uncovered} owned figure${shelf.uncovered === 1 ? "" : "s"} ha${shelf.uncovered === 1 ? "s" : "ve"} no reported signal — excluded from the band, never guessed.`);
+    L.push(`- ${shelf.uncovered} owned figure${shelf.uncovered === 1 ? "" : "s"} ha${shelf.uncovered === 1 ? "s" : "ve"} no reported signal, excluded from the band, never guessed.`);
   }
-  L.push("- Source: the Chronicle's reported price signals (reported solds/listings the site has already published), summed per figure. This is your records plus public research — not an appraisal, not insurance-grade.");
+  L.push("- Source: the Chronicle's reported price signals (reported solds/listings the site has already published), summed per figure. This is your records plus public research, not an appraisal, not insurance-grade.");
   L.push("");
   L.push("## Completion by year");
   L.push("| Year | Owned | Archive | % |");
@@ -318,32 +318,32 @@ export function buildCollectionReport({
   L.push("");
   L.push("## Closest wave completions");
   const near = waveRows.filter((w) => w.got > 0 && w.pct < 100).slice(0, 10);
-  if (!near.length) L.push("- No started-but-unfinished waves — every wave you touch is either untouched or complete.");
+  if (!near.length) L.push("- No started-but-unfinished waves, every wave you touch is either untouched or complete.");
   for (const w of near) L.push(`- ${w.series} (${w.year ?? "?"}): ${w.got}/${w.total} (${w.pct}%)`);
   L.push("");
   L.push("## One figure away (gap analysis)");
   if (!gaps.length) L.push("- No character run is exactly one figure from complete.");
   for (const g of gaps) {
     const miss = g.missing[0];
-    L.push(`- ${g.name}: ${g.got}/${g.total} — missing ${miss?.name ?? "unknown"} (${miss?.waveSeries ?? "?"}, ${miss?.year ?? "?"})`);
+    L.push(`- ${g.name}: ${g.got}/${g.total}, missing ${miss?.name ?? "unknown"} (${miss?.waveSeries ?? "?"}, ${miss?.year ?? "?"})`);
   }
   L.push("");
   L.push("## Duplicates");
   if (!dupes.length) L.push("- No figure id logged twice.");
-  for (const d of dupes) L.push(`- ${d.id} logged ${d.count}× — did you mean to log it twice?`);
+  for (const d of dupes) L.push(`- ${d.id} logged ${d.count}×, did you mean to log it twice?`);
   L.push("");
   L.push("## Milestones");
-  for (const m of milestones) L.push(`- ${m.unlocked ? "✓" : "○"} ${m.name} — ${m.detail}`);
+  for (const m of milestones) L.push(`- ${m.unlocked ? "✓" : "○"} ${m.name}, ${m.detail}`);
   L.push("");
   L.push("## Growth (since you started logging)");
   if (!growth.points.length) {
-    L.push("- No dated purchases logged yet — log purchase dates in the Ledger and this section fills in.");
+    L.push("- No dated purchases logged yet, log purchase dates in the Ledger and this section fills in.");
   } else {
     L.push(`- ${growth.points.length} dated purchase${growth.points.length === 1 ? "" : "s"} logged; collection reached ${growth.points[growth.points.length - 1].totalCount} logged purchases by ${growth.points[growth.points.length - 1].date}.`);
     if (growth.skipped) L.push(`- ${growth.skipped} purchase${growth.skipped === 1 ? "" : "s"} without a parseable date excluded.`);
   }
   L.push("");
   L.push("---");
-  L.push("Marvel Legends Chronicle — a fan-made archive. Figures, dates, and prices are researched and reported; the collection math above is your own data. Keep a copy of this file with your insurance records.");
+  L.push("Marvel Legends Chronicle, a fan-made archive. Figures, dates, and prices are researched and reported; the collection math above is your own data. Keep a copy of this file with your insurance records.");
   return L.join("\n");
 }

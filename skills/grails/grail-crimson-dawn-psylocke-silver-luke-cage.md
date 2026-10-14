@@ -17,8 +17,8 @@ You're considering buying, selling, or hunting the Crimson Dawn Psylocke + Silve
 ## Procedure
 
 1. Why it matters: Unreleased Mojo-wave prototypes sold after the Hasbro takeover; legendary holy grails.
-2. Price evidence: $25,000 pair claimed (UNVERIFIED — treat as collector lore, not market data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+2. Price evidence: $25,000 pair claimed (UNVERIFIED, treat as collector lore, not market data).
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a Crimson Dawn Psylocke + Silver Luke Cage: run the bootleg check
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

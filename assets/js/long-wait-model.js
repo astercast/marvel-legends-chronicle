@@ -1,12 +1,12 @@
-/* long-wait-model.js — the pure math behind The Long Wait
+/* long-wait-model.js, the pure math behind The Long Wait
    (long-wait.html). No DOM, no storage: given the catalog's flat
    figure list, it works out, for every distinct character, the
-   longest silence between one figure and the next — and files the
+   longest silence between one figure and the next, and files the
    characters who never got a second figure as still waiting.
 
    WHAT COUNTS AS A CHARACTER: the archive's own rule, imported from
    the debut ledger (debuts-model.js) so the two pages cannot
-   disagree — a figure's character is its name with any parenthetical
+   disagree, a figure's character is its name with any parenthetical
    removed. Nothing else is normalized.
 
    THE WAIT RULES (deterministic, catalog data only, printed on the
@@ -16,19 +16,19 @@
    the wait that ended names the exact figures on both sides of it.
    A character with exactly one figure is still waiting: their wait
    is counted from their only figure's year through the catalog's
-   latest year, and it is labelled as running — never presented as a
+   latest year, and it is labelled as running, never presented as a
    completed wait, because the catalog records no second figure.
 
    HONESTY: no prices anywhere (a returns ledger is the record, not
    the market); a character links to its character page only when
-   the archive actually publishes one — the model takes that slug
+   the archive actually publishes one, the model takes that slug
    set as an input and leaves the rest unlinked. */
 import { baseName, slugify } from "./debuts-model.js";
 
 /* figures: the catalog's flat figure list (data/v1/figures.json shape).
    characterSlugs: Set of slugs with a published character page.
    Returns { total, returnedCount, waitingCount, latestYear,
-             returned, waiting, longest } — `returned` sorted by
+             returned, waiting, longest }, `returned` sorted by
    longest wait desc (ties: earlier wait-start year, then name);
    `waiting` sorted by running wait desc (ties: earlier debut year,
    then name). */

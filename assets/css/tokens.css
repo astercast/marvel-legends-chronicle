@@ -107,53 +107,75 @@
 html { font-synthesis-weight: none; }
 
 /* ============================================================
-   Design tokens — Marvel Legends Chronicle, "The Collector's Vault"
-   Wave 33 identity. Art direction: museum archive taken further —
-   archival paper, exhibit placards, accession numbers,
-   specimen-drawer grids, wax seals.
-   Typography (fleet-resolved, nothing shared with the other sites):
-   Cinzel (Roman inscriptional caps, display) + Newsreader
-   (variable optical-size book serif, body). Accession numbers and
-   data set in tabular Newsreader, per the museum-label recipe.
-   Motion: one primary Premium easing; reduced-motion-first
-   authoring — still state is the default, motion is the opt-in.
+   Design tokens — Marvel Legends Chronicle, the light catalogue
+   (MARVEL-LIGHT study, aesthetics round 10). The palette is
+   specified as JOBS, not swatches; every value names where it may
+   appear. Paper #FAF6EC is the ground everywhere, no exception.
+   Board #F0E7D2 serves named catalogue furniture only (tombstone
+   panel, census band, contents shelf, bookplate panel). Mat
+   #FFFFFF lives inside plates only. Ink #1E1B16; Pencil #6E6353
+   (labels quiet, values Ink); Rule #D9CFB8 hairlines. Catalogue
+   Blue #2E4A62 works exactly four jobs: every catalog number in
+   every position, links, census numerals, the persistent URL.
+   Plate Red #A3271B is rationed to three positions per page from
+   the named list (seal, plate mark, live state words). Gold is
+   abolished as a surface color; brass and wax are retired; the
+   legacy token names below resolve onto the light values so the
+   whole estate re-inks from this one block. Zero gradients on
+   grounds; no dark variant ships.
+   Typography: Newsreader is the catalogue's voice (display and
+   text); Cinzel is demoted to the nameplate (masthead wordmark
+   and seal ring text, --font-nameplate); the estate mono is the
+   instrument voice and the blue voice. Font delivery is unchanged
+   from the R21 pass (see the @font-face block above).
+   Motion: stillness. The seal press is an interaction; plates
+   never animate; navigation is a cut (base.css).
    ============================================================ */
 :root {
-  /* --- Ink & paper (the vault at night) --- */
-  --bg: #0d0c10;            /* vault black, warm */
-  --bg-soft: #121116;       /* panel wash */
-  --bg-deep: #08080a;       /* deepest recess */
-  --panel: #16151b;         /* card ground */
-  --panel-2: #1c1b22;       /* raised card */
-  --panel-3: #232228;       /* hover raise */
-  --line: #2a2932;          /* hairline */
-  --line-soft: #1e1d24;     /* faint hairline */
-  --line-bright: #3a3944;   /* emphasized hairline */
+  /* --- The light system (named values) --- */
+  --ground-paper: #FAF6EC;  /* PAPER: the page ground, everywhere */
+  --board: #F0E7D2;         /* BOARD: named catalogue furniture only */
+  --mat: #FFFFFF;           /* MAT: inside plates only */
+  --pencil: #6E6353;        /* PENCIL: labels, marginalia, folio lines */
+  --rule: #D9CFB8;          /* RULE: hairlines, listing separators */
+  --catalogue-blue: #2E4A62;/* CATALOGUE BLUE: numbers, links, census numerals, persistent URL */
+  --plate-red: #A3271B;      /* PLATE RED: seal, plate mark, live state words (max 3/page) */
+
+  /* --- Grounds & panels (legacy names on light values) --- */
+  --bg: #FAF6EC;            /* Paper */
+  --bg-soft: #FAF6EC;       /* Paper (hero ground is Paper too) */
+  --bg-deep: #FAF6EC;       /* Paper (footer, inputs: no dark recesses) */
+  --panel: #FAF6EC;         /* Paper: cards are ruled, not filled */
+  --panel-2: #FAF6EC;       /* Paper */
+  --panel-3: #FAF6EC;       /* Paper: hover raise is a border change */
+  --line: #D9CFB8;          /* Rule */
+  --line-soft: #D9CFB8;     /* Rule */
+  --line-bright: #6E6353;   /* Pencil: the emphasized hairline */
 
   /* --- Type --- */
-  --ink: #f6f0e0;           /* archival paper white */
-  --ink-dim: #d6cfba;       /* secondary paper */
-  --muted: #948e7c;         /* tertiary, captions */
+  --ink: #1E1B16;           /* Ink: body and display text */
+  --ink-dim: #1E1B16;       /* Ink: values are Ink, labels are Pencil */
+  --muted: #6E6353;         /* Pencil */
 
-  /* --- Archival paper (exhibit placards, drawer cards) --- */
-  --paper: #ece1c8;
-  --paper-2: #e0d1b0;
-  --ink-on-paper: #1a1610;
-  --muted-on-paper: #5d5644;
-  --line-on-paper: #c9b98f;
+  /* --- Board furniture (the old paper-placard names) --- */
+  --paper: #F0E7D2;         /* Board */
+  --paper-2: #F0E7D2;       /* Board */
+  --ink-on-paper: #1E1B16;  /* Ink on Board */
+  --muted-on-paper: #6E6353;/* Pencil on Board */
+  --line-on-paper: #D9CFB8; /* Rule on Board */
 
-  /* --- Signature accents (discipline: red = Marvel action/identity only) --- */
-  --red: #e62429;           /* signature red — brand, primary actions, active states */
-  --red-deep: #a31218;
-  --red-ink: #ff7b7f;       /* red safe for small text on black */
-  --gold: #dcae3c;          /* brass — provenance, BAF, milestones, engraved trim */
-  --gold-deep: #8f6b1c;
-  --wax: #93222a;           /* wax-seal oxblood — certified, grail, signature moments */
-  --wax-deep: #5f141b;
-  --blue: #8fd6ff;          /* informational links */
-  --green: #6fe3a1;
-  --violet: #c9a7ff;
-  --amber: #ffb37f;
+  /* --- The two working colors (legacy names on light values) --- */
+  --red: #A3271B;           /* Plate Red */
+  --red-deep: #A3271B;      /* Plate Red, flat */
+  --red-ink: #A3271B;       /* Plate Red */
+  --gold: #1E1B16;          /* ABOLISHED: legacy gold roles resolve to Ink */
+  --gold-deep: #6E6353;     /* RETIRED: legacy brass roles resolve to Pencil */
+  --wax: #A3271B;           /* RETIRED: the seal is printer's ink now, Plate Red */
+  --wax-deep: #A3271B;      /* Plate Red, flat */
+  --blue: #2E4A62;          /* Catalogue Blue: links */
+  --green: #1E1B16;         /* abolished as a status hue: words and arrows carry state */
+  --violet: #6E6353;        /* Pencil */
+  --amber: #6E6353;         /* Pencil */
 
   /* --- Radii --- */
   --radius-s: 5px;
@@ -161,10 +183,18 @@ html { font-synthesis-weight: none; }
   --radius-l: 14px;
   --radius-pill: 999px;
 
-  /* --- Type system --- */
-  --font-display: "Cinzel", "Cinzel Fallback", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  --font-cond: "Cinzel", "Cinzel Fallback", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  /* ^^ vault identity: the "condensed label" voice is engraved caps, not a grotesque */
+  /* --- Type system ---
+     Newsreader is the catalogue's voice: display and text, its
+     italics carrying titles of waves and works inside prose.
+     Labels set in Newsreader letterspaced capitals (--font-cond
+     is the label stack, also Newsreader). Cinzel survives only as
+     the nameplate (--font-nameplate): the masthead wordmark and
+     the seal's ring text, nothing else. The mono is the
+     instrument voice: catalog numbers, folio lines, plate marks,
+     census numerals; it is also the blue voice. */
+  --font-display: "Newsreader", "Newsreader Fallback", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-cond: "Newsreader", "Newsreader Fallback", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-nameplate: "Cinzel", "Cinzel Fallback", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
   --font-body: "Newsreader", "Newsreader Fallback", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 
@@ -187,11 +217,13 @@ html { font-synthesis-weight: none; }
   --space-8: 64px;
   --space-9: 96px;
 
-  /* --- Elevation (gallery spots, not glows) --- */
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-2: 0 10px 32px rgba(0, 0, 0, 0.5);
-  --shadow-3: 0 18px 56px rgba(0, 0, 0, 0.55);
-  --edge-light: inset 0 1px 0 rgba(246, 240, 224, 0.06);
+  /* --- Elevation: print has none to speak of. Shadows survive
+     only as the faintest ink pressure under the modal and menus;
+     identity is carried by rules, borders, furniture, and type. --- */
+  --shadow-1: 0 1px 2px rgba(30, 27, 22, 0.07);
+  --shadow-2: 0 10px 32px rgba(30, 27, 22, 0.10);
+  --shadow-3: 0 18px 56px rgba(30, 27, 22, 0.13);
+  --edge-light: 0 0 0 0 transparent;
 
   /* --- Motion: one Premium signature (fleet rule 22) ---
      --ease carries ~80% of animation; --ease-emphasis for heroes
@@ -204,7 +236,7 @@ html { font-synthesis-weight: none; }
   --dur-2: 0.25s;
   --dur-3: 0.4s;
 
-  /* --- Focus: gold halo is the vault's tactile signature.
-     Focus rings appear instantly — a state, not a transition. --- */
-  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--gold);
+  /* --- Focus: an ink ring on Paper. Focus rings appear
+     instantly, a state, not a transition. --- */
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--ink);
 }

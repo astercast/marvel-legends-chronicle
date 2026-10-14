@@ -1,10 +1,10 @@
-/* My Vault — the personal collection tracker, plated like a museum wall.
+/* My Vault, the personal collection tracker, plated like a museum wall.
    Every figure in the archive can be marked Owned / Wanted / Watching from
    its card, its dialog, or right here; the marks live in this browser under
    the shared tracker keys (mlc_owned_v1 / mlc_wanted_v1 / mlc_watching_v1).
    This page renders those marks as accession plates and keeps the ledgers:
-   counts, completion by year, completion by wave. It never invents data —
-   no values, no estimates — and a shelf with nothing on it says so. */
+   counts, completion by year, completion by wave. It never invents data,
+   no values, no estimates, and a shelf with nothing on it says so. */
 import { STORE_KEYS } from "./config.js";
 import { loadData } from "./data.js";
 import { load } from "./store.js";
@@ -97,14 +97,14 @@ function render() {
       <p class="mv-nomatch" hidden>No plates in this hall match your filter.</p>
     </section>`;
   }).join("");
-  // Tracker buttons are live DOM (they own their click handling) — mount
+  // Tracker buttons are live DOM (they own their click handling), mount
   // one set per plate, exactly as the wave pages and dialogs do.
   els.halls.querySelectorAll(".mv-plate").forEach((el) => {
     el.querySelector(".mv-plate-btns").appendChild(trackerButtons(el.getAttribute("data-fig-id")));
   });
 
   els.years.innerHTML = `<h2>Completion by year</h2>
-    <p class="mv-ledger-note">Owned against the whole archive, year by year. Wanted and Watching counts ride along — they are plans, not holdings, and never inflate the bar.</p>
+    <p class="mv-ledger-note">Owned against the whole archive, year by year. Wanted and Watching counts ride along, they are plans, not holdings, and never inflate the bar.</p>
     <div class="mv-year-grid">${model.byYear.map((r) => `
       <div class="mv-year-row"><span class="mv-year-label">${r.year}</span>${bar(r.pct)}<span class="mv-year-count">${r.owned}/${r.total}</span><span class="mv-year-extra">${r.wanted ? `+${r.wanted} wanted` : ""}${r.watching ? ` · ${r.watching} watching` : ""}</span></div>`).join("")}
     </div>`;

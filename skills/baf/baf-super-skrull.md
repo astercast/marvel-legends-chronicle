@@ -17,7 +17,7 @@ You want to build the Super-Skrull BAF from the 2020 Super-Skrull Wave wave. 6 f
 ## Procedure
 
 1. The BAF: **Super-Skrull** (2020, Super-Skrull Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Doctor Doom → Left leg
   - [ ] Human Torch → Normal right arm and rock right arm
   - [ ] Invisible Woman → Torso
@@ -26,7 +26,7 @@ You want to build the Super-Skrull BAF from the 2020 Super-Skrull Wave wave. 6 f
   - [ ] The Thing → Heads
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Super-Skrull torso? Find which figure above carries it, check sold l
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

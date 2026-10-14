@@ -1,7 +1,7 @@
 {
  "version": "v1",
  "observed": "2026-10-11",
- "methodology": "Waves and figures come from data/figures.json — 5 waves carry a 2026 year, plus the Store & Convention Exclusives bucket's 2026 entries. Release dates, windows, and announced MSRPs come from data/preorders.json (21 tracked items); announced prices are never market prices. Price movements use data/price-signals.json only — reported sold bands, averages, listings, and claimed prices with named sources. The Chronicle publishes no price index, and no 2026 figure has reported aftermarket data in the archive yet. The Top 10 is scored, not vibes: each entry's documented distinctions are counted (first-ever figure = 2 points; first-since-a-year, notable pack-in, format distinction, archive-first, or documented 2026 market story = 1 each). Ties break alphabetically. Every distinction cites its record. Best-value ranks announced per-figure MSRP only, using pack sizes stated in each item's own tracker record. No aftermarket data, no quality scores, no speculation. KO coverage is the documented record: no new 2026 counterfeit wave was documented; specific KO listings are named with their sources. Rarity highlights come from the Rarity Guide's tiers.",
+ "methodology": "Waves and figures come from data/figures.json, 5 waves carry a 2026 year, plus the Store & Convention Exclusives bucket's 2026 entries. Release dates, windows, and announced MSRPs come from data/preorders.json (21 tracked items); announced prices are never market prices. Price movements use data/price-signals.json only, reported sold bands, averages, listings, and claimed prices with named sources. The Chronicle publishes no price index, and no 2026 figure has reported aftermarket data in the archive yet. The Top 10 is scored, not vibes: each entry's documented distinctions are counted (first-ever figure = 2 points; first-since-a-year, notable pack-in, format distinction, archive-first, or documented 2026 market story = 1 each). Ties break alphabetically. Every distinction cites its record. Best-value ranks announced per-figure MSRP only, using pack sizes stated in each item's own tracker record. No aftermarket data, no quality scores, no speculation. KO coverage is the documented record: no new 2026 counterfeit wave was documented; specific KO listings are named with their sources. Rarity highlights come from the Rarity Guide's tiers.",
  "count": 10,
  "top10": [
   {
@@ -33,7 +33,7 @@
      "source": "Market briefing: reissue section"
     }
    ],
-   "blurb": "The reissue-cycle story of the year: the sold-out Pulse VHS exclusives return on retro blister cards at the standard $27.99 — with the first-ever solo-carded 6-inch Aunt May leading the wave.",
+   "blurb": "The reissue-cycle story of the year: the sold-out Pulse VHS exclusives return on retro blister cards at the standard $27.99, with the first-ever solo-carded 6-inch Aunt May leading the wave.",
    "links": {
     "preorders": "preorders.html"
    }
@@ -57,19 +57,19 @@
      "source": "Pre-order tracker: bastion-trask-2pack"
     },
     {
-     "claim": "Made-to-order 2-pack at $74.99 — scarcity is the order window",
+     "claim": "Made-to-order 2-pack at $74.99, scarcity is the order window",
      "kind": "format",
      "source": "Pre-order tracker: bastion-trask-2pack"
     }
    ],
-   "blurb": "The biggest swing of 2026: an 11.3-inch-winged Bastion (documented as a first-ever figure in the tracker research) sold made-to-order — scarcity is the order window, not a chase ratio. Window closes November 20, 2026.",
+   "blurb": "The biggest swing of 2026: an 11.3-inch-winged Bastion (documented as a first-ever figure in the tracker research) sold made-to-order, scarcity is the order window, not a chase ratio. Window closes November 20, 2026.",
    "links": {
     "preorders": "preorders.html"
    }
   },
   {
    "id": "cypher-target",
-   "display": "Cypher — Target exclusive",
+   "display": "Cypher, Target exclusive",
    "score": 2,
    "scoring": {
     "first-ever": 2,
@@ -86,7 +86,7 @@
      "source": "Pre-order tracker: cypher-target"
     }
    ],
-   "blurb": "The first-ever Cypher figure arrived via Target's 2026 Geek-Out event — and made the encyclopedia's 2026 exclusives the same year.",
+   "blurb": "The first-ever Cypher figure arrived via Target's 2026 Geek-Out event, and made the encyclopedia's 2026 exclusives the same year.",
    "links": {
     "preorders": "preorders.html",
     "deepLink": "waves/hasbro-2026-exclusives.html#fig-cypher",
@@ -117,7 +117,7 @@
      "source": "Pre-order tracker: mtg-wave-2"
     }
    ],
-   "blurb": "Shipped October 2026 with a playable Magic: The Gathering card in every box — plus an Amazon-exclusive Black Panther on top of the Doom / Captain America / Malice core.",
+   "blurb": "Shipped October 2026 with a playable Magic: The Gathering card in every box, plus an Amazon-exclusive Black Panther on top of the Doom / Captain America / Malice core.",
    "links": {
     "preorders": "preorders.html",
     "deepLink": "waves/hasbro-2026-exclusives.html#fig-black-panther",
@@ -148,7 +148,7 @@
      "source": "Pre-order tracker: mini-comics-wave-3"
     }
    ],
-   "blurb": "Every figure ships with a physical mini comic — and the wave delivers the first red Elektra since 2018 plus a Fraction/Aja-era Hawkeye straight out of Hawkeye #3 (2012).",
+   "blurb": "Every figure ships with a physical mini comic, and the wave delivers the first red Elektra since 2018 plus a Fraction/Aja-era Hawkeye straight out of Hawkeye #3 (2012).",
    "links": {
     "preorders": "preorders.html"
    }
@@ -167,7 +167,7 @@
    },
    "distinctions": [
     {
-     "claim": "2021 Pulse Con exclusive reissued at Fan Channel — reissue-radar candidate resolving live",
+     "claim": "2021 Pulse Con exclusive reissued at Fan Channel, reissue-radar candidate resolving live",
      "kind": "market-story",
      "source": "Market briefing: post-NYCC refresh"
     },
@@ -177,7 +177,7 @@
      "source": "Pre-order tracker: retro-venom-reissue"
     }
    ],
-   "blurb": "The 2021 Pulse Con cel-shaded TAS Venom is back at Fan Channel retailers for $34.99 on a retro cardback — the reissue cycle resolving live, no themed outer box this time.",
+   "blurb": "The 2021 Pulse Con cel-shaded TAS Venom is back at Fan Channel retailers for $34.99 on a retro cardback, the reissue cycle resolving live, no themed outer box this time.",
    "links": {
     "preorders": "preorders.html"
    }
@@ -206,7 +206,7 @@
      "source": "Market briefing: post-NYCC refresh"
     }
    ],
-   "blurb": "The full wave on retro blister cards — Death Gambit with card-dealing effects, team-suit Cyclops, powered-up Jean — with its NYCC-confirmed roster and an October 21, 2026 pre-order date.",
+   "blurb": "The full wave on retro blister cards, Death Gambit with card-dealing effects, team-suit Cyclops, powered-up Jean, with its NYCC-confirmed roster and an October 21, 2026 pre-order date.",
    "links": {
     "preorders": "preorders.html"
    }
@@ -230,7 +230,7 @@
      "source": "Pre-order tracker: astonishing-cyclops-wolverine-2pack"
     }
    ],
-   "blurb": "NYCC 2026's reissue play: the Astonishing X-Men two-pack returns with a reported October 28 pre-order — price not announced at reveal (single source).",
+   "blurb": "NYCC 2026's reissue play: the Astonishing X-Men two-pack returns with a reported October 28 pre-order, price not announced at reveal (single source).",
    "links": {
     "preorders": "preorders.html"
    }
@@ -254,7 +254,7 @@
      "source": "Pre-order tracker: doomsday-wave"
     }
    ],
-   "blurb": "The MCU tie-in wave of the year — Thor with flight stand, Doctor Doom, Gambit, a James Marsden-likeness Cyclops (pre-orders opened July 27, 2026), Magneto, Shang-Chi, and Mr. Fantastic & H.E.R.B.I.E.",
+   "blurb": "The MCU tie-in wave of the year, Thor with flight stand, Doctor Doom, Gambit, a James Marsden-likeness Cyclops (pre-orders opened July 27, 2026), Magneto, Shang-Chi, and Mr. Fantastic & H.E.R.B.I.E.",
    "links": {
     "preorders": "preorders.html",
     "wavePage": "waves/hasbro-2026-doomsday-1.html"
@@ -279,7 +279,7 @@
      "source": "Market briefing: post-NYCC refresh"
     }
    ],
-   "blurb": "Revealed on the NYCC 2026 final-day panel — Concept Series Lord Doom with open and closed spell books, a swappable-head Beast, and a fully-kitted Nightcrawler. Pre-orders opened October 14, 2026 for Spring 2027.",
+   "blurb": "Revealed on the NYCC 2026 final-day panel, Concept Series Lord Doom with open and closed spell books, a swappable-head Beast, and a fully-kitted Nightcrawler. Pre-orders opened October 14, 2026 for Spring 2027.",
    "links": {
     "preorders": "preorders.html"
    }
@@ -349,9 +349,9 @@
   }
  ],
  "gaps": [
-  "Price data covers 7 figures — none of them 2026 releases. The Fall 2026 waves' aftermarket behavior will be the first real test of the reissue-cooling pattern at scale.",
+  "Price data covers 7 figures, none of them 2026 releases. The Fall 2026 waves' aftermarket behavior will be the first real test of the reissue-cooling pattern at scale.",
   "The encyclopedia's 2026 archive is 5 dated waves (114 figures). The pre-order tracker covers 21 items, 17 with 2026 release windows or dates; undated 2027 reveals are listed in the timeline, not ranked.",
-  "No production numbers or chase ratios were ever officially documented for any figure on this page — the Rarity Guide's methodology applies here too.",
+  "No production numbers or chase ratios were ever officially documented for any figure on this page, the Rarity Guide's methodology applies here too.",
   "Observed October 11, 2026. The year isn't over: Q4 pre-order dates and December ship windows may still move."
  ],
  "page": "2026-review.html"

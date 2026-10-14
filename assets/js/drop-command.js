@@ -1,9 +1,9 @@
-/* Drop Week Command Center (wave 32) — the Oct 14 → Nov 1 drop sequence +
+/* Drop Week Command Center (wave 32), the Oct 14 → Nov 1 drop sequence +
    Nov 20 made-to-order deadline, from data/drop-week.json (Oct 2026 research
-   sweep, observed 2026-10-11 — no invented figures, dates, prices, retailers).
+   sweep, observed 2026-10-11, no invented figures, dates, prices, retailers).
    Pure functions are exported for unit tests; init() hydrates drop-week.html.
    The user's battle plan lives in localStorage under STORE_KEYS.dropweek
-   (mlc_dropweek_v1) — browser-local, never uploaded. */
+   (mlc_dropweek_v1), browser-local, never uploaded. */
 
 import { STORE_KEYS } from "./config.js";
 
@@ -35,7 +35,7 @@ export function countdownParts(ms) {
 }
 
 /**
- * "3d 4h 12m" — short countdown text. When the parts carry a `secs` field
+ * "3d 4h 12m", short countdown text. When the parts carry a `secs` field
  * (everything produced by countdownParts/timeToDrop does), the seconds are
  * shown too: on drop morning the last minute is the whole game.
  */
@@ -85,7 +85,7 @@ export function timeToDrop(drop, nowMs = Date.now()) {
 
 /**
  * upcoming (before the day) / drop-day (same local calendar day) / past.
- * Deadlines use the same states — a passed deadline reads "past".
+ * Deadlines use the same states, a passed deadline reads "past".
  */
 export function dropStatus(drop, nowMs = Date.now()) {
   const t = dropTimeMs(drop);
@@ -194,17 +194,17 @@ export function buildPlanShareText(plan, drops, whenText) {
     const names = Object.keys(pd);
     if (!names.length) continue;
     any = true;
-    lines.push(`${d.title} — ${d.windowLabel}`);
+    lines.push(`${d.title}, ${d.windowLabel}`);
     for (const f of d.figures || []) {
       const s = pd[f.name];
-      if (s === "want") lines.push(`  [ ] ${f.name} — going for it`);
-      else if (s === "ordered") lines.push(`  [x] ${f.name} — ordered`);
+      if (s === "want") lines.push(`  [ ] ${f.name}, going for it`);
+      else if (s === "ordered") lines.push(`  [x] ${f.name}, ordered`);
     }
     const c = counts[d.id];
     lines.push(`  (${c.want} going for it · ${c.ordered} ordered)`);
     lines.push("");
   }
-  if (!any) lines.push("No battle plan set yet — pick your targets on the Drop Week Command Center.");
+  if (!any) lines.push("No battle plan set yet, pick your targets on the Drop Week Command Center.");
   return lines.join("\n").trimEnd();
 }
 
@@ -263,7 +263,7 @@ export function removeSighting(list, id) {
 
 /**
  * Per-figure price lanes. `asking` summarizes ONLY asking sightings, `sold`
- * ONLY sold sightings — the two never touch. Empty lane = { count: 0, low: null, high: null }.
+ * ONLY sold sightings, the two never touch. Empty lane = { count: 0, low: null, high: null }.
  */
 export function priceLanes(sightings, figureName) {
   const lane = (kind) => {
@@ -278,31 +278,31 @@ export function priceLanes(sightings, figureName) {
 }
 
 export function fmtMoney(n) {
-  return n == null ? "—" : `$${Number(n).toFixed(2)}`;
+  return n == null ? "n/a" : `$${Number(n).toFixed(2)}`;
 }
 
 /** One honest sentence about a figure's lanes vs its announced MSRP. */
 export function priceVerdict(lanes, msrp) {
   if (lanes.sold.count > 0 && lanes.sold.low <= msrp) {
-    return `Reported solds start at ${fmtMoney(lanes.sold.low)} — at or under the ${fmtMoney(msrp)} MSRP.`;
+    return `Reported solds start at ${fmtMoney(lanes.sold.low)}, at or under the ${fmtMoney(msrp)} MSRP.`;
   }
   if (lanes.sold.count > 0) {
-    return `Reported solds start at ${fmtMoney(lanes.sold.low)} — above MSRP. Wave 1's solds cooled within weeks; patience has a track record here.`;
+    return `Reported solds start at ${fmtMoney(lanes.sold.low)}, above MSRP. Wave 1's solds cooled within weeks; patience has a track record here.`;
   }
   if (lanes.asking.count > 0 && lanes.asking.low > msrp) {
-    return `The cheapest asking price logged is ${fmtMoney(lanes.asking.low)} — ${fmtMoney(lanes.asking.low - msrp)} over MSRP. An asking price is a hope, not a sale.`;
+    return `The cheapest asking price logged is ${fmtMoney(lanes.asking.low)}, ${fmtMoney(lanes.asking.low - msrp)} over MSRP. An asking price is a hope, not a sale.`;
   }
   if (lanes.asking.count > 0) {
-    return `Asking prices logged start at ${fmtMoney(lanes.asking.low)} — at MSRP. No solds logged yet.`;
+    return `Asking prices logged start at ${fmtMoney(lanes.asking.low)}, at MSRP. No solds logged yet.`;
   }
-  return "Nothing logged yet — this lane fills in from your own sightings.";
+  return "Nothing logged yet, this lane fills in from your own sightings.";
 }
 
 /* ---- drop-day capture log (user state) ----
    The Oct 14 window, recorded as it happens. Two lanes again, and they are
    stricter than the price tracker's: a listing entry is an asking price seen
    at one retailer at one real moment; a sellout entry is an event and carries
-   NO price. Sold prices never enter this log at all — they belong to the
+   NO price. Sold prices never enter this log at all, they belong to the
    price tracker's sold lane. */
 
 export const CAPTURE_KEY = STORE_KEYS.dropweekCapture;
@@ -326,7 +326,7 @@ function validStamp(value) {
 /**
  * Validate + normalize one capture entry. A listing needs a figure, a capture
  * door, a positive asking price, and a real timestamp. A sellout needs the
- * figure, door, and timestamp — and its price is forced to null: a sellout
+ * figure, door, and timestamp, and its price is forced to null: a sellout
  * is an event, not a price, whatever the caller passed in.
  */
 export function makeCaptureEntry(raw) {
@@ -379,7 +379,7 @@ export function firstListing(log, figureName) {
 /**
  * First asking-price spread for one figure from the listing lane ONLY:
  * low/high across the doors, each end's delta against the announced MSRP,
- * plus the door at each end. Sellouts never touch this — they have no price.
+ * plus the door at each end. Sellouts never touch this, they have no price.
  * Empty lane = count 0 and nulls, never zeroes.
  */
 export function captureSpread(log, figureName, msrp) {
@@ -416,7 +416,7 @@ export function selloutTimeline(log) {
 export function thirtyClaimVerdict(log, msrp = 27.99) {
   const listings = (log && log.listings) || [];
   if (!listings.length) {
-    return { status: "pending", text: "Pending — no live listings captured yet. The first listings settle this." };
+    return { status: "pending", text: "Pending, no live listings captured yet. The first listings settle this." };
   }
   const pulse = listings.filter((e) => e.retailer === "Hasbro Pulse");
   const deciding = pulse.length ? pulse : listings;
@@ -425,9 +425,9 @@ export function thirtyClaimVerdict(log, msrp = 27.99) {
     return { status: "above-msrp", text: `The claim stands at the deciding door: a first listing posted at ${fmtMoney(Math.max(...prices))}, above the announced ${fmtMoney(msrp)} MSRP.` };
   }
   if (prices.every((p) => p === msrp)) {
-    return { status: "at-msrp", text: `Settled at the announced price: the deciding door posted at ${fmtMoney(msrp)} — the rise-toward-$30 claim is not borne out by the first listings.` };
+    return { status: "at-msrp", text: `Settled at the announced price: the deciding door posted at ${fmtMoney(msrp)}, the rise-toward-$30 claim is not borne out by the first listings.` };
   }
-  return { status: "mixed", text: `Partly settled: first listings at the deciding door run ${fmtMoney(Math.min(...prices))}–${fmtMoney(Math.max(...prices))} against the announced ${fmtMoney(msrp)} — above MSRP somewhere, but nothing at $30.` };
+  return { status: "mixed", text: `Partly settled: first listings at the deciding door run ${fmtMoney(Math.min(...prices))}–${fmtMoney(Math.max(...prices))} against the announced ${fmtMoney(msrp)}, above MSRP somewhere, but nothing at $30.` };
 }
 
 /**
@@ -471,7 +471,7 @@ function savePlan(plan) {
   try {
     localStorage.setItem(PLAN_KEY, JSON.stringify(plan));
   } catch {
-    /* quota or privacy mode — the plan just doesn't persist */
+    /* quota or privacy mode, the plan just doesn't persist */
   }
 }
 
@@ -490,7 +490,7 @@ function saveJson(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch {
-    /* quota or privacy mode — the state just doesn't persist */
+    /* quota or privacy mode, the state just doesn't persist */
   }
 }
 
@@ -531,7 +531,7 @@ function renderHero(data, drops) {
   const nd = nextDrop(drops);
   hero.innerHTML = "";
   if (!nd) {
-    hero.appendChild(el("p", "dw-hero-note", "Every tracked window has passed — check the pre-order tracker for what's next."));
+    hero.appendChild(el("p", "dw-hero-note", "Every tracked window has passed, check the pre-order tracker for what's next."));
     return;
   }
   /* ids as string literals so the validate.sh id cross-check sees them */
@@ -550,7 +550,7 @@ function renderHero(data, drops) {
   const local = hero.querySelector(".dw-next-local");
   if (local && nd.windowAt) {
     const here = formatWindowLocal(nd.windowAt);
-    if (here) local.textContent = `That is ${here} where you are — set the alarm for your clock, not ET's.`;
+    if (here) local.textContent = `That is ${here} where you are, set the alarm for your clock, not ET's.`;
   }
 }
 
@@ -560,7 +560,7 @@ function tickCountdowns(drops) {
     const t = timeToDrop(d, now);
     const badge = document.querySelector(`[data-countdown="${d.id}"]`);
     if (badge) {
-      badge.textContent = t && !t.past ? formatCountdown(t) : t && t.past ? "—" : "";
+      badge.textContent = t && !t.past ? formatCountdown(t) : t && t.past ? "n/a" : "";
       badge.classList.toggle("is-past", !!(t && t.past));
     }
   }
@@ -601,7 +601,7 @@ function renderDrops(drops, plan) {
     const badge = el("p", `dw-badge dw-badge-${status}`);
     const cd = el("span", "dw-countdown");
     cd.dataset.countdown = d.id;
-    badge.append(el("span", null, `${statusLabel(status, d.kind)} · `), cd);
+    badge.append(el("span", "dw-slot-label", "Status"), el("span", "dw-status-word", `${statusLabel(status, d.kind)} · `), cd);
 
     const h = el("h3", "dw-card-title", d.title);
     h.id = `drop-${d.id}-h`;
@@ -614,7 +614,8 @@ function renderDrops(drops, plan) {
     when.appendChild(timeEl);
 
     const rets = el("p", "dw-retailers", `Where: ${(d.retailers || []).join(" · ")}`);
-    const price = el("p", "dw-price", d.price && d.price.text ? d.price.text : "");
+    const price = el("p", "dw-price");
+    price.append(el("span", "dw-slot-label", "Listed"), document.createTextNode(d.price && d.price.text ? d.price.text : ""));
     const ship = el("p", "dw-ship", d.shipWindow ? `Ships: ${d.shipWindow}` : "");
 
     const figList = el("ul", "dw-figs");
@@ -628,7 +629,7 @@ function renderDrops(drops, plan) {
       const state = planState(plan, d.id, f.name);
       btn.dataset.state = state || "none";
       btn.setAttribute("aria-pressed", state === "want" || state === "ordered" ? "true" : "false");
-      btn.setAttribute("aria-label", `${f.name}: ${state === "ordered" ? "ordered — activate to clear" : state === "want" ? "going for it — activate to mark ordered" : "not targeted — activate to target"}`);
+      btn.setAttribute("aria-label", `${f.name}: ${state === "ordered" ? "ordered, activate to clear" : state === "want" ? "going for it, activate to mark ordered" : "not targeted, activate to target"}`);
       const name = el("span", "dw-fig-name", f.name);
       const tag = el("span", "dw-fig-tag", state === "ordered" ? "✓ ordered" : state === "want" ? "→ going for it" : "+ target");
       btn.append(name, tag);
@@ -657,7 +658,7 @@ function renderDrops(drops, plan) {
 
 /**
  * The display text of one intel item. Price-intel items are objects
- * ({"text": …}) in the data — the same shape the scarcity list carries —
+ * ({"text": …}) in the data, the same shape the scarcity list carries,
  * while KO-watch items are plain strings. Reading the item itself as
  * text renders an object item literally as "[object Object]" (VP-0009);
  * the renderer must read `.text`, mirroring the scarcity path.
@@ -727,7 +728,7 @@ function renderChecklist(items) {
     if (progress) {
       progress.textContent =
         done === total
-          ? `All ${total} done. You are ready for the window — the rest is clicking.`
+          ? `All ${total} done. You are ready for the window, the rest is clicking.`
           : `${done} of ${total} done.`;
     }
   };
@@ -832,12 +833,12 @@ function renderPriceWatch(pw) {
       const msrp = el("td", "dw-price-msrp", fmtMoney(f.msrp));
       const asking = el("td", "dw-price-lane",
         lanes.asking.count
-          ? `${fmtMoney(lanes.asking.low)}${lanes.asking.high > lanes.asking.low ? ` – ${fmtMoney(lanes.asking.high)}` : ""} (${lanes.asking.count} logged)`
+          ? `${fmtMoney(lanes.asking.low)}${lanes.asking.high > lanes.asking.low ? `, ${fmtMoney(lanes.asking.high)}` : ""} (${lanes.asking.count} logged)`
           : "No listings logged yet");
       const sold = el("td", "dw-price-lane",
         lanes.sold.count
-          ? `${fmtMoney(lanes.sold.low)}${lanes.sold.high > lanes.sold.low ? ` – ${fmtMoney(lanes.sold.high)}` : ""} (${lanes.sold.count} logged)`
-          : "No solds yet — the wave ships Spring 2027");
+          ? `${fmtMoney(lanes.sold.low)}${lanes.sold.high > lanes.sold.low ? `, ${fmtMoney(lanes.sold.high)}` : ""} (${lanes.sold.count} logged)`
+          : "No solds yet, the wave ships Spring 2027");
       const verdict = el("td", "dw-price-verdict", priceVerdict(lanes, f.msrp));
       tr.append(name, msrp, asking, sold, verdict);
       body.appendChild(tr);
@@ -846,7 +847,7 @@ function renderPriceWatch(pw) {
     if (list) {
       list.innerHTML = "";
       if (!sightings.length) {
-        list.appendChild(el("li", "dw-note", "No sightings logged yet. When a listing catches your eye at the window, put it here — asking or sold, never both at once."));
+        list.appendChild(el("li", "dw-note", "No sightings logged yet. When a listing catches your eye at the window, put it here, asking or sold, never both at once."));
       }
       for (const s of [...sightings].reverse()) {
         const li = el("li", "dw-sighting");
@@ -902,7 +903,7 @@ const POLL_FLAG_LABELS = {
   "confirmed": "Confirmed",
   "reported": "Reported",
   "single-source": "Single source",
-  "uncertain": "Uncertain — not confirmed",
+  "uncertain": "Uncertain, not confirmed",
 };
 
 function renderRadarPoll(poll) {
@@ -936,11 +937,11 @@ function renderRadarPoll(poll) {
   a.href = "radar.html";
   a.textContent = "Reveal Radar";
   more.appendChild(a);
-  more.appendChild(document.createTextNode(" — candidates stay candidates until a second source or Hasbro confirms them."));
+  more.appendChild(document.createTextNode(", candidates stay candidates until a second source or Hasbro confirms them."));
   wrap.appendChild(more);
 }
 
-let captureCtx = null; // { report, priceWatch, published } — set in init()
+let captureCtx = null; // { report, priceWatch, published }, set in init()
 
 function normalizeLog(raw) {
   const out = newCaptureLog();
@@ -984,7 +985,7 @@ function renderCapture(proto, published, pw) {
     doors.innerHTML = "";
     for (const r of proto.retailers || []) {
       const li = el("li", "dw-cap-door");
-      li.appendChild(el("strong", null, `${r.name} — `));
+      li.appendChild(el("strong", null, `${r.name}, `));
       li.appendChild(document.createTextNode(r.role || ""));
       doors.appendChild(li);
     }
@@ -1016,7 +1017,7 @@ function renderCapture(proto, published, pw) {
     const pub = normalizeLog(published);
     statusNote.textContent = pub.listings.length || pub.sellouts.length
       ? `The published capture record holds ${pub.listings.length} listing(s) and ${pub.sellouts.length} sellout event(s) so far.`
-      : "The published capture log is empty — the window has not opened yet, and empty is the correct state for it. Your own entries below live in this browser only.";
+      : "The published capture log is empty, the window has not opened yet, and empty is the correct state for it. Your own entries below live in this browser only.";
   }
 
   const figSelect = document.getElementById("dw-cap-fig");
@@ -1058,7 +1059,7 @@ function renderCapture(proto, published, pw) {
     ].sort((a, b) => Date.parse(a.observedAt) - Date.parse(b.observedAt));
     list.innerHTML = "";
     if (!entries.length) {
-      list.appendChild(el("li", "dw-note", "Nothing captured yet. The first listing you see at the window becomes the first entry — price, door, and the real time you saw it."));
+      list.appendChild(el("li", "dw-note", "Nothing captured yet. The first listing you see at the window becomes the first entry, price, door, and the real time you saw it."));
     }
     for (const e of entries) {
       const li = el("li", "dw-sighting");
@@ -1100,7 +1101,7 @@ function renderCapture(proto, published, pw) {
         note: note ? note.value : "",
       });
       if (!entry) {
-        if (status) status.textContent = "That entry needs a figure, a capture door, a real time, and — for a listing — an asking price above zero. Sellouts need no price; they are events.";
+        if (status) status.textContent = "That entry needs a figure, a capture door, a real time, and, for a listing, an asking price above zero. Sellouts need no price; they are events.";
         return;
       }
       saveJson(CAPTURE_KEY, addCaptureEntry(loadCaptureLog(), entry));
@@ -1108,7 +1109,7 @@ function renderCapture(proto, published, pw) {
       if (note) note.value = "";
       if (status) {
         status.textContent = entry.kind === "sellout"
-          ? `Logged sellout: ${entry.figure} at ${entry.retailer}. No price attached — a sellout is an event.`
+          ? `Logged sellout: ${entry.figure} at ${entry.retailer}. No price attached, a sellout is an event.`
           : `Logged listing: ${entry.figure} asking ${fmtMoney(entry.price)} at ${entry.retailer}. It stays in the asking lane.`;
       }
       renderMine();
@@ -1144,7 +1145,7 @@ function renderWindowReport(report, pw) {
     summary.innerHTML = "";
     if (!built.listingCount && !built.sellouts.length) {
       summary.appendChild(el("p", "dw-note",
-        "Awaiting the window: nothing captured yet, so nothing is filled in. This report is written from the capture log alone after the window — no section is pre-written, and an empty sellout list at close is a finding, not a failure."));
+        "Awaiting the window: nothing captured yet, so nothing is filled in. This report is written from the capture log alone after the window, no section is pre-written, and an empty sellout list at close is a finding, not a failure."));
     } else {
       const lines = [];
       lines.push(`${built.listingCount} listing(s) and ${built.sellouts.length} sellout event(s) captured so far.`);
@@ -1154,7 +1155,7 @@ function renderWindowReport(report, pw) {
       for (const f of pw.figures) {
         const s = built.spreads[f.name];
         if (s.count) {
-          lines.push(`${f.name}: first asking spread ${fmtMoney(s.low)} (${s.lowDoor}) – ${fmtMoney(s.high)} (${s.highDoor}) against the announced ${fmtMoney(msrp)}.`);
+          lines.push(`${f.name}: first asking spread ${fmtMoney(s.low)} (${s.lowDoor}), ${fmtMoney(s.high)} (${s.highDoor}) against the announced ${fmtMoney(msrp)}.`);
         }
       }
       lines.push(built.thirtyClaim.text);
@@ -1171,7 +1172,7 @@ function wirePlan(drops, plan) {
     if (countLine) {
       countLine.textContent =
         want + ordered === 0
-          ? "No targets set yet — tap a figure to add it to your battle plan."
+          ? "No targets set yet, tap a figure to add it to your battle plan."
           : `${want} going for it · ${ordered} ordered across ${drops.length} drops.`;
     }
   };
@@ -1187,7 +1188,7 @@ function wirePlan(drops, plan) {
         state === "ordered" ? "✓ ordered" : state === "want" ? "→ going for it" : "+ target";
       btn.setAttribute(
         "aria-label",
-        `${btn.dataset.fig}: ${state === "ordered" ? "ordered — activate to clear" : state === "want" ? "going for it — activate to mark ordered" : "not targeted — activate to target"}`
+        `${btn.dataset.fig}: ${state === "ordered" ? "ordered, activate to clear" : state === "want" ? "going for it, activate to mark ordered" : "not targeted, activate to target"}`
       );
       update();
     });
@@ -1199,9 +1200,9 @@ function wirePlan(drops, plan) {
       const text = buildPlanShareText(plan, drops, "Observed 2026-10-12 · times in ET");
       try {
         await navigator.clipboard.writeText(text);
-        if (status) status.textContent = "Battle plan copied — paste it anywhere.";
+        if (status) status.textContent = "Battle plan copied, paste it anywhere.";
       } catch {
-        if (status) status.textContent = "Copy failed — your browser blocked clipboard access.";
+        if (status) status.textContent = "Copy failed, your browser blocked clipboard access.";
       }
     });
   }
@@ -1223,7 +1224,7 @@ function wirePlan(drops, plan) {
 }
 
 /* Sticky in-page rail: highlight the section in view (no smooth-scroll
-   animation — native anchors + scroll-margin only, reduced-motion safe). */
+   animation, native anchors + scroll-margin only, reduced-motion safe). */
 function wireRail() {
   const links = [...document.querySelectorAll(".dw-rail a")];
   if (!links.length || !("IntersectionObserver" in window)) return;

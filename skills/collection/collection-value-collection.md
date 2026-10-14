@@ -16,8 +16,8 @@ Insurance, selling, or just knowing.
 ## Procedure
 
 1. Price each figure from 90-day eBay SOLD listings in matching condition.
-2. Loose complete vs boxed vs graded — match the condition tier exactly.
-3. Sum, then haircut 15% — that's the realizable number.
+2. Loose complete vs boxed vs graded, match the condition tier exactly.
+3. Sum, then haircut 15%, that's the realizable number.
 4. Revisit annually; the market moves.
 
 ## Worked example
@@ -30,4 +30,4 @@ Insurance, selling, or just knowing.
 
 ## Pitfalls
 
-- Valuing at asking prices — that's fantasy accounting.
+- Valuing at asking prices, that's fantasy accounting.

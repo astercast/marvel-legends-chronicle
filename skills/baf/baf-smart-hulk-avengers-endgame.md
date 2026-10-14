@@ -17,7 +17,7 @@ You want to build the Smart Hulk (Avengers: Endgame) BAF from the 2019 Smart Hul
 ## Procedure
 
 1. The BAF: **Smart Hulk (Avengers: Endgame)** (2019, Smart Hulk Wave).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Beta Ray Bill → Heads
   - [ ] Loki → Right leg
   - [ ] Rescue → Torso
@@ -26,7 +26,7 @@ You want to build the Smart Hulk (Avengers: Endgame) BAF from the 2019 Smart Hul
   - [ ] Union Jack → Right arm
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Smart Hulk (Avengers: Endgame) torso? Find which figure above carrie
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

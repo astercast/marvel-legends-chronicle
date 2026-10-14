@@ -32,9 +32,10 @@ suite("vault identity — tokens", () => {
     }
   });
 
-  test("type stacks resolve to the fleet-locked families", () => {
-    assert(/--font-display:\s*"Cinzel"/.test(tokens), "--font-display is Cinzel");
+  test("type stacks resolve to the light system's voices (MARVEL-LIGHT 4)", () => {
+    assert(/--font-display:\s*"Newsreader"/.test(tokens), "--font-display is Newsreader, the catalogue's voice");
     assert(/--font-body:\s*"Newsreader"/.test(tokens), "--font-body is Newsreader");
+    assert(/--font-nameplate:\s*"Cinzel"/.test(tokens), "Cinzel is demoted to the nameplate stack (masthead + seal ring only)");
     assert(/--font-mono:/.test(tokens), "--font-mono token retained");
   });
 
@@ -54,25 +55,29 @@ suite("vault identity — tokens", () => {
     assert(/--dur-3:\s*0\.4s/.test(tokens), "dur-3 0.4s");
   });
 
-  test("focus ring is the gold tactile signature", () => {
-    assert(/--focus-ring:.*var\(--gold\)/.test(tokens), "gold focus ring");
+  test("focus ring is Paper against Ink (no gold survives as a surface color)", () => {
+    assert(/--focus-ring:.*var\(--bg\).*var\(--ink\)/.test(tokens), "Paper/Ink focus ring");
+    assert(/--ground-paper:\s*#FAF6EC/.test(tokens), "Paper token is the study value");
+    assert(/--catalogue-blue:\s*#2E4A62/.test(tokens), "Catalogue Blue token is the study value");
+    assert(/--plate-red:\s*#A3271B/.test(tokens), "Plate Red token is the study value");
   });
 });
 
 suite("vault identity — components", () => {
   test("vault.css ships the identity kit", () => {
-    for (const sel of [".placard", ".wax-seal", ".accession", ".rope-rule", ".motion-toggle", ".btn-seal", ".fig-list > .fig", ".stat::before"]) {
+    for (const sel of [".placard", ".seal-stamp", ".accession", ".rope-rule", ".motion-toggle", ".btn-seal", ".fig-list > .fig", ".stat"]) {
       assert(vaultCss.includes(sel), `missing ${sel}`);
     }
-    assert(vaultCss.includes("Vitrine sheen"), "vitrine sheen section present");
+    assert(!vaultCss.includes("Vitrine sheen"), "vitrine sheen section is REMOVED (light does not gleam)");
+    assert(!/gradient/.test(vaultCss), "no gradients anywhere in the identity layer");
   });
 
-  test("selection washes brass with a set text color (never background alone)", () => {
+  test("selection washes Board with a set text color (never background alone)", () => {
     const combined = base + vaultCss;
     const m = combined.match(/::selection\s*\{[^}]*\}/);
     assert(m, "::selection rule present");
-    assert(/background:\s*var\(--gold\)/.test(m[0]), "brass wash");
-    assert(/color:\s*#171204/.test(m[0]), "dark text color set");
+    assert(/background:\s*var\(--board\)/.test(m[0]), "Board wash");
+    assert(/color:\s*var\(--ink\)/.test(m[0]), "Ink text color set");
   });
 
   test("scrollbar-gutter is stable (no layout jog on filter pages)", () => {
@@ -83,7 +88,8 @@ suite("vault identity — components", () => {
     assert(!/vault-sweep/.test(vaultCss), "no sweep keyframes or use remains in vault.css");
     assert(!/html\.vault-motion \.hero::before/.test(vaultCss), "the hero carries no entrance layer");
     const museumCss = read("assets/css/museum.css");
-    assert(/\.plinth-light/.test(museumCss), "the sweep's named replacement is the plinth light in museum.css");
+    assert(!/\.plinth-light/.test(museumCss), "the plinth light is RETIRED with the light build (a plate is printed, not lit)");
+    assert(/\.plate-mark/.test(museumCss), "its named replacement is the printed plate in museum.css");
   });
 });
 
@@ -100,16 +106,19 @@ suite("vault identity — motion behavior (static)", () => {
     assert(vaultJs.includes("aria-pressed"), "syncs aria-pressed");
   });
 
-  test("vault.js is reduced-motion-first (reveal + sheen only when allowed)", () => {
-    assert(vaultJs.includes("IntersectionObserver"), "IO-gated reveals");
-    assert(vaultJs.includes("vault-motion"), "vault-motion class gate");
-    assert(vaultJs.includes("pointer: fine"), "sheen skips touch pointers");
-    assert(vaultJs.includes("requestAnimationFrame"), "sheen is rAF-throttled");
+  test("vault.js carries no reveal or sheen machinery (removed with the light build)", () => {
+    assert(!vaultJs.includes("initReveals"), "scroll reveals are gone");
+    assert(!vaultJs.includes("initSheen"), "the vitrine sheen is gone");
+    assert(!vaultJs.includes("data-reveal"), "nothing is hidden for later reveal");
+    assert(vaultJs.includes("vault-motion"), "the vault-motion gate remains for the seal press + hovers");
+    assert(vaultJs.includes(".motion-toggle"), "the manual toggle remains");
   });
 
-  test("base.css authors still-state as default, motion as opt-in", () => {
-    assert(base.includes("@media (prefers-reduced-motion: no-preference)"), "additive motion block");
-    assert(/no-preference\)\s*\{[^}]*\.rise/.test(base), ".rise animation inside no-preference only");
+  test("base.css authors still-state as the only state (no entrance system ships)", () => {
+    assert(!/@keyframes rise-in/.test(base), "the rise-in entrance is removed at source");
+    assert(!/\.rise\s*\{/.test(base), "no uniform reveal class remains");
+    assert(!base.includes("scroll-behavior: smooth"), "travel is a cut, not a glide");
+    assert(base.includes("@view-transition { navigation: none; }"), "the cut is the estate default");
     assert(base.includes("font-optical-sizing: auto"), "optical sizing for Newsreader opsz axis");
   });
 });

@@ -20,33 +20,33 @@ x = items["xmen97-retro-wave"]
 x["details"] = (
     "Hobby-press 'Wave 4': Death Gambit (2 kinetic energy card power effects), Cyclops "
     "(New X-Men bomb-jacket design, alt head + 2 alt hands), Jean Grey (alt hands, powered "
-    "effects), Vindicator (2 heads — comic + X-Men '97 versions, extra hands), X-Factor Havok "
-    "(alt hands, powered effects), X-Factor Polaris (powered effects, second pair of hands) — "
+    "effects), Vindicator (2 heads, comic + X-Men '97 versions, extra hands), X-Factor Havok "
+    "(alt hands, powered effects), X-Factor Polaris (powered effects, second pair of hands), "
     "all on retro blister cards, Season 2-inspired. Pre-orders opened Oct 21, 2026, 1 PM ET at "
     "Pulse, Amazon + retailers → Fall 2026. Oct 12 re-check: the Oct 21 window stands "
     "(1 PM ET, Pulse + Amazon + participating retailers, Fall 2026)."
 )
-add_src(x, "ScreenRant — Doomsday + X-Men '97 figures (Oct 11, 2026)",
+add_src(x, "ScreenRant, Doomsday + X-Men '97 figures (Oct 11, 2026)",
         "https://screenrant.com/marvel-legends-avengers-doomsday-x-men-97-figures/")
-add_src(x, "Near Complete Set — NYCC 2026 Hasbro panel liveblog (Oct 11, 2026)",
+add_src(x, "Near Complete Set, NYCC 2026 Hasbro panel liveblog (Oct 11, 2026)",
         "https://nearcompleteset.com/2026/10/11/nycc-26-hasbro-marvel-panel/")
 
 # Doomsday Wave 2: accessory counts + ComicBook cut-design note + prose-slip flag
 d = items["doomsday-wave-2"]
 d["details"] = (
-    "NYCC 2026 final-day panel: Lord Doom (Concept Series — from movie concept art, not the "
+    "NYCC 2026 final-day panel: Lord Doom (Concept Series, from movie concept art, not the "
     "on-screen look; the design was cut from the film per ComicBook; 2 alt hands, open + closed "
     "spell books), Beast (5 accessories: alt head, removable glasses, 2 alt hands, computer "
     "data pad), Nightcrawler (5 accessories: 2 alt hands, 2 swords, tail). Pre-orders opened "
     "Oct 14, 2026, 1 PM ET at Pulse, Amazon + retailers, Spring 2027. The panel also confirmed "
-    "a running likeness change on the Doomsday Thor figure — variant alert for carded "
+    "a running likeness change on the Doomsday Thor figure, variant alert for carded "
     "collectors. Oct 12 re-check: the Oct 14 window (1 PM ET, Pulse + Amazon + participating "
-    "retailers, Spring 2027) still stands — reconfirmed by Mephitsu, MaxBlizz, ScreenRant and "
+    "retailers, Spring 2027) still stands, reconfirmed by Mephitsu, MaxBlizz, ScreenRant and "
     "FlickeringMyth. (Note: one line of Mephitsu's panel prose says '14th of November'; the "
-    "official press block on the same page says October 14 — treated as a prose slip, the "
+    "official press block on the same page says October 14, treated as a prose slip, the "
     "official date stands.)"
 )
-add_src(d, "ComicBook — Lord Doom cut concept design (Oct 11, 2026)",
+add_src(d, "ComicBook, Lord Doom cut concept design (Oct 11, 2026)",
         "https://comicbook.com/movies/news/avengers-figure-reveals-lord-doom-doomsday-concept-design-that-was-cut-from-the-film/")
 
 # YFNS: sale time + Carbonadium suit + accessory breakdown
@@ -59,7 +59,7 @@ y["details"] = (
     "Oct 12 re-check: the Nov 1 Pulse-exclusive sale still stands; no pre-order window and no "
     "announced price."
 )
-add_src(y, "MarvelousNews — YFNS 2-pack: Nov 1, 1 PM EDT (Oct 2026)",
+add_src(y, "MarvelousNews, YFNS 2-pack: Nov 1, 1 PM EDT (Oct 2026)",
         "https://marvelousnews.com/252-39296")
 
 # Astonishing 2-pack: re-confirm price unannounced
@@ -81,7 +81,7 @@ c["details"] = (
 )
 c["price"] = 27.99
 c["releaseWindow"] = "October 2026"
-add_src(c, "BleedingCool — Target-exclusive Cypher (Sep 2026, single source)",
+add_src(c, "BleedingCool, Target-exclusive Cypher (Sep 2026, single source)",
         "https://bleedingcool.com/collectibles/exclusive-marvel-legends-x-men-cypher-figure-revealed-by-hasbro/")
 
 # NEW: Super-Skrull Fan Channel reissue (wave-30 research integration)
@@ -102,7 +102,7 @@ items["super-skrull-reissue"] = {
         "GameStop and Zavvi. Another availability-based premium under the reissue radar."
     ),
     "sources": [
-        {"label": "ToyHypeUSA — Super-Skrull reissue pre-orders (Sep 24, 2026)",
+        {"label": "ToyHypeUSA, Super-Skrull reissue pre-orders (Sep 24, 2026)",
          "url": "https://toyhypeusa.com/2026/09/24/hasbro-marvel-legends-series-fantastic-four-super-skrull-figure-pre-orders/"}
     ],
 }
@@ -118,14 +118,14 @@ by_id = {x["id"]: x for x in sig["signals"]}
 
 w = by_id["white-epic-heroes-doom"]
 w["asOf"] = "2026-10-12"
-w["note"] = ("Most recent reported sold $200.00 (Aug 10, 2026) — top of the band. Earlier 2026 "
-             "solds: Mar 12 $150, May 3 $149. Oct 12, 2026 re-check: still no new solds — "
+w["note"] = ("Most recent reported sold $200.00 (Aug 10, 2026), top of the band. Earlier 2026 "
+             "solds: Mar 12 $150, May 3 $149. Oct 12, 2026 re-check: still no new solds, "
              "the band stands. One tracker, not a valuation.")
 
 g = by_id["green-epic-heroes-doom"]
 g["asOf"] = "2026-10-12"
 g["note"] = ("$62.44 avg over 48 tracked sales (Legendsverse). Recent solds: Sep 6, 2026 $49.49, "
-             "Aug 27 $40.00, Jul 29 $74.87 — inside the $40–$75 band. Oct 12, 2026 re-check: "
+             "Aug 27 $40.00, Jul 29 $74.87, inside the $40–$75 band. Oct 12, 2026 re-check: "
              "the band stands. One tracker, not a valuation.")
 
 sig["signals"].append({
@@ -170,7 +170,7 @@ sig["signals"].append({
     "source": "StockX last-sale record",
     "sourceUrl": "https://stockx.com/hasbro-marvel-legends-retro-spider-man-ben-reilly-spider-man-action-figure",
     "note": ("StockX verified last-sale record (release 04/01/2022, retail $23): $35. Single "
-             "transaction record, not a band — observed Oct 2026 via research mission."),
+             "transaction record, not a band, observed Oct 2026 via research mission."),
 })
 sig["observed"] = "2026-10-12"
 s.write_text(json.dumps(sig, ensure_ascii=False) + "\n")

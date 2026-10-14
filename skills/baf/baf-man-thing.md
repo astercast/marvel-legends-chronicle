@@ -17,7 +17,7 @@ You want to build the Man-Thing BAF from the 2017 Man-Thing Wave (Netflix) wave.
 ## Procedure
 
 1. The BAF: **Man-Thing** (2017, Man-Thing Wave (Netflix)).
-2. Checklist — buy the figure, keep the piece:
+2. Checklist, buy the figure, keep the piece:
   - [ ] Blade → Right leg
   - [ ] Bullseye → Right arm
   - [ ] Daredevil → Head
@@ -26,7 +26,7 @@ You want to build the Man-Thing BAF from the 2017 Man-Thing Wave (Netflix) wave.
   - [ ] Punisher → Left arm
 3. Prioritize: figures you want anyway first, then cheapest piece-carriers.
 4. Verify each piece against the BAF's assembly (some waves split one piece across variants).
-5. Keep boxes until the BAF is complete — piece claims need proof.
+5. Keep boxes until the BAF is complete, piece claims need proof.
 
 ## Worked example
 
@@ -38,5 +38,5 @@ Missing the Man-Thing torso? Find which figure above carries it, check sold list
 
 ## Pitfalls
 
-- Buying a figure for the piece, then discovering the variant doesn't include it — check bafPiece notes.
-- Bootleg BAF pieces don't fit right — authenticate the figures first.
+- Buying a figure for the piece, then discovering the variant doesn't include it, check bafPiece notes.
+- Bootleg BAF pieces don't fit right, authenticate the figures first.

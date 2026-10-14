@@ -7,7 +7,7 @@ generalized from marvel-legends-chronicle's update_nav.py.
 The contract:
   - nav_data.py is the ONLY place nav links are listed.
   - Each page's nav blocks are located by their stable anchors (the
-    regexes below) and REPLACED wholesale — never patched, never
+    regexes below) and REPLACED wholesale, never patched, never
     inserted-into. Rebuilding is what makes the run idempotent.
   - Pages a generator owns are NOT this script's job: the generator
     imports nav_data itself and renders fresh nav every build. This
@@ -19,7 +19,7 @@ Usage:
                                           write nothing (wave checks)
 
 Site configuration = the constants below + the two anchor regexes.
-Adjust them ONCE, here, when adopting — never per wave.
+Adjust them ONCE, here, when adopting, never per wave.
 """
 import re
 import sys
@@ -52,7 +52,7 @@ def rebuild(text, current, prefix):
     # Canonical fix vs the source: the primary replacement normalizes
     # the whitespace group 1 captured. The source wrote group(1) back
     # verbatim, and since the renderer indents its first item, each
-    # run re-captured the previous run's indent and added its own —
+    # run re-captured the previous run's indent and added its own,
     # +8 spaces per run, silently (the source site's homepage first
     # link sits 64 spaces deep). The renderer owns the layout: tag,
     # one newline, then the items.

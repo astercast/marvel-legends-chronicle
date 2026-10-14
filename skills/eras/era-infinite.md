@@ -15,7 +15,7 @@ Collecting 2016–2021 releases.
 
 ## Procedure
 
-1. Deep-cut characters debuted here — check character guides for first-appearance figures.
+1. Deep-cut characters debuted here, check character guides for first-appearance figures.
 2. MCU waves: buy on release; they saturate then climb.
 3. Army builders: decide your troop count before the aftermarket does it for you.
 
@@ -29,4 +29,4 @@ First-appearance deep cuts from this era are the next decade's grails.
 
 ## Pitfalls
 
-- MCU wave FOMO — most restock; patience beats panic.
+- MCU wave FOMO, most restock; patience beats panic.

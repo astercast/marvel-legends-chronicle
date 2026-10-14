@@ -16,7 +16,7 @@ Chasing 1-per-case variants.
 
 ## Procedure
 
-1. Learn the case ratio — it sets the fair price ceiling.
+1. Learn the case ratio, it sets the fair price ceiling.
 2. Check retail first: chases surface in restocks.
 3. Aftermarket: pay the ratio premium, not the hype premium.
 4. Decide: chase or standard? Most collectors are happy with the standard.
@@ -31,4 +31,4 @@ Chasing 1-per-case variants.
 
 ## Pitfalls
 
-- Launch-week panic buying — chases settle after 60 days.
+- Launch-week panic buying, chases settle after 60 days.

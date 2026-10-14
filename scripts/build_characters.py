@@ -30,8 +30,8 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-# Navigation comes from the canonical source — scripts/nav_data.py.
-# (The old per-script NAV_LINKS / PRIMARY_NAV_LINKS duplication is retired —
+# Navigation comes from the canonical source, scripts/nav_data.py.
+# (The old per-script NAV_LINKS / PRIMARY_NAV_LINKS duplication is retired,
 # the hardcoded footer this script used to carry was missing pages; nav_data
 # restores the full 45-page registry here too.)
 NAV_LINKS = nav_data.NAV
@@ -59,7 +59,7 @@ def canonical_url(rel):
 
 
 def head_meta(title, desc, rel, ld=None):
-    """Placement Pass (rotation 13): the shared head block — canonical,
+    """Placement Pass (rotation 13): the shared head block, canonical,
     Open Graph / Twitter card (typographic OG card, absolute URL),
     theme-color + favicon from the site's own tokens, and honest
     JSON-LD built from real catalog data only. og:title mirrors the
@@ -79,7 +79,7 @@ def head_meta(title, desc, rel, ld=None):
         f'  <meta name="twitter:title" content="{full}">',
         f'  <meta name="twitter:description" content="{escape(desc)}">',
         f'  <meta name="twitter:image" content="{OG_IMAGE}">',
-        '  <meta name="theme-color" content="#0d0c10">',
+        '  <meta name="theme-color" content="#FAF6EC">',
         '  <link rel="icon" href="/favicon.ico" sizes="48x48">',
         '  <link rel="icon" href="/favicon.svg" type="image/svg+xml">',
         '  <link rel="apple-touch-icon" href="/apple-touch-icon.png">',
@@ -94,28 +94,47 @@ def head_meta(title, desc, rel, ld=None):
 PAGE_CSS = """    .char-hero { padding-block: var(--space-7); }
     .char-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
     .release-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
-    .release-year { font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
-      color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
+    .release-year { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem;
+      color: var(--muted); margin: var(--space-6) 0 var(--space-3); }
     .release { padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
     /* Row anatomy, record and research-apparatus styles live in
        assets/css/museum.css (the R21 museum sheet): three-line rows,
        the catalog number at its fixed position, one apparatus. */
-    .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: var(--space-3); margin-bottom: var(--space-7); }
-    .char-card { display: block; }
-    .char-card:hover { text-decoration: none; border-color: var(--red); }
-    .char-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
-    .char-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
-    .run-panel { padding: var(--space-5); margin-bottom: var(--space-6); }
-    .run-title { font-size: 1.15rem; margin: 0 0 var(--space-2); }
+    /* The characters index: ruled contents rows (name, note, count at right) */
+    .char-index { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
+    .char-index-row { border-bottom: 1px solid var(--line); }
+    .char-index-row:first-child { border-top: 1px solid var(--line); }
+    .char-index-row a { display: grid; grid-template-columns: minmax(8rem, auto) minmax(0, 1fr) auto;
+      gap: var(--space-2) var(--space-5); align-items: baseline; padding: var(--space-4) 0;
+      text-decoration: none; color: var(--ink); }
+    .char-index-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+    .char-index-note { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+    .char-index-count { font-variant-numeric: tabular-nums; text-align: right; }
+    .char-index-row a:hover .char-index-name { color: var(--blue); }
+    @media (max-width: 640px) { .char-index-row a { grid-template-columns: minmax(0, 1fr) auto; } .char-index-note { grid-column: 1 / -1; } }
+    /* The character head is a tombstone on Board (MARVEL-LIGHT 3.6) */
+    .char-tombstone { background: var(--board); border: 1px solid var(--line); padding: var(--space-5); }
+    .char-tombstone .accession { margin: var(--space-2) 0; }
+    /* The run tracker is an ownership BOOKPLATE on Board: an ex libris
+       panel whose inscription renders in full, in normal flow, with
+       room at the foot. It replaces the dark run panel wholesale;
+       the R21 capture's clipped closing line closes here, by
+       replacement (no fixed height, no hidden overflow, generous
+       foot padding). */
+    .bookplate { background: var(--board); border: 1px solid var(--line-bright);
+      outline: 3px double var(--line-bright); outline-offset: 4px;
+      padding: var(--space-6); margin-bottom: var(--space-7); overflow: visible; }
+    .bookplate-mark { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 var(--space-2); }
+    .run-title { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 0 0 var(--space-2); }
     .run-summary { margin: 0 0 var(--space-3); }
     .run-bar { height: 10px; border-radius: 999px; background: var(--line-soft);
       overflow: hidden; margin-bottom: var(--space-3); }
-    .run-fill { height: 100%; background: var(--gold); border-radius: 999px;
+    .run-fill { height: 100%; background: var(--ink); border-radius: 0;
       transition: width 0.4s ease; }
     @media (prefers-reduced-motion: reduce) { .run-fill { transition: none; } }
     .run-missing { margin-top: var(--space-3); }
-    .run-missing summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+    .run-missing summary { cursor: pointer; color: var(--ink); font-weight: 600; }
     .run-missing summary:hover { text-decoration: underline; }
     .run-missing-list { list-style: none; margin: var(--space-3) 0 0; padding: 0;
       display: grid; gap: var(--space-2); }
@@ -123,7 +142,7 @@ PAGE_CSS = """    .char-hero { padding-block: var(--space-7); }
       justify-content: space-between; gap: var(--space-2);
       padding: var(--space-2) 0; border-bottom: 1px solid var(--line-soft); }
     .run-missing-name { font-size: 0.9rem; }
-    .run-complete { color: var(--gold); font-weight: 700; margin: var(--space-3) 0 0; }
+    .run-complete { color: var(--ink); font-weight: 700; margin: var(--space-3) 0 0; }
 """
 
 
@@ -210,7 +229,7 @@ def apparatus_html(char):
         <p class="research-note">External searches: eBay sold listings show actual sale prices, not asking prices. Reviews and web results are third-party content, unverified.</p>
         <p class="research-target" aria-live="polite">Choose Research on any figure below and its links appear here, generated from that figure's own row.</p>
         <ul class="research-links"></ul>
-        <noscript><p>Research links are generated in your browser; without JavaScript, search any figure's name together with its catalog number, printed at the right of its row.</p></noscript>
+        <noscript><p>Research links are generated in your browser; without JavaScript, search any figure's name together with its catalog number, printed at the head of its row.</p></noscript>
       </aside>"""
 
 
@@ -255,34 +274,31 @@ def main():
             for r in by_year[y]:
                 rels.append(
                     f'          <li class="release" data-fig-id="{escape(r["fid"])}">'
-                    f'<span class="release-main"><span class="release-name">{escape(r["name"])}</span>'
-                    f'<span class="release-wave">{escape(r["series"])}, {escape(r["manufacturer"])} · {y}</span>'
-                    f'{third_line(r["variant"], r["exclusive"])}</span>'
                     f'<span class="cat-no">{escape(r["fid"])}</span>'
+                    f'<span class="release-main"><span class="release-name">{escape(r["name"])}</span>'
+                    f'<span class="release-wave">{escape(r["series"])}, {escape(r["manufacturer"])}</span>'
+                    f'{third_line(r["variant"], r["exclusive"])}</span>'
+                    f'<span class="release-year-cell">{y}</span>'
                     f'{research_button(r["name"], r["variant"])}</li>')
             sections.append(f'        <h2 class="release-year">{y}</h2>\n        <ul class="release-list">\n' + "\n".join(rels) + "\n        </ul>")
         body = f"""    <section class="hero char-hero" aria-labelledby="char-title">
       <div class="container hero-inner">
-        <span class="hero-kicker">Character archive</span>
-        <h1 id="char-title">Every {escape(char)} <span class="accent">ever.</span></h1>
-        <p class="lede">{n} Marvel Legends releases, {min(years)}–{max(years)}, in chronological order.</p>
-        <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">{escape(s)}</span></p>
-        <div class="char-meta">
-          <span>{n} releases</span>
-          <span>{min(years)}–{max(years)}</span>
-          <a href="index.html">← All characters</a>
+        <div class="char-tombstone">
+          <span class="hero-kicker">Character archive</span>
+          <h1 id="char-title">Every {escape(char)} <span class="accent">ever.</span></h1>
+          <p class="tombstone-line">Character register, Marvel Legends</p>
+          <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">{escape(s)}</span></p>
+          <p class="tombstone-year">{min(years)}–{max(years)}</p>
+          <p class="tombstone-variant">{n} releases in the line, in chronological order</p>
+          <div class="char-meta">
+            <a href="index.html">← All characters</a>
+          </div>
         </div>
       </div>
     </section>
     <div class="container">
-      <aside class="tombstone" aria-label="Register label for {escape(char)}">
-        <p class="tombstone-name">{escape(char)}</p>
-        <p class="tombstone-line">Character register, Marvel Legends</p>
-        <span class="cat-no">Archive No. {escape(s)}</span>
-        <p class="tombstone-year">{min(years)}–{max(years)}</p>
-        <p class="tombstone-variant">{n} releases in the line</p>
-      </aside>
-      <section class="card run-panel" id="run-panel" data-char="{escape(char)}" aria-label="Your {escape(char)} run">
+      <section class="bookplate" id="run-panel" data-char="{escape(char)}" aria-label="Your {escape(char)} run">
+        <p class="bookplate-mark">Ex Libris: this copy belongs to its collector</p>
         <h2 class="run-title">Your {escape(char)} run</h2>
         <p class="run-summary">Reading your tracker…</p>
         <noscript><p class="method-note">Run progress needs JavaScript: it reads your on-device tracker (nothing is uploaded).</p></noscript>
@@ -306,9 +322,10 @@ def main():
     cards = []
     for m in manifest:
         cards.append(
-            f'      <a class="card char-card" href="{m["slug"]}.html">'
-            f'<h3>{escape(m["name"])}</h3>'
-            f'<p>{m["count"]} releases · {m["first"]}–{m["last"]}</p></a>')
+            f'      <li class="char-index-row"><a href="{m["slug"]}.html">'
+            f'<span class="char-index-name">{escape(m["name"])}</span>'
+            f'<span class="char-index-note">Character register</span>'
+            f'<span class="char-index-count">{m["count"]} releases · {m["first"]}–{m["last"]}</span></a></li>')
     index_body = """    <section class="hero char-hero" aria-labelledby="chars-title">
       <div class="container hero-inner">
         <span class="hero-kicker">Browse by character</span>
@@ -317,9 +334,9 @@ def main():
       </div>
     </section>
     <div class="container">
-      <div class="char-grid">
+      <ul class="char-index">
 """ + "\n".join(cards) + """
-      </div>
+      </ul>
     </div>"""
     (OUT / "index.html").write_text(
         page("Characters", "Every release of Marvel Legends' most-collected characters, chronological.",

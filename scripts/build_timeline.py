@@ -8,7 +8,7 @@ Outputs:
 
 Wave links are resolved automatically from the archive (every year gets its
 real wave ids); spotlight figure ids and every milestone source are
-asserted here. Any unresolvable id or source-less claim fails the build —
+asserted here. Any unresolvable id or source-less claim fails the build,
 the timeline must never name a figure, wave, or date the archive (or a
 source) cannot back.
 """
@@ -53,7 +53,7 @@ def main():
     for y in years_in:
         year = y["year"]
         era = era_of(year)
-        # Waves resolve automatically from the archive — the one true source.
+        # Waves resolve automatically from the archive, the one true source.
         ywaves = [w for w in waves if w["year"] == year]
         assert ywaves, f"no archive waves for {year}"
         wave_recs = [{
@@ -158,7 +158,7 @@ def render_year(year, era, y, wave_recs, spot):
         for s in spot:
             parts.append(
                 f'    <li><a href="{esc(s["page"])}">{esc(s["name"])}</a>'
-                f'<span class="tl-spot-why"> — {esc(s["why"])}</span></li>')
+                f'<span class="tl-spot-why">, {esc(s["why"])}</span></li>')
         parts.append('  </ul>')
     parts.append('</section>')
     return "\n".join(parts)

@@ -1,4 +1,4 @@
-/* Marketplace links — search-link builders (mock integration, no live inventory). */
+/* Marketplace links, search-link builders (mock integration, no live inventory). */
 import { MARKETPLACES } from "./config.js";
 
 export function marketplaceQuery(figure) {
@@ -12,14 +12,14 @@ export function marketplaceLinks(figure) {
   return MARKETPLACES.map((m) => ({ id: m.id, label: m.label, href: m.url(q) }));
 }
 
-/* eBay sold-listings URL — same pattern as baf-planner.js soldSearchUrl().
+/* eBay sold-listings URL, same pattern as baf-planner.js soldSearchUrl().
    LH_Sold + LH_Complete = completed sold listings, i.e. actual sale prices. */
 export function soldSearchUrl(query) {
   return `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(query)}&LH_Sold=1&LH_Complete=1`;
 }
 
 /* Per-figure research links: sold listings, video reviews, general web search.
-   These are pre-filled external searches — no prices scraped, no reviews
+   These are pre-filled external searches, no prices scraped, no reviews
    invented. The query matches marketplaceQuery() so results stay on-figure. */
 export function researchQuery(figure) {
   return marketplaceQuery(figure);
@@ -52,7 +52,7 @@ export function renderResearchLinks(figure) {
   const note = document.createElement("p");
   note.className = "link-note";
   note.textContent =
-    "External searches — eBay solds show what figures actually sold for, not asking prices. " +
+    "External searches, eBay solds show what figures actually sold for, not asking prices. " +
     "Reviews and web results are third-party content; we don't verify them.";
   wrap.appendChild(note);
   const row = document.createElement("div");
@@ -75,7 +75,7 @@ export function renderMarketplaceLinks(figure) {
   row.className = "btn-row";
   const note = document.createElement("p");
   note.style.cssText = "font-size:0.78rem;color:var(--muted);width:100%;margin:0;";
-  note.textContent = "Mock integration — these open pre-filled marketplace searches, not live inventory.";
+  note.textContent = "Mock integration, these open pre-filled marketplace searches, not live inventory.";
   row.appendChild(note);
   for (const link of marketplaceLinks(figure)) {
     const a = document.createElement("a");

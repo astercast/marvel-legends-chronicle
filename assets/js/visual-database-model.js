@@ -1,11 +1,11 @@
-/* visual-database-model.js — the pure math behind The Visual
+/* visual-database-model.js, the pure math behind The Visual
    Database (visual-database.html), the archive's picture census.
    No DOM, no storage: given the catalog's flat figure list and the
    figure-images manifest entries, it counts the pictured core and
    files the rest as the fill-in queue.
 
    THE RULES (deterministic, printed on the page): a figure is
-   PICTURED when the manifest holds an entry for its catalog id —
+   PICTURED when the manifest holds an entry for its catalog id,
    an entry exists only for an embed verified live (HTTP 200,
    image content type) with its provenance recorded. Everything
    else is UNPICTURED and renders typographically; unpictured is a
@@ -16,8 +16,8 @@
    and are counted apart, never pictured.
 
    THE HOUSE RULE FOR THIS DESK: pictures are embeds of the
-   manufacturer's/retailer's own product photography — referenced,
-   never copied, never AI-generated — and buying happens only
+   manufacturer's/retailer's own product photography, referenced,
+   never copied, never AI-generated, and buying happens only
    outbound, at the linked retailer. This archive sells nothing. */
 export function buildVisualDatabaseModel(figures, entries) {
   const list = figures || [];

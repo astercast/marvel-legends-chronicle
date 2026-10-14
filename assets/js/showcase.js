@@ -1,4 +1,4 @@
-/* Shelfie Showcase — curate a top 10 from owned figures.
+/* Shelfie Showcase, curate a top 10 from owned figures.
    - Add owned figures (datalist, max 10).
    - Reorder by drag-and-drop OR the Up/Down buttons (keyboard-accessible;
      drag is a progressive enhancement, never the only path).
@@ -43,7 +43,7 @@ function persist() {
 }
 
 function figLabel(fig) {
-  return `${fig.name} — ${fig.waveSeries} (${fig.year})`;
+  return `${fig.name}, ${fig.waveSeries} (${fig.year})`;
 }
 
 function refreshPicker() {
@@ -64,7 +64,7 @@ function refreshPicker() {
     : "";
 }
 
-/* Pure ordering helper — moves id by dir within a copy of order, returned.
+/* Pure ordering helper, moves id by dir within a copy of order, returned.
    Tested in tests/test-showcase.js. */
 export function moveId(order, id, dir) {
   const next = [...order];
@@ -103,7 +103,7 @@ function slotEl(fig, rank) {
       <h3>${escapeHtml(fig.name)} <span class="chart-sub">#${rank} of ${state.order.length}</span></h3>
       <div class="sub">${escapeHtml(fig.waveSeries)} · ${fig.year} · ${escapeHtml(fig.manufacturer)}</div>
       <div class="tag-row">${badgeFor(fig)}</div>
-      ${stillOwned ? "" : `<p class="chart-sub">No longer marked owned — kept for history.</p>`}
+      ${stillOwned ? "" : `<p class="chart-sub">No longer marked owned, kept for history.</p>`}
       <div class="field">
         <label for="why-${escapeHtml(fig.id)}">Why it made the cut</label>
         <textarea class="input" id="why-${escapeHtml(fig.id)}" maxlength="280"
@@ -153,7 +153,7 @@ function render() {
   // Drag-over reordering on the list (drop target = nearest slot).
   els.count.textContent = state.order.length
     ? `${state.order.length} of ${MAX_SLOTS} slots filled`
-    : "Empty — add figures from your shelf to build your showcase.";
+    : "Empty, add figures from your shelf to build your showcase.";
 
   if (!state.order.length) {
     els.list.innerHTML = `<div class="empty-state"><p>Your showcase is empty. Add up to ${MAX_SLOTS} owned figures and tell the story of your shelf.</p></div>`;
@@ -167,7 +167,7 @@ function addFromSearch() {
   const fig = figures.find((f) => owned.has(f.id) && figLabel(f).toLowerCase() === val)
     ?? figures.find((f) => owned.has(f.id) && f.name.toLowerCase() === val);
   if (!fig) {
-    els.pickerNote.textContent = "No owned figure matches that exactly — pick from the suggestions.";
+    els.pickerNote.textContent = "No owned figure matches that exactly, pick from the suggestions.";
     return;
   }
   if (state.order.includes(fig.id)) {
@@ -184,7 +184,7 @@ function addFromSearch() {
   render();
 }
 
-/* "Copy my quest" export — the same quest-card text as Grail Quest,
+/* "Copy my quest" export, the same quest-card text as Grail Quest,
    recomputed here from the shared tracker stores. */
 function refreshShareText(waves) {
   if (!els.shareText) return;
@@ -219,14 +219,14 @@ async function main() {
   els.shareCopy.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(els.shareText.value);
-      els.shareStatus.textContent = "Copied — paste it anywhere.";
+      els.shareStatus.textContent = "Copied, paste it anywhere.";
     } catch {
       els.shareText.select();
       try {
         document.execCommand("copy");
-        els.shareStatus.textContent = "Copied — paste it anywhere.";
+        els.shareStatus.textContent = "Copied, paste it anywhere.";
       } catch {
-        els.shareStatus.textContent = "Copy didn't work — select the text manually.";
+        els.shareStatus.textContent = "Copy didn't work, select the text manually.";
       }
     }
   });

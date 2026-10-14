@@ -1,4 +1,4 @@
-/* Known KO targets — editorial research notes, drawn ONLY from the archive's
+/* Known KO targets, editorial research notes, drawn ONLY from the archive's
    own authentication research (data/encyclopedia.json bootlegGuide and the
    2026 Holiday Guide's KO coverage). Used to annotate Gift Finder picks with
    honest "authenticate first" warnings. Every entry cites its source; a
@@ -8,17 +8,17 @@
 export const KO_TARGETS = [
   {
     match: "dragon man",
-    note: "Known KO target — buy at retail or run the Auth Wizard before paying.",
+    note: "Known KO target, buy at retail or run the Auth Wizard before paying.",
     source: "Encyclopedia bootleg guide",
   },
   {
     match: "ronan",
-    note: "Known KO target — buy at retail or run the Auth Wizard before paying.",
+    note: "Known KO target, buy at retail or run the Auth Wizard before paying.",
     source: "Encyclopedia bootleg guide",
   },
   {
     match: "juggernaut",
-    note: "Juggernaut BAF recast is a known KO target — verify the piece before buying.",
+    note: "Juggernaut BAF recast is a known KO target, verify the piece before buying.",
     source: "Encyclopedia bootleg guide",
   },
   {
@@ -28,12 +28,12 @@ export const KO_TARGETS = [
   },
   {
     match: "maximum spider-man",
-    note: "Maximum Series Spider-Man KO reviewed in video (Apr 2026) — retail or Hasbro Pulse only.",
+    note: "Maximum Series Spider-Man KO reviewed in video (Apr 2026), retail or Hasbro Pulse only.",
     source: "2026 Holiday Guide",
   },
   {
     match: "x-men '97 cyclops",
-    note: "X-Men '97 Cyclops KO (Mustang Toyz) reviewed in video (Sep 2026) — retail or Hasbro Pulse only.",
+    note: "X-Men '97 Cyclops KO (Mustang Toyz) reviewed in video (Sep 2026), retail or Hasbro Pulse only.",
     source: "2026 Holiday Guide",
   },
 ];

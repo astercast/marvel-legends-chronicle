@@ -1,13 +1,13 @@
-/* completionist-model.js — the pure set-completion math behind The
+/* completionist-model.js, the pure set-completion math behind The
    Completionist (completionist.html). No DOM, no storage: given the
    catalog and the three tracker shelves (Owned / Wanted / Watching id
-   sets), it works out exactly what the page renders — per-wave
+   sets), it works out exactly what the page renders, per-wave
    completion, the waves nearest completion with the exact figures
    still missing, and completion by era.
 
    Completion means Owned. Wanted and Watching counts ride along on
    every row as plans and signals, and never count toward a set being
-   finished — the same ledger discipline as My Vault. Era chapters are
+   finished, the same ledger discipline as My Vault. Era chapters are
    the Archive Tour's (CHAPTERS in archive-tour-model.js): the tour
    counts the archive, this page counts your shelves against the same
    four chapters, so the two pages can never disagree about an era.
@@ -21,7 +21,7 @@ import { CHAPTERS } from "./archive-tour-model.js";
 const pct = (got, total) => (total ? (got / total) * 100 : 0);
 
 /* Nearest-first: fewest figures missing, then closest by share owned,
-   then year, then series — so "one figure away" always leads. */
+   then year, then series, so "one figure away" always leads. */
 const nearestFirst = (a, b) =>
   a.missingCount - b.missingCount ||
   b.pct - a.pct ||
@@ -35,7 +35,7 @@ export function buildCompletionistModel(figures, waves, marks) {
   const totalFigures = figures.length;
 
   /* Marks pointing at ids the archive no longer carries are counted
-     honestly as unresolved — never dropped, never rendered. */
+     honestly as unresolved, never dropped, never rendered. */
   let unresolved = 0;
   for (const kind of ["owned", "wanted", "watching"]) {
     for (const id of marks[kind] ?? []) if (!byId.has(id)) unresolved += 1;
@@ -51,7 +51,7 @@ export function buildCompletionistModel(figures, waves, marks) {
   counts.marked = counts.owned + counts.wanted + counts.watching;
   counts.ownedPct = pct(counts.owned, totalFigures);
 
-  /* Per-wave completion — every wave in the archive gets a row.
+  /* Per-wave completion, every wave in the archive gets a row.
      Totals are counted from the catalog itself; a wave summary's
      figureCount is only a fallback. Missing figures stay in catalog
      order: that is the order a collector works through the wave. */
@@ -85,8 +85,8 @@ export function buildCompletionistModel(figures, waves, marks) {
     return row;
   });
 
-  /* The nearest ledgers. Only a wave the collector has started — at
-     least one figure Owned — can be "away" from complete: a wave with
+  /* The nearest ledgers. Only a wave the collector has started, at
+     least one figure Owned, can be "away" from complete: a wave with
      nothing owned is unstarted, not two figures from done, however
      small it is. Complete waves are finished, not nearest. */
   const started = byWave.filter((r) => r.started && !r.complete);
@@ -98,7 +98,7 @@ export function buildCompletionistModel(figures, waves, marks) {
     .sort((a, b) => (a.year ?? 0) - (b.year ?? 0) || a.series.localeCompare(b.series));
   const touchedWaves = byWave.filter((r) => r.touched).sort(nearestFirst);
 
-  /* Completion by era — the Archive Tour's four chapters. Every wave
+  /* Completion by era, the Archive Tour's four chapters. Every wave
      and figure lands in exactly one chapter (the tour's partition),
      so the era rows sum back to the archive totals. */
   const byEra = CHAPTERS.map((ch) => {
@@ -125,7 +125,7 @@ export function buildCompletionistModel(figures, waves, marks) {
   });
 
   /* Catalog preview for the empty state: what this page becomes,
-     described from the archive's structure alone — era sizes and the
+     described from the archive's structure alone, era sizes and the
      shortest sets in the catalog. No collection is invented: with no
      marks there are no nearest waves, and the model says so. */
   const smallestWaves = [...byWave]

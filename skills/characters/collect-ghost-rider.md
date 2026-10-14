@@ -16,18 +16,18 @@ You collect Ghost Rider. 11 releases are catalogued from 2002 to 2026.
 
 ## Procedure
 
-1. Work the list chronologically — oldest first, they appreciate fastest:
-2.   - 2002 — Series 3: Ghost Rider
-  - 2004 — Series 7: Ghost Rider
-  - 2004 — Series 7: Ghost Rider [Phasing (translucent, flaming motorcycle)]
-  - 2012 — Terrax Wave (Return of Marvel Legends): Ghost Rider (Danny Ketch)
-  - 2012 — Terrax Wave (Return of Marvel Legends): Ghost Rider (Danny Ketch) [Orange flames]
-  - 2015 — Rhino Wave: Ghost Rider (Johnny Blaze)
-  - 2018 — Store & Convention Exclusives: Ghost Rider (Johnny Blaze)
-  - 2023 — Store & Convention Exclusives: Ghost Rider
-  - 2024 — Store & Convention Exclusives: Ghost Rider (Danny Ketch)
-  - 2026 — Box Wave: Ghost Rider (Robbie Reyes)
-  - 2026 — Store & Convention Exclusives: Ghost Rider (Johnny Blaze)
+1. Work the list chronologically, oldest first, they appreciate fastest:
+2.   - 2002, Series 3: Ghost Rider
+  - 2004, Series 7: Ghost Rider
+  - 2004, Series 7: Ghost Rider [Phasing (translucent, flaming motorcycle)]
+  - 2012, Terrax Wave (Return of Marvel Legends): Ghost Rider (Danny Ketch)
+  - 2012, Terrax Wave (Return of Marvel Legends): Ghost Rider (Danny Ketch) [Orange flames]
+  - 2015, Rhino Wave: Ghost Rider (Johnny Blaze)
+  - 2018, Store & Convention Exclusives: Ghost Rider (Johnny Blaze)
+  - 2023, Store & Convention Exclusives: Ghost Rider
+  - 2024, Store & Convention Exclusives: Ghost Rider (Danny Ketch)
+  - 2026, Box Wave: Ghost Rider (Robbie Reyes)
+  - 2026, Store & Convention Exclusives: Ghost Rider (Johnny Blaze)
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).
@@ -43,4 +43,4 @@ Starting a Ghost Rider run? Grab the most recent mainline release first (cheapes
 ## Pitfalls
 
 - No completion rule = endless spending. Define 'complete' before you start.
-- Variant rabbit holes — some characters have 5+ releases of one sculpt.
+- Variant rabbit holes, some characters have 5+ releases of one sculpt.

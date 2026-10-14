@@ -1,4 +1,4 @@
-/* Hunt planner — toy-show trip planner.
+/* Hunt planner, toy-show trip planner.
    Targets: watchlist hunts (with their targets) + tracker wanted figures.
    Deal math: median of the user's own journal sold entries per figure.
    State persists to mlc_hunt_v1 (selected ids + max prices). */
@@ -131,7 +131,7 @@ function renderTargets(entries) {
         <td><input type="checkbox" class="row-check" data-select aria-label="Include ${escapeHtml(t.name)} in hunt sheet"${checked}></td>
         <td><strong>${escapeHtml(t.name)}</strong></td>
         <td>${escapeHtml(t.wave)}</td>
-        <td><input type="number" class="input max-input" data-max min="0.01" step="0.01" inputmode="decimal" placeholder="—" value="${max === "" ? "" : max}" aria-label="Max price for ${escapeHtml(t.name)}"></td>
+        <td><input type="number" class="input max-input" data-max min="0.01" step="0.01" inputmode="decimal" placeholder="No cap" value="${max === "" ? "" : max}" aria-label="Max price for ${escapeHtml(t.name)}"></td>
         <td class="num">${med !== null ? `${money(med)} ${solds}` : `<span style="color:var(--muted)">no data</span> ${solds}`}</td>
         <td><span class="badge">${escapeHtml(t.source)}</span></td>
       </tr>`;
@@ -144,7 +144,7 @@ function renderSheet(entries) {
   const selected = targets.filter((t) => state.selected.includes(t.key));
   els.sheet.hidden = selected.length === 0;
   if (!selected.length) return;
-  els.sheetDate.textContent = `— ${new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}`;
+  els.sheetDate.textContent = `${new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}`;
   els.sheetRows.innerHTML = selected
     .map((t) => {
       const med = t.fig ? median(entriesFor(t.fig, entries).map((e) => Number(e.price))) : null;
@@ -158,7 +158,7 @@ function renderSheet(entries) {
           <div class="sheet-note-line" aria-hidden="true"></div>
         </div>
         <div class="sheet-prices">
-          <div class="sheet-max">${max !== null && max !== "" ? money(Number(max)) : "—"}</div>
+          <div class="sheet-max">${max !== null && max !== "" ? money(Number(max)) : "No cap"}</div>
           <div class="sheet-ref">max</div>
           <div class="sheet-ref" style="margin-top:var(--space-2)">${med !== null ? `sold med ${money(med)}` : "no sold data"}</div>
         </div>

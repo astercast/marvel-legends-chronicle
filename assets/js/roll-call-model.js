@@ -1,11 +1,11 @@
-/* roll-call-model.js — the pure math behind The Roll Call
+/* roll-call-model.js, the pure math behind The Roll Call
    (roll-call.html). No DOM, no storage: given the catalog's flat
    figure list, it calls the roll of every distinct character and
-   counts how many figures the catalog gives each of them — the
+   counts how many figures the catalog gives each of them, the
    returns census of the line.
 
-   WHAT COUNTS AS A CHARACTER: the debut ledger's own rule — the
-   name with any parenthetical removed — imported from
+   WHAT COUNTS AS A CHARACTER: the debut ledger's own rule, the
+   name with any parenthetical removed, imported from
    debuts-model.js so the pages cannot disagree. Nothing else is
    normalized: "The Punisher" and "Punisher" are two entries in
    the catalog and stay two entries here.
@@ -16,7 +16,7 @@
    latest figure years; its wave count is the number of distinct
    waves its figures appear in. The roll is ordered by count
    descending, ties by earliest year, then by catalog order of
-   first appearance — so the order is a fact of the record, never
+   first appearance, so the order is a fact of the record, never
    an editorial ranking. The bands are fixed ranges of the count
    (1 · 2 · 3–4 · 5–9 · 10–19 · 20–49 · 50 and over), and every
    band's characters and figures sum back to the archive's own
@@ -24,7 +24,7 @@
 
    HONESTY: no prices anywhere (a census of the roll is the
    record, not the market). A character the catalog files once is
-   counted once — the long tail is reported at its true size,
+   counted once, the long tail is reported at its true size,
    never trimmed to flatter the head of the roll. */
 import { baseName } from "./debuts-model.js";
 
@@ -40,7 +40,7 @@ export const ROLL_BANDS = [
 
 /* figures: the catalog's flat figure list (data/v1/figures.json shape).
    Returns { figureCount, characterCount, roll, bands, singletons,
-             returners, top } — `roll` is every character in roll
+             returners, top }, `roll` is every character in roll
    order ({ name, count, firstYear, lastYear, waveCount }); `bands`
    carries each fixed band's character and figure totals; `top` is
    the head of the roll (the first 25 in roll order). */

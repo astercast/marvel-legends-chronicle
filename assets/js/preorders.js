@@ -1,6 +1,6 @@
 /* Pre-order tracker + release calendar logic (wave 13).
    Pure functions are exported for unit tests; page wiring runs from init().
-   Data: data/preorders.json (wave-12 researched items only — no invented releases).
+   Data: data/preorders.json (wave-12 researched items only, no invented releases).
    Storage: mlc_preorders_v1 = { <itemId>: "watching"|"ordered"|"skipped" }.
    All dates are ISO "YYYY-MM-DD". Countdowns use whole calendar days (local tz). */
 import { PATHS, STORE_KEYS, MARKETPLACES } from "./config.js";
@@ -65,7 +65,7 @@ export function countdownText(cd) {
  * announced | preorder-soon | preorder-today | preorder-open | preordered-no-date | available.
  */
 export function itemStatus(item, today) {
-  const win = item.releaseWindow ? ` — ${item.releaseWindow}` : "";
+  const win = item.releaseWindow ? `, ${item.releaseWindow}` : "";
   if (item.status === "available") {
     return { key: "available", label: "Available", detail: item.releaseWindow || "in stores" };
   }
@@ -89,7 +89,7 @@ export function itemStatus(item, today) {
 /**
  * Pre-order alerts: items with a confirmed pre-order date opening within
  * daysAhead days from today (inclusive), status "preorder", sorted by date.
- * Items with no date (announced but undated) are never included — the date
+ * Items with no date (announced but undated) are never included, the date
  * was never reported, and inventing an alert window for them would be a lie.
  */
 export function upcomingPreorders(items, today, daysAhead = 30) {
@@ -109,7 +109,7 @@ export function upcomingPreorders(items, today, daysAhead = 30) {
    kind: "past-window" | "upcoming-window" | "sale-window" (revealed items
    whose releaseWindow day is exact, e.g. a Pulse-exclusive sale date).
    result (past windows only): "as-announced" | "retailers-partial" |
-   "delayed" | "missed" | "unscored" (no outcome researched yet — never a
+   "delayed" | "missed" | "unscored" (no outcome researched yet, never a
    silent pass). Upcoming windows carry result: "on-schedule" when the
    latest research reconfirmed them, else "unscored". */
 export const WINDOW_RESULTS = ["as-announced", "retailers-partial", "delayed", "missed", "unscored"];
@@ -167,7 +167,7 @@ export function windowScorecard(checks) {
   return s;
 }
 
-/* Items whose pre-order window opened recently (within daysBack days) —
+/* Items whose pre-order window opened recently (within daysBack days),
    the "fresh windows" hunts for Grail Quest: still at MSRP, still orderable. */
 export function recentlyOpened(items, today, daysBack = 14) {
   const out = [];
@@ -184,13 +184,13 @@ export function recentlyOpened(items, today, daysBack = 14) {
    For each upcoming exact-date pre-order window within daysAhead days, one
    prep quest: { id, name, date, days, kind, msrp, venue, steps }.
    kind is "upcoming-window" or "sale-window" (revealed items with an exact
-   on-sale date, e.g. the YFNS Pulse-exclusive sale) — the prep is the same.
+   on-sale date, e.g. the YFNS Pulse-exclusive sale), the prep is the same.
    Steps are the honest prep checklist; ticks persist in mlc_launchprep_v1. */
 export const LAUNCH_PREP_STEPS = [
   "Signed in at every retailer (Pulse, Amazon)",
   "Payment method + shipping address current",
   "Reminder set for the drop time",
-  "Max price decided — and written down",
+  "Max price decided, and written down",
   "Watchlist target recorded for the Price Watch",
 ];
 
@@ -330,9 +330,9 @@ export function money(n) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
-/* giftReady(item) — a pre-orderable gift flag: the item is actually buyable
+/* giftReady(item), a pre-orderable gift flag: the item is actually buyable
    (status "preorder" or "available") and its announced MSRP fits most gift
-   budgets (≤ $35 — the standard-single band). Pure, exported for tests.
+   budgets (≤ $35, the standard-single band). Pure, exported for tests.
    MSRP is the researched announced price, never a market claim. */
 export function giftReady(item) {
   if (!item) return false;
@@ -386,11 +386,11 @@ function cardHtml(item, today, states) {
     <div class="radar-meta">
       <span class="status status-${st.key === "available" ? "available" : st.key.startsWith("preorder") ? "preorder" : "revealed"}">${escapeAttr(st.label)}</span>
       ${price ? `<span class="price">${price}</span>` : ""}
-      ${giftReady(item) ? `<span class="status status-available" title="Announced MSRP fits most gift budgets — a pre-orderable gift pick">🎁 Gift-ready</span>` : ""}
+      ${giftReady(item) ? `<span class="status status-available" title="Announced MSRP fits most gift budgets, a pre-orderable gift pick">🎁 Gift-ready</span>` : ""}
     </div>
     <p class="po-detail">${escapeAttr(st.detail)}</p>
     ${item.details ? `<p>${escapeAttr(item.details)}</p>` : ""}
-    ${giftReady(item) ? `<p class="pick-status muted">Pre-orderable at ${money(item.price)} announced MSRP — fits the holiday budget. Pair with the <a href="holiday.html">holiday guide</a> or <a href="gift.html?budget=under50&for=casual">gift finder</a>.</p>` : ""}
+    ${giftReady(item) ? `<p class="pick-status muted">Pre-orderable at ${money(item.price)} announced MSRP, fits the holiday budget. Pair with the <a href="holiday.html">holiday guide</a> or <a href="gift.html?budget=under50&for=casual">gift finder</a>.</p>` : ""}
     <div class="po-retailers" role="group" aria-label="Retailer search links">${retailLinks || '<span class="venue">No retailer confirmed by research yet.</span>'}</div>
     <fieldset class="po-state">
       <legend>Your call</legend>
@@ -401,7 +401,7 @@ function cardHtml(item, today, states) {
 }
 
 /* Live-first data load through the §3 fallback contract (Vercel Wave B):
- * 1. Try the live function /api/preorders (7s timeout) — projects the
+ * 1. Try the live function /api/preorders (7s timeout), projects the
  *    committed tracker into the §7.3 shape.
  * 2. On failure, fall back to the static data/v1/preorders.json.
  * 3. Both shapes normalize into the tracker's item shape; unknown fields
@@ -431,7 +431,7 @@ function refinePreorderBadge(badgeEl, result) {
     ? result.data.observed : null;
   if (!observed) return;
   badgeEl.textContent = "cached · updated " + observed;
-  badgeEl.title = "Server unreachable — showing last published data · observed " + observed;
+  badgeEl.title = "Server unreachable, showing last published data · observed " + observed;
 }
 
 async function legacyStaticLoad() {

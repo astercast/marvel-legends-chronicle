@@ -17,8 +17,8 @@ You're considering buying, selling, or hunting the Black Suit Spider-Man (Red Hu
 ## Procedure
 
 1. Why it matters: Target-exclusive wave figure; the definitive Black Suit ML for years.
-2. Price evidence: ~$150 (UNVERIFIED — treat as collector lore, not market data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+2. Price evidence: ~$150 (UNVERIFIED, treat as collector lore, not market data).
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a Black Suit Spider-Man (Red Hulk wave): run the bootleg checklis
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

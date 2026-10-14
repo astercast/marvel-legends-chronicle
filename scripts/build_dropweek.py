@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Wave 32 — build the Drop Week API payload from data/drop-week.json.
+"""Wave 32, build the Drop Week API payload from data/drop-week.json.
 
 Validates the editorial source (required fields, parseable ISO datetimes,
 well-formed source URLs, price kinds, no stray dollar figures) and writes:
@@ -8,7 +8,7 @@ well-formed source URLs, price kinds, no stray dollar figures) and writes:
   - data/v1/schema/drop-week-item.json
 
 MANIFEST NOTE (for the merge worker): register the endpoint in build_api.py so
-data/v1/index.json gains a "drop-week" entry pointing at these files — the
+data/v1/index.json gains a "drop-week" entry pointing at these files, the
 manifest-driven validator only checks registered endpoints, so this script
 deliberately does NOT touch index.json or build_api.py (parallel lanes).
 """
@@ -222,7 +222,7 @@ def main() -> None:
         if e.get("retailer") not in door_names:
             fail(f"{where}: retailer {e.get('retailer')!r} is not a capture door")
         if "price" in e:
-            fail(f"{where}: a sellout is an event, not a price — no price field allowed")
+            fail(f"{where}: a sellout is an event, not a price, no price field allowed")
         if not e.get("observedAt"):
             fail(f"{where}: a sellout entry needs a real observedAt timestamp")
         _check_stamp(e["observedAt"], where)
@@ -261,7 +261,7 @@ def main() -> None:
     blob = json.dumps(data)
     for m in re.finditer(r"\$(\d[\d,]*(?:\.\d{2})?)", blob):
         if m.group(1).replace(",", "") not in ALLOWED_AMOUNTS:
-            fail(f"unlisted dollar amount ${m.group(1)} — add to ALLOWED_AMOUNTS or remove")
+            fail(f"unlisted dollar amount ${m.group(1)}, add to ALLOWED_AMOUNTS or remove")
 
     SCHEMA_DIR.mkdir(parents=True, exist_ok=True)
     (SCHEMA_DIR / "drop-week.json").write_text(json.dumps({
@@ -330,7 +330,7 @@ def main() -> None:
     lines = ["<ul>"]
     for d in drops:
         names = ", ".join(f["name"] for f in d["figures"])
-        lines.append(f"<li><strong>{d['title']}</strong> — {d['windowLabel']}: {names}.</li>")
+        lines.append(f"<li><strong>{d['title']}</strong>, {d['windowLabel']}: {names}.</li>")
     lines.append("</ul>")
     block = "<!-- DROPS:NOSCRIPT-BEGIN -->\n" + "\n".join(lines) + "\n<!-- DROPS:NOSCRIPT-END -->"
     new_html, n = re.subn(

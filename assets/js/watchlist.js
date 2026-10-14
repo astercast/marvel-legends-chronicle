@@ -1,6 +1,6 @@
-/* Grail watchlist — track figures you hunt, set your own max price,
+/* Grail watchlist, track figures you hunt, set your own max price,
    log sightings, and get an honest "deal or no deal" against YOUR target.
-   Storage: mlc_watchlist_v1. Targets are the user's own — no market claims. */
+   Storage: mlc_watchlist_v1. Targets are the user's own, no market claims. */
 import { PATHS, STORE_KEYS } from "./config.js";
 import { loadData } from "./data.js";
 import { load, save } from "./store.js";
@@ -67,9 +67,9 @@ function verdict(sighting, target) {
   if (sighting.price == null || !(target > 0)) return null;
   const diff = Math.round((sighting.price - target) * 100) / 100;
   if (diff <= 0) {
-    return { cls: "deal-good", text: sighting.sold ? `Sold ${money(sighting.price)} — under your target by ${money(-diff)}` : `Under your target by ${money(-diff)} — deal` };
+    return { cls: "deal-good", text: sighting.sold ? `Sold ${money(sighting.price)}, under your target by ${money(-diff)}` : `Under your target by ${money(-diff)}, deal` };
   }
-  return { cls: "deal-bad", text: sighting.sold ? `Sold ${money(sighting.price)} — over your target by ${money(diff)}` : `Over your target by ${money(diff)} — no deal` };
+  return { cls: "deal-bad", text: sighting.sold ? `Sold ${money(sighting.price)}, over your target by ${money(diff)}` : `Over your target by ${money(diff)}, no deal` };
 }
 
 function bestSighting(entry) {
@@ -111,7 +111,7 @@ function sightingRow(entry, s) {
 function marketSection(entry) {
   const sigs = signalForFigure(entry.figId, priceSignals);
   if (!sigs.length) {
-    return `<div class="market-box market-none"><p class="chart-sub">No reported market data for this figure yet — <a href="${soldSearchUrl(`Marvel Legends ${entry.name}`)}" target="_blank" rel="noopener noreferrer">check eBay solds</a> to set an informed target.</p></div>`;
+    return `<div class="market-box market-none"><p class="chart-sub">No reported market data for this figure yet, <a href="${soldSearchUrl(`Marvel Legends ${entry.name}`)}" target="_blank" rel="noopener noreferrer">check eBay solds</a> to set an informed target.</p></div>`;
   }
   const rows = sigs.map((s) => {
     const v = watchVerdict(s, entry.target);
@@ -123,7 +123,7 @@ function marketSection(entry) {
     return `<li class="market-row">
       <span class="market-label">${escapeHtml(s.label)}: <strong class="entry-price">${escapeHtml(s.display)}</strong></span>
       ${cls ? `<span class="deal ${cls} deal-inline">${escapeHtml(verdictLine(v))}</span>` : `<span class="chart-sub">${escapeHtml(verdictLine(v))}</span>`}
-      <span class="market-src">Reported by ${srcLink}${s.note ? ` — ${escapeHtml(s.note)}` : ""}${s.singleSource ? ` <span class="badge">single source</span>` : ""}</span>
+      <span class="market-src">Reported by ${srcLink}${s.note ? `, ${escapeHtml(s.note)}` : ""}${s.singleSource ? ` <span class="badge">single source</span>` : ""}</span>
     </li>`;
   }).join("");
   return `<div class="market-box"><p class="market-head">Reported market vs your target <span class="muted">(reported ranges, not live prices)</span></p><ul class="market-list">${rows}</ul></div>`;
@@ -144,7 +144,7 @@ function entryCard(entry) {
     <div class="entry-meta">
       <span>Your max: <strong class="entry-price">${money(entry.target)}</strong></span>
       <span class="muted">${(entry.sightings || []).length} sighting${(entry.sightings || []).length === 1 ? "" : "s"}</span>
-      ${v ? `<span class="deal ${v.cls} deal-inline">${escapeHtml(v.text.split("—")[0])}</span>` : ""}
+      ${v ? `<span class="deal ${v.cls} deal-inline">${escapeHtml(v.text.split(",")[0])}</span>` : ""}
     </div>
     ${marketSection(entry)}
     ${entry.note ? `<p class="entry-note">${escapeHtml(entry.note)}</p>` : ""}
@@ -213,7 +213,7 @@ function importJson(file) {
       render();
       els.error.textContent = "";
     } catch {
-      els.error.textContent = "Import failed — that file isn't a valid watchlist export.";
+      els.error.textContent = "Import failed, that file isn't a valid watchlist export.";
     }
   };
   reader.readAsText(file);
@@ -232,7 +232,7 @@ async function main() {
   const frag = document.createDocumentFragment();
   labelToFig = new Map();
   for (const f of figures) {
-    const label = `${f.name} — ${f.waveSeries} (${f.year})`;
+    const label = `${f.name}, ${f.waveSeries} (${f.year})`;
     if (labelToFig.has(label)) continue;
     labelToFig.set(label, f);
     const opt = document.createElement("option");
@@ -252,7 +252,7 @@ async function main() {
     const label = els.figure.value.trim();
     const target = parseFloat(els.target.value);
     if (!label) { els.error.textContent = "Pick a figure to hunt."; return; }
-    if (!Number.isFinite(target) || target <= 0) { els.error.textContent = "Set a max price above $0 — that's the whole point of the hunt."; return; }
+    if (!Number.isFinite(target) || target <= 0) { els.error.textContent = "Set a max price above $0, that's the whole point of the hunt."; return; }
     const fig = labelToFig.get(label);
     const list = getList();
     if (fig && list.some((x) => x.figId === fig.id)) { els.error.textContent = "That figure is already on your watchlist."; return; }
@@ -329,13 +329,13 @@ async function main() {
     const text = shareWatchlistText(getList(), priceSignals);
     try {
       await navigator.clipboard.writeText(text);
-      els.shareStatus.textContent = "Copied — paste it anywhere.";
+      els.shareStatus.textContent = "Copied, paste it anywhere.";
     } catch {
-      els.shareStatus.textContent = "Copy didn't work — select the text manually.";
+      els.shareStatus.textContent = "Copy didn't work, select the text manually.";
     }
   });
 
-  // Reported market signals — nice to have, never blocking.
+  // Reported market signals, nice to have, never blocking.
   try {
     const res = await fetch(PATHS.priceSignals);
     if (res.ok) {

@@ -1,4 +1,4 @@
-/* Fan-social layer — client-side mock. Seed data hydrates localStorage once;
+/* Fan-social layer, client-side mock. Seed data hydrates localStorage once;
    everything after that (posts, likes, comments, follows) is local state. */
 import { PATHS, STORE_KEYS } from "./config.js";
 import { load, save } from "./store.js";

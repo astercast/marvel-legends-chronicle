@@ -3,11 +3,11 @@
    - front-desk nav (R21): four doors + the Index of Halls button on every page
    - the directory template carries all 56 pages, grouped in 6 halls
    - footer registry keeps aria-current on the current page
-   - homepage: hero CTA, drop-week teaser mount, halls, era tabs, registrar note
+   - homepage: frontispiece (folio line, plate, Catalogue Note), contents roll call, era tabs, registrar note
    - vault room hero: no duplicated counts, find-a-drawer CTA wired
    - 404 page exists with the vault wiring
 */
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { suite, test, assert } from "./assert.js";
@@ -99,34 +99,37 @@ suite("makeover — index of halls", () => {
 suite("makeover — homepage atrium", () => {
   const page = () => read("index.html");
 
-  test("hero: one primary action + engraved stats + live counts in copy", () => {
+  test("hero is a frontispiece: folio line, plate, Catalogue Note (MARVEL-LIGHT 3.2)", () => {
     const p = page();
-    assert(p.includes('class="btn btn-primary" href="vault-room.html">Enter the Vault Room'),
-      "single primary CTA to the Vault Room");
-    assert(p.includes('id="stat-strip"'), "stat mount present");
-    assert(p.includes("1,939 figures across 167 waves"), "live archive totals in the lede");
+    assert(p.includes('class="folio-line"'), "folio line under the masthead");
+    assert(p.includes("31 of 1,939 pictured"), "the pictured census stands in the folio line");
+    assert(p.includes('class="frontispiece"'), "frontispiece composition present");
+    assert(p.includes("FRONTISPIECE"), "the frontispiece plate carries its mark");
+    assert(p.includes("Catalogue Note"), "the Catalogue Note stands beside the plate");
+    assert(p.includes('href="vault-room.html">enter the Vault Room'), "the way in is a quiet text link, no primary button");
+    assert(!p.includes('class="btn btn-primary"'), "no primary CTA button on the home page");
+    assert(p.includes("1,939 figures across 167 waves"), "live archive totals in the note");
+    assert(p.includes('id="stat-strip"'), "census mount present (in the colophon)");
     assert(p.includes('class="cabinet-note"'), "cabinet note mount present");
     assert(!p.includes("You own</div>"), "no dead owned/wanted tiles");
   });
 
-  test("drop-week teaser: static fallback + JS mount", () => {
+  test("the on-the-desk teaser is REMOVED from the home page (frontispiece discipline)", () => {
     const p = page();
-    assert(p.includes('id="desk-drop"'), "teaser mount present");
-    assert(p.includes('href="drop-week.html">Open the Drop Week Command Center'),
-      "static fallback CTA present");
-    assert(p.includes('src="assets/js/atrium.js"'), "atrium.js loaded");
-    const js = read("assets/js/atrium.js");
-    assert(js.includes("data/v1/drop-week.json"), "teaser reads the drop-week endpoint");
-    assert(js.includes("setInterval"), "countdown ticks");
+    assert(!p.includes('id="desk-drop"'), "no desk teaser mount on the home page");
+    assert(!p.includes("on-the-desk"), "the desk band is gone: three events only (plate, contents, census)");
+    assert(!p.includes('src="assets/js/atrium.js"'), "atrium.js no longer loads on the home page");
+    assert(!existsSync(join(root, "assets/js/atrium.js")), "atrium.js is removed with its band (Drop Week's own page carries the command center)");
   });
 
-  test("halls: six specimen drawers generated from the canonical data", () => {
+  test("contents: six ruled roll-call lines generated from the canonical data", () => {
     const p = page();
-    const halls = [...p.matchAll(/<details class="hall" name="halls">/g)];
-    assert.equal(halls.length, 6, `hall drawers: ${halls.length}`);
+    const entries = [...p.matchAll(/<details class="contents-entry" name="halls">/g)];
+    assert.equal(entries.length, 6, `contents entries: ${entries.length}`);
     for (const title of ["The Archive", "The Hunt", "Your Shelf", "The Market", "The Game", "The Desk"]) {
-      assert(p.includes(`<span class="hall-title">${title}</span>`), `hall: ${title}`);
+      assert(p.includes(`<span class="contents-name">${title}</span>`), `contents: ${title}`);
     }
+    assert(!p.includes('class="hall"'), "the specimen-drawer hall cards are retired");
     assert(p.includes("HALLS:BEGIN") && p.includes("HALLS:END"), "generator markers present");
   });
 
@@ -142,11 +145,11 @@ suite("makeover — homepage atrium", () => {
     assert(js.includes("aria-selected"), "tab selection state");
   });
 
-  test("registrar's note: human voice, wax seal, no AI filler", () => {
+  test("registrar's note: human voice, ink seal, no AI filler", () => {
     const p = page();
     assert(p.includes("From the registrar's desk"), "registrar kicker");
     assert(p.includes("The Registrar"), "signed");
-    assert(p.includes('class="wax-seal"'), "wax seal");
+    assert(p.includes('class="seal-stamp"'), "the seal, stamped in red ink");
     for (const ism of ["delve", "game-changer", "unlock the power", "ever-evolving"]) {
       assert(!p.toLowerCase().includes(ism), `AI-ism leaked: ${ism}`);
     }

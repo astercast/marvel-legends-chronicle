@@ -16,21 +16,21 @@ You collect Spider-Man. 88 releases are catalogued from 2003 to 2026.
 
 ## Procedure
 
-1. Work the list chronologically — oldest first, they appreciate fastest:
-2.   - 2003 — Box Set - Urban Legends: Spider-Man
-  - 2004 — Box Set - Spider-Man vs. Sinister 6: Spider-Man
-  - 2005 — Series 10 - Sentinel: Spider-Man
-  - 2005 — Box Set - Spider-Man vs. The Fearsome Foes: Spider-Man
-  - 2006 — Icons Series 3: Spider-Man
-  - 2006 — Icons Series 3: Spider-Man [Unmasked]
-  - 2007 — Sandman (Spider-Man 3) Wave: Spider-Man
-  - 2007 — Sandman (Spider-Man 3) Wave: Spider-Man
-  - 2008 — Red Hulk Wave (Target Exclusive): Spider-Man (Target)
-  - 2008 — Ares Wave (Walmart Exclusive): Spider-Man (Ben Reilly) (Walmart)
-  - 2012 — Arnim Zola Wave (Return of Marvel Legends): Spider-Man
-  - 2012 — Arnim Zola Wave (Return of Marvel Legends): Spider-Man [Future Foundation]
-  - 2014 — Ultimate Green Goblin Wave: Spider-Man
-  - 2015 — Hobgoblin Wave: Spider-Man
+1. Work the list chronologically, oldest first, they appreciate fastest:
+2.   - 2003, Box Set - Urban Legends: Spider-Man
+  - 2004, Box Set - Spider-Man vs. Sinister 6: Spider-Man
+  - 2005, Series 10 - Sentinel: Spider-Man
+  - 2005, Box Set - Spider-Man vs. The Fearsome Foes: Spider-Man
+  - 2006, Icons Series 3: Spider-Man
+  - 2006, Icons Series 3: Spider-Man [Unmasked]
+  - 2007, Sandman (Spider-Man 3) Wave: Spider-Man
+  - 2007, Sandman (Spider-Man 3) Wave: Spider-Man
+  - 2008, Red Hulk Wave (Target Exclusive): Spider-Man (Target)
+  - 2008, Ares Wave (Walmart Exclusive): Spider-Man (Ben Reilly) (Walmart)
+  - 2012, Arnim Zola Wave (Return of Marvel Legends): Spider-Man
+  - 2012, Arnim Zola Wave (Return of Marvel Legends): Spider-Man [Future Foundation]
+  - 2014, Ultimate Green Goblin Wave: Spider-Man
+  - 2015, Hobgoblin Wave: Spider-Man
   - …and 74 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
@@ -47,4 +47,4 @@ Starting a Spider-Man run? Grab the most recent mainline release first (cheapest
 ## Pitfalls
 
 - No completion rule = endless spending. Define 'complete' before you start.
-- Variant rabbit holes — some characters have 5+ releases of one sculpt.
+- Variant rabbit holes, some characters have 5+ releases of one sculpt.

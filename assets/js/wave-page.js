@@ -1,4 +1,4 @@
-/* Wave detail page — inline Owned/Wanted toggles per figure, live owned
+/* Wave detail page, inline Owned/Wanted toggles per figure, live owned
    count, and the print-checklist button. figId format matches data.js:
    "<waveId>::<figureName>". */
 import { trackerButtons, owned } from "./tracker.js";

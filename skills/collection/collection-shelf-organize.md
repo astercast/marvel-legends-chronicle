@@ -16,9 +16,9 @@ Setting up or redoing a display.
 
 ## Procedure
 
-1. Group by story: waves, teams, or sagas — not by purchase order.
+1. Group by story: waves, teams, or sagas, not by purchase order.
 2. BAFs get center placement; they're the anchors.
-3. Leave 20% empty — a full shelf can't grow.
+3. Leave 20% empty, a full shelf can't grow.
 4. Dust monthly; sun kills cards and paint.
 
 ## Worked example
@@ -27,4 +27,4 @@ X-Men shelf: Jim Lee team in the center, villains flanking, Sentinel BAF behind.
 
 ## Pitfalls
 
-- Direct sunlight — the silent collection killer.
+- Direct sunlight, the silent collection killer.

@@ -16,9 +16,9 @@ You're considering buying, selling, or hunting the HasLab Galactus (2021) (Hasbr
 
 ## Procedure
 
-1. Why it matters: 32" — the biggest Marvel Legends ever; LEDs, 70 points of articulation.
+1. Why it matters: 32", the biggest Marvel Legends ever; LEDs, 70 points of articulation.
 2. Price evidence: $399.99 crowdfund (verified price data).
-3. Authenticate before negotiating — grails attract the best bootlegs.
+3. Authenticate before negotiating, grails attract the best bootlegs.
 4. Compare against 90 days of eBay SOLD listings, not asking prices.
 5. For boxed grails: grade the card (see the card-grading skill) before paying a premium.
 
@@ -32,5 +32,5 @@ Listing claims a HasLab Galactus (2021): run the bootleg checklist, pull 90-day 
 
 ## Pitfalls
 
-- Paying asking-price logic on a grail — solds are the market, asks are wishes.
+- Paying asking-price logic on a grail, solds are the market, asks are wishes.
 - Skipping authentication because 'the seller seems nice.'

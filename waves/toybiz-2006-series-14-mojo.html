@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Series 14 - Mojo (2006) — Marvel Legends Chronicle</title>
+  <title>Series 14 - Mojo (2006): Marvel Legends Chronicle</title>
   <meta name="description" content="Every figure in the Series 14 - Mojo Marvel Legends wave (2006, Toy Biz).">
   <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/waves/toybiz-2006-series-14-mojo">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Series 14 - Mojo (2006) — Marvel Legends Chronicle">
+  <meta property="og:title" content="Series 14 - Mojo (2006): Marvel Legends Chronicle">
   <meta property="og:description" content="Every figure in the Series 14 - Mojo Marvel Legends wave (2006, Toy Biz).">
   <meta property="og:url" content="https://marvel-legends-chronicle-live.vercel.app/waves/toybiz-2006-series-14-mojo">
   <meta property="og:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Series 14 - Mojo (2006) — Marvel Legends Chronicle">
+  <meta name="twitter:title" content="Series 14 - Mojo (2006): Marvel Legends Chronicle">
   <meta name="twitter:description" content="Every figure in the Series 14 - Mojo Marvel Legends wave (2006, Toy Biz).">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#0d0c10">
+  <meta name="theme-color" content="#FAF6EC">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -28,11 +28,12 @@
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/vault.css">
+  <link rel="stylesheet" href="../assets/css/museum.css">
   <style>
     .wave-hero { padding-block: var(--space-7); }
     .wave-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
-    .wave-baf-callout { border: 1px solid var(--line); border-left: 4px solid var(--gold);
-      padding: var(--space-4); margin: 0 0 var(--space-6); background: var(--panel); }
+    .wave-baf-callout { border: 1px solid var(--line); border-left: 4px solid var(--ink);
+      padding: var(--space-4); margin: 0 0 var(--space-6); background: transparent; }
     .wave-baf-callout p { margin: 0; }
     .wave-baf-callout .baf-name { font-weight: 800; }
     .fig-list { list-style: none; margin: 0 0 var(--space-7); padding: 0; }
@@ -40,39 +41,56 @@
       padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft); }
     .fig-name { font-weight: 700; }
     .fig-notes { color: var(--muted); font-size: 0.85rem; flex-basis: 100%; }
-    .fig .tag-row { display: inline-flex; gap: var(--space-1); flex-wrap: wrap; }
+    .fig-facts { color: var(--muted); font-size: 0.85rem; flex-basis: 100%; }
+    .fig .cat-no { white-space: normal; overflow-wrap: anywhere; }
     .track-slot { margin-left: auto; display: inline-flex; gap: var(--space-1); }
-    .research { margin-left: auto; font-size: 0.8rem; flex-basis: 100%; }
-    .research summary { cursor: pointer; color: var(--gold); font-weight: 600; }
-    .research summary:hover { text-decoration: underline; }
-    .research-list { list-style: none; margin: var(--space-2) 0; padding: 0;
-      display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .fig-tools { flex-basis: 100%; }
+    .research-btn { font: inherit; font-size: 0.78rem; font-weight: 600;
+      color: var(--blue); background: none; border: 0; padding: 0; cursor: pointer; }
+    .research-btn:hover { text-decoration: underline; }
+    .research-apparatus { border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft); padding: var(--space-4) 0;
+      margin: 0 0 var(--space-6); max-width: 75ch; }
+    .research-apparatus h2 { font-family: var(--font-body); font-size: 0.72rem;
+      font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 var(--space-2); }
+    .research-apparatus p { color: var(--muted); font-size: 0.85rem; margin: 0 0 var(--space-2); }
+    .research-apparatus ul { list-style: none; margin: 0; padding: 0;
+      display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+    .research-apparatus .research-for { color: var(--ink); font-weight: 700; }
     .research-note { color: var(--muted); font-size: 0.75rem; margin: 0; max-width: 60ch; }
     .wave-nav { display: flex; justify-content: space-between; gap: var(--space-3);
       margin: var(--space-7) 0; flex-wrap: wrap; }
     .wave-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-5); }
-    .wave-index-year { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem;
-      color: var(--gold); margin: var(--space-6) 0 var(--space-3); }
-    .wave-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: var(--space-3); margin-bottom: var(--space-4); }
-    .wave-card { display: block; }
-    .wave-card:hover { text-decoration: none; border-color: var(--red); }
-    .wave-card h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
-    .wave-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+    .wave-index-year { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem;
+      color: var(--muted); margin: var(--space-6) 0 var(--space-3); }
+    /* The waves index: ruled rows grouped by year, count at the right */
+    .wave-rows { list-style: none; margin: 0 0 var(--space-4); padding: 0; }
+    .wave-row { border-bottom: 1px solid var(--line); }
+    .wave-row a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-2) var(--space-5);
+      align-items: baseline; padding: var(--space-3) 0; text-decoration: none; color: var(--ink); }
+    .wave-row-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
+    .wave-row-note { color: var(--muted); font-style: italic; font-size: 0.88rem; }
+    .wave-row-count { font-variant-numeric: tabular-nums; text-align: right; }
+    .wave-row a:hover .wave-row-name { color: var(--blue); }
+    /* The chapter census (hero) + the chapter plate's spacing */
+    .wave-census { max-width: 75ch; margin: var(--space-4) 0; }
+    .wave-owned { color: var(--muted); font-size: 0.9rem; margin: var(--space-3) 0 0; }
+    .chapter-plate { margin: 0 0 var(--space-6); max-width: 560px; }
     /* Wave 26 deep-link overhaul: per-figure anchors + cross-link rows. */
     .fig { scroll-margin-top: 90px; border-radius: var(--radius-m); }
-    .fig:target { outline: 2px solid var(--gold); outline-offset: 6px;
-      background: rgba(245, 179, 1, 0.05); }
+    .fig:target { outline: 2px solid var(--line-bright); outline-offset: 6px;
+      background: rgba(30, 27, 22, 0.04); }
     .fig-xref { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3);
       margin-top: var(--space-2); font-size: 0.8rem; }
     .xref-link { color: var(--ink-dim); text-decoration: none;
       border-bottom: 1px dotted var(--line); white-space: nowrap; }
-    .xref-link:hover { color: var(--gold); border-bottom-style: solid; }
+    .xref-link:hover { color: var(--blue); border-bottom-style: solid; }
     .fig-ko { margin: var(--space-2) 0 0; font-size: 0.82rem; color: var(--ink-dim);
-      border-left: 3px solid var(--red); padding-left: var(--space-2); }
+      border-left: 3px solid var(--ink); padding-left: var(--space-2); }
     @media print {
-      .site-header, .site-footer, .wave-nav, .wave-actions, .research,
-      .track-slot, .skip-link { display: none !important; }
+      .site-header, .site-footer, .wave-nav, .wave-actions, .research-apparatus,
+      .fig-tools, .track-slot, .skip-link { display: none !important; }
       .wave-hero { padding-block: 0; }
       .fig { break-inside: avoid; }
     }
@@ -105,12 +123,11 @@
         <span class="hero-kicker">Wave archive</span>
         <h1 id="wave-title">Series 14 - Mojo</h1>
         <p class="lede">2006 · Toy Biz · 9 figures</p>
-        <div class="wave-meta">
-          <span class="badge badge-toybiz">Toy Biz</span>
-          <span class="badge">2006</span>
-          <span class="badge badge-baf">9 figures</span>
-          <span class="badge">Build-A-Figure wave</span>
-          <span class="badge" id="owned-count" aria-live="polite">You own 0 of 9</span>
+        <div class="wave-census">
+          <p class="census-line"><span class="census-value">9</span><span class="census-label">figures in this wave</span></p>
+          <p class="census-line"><span class="census-value">0</span><span class="census-label">pictured in the Visual Database</span></p>
+          <p class="census-line"><span class="census-value">9</span><span class="census-label">figures carry a piece of the Build-A-Figure: Mojo</span></p>
+          <p class="wave-owned" id="owned-count" aria-live="polite">You own 0 of 9</p>
         </div>
         <p class="accession"><span class="acc-label">Archive №</span> <span class="acc-no">toybiz-2006-series-14-mojo</span></p>
         <div class="wave-actions">
@@ -121,17 +138,25 @@
       </div>
     </section>
     <div class="container">
-      <div class="wave-baf-callout" role="note"><p>Build-A-Figure: <span class="baf-name">Mojo</span> — 9 of 9 figures in this wave include a piece. <a href="../baf-planner.html">Open the BAF planner</a> to track your pieces.</p></div>
+      <div class="wave-baf-callout" role="note"><p>Build-A-Figure: <span class="baf-name">Mojo</span>, 9 of 9 figures in this wave include a piece. <a href="../baf-planner.html">Open the BAF planner</a> to track your pieces.</p></div>
+      <aside class="research-apparatus" id="research-apparatus" aria-label="Research for figures in Series 14 - Mojo">
+        <h2>Research</h2>
+        <p class="research-note">External searches: eBay sold listings show actual sale prices, not asking prices. Reviews and web results are third-party content, unverified.</p>
+        <p class="research-target" aria-live="polite">Choose Research on any figure in this wave and its links appear here, generated from that figure's own row.</p>
+        <ul class="research-links"></ul>
+        <noscript><p>Research links are generated in your browser; without JavaScript, search any figure's name together with its catalog number, printed at the right of its row.</p></noscript>
+      </aside>
+
       <ul class="fig-list" aria-label="Figures in this wave">
-          <li class="fig" id="fig-falcon-and-redwing-1" data-fig-id="toybiz-2006-series-14-mojo::Falcon and Redwing"><span class="fig-name">Falcon and Redwing</span><span class="tag-row"><span class="badge badge-baf">Builds: Lower torso</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Falcon and Redwing"></span><span class="fig-notes">Classic version</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-falcon-and-redwing-1" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AFalcon%20and%20Redwing">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Falcon+and+Redwing&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Falcon+and+Redwing+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Falcon+and+Redwing" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-falcon-and-redwing-modern-costume" data-fig-id="toybiz-2006-series-14-mojo::Falcon and Redwing"><span class="fig-name">Falcon and Redwing</span><span class="tag-row"><span class="badge badge-variant">Modern costume</span><span class="badge badge-baf">Builds: Lower torso</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Falcon and Redwing"></span><span class="fig-notes">Variant</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-falcon-and-redwing-modern-costume" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AFalcon%20and%20Redwing">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Falcon+and+Redwing+Modern+costume&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Falcon+and+Redwing+Modern+costume+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Falcon+and+Redwing+Modern+costume" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-iron-man-1" data-fig-id="toybiz-2006-series-14-mojo::Iron Man"><span class="fig-name">Iron Man</span><span class="tag-row"><span class="badge badge-baf">Builds: Metasoma</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Iron Man"></span><span class="fig-notes">First appearance gray armor</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-iron-man-1" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AIron%20Man">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Iron+Man&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Iron+Man+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Iron+Man" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-iron-man-gold" data-fig-id="toybiz-2006-series-14-mojo::Iron Man"><span class="fig-name">Iron Man</span><span class="tag-row"><span class="badge badge-variant">Gold</span><span class="badge badge-baf">Builds: Metasoma</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Iron Man"></span><span class="fig-notes">Variant</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-iron-man-gold" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AIron%20Man">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Iron+Man+Gold&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Iron+Man+Gold+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Iron+Man+Gold" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-longshot" data-fig-id="toybiz-2006-series-14-mojo::Longshot"><span class="fig-name">Longshot</span><span class="tag-row"><span class="badge badge-baf">Builds: Right legs</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Longshot"></span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-longshot" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3ALongshot">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Longshot&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Longshot+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Longshot" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-luke-cage-power-man" data-fig-id="toybiz-2006-series-14-mojo::Luke Cage (Power Man)"><span class="fig-name">Luke Cage (Power Man)</span><span class="tag-row"><span class="badge badge-baf">Builds: Left legs</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Luke Cage (Power Man)"></span><span class="fig-notes">Variant of Luke Cage announced but unreleased before series stopped shipping; rare test shots exist</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-luke-cage-power-man" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3ALuke%20Cage%20%28Power%20Man%29">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Luke+Cage+%28Power+Man%29&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Luke+Cage+%28Power+Man%29+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Luke+Cage+%28Power+Man%29" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-psylocke" data-fig-id="toybiz-2006-series-14-mojo::Psylocke"><span class="fig-name">Psylocke</span><span class="tag-row"><span class="badge badge-baf">Builds: Back torso</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Psylocke"></span><span class="fig-notes">Xtreme variant announced but unreleased; rare test shots exist</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-psylocke" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3APsylocke">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Psylocke&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Psylocke+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Psylocke" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-heinrich-zemo-baron-zemo-1" data-fig-id="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"><span class="fig-name">Heinrich Zemo (Baron Zemo)</span><span class="tag-row"><span class="badge badge-baf">Builds: Head and upper torso</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"></span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-heinrich-zemo-baron-zemo-1" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AHeinrich%20Zemo%20%28Baron%20Zemo%29">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Heinrich+Zemo+%28Baron+Zemo%29&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Heinrich+Zemo+%28Baron+Zemo%29+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Heinrich+Zemo+%28Baron+Zemo%29" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
-          <li class="fig" id="fig-heinrich-zemo-baron-zemo-unmasked" data-fig-id="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"><span class="fig-name">Heinrich Zemo (Baron Zemo)</span><span class="tag-row"><span class="badge badge-variant">Unmasked</span><span class="badge badge-baf">Builds: Head and upper torso</span></span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"></span><span class="fig-notes">Variant</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-heinrich-zemo-baron-zemo-unmasked" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AHeinrich%20Zemo%20%28Baron%20Zemo%29">⚖️ Compare</a></div><details class="research"><summary>Research</summary><ul class="research-list"><li><a href="https://www.ebay.com/sch/i.html?_nkw=Marvel+Legends+Heinrich+Zemo+%28Baron+Zemo%29+Unmasked&LH_Sold=1&LH_Complete=1" target="_blank" rel="noopener noreferrer">eBay sold listings</a></li><li><a href="https://www.youtube.com/results?search_query=Marvel+Legends+Heinrich+Zemo+%28Baron+Zemo%29+Unmasked+review" target="_blank" rel="noopener noreferrer">YouTube reviews</a></li><li><a href="https://www.google.com/search?q=Marvel+Legends+Heinrich+Zemo+%28Baron+Zemo%29+Unmasked" target="_blank" rel="noopener noreferrer">Web search</a></li></ul><p class="research-note">External searches — eBay solds show actual sale prices, not asking prices. Reviews and web results are third-party content; unverified.</p></details></li>
+          <li class="fig" id="fig-falcon-and-redwing-1" data-fig-id="toybiz-2006-series-14-mojo::Falcon and Redwing"><span class="fig-name">Falcon and Redwing</span><span class="fig-facts">Builds: Lower torso</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Falcon and Redwing"></span><span class="cat-no">toybiz-2006-series-14-mojo::Falcon and Redwing</span><span class="fig-notes">Classic version</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-falcon-and-redwing-1" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AFalcon%20and%20Redwing">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Falcon and Redwing">Research</button></span></li>
+          <li class="fig" id="fig-falcon-and-redwing-modern-costume" data-fig-id="toybiz-2006-series-14-mojo::Falcon and Redwing"><span class="fig-name">Falcon and Redwing</span><span class="fig-facts">Variant: Modern costume · Builds: Lower torso</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Falcon and Redwing"></span><span class="cat-no">toybiz-2006-series-14-mojo::Falcon and Redwing</span><span class="fig-notes">Variant</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-falcon-and-redwing-modern-costume" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AFalcon%20and%20Redwing">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Falcon and Redwing" data-variant="Modern costume">Research</button></span></li>
+          <li class="fig" id="fig-iron-man-1" data-fig-id="toybiz-2006-series-14-mojo::Iron Man"><span class="fig-name">Iron Man</span><span class="fig-facts">Builds: Metasoma</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Iron Man"></span><span class="cat-no">toybiz-2006-series-14-mojo::Iron Man</span><span class="fig-notes">First appearance gray armor</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-iron-man-1" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AIron%20Man">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Iron Man">Research</button></span></li>
+          <li class="fig" id="fig-iron-man-gold" data-fig-id="toybiz-2006-series-14-mojo::Iron Man"><span class="fig-name">Iron Man</span><span class="fig-facts">Variant: Gold · Builds: Metasoma</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Iron Man"></span><span class="cat-no">toybiz-2006-series-14-mojo::Iron Man</span><span class="fig-notes">Variant</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-iron-man-gold" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AIron%20Man">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Iron Man" data-variant="Gold">Research</button></span></li>
+          <li class="fig" id="fig-longshot" data-fig-id="toybiz-2006-series-14-mojo::Longshot"><span class="fig-name">Longshot</span><span class="fig-facts">Builds: Right legs</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Longshot"></span><span class="cat-no">toybiz-2006-series-14-mojo::Longshot</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-longshot" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3ALongshot">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Longshot">Research</button></span></li>
+          <li class="fig" id="fig-luke-cage-power-man" data-fig-id="toybiz-2006-series-14-mojo::Luke Cage (Power Man)"><span class="fig-name">Luke Cage (Power Man)</span><span class="fig-facts">Builds: Left legs</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Luke Cage (Power Man)"></span><span class="cat-no">toybiz-2006-series-14-mojo::Luke Cage (Power Man)</span><span class="fig-notes">Variant of Luke Cage announced but unreleased before series stopped shipping; rare test shots exist</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-luke-cage-power-man" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3ALuke%20Cage%20%28Power%20Man%29">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Luke Cage (Power Man)">Research</button></span></li>
+          <li class="fig" id="fig-psylocke" data-fig-id="toybiz-2006-series-14-mojo::Psylocke"><span class="fig-name">Psylocke</span><span class="fig-facts">Builds: Back torso</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Psylocke"></span><span class="cat-no">toybiz-2006-series-14-mojo::Psylocke</span><span class="fig-notes">Xtreme variant announced but unreleased; rare test shots exist</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-psylocke" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3APsylocke">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Psylocke">Research</button></span></li>
+          <li class="fig" id="fig-heinrich-zemo-baron-zemo-1" data-fig-id="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"><span class="fig-name">Heinrich Zemo (Baron Zemo)</span><span class="fig-facts">Builds: Head and upper torso</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"></span><span class="cat-no">toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-heinrich-zemo-baron-zemo-1" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AHeinrich%20Zemo%20%28Baron%20Zemo%29">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Heinrich Zemo (Baron Zemo)">Research</button></span></li>
+          <li class="fig" id="fig-heinrich-zemo-baron-zemo-unmasked" data-fig-id="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"><span class="fig-name">Heinrich Zemo (Baron Zemo)</span><span class="fig-facts">Variant: Unmasked · Builds: Head and upper torso</span><span class="track-slot" data-track-for="toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)"></span><span class="cat-no">toybiz-2006-series-14-mojo::Heinrich Zemo (Baron Zemo)</span><span class="fig-notes">Variant</span><div class="fig-xref" aria-label="Figure cross-links"><a class="xref-link" href="#fig-heinrich-zemo-baron-zemo-unmasked" title="Stable deep link to this figure">🔗 Deep link</a><a class="xref-link" href="../compare.html?a=toybiz-2006-series-14-mojo%3A%3AHeinrich%20Zemo%20%28Baron%20Zemo%29">⚖️ Compare</a></div><span class="fig-tools"><button type="button" class="research-btn" data-name="Heinrich Zemo (Baron Zemo)" data-variant="Unmasked">Research</button></span></li>
       </ul>
       <nav class="wave-nav" aria-label="Previous and next wave">
         <a class="btn" href="toybiz-2006-series-13-onslaught.html" rel="prev">← Series 13 - Onslaught (2006)</a>
@@ -142,10 +167,11 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>Marvel Legends Chronicle — a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
+      <p>Marvel Legends Chronicle, a fan-made archive. Not affiliated with Marvel, Hasbro, or Toy Biz.</p>
       <nav aria-label="Footer"><a href="../index.html">Timeline</a><a href="../timeline.html">Legends Timeline</a><a href="../archive-tour.html">Archive Tour</a><a href="../debuts.html">First Appearances</a><a href="../long-wait.html">The Long Wait</a><a href="../build-ledger.html">The Build Ledger</a><a href="../two-houses.html">The Two Houses</a><a href="../roll-call.html">The Roll Call</a><a href="../wave-ledger.html">The Wave Ledger</a><a href="../year-ledger.html">The Year Ledger</a><a href="../spec-sheet.html">The Spec Sheet</a><a href="../visual-database.html">The Visual Database</a><a href="../2026-review.html">2026 Review</a><a href="../start.html">Start</a><a href="../waves/index.html" aria-current="page">Waves</a><a href="../stats.html">Stats</a><a href="../encyclopedia.html">Encyclopedia</a><a href="../baf-planner.html">BAF Planner</a><a href="../characters/index.html">Characters</a><a href="../price-guide.html">Price Guide</a><a href="../market-briefing.html">Market Briefing</a><a href="../launch-curve.html">Launch Curve</a><a href="../drop-week.html">Drop Week</a><a href="../auth-wizard.html">Auth Wizard</a><a href="../shelf.html">Your Shelf</a><a href="../my-vault.html">My Vault</a><a href="../completionist.html">The Completionist</a><a href="../journal.html">Journal</a><a href="../baf-economics.html">BAF Economics</a><a href="../hunt.html">Hunt Planner</a><a href="../gift.html">Gift Finder</a><a href="../holiday.html">Holiday Guide</a><a href="../grading.html">Grading</a><a href="../display.html">Display</a><a href="../collection-value.html">Ledger</a><a href="../exclusives.html">Exclusives</a><a href="../watchlist.html">Watchlist</a><a href="../budget.html">Budget</a><a href="../radar.html">Radar</a><a href="../preorders.html">Pre-orders</a><a href="../calendar.html">Release Calendar</a><a href="../compare.html">Compare</a><a href="../grails.html">Grails</a><a href="../quest.html">Grail Quest</a><a href="../variants.html">Variants</a><a href="../variant-spotlight.html">Variant Spotlight</a><a href="../rarity.html">Rarity Guide</a><a href="../checklist.html">Checklist</a><a href="../explore.html">Explore</a><a href="../retro.html">Retro</a><a href="../showcase.html">Showcase</a><a href="../vault-room.html">Vault Room</a><a href="../skills.html">Skills</a><a href="../agents.html">Agents</a><a href="../community.html">Community</a><a href="../api.html">API</a><button type="button" class="motion-toggle" aria-pressed="false"><span class="motion-toggle-track" aria-hidden="true"><span class="motion-toggle-thumb"></span></span>Reduce motion <span class="motion-toggle-state">Off</span></button></nav>
     </div>
   </footer>
   <script src="../assets/js/vault.js" defer></script>
+  <script src="../assets/js/research-apparatus.js" defer></script>
 </body>
 </html>

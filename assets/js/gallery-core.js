@@ -1,7 +1,7 @@
-/* gallery-core.js — pure Shelf Gallery logic (Wave 21: Showcase 2.0).
+/* gallery-core.js, pure Shelf Gallery logic (Wave 21: Showcase 2.0).
    No DOM, no storage, no init: safe to import from the showcase page and
    from Node tests. All figure references are validated against the caller's
-   archive map — nothing is invented.
+   archive map, nothing is invented.
 
    State shape (persisted as mlc_gallery_v1):
      { shelves: [ { id, name, layout, photos: [
@@ -15,7 +15,7 @@ import { buildQuestShareText } from "./quest-share.js";
 /* Layout templates                                                    */
 
 export const LAYOUTS = [
-  { id: "grid", name: "Grid", blurb: "Even rows — the classic cabinet look." },
+  { id: "grid", name: "Grid", blurb: "Even rows, the classic cabinet look." },
   { id: "run", name: "Character-run row", blurb: "One long row per character or series run." },
   { id: "baf", name: "BAF centerpiece", blurb: "A hero shot in the middle, the build crew around it." },
 ];
@@ -64,7 +64,7 @@ function clone(state) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Shelf operations (immutable — return a new state)                    */
+/* Shelf operations (immutable, return a new state)                    */
 
 export function addShelf(state, name) {
   const next = clone(state);
@@ -95,7 +95,7 @@ export function setLayout(state, shelfId, layoutId) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Photo operations (immutable — return a new state)                    */
+/* Photo operations (immutable, return a new state)                    */
 
 export function addPhoto(state, shelfId, { dataUrl, caption = "", tags = [], ts = Date.now() }) {
   const next = clone(state);
@@ -119,7 +119,7 @@ export function removePhoto(state, shelfId, photoId) {
 }
 
 /* Move a photo one step within its shelf (dir = -1 | 1). Same swap
-   semantics as the showcase's moveId — tested. */
+   semantics as the showcase's moveId, tested. */
 export function movePhoto(state, shelfId, photoId, dir) {
   const next = clone(state);
   const shelf = findShelf(next, shelfId);
@@ -157,7 +157,7 @@ export function setPhotoTags(state, shelfId, photoId, tags, validIds) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Sanitizer — repairs shape drift (bad layout, unknown tags) on load.  */
+/* Sanitizer, repairs shape drift (bad layout, unknown tags) on load.  */
 
 export function sanitizeGallery(state, validIds) {
   const raw = state && Array.isArray(state.shelves) ? state : { shelves: [] };
@@ -201,7 +201,7 @@ export function storageStatus(totalBytes) {
 
 /* ------------------------------------------------------------------ */
 /* Archive-signal rarity: which owned figure is the "rarest owned"?     */
-/* Same signals as quest-core achievements — nothing invented.         */
+/* Same signals as quest-core achievements, nothing invented.         */
 
 export function rarityScore(fig) {
   if (!fig) return 0;
@@ -230,7 +230,7 @@ export function rarestOwned(figures, ownedIds) {
   return best;
 }
 
-/* Newest photo whose tags include a rarity-scored figure — the
+/* Newest photo whose tags include a rarity-scored figure, the
    "latest grail-worthy shelfie" for the share card. */
 export function latestGrailShelfie(state, byId) {
   let best = null;
@@ -270,22 +270,22 @@ export function galleryStats(state, byId) {
 }
 
 /* ------------------------------------------------------------------ */
-/* "Shelfie" share card — gallery lines + the shared quest card.        */
+/* "Shelfie" share card, gallery lines + the shared quest card.        */
 /* quest: { level, ownedCount, archiveCount, completedBafs,             */
-/*          achievements, latestAchievement } — same inputs as          */
+/*          achievements, latestAchievement }, same inputs as          */
 /* buildQuestShareText, which supplies the quest section verbatim.      */
 
 export function buildShelfieCard({ gallery, byId, quest }) {
   const stats = galleryStats(gallery, byId);
   const lines = [];
-  lines.push(`📸 My Legends Shelfie — ${stats.photos} photo${stats.photos === 1 ? "" : "s"}`
+  lines.push(`📸 My Legends Shelfie, ${stats.photos} photo${stats.photos === 1 ? "" : "s"}`
     + ` across ${stats.shelves} shel${stats.shelves === 1 ? "f" : "ves"}`);
   if (stats.topFigures.length) {
     lines.push(`🖼️ Top tagged: ${stats.topFigures.map((t) => `${t.name} ×${t.count}`).join(", ")}`);
   } else if (stats.photos > 0) {
     lines.push("🖼️ Tag your photos with archive figures to name your shelf stars.");
   } else {
-    lines.push("🖼️ No shelfie photos yet — add your first.");
+    lines.push("🖼️ No shelfie photos yet, add your first.");
   }
 
   lines.push("");
@@ -303,8 +303,8 @@ export function buildShelfieCard({ gallery, byId, quest }) {
   const grail = latestGrailShelfie(gallery, byId);
   if (grail) {
     const { photo, fig } = grail;
-    const cap = photo.caption ? ` — “${photo.caption}”` : "";
-    lines.push(`👑 Latest grail-worthy shelfie: ${fig.name} — ${fig.waveSeries} (${fig.year})${cap}`);
+    const cap = photo.caption ? `, “${photo.caption}”` : "";
+    lines.push(`👑 Latest grail-worthy shelfie: ${fig.name}, ${fig.waveSeries} (${fig.year})${cap}`);
   }
   return lines.join("\n");
 }
