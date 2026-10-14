@@ -1174,6 +1174,636 @@
    "fallback": "typographic",
    "verifiedAt": "2026-10-14",
    "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-chod::Cyclops",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/118370/d1a54727-4639-4b86-8de8-779093517baa/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/astonishing-x-men-marvel-legends-cyclops-action-figure-118370?variation=229080",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/astonishing-x-men-marvel-legends-cyclops-action-figure-118370?variation=229080",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-chod::Emma Frost",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/118371/cdf5d2bc-cb9b-4aa7-b1fa-5664265e6041/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-emma-frost-action-figure-chod-baf-118371?variation=229081",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-emma-frost-action-figure-chod-baf-118371?variation=229081",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-chod::Fang",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/118372/a1f91df0-647c-4d3b-a4f0-2a1062369738/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-fang-action-figure-chod-baf-118372?variation=229082",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-fang-action-figure-chod-baf-118372?variation=229082",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-chod::M (Monet St. Croix)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/118373/8a962f92-3abb-4753-bf1f-3a97f4f8a199/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-monet-st-croix-action-figure-chod-baf-118373?variation=229083",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-monet-st-croix-action-figure-chod-baf-118373?variation=229083",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-chod::Corsair",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/118374/54dadfcc-25c1-4088-ab24-a7b2b9704d88/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-starjammer-corsair-action-figure-chod-baf-118374?variation=229084",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-starjammer-corsair-action-figure-chod-baf-118374?variation=229084",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-chod::Kid Omega",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/118375/da1a624d-b63d-4665-ab63-e490fd4c884c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-kid-omega-action-figure-chod-baf-118375?variation=229085",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-kid-omega-action-figure-chod-baf-118375?variation=229085",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-chod::Chamber",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/118376/9ec023ec-2750-4c85-8fec-5c2bc600ab25/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-chamber-action-figure-chod-baf-118376?variation=229086",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-chamber-action-figure-chod-baf-118376?variation=229086",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-puff-adder::Molecule Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/116438/ed29ca97-08e8-497b-8526-8aa244bcc9f4/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-molecule-man-action-figure-puff-adder-baf-116438?variation=224727",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-molecule-man-action-figure-puff-adder-baf-116438?variation=224727",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-puff-adder::Baron Strucker",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/116439/74d55725-2f75-40d7-9e82-e437f2c5842e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-baron-von-strucker-action-figure-puff-adder-baf-116439?variation=224730",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-baron-von-strucker-action-figure-puff-adder-baf-116439?variation=224730",
+     "priceUSD": 18.19,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-puff-adder::Yelena Belova",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/116440/c9cc539b-fbec-4931-875b-c25298821172/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-yelena-belova-black-widow-action-figure-puff-adder-baf-116440?variation=224733",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-yelena-belova-black-widow-action-figure-puff-adder-baf-116440?variation=224733",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-puff-adder::Wonder Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/116441/2da31d43-d8f9-4871-878b-3843c677d353/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-wonder-man-action-figure-puff-adder-baf-116441?variation=224737",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-wonder-man-action-figure-puff-adder-baf-116441?variation=224737",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-puff-adder::Ultimate Captain America",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/116442/d4c1c8cb-00e3-4504-8d99-482efbed2ffc/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-ultimate-captain-america-action-figure-puff-adder-baf-116442?variation=224740",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-ultimate-captain-america-action-figure-puff-adder-baf-116442?variation=224740",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-puff-adder::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/116443/99feb57b-bda2-46a1-bd45-79e96db9f681/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-iron-man-extremis-action-figure-puff-adder-baf-116443?variation=224743",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-iron-man-extremis-action-figure-puff-adder-baf-116443?variation=224743",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-puff-adder::Orb",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/116444/4c5620e8-58c0-4fe3-a410-538d78ccd50e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-marvels-orb-action-figure-puff-adder-baf-116444?variation=224746",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/avengers-classic-comic-marvel-legends-marvels-orb-action-figure-puff-adder-baf-116444?variation=224746",
+     "priceUSD": 20.79,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cosmo::Star-Lord",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119436/579cdf78-25bc-4a86-a0ce-a797e99b980e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-star-lord-action-figure-marvels-cosmo-baf-119436?variation=231542",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-star-lord-action-figure-marvels-cosmo-baf-119436?variation=231542",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cosmo::Drax the Destroyer",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119441/17421355-7764-4922-9d47-615d07c22f3f/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-drax-action-figure-marvels-cosmo-baf-119441?variation=231545",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-drax-action-figure-marvels-cosmo-baf-119441?variation=231545",
+     "priceUSD": 24.64,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cosmo::Mantis",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119442/8db81153-be77-405b-bde5-5497562e839f/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-marvels-mantis-action-figure-marvels-cosmo-baf-119442?variation=231548",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-marvels-mantis-action-figure-marvels-cosmo-baf-119442?variation=231548",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cosmo::Nebula",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119443/c7e7a4f1-d2b8-42e7-bbaa-08c6c0d4b89b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-marvels-nebula-action-figure-marvels-cosmo-baf-119443?variation=231552",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-marvels-nebula-action-figure-marvels-cosmo-baf-119443?variation=231552",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cosmo::Rocket Raccoon",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119444/31f881b1-8259-42a3-845e-176e11c59929/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-marvels-rocket-action-figure-marvels-cosmo-baf-119444?variation=231566",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-marvels-rocket-action-figure-marvels-cosmo-baf-119444?variation=231566",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cosmo::Adam Warlock",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119445/ec571c22-063d-4c46-827e-d84aaef2d178/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-adam-warlock-action-figure-marvels-cosmo-baf-119445?variation=231569",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-adam-warlock-action-figure-marvels-cosmo-baf-119445?variation=231569",
+     "priceUSD": 18.19,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cosmo::Kraglin",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119446/3c5aaaad-7844-46de-a24f-0d42302458eb/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-kraglin-action-figure-marvels-cosmo-baf-119446?variation=231572",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/guardians-galaxy-vol-3-marvel-legends-kraglin-action-figure-marvels-cosmo-baf-119446?variation=231572",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-mindless-one::Daredevil",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/126658/bfbf07e9-d71d-48d3-9b24-4c0b400a164e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-daredevil-action-figure-mindless-one-baf-126658?variation=246964",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-daredevil-action-figure-mindless-one-baf-126658?variation=246964",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-mindless-one::Lady Bullseye",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/126659/b99102a0-aa7e-48ce-9b31-03af3703d4c2/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-marvels-lady-bullseye-action-figure-mindless-one-baf-126659?variation=246967",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-marvels-lady-bullseye-action-figure-mindless-one-baf-126659?variation=246967",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-mindless-one::Luke Cage",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/126660/dc7ca687-95df-4307-94f2-d7e35d18e510/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-luke-cage-power-man-action-figure-mindless-one-baf-126660?variation=246970",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-luke-cage-power-man-action-figure-mindless-one-baf-126660?variation=246970",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-mindless-one::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/126661/38909313-e162-4eea-9a45-10fa0362c0e7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/midnight-suns-marvel-legends-iron-man-action-figure-mindless-one-baf-126661?variation=246973",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/midnight-suns-marvel-legends-iron-man-action-figure-mindless-one-baf-126661?variation=246973",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-mindless-one::Fist Ninja",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/126662/67683b94-3fbb-488f-b66d-52c76d5bdcef/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-fist-ninja-action-figure-mindless-one-baf-126662?variation=246976",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-fist-ninja-action-figure-mindless-one-baf-126662?variation=246976",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-mindless-one::Clea",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/126663/8c8a4a8e-712b-420b-b3e2-a522dfcc8d19/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-clea-action-figure-mindless-one-baf-126663?variation=246981",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-clea-action-figure-mindless-one-baf-126663?variation=246981",
+     "priceUSD": 29.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-mindless-one::Blade",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/126664/928a4855-8c12-4bba-bfb4-4508036bc153/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-blade-action-figure-mindless-one-baf-126664?variation=246984",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-knights-marvel-legends-blade-action-figure-mindless-one-baf-126664?variation=246984",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cassie-lang::Ant-Man (Scott Lang)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119422/b27b5636-4dc3-42ff-b741-50c41b5eee69/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/ant-man-wasp-quantumania-marvel-legends-ant-man-action-figure-cassie-lang-baf-119422?variation=231500",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/ant-man-wasp-quantumania-marvel-legends-ant-man-action-figure-cassie-lang-baf-119422?variation=231500",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cassie-lang::Wasp (Hope van Dyne)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119423/8dddce98-1c56-4f48-a160-2150528c57a3/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/ant-man-wasp-quantumania-marvel-legends-marvels-wasp-action-figure-cassie-lang-baf-119423?variation=231503",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/ant-man-wasp-quantumania-marvel-legends-marvels-wasp-action-figure-cassie-lang-baf-119423?variation=231503",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cassie-lang::Kang the Conqueror",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119430/138c83e2-cde5-4a6a-924d-c6119dd66a38/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/ant-man-wasp-quantumania-marvel-legends-kang-conqueror-action-figure-cassie-lang-baf-119430?variation=231506",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/ant-man-wasp-quantumania-marvel-legends-kang-conqueror-action-figure-cassie-lang-baf-119430?variation=231506",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cassie-lang::Ultron",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119431/8a91952f-c650-4a7a-9bf8-76802d80e0f7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-ultron-action-figure-cassie-lang-baf-119431?variation=231527",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-ultron-action-figure-cassie-lang-baf-119431?variation=231527",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cassie-lang::Egghead",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119432/1160be82-86b3-484d-9254-0a2c5bd0c541/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-marvels-egghead-action-figure-cassie-lang-baf-119432?variation=231530",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-marvels-egghead-action-figure-cassie-lang-baf-119432?variation=231530",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cassie-lang::Crossfire",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119433/6e7667e2-9be9-462f-96db-81114cd72eea/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-marvels-crossfire-action-figure-cassie-lang-baf-119433?variation=231533",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-marvels-crossfire-action-figure-cassie-lang-baf-119433?variation=231533",
+     "priceUSD": 22.09,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-cassie-lang::Future Ant-Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/119434/d7f03687-f394-4b1e-bb50-1a1dc43f03c9/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-future-ant-man-action-figure-cassie-lang-baf-119434?variation=231536",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-comics-marvel-legends-future-ant-man-action-figure-cassie-lang-baf-119434?variation=231536",
+     "priceUSD": 16.89,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
   }
  ]
 }
