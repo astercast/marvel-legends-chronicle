@@ -55,10 +55,13 @@ html { scrollbar-gutter: stable; } /* no 8–12px jog when filters change length
      is carried by rules, borders, furniture, and type. */
   background: var(--bg-soft);
 }
-/* R21 motion census fix: the one-shot light sweep over the hero is
-   REMOVED. The sweep performed on entrance; Marvel's single permitted
-   motion is the plinth light, warming once as a figure becomes featured
-   (assets/css/museum.css, .plinth-light), never on load, never on scroll. */
+/* R21 motion census fix, as landed: the one-shot light sweep over
+   the hero was REMOVED. The sweep performed on entrance; the plinth
+   light, the dark build's single permitted motion, was itself
+   retired by the light build (MARVEL-LIGHT 3.4: a plate is printed,
+   not lit; museum.css carries no .plinth-light). The only motion
+   left in the system is the seal press, an interaction, and hover
+   states. */
 
 /* ---------- Exhibit placards (paper on the dark wall) ---------- */
 .placard {
