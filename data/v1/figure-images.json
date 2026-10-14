@@ -1804,6 +1804,384 @@
    "fallback": "typographic",
    "verifiedAt": "2026-10-14",
    "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hulk-amadeus::Captain Marvel (Carol Danvers)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/124046/dc1743cc-ed29-4252-a325-5d6855a3dd3a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvels-marvel-legends-captain-marvel-action-figure-totally-awesome-hulk-baf-124046?variation=241504",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvels-marvel-legends-captain-marvel-action-figure-totally-awesome-hulk-baf-124046?variation=241504",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hulk-amadeus::Photon",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/124047/0f4202ba-eea9-421c-8f1c-87c9628aa590/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvels-marvel-legends-marvels-photon-action-figure-totally-awesome-hulk-baf-124047?variation=241506",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvels-marvel-legends-marvels-photon-action-figure-totally-awesome-hulk-baf-124047?variation=241506",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hulk-amadeus::Ms. Marvel (Kamala Khan)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/124048/026af290-7515-4163-9a50-4fd18781df4b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvels-marvel-legends-ms-marvel-action-figure-totally-awesome-hulk-baf-124048?variation=241507",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvels-marvel-legends-ms-marvel-action-figure-totally-awesome-hulk-baf-124048?variation=241507",
+     "priceUSD": 15.59,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hulk-amadeus::Marvel Boy (Noh-Varr)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/124049/c2b28add-a4d4-4c09-b79b-0d8448367e7e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-marvel-boy-action-figure-totally-awesome-hulk-baf-124049?variation=241509",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-marvel-boy-action-figure-totally-awesome-hulk-baf-124049?variation=241509",
+     "priceUSD": 22.09,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hulk-amadeus::Karnak",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/124050/b075eccd-398b-4fc6-8680-06f18a5d091f/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-karnak-action-figure-totally-awesome-hulk-baf-124050?variation=241524",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-karnak-action-figure-totally-awesome-hulk-baf-124050?variation=241524",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hulk-amadeus::Commander Rogers",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/124053/cf107494-5714-404c-a3e1-61de374b4022/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-commander-rogers-action-figure-totally-awesome-hulk-baf-124053?variation=241526",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-commander-rogers-action-figure-totally-awesome-hulk-baf-124053?variation=241526",
+     "priceUSD": 20.79,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-hulk-amadeus::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/124054/b8dd12b7-b6f3-412b-91fe-6b4923688066/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-iron-man-heroes-return-action-figure-totally-awesome-hulk-baf-124054?variation=241528",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-iron-man-heroes-return-action-figure-totally-awesome-hulk-baf-124054?variation=241528",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-bonebreaker::Wolverine",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/99094/aa882d8d-e30e-4f0b-8f1e-499c918c783d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolverine-action-figure-bonebreaker-baf-99094?variation=191706",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolverine-action-figure-bonebreaker-baf-99094?variation=191706",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-bonebreaker::Siryn",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/99095/2dcedc1e-5534-4598-baa7-059494021666/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-siryn-action-figure-bonebreaker-baf-99095?variation=191707",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-siryn-action-figure-bonebreaker-baf-99095?variation=191707",
+     "priceUSD": 13.0,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-bonebreaker::Havok",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/99096/0376c42f-c498-4bf7-a331-59fab9848c8c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-havok-classic-action-figure-bonebreaker-baf-99096?variation=191708",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-havok-classic-action-figure-bonebreaker-baf-99096?variation=191708",
+     "priceUSD": 17.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-bonebreaker::Vulcan",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/99097/cc4eb827-6a7c-4580-b90c-0a7a990b9857/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-vulcan-action-figure-bonebreaker-baf-99097?variation=191709",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-vulcan-action-figure-bonebreaker-baf-99097?variation=191709",
+     "priceUSD": 18.19,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-bonebreaker::Maggott",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/99099/fcff6a5b-aae8-4f4a-bc11-eccdda4874d7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-maggott-action-figure-bonebreaker-baf-99099?variation=191710",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-maggott-action-figure-bonebreaker-baf-99099?variation=191710",
+     "priceUSD": 20.79,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-bonebreaker::Darwin",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/99100/43f05daa-ac17-4c3a-ad3d-d42e113b0af3/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-darwin-action-figure-bonebreaker-baf-99100?variation=191711",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-darwin-action-figure-bonebreaker-baf-99100?variation=191711",
+     "priceUSD": 15.59,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-bonebreaker::Sabretooth",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/99101/92f77582-e549-469b-9775-bc27d3b4c9cd/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-sabretooth-action-figure-bonebreaker-baf-99101?variation=191712",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-sabretooth-action-figure-bonebreaker-baf-99101?variation=191712",
+     "priceUSD": 24.69,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-controller::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/101652/f8a57603-2d47-4072-bc7f-dd832eda479c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/iron-man-marvel-legends-iron-man-model-70-armor-action-figure-marvels-controller-baf-101652?variation=196198",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/iron-man-marvel-legends-iron-man-model-70-armor-action-figure-marvels-controller-baf-101652?variation=196198",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-controller::Speedball",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/101653/04593207-3e04-4910-91bc-198a92f45e2f/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-speedball-classic-action-figure-marvels-controller-baf-101653?variation=196199",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-speedball-classic-action-figure-marvels-controller-baf-101653?variation=196199",
+     "priceUSD": 18.19,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-controller::Blue Marvel",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/101654/f2f702e5-78e9-4370-96b4-c93a425d5acc/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-blue-marvel-classic-action-figure-marvels-controller-baf-101654?variation=196200",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-blue-marvel-classic-action-figure-marvels-controller-baf-101654?variation=196200",
+     "priceUSD": 18.19,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-controller::Thor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/101655/dee11afa-300c-4f4c-a50b-607b446bace7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-marvel-legends-thor-herald-galactus-action-figure-marvels-controller-baf-101655?variation=196201",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-marvel-legends-thor-herald-galactus-action-figure-marvels-controller-baf-101655?variation=196201",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-controller::Madame Hydra",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/101656/307e524a-471c-45d6-a7d1-313e66b02986/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-madame-hydra-classic-action-figure-marvels-controller-baf-101656?variation=196202",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-madame-hydra-classic-action-figure-marvels-controller-baf-101656?variation=196202",
+     "priceUSD": 14.29,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-controller::Quake",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/101657/2f0b784e-edf1-48ff-ab54-d249892efd83/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/secret-warriors-marvel-legends-marvels-quake-action-figure-marvels-controller-baf-101657?variation=196203",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/secret-warriors-marvel-legends-marvels-quake-action-figure-marvels-controller-baf-101657?variation=196203",
+     "priceUSD": 24.69,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-controller::U.S. Agent",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/101658/2d9ef71a-b20c-4c0d-a3d3-7960c9cc046c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-us-agent-classic-action-figure-marvels-controller-baf-101658?variation=196204",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/marvel-legends-us-agent-classic-action-figure-marvels-controller-baf-101658?variation=196204",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
   }
  ]
 }
