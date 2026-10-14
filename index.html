@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catalog — Marvel Legends Chronicle</title>
+<title>Marvel Legends Chronicle</title>
 <meta name="description" content="1,939 Marvel Legends figures, 167 waves, 2002–2026. Search the catalog.">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,20 +11,21 @@
 <link rel="stylesheet" href="assets/css/r23.css">
 </head>
 <body>
-<header class="topbar"><a class="wordmark" href="index.html">Marvel Legends Chronicle</a>
-<nav><a href="index.html" aria-current="page">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Help</a></nav>
-<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures"></form></header>
+<header class="topbar"><a class="wordmark" href="index.html" aria-current="page">Marvel Legends Chronicle</a>
+<nav><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
+<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures" required></form></header>
 <main>
 
+<h1>Marvel Legends Chronicle</h1>
 <form class="bigsearch" action="visual-database.html" method="get" role="search">
-<input type="search" name="q" placeholder="Search figures" aria-label="Search figures">
+<input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required>
 <button type="submit">Search</button></form>
 <p class="census"><b>1,939</b> figures · <b>167</b> waves · <b>2002–2026</b></p>
 <h2>Upcoming</h2>
 <ul class="rows"><li class="row compact"><div><div class="pid">2026-10-06</div><div class="name">Mini Comics Wave 3</div><div class="fact"><span class="micro red">Announced</span> · Fall 2026</div></div></li><li class="row compact"><div><div class="pid">2026-10-21</div><div class="name">X-Men &#x27;97 retro wave</div><div class="fact"><span class="micro red">Announced</span> · Fall 2026</div></div></li><li class="row compact"><div><div class="pid">2026-09-29</div><div class="name">Spider-Man: The Animated Series retro wave</div><div class="fact"><span class="micro red">Announced</span> · Dec 2026–Jan 2027</div></div></li></ul>
 <p><a href="radar.html">All upcoming releases</a></p>
 <h2>Browse</h2>
-<ul class="indexlines"><li><a href="visual-database.html"><span>By character</span><span class="count">66</span></a></li><li><a href="waves/index.html"><span>By wave</span><span class="count">167</span></a></li><li><a href="visual-database.html"><span>By year</span><span class="count">25</span></a></li><li><a href="visual-database.html?maker=Toy+Biz"><span>Toy Biz</span><span class="count">229</span></a></li><li><a href="visual-database.html?maker=Hasbro"><span>Hasbro</span><span class="count">1,710</span></a></li><li><a href="visual-database.html?exclusive=1"><span>Exclusives</span><span class="count">589</span></a></li><li><a href="visual-database.html?baf=1"><span>Build A Figure waves</span><span class="count">103</span></a></li><li><a href="visual-database.html?picture=Pictured"><span>Pictured</span><span class="count">141</span></a></li><li><a href="visual-database.html?picture=Not+pictured"><span>Not pictured</span><span class="count">1,798</span></a></li></ul>
+<ul class="indexlines"><li><a href="characters/index.html"><span>By character</span><span class="count">66</span></a></li><li><a href="waves/index.html"><span>By wave</span><span class="count">167</span></a></li><li><a href="visual-database.html?sort=year"><span>By year</span><span class="count">25</span></a></li><li><a href="visual-database.html?maker=Toy+Biz"><span>Toy Biz</span><span class="count">229</span></a></li><li><a href="visual-database.html?maker=Hasbro"><span>Hasbro</span><span class="count">1,710</span></a></li><li><a href="visual-database.html?exclusive=1"><span>Exclusives</span><span class="count">589</span></a></li><li><a href="visual-database.html?baf=1"><span>Build A Figure waves</span><span class="count">103</span></a></li><li><a href="visual-database.html?picture=Pictured"><span>Pictured</span><span class="count">141</span></a></li><li><a href="visual-database.html?picture=Not+pictured"><span>Not pictured</span><span class="count">1,798</span></a></li></ul>
 <h2>Newest additions</h2>
 <figure class="plate"><div class="frame"><img src="https://images.bigbadtoystore.com/images/product/151504/393ee86c-a39a-4f79-9513-2016824a5f37/original.jpg" alt="Wolverine figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div>
 <figcaption><div class="pid">2025 · Hasbro Nemesis Wave · No. 1</div>
@@ -40,6 +41,7 @@ document.querySelectorAll("[data-slug]").forEach(b=>{
 wireState(document);
 </script>
 </main>
-<footer class="site">Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</footer>
+<footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="characters/index.html">Characters</a><a href="waves/index.html">Waves</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a><a href="api.html">Developers</a></nav>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
 </body>
 </html>

@@ -12,11 +12,12 @@
 </head>
 <body>
 <header class="topbar"><a class="wordmark" href="index.html">Marvel Legends Chronicle</a>
-<nav><a href="index.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html" aria-current="page">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Help</a></nav>
-<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures"></form></header>
+<nav><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html" aria-current="page">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
+<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures" required></form></header>
 <main>
 
 <h1>Compare</h1>
+<p class="method">Name two to four figures above, or start from the <a href="visual-database.html">catalog</a> or the <a href="characters/index.html">character index</a> if you need the names first.</p>
 <div class="pickers" id="pickers"></div>
 <div class="comparegrid" id="panels"></div>
 <script type="module">
@@ -54,6 +55,7 @@ async function render(){
 render();
 </script>
 </main>
-<footer class="site">Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</footer>
+<footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="characters/index.html">Characters</a><a href="waves/index.html">Waves</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a><a href="api.html">Developers</a></nav>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
 </body>
 </html>

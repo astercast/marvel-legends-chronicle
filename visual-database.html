@@ -12,8 +12,8 @@
 </head>
 <body>
 <header class="topbar"><a class="wordmark" href="index.html">Marvel Legends Chronicle</a>
-<nav><a href="index.html" aria-current="page">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Help</a></nav>
-<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures"></form></header>
+<nav><a href="visual-database.html" aria-current="page">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
+<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures" required></form></header>
 <main>
 
 <h1>Catalog</h1>
@@ -31,6 +31,27 @@
 <p class="resultsline" id="shown"></p>
 <button class="plain" id="more" type="button">Load more</button></div>
 </div>
+<script>
+// First-paint truth for linked views: a filtered or sorted URL must never
+// sit under the unfiltered 1,939 heading with an empty results area while
+// the catalog loads. This runs during parsing, before the module below;
+// counts for the home-linked filters are computed by the generator.
+(function(){
+  var p=new URLSearchParams(location.search); if(!p.toString()) return;
+  var counts={"picture": {"Pictured": 141, "Not pictured": 1798}, "maker": {"Hasbro": 1710, "Toy Biz": 229}, "exclusive": 589, "baf": 663};
+  var msg=null;
+  if(p.get("picture")&&counts.picture[p.get("picture")]!=null) msg=counts.picture[p.get("picture")].toLocaleString()+" figures · Filters on · Picture: "+p.get("picture");
+  else if(p.get("maker")&&counts.maker[p.get("maker")]!=null) msg=counts.maker[p.get("maker")].toLocaleString()+" figures · Filters on · Maker: "+p.get("maker");
+  else if(p.get("exclusive")) msg=counts.exclusive.toLocaleString()+" figures · Filters on · Exclusive retailer";
+  else if(p.get("baf")) msg=counts.baf.toLocaleString()+" figures · Filters on · Build A Figure: Has piece";
+  else if(p.get("sort")==="year") msg="1,939 figures · Sorted by year";
+  else if(p.get("sort")==="wave") msg="1,939 figures · Sorted by wave order";
+  else msg="Loading the filtered catalog";
+  document.getElementById("results").textContent=msg;
+  document.getElementById("rows").innerHTML='<li class="row compact"><div><div class="name">Loading figures</div><div class="fact">The matching figures load here.</div></div></li>';
+  document.getElementById("shown").textContent="Loading";
+})();
+</script>
 <script type="module">
 import { getJSON, esc, stateButtons, wireState, loadSet, guardImages } from "./assets/js/r23.js";
 guardImages(document);
@@ -49,10 +70,15 @@ function activeFilters(){
 function describe(f,q){
   const parts=[]; if(q) parts.push(`matching "${q}"`);
   for(const [k,vs] of Object.entries(f)) parts.push(`${k}: ${vs.join(", ")}`);
+  const s=document.getElementById("sort").value;
+  if(s==="year") parts.push("Sorted by year"); if(s==="wave") parts.push("Sorted by wave order");
   return parts.length?`Filters on — ${parts.join(" · ")}`:"No filters on";
 }
+let applySeq=0;
 async function apply(){
-  const data=await loadAll(); const f=activeFilters(); const q=document.getElementById("q").value.trim().toLowerCase();
+  const seq=++applySeq;
+  const data=await loadAll(); if(seq!==applySeq) return;
+  const f=activeFilters(); const q=document.getElementById("q").value.trim().toLowerCase();
   const scope=document.getElementById("scope").value; const owned=loadSet("owned"), wanted=loadSet("wanted");
   view=data.filter(r=>{
     if(q){ const hay=scope==="Character"?r.character:scope==="Wave"?r.wave:r.name+" "+r.character+" "+r.wave;
@@ -83,18 +109,25 @@ function renderMore(){
   document.getElementById("more").style.display=shown<view.length?"":"none";
 }
 // First paint: chunk 0 only (50 rows). The full census is fetched only when
-// a search, filter, sort, or load-more action asks for it.
+// a search, filter, sort, or load-more action asks for it. URL parameters
+// set the controls directly (no .click(), so no change event fires a second
+// concurrent apply) and a single apply() renders the linked view.
 (async()=>{
-  const first=await getJSON("data/v1/browse/chunk-000.json");
   const q0=params.get("q")||"";
-  if(q0||params.get("maker")||params.get("exclusive")||params.get("baf")||params.get("picture")){
+  if([...params.keys()].length){
     document.getElementById("q").value=q0;
-    if(params.get("maker")) document.querySelector(`[data-facet="Maker"][value="${params.get("maker")}"]`)?.click();
-    if(params.get("picture")) document.querySelector(`[data-facet="Picture"][value="${params.get("picture")}"]`)?.click();
+    const setBox=(facet,val)=>{ const el=document.querySelector(`[data-facet="${facet}"][value="${val}"]`); if(el) el.checked=true; };
+    if(params.get("maker")) setBox("Maker",params.get("maker"));
+    if(params.get("picture")) setBox("Picture",params.get("picture"));
+    if(params.get("year")) setBox("Year",params.get("year"));
+    if(params.get("baf")) setBox("Build A Figure","Has piece");
     if(params.get("exclusive")) document.querySelectorAll('[data-facet="Exclusive retailer"]').forEach(c=>c.checked=true);
-    if(params.get("baf")) document.querySelector('[data-facet="Build A Figure"]')?.click();
-    apply(); return;
+    const setSel=(name,val)=>{ const el=document.querySelector(`[data-facet-select="${name}"]`); if(el&&val) el.value=val; };
+    setSel("Character",params.get("character")); setSel("Wave",params.get("wave"));
+    if(params.get("sort")) document.getElementById("sort").value=params.get("sort");
+    await apply(); return;
   }
+  const first=await getJSON("data/v1/browse/chunk-000.json");
   view=first; renderMore();
   document.getElementById("shown").textContent=`Showing 50 of 1,939 · 1,889 remain`;
   document.getElementById("more").style.display="";
@@ -111,6 +144,7 @@ document.getElementById("viewBtn").addEventListener("click",e=>{ grid=!grid; doc
 wireState(document);
 </script>
 </main>
-<footer class="site">Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</footer>
+<footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="characters/index.html">Characters</a><a href="waves/index.html">Waves</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a><a href="api.html">Developers</a></nav>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
 </body>
 </html>

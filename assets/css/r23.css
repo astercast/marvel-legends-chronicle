@@ -25,6 +25,10 @@ a{color:var(--blue)}
 .topbar input[type=search]{font-family:var(--sans);font-size:15px;padding:8px;border:1px solid var(--muted);border-radius:var(--r);background:#fff;min-height:44px;width:180px}
 main{max-width:1120px;margin:0 auto;padding:24px 16px 48px}
 footer.site{border-top:1px solid var(--line);padding:16px;font-family:var(--sans);font-size:13px;color:var(--muted);max-width:1120px;margin:0 auto}
+footer.site p{margin:8px 0 0}
+.footmap{display:flex;flex-wrap:wrap;gap:4px 8px;border-bottom:1px solid var(--line-soft);padding-bottom:8px;margin-bottom:8px}
+.footmap a{color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 8px}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
 h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.1;margin:0 0 8px}
 h2{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:48px 0 16px;border-top:1px solid var(--ink);padding-top:16px}
 h2:first-child{margin-top:0}

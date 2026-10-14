@@ -78,13 +78,14 @@ def row_html(r, prefix=""):
             f'<div class="fact">{escape(r["fact"])}</div>'
             f'<div class="path">{escape(r["path"])}</div></div>{state_btns(r["slug"])}</li>')
 
-NAV = [("Catalog", "index.html"), ("Upcoming", "radar.html"), ("Compare", "compare.html"),
-       ("My Collection", "my-vault.html"), ("Help", "encyclopedia.html")]
+NAV = [("Catalog", "visual-database.html"), ("Upcoming", "radar.html"), ("Compare", "compare.html"),
+       ("My Collection", "my-vault.html"), ("Guide", "encyclopedia.html")]
 
 def chrome(title, desc, current, prefix="", extra_head=""):
     nav = "".join(
         f'<a href="{prefix}{href}"{" aria-current=\"page\"" if label == current else ""}>{label}</a>'
         for label, href in NAV)
+    wm_current = ' aria-current="page"' if current == "Home" else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,17 +99,37 @@ def chrome(title, desc, current, prefix="", extra_head=""):
 <link rel="stylesheet" href="{prefix}assets/css/r23.css">
 {extra_head}</head>
 <body>
-<header class="topbar"><a class="wordmark" href="{prefix}index.html">Marvel Legends Chronicle</a>
+<header class="topbar"><a class="wordmark" href="{prefix}index.html"{wm_current}>Marvel Legends Chronicle</a>
 <nav>{nav}</nav>
-<form action="{prefix}visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures"></form></header>
+<form action="{prefix}visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures" required></form></header>
 <main>
 """
 
-FOOT = """</main>
-<footer class="site">Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</footer>
+FOOT_LINKS = [("Home", "index.html"), ("Catalog", "visual-database.html"),
+              ("Characters", "characters/index.html"), ("Waves", "waves/index.html"),
+              ("Upcoming", "radar.html"), ("Compare", "compare.html"),
+              ("My Collection", "my-vault.html"), ("Guide", "encyclopedia.html"),
+              ("Developers", "api.html")]
+
+def foot(prefix=""):
+    links = "".join(f'<a href="{prefix}{href}">{label}</a>' for label, href in FOOT_LINKS)
+    return f"""</main>
+<footer class="site"><nav class="footmap" aria-label="Site map">{links}</nav>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
 </body>
 </html>
 """
+
+def crumbs(prefix, trail):
+    """Breadcrumb for leaf/hub pages. trail: [(label, href-or-None), ...];
+    the last item is the current page (plain text, aria-current)."""
+    parts = []
+    for label, href in trail:
+        if href:
+            parts.append(f'<a href="{prefix}{href}">{escape(label)}</a>')
+        else:
+            parts.append(f'<span aria-current="page">{escape(label)}</span>')
+    return f'<nav class="backline crumbs" aria-label="Breadcrumb">{" · ".join(parts)}</nav>'
 
 def wire(prefix):
     return WIRE.replace("{p}", prefix if prefix else "./")
@@ -182,9 +203,9 @@ def home():
         f'<div class="fact"><span class="micro red">Announced</span> · {escape(u.get("releaseWindow") or "")}</div></div></li>'
         for u in up)
     counts = {
-        "By character": (len(CHARS), "visual-database.html"),
+        "By character": (len(CHARS), "characters/index.html"),
         "By wave": (len(WAVES), "waves/index.html"),
-        "By year": (len(set(r["year"] for r in ROWS)), "visual-database.html"),
+        "By year": (len(set(r["year"] for r in ROWS)), "visual-database.html?sort=year"),
         "Toy Biz": (sum(1 for r in ROWS if r["maker"] == "Toy Biz"), "visual-database.html?maker=Toy+Biz"),
         "Hasbro": (sum(1 for r in ROWS if r["maker"] == "Hasbro"), "visual-database.html?maker=Hasbro"),
         "Exclusives": (sum(1 for r in ROWS if r["exclusive"]), "visual-database.html?exclusive=1"),
@@ -196,8 +217,9 @@ def home():
         f'<li><a href="{href}"><span>{escape(k)}</span><span class="count">{v:,}</span></a></li>'
         for k, (v, href) in counts.items())
     body = f"""
+<h1>Marvel Legends Chronicle</h1>
 <form class="bigsearch" action="visual-database.html" method="get" role="search">
-<input type="search" name="q" placeholder="Search figures" aria-label="Search figures">
+<input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required>
 <button type="submit">Search</button></form>
 <p class="census"><b>1,939</b> figures · <b>167</b> waves · <b>2002–2026</b></p>
 <h2>Upcoming</h2>
@@ -212,8 +234,8 @@ def home():
 <div class="fact" style="color:var(--muted)">{escape(lead["fact"])}</div></figcaption></figure>
 <ul class="rows">{''.join(row_html(r) for r in newest)}</ul>
 """
-    write("index.html", chrome("Catalog — Marvel Legends Chronicle",
-          "1,939 Marvel Legends figures, 167 waves, 2002–2026. Search the catalog.", "Catalog") + body + wire("") + FOOT)
+    write("index.html", chrome("Marvel Legends Chronicle",
+          "1,939 Marvel Legends figures, 167 waves, 2002–2026. Search the catalog.", "Home") + body + wire("") + foot())
 
 # ---------- Surface 2: Catalog browse ----------
 def browse():
@@ -253,6 +275,27 @@ def browse():
 <p class="resultsline" id="shown"></p>
 <button class="plain" id="more" type="button">Load more</button></div>
 </div>
+<script>
+// First-paint truth for linked views: a filtered or sorted URL must never
+// sit under the unfiltered 1,939 heading with an empty results area while
+// the catalog loads. This runs during parsing, before the module below;
+// counts for the home-linked filters are computed by the generator.
+(function(){{
+  var p=new URLSearchParams(location.search); if(!p.toString()) return;
+  var counts={{"picture": {json.dumps({k: sum(1 for r in ROWS if (r["pictured"] and k == "Pictured") or (not r["pictured"] and k == "Not pictured")) for k in ("Pictured", "Not pictured")})}, "maker": {json.dumps({m: sum(1 for r in ROWS if r["maker"] == m) for m in sorted(set(r["maker"] for r in ROWS))})}, "exclusive": {sum(1 for r in ROWS if r["exclusive"])}, "baf": {sum(1 for r in ROWS if r["baf"])}}};
+  var msg=null;
+  if(p.get("picture")&&counts.picture[p.get("picture")]!=null) msg=counts.picture[p.get("picture")].toLocaleString()+" figures · Filters on · Picture: "+p.get("picture");
+  else if(p.get("maker")&&counts.maker[p.get("maker")]!=null) msg=counts.maker[p.get("maker")].toLocaleString()+" figures · Filters on · Maker: "+p.get("maker");
+  else if(p.get("exclusive")) msg=counts.exclusive.toLocaleString()+" figures · Filters on · Exclusive retailer";
+  else if(p.get("baf")) msg=counts.baf.toLocaleString()+" figures · Filters on · Build A Figure: Has piece";
+  else if(p.get("sort")==="year") msg="{len(ROWS):,} figures · Sorted by year";
+  else if(p.get("sort")==="wave") msg="{len(ROWS):,} figures · Sorted by wave order";
+  else msg="Loading the filtered catalog";
+  document.getElementById("results").textContent=msg;
+  document.getElementById("rows").innerHTML='<li class="row compact"><div><div class="name">Loading figures</div><div class="fact">The matching figures load here.</div></div></li>';
+  document.getElementById("shown").textContent="Loading";
+}})();
+</script>
 <script type="module">
 import {{ getJSON, esc, stateButtons, wireState, loadSet, guardImages }} from "./assets/js/r23.js";
 guardImages(document);
@@ -271,10 +314,15 @@ function activeFilters(){{
 function describe(f,q){{
   const parts=[]; if(q) parts.push(`matching "${{q}}"`);
   for(const [k,vs] of Object.entries(f)) parts.push(`${{k}}: ${{vs.join(", ")}}`);
+  const s=document.getElementById("sort").value;
+  if(s==="year") parts.push("Sorted by year"); if(s==="wave") parts.push("Sorted by wave order");
   return parts.length?`Filters on — ${{parts.join(" · ")}}`:"No filters on";
 }}
+let applySeq=0;
 async function apply(){{
-  const data=await loadAll(); const f=activeFilters(); const q=document.getElementById("q").value.trim().toLowerCase();
+  const seq=++applySeq;
+  const data=await loadAll(); if(seq!==applySeq) return;
+  const f=activeFilters(); const q=document.getElementById("q").value.trim().toLowerCase();
   const scope=document.getElementById("scope").value; const owned=loadSet("owned"), wanted=loadSet("wanted");
   view=data.filter(r=>{{
     if(q){{ const hay=scope==="Character"?r.character:scope==="Wave"?r.wave:r.name+" "+r.character+" "+r.wave;
@@ -305,18 +353,25 @@ function renderMore(){{
   document.getElementById("more").style.display=shown<view.length?"":"none";
 }}
 // First paint: chunk 0 only (50 rows). The full census is fetched only when
-// a search, filter, sort, or load-more action asks for it.
+// a search, filter, sort, or load-more action asks for it. URL parameters
+// set the controls directly (no .click(), so no change event fires a second
+// concurrent apply) and a single apply() renders the linked view.
 (async()=>{{
-  const first=await getJSON("data/v1/browse/chunk-000.json");
   const q0=params.get("q")||"";
-  if(q0||params.get("maker")||params.get("exclusive")||params.get("baf")||params.get("picture")){{
+  if([...params.keys()].length){{
     document.getElementById("q").value=q0;
-    if(params.get("maker")) document.querySelector(`[data-facet="Maker"][value="${{params.get("maker")}}"]`)?.click();
-    if(params.get("picture")) document.querySelector(`[data-facet="Picture"][value="${{params.get("picture")}}"]`)?.click();
+    const setBox=(facet,val)=>{{ const el=document.querySelector(`[data-facet="${{facet}}"][value="${{val}}"]`); if(el) el.checked=true; }};
+    if(params.get("maker")) setBox("Maker",params.get("maker"));
+    if(params.get("picture")) setBox("Picture",params.get("picture"));
+    if(params.get("year")) setBox("Year",params.get("year"));
+    if(params.get("baf")) setBox("Build A Figure","Has piece");
     if(params.get("exclusive")) document.querySelectorAll('[data-facet="Exclusive retailer"]').forEach(c=>c.checked=true);
-    if(params.get("baf")) document.querySelector('[data-facet="Build A Figure"]')?.click();
-    apply(); return;
+    const setSel=(name,val)=>{{ const el=document.querySelector(`[data-facet-select="${{name}}"]`); if(el&&val) el.value=val; }};
+    setSel("Character",params.get("character")); setSel("Wave",params.get("wave"));
+    if(params.get("sort")) document.getElementById("sort").value=params.get("sort");
+    await apply(); return;
   }}
+  const first=await getJSON("data/v1/browse/chunk-000.json");
   view=first; renderMore();
   document.getElementById("shown").textContent=`Showing 50 of 1,939 · 1,889 remain`;
   document.getElementById("more").style.display="";
@@ -334,11 +389,12 @@ wireState(document);
 </script>
 """
     write("visual-database.html", chrome("Catalog — Marvel Legends Chronicle",
-          "Browse 1,939 Marvel Legends figures by year, wave, character, maker, and picture.", "Catalog") + body + FOOT)
+          "Browse 1,939 Marvel Legends figures by year, wave, character, maker, and picture.", "Catalog") + body + foot())
 
 # ---------- Surface 3: Figure page (spec-sheet pattern) ----------
 def figure_page():
     body = """
+""" + crumbs("", [("Home", "index.html"), ("Catalog", "visual-database.html"), ("Figure record", None)]) + """
 <div id="fig"><p class="method">Loading the record.</p></div>
 <script type="module">
 import { getJSON, esc, stateButtons, wireState, guardImages } from "./assets/js/r23.js";
@@ -386,7 +442,7 @@ try{
 </script>
 """
     write("spec-sheet.html", chrome("Figure — Marvel Legends Chronicle",
-          "The figure record: wave, year, maker, reported prices, and where to buy it.", "") + body + FOOT)
+          "The figure record: wave, year, maker, reported prices, and where to buy it.", "") + body + foot())
 
 # ---------- Surface 4: Waves and Characters ----------
 def wave_pages():
@@ -409,7 +465,7 @@ def wave_pages():
             pieces = "".join(f'<li class="row baf"><div><div class="name">{escape(f["name"])}</div><div class="fact">Piece: {escape(f.get("bafPiece") or "—")}</div></div>{state_btns(r["slug"])}</li>' for f, r in rows if f.get("bafPiece"))
             bafsec = f'<h2>Build A Figure — {escape(w["baf"])}</h2><ul class="rows">{pieces}</ul><p class="method">Pieces you still need are the rows above not marked Owned.</p>'
         body = f"""
-<p class="backline">Catalog · Waves · {escape(w["series"])}</p>
+{crumbs("../", [("Home", "index.html"), ("Waves", "waves/index.html"), (w["series"], None)])}
 <h1>{escape(w["series"])}</h1>
 <p class="factline">{escape(w["manufacturer"])}, {w["year"]}, {len(rows)} figures</p>
 <ul class="rows">{contents}</ul>
@@ -419,14 +475,15 @@ Source: Chronicle census record for this wave; checked {CHECKED}.<br>
 Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
 """
         write(f'waves/{w["id"]}.html', chrome(f'{w["series"]} ({w["year"]}) — Marvel Legends Chronicle',
-              f'Every figure in {w["series"]} ({w["year"]}, {w["manufacturer"]}).', "", prefix="../") + body + wire("../") + FOOT)
+              f'Every figure in {w["series"]} ({w["year"]}, {w["manufacturer"]}).', "", prefix="../") + body + wire("../") + foot("../"))
     body = f"""
+{crumbs("../", [("Home", "index.html"), ("Waves", None)])}
 <h1>Waves</h1>
-<form class="bigsearch" action="../visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures"><button type="submit">Search</button></form>
+<form class="bigsearch" action="../visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required><button type="submit">Search</button></form>
 <ul class="rows">{''.join(index_rows)}</ul>
 """
     write("waves/index.html", chrome("Waves — Marvel Legends Chronicle",
-          "167 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../") + body + FOOT)
+          "167 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../") + body + foot("../"))
 
 def character_pages():
     by_base = defaultdict(list)
@@ -436,12 +493,14 @@ def character_pages():
         for c in sorted(CHARS, key=lambda c: c["name"]))
     write("characters/index.html", chrome("Characters — Marvel Legends Chronicle",
           "66 characters, counted: figures, first and latest release years.", "", prefix="../") +
-          f'<h1>Characters</h1><ul class="indexlines">{lines}</ul>' + FOOT)
+          crumbs("../", [("Home", "index.html"), ("Characters", None)]) +
+          f'<h1>Characters</h1><ul class="indexlines">{lines}</ul>' + foot("../"))
     for c in CHARS:
         rows = sorted(by_base.get(c["name"], []), key=lambda x: (x[0]["year"], x[0]["name"]))
         body_rows = "".join(row_html(r, prefix="../") for _, r in rows)
         completion = f'<p class="factline" id="completion"></p>' if rows else ""
         body = f"""
+{crumbs("../", [("Home", "index.html"), ("Characters", "characters/index.html"), (c["name"], None)])}
 <h1>{escape(c["name"])}</h1>
 <p class="factline">{len(rows)} figures · {c["first"]}–{c["last"]}</p>
 {completion}
@@ -454,7 +513,7 @@ if(n) document.getElementById("completion").textContent=`You have ${{n}} of ${{s
 </script>
 """
         write(f'characters/{c["slug"]}.html', chrome(f'{c["name"]} — Marvel Legends Chronicle',
-              f'{len(rows)} {c["name"]} figures, {c["first"]} to {c["last"]}.', "", prefix="../") + body + wire("../") + FOOT)
+              f'{len(rows)} {c["name"]} figures, {c["first"]} to {c["last"]}.', "", prefix="../") + body + wire("../") + foot("../"))
 
 # ---------- Surface 5: Upcoming ----------
 def upcoming():
@@ -495,12 +554,13 @@ def upcoming():
 <p><a href="visual-database.html">Past releases — browse the current year</a></p>
 """
     write("radar.html", chrome("Upcoming — Marvel Legends Chronicle",
-          "Announced Marvel Legends figures, expected dates, and unconfirmed reports, kept apart.", "Upcoming") + body + FOOT)
+          "Announced Marvel Legends figures, expected dates, and unconfirmed reports, kept apart.", "Upcoming") + body + foot())
 
 # ---------- Surface 6: Compare ----------
 def compare():
     body = """
 <h1>Compare</h1>
+<p class="method">Name two to four figures above, or start from the <a href="visual-database.html">catalog</a> or the <a href="characters/index.html">character index</a> if you need the names first.</p>
 <div class="pickers" id="pickers"></div>
 <div class="comparegrid" id="panels"></div>
 <script type="module">
@@ -539,7 +599,7 @@ render();
 </script>
 """
     write("compare.html", chrome("Compare — Marvel Legends Chronicle",
-          "Two to four figures side by side on the same fields, in the same order.", "Compare") + body + FOOT)
+          "Two to four figures side by side on the same fields, in the same order.", "Compare") + body + foot())
 
 # ---------- Surface 7: My Collection ----------
 def my_collection():
@@ -609,7 +669,7 @@ document.getElementById("printarea").innerHTML=`<h2>Checklist — Owned and Want
 </script>
 """
     write("my-vault.html", chrome("My Collection — Marvel Legends Chronicle",
-          "Your own figures and numbers: owned, wanted, Build A Figure progress, spending, and your top 10. Stored in your browser only.", "My Collection") + body + FOOT)
+          "Your own figures and numbers: owned, wanted, Build A Figure progress, spending, and your top 10. Stored in your browser only.", "My Collection") + body + foot())
 
 # ---------- Surface 8: Help ----------
 def help_page():
@@ -633,7 +693,7 @@ def help_page():
     for sec in ENC["variantsGuide"]["sections"][:1]:
         variants_how = "".join(f"<li>{escape(i['text'])}</li>" for i in sec["items"][:3])
     body = f"""
-<h1>Help</h1>
+<h1>Guide</h1>
 <div class="helpsec">
 <h2>Start here</h2>
 <p>Search the <a href="visual-database.html">catalog</a> by name, character, or wave. Open a figure to see its wave, year, maker, reported prices, and where to buy it. Mark figures Owned or Wanted; your marks stay in your browser.</p>
@@ -653,7 +713,7 @@ def help_page():
 <ul>{history}</ul>
 <h2>Buying as a gift</h2>
 <p>Set a budget, then search by the character the person collects.</p>
-<form class="bigsearch" action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Character name" aria-label="Character name"><button type="submit">Search</button></form>
+<form class="bigsearch" action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Character name" aria-label="Character name" required><button type="submit">Search</button></form>
 <h2>What the census covers</h2>
 <ul>
 <li>1,939 figures in 167 waves, released 2002–2026.</li>
@@ -664,8 +724,8 @@ def help_page():
 </ul>
 </div>
 """
-    write("encyclopedia.html", chrome("Help — Marvel Legends Chronicle",
-          "Start here, how reported prices work, rarity words, spotting fakes, grading, and line history.", "Help") + body + FOOT)
+    write("encyclopedia.html", chrome("Guide — Marvel Legends Chronicle",
+          "Start here, how reported prices work, rarity words, spotting fakes, grading, and line history.", "Guide") + body + foot())
 
 # ---------- Surface 9: Developers ----------
 def developers():
@@ -675,6 +735,7 @@ def developers():
         f'<li><b>{escape(k)}</b> — <a href="{escape(v.get("path", ""))}">{escape(v.get("path", ""))}</a> · {escape(v.get("description", "").replace("(<waveId>::<figureName>)", "(wave and figure name)").replace("::", " / "))}</li>'
         for k, v in eps.items())
     body = f"""
+{crumbs("", [("Home", "index.html"), ("Developers", None)])}
 <h1>Developers</h1>
 <div class="helpsec">
 <h2>API</h2>
@@ -687,14 +748,15 @@ def developers():
 </div>
 """
     write("api.html", chrome("Developers — Marvel Legends Chronicle",
-          "API endpoints, data schemas, agent procedures, and the skills manifest.", "") + body + FOOT)
+          "API endpoints, data schemas, agent procedures, and the skills manifest.", "") + body + foot())
 
 def not_found():
     body = """
+""" + crumbs("", [("Home", "index.html"), ("Page not found", None)]) + """
 <h1>Page not found</h1>
-<form class="bigsearch" action="/visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures"><button type="submit">Search</button></form>
+<form class="bigsearch" action="/visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required><button type="submit">Search</button></form>
 """
-    write("404.html", chrome("Page not found — Marvel Legends Chronicle", "Page not found.", "") + body + FOOT)
+    write("404.html", chrome("Page not found — Marvel Legends Chronicle", "Page not found.", "") + body + foot())
 
 KEEP_TOP = {"index.html", "visual-database.html", "spec-sheet.html", "radar.html", "compare.html",
             "my-vault.html", "encyclopedia.html", "api.html", "404.html"}
