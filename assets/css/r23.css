@@ -120,8 +120,12 @@ section.blk{margin:0 0 48px}
   .facets{display:none}
   .facets.open{display:block;position:fixed;inset:0;background:var(--paper);overflow:auto;padding:24px 16px;z-index:30;animation:sheetfade .15s ease}
   #filtersBtn{display:inline-flex}
-  .row{grid-template-columns:48px 1fr;gap:8px 16px;padding:16px 0}
-  .row .thumb,.row .notpic{width:48px;height:60px}
+  .row{grid-template-columns:64px 1fr;gap:8px 16px;padding:16px 0}
+  .row .thumb,.row .notpic{width:64px;height:80px}
+  .row .notpic{font-size:10px;letter-spacing:.02em}
+  /* plate-less rows (Build-A-Figure pieces) have no plate to sit beside:
+     their text spans the row instead of crushing into the plate column */
+  .row>div:first-child{grid-column:1/-1}
   .row .state{grid-column:1/-1;flex-direction:row}
   .row .path{display:none}
   .details li{grid-template-columns:120px 1fr;gap:8px}
