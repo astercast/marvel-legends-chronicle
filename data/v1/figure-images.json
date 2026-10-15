@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-14",
+ "updatedAt": "2026-10-15",
  "doctrine": "Embeds only: manufacturer/retailer product photography referenced by URL, never copied, never AI-generated. Every entry was verified live (HTTP 200, image content-type, cross-origin referer accepted) on verifiedAt. A figure with no entry renders in the typographic museum-vault treatment, never a broken-image box. Buy links are outbound only; this archive sells nothing.",
  "entries": [
   {
@@ -3045,6 +3045,237 @@
    "priceSeen": "2026-10-15",
    "verifiedAt": "2026-10-15",
    "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-rintrah::Doctor Strange",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/96141/e1860588-48fd-46dc-b822-f7782a20b1b7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/doctor-strange-multiverse-madness-marvel-legends-doctor-strange-action-figure-rintrah-baf-96141?variation=187099",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-rintrah::Wong",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/96142/a63a6c91-ed63-4fab-b2e8-7c5deb5bd74a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/doctor-strange-multiverse-madness-marvel-legends-wong-action-figure-rintrah-baf-96142?variation=187100",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-rintrah::Astral Doctor Strange",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/96143/f35db4eb-fc9c-4679-befe-9319ba52cdc6/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/doctor-strange-marvel-legends-doctor-strange-astral-form-action-figure-rintrah-baf-96143?variation=187101",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 7.5,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-rintrah::America Chavez",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/96144/e6c687c3-dfc5-468d-a22e-61b3b93678f0/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/doctor-strange-multiverse-madness-marvel-legends-america-chavez-action-figure-rintrah-baf-96144?variation=187102",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 10.0,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-rintrah::Sleepwalker",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/96145/c68ceaca-2e62-463e-a5e8-b95419f8f794/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-sleepwalker-action-figure-rintrah-baf-96145?variation=187104",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-rintrah::Master Mordo",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/96146/a75c0d45-e9b6-4041-9595-fb211a1c352d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/doctor-strange-multiverse-madness-marvel-legends-master-mordo-action-figure-rintrah-baf-96146?variation=187103",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 10.0,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-rintrah::D'Spayre",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/96147/c06214a3-97c2-4258-8983-d94066b507dc/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-dspayre-action-figure-rintrah-baf-96147?variation=187105",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 18.74,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-flight-gear::U.S. Agent",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/81047/a33ac362-9e57-4e5f-9dfb-71c5c9b38a01/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/falcon-winter-soldier-marvel-legends-us-agent-action-figure-captain-america-flight-gear-baf-81047?variation=159055",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 20.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-flightgear (r31 block probe, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-flight-gear::Helmut Zemo",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/81049/b2114388-d9ba-4dec-936f-3743a34d829c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/falcon-winter-soldier-marvel-legends-baron-zemo-action-figure-captain-america-flight-gear-baf-81049?variation=159058",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 17.49,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-flightgear (r31 block probe, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-flight-gear::Winter Soldier",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/81050/e7fe5575-775b-4217-b74c-bb139bc999ae/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/falcon-winter-soldier-marvel-legends-winter-soldier-action-figure-captain-america-flight-gear-baf-81050?variation=159061",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-flightgear (r31 block probe, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-flight-gear::Captain America (Sam Wilson)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/81051/33f5c8a4-5517-4cb6-acc1-0b0e06cb1832/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/falcon-winter-soldier-marvel-legends-captain-america-action-figure-captain-america-flight-gear-baf-81051?variation=159065",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 11.25,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-flightgear (r31 block probe, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-flight-gear::Scarlet Witch",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/81053/a2e7ce5f-6e49-40fb-a38c-87a91af8fda1/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/wandavision-marvel-legends-scarlet-witch-action-figure-captain-america-flight-gear-baf-81053?variation=159069",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-flightgear (r31 block probe, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-flight-gear::White Vision",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/81054/d7acbb20-e281-4154-95a4-baad1801c4fa/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/wandavision-marvel-legends-vision-action-figure-captain-america-flight-gear-baf-81054?variation=159072",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-flightgear (r31 block probe, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-flight-gear::Loki",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/81055/c437b39f-36e1-4b31-938f-981a77784148/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/loki-marvel-legends-loki-action-figure-captain-america-flight-gear-baf-81055?variation=159075",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-flightgear (r31 block probe, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-infinity-ultron::Hawkeye",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/102650/e9b0cf92-5bba-4355-bf57-23d69709f1e0/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/hawkeye-marvel-legends-hawkeye-action-figure-infinity-ultron-baf-102650?variation=198186",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-ultron (r30, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-infinity-ultron::Kate Bishop",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/102651/788b4c95-0cea-4706-9827-1ae3d4413cc1/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/hawkeye-marvel-legends-kate-bishop-action-figure-infinity-ultron-baf-102651?variation=198185",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-ultron (r30, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-infinity-ultron::She-Hulk",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/111736/dfc3cca9-3543-477f-8e07-9fc773320ee2/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/she-hulk-marvel-legends-she-hulk-action-figure-infinity-ultron-baf-111736?variation=215481",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-ultron2 (r30, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-infinity-ultron::Ms. Marvel",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/108217/44fa561b-ccec-4b42-a039-3082368db693/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/ms-marvel-marvel-legends-ms-marvel-action-figure-infinity-ultron-baf-108217?variation=208700",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 15.59,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-ultron3 (r30, re-asserted r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-infinity-ultron::Sharon Carter",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/106585/7d5e39da-2725-4042-9c4b-d90b25a0cbad/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/falcon-winter-soldier-marvel-legends-sharon-carter-action-figure-infinity-ultron-baf-106585?variation=205355",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.49,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe-sharon32 (r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-infinity-ultron::Moon Knight",
+   "imageUrl": "https://media.entertainmentearth.com/assets/images/b6d9a3a3b50347b3bd336e8242b74c04lg.jpg",
+   "imageSource": "Entertainment Earth",
+   "sourceUrl": "https://www.entertainmentearth.com/product/avengers-2022-marvel-legends-moon-knight-6inch-action-figure/hsf3858",
+   "buyLabel": "Entertainment Earth",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in ee_probe32 (second-source method, built r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2022-infinity-ultron::Mr. Knight",
+   "imageUrl": "https://media.entertainmentearth.com/assets/images/7540cd98da8a49038874fede526d4ecelg.jpg",
+   "imageSource": "Entertainment Earth",
+   "sourceUrl": "https://www.entertainmentearth.com/product/avengers-2022-marvel-legends-moon-knight-mr-knight-6inch-action-figure/hsf3859",
+   "buyLabel": "Entertainment Earth",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in ee_probe32 (second-source method, built r32); image downloaded and read firsthand against census identity"
   }
  ]
 }
