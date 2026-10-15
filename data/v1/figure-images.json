@@ -2902,6 +2902,149 @@
    "fallback": "typographic",
    "verifiedAt": "2026-10-14",
    "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-watcher::Star-Lord (T'Challa)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/87775/b26c4e04-9f31-4143-bc71-cc4ee09243a4/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-tchalla-star-lord-action-figure-marvels-watcher-baf-87775?variation=172036",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 6.25,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-watcher::Zombie Captain America",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/87776/93cdc8d5-805f-4e4a-a2ba-a2b18a17c66b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-zombie-captain-america-action-figure-marvels-watcher-baf-87776?variation=172040",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-watcher::Captain Carter",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/87777/3b1e36c3-7bcc-47a0-8cfd-e39061ad05cd/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-marvels-captain-carter-action-figure-marvels-watcher-baf-87777?variation=172043",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-watcher::Zombie Hunter Spidey",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/87778/9bf5c819-2fd5-470d-a094-1cd39ef7c94e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-zombie-hunter-spidey-action-figure-marvels-watcher-baf-87778?variation=172047",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-watcher::Doctor Strange Supreme",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/87779/75c7b63e-d8be-438d-9ba8-647e8466dac1/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-doctor-strange-supreme-action-figure-marvels-watcher-baf-87779?variation=172051",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 21.24,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-watcher::Heist Nebula",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/87780/895ba936-bc81-4c57-b7ae-4a07ed470627/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/what-marvel-legends-heist-nebula-action-figure-marvels-watcher-baf-87780?variation=172053",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 6.25,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-watcher::Sylvie",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/87781/32e2fc9a-e9d8-4093-a942-135d663ce419/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/loki-marvel-legends-marvels-sylvie-action-figure-marvels-watcher-baf-87781?variation=172056",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 16.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-joe-fixit::Kang the Conqueror",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/69277/04842008-a0a7-49e6-a265-111aa49d2dc2/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-kang-action-figure-joe-fixit-baf-69277?variation=135634",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.49,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-joe-fixit::Falcon",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/69278/f3dd8af5-62c3-4b83-b93f-9e9bbb86bdb0/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-falcon-action-figure-joe-fixit-baf-69278?variation=135627",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-joe-fixit::Jocasta",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/69279/dfb6a03b-7ab9-49b9-95cd-efd0418850b5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-jocasta-action-figure-joe-fixit-baf-69279?variation=135624",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 17.24,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-joe-fixit::Thunderstrike",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/69280/79f4938c-ad62-449a-bf73-f106637e225e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-marvels-thunderstrike-action-figure-joe-fixit-baf-69280?variation=135617",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.94,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-joe-fixit::Captain America",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/69281/a56ae48c-07ea-4944-90ed-184e43986596/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvels-avengers-marvel-legends-captain-america-action-figure-joe-fixit-baf-69281?variation=135614",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.94,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-joe-fixit::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/69282/1234334d-467a-41d5-abfe-a5132d9330da/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvels-avengers-marvel-legends-iron-man-action-figure-joe-fixit-baf-69282?variation=135603",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 17.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe31; image downloaded and read firsthand against census identity"
   }
  ]
 }
