@@ -3705,6 +3705,149 @@
    "priceSeen": "2026-10-15",
    "verifiedAt": "2026-10-15",
    "verify": "og:image == structured Product image asserted in probe34b (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2018-okoye::Black Panther",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/32126/0e4458f2-e1b3-4510-8c70-ac5f3e1a64dc/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-black-panther-okoye-baf-32126?variation=64755",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-okoye (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2018-okoye::Erik Killmonger",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/32127/4b0d9439-000e-4fcc-83f4-6f580e582a02/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-erik-killmonger-okoye-baf-32127?variation=64758",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-okoye (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2018-okoye::Nakia",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/38385/72dfaab2-d798-4855-9f2f-8b3a445d8b1a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/black-panther-marvel-legends-nakia-okoye-baf-38385?variation=78152",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.49,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-okoye-b (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2018-okoye::Black Bolt",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/38389/ce3b586b-0127-4f4e-86be-35cbc5052609/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/inhumans-marvel-legends-black-bolt-okoye-baf-38389?variation=78157",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.49,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-okoye-b (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2018-okoye::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/38390/2a52459f-cd01-4ee9-aa6c-998383748d70/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/invincible-iron-man-marvel-legends-iron-man-38390?variation=78161",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-okoye-b (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2018-okoye::Namor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/38392/77992885-82b3-4893-b809-ea6574c7779d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-sub-mariner-okoye-baf-38392?variation=78167",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-okoye-b (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2019-caliban::Gambit",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/42716/b379609c-6e8a-47f7-8749-4b76c21548b1/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-gambit-42716?variation=87833",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-caliban (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2019-caliban::Beast",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/42717/3835cc90-8d18-4e45-8a4b-9e7a1679e503/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-beast-caliban-baf-42717?variation=87836",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-caliban (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2019-caliban::Wolverine",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/42718/ec2c895b-4e75-4dfe-b06c-1d79cb29a18b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-weapon-x-caliban-baf-42718?variation=87839",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-caliban (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2019-caliban::Forge",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/42719/a2c3f730-ab20-4cef-8621-6fedabb48d69/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-forge-caliban-baf-42719?variation=87842",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-caliban (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2019-caliban::Blink",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/42720/20ec4c3f-bdff-4239-b497-d8034a85eab4/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-blink-caliban-baf-42720?variation=87845",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-caliban (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2019-caliban::Jubilee",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/42721/93ef6b26-c978-44c9-a9ca-9b9b649e3635/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-jubilee-caliban-baf-42721?variation=87848",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-caliban (r35); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2019-caliban::Skullbuster",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/42722/e6d92b8b-0304-465e-bff1-e82068ef0623/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-skullbuster-caliban-baf-42722?variation=87851",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe35-caliban (r35); image downloaded and read firsthand against census identity"
   }
  ]
 }
