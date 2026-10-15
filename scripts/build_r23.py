@@ -105,11 +105,7 @@ def chrome(title, desc, current, prefix="", extra_head=""):
 <main>
 """
 
-FOOT_LINKS = [("Home", "index.html"), ("Catalog", "visual-database.html"),
-              ("Characters", "characters/index.html"), ("Waves", "waves/index.html"),
-              ("Upcoming", "radar.html"), ("Compare", "compare.html"),
-              ("My Collection", "my-vault.html"), ("Guide", "encyclopedia.html"),
-              ("Developers", "api.html")]
+FOOT_LINKS = [("Home", "index.html")] + NAV
 
 def foot(prefix=""):
     links = "".join(f'<a href="{prefix}{href}">{label}</a>' for label, href in FOOT_LINKS)
@@ -194,6 +190,9 @@ def gen_data():
 def home():
     pictured = [r for r in ROWS if r["pictured"]]
     lead = max(pictured, key=lambda r: r["year"])
+    grid_pool = sorted((r for r in pictured if r["slug"] != lead["slug"]),
+                       key=lambda r: (-r["year"], r["name"]))[:8]
+    grid_rows = "".join(row_html(r) for r in grid_pool)
     newest = sorted(ROWS, key=lambda r: (-r["year"], r["name"]))[:10]
     up = PREORDERS[:3]
     up_rows = "".join(
@@ -222,16 +221,19 @@ def home():
 <input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required>
 <button type="submit">Search</button></form>
 <p class="census"><b>1,939</b> figures · <b>167</b> waves · <b>2002–2026</b></p>
+<h2>Pictured figures</h2>
+<figure class="plate"><div class="frame"><img src="{escape(lead["img"])}" alt="{escape(lead["name"])} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div>
+<figcaption><div class="pid">{escape(lead["pid"])}</div>
+<div class="name" style="font-size:24px;font-weight:600"><a href="spec-sheet.html?f={lead["slug"]}" style="color:var(--ink);text-decoration:none">{escape(lead["name"])}</a></div>
+<div class="fact" style="color:var(--muted)">{escape(lead["fact"])}</div></figcaption></figure>
+<ul class="rows grid">{grid_rows}</ul>
+<p><a href="visual-database.html?picture=Pictured">See all {len(pictured):,} pictured figures</a></p>
 <h2>Upcoming</h2>
 <ul class="rows">{up_rows}</ul>
 <p><a href="radar.html">All upcoming releases</a></p>
 <h2>Browse</h2>
 <ul class="indexlines">{index_lines}</ul>
 <h2>Newest additions</h2>
-<figure class="plate"><div class="frame"><img src="{escape(lead["img"])}" alt="{escape(lead["name"])} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div>
-<figcaption><div class="pid">{escape(lead["pid"])}</div>
-<div class="name" style="font-size:24px;font-weight:600"><a href="spec-sheet.html?f={lead["slug"]}" style="color:var(--ink);text-decoration:none">{escape(lead["name"])}</a></div>
-<div class="fact" style="color:var(--muted)">{escape(lead["fact"])}</div></figcaption></figure>
 <ul class="rows">{''.join(row_html(r) for r in newest)}</ul>
 """
     write("index.html", chrome("Marvel Legends Chronicle",

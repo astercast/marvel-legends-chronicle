@@ -4688,6 +4688,114 @@
    "verifiedAt": "2026-10-15",
    "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
    "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
+  },
+  {
+   "figureId": "hasbro-2018-cull-obsidian::Ant-Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/36183/f2255321-1896-4bb9-849b-7b2a27f9a715/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/ant-man-wasp-marvel-legends-ant-man-cull-obsidian-baf-36183",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2018-cull-obsidian::Hope van Dyne (Wasp)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/36184/e0f84330-615d-490b-beb2-d109caab1e80/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/ant-man-wasp-marvel-legends-wasp-cull-obsidian-baf-36184",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2017-gladiator-hulk::Loki",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/28525/e0aea9b0-948d-4f92-9a0e-041a4144d389/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-ragnarok-marvel-legends-loki-hulk-baf-28525",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2017-gladiator-hulk::Thor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/28526/1954aea6-ccb0-4f2d-bfb3-da07bea6ce46/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-ragnarok-marvel-legends-thor-hulk-baf-28526",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 34.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2016-space-knight-venom::Electro",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/30491/2a02e081-1ba5-41b0-82c1-3f02d25b4a70/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-marvel-legends-evil-adversaries-electro-space-venom-baf-30491",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2016-space-knight-venom::Spider-Girl (Ashley Barton)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/30496/4e95bc64-11f8-4eb7-a47e-4fc2726c1622/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-marvel-legends-web-slinging-heroines-spider-girl-space-venom-baf-30496",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2016-space-knight-venom::Ultimate Spider-Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/19804/8c4f9bd6-f2c0-4e17-8314-781b609de9d2/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-marvel-legends-ultimate-spider-man-peter-parker-space-venom-baf-19804",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 21.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2016-space-knight-venom::Spider-Man (Miles Morales)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/19805/c0a1aa0b-498e-4166-b099-1baae4018c0a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-marvel-legends-ultimate-spider-man-miles-morales-space-venom-baf-19805",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 59.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe39 probe evidence; image downloaded into r41 img41/ and read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2017-gladiator-hulk::Odinson",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-thor-ragnarok-gladiator-hulk-series-6-inch-odinson_image_1200x1200.gif?v=1705953370",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-thor-ragnarok-gladiator-hulk-series-6-inch-odinson",
+   "buyLabel": "CmdStore",
+   "priceUSD": 35.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "JSON-LD Product image == og:image as the same Shopify CDN asset (filename + version stamp; resize parameters differ), asserted in r41 hunt41 evidence; GTIN 630509526383 matches the figure UPC; packaged photo read firsthand against census identity (r41)",
+   "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
   }
  ]
 }

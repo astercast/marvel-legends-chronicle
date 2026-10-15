@@ -69,6 +69,7 @@ button.red{background:var(--red);border-color:var(--red);color:#fff}
 .rows.grid .row{display:block;border-bottom:1px solid var(--line);padding:0 0 16px}
 .rows.grid .thumb,.rows.grid .notpic{width:100%;height:190px}
 .rows.grid .state{flex-direction:row;margin-top:8px}
+.rows.grid .statebtn{min-width:0;flex:1;padding:8px 6px}
 /* full plate (home lead pictured figure + figure page) */
 .plate{margin:0 0 24px;max-width:560px}
 .plate .frame{background:#fff;border:1px solid var(--line-soft);padding:24px;display:flex;justify-content:center}

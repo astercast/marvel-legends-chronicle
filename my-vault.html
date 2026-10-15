@@ -80,7 +80,7 @@ document.getElementById("printarea").innerHTML=`<h2>Checklist — Owned and Want
  [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} — ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
 </script>
 </main>
-<footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="characters/index.html">Characters</a><a href="waves/index.html">Waves</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a><a href="api.html">Developers</a></nav>
+<footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
 <p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
 </body>
 </html>
