@@ -3496,6 +3496,215 @@
    "priceSeen": "2026-10-15",
    "verifiedAt": "2026-10-15",
    "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-super-skrull::Mister Fantastic",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/51254/f88b4dd4-e2c3-4191-9cdb-1ea6bd2875b0/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-marvel-legends-mr-fantastic-action-figure-super-skrull-baf-51254?variation=105437",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-super-skrull::Human Torch",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/51255/02156aca-8eea-457b-8d04-b4c5faddd489/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-marvel-legends-human-torch-action-figure-super-skrull-baf-51255?variation=105440",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-super-skrull::The Thing",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/51256/d5778622-5763-4fc0-b96d-303ae60d6aff/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-marvel-legends-marvels-thing-action-figure-super-skrull-baf-51256?variation=105443",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-super-skrull::Invisible Woman",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/51257/fb808cfd-33e6-4596-8c97-085f159cccdf/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-marvel-legends-marvels-invisible-woman-action-figure-super-skrull-baf-51257?variation=105444",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-super-skrull::She-Hulk",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/51258/84f3fe56-7ab8-4152-a853-d3454cbc5120/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/hulk-marvel-legends-she-hulk-action-figure-super-skrull-baf-51258?variation=105445",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 44.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-super-skrull::Doctor Doom",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/51259/5e751fd9-fe8a-4553-9040-2009c99f6692/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/fantastic-four-marvel-legends-doctor-doom-action-figure-super-skrull-baf-51259?variation=105446",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 41.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-sugar-man::Weapon X",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/59001/a4b9fa39-5b79-4c65-a657-1bc674ad3d38/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-weapon-x-action-figure-sugar-man-baf-59001?variation=117269",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-sugar-man::Sunfire",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/59002/e182f1ab-7ddc-4414-89af-f6b183d381d8/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-sunfire-action-figure-sugar-man-baf-59002?variation=117272",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-sugar-man::Jean Grey",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/59003/a96cc2e4-af90-456c-b232-1d09a0d14fa1/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-jean-grey-action-figure-sugar-man-baf-59003?variation=117275",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-sugar-man::Dark Beast",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/59004/0efd0c4a-fcd3-42d5-85b4-446da22124ce/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-dark-beast-action-figure-sugar-man-baf-59004?variation=117278",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-sugar-man::X-Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/59005/c642d2e4-6010-428e-97ca-ed6ae27f0bf4/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-x-man-action-figure-sugar-man-baf-59005?variation=117281",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-sugar-man::Wild Child",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/59006/31daae01-43a8-478e-87d1-43a47fefed73/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-wild-child-action-figure-sugar-man-baf-59006?variation=117284",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-sugar-man::Morph",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/59007/0bd9ed8f-d64f-45e3-9af0-1681dcabdc97/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-morph-action-figure-sugar-man-baf-59007?variation=117287",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 19.54,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-venompool::Gwenom",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/67876/39fe1cb3-b33d-45c4-9fb2-9baf52c9bf5d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-ghost-spider-action-figure-venompool-baf-67876?variation=133095",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 42.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-venompool::Phage",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/67878/3af1a6b9-7010-4acc-991d-a13ae35e3642/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-phage-action-figure-venompool-baf-67878?variation=133098",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 40.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-venompool::Spider-Man (Miles Morales)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/67883/9d6fbfab-05ce-4eed-8704-4c0b617fd72c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-miles-morales-action-figure-venompool-baf-67883?variation=133103",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 54.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-venompool::Carnage",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/67884/0de092e7-2442-4b1f-84b1-c4a1d23fcd5b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-carnage-action-figure-venompool-baf-67884?variation=133106",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-venompool::Venom",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/67869/8dfc3396-e01d-420c-99c5-c8d977a89ff5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-venom-action-figure-67869?variation=133078",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34 (r34, direct variation fetch); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2020-venompool::Morbius the Living Vampire",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/67874/51fb6fa0-53a3-4c1b-a2bf-b9e68978698b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-morbius-action-figure-venompool-baf-67874?variation=133083",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 34.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe34b (r34); image downloaded and read firsthand against census identity"
   }
  ]
 }
