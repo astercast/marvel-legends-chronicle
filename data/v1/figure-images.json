@@ -2542,6 +2542,366 @@
    "fallback": "typographic",
    "verifiedAt": "2026-10-14",
    "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-no-way-home::Friendly Neighborhood Spider-Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129393/43fed443-bb30-48dd-a6f1-659228d0cfde/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-spider-man-friendly-neighborhood-action-figure-129393?variation=253082",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-spider-man-friendly-neighborhood-action-figure-129393?variation=253082",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-no-way-home::Amazing Spider-Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129394/ff1253d9-371a-4007-b543-a8e334edeb06/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/amazing-spider-man-2-marvel-legends-spider-man-action-figure-129394?variation=253083",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/amazing-spider-man-2-marvel-legends-spider-man-action-figure-129394?variation=253083",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-no-way-home::Spider-Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129395/5ca879d8-4de0-43b6-9416-9553b37af23b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-spider-man-final-suit-action-figure-129395?variation=253084",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-spider-man-final-suit-action-figure-129395?variation=253084",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-no-way-home::MJ",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129396/6ff51e7c-3dbb-407e-a6c7-2c374d5d0920/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-marvels-mj-action-figure-129396?variation=253087",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-marvels-mj-action-figure-129396?variation=253087",
+     "priceUSD": 25.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-no-way-home::Matt Murdock",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129397/fb6b7dd2-7b95-4a57-ab43-55d55c1b1138/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-matt-murdock-action-figure-129397?variation=253088",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-matt-murdock-action-figure-129397?variation=253088",
+     "priceUSD": 23.39,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2023-no-way-home::Sandman",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/129398/fbda4572-43e5-4073-a595-60cd1c3d6b87/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-sandman-action-figure-129398?variation=253089",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/spider-man-way-home-marvel-legends-sandman-action-figure-129398?variation=253089",
+     "priceUSD": 19.49,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-korg::Thor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/103439/a79b1335-0211-42d1-b364-ff195588f1b7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-thor-action-figure-marvels-korg-baf-103439?variation=199641",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-thor-action-figure-marvels-korg-baf-103439?variation=199641",
+     "priceUSD": 14.29,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-korg::Thor (Jane Foster)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/103440/0e31c354-e800-4905-ad99-59c027bcfa16/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-mighty-thor-action-figure-marvels-korg-baf-103440?variation=199643",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-mighty-thor-action-figure-marvels-korg-baf-103440?variation=199643",
+     "priceUSD": 19.49,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-korg::Gorr",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/103441/496ca5f4-b76a-4679-96c7-ef7139bc28d5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-gorr-action-figure-marvels-korg-baf-103441?variation=199644",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-gorr-action-figure-marvels-korg-baf-103441?variation=199644",
+     "priceUSD": 14.29,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-korg::King Valkyrie",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/103442/49b8da2e-c2d5-4907-88c2-017e2c931f23/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-king-valkyrie-action-figure-marvels-korg-baf-103442?variation=199645",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-king-valkyrie-action-figure-marvels-korg-baf-103442?variation=199645",
+     "priceUSD": 9.1,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-korg::Ravager Thor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/103443/40ba0d62-00bc-4c5d-a990-71379fd31e67/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-ravager-thor-action-figure-marvels-korg-baf-103443?variation=199646",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-ravager-thor-action-figure-marvels-korg-baf-103443?variation=199646",
+     "priceUSD": 24.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-korg::Star-Lord",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/103444/9e232617-34ee-4a78-a821-e3ef7a29125d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-star-lord-action-figure-marvels-korg-baf-103444?variation=199647",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-star-lord-action-figure-marvels-korg-baf-103444?variation=199647",
+     "priceUSD": 17.99,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2022-korg::Teen Groot",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/103445/02768cba-085c-4d9b-a430-301e9e87d2a0/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-groot-action-figure-marvels-korg-baf-103445?variation=199648",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/thor-love-thunder-marvel-legends-groot-action-figure-marvels-korg-baf-103445?variation=199648",
+     "priceUSD": 15.59,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-gilgamesh::Ikaris",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/89656/67b203b4-bf6d-42cb-b191-e99817c1c94d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-ikaris-action-figure-gilgamesh-baf-89656?variation=175458",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-ikaris-action-figure-gilgamesh-baf-89656?variation=175458",
+     "priceUSD": 8.75,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-gilgamesh::Makkari",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/89657/ae5e4416-932f-42e5-b6e0-c12a7a398eec/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-makkari-action-figure-gilgamesh-baf-89657?variation=175461",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-makkari-action-figure-gilgamesh-baf-89657?variation=175461",
+     "priceUSD": 8.75,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-gilgamesh::Sprite",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/89658/f8cd1b34-f284-4762-bd44-d6f8f84a30fd/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-sprite-action-figure-gilgamesh-baf-89658?variation=175464",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-sprite-action-figure-gilgamesh-baf-89658?variation=175464",
+     "priceUSD": 7.5,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-gilgamesh::Sersi",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/89659/37d2bbba-29ae-4fe9-9b36-0adfed4b6444/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-sersi-action-figure-gilgamesh-baf-89659?variation=175467",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-sersi-action-figure-gilgamesh-baf-89659?variation=175467",
+     "priceUSD": 12.5,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-gilgamesh::Phastos",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/89660/9eb69407-586b-4018-8825-c29e9d2b817c/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-phastos-action-figure-gilgamesh-baf-89660?variation=175471",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-phastos-action-figure-gilgamesh-baf-89660?variation=175471",
+     "priceUSD": 8.75,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-gilgamesh::Kingo",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/89661/09d82c9b-eff6-4df0-858b-1994a779c589/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-kingo-action-figure-gilgamesh-baf-89661?variation=175474",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-kingo-action-figure-gilgamesh-baf-89661?variation=175474",
+     "priceUSD": 7.5,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
+  },
+  {
+   "figureId": "hasbro-2021-gilgamesh::Druig",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/89662/8c82d885-76d9-4381-bf40-b7d504614bf9/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-druig-action-figure-gilgamesh-baf-89662?variation=175477",
+   "rightsHolder": "Hasbro (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "BigBadToyStore",
+     "url": "https://www.bigbadtoystore.com/product/eternals-marvel-legends-druig-action-figure-gilgamesh-baf-89662?variation=175477",
+     "priceUSD": 7.5,
+     "priceSeen": "2026-10-14"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-14",
+   "verify": "HEAD 200, image content-type, cross-origin referer accepted"
   }
  ]
 }
