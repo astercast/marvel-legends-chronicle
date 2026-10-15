@@ -75,8 +75,25 @@ def row_html(r, prefix=""):
              else '<span class="notpic">Not pictured</span>')
     return (f'<li class="row">{media}<div><div class="pid">{escape(r["pid"])}</div>'
             f'<div class="name"><a href="{prefix}spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></div>'
-            f'<div class="fact">{escape(r["fact"])}</div>'
-            f'<div class="path">{escape(r["path"])}</div></div>{state_btns(r["slug"])}</li>')
+            f'<div class="fact">{escape(r["fact"])}</div></div>{state_btns(r["slug"])}</li>')
+
+def tile_html(r, prefix=""):
+    """The wall's unit: the plate is the largest element; name under it; one
+    fact line; the state pair on one row. Absence is the same 4:5 plate in
+    typographic form, so pictured and unpictured hold one rhythm."""
+    if r["img"]:
+        media = (f'<a class="platewrap" href="{prefix}spec-sheet.html?f={r["slug"]}">'
+                 f'<img src="{escape(r["img"])}" alt="{escape(r["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>')
+    else:
+        media = (f'<a class="platewrap absence" href="{prefix}spec-sheet.html?f={r["slug"]}">'
+                 f'<span class="absname">{escape(r["name"])}</span><span class="micro">Not pictured</span></a>')
+    marks = []
+    if r["exclusive"]: marks.append(f'{r["exclusive"]} exclusive')
+    if r["baf"]: marks.append("Build A Figure piece")
+    fact = f'{r["wave"]} · {r["year"]}' + (f' · {" · ".join(marks)}' if marks else "")
+    return (f'<li class="tile">{media}<div class="pid">{escape(r["pid"])}</div>'
+            f'<div class="name"><a href="{prefix}spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></div>'
+            f'<div class="fact">{escape(fact)}</div>{state_btns(r["slug"])}</li>')
 
 NAV = [("Catalog", "visual-database.html"), ("Upcoming", "radar.html"), ("Compare", "compare.html"),
        ("My Collection", "my-vault.html"), ("Guide", "encyclopedia.html")]
@@ -152,9 +169,13 @@ def write(rel, text):
 
 # ---------- generated data: browse chunks, search index, figure shards ----------
 def gen_data():
+    # Browse order is presentation, not census: newest first, pictured first
+    # within the year, so the catalog's first paint is its best shelf. The
+    # census files themselves are never reordered.
+    browse_rows = sorted(ROWS, key=lambda r: (-r["year"], not r["pictured"], r["name"]))
     bdir = D / "browse"; shutil.rmtree(bdir, ignore_errors=True); bdir.mkdir(parents=True)
-    for i in range(0, len(ROWS), 50):
-        (bdir / f"chunk-{i//50:03d}.json").write_text(json.dumps(ROWS[i:i+50]))
+    for i in range(0, len(browse_rows), 50):
+        (bdir / f"chunk-{i//50:03d}.json").write_text(json.dumps(browse_rows[i:i+50]))
     (D / "search-index.json").write_text(json.dumps(
         [{k: r[k] for k in ("slug", "pid", "name", "fact", "path", "img", "year", "wave", "character", "maker", "exclusive", "baf", "pictured")} for r in ROWS]))
     sdir = D / "figures"; shutil.rmtree(sdir, ignore_errors=True); sdir.mkdir(parents=True)
@@ -165,7 +186,7 @@ def gen_data():
     for i, f in enumerate(FIGS):
         r = ROWS[i]; img = IMAGES.get(f["id"])
         others = [{"slug": ROWS[j]["slug"], "pid": ROWS[j]["pid"], "name": ROWS[j]["name"],
-                   "fact": ROWS[j]["fact"]} for j in by_base[base_name(f["name"])] if j != i]
+                   "fact": ROWS[j]["fact"], "img": ROWS[j]["img"]} for j in by_base[base_name(f["name"])] if j != i]
         others.sort(key=lambda o: o["fact"])
         shard = {
             "slug": r["slug"], "pid": r["pid"], "name": f["name"], "wave": f["waveSeries"],
@@ -189,10 +210,42 @@ def gen_data():
 # ---------- Surface 1: Catalog home ----------
 def home():
     pictured = [r for r in ROWS if r["pictured"]]
-    lead = max(pictured, key=lambda r: r["year"])
-    grid_pool = sorted((r for r in pictured if r["slug"] != lead["slug"]),
-                       key=lambda r: (-r["year"], r["name"]))[:8]
-    grid_rows = "".join(row_html(r) for r in grid_pool)
+    # The featured figure demonstrates the whole record on the first screen:
+    # the newest pictured figure that also carries buy doors (photograph,
+    # price door, state). Falls back to the newest pictured figure.
+    with_buy = [i for i, f in enumerate(FIGS)
+                if f["id"] in IMAGES and IMAGES[f["id"]].get("buy")]
+    pool = with_buy or [i for i, r in enumerate(ROWS) if r["pictured"]]
+    lead_i = max(pool, key=lambda i: ROWS[i]["year"])
+    lead, lead_f = ROWS[lead_i], FIGS[lead_i]
+    lead_img = IMAGES[lead_f["id"]]
+    lead_sold = "".join(
+        f'<div class="priceline"><span>Reported sold: {escape(s["display"])}</span>'
+        f'<span class="num">{escape(s["asOf"])} · {escape(s["source"])}</span></div>'
+        for s in SIGNALS if s["figId"] == lead_f["id"])
+    lead_buy = "".join(
+        f'<div class="buyrow"><span>{escape(b["retailer"])}</span>'
+        f'<a href="{escape(b["url"])}" rel="noopener">Buy</a></div>'
+        f'<div class="priceline"><span>Asking at {escape(b["retailer"])}</span>'
+        f'<span class="num">${b["priceUSD"]} · seen {escape(b["priceSeen"])}</span></div>'
+        for b in lead_img.get("buy", []))
+    wall = sorted((r for r in pictured if r["slug"] != lead["slug"]),
+                  key=lambda r: (-r["year"], r["name"]))[:12]
+    wall_tiles = "".join(tile_html(r) for r in wall)
+    def wave_door(w):
+        rows_w = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == w["id"]]
+        pic = next((r for r in rows_w if r["pictured"]), None)
+        n_pic = sum(1 for r in rows_w if r["pictured"])
+        if pic:
+            media = (f'<span class="wdplate"><img src="{escape(pic["img"])}" '
+                     f'alt="{escape(pic["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></span>')
+        else:
+            media = f'<span class="wdplate absence"><span class="micro">Not pictured yet</span></span>'
+        return (f'<li class="wavedoor"><a href="waves/{w["id"]}.html">{media}'
+                f'<span class="wd-name">{escape(w["series"])}</span>'
+                f'<span class="wd-fact">{w["year"]} · {len(rows_w)} figures · {n_pic} pictured</span></a></li>')
+    doors = "".join(wave_door(w) for w in
+                    sorted(WAVES.values(), key=lambda w: (-w["year"], w["series"]))[:6])
     newest = sorted(ROWS, key=lambda r: (-r["year"], r["name"]))[:10]
     up = PREORDERS[:3]
     up_rows = "".join(
@@ -216,18 +269,29 @@ def home():
         f'<li><a href="{href}"><span>{escape(k)}</span><span class="count">{v:,}</span></a></li>'
         for k, (v, href) in counts.items())
     body = f"""
-<h1>Marvel Legends Chronicle</h1>
+<h1 class="claim">1,939 figures · 167 waves · 2002–2026</h1>
 <form class="bigsearch" action="visual-database.html" method="get" role="search">
 <input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required>
 <button type="submit">Search</button></form>
-<p class="census"><b>1,939</b> figures · <b>167</b> waves · <b>2002–2026</b></p>
+<section class="hero">
+<figure class="plate"><div class="frame"><img src="{escape(lead["img"])}" alt="{escape(lead["name"])} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>
+<div class="heroside">
+<p class="micro">Featured figure</p>
+<div class="pid">{escape(lead["pid"])}</div>
+<h2 class="heroname"><a href="spec-sheet.html?f={lead["slug"]}">{escape(lead["name"])}</a></h2>
+<p class="factline">{escape(lead["fact"])}</p>
+{lead_sold}
+{lead_buy}
+<div class="ownwant">{state_btns(lead["slug"])}</div>
+<p><a href="spec-sheet.html?f={lead["slug"]}">Full record for {escape(lead["name"])}</a></p>
+</div>
+</section>
 <h2>Pictured figures</h2>
-<figure class="plate"><div class="frame"><img src="{escape(lead["img"])}" alt="{escape(lead["name"])} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div>
-<figcaption><div class="pid">{escape(lead["pid"])}</div>
-<div class="name" style="font-size:24px;font-weight:600"><a href="spec-sheet.html?f={lead["slug"]}" style="color:var(--ink);text-decoration:none">{escape(lead["name"])}</a></div>
-<div class="fact" style="color:var(--muted)">{escape(lead["fact"])}</div></figcaption></figure>
-<ul class="rows grid">{grid_rows}</ul>
+<ul class="tiles">{wall_tiles}</ul>
 <p><a href="visual-database.html?picture=Pictured">See all {len(pictured):,} pictured figures</a></p>
+<h2>Latest waves</h2>
+<ul class="wavedoors">{doors}</ul>
+<p><a href="waves/index.html">All 167 waves</a></p>
 <h2>Upcoming</h2>
 <ul class="rows">{up_rows}</ul>
 <p><a href="radar.html">All upcoming releases</a></p>
@@ -266,14 +330,14 @@ def browse():
 <div class="controls">
 <input type="search" id="q" placeholder="Find a figure" aria-label="Find a figure">
 <select id="scope" aria-label="Search scope"><option>All</option><option>Character</option><option>Wave</option></select>
-<select id="sort" aria-label="Sort"><option value="name">Sort: Name</option><option value="year">Sort: Year</option><option value="wave">Sort: Wave order</option></select>
+<select id="sort" aria-label="Sort"><option value="new" selected>Sort: Newest</option><option value="name">Sort: Name</option><option value="year">Sort: Year</option><option value="wave">Sort: Wave order</option></select>
 <button class="plain" id="filtersBtn" type="button">Filters</button>
-<button class="plain" id="viewBtn" type="button">Grid view</button>
+<button class="plain" id="viewBtn" type="button">List view</button>
 </div>
 <p class="resultsline" id="results">1,939 figures</p>
 <div class="layout">
 <div class="facets" id="facets">{facets}<button type="button" id="applyBtn">Show results</button></div>
-<div><ul class="rows" id="rows"></ul>
+<div><ul class="rows tiles" id="rows"></ul>
 <p class="resultsline" id="shown"></p>
 <button class="plain" id="more" type="button">Load more</button></div>
 </div>
@@ -301,7 +365,7 @@ def browse():
 <script type="module">
 import {{ getJSON, esc, stateButtons, wireState, loadSet, guardImages }} from "./assets/js/r23.js";
 guardImages(document);
-const NCH={nchunks}; let all=null, view=[], shown=0, grid=false;
+const NCH={nchunks}; let all=null, view=[], shown=0, grid=true;
 const params=new URLSearchParams(location.search);
 async function loadAll(){{
   if(all) return all;
@@ -317,8 +381,8 @@ function describe(f,q){{
   const parts=[]; if(q) parts.push(`matching "${{q}}"`);
   for(const [k,vs] of Object.entries(f)) parts.push(`${{k}}: ${{vs.join(", ")}}`);
   const s=document.getElementById("sort").value;
-  if(s==="year") parts.push("Sorted by year"); if(s==="wave") parts.push("Sorted by wave order");
-  return parts.length?`Filters on — ${{parts.join(" · ")}}`:"No filters on";
+  if(s==="new") parts.push("Sorted by newest"); if(s==="year") parts.push("Sorted by year"); if(s==="wave") parts.push("Sorted by wave order");
+  return parts.length?`Filters on · ${{parts.join(" · ")}}`:"No filters on";
 }}
 let applySeq=0;
 async function apply(){{
@@ -341,15 +405,23 @@ async function apply(){{
     }} return true;
   }});
   const s=document.getElementById("sort").value;
-  view.sort((a,b)=> s==="year"? a.year-b.year||a.name.localeCompare(b.name) : s==="wave"? a.wave.localeCompare(b.wave)||a.pid.localeCompare(b.pid) : a.name.localeCompare(b.name));
+  view.sort((a,b)=> s==="new"? b.year-a.year||(b.pictured-a.pictured)||a.name.localeCompare(b.name) : s==="year"? a.year-b.year||a.name.localeCompare(b.name) : s==="wave"? a.wave.localeCompare(b.wave)||a.pid.localeCompare(b.pid) : a.name.localeCompare(b.name));
   shown=0; document.getElementById("rows").innerHTML=""; renderMore();
   const n=Object.values(f).flat().length+(q?1:0);
   document.getElementById("filtersBtn").textContent=`Filters${{n?` (${{n}})`:""}}`;
   document.getElementById("results").innerHTML=`${{view.length.toLocaleString()}} figures · ${{esc(describe(f,q))}} <a class="clear" href="visual-database.html">Clear</a>`;
 }}
+function tileHTML(r){{
+  const marks=(r.exclusive?` · ${{esc(r.exclusive)}} exclusive`:"")+(r.baf?` · Build A Figure piece`:"");
+  const media=r.img?`<a class="platewrap" href="spec-sheet.html?f=${{r.slug}}"><img src="${{esc(r.img)}}" alt="${{esc(r.name)}} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${{r.slug}}"><span class="absname">${{esc(r.name)}}</span><span class="micro">Not pictured</span></a>`;
+  return `<li class="tile">${{media}}<div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.wave)}} · ${{r.year}}${{marks}}</div>${{stateButtons(r.slug)}}</li>`;
+}}
+function rowHTML(r){{
+  return `<li class="row">${{r.img?`<img class="thumb" src="${{esc(r.img)}}" alt="" loading="lazy" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}}<div><div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.fact)}}</div></div>${{stateButtons(r.slug)}}</li>`;
+}}
 function renderMore(){{
   const ul=document.getElementById("rows"); const next=view.slice(shown,shown+50);
-  ul.insertAdjacentHTML("beforeend", next.map(r=>`<li class="row">${{r.img?`<img class="thumb" src="${{esc(r.img)}}" alt="" loading="lazy" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}}<div><div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.fact)}}</div><div class="path">${{esc(r.path)}}</div></div>${{stateButtons(r.slug)}}</li>`).join(""));
+  ul.insertAdjacentHTML("beforeend", next.map(r=> grid? tileHTML(r) : rowHTML(r)).join(""));
   shown+=next.length;
   document.getElementById("shown").textContent=`Showing ${{shown.toLocaleString()}} of ${{view.length.toLocaleString()}} · ${{(view.length-shown).toLocaleString()}} remain`;
   document.getElementById("more").style.display=shown<view.length?"":"none";
@@ -386,11 +458,11 @@ document.querySelectorAll("[data-facet]").forEach(c=>c.addEventListener("change"
 document.querySelectorAll("[data-facet-select]").forEach(c=>c.addEventListener("change",()=>{{ if(innerWidth>700) apply(); }}));
 document.getElementById("filtersBtn").addEventListener("click",()=>document.getElementById("facets").classList.add("open"));
 document.getElementById("applyBtn").addEventListener("click",()=>{{ document.getElementById("facets").classList.remove("open"); apply(); }});
-document.getElementById("viewBtn").addEventListener("click",e=>{{ grid=!grid; document.getElementById("rows").classList.toggle("grid",grid); e.target.textContent=grid?"List view":"Grid view"; }});
+document.getElementById("viewBtn").addEventListener("click",e=>{{ grid=!grid; const ul=document.getElementById("rows"); ul.classList.toggle("tiles",grid); e.target.textContent=grid?"List view":"Grid view"; shown=0; ul.innerHTML=""; renderMore(); }});
 wireState(document);
 </script>
 """
-    write("visual-database.html", chrome("Catalog — Marvel Legends Chronicle",
+    write("visual-database.html", chrome("Catalog | Marvel Legends Chronicle",
           "Browse 1,939 Marvel Legends figures by year, wave, character, maker, and picture.", "Catalog") + body + foot())
 
 # ---------- Surface 3: Figure page (spec-sheet pattern) ----------
@@ -406,21 +478,30 @@ const el=document.getElementById("fig");
 function detail(k,v){ return v?`<li><span class="k">${k}</span><span>${v}</span></li>`:""; }
 try{
   const s=await getJSON(`data/v1/figures/${slug}.json`);
-  document.title=`${s.name} — Marvel Legends Chronicle`;
+  document.title=`${s.name} | Marvel Legends Chronicle`;
   const media=s.img
     ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>`
     : `<div class="notplate"><div class="np-name">${esc(s.name)}</div><p class="micro">Not pictured</p></div>`;
-  const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold — ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
+  const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold: ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
     : `<p> No reported sales recorded for this figure.</p>`.replace(" ","");
   const buy=s.buy.length? s.buy.map(b=>`<div class="buyrow"><span>${esc(b.retailer)}</span><a href="${esc(b.url)}" rel="noopener">Buy</a></div><div class="priceline"><span>Asking at ${esc(b.retailer)}</span><span class="num">$${b.priceUSD} · seen ${esc(b.priceSeen)}</span></div>`).join("")
-    : `<div class="buyrow"><span>Search this figure at a retailer</span><a href="https://www.bigbadtoystore.com/Search?SearchText=${encodeURIComponent("Marvel Legends "+s.name)}" rel="noopener">Search — BigBadToyStore</a></div>`;
+    : `<div class="buyrow"><span>Search this figure at a retailer</span><a href="https://www.bigbadtoystore.com/Search?SearchText=${encodeURIComponent("Marvel Legends "+s.name)}" rel="noopener">Search at BigBadToyStore</a></div>`;
   el.innerHTML=`
   <p class="backline"><a href="waves/${esc(s.waveSlug)}.html">← ${esc(s.wave)}</a></p>
-  ${media}
+  <div class="figlayout">
+  <div class="figmedia">${media}</div>
+  <div class="figside">
   <h1>${esc(s.name)}</h1>
   <p class="factline">${esc(s.wave)}, ${s.year}, ${esc(s.maker)}</p>
   <p class="idline">${esc(s.pid)}</p>
   <div class="ownwant">${stateButtons(s.slug)}</div>
+  <h2 class="sideh">Price</h2>
+  <div class="priceblock">${sold}</div>
+  <h2 class="sideh">Buy</h2>
+  <div class="buyblock">${buy}</div>
+  <p class="method">Prices are reported sales, recorded with their date and source. Asking prices and announced MSRP are labeled separately and never mixed with reported sold prices.</p>
+  </div>
+  </div>
   <h2>Details</h2>
   <ul class="details">
     ${detail("Character", s.charSlug?`<a href="characters/${esc(s.charSlug)}.html">${esc(s.character)}</a>`:esc(s.character))}
@@ -432,18 +513,13 @@ try{
     ${detail("Variant", s.variant?esc(s.variant):"")}
     ${detail("Note", s.notes?esc(s.notes):"")}
   </ul>
-  <h2>Price</h2>
-  <div class="priceblock">${sold}</div>
-  <p class="method">Prices are reported sales, recorded with their date and source. Asking prices and announced MSRP are labeled separately and never mixed with reported sold prices.</p>
-  <h2>Buy</h2>
-  <div class="buyblock">${buy}</div>
-  ${s.others.length?`<h2>Other versions</h2><ul class="rows">${s.others.map(o=>`<li class="row"><span class="notpic">Version</span><div><div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div></div><div class="state"><a class="btn plain" href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare</a></div></li>`).join("")}</ul>`:""}
+  ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=o.img?`<a class="platewrap" href="spec-sheet.html?f=${esc(o.slug)}"><img src='${esc(o.img)}' alt="${esc(o.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${esc(o.slug)}"><span class="absname">${esc(o.name)}</span><span class="micro">Not pictured</span></a>`; return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
   <p class="sourceline">${esc(s.sourceLine)}</p>`;
   wireState(el);
 }catch(e){ el.innerHTML=`<h1>Figure not found</h1><p>Search the <a href="visual-database.html">catalog</a>.</p>`; }
 </script>
 """
-    write("spec-sheet.html", chrome("Figure — Marvel Legends Chronicle",
+    write("spec-sheet.html", chrome("Figure | Marvel Legends Chronicle",
           "The figure record: wave, year, maker, reported prices, and where to buy it.", "") + body + foot())
 
 # ---------- Surface 4: Waves and Characters ----------
@@ -459,24 +535,34 @@ def wave_pages():
             f'<div class="pid">{w["year"]} · {escape(w["manufacturer"])}</div>'
             f'<div class="name"><a href="{w["id"]}.html">{escape(w["series"])}</a></div>'
             f'<div class="fact">{escape(w["manufacturer"])}, {w["year"]}, {len(rows)} figures{baf_line}</div></div></li>')
-        contents = "".join(row_html(r, prefix="../") for _, r in rows)
+        contents = "".join(tile_html(r, prefix="../") for _, r in rows)
         pictured = sum(1 for _, r in rows if r["pictured"])
+        strip = ""
+        pic_rows = [r for _, r in rows if r["pictured"]]
+        # The strip is the at-a-glance photo index for LONG waves only; on a
+        # short wave the tile wall below already shows every figure.
+        if pic_rows and len(rows) > 12:
+            strip = ('<div class="strip" aria-label="Pictured figures in this wave">' + "".join(
+                f'<a class="stripplate" href="../spec-sheet.html?f={r["slug"]}">'
+                f'<img src="{escape(r["img"])}" alt="{escape(r["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>'
+                for r in pic_rows) + "</div>")
         excl = sum(1 for f, _ in rows if f.get("exclusive"))
         bafsec = ""
         if w.get("baf"):
-            pieces = "".join(f'<li class="row baf"><div><div class="name">{escape(f["name"])}</div><div class="fact">Piece: {escape(f.get("bafPiece") or "—")}</div></div>{state_btns(r["slug"])}</li>' for f, r in rows if f.get("bafPiece"))
-            bafsec = f'<h2>Build A Figure — {escape(w["baf"])}</h2><ul class="rows">{pieces}</ul><p class="method">Pieces you still need are the rows above not marked Owned.</p>'
+            pieces = "".join(f'<li class="row baf"><div><div class="name">{escape(f["name"])}</div><div class="fact">Piece: {escape(f.get("bafPiece") or "None recorded")}</div></div>{state_btns(r["slug"])}</li>' for f, r in rows if f.get("bafPiece"))
+            bafsec = f'<h2>Build A Figure: {escape(w["baf"])}</h2><ul class="rows">{pieces}</ul><p class="method">Pieces you still need are the rows above not marked Owned.</p>'
         body = f"""
 {crumbs("../", [("Home", "index.html"), ("Waves", "waves/index.html"), (w["series"], None)])}
 <h1>{escape(w["series"])}</h1>
 <p class="factline">{escape(w["manufacturer"])}, {w["year"]}, {len(rows)} figures</p>
-<ul class="rows">{contents}</ul>
+{strip}
+<ul class="tiles">{contents}</ul>
 {bafsec}
 <p class="sourceline">Summary: {len(rows)} figures · {excl} exclusives · {pictured} pictured<br>
 Source: Chronicle census record for this wave; checked {CHECKED}.<br>
 Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
 """
-        write(f'waves/{w["id"]}.html', chrome(f'{w["series"]} ({w["year"]}) — Marvel Legends Chronicle',
+        write(f'waves/{w["id"]}.html', chrome(f'{w["series"]} ({w["year"]}) | Marvel Legends Chronicle',
               f'Every figure in {w["series"]} ({w["year"]}, {w["manufacturer"]}).', "", prefix="../") + body + wire("../") + foot("../"))
     body = f"""
 {crumbs("../", [("Home", "index.html"), ("Waves", None)])}
@@ -484,7 +570,7 @@ Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
 <form class="bigsearch" action="../visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required><button type="submit">Search</button></form>
 <ul class="rows">{''.join(index_rows)}</ul>
 """
-    write("waves/index.html", chrome("Waves — Marvel Legends Chronicle",
+    write("waves/index.html", chrome("Waves | Marvel Legends Chronicle",
           "167 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../") + body + foot("../"))
 
 def character_pages():
@@ -493,20 +579,20 @@ def character_pages():
     lines = "".join(
         f'<li><a href="{c["slug"]}.html"><span>{escape(c["name"])}</span><span class="count">{c["count"]} figures · {c["first"]}–{c["last"]}</span></a></li>'
         for c in sorted(CHARS, key=lambda c: c["name"]))
-    write("characters/index.html", chrome("Characters — Marvel Legends Chronicle",
+    write("characters/index.html", chrome("Characters | Marvel Legends Chronicle",
           "66 characters, counted: figures, first and latest release years.", "", prefix="../") +
           crumbs("../", [("Home", "index.html"), ("Characters", None)]) +
           f'<h1>Characters</h1><ul class="indexlines">{lines}</ul>' + foot("../"))
     for c in CHARS:
         rows = sorted(by_base.get(c["name"], []), key=lambda x: (x[0]["year"], x[0]["name"]))
-        body_rows = "".join(row_html(r, prefix="../") for _, r in rows)
+        body_rows = "".join(tile_html(r, prefix="../") for _, r in rows)
         completion = f'<p class="factline" id="completion"></p>' if rows else ""
         body = f"""
 {crumbs("../", [("Home", "index.html"), ("Characters", "characters/index.html"), (c["name"], None)])}
 <h1>{escape(c["name"])}</h1>
 <p class="factline">{len(rows)} figures · {c["first"]}–{c["last"]}</p>
 {completion}
-<ul class="rows">{body_rows}</ul>
+<ul class="tiles">{body_rows}</ul>
 <script type="module">
 import {{ loadSet }} from "../assets/js/r23.js";
 const owned=loadSet("owned"); const slugs=[{','.join('"%s"' % r["slug"] for _, r in rows)}];
@@ -514,7 +600,7 @@ const n=slugs.filter(s=>owned.has(s)).length;
 if(n) document.getElementById("completion").textContent=`You have ${{n}} of ${{slugs.length}}.`;
 </script>
 """
-        write(f'characters/{c["slug"]}.html', chrome(f'{c["name"]} — Marvel Legends Chronicle',
+        write(f'characters/{c["slug"]}.html', chrome(f'{c["name"]} | Marvel Legends Chronicle',
               f'{len(rows)} {c["name"]} figures, {c["first"]} to {c["last"]}.', "", prefix="../") + body + wire("../") + foot("../"))
 
 # ---------- Surface 5: Upcoming ----------
@@ -553,9 +639,9 @@ def upcoming():
 {announced}
 <h2>Unconfirmed reports</h2>
 <ul class="rows">{unconf}</ul>
-<p><a href="visual-database.html">Past releases — browse the current year</a></p>
+<p><a href="visual-database.html">Past releases: browse the current year</a></p>
 """
-    write("radar.html", chrome("Upcoming — Marvel Legends Chronicle",
+    write("radar.html", chrome("Upcoming | Marvel Legends Chronicle",
           "Announced Marvel Legends figures, expected dates, and unconfirmed reports, kept apart.", "Upcoming") + body + foot())
 
 # ---------- Surface 6: Compare ----------
@@ -590,8 +676,9 @@ async function render(){
   document.getElementById("panels").innerHTML=chosen.map(slug=>{
     const r=index.find(x=>x.slug===slug); const p=bySlug.get(slug);
     const price=p&&p.priceSignals&&p.priceSignals.length? p.priceSignals.map(x=>`Reported: ${esc(x.display||"")} (${esc(x.asOf||"")})`).join("<br>") : "No reported sales recorded for this figure.";
-    const rows=FIELDS.map(([k,key])=>{ const v=p?p[key]:null; return `<li><span class="k">${k}</span><span>${v?esc(v):(key==="exclusive"?"General release":key==="bafPiece"?"None":"—")}</span></li>`; }).join("");
-    return `<section class="panel"><p class="pid micro">${esc(r?r.pid:"")}</p><h3>${esc(r?r.name:slug)}</h3>
+    const rows=FIELDS.map(([k,key])=>{ const v=(p&&p[key])||((key!=="bafPiece"&&key!=="variant"&&key!=="notes"&&r)?r[key]:null)||(key==="maker"&&p?p.manufacturer:null); return `<li><span class="k">${k}</span><span>${v?esc(v):(key==="exclusive"?"General release":key==="bafPiece"?"None":key==="variant"?"Standard release":"No notes recorded")}</span></li>`; }).join("");
+    const media=r&&r.img?`<img class="panelplate" src='${esc(r.img)}' alt="${esc(r.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer">`:r?`<div class="panelplate absence"><span class="absname">${esc(r.name)}</span><span class="micro">Not pictured</span></div>`:"";
+    return `<section class="panel">${media}<p class="pid micro">${esc(r?r.pid:"")}</p><h3>${esc(r?r.name:slug)}</h3>
     <p class="factline">${esc(r?r.fact:"")}</p><ul class="details">${rows}
     <li><span class="k">Reported sold</span><span>${price}</span></li>
     <li><span class="k">Buy</span><span><a href="spec-sheet.html?f=${esc(slug)}">Figure record and buy doors</a></span></li></ul></section>`;
@@ -600,7 +687,7 @@ async function render(){
 render();
 </script>
 """
-    write("compare.html", chrome("Compare — Marvel Legends Chronicle",
+    write("compare.html", chrome("Compare | Marvel Legends Chronicle",
           "Two to four figures side by side on the same fields, in the same order.", "Compare") + body + foot())
 
 # ---------- Surface 7: My Collection ----------
@@ -643,7 +730,7 @@ const targets=JSON.parse(localStorage.getItem("mlc_targets_r23")||"{}");
 document.getElementById("owned").innerHTML=rowList(owned)||document.getElementById("owned").innerHTML;
 document.getElementById("wanted").innerHTML=rowList(wanted, r=>`<p><label>Target price ($) <input type="number" step="0.01" min="0" data-target="${r.slug}" value="${targets[r.slug]??""}"></label></p>`)||document.getElementById("wanted").innerHTML;
 document.querySelectorAll("[data-target]").forEach(inp=>inp.addEventListener("change",()=>{ targets[inp.dataset.target]=inp.value; localStorage.setItem("mlc_targets_r23",JSON.stringify(targets)); }));
-document.getElementById("baf").innerHTML=bafWaves.map(([w,ws])=>{ const pieces=ws.filter(r=>r.baf); const have=pieces.filter(r=>loadSet("owned").has(r.slug)); return `<p><b>${esc(w)}</b> — pieces have ${have.length} of ${pieces.length}; still need: ${pieces.filter(r=>!loadSet("owned").has(r.slug)).map(r=>esc(r.name)).join(", ")||"none"}</p>`; }).join("");
+document.getElementById("baf").innerHTML=bafWaves.map(([w,ws])=>{ const pieces=ws.filter(r=>r.baf); const have=pieces.filter(r=>loadSet("owned").has(r.slug)); return `<p><b>${esc(w)}</b>: ${have.length} of ${pieces.length} pieces owned; still need: ${pieces.filter(r=>!loadSet("owned").has(r.slug)).map(r=>esc(r.name)).join(", ")||"none"}</p>`; }).join("");
 let log=JSON.parse(localStorage.getItem("mlc_log_r23")||"[]");
 function renderNumbers(){
   const total=log.reduce((a,x)=>a+ +x.amt,0);
@@ -652,7 +739,7 @@ function renderNumbers(){
    `<p>Spending logged: <span class="num">$${total.toFixed(2)}</span> across ${log.length} entries.</p>`+
    Object.entries(byYear).map(([y,v])=>`<p>${y}: <span class="num">$${v.toFixed(2)}</span></p>`).join("")+
    `<p class="method">Collection value here is the total of your own logged purchase prices. Figures with no logged price count as $0; no market value is estimated.</p>`+
-   (log.length?`<ul>${log.map(x=>`<li>${esc(x.date)} — ${esc(x.name)} — <span class="num">$${(+x.amt).toFixed(2)}</span></li>`).join("")}</ul>`:"");
+   (log.length?`<ul>${log.map(x=>`<li>${esc(x.date)} · ${esc(x.name)} · <span class="num">$${(+x.amt).toFixed(2)}</span></li>`).join("")}</ul>`:"");
 }
 document.getElementById("logform").addEventListener("submit",e=>{ e.preventDefault();
   log.push({name:document.getElementById("lf-name").value,date:document.getElementById("lf-date").value,amt:document.getElementById("lf-amt").value});
@@ -666,11 +753,11 @@ function renderTop(){
   const ab=document.getElementById("addbtn"); if(ab) ab.addEventListener("click",()=>{ top.push(document.getElementById("addtop").value); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); });
 }
 renderTop();
-document.getElementById("printarea").innerHTML=`<h2>Checklist — Owned and Wanted by wave</h2>`+
- [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} — ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
+document.getElementById("printarea").innerHTML=`<h2>Checklist: Owned and Wanted by wave</h2>`+
+ [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} · ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
 </script>
 """
-    write("my-vault.html", chrome("My Collection — Marvel Legends Chronicle",
+    write("my-vault.html", chrome("My Collection | Marvel Legends Chronicle",
           "Your own figures and numbers: owned, wanted, Build A Figure progress, spending, and your top 10. Stored in your browser only.", "My Collection") + body + foot())
 
 # ---------- Surface 8: Help ----------
@@ -685,8 +772,8 @@ def help_page():
         for item in sec["items"]:
             n += 1; fake += f"<li>{escape(item)}</li>"
         fake += "</ol>"
-    rarity = "".join(f'<li><b>{escape(t["name"])}</b> — {escape(t["tagline"])}</li>' for t in RARITY["tiers"])
-    history = "".join(f'<li><b>{h["year"]}</b> — {escape(h["detail"])}</li>' for h in ENC["history"])
+    rarity = "".join(f'<li><b>{escape(t["name"])}</b>: {escape(t["tagline"])}</li>' for t in RARITY["tiers"])
+    history = "".join(f'<li><b>{h["year"]}</b>: {escape(h["detail"])}</li>' for h in ENC["history"])
     grading = ""
     for sec in ENC["gradingGuide"]["sections"][:2]:
         grading += f'<p><b>{escape(sec["title"])}</b></p>' + "".join(
@@ -722,11 +809,11 @@ def help_page():
 <li>Two makers: Toy Biz (229 figures) and Hasbro (1,710 figures).</li>
 <li>66 character pages cover the most-collected characters; every figure is in the catalog and on its wave page.</li>
 <li>Pictures: {len(IMAGES):,} figures have a verified retailer photograph. The other {len(FIGS)-len(IMAGES):,} are listed without a picture and are never shown with a substitute image.</li>
-<li>Prices: reported sales are partial — 10 figures carry a reported sold range. A figure with no reported sales says so on its page.</li>
+<li>Prices: reported sales are partial: 10 figures carry a reported sold range. A figure with no reported sales says so on its page.</li>
 </ul>
 </div>
 """
-    write("encyclopedia.html", chrome("Guide — Marvel Legends Chronicle",
+    write("encyclopedia.html", chrome("Guide | Marvel Legends Chronicle",
           "Start here, how reported prices work, rarity words, spotting fakes, grading, and line history.", "Guide") + body + foot())
 
 # ---------- Surface 9: Developers ----------
@@ -734,7 +821,7 @@ def developers():
     idx = load("index.json")
     eps = idx.get("endpoints", {})
     ep_rows = "".join(
-        f'<li><b>{escape(k)}</b> — <a href="{escape(v.get("path", ""))}">{escape(v.get("path", ""))}</a> · {escape(v.get("description", "").replace("(<waveId>::<figureName>)", "(wave and figure name)").replace("::", " / "))}</li>'
+        f'<li><b>{escape(k)}</b>: <a href="{escape(v.get("path", ""))}">{escape(v.get("path", ""))}</a> · {escape(v.get("description", "").replace("(<waveId>::<figureName>)", "(wave and figure name)").replace("::", " / "))}</li>'
         for k, v in eps.items())
     body = f"""
 {crumbs("", [("Home", "index.html"), ("Developers", None)])}
@@ -749,7 +836,7 @@ def developers():
 <p>The skills manifest is published with the API documentation in this repository (skills/ and data/v1/index.json). Procedures that change data run through the generator, scripts/build_r23.py, and the result is verified against the census before it is committed.</p>
 </div>
 """
-    write("api.html", chrome("Developers — Marvel Legends Chronicle",
+    write("api.html", chrome("Developers | Marvel Legends Chronicle",
           "API endpoints, data schemas, agent procedures, and the skills manifest.", "") + body + foot())
 
 def not_found():
@@ -758,7 +845,7 @@ def not_found():
 <h1>Page not found</h1>
 <form class="bigsearch" action="/visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required><button type="submit">Search</button></form>
 """
-    write("404.html", chrome("Page not found — Marvel Legends Chronicle", "Page not found.", "") + body + foot())
+    write("404.html", chrome("Page not found | Marvel Legends Chronicle", "Page not found.", "") + body + foot())
 
 KEEP_TOP = {"index.html", "visual-database.html", "spec-sheet.html", "radar.html", "compare.html",
             "my-vault.html", "encyclopedia.html", "api.html", "404.html"}

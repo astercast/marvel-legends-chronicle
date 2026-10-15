@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Figure — Marvel Legends Chronicle</title>
+<title>Figure | Marvel Legends Chronicle</title>
 <meta name="description" content="The figure record: wave, year, maker, reported prices, and where to buy it.">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,21 +26,30 @@ const el=document.getElementById("fig");
 function detail(k,v){ return v?`<li><span class="k">${k}</span><span>${v}</span></li>`:""; }
 try{
   const s=await getJSON(`data/v1/figures/${slug}.json`);
-  document.title=`${s.name} — Marvel Legends Chronicle`;
+  document.title=`${s.name} | Marvel Legends Chronicle`;
   const media=s.img
     ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>`
     : `<div class="notplate"><div class="np-name">${esc(s.name)}</div><p class="micro">Not pictured</p></div>`;
-  const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold — ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
+  const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold: ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
     : `<p> No reported sales recorded for this figure.</p>`.replace(" ","");
   const buy=s.buy.length? s.buy.map(b=>`<div class="buyrow"><span>${esc(b.retailer)}</span><a href="${esc(b.url)}" rel="noopener">Buy</a></div><div class="priceline"><span>Asking at ${esc(b.retailer)}</span><span class="num">$${b.priceUSD} · seen ${esc(b.priceSeen)}</span></div>`).join("")
-    : `<div class="buyrow"><span>Search this figure at a retailer</span><a href="https://www.bigbadtoystore.com/Search?SearchText=${encodeURIComponent("Marvel Legends "+s.name)}" rel="noopener">Search — BigBadToyStore</a></div>`;
+    : `<div class="buyrow"><span>Search this figure at a retailer</span><a href="https://www.bigbadtoystore.com/Search?SearchText=${encodeURIComponent("Marvel Legends "+s.name)}" rel="noopener">Search at BigBadToyStore</a></div>`;
   el.innerHTML=`
   <p class="backline"><a href="waves/${esc(s.waveSlug)}.html">← ${esc(s.wave)}</a></p>
-  ${media}
+  <div class="figlayout">
+  <div class="figmedia">${media}</div>
+  <div class="figside">
   <h1>${esc(s.name)}</h1>
   <p class="factline">${esc(s.wave)}, ${s.year}, ${esc(s.maker)}</p>
   <p class="idline">${esc(s.pid)}</p>
   <div class="ownwant">${stateButtons(s.slug)}</div>
+  <h2 class="sideh">Price</h2>
+  <div class="priceblock">${sold}</div>
+  <h2 class="sideh">Buy</h2>
+  <div class="buyblock">${buy}</div>
+  <p class="method">Prices are reported sales, recorded with their date and source. Asking prices and announced MSRP are labeled separately and never mixed with reported sold prices.</p>
+  </div>
+  </div>
   <h2>Details</h2>
   <ul class="details">
     ${detail("Character", s.charSlug?`<a href="characters/${esc(s.charSlug)}.html">${esc(s.character)}</a>`:esc(s.character))}
@@ -52,12 +61,7 @@ try{
     ${detail("Variant", s.variant?esc(s.variant):"")}
     ${detail("Note", s.notes?esc(s.notes):"")}
   </ul>
-  <h2>Price</h2>
-  <div class="priceblock">${sold}</div>
-  <p class="method">Prices are reported sales, recorded with their date and source. Asking prices and announced MSRP are labeled separately and never mixed with reported sold prices.</p>
-  <h2>Buy</h2>
-  <div class="buyblock">${buy}</div>
-  ${s.others.length?`<h2>Other versions</h2><ul class="rows">${s.others.map(o=>`<li class="row"><span class="notpic">Version</span><div><div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div></div><div class="state"><a class="btn plain" href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare</a></div></li>`).join("")}</ul>`:""}
+  ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=o.img?`<a class="platewrap" href="spec-sheet.html?f=${esc(o.slug)}"><img src='${esc(o.img)}' alt="${esc(o.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${esc(o.slug)}"><span class="absname">${esc(o.name)}</span><span class="micro">Not pictured</span></a>`; return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
   <p class="sourceline">${esc(s.sourceLine)}</p>`;
   wireState(el);
 }catch(e){ el.innerHTML=`<h1>Figure not found</h1><p>Search the <a href="visual-database.html">catalog</a>.</p>`; }

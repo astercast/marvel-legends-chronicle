@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compare — Marvel Legends Chronicle</title>
+<title>Compare | Marvel Legends Chronicle</title>
 <meta name="description" content="Two to four figures side by side on the same fields, in the same order.">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,8 +45,9 @@ async function render(){
   document.getElementById("panels").innerHTML=chosen.map(slug=>{
     const r=index.find(x=>x.slug===slug); const p=bySlug.get(slug);
     const price=p&&p.priceSignals&&p.priceSignals.length? p.priceSignals.map(x=>`Reported: ${esc(x.display||"")} (${esc(x.asOf||"")})`).join("<br>") : "No reported sales recorded for this figure.";
-    const rows=FIELDS.map(([k,key])=>{ const v=p?p[key]:null; return `<li><span class="k">${k}</span><span>${v?esc(v):(key==="exclusive"?"General release":key==="bafPiece"?"None":"—")}</span></li>`; }).join("");
-    return `<section class="panel"><p class="pid micro">${esc(r?r.pid:"")}</p><h3>${esc(r?r.name:slug)}</h3>
+    const rows=FIELDS.map(([k,key])=>{ const v=(p&&p[key])||((key!=="bafPiece"&&key!=="variant"&&key!=="notes"&&r)?r[key]:null)||(key==="maker"&&p?p.manufacturer:null); return `<li><span class="k">${k}</span><span>${v?esc(v):(key==="exclusive"?"General release":key==="bafPiece"?"None":key==="variant"?"Standard release":"No notes recorded")}</span></li>`; }).join("");
+    const media=r&&r.img?`<img class="panelplate" src='${esc(r.img)}' alt="${esc(r.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer">`:r?`<div class="panelplate absence"><span class="absname">${esc(r.name)}</span><span class="micro">Not pictured</span></div>`:"";
+    return `<section class="panel">${media}<p class="pid micro">${esc(r?r.pid:"")}</p><h3>${esc(r?r.name:slug)}</h3>
     <p class="factline">${esc(r?r.fact:"")}</p><ul class="details">${rows}
     <li><span class="k">Reported sold</span><span>${price}</span></li>
     <li><span class="k">Buy</span><span><a href="spec-sheet.html?f=${esc(slug)}">Figure record and buy doors</a></span></li></ul></section>`;

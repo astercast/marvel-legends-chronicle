@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Collection — Marvel Legends Chronicle</title>
+<title>My Collection | Marvel Legends Chronicle</title>
 <meta name="description" content="Your own figures and numbers: owned, wanted, Build A Figure progress, spending, and your top 10. Stored in your browser only.">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,7 @@ const targets=JSON.parse(localStorage.getItem("mlc_targets_r23")||"{}");
 document.getElementById("owned").innerHTML=rowList(owned)||document.getElementById("owned").innerHTML;
 document.getElementById("wanted").innerHTML=rowList(wanted, r=>`<p><label>Target price ($) <input type="number" step="0.01" min="0" data-target="${r.slug}" value="${targets[r.slug]??""}"></label></p>`)||document.getElementById("wanted").innerHTML;
 document.querySelectorAll("[data-target]").forEach(inp=>inp.addEventListener("change",()=>{ targets[inp.dataset.target]=inp.value; localStorage.setItem("mlc_targets_r23",JSON.stringify(targets)); }));
-document.getElementById("baf").innerHTML=bafWaves.map(([w,ws])=>{ const pieces=ws.filter(r=>r.baf); const have=pieces.filter(r=>loadSet("owned").has(r.slug)); return `<p><b>${esc(w)}</b> — pieces have ${have.length} of ${pieces.length}; still need: ${pieces.filter(r=>!loadSet("owned").has(r.slug)).map(r=>esc(r.name)).join(", ")||"none"}</p>`; }).join("");
+document.getElementById("baf").innerHTML=bafWaves.map(([w,ws])=>{ const pieces=ws.filter(r=>r.baf); const have=pieces.filter(r=>loadSet("owned").has(r.slug)); return `<p><b>${esc(w)}</b>: ${have.length} of ${pieces.length} pieces owned; still need: ${pieces.filter(r=>!loadSet("owned").has(r.slug)).map(r=>esc(r.name)).join(", ")||"none"}</p>`; }).join("");
 let log=JSON.parse(localStorage.getItem("mlc_log_r23")||"[]");
 function renderNumbers(){
   const total=log.reduce((a,x)=>a+ +x.amt,0);
@@ -62,7 +62,7 @@ function renderNumbers(){
    `<p>Spending logged: <span class="num">$${total.toFixed(2)}</span> across ${log.length} entries.</p>`+
    Object.entries(byYear).map(([y,v])=>`<p>${y}: <span class="num">$${v.toFixed(2)}</span></p>`).join("")+
    `<p class="method">Collection value here is the total of your own logged purchase prices. Figures with no logged price count as $0; no market value is estimated.</p>`+
-   (log.length?`<ul>${log.map(x=>`<li>${esc(x.date)} — ${esc(x.name)} — <span class="num">$${(+x.amt).toFixed(2)}</span></li>`).join("")}</ul>`:"");
+   (log.length?`<ul>${log.map(x=>`<li>${esc(x.date)} · ${esc(x.name)} · <span class="num">$${(+x.amt).toFixed(2)}</span></li>`).join("")}</ul>`:"");
 }
 document.getElementById("logform").addEventListener("submit",e=>{ e.preventDefault();
   log.push({name:document.getElementById("lf-name").value,date:document.getElementById("lf-date").value,amt:document.getElementById("lf-amt").value});
@@ -76,8 +76,8 @@ function renderTop(){
   const ab=document.getElementById("addbtn"); if(ab) ab.addEventListener("click",()=>{ top.push(document.getElementById("addtop").value); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); });
 }
 renderTop();
-document.getElementById("printarea").innerHTML=`<h2>Checklist — Owned and Wanted by wave</h2>`+
- [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} — ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
+document.getElementById("printarea").innerHTML=`<h2>Checklist: Owned and Wanted by wave</h2>`+
+ [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} · ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
 </script>
 </main>
 <footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>

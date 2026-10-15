@@ -48,7 +48,7 @@ export function guardImages(root=document){
       t.replaceWith(s);
     } else {
       const d=document.createElement("div"); d.className="notplate";
-      d.innerHTML=`<div class="np-name"></div><p class="micro">Picture at source — photograph did not load</p>`;
+      d.innerHTML=`<div class="np-name"></div><p class="micro">Picture at source · photograph did not load</p>`;
       d.querySelector(".np-name").textContent=alt.replace(/ figure photograph$/,"");
       t.closest(".plate") ? t.closest(".plate").replaceChildren(d) : t.replaceWith(d);
     }
