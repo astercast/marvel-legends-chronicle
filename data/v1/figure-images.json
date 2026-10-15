@@ -4796,6 +4796,30 @@
    "verifiedAt": "2026-10-15",
    "verify": "JSON-LD Product image == og:image as the same Shopify CDN asset (filename + version stamp; resize parameters differ), asserted in r41 hunt41 evidence; GTIN 630509526383 matches the figure UPC; packaged photo read firsthand against census identity (r41)",
    "_rotation41": "e651bab6-bd68-5159-b3c9-1d607255a065"
+  },
+  {
+   "figureId": "hasbro-2018-cull-obsidian::Malekith the Accursed",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-infinite-cull-obsidian-series-6-inch-action-figure-malekith_image_1200x1200.gif?v=1723123087",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-infinite-cull-obsidian-series-6-inch-action-figure-malekith",
+   "buyLabel": "CmdStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "JSON-LD Product image == og:image as the same Shopify CDN asset (filename + version stamp; resize parameters differ), asserted in r42 hunt42 evidence; GTIN 630509682119 on the structured record; packaged photo downloaded into r42 img42/ and read firsthand against census identity (r42); listing OutOfStock at read time, named in landing-marvel-r42.md",
+   "_rotation42": "6349c019-f202-5df1-bc54-17e6629efd8d"
+  },
+  {
+   "figureId": "hasbro-2016-space-knight-venom::Hobgoblin",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-spider-man-space-venom-series-6-inch-action-figure-hobgoblin_image_1200x1200.gif?v=1705953358",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-spider-man-space-venom-series-6-inch-action-figure-hobgoblin",
+   "buyLabel": "CmdStore",
+   "priceUSD": 159.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "JSON-LD Product image == og:image as the same Shopify CDN asset (filename + version stamp; resize parameters differ), asserted in r42 hunt42 evidence; GTIN 630509402656 on the structured record; packaged photo downloaded into r42 img42/ and read firsthand against census identity (r42); listing OutOfStock at read time, named in landing-marvel-r42.md",
+   "_rotation42": "6349c019-f202-5df1-bc54-17e6629efd8d"
   }
  ]
 }
