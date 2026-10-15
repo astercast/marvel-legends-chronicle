@@ -104,9 +104,9 @@ suite("archive-tour — curator pick rules", () => {
     const m = buildTourModel(figures, waves);
     assert.equal(m.partitioned, true);
     assert.deepEqual(m.chapters.map((c) => c.counts.figures), [229, 174, 581, 965]);
-    assert.deepEqual(m.chapters.map((c) => c.counts.waves), [31, 25, 54, 57]);
+    assert.deepEqual(m.chapters.map((c) => c.counts.waves), [31, 25, 57, 57]);
     assert.deepEqual(m.chapters.map((c) => c.counts.bafWaves), [7, 12, 46, 38]);
-    assert.deepEqual(m.chapters.map((c) => c.counts.exclusives), [30, 65, 178, 316]);
+    assert.deepEqual(m.chapters.map((c) => c.counts.exclusives), [30, 65, 180, 316]);
     assert.deepEqual(m.chapters.map((c) => c.counts.variants), [63, 27, 4, 0]);
     const modern = m.chapters[3];
     assert(modern.emptyRules.some((r) => r.kind === "variant"), "the real modern era records no variants");

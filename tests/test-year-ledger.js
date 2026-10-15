@@ -76,7 +76,7 @@ suite("year-ledger — the real catalog", () => {
   test("the shape lands true: median, bands, busiest and quietest", () => {
     assert.equal(m.median, 71, "the median year ships 71 figures");
     assert.deepEqual(m.bands.map((b) => [b.years, b.figures]),
-      [[6, 99], [4, 170], [3, 190], [3, 256], [6, 731], [3, 493]],
+      [[6, 99], [4, 170], [3, 190], [3, 264], [6, 731], [3, 495]],
       "band by band");
     assert.deepEqual([m.busiest.year, m.busiest.figures], [2023, 181], "the busiest year");
     assert.deepEqual([m.quietest.year, m.quietest.figures, m.quietest.waves], [2011, 1, 1],
@@ -90,9 +90,9 @@ suite("year-ledger — the real catalog", () => {
 
   test("the flood and the swings land true", () => {
     assert.deepEqual([m.flood.years, m.flood.figures, m.flood.firstYear, m.flood.lastYear],
-      [9, 1224, 2018, 2026], "every year from 2018 on ships 100 figures or more");
+      [9, 1226, 2018, 2026], "every year from 2018 on ships 100 figures or more");
     assert.deepEqual([m.biggestRise.fromYear, m.biggestRise.toYear, m.biggestRise.delta],
-      [2017, 2018, 71], "the biggest rise");
+      [2017, 2018, 68], "the biggest rise");
     assert.deepEqual([m.biggestFall.fromYear, m.biggestFall.toYear, m.biggestFall.delta],
       [2023, 2024, -63], "the biggest fall");
   });

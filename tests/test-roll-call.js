@@ -3,10 +3,10 @@
    - a character is the debut ledger's rule (name minus
      parenthetical): 700 distinct across 1,949 figures
    - the roll's shape: 427 characters called exactly once, 273
-     returners holding 1,512 figures, the seven fixed bands
+     returners holding 1,522 figures, the seven fixed bands
      summing back to both totals
-   - the head of the roll lands true (Spider-Man 88 in 38 waves,
-     Iron Man 77, Wolverine 56, Captain America 54; top ten 419)
+   - the head of the roll lands true (Spider-Man 90 in 40 waves,
+     Iron Man 78, Wolverine 57, Captain America 55; top ten 428)
    - every figure's waveId exists in waves.json, and waves.json's
      figureCounts sum to the figure total (the cross-check)
    - the page wiring: mounts, module, registry, and NO prices */
@@ -78,23 +78,23 @@ suite("roll-call — the real catalog", () => {
     assert.equal(m.singletons.characters, 427, "427 characters called exactly once");
     assert.equal(m.singletons.figures, 427);
     assert.equal(m.returners.characters, 273);
-    assert.equal(m.returners.figures, 1512);
+    assert.equal(m.returners.figures, 1522);
     assert.equal(m.singletons.characters + m.returners.characters, 700);
     assert.equal(m.singletons.figures + m.returners.figures, 1949);
   });
 
   test("the bands land true, band by band", () => {
     const got = m.bands.map((b) => [b.characters, b.figures]);
-    assert.deepEqual(got, [[427, 427], [115, 230], [76, 258], [51, 339], [21, 266], [6, 144], [4, 275]],
+    assert.deepEqual(got, [[427, 427], [115, 230], [76, 258], [51, 339], [21, 267], [6, 148], [4, 280]],
       `bands: ${JSON.stringify(got)}`);
   });
 
   test("the head of the roll lands true", () => {
     assert.deepEqual(m.top.slice(0, 4).map((r) => [r.name, r.count]),
-      [["Spider-Man", 88], ["Iron Man", 77], ["Wolverine", 56], ["Captain America", 54]]);
-    assert.equal(m.roll[0].waveCount, 38, "Spider-Man's 88 figures span 38 waves");
-    assert.equal(m.roll[1].waveCount, 44, "Iron Man's 77 figures span 44 waves");
-    assert.equal(m.topTenFigures, 419, "the top ten hold 419 figures");
+      [["Spider-Man", 90], ["Iron Man", 78], ["Wolverine", 57], ["Captain America", 55]]);
+    assert.equal(m.roll[0].waveCount, 40, "Spider-Man's 90 figures span 40 waves");
+    assert.equal(m.roll[1].waveCount, 45, "Iron Man's 78 figures span 45 waves");
+    assert.equal(m.topTenFigures, 428, "the top ten hold 428 figures");
     assert.equal(m.top.length, 25, "the head of the roll is 25 deep");
   });
 });

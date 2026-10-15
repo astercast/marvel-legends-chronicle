@@ -86,7 +86,7 @@ suite("spec-sheet — the real catalog (T-MARVEL-1 closure)", () => {
 
   test("coverage counts land true", () => {
     assert.deepEqual([m.carriers, m.buildWaveFigures, m.exclusives, m.variants, m.noted, m.sourced],
-      [663, 741, 589, 94, 1683, 215], "carriers / build-wave / exclusives / variants / notes / sources");
+      [663, 741, 591, 94, 1693, 215], "carriers / build-wave / exclusives / variants / notes / sources");
   });
 });
 

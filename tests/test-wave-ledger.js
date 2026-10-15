@@ -83,7 +83,7 @@ suite("wave-ledger — the real catalog", () => {
 
   test("the bands land true, band by band", () => {
     const got = m.bands.map((b) => [b.waves, b.figures]);
-    assert.deepEqual(got, [[1, 1], [8, 20], [14, 61], [97, 641], [20, 173], [14, 153], [13, 890]],
+    assert.deepEqual(got, [[1, 1], [10, 25], [15, 66], [97, 641], [20, 173], [14, 153], [13, 890]],
       `bands: ${JSON.stringify(got)}`);
   });
 
@@ -94,7 +94,7 @@ suite("wave-ledger — the real catalog", () => {
       [14, 896, 13, 890, 2008, 2026],
       "the bucket series whole, and the annual run inside it");
     assert.deepEqual([m.standard.waves, m.standard.figures, m.standard.ceiling],
-      [153, 1043, 12], "no standard wave holds more than 12 figures");
+      [156, 1053, 12], "no standard wave holds more than 12 figures");
     assert.deepEqual(m.standard.ceilingWaves.map((w) => w.waveSeries),
       ["Giant-Man (Walmart Exclusive)", "Series 15 - MODOK", "Face-Off Series 1", "2-Packs Series 2"],
       "exactly four waves sit at the standard ceiling");

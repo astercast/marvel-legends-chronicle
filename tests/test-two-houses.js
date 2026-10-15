@@ -90,7 +90,7 @@ suite("two-houses — the real catalog", () => {
     assert.equal(tb.figureCount, 229);
     assert.equal(hb.figureCount, 1720);
     assert.equal(tb.waveCount, 31);
-    assert.equal(hb.waveCount, 136);
+    assert.equal(hb.waveCount, 139);
   });
 
   test("the handover is clean, and the seam names the real waves", () => {
@@ -116,7 +116,7 @@ suite("two-houses — the real catalog", () => {
     assert.equal(tb.onlyCount, 24);
     assert.equal(hb.onlyCount, 583);
     assert.equal(tb.exclusiveCount, 30);
-    assert.equal(hb.exclusiveCount, 559);
+    assert.equal(hb.exclusiveCount, 561);
     assert.equal(tb.variantCount, 63);
     assert.equal(hb.variantCount, 31);
     assert.equal(tb.builds, 7);

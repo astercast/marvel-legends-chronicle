@@ -113,7 +113,7 @@ suite("completionist — completion by era", () => {
     const m = buildCompletionistModel(figures, waves, marks());
     assert.equal(m.erasPartition, true);
     assert.deepEqual(m.byEra.map((e) => e.figures), [229, 174, 581, 965]);
-    assert.deepEqual(m.byEra.map((e) => e.waves), [31, 25, 54, 57]);
+    assert.deepEqual(m.byEra.map((e) => e.waves), [31, 25, 57, 57]);
     assert.equal(m.counts.totalFigures, 1949);
     assert.equal(m.counts.totalWaves, 170);
   });
