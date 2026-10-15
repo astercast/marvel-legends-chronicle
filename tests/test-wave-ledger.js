@@ -1,7 +1,7 @@
 /* The Wave Ledger — the waves census (rotation 18 flagship).
    Guards:
-   - a wave is the catalog's own waveId: 167 distinct across
-     1,939 figures, each size cross-checked against waves.json
+   - a wave is the catalog's own waveId: 170 distinct across
+     1,949 figures, each size cross-checked against waves.json
    - the ledger's shape: the median and commonest wave is 7
      figures, the seven fixed bands summing back to both totals
    - the buckets land true (13 annual exclusives buckets holding
@@ -60,8 +60,8 @@ suite("wave-ledger — the real catalog", () => {
   const m = buildWaveLedgerModel(figures);
 
   test("the waves cross-check: every wave's size matches waves.json, counts sum to the catalog", () => {
-    assert.equal(wavesJson.length, 167);
-    assert.equal(m.waveCount, 167);
+    assert.equal(wavesJson.length, 170);
+    assert.equal(m.waveCount, 170);
     const byId = new Map(m.waves.map((w) => [w.waveId, w]));
     for (const w of wavesJson) {
       assert(byId.has(w.id), `${w.id}: wave in the flat list`);
@@ -73,12 +73,12 @@ suite("wave-ledger — the real catalog", () => {
       "waves.json figureCounts sum to the flat list");
   });
 
-  test("the census: 167 waves across 1,939 figures, the typical wave at its true size", () => {
-    assert.equal(m.figureCount, 1939);
+  test("the census: 170 waves across 1,949 figures, the typical wave at its true size", () => {
+    assert.equal(m.figureCount, 1949);
     assert.equal(m.median, 7, "the median wave holds 7 figures");
     assert.deepEqual([m.mode.size, m.mode.waves], [7, 59], "7 is also the commonest size, 59 waves strong");
-    assert.equal(m.buckets.figures + m.standard.figures, 1939);
-    assert.equal(m.buckets.waves + m.standard.waves, 167);
+    assert.equal(m.buckets.figures + m.standard.figures, 1949);
+    assert.equal(m.buckets.waves + m.standard.waves, 170);
   });
 
   test("the bands land true, band by band", () => {

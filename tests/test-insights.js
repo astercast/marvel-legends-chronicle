@@ -373,13 +373,13 @@ suite("pinned real-data run (2026-10-11)", () => {
     assert.equal(shelf.high, 200); // white deco high
   });
 
-  test("archive-scale sanity: 1939 figures, insights run in reasonable time", () => {
+  test("archive-scale sanity: 1949 figures, insights run in reasonable time", () => {
     const t0 = Date.now();
     const waveRows = completionByWave(rFigures, rWaves, []);
     const yearRows = completionByYear(rFigures, []);
     const charRows = characterCompletions(rFigures, [], 5);
     const gaps = oneFigureAway(rFigures, [], 5);
-    assert.equal(waveRows.length, 167);
+    assert.equal(waveRows.length, 170);
     assert(yearRows.length > 0, "year rows present");
     assert(charRows.length > 0, "character runs present");
     assert.deepEqual(gaps, [], "no gaps with an empty shelf");

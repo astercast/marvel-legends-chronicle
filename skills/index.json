@@ -611,49 +611,49 @@
     {
       "id": "collect-spider-man",
       "title": "Collect every Spider-Man",
-      "description": "Complete a Spider-Man collection: all 88 Marvel Legends releases, chronological.",
+      "description": "Complete a Spider-Man collection: all 90 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-spider-man.md"
     },
     {
       "id": "collect-iron-man",
       "title": "Collect every Iron Man",
-      "description": "Complete a Iron Man collection: all 77 Marvel Legends releases, chronological.",
+      "description": "Complete a Iron Man collection: all 78 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-iron-man.md"
     },
     {
       "id": "collect-wolverine",
       "title": "Collect every Wolverine",
-      "description": "Complete a Wolverine collection: all 56 Marvel Legends releases, chronological.",
+      "description": "Complete a Wolverine collection: all 57 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-wolverine.md"
     },
     {
       "id": "collect-captain-america",
       "title": "Collect every Captain America",
-      "description": "Complete a Captain America collection: all 54 Marvel Legends releases, chronological.",
+      "description": "Complete a Captain America collection: all 55 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-captain-america.md"
     },
     {
       "id": "collect-hulk",
       "title": "Collect every Hulk",
-      "description": "Complete a Hulk collection: all 29 Marvel Legends releases, chronological.",
+      "description": "Complete a Hulk collection: all 30 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-hulk.md"
     },
     {
       "id": "collect-thor",
       "title": "Collect every Thor",
-      "description": "Complete a Thor collection: all 29 Marvel Legends releases, chronological.",
+      "description": "Complete a Thor collection: all 30 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-thor.md"
     },
     {
       "id": "collect-daredevil",
       "title": "Collect every Daredevil",
-      "description": "Complete a Daredevil collection: all 22 Marvel Legends releases, chronological.",
+      "description": "Complete a Daredevil collection: all 23 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-daredevil.md"
     },
     {
       "id": "collect-deadpool",
       "title": "Collect every Deadpool",
-      "description": "Complete a Deadpool collection: all 22 Marvel Legends releases, chronological.",
+      "description": "Complete a Deadpool collection: all 23 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-deadpool.md"
     },
     {
@@ -675,16 +675,16 @@
       "path": "skills/characters/collect-cyclops.md"
     },
     {
+      "id": "collect-black-panther",
+      "title": "Collect every Black Panther",
+      "description": "Complete a Black Panther collection: all 18 Marvel Legends releases, chronological.",
+      "path": "skills/characters/collect-black-panther.md"
+    },
+    {
       "id": "collect-jean-grey",
       "title": "Collect every Jean Grey",
       "description": "Complete a Jean Grey collection: all 17 Marvel Legends releases, chronological.",
       "path": "skills/characters/collect-jean-grey.md"
-    },
-    {
-      "id": "collect-black-panther",
-      "title": "Collect every Black Panther",
-      "description": "Complete a Black Panther collection: all 17 Marvel Legends releases, chronological.",
-      "path": "skills/characters/collect-black-panther.md"
     },
     {
       "id": "collect-human-torch",

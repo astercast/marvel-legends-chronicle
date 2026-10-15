@@ -160,7 +160,7 @@ suite("identity wave 2 — generated pages stay consistent", () => {
   test("every wave page carries its wave-id accession", () => {
     const dir = join(root, "waves");
     const files = readdirSync(dir).filter((f) => f.endsWith(".html") && f !== "index.html");
-    assert(files.length === 167, `167 wave pages, got ${files.length}`);
+    assert(files.length === 170, `170 wave pages, got ${files.length}`);
     for (const f of files) {
       const t = read(`waves/${f}`);
       assert(t.includes(`<span class="acc-no">${f.replace(".html", "")}</span>`),

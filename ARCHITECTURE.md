@@ -5,7 +5,7 @@ The doc a new senior dev reads first. Last updated 2026-10-11.
 ## What it is
 
 A fully static, client-side archive of every Marvel Legends action figure
-(2002–2026): 1,939 figures across 167 waves, plus collector tools (tracker,
+(2002–2026): 1,949 figures across 170 waves, plus collector tools (tracker,
 journal, BAF planner, price tools) and an encyclopedia. No backend, no build
 step for the site itself — pages are hand-written HTML + ES modules, data is
 JSON fetched at runtime. Private repo, GitHub-only.
@@ -18,7 +18,7 @@ waves/*.html                  167 generated wave-detail pages (build_waves.py)
 characters/*.html             66 generated character pages + index (build_characters.py)
 assets/js/*.js                39 ES modules (type="module", no bundler)
 assets/css/*.css               8 stylesheets (tokens → base → layout → components)
-data/figures.json             SOURCE OF TRUTH: 167 waves, 1939 figures (minified, nulls stripped)
+data/figures.json             SOURCE OF TRUTH: 170 waves, 1949 figures (minified, nulls stripped)
 data/encyclopedia.json        Encyclopedia content (minified)
 data/community.json           Seed posts for the fan-social mock
 data/v1/*.json                 Generated public API (build_api.py): figures, waves,
@@ -100,7 +100,7 @@ empty state; every `JSON.parse` is in try/catch; storage access never throws.
 ## Identity and storage
 
 - **Figure id:** `<waveId>::<figureName>` (stable, derived). Known trade-off:
-  same-name variants in one wave share an id (411 of 1939 rows), so they
+  same-name variants in one wave share an id (411 of 1949 rows), so they
   share owned/wanted state. Rows are always distinguishable by
   `(waveId, name, variant, notes)` — zero fully-identical rows (enforced by
   `tests/test-data-integrity.js`). Changing the id scheme would orphan

@@ -1334,5 +1334,29 @@
     "manufacturer": "Toy Biz",
     "baf": null,
     "figureCount": 4
+  },
+  {
+    "id": "hasbro-2016-12-inch-legends",
+    "series": "12-Inch Legends (2016 Revival)",
+    "year": 2016,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 3
+  },
+  {
+    "id": "hasbro-2017-12-inch-legends",
+    "series": "12-Inch Legends (2017)",
+    "year": 2017,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 5
+  },
+  {
+    "id": "hasbro-2018-12-inch-legends",
+    "series": "12-Inch Legends (2018)",
+    "year": 2018,
+    "manufacturer": "Hasbro",
+    "baf": null,
+    "figureCount": 2
   }
 ]

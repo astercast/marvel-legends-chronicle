@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate static wave pages: waves/<wave-id>.html for all 167 waves,
+"""Generate static wave pages: waves/<wave-id>.html for all 170 waves,
 plus waves/index.html and waves/manifest.json.
 
 Usage: python3 scripts/build_waves.py
@@ -277,7 +277,7 @@ def research_button(name, variant):
     """One Research button per row (L13 collapse, Release 189 ruling).
 
     At the pre-collapse build every figure row carried the full
-    Research disclosure block verbatim: 1,939 research-note elements
+    Research disclosure block verbatim: 1,949 research-note elements
     across the 167 wave pages carrying 1 distinct text (113 on
     hasbro-2023-exclusives alone). The note now prints ONCE per page
     in the apparatus below, and the per-figure links are generated on

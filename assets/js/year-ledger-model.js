@@ -8,7 +8,7 @@
    figure, every figure in the catalog carries one, the span runs
    2002–2026 with no gap year, and a test cross-checks each year's
    wave count and figure count against waves.json (whose years
-   agree with the figures' years on all 167 waves).
+   agree with the figures' years on all 170 waves).
 
    THE COUNTING RULES (deterministic, catalog data only, printed
    on the page): years are filed chronologically; a year's figures

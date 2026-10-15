@@ -102,13 +102,13 @@ suite("makeover — homepage atrium", () => {
   test("hero is a frontispiece: folio line, plate, Catalogue Note (MARVEL-LIGHT 3.2)", () => {
     const p = page();
     assert(p.includes('class="folio-line"'), "folio line under the masthead");
-    assert(p.includes("31 of 1,939 pictured"), "the pictured census stands in the folio line");
+    assert(p.includes("31 of 1,949 pictured"), "the pictured census stands in the folio line");
     assert(p.includes('class="frontispiece"'), "frontispiece composition present");
     assert(p.includes("FRONTISPIECE"), "the frontispiece plate carries its mark");
     assert(p.includes("Catalogue Note"), "the Catalogue Note stands beside the plate");
     assert(p.includes('href="vault-room.html">enter the Vault Room'), "the way in is a quiet text link, no primary button");
     assert(!p.includes('class="btn btn-primary"'), "no primary CTA button on the home page");
-    assert(p.includes("1,939 figures across 167 waves"), "live archive totals in the note");
+    assert(p.includes("1,949 figures across 170 waves"), "live archive totals in the note");
     assert(p.includes('id="stat-strip"'), "census mount present (in the colophon)");
     assert(p.includes('class="cabinet-note"'), "cabinet note mount present");
     assert(!p.includes("You own</div>"), "no dead owned/wanted tiles");
@@ -174,7 +174,7 @@ suite("makeover — vault room hero", () => {
     assert(js.includes("initFindDrawerCta"), "CTA wired in the room script");
     // the accession line no longer repeats the JS-rendered coverage counts
     const acc = p.match(/<p class="accession">([\s\S]*?)<\/p>/)[1];
-    assert(!acc.includes("1,939"), "accession line doesn't duplicate coverage counts");
+    assert(!acc.includes("1,949"), "accession line doesn't duplicate coverage counts");
   });
 });
 

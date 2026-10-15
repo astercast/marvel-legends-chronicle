@@ -8,7 +8,7 @@
    distinct waveId in the flat figure list, carrying that wave's
    series name, year and manufacturer from its figures (a test
    cross-checks every wave's size against waves.json's figureCount
-   on all 167 waves, the two agree everywhere). A wave's size is
+   on all 170 waves, the two agree everywhere). A wave's size is
    the number of catalog figures filed under it.
 
    THE COUNTING RULES (deterministic, catalog data only, printed

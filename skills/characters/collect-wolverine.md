@@ -1,13 +1,13 @@
 ---
 name: collect-wolverine
-description: Complete a Wolverine collection: all 56 Marvel Legends releases, chronological.
+description: Complete a Wolverine collection: all 57 Marvel Legends releases, chronological.
 ---
 
 # Collect every Wolverine
 
 ## Use when
 
-You collect Wolverine. 56 releases are catalogued from 2002 to 2026.
+You collect Wolverine. 57 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -31,7 +31,7 @@ You collect Wolverine. 56 releases are catalogued from 2002 to 2026.
   - 2006, Face-Off Series 2: Wolverine [Screaming]
   - 2006, Icons Series 1: Wolverine
   - 2006, Icons Series 1: Wolverine [Unmasked]
-  - …and 42 more
+  - …and 43 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

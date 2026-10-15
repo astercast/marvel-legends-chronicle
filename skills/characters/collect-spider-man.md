@@ -1,13 +1,13 @@
 ---
 name: collect-spider-man
-description: Complete a Spider-Man collection: all 88 Marvel Legends releases, chronological.
+description: Complete a Spider-Man collection: all 90 Marvel Legends releases, chronological.
 ---
 
 # Collect every Spider-Man
 
 ## Use when
 
-You collect Spider-Man. 88 releases are catalogued from 2003 to 2026.
+You collect Spider-Man. 90 releases are catalogued from 2003 to 2026.
 
 ## Inputs
 
@@ -31,7 +31,7 @@ You collect Spider-Man. 88 releases are catalogued from 2003 to 2026.
   - 2012, Arnim Zola Wave (Return of Marvel Legends): Spider-Man [Future Foundation]
   - 2014, Ultimate Green Goblin Wave: Spider-Man
   - 2015, Hobgoblin Wave: Spider-Man
-  - …and 74 more
+  - …and 76 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

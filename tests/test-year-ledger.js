@@ -52,9 +52,9 @@ suite("year-ledger — the real catalog", () => {
   const m = buildYearLedgerModel(figures);
 
   test("the years cross-check: waves.json agrees year by year, counts sum to the catalog", () => {
-    assert.equal(m.figureCount, 1939);
-    assert.equal(m.waveCount, 167);
-    assert.equal(wavesJson.length, 167);
+    assert.equal(m.figureCount, 1949);
+    assert.equal(m.waveCount, 170);
+    assert.equal(wavesJson.length, 170);
     for (const y of m.years) {
       const ws = wavesJson.filter((w) => w.year === y.year);
       assert.equal(y.waves, ws.length, `${y.year}: wave count matches waves.json`);

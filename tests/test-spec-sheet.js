@@ -1,7 +1,7 @@
 /* The Spec Sheet — the per-figure structured spec record
    (rotation 19, closing ticket T-MARVEL-1).
    Guards:
-   - one record per figure (1,939), every field copied verbatim
+   - one record per figure (1,949), every field copied verbatim
      from the committed catalog — nothing derived by invention
    - the recorded-absent fields (UPC/SKU, MSRP, accessories) carry
      NO value on any record; they are named in `absent` only
@@ -47,8 +47,8 @@ suite("spec-sheet — the real catalog (T-MARVEL-1 closure)", () => {
   const figures = JSON.parse(read("data/v1/figures.json"));
   const m = buildSpecSheetModel(figures);
 
-  test("coverage: one spec record per figure — 0 → 1,939", () => {
-    assert.equal(m.total, 1939);
+  test("coverage: one spec record per figure — 0 → 1,949", () => {
+    assert.equal(m.total, 1949);
     assert.equal(m.records.length, figures.length);
     assert.deepEqual(m.records.map((r) => r.id), figures.map((f) => f.id),
       "records cover every figure, in catalog order");

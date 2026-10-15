@@ -76,19 +76,19 @@ suite("two-houses — the real catalog", () => {
     }
   });
 
-  test("the census: two houses partition the line, 229 + 1,710 figures", () => {
+  test("the census: two houses partition the line, 229 + 1,720 figures", () => {
     assert.equal(m.total, 2);
     assert.deepEqual(m.houses.map((h) => h.name), ["Toy Biz", "Hasbro"]);
-    assert.equal(m.figureCount, 1939);
-    assert.equal(m.waveCount, 167);
+    assert.equal(m.figureCount, 1949);
+    assert.equal(m.waveCount, 170);
     assert.equal(m.characterCount, 700);
     const tb = m.houses[0];
     const hb = m.houses[1];
-    assert.equal(tb.figureCount + hb.figureCount, 1939);
-    assert.equal(tb.waveCount + hb.waveCount, 167);
+    assert.equal(tb.figureCount + hb.figureCount, 1949);
+    assert.equal(tb.waveCount + hb.waveCount, 170);
     assert.equal(tb.debutCount + hb.debutCount, 700, "every character debuts under exactly one house");
     assert.equal(tb.figureCount, 229);
-    assert.equal(hb.figureCount, 1710);
+    assert.equal(hb.figureCount, 1720);
     assert.equal(tb.waveCount, 31);
     assert.equal(hb.waveCount, 136);
   });
@@ -126,7 +126,7 @@ suite("two-houses — the real catalog", () => {
     assert.equal(hb.busiestYear.year, 2023);
     assert.equal(hb.busiestYear.figures, 181);
     assert.equal(tb.years.reduce((n, y) => n + y.figures, 0), 229, "the year table sums to the house");
-    assert.equal(hb.years.reduce((n, y) => n + y.figures, 0), 1710);
+    assert.equal(hb.years.reduce((n, y) => n + y.figures, 0), 1720);
   });
 });
 

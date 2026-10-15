@@ -6,8 +6,8 @@ Static site. GitHub only — nothing is deployed anywhere.
 
 ## What's here
 
-- `index.html` — the chronological timeline (1,939 figures, 167 waves, 2002–2026), with a "Featured In" story-source facet (MCU / animated / video game — 29 waves classified, the rest honestly Unclassified)
-- `timeline.html` — The Legends Timeline: year-by-year line history 2002–2026 — sourced milestones, 5 packaging eras, all 167 waves linked into the archive (rebuild year sections with `python3 scripts/build_timeline.py`); API at `data/v1/timeline.json`
+- `index.html` — the chronological timeline (1,949 figures, 170 waves, 2002–2026), with a "Featured In" story-source facet (MCU / animated / video game — 29 waves classified, the rest honestly Unclassified)
+- `timeline.html` — The Legends Timeline: year-by-year line history 2002–2026 — sourced milestones, 5 packaging eras, all 170 waves linked into the archive (rebuild year sections with `python3 scripts/build_timeline.py`); API at `data/v1/timeline.json`
 - `start.html` — new collector starter guide: smart first pickups, how to read a wave, spotting fakes, BAF math, tracking your shelf, learning real prices
 - `waves/` — 167 generated wave detail pages (`waves/<wave-id>.html` + index; rebuild with `python3 scripts/build_waves.py`): every figure with inline Owned/Wanted toggles, BAF breakdown, research links, prev/next wave navigation, print checklist — plus wave-26 deep-link overhaul: every figure gets a stable `#fig-<slug>` anchor (stable deep link `waves/<waveId>.html#fig-<slug>`) and a cross-link row (⚖️ Compare entry, 💎 rarity-tier link, 💰 reported price signals, ⚠️ KO-spotter note, 🏆/🎯 quest relevance)
 - `compare.html` — figure compare (VS mode, wave 26): 2–4 figures side-by-side — release info, archive notes, reported price bands (reported, never live), rarity signals, KO watch, documented upgrade paths (variants / documented reissues / exclusives / same character, honest trade-offs), "which to buy" guidance grounded in the data (no hype, no winner); shareable links (`compare.html?a=<id>&b=<id>`), keyboard operable, mobile-first; profiles via new `data/v1/compare.json` (built by `scripts/compare_lib.py`)
@@ -71,7 +71,7 @@ baf-strategist, collection-auditor, api-client) — see the agents landing page
 
 ## Data status
 
-`data/figures.json` holds **1,939 figures across 167 waves** (2002–2026), merged from twelve researched parts. Year ordering is accurate; within-year monthly ordering is not yet audited. Some BAF pieces and disputed wave numbers are flagged `unverified` in notes. Announced-but-unreleased entries should be treated cautiously.
+`data/figures.json` holds **1,949 figures across 170 waves** (2002–2026), merged from twelve researched parts. Year ordering is accurate; within-year monthly ordering is not yet audited. Some BAF pieces and disputed wave numbers are flagged `unverified` in notes. Announced-but-unreleased entries should be treated cautiously.
 
 ## Accessibility & performance
 

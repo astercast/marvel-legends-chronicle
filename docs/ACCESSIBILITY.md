@@ -11,7 +11,7 @@ verified good practice, documented here so it stays that way.
 ## 1. Fixed in this pass
 
 - **`explore.html` — `#surprise-progress` was not announced.**
-  The "N of 1,939 discovered" counter updates on every "Surprise me" draw but
+  The "N of 1,949 discovered" counter updates on every "Surprise me" draw but
   had no live region, so screen-reader users got no feedback. Added
   `aria-live="polite"`. (One-line change; no visual difference.)
 

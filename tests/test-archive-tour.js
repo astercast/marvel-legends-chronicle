@@ -103,7 +103,7 @@ suite("archive-tour — curator pick rules", () => {
     }
     const m = buildTourModel(figures, waves);
     assert.equal(m.partitioned, true);
-    assert.deepEqual(m.chapters.map((c) => c.counts.figures), [229, 174, 571, 965]);
+    assert.deepEqual(m.chapters.map((c) => c.counts.figures), [229, 174, 581, 965]);
     assert.deepEqual(m.chapters.map((c) => c.counts.waves), [31, 25, 54, 57]);
     assert.deepEqual(m.chapters.map((c) => c.counts.bafWaves), [7, 12, 46, 38]);
     assert.deepEqual(m.chapters.map((c) => c.counts.exclusives), [30, 65, 178, 316]);

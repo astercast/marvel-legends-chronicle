@@ -6,7 +6,7 @@
    WHAT COUNTS AS A HOUSE: a distinct value of the catalog's own
    manufacturer field, the same field the wave pages carry (a test
    cross-checks it against waves.json's manufacturer field on all
-   167 waves, the two agree everywhere). Nothing else is
+   170 waves, the two agree everywhere). Nothing else is
    normalized: the catalog's handover is clean, Toy Biz closing in
    2006 and Hasbro opening in 2007, and the ledger reports the
    seam exactly where the catalog puts it rather than smoothing it.

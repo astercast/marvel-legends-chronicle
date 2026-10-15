@@ -3,7 +3,7 @@
    - a figure is pictured only when the manifest holds a verified
      entry for its catalog id; orphans are counted apart
    - the census lands true against the real catalog + manifest:
-     pictured + unpictured = 1,939, every entry's figure exists,
+     pictured + unpictured = 1,949, every entry's figure exists,
      every URL is https, every pictured figure has a buy link
    - the fallback law is in the renderer: the plate's img removes
      its own plate on error; unpictured figures get no plate
@@ -60,8 +60,8 @@ suite("visual-database — the real manifest against the real catalog", () => {
   const m = buildVisualDatabaseModel(figures, doc.entries);
 
   test("the census sums back to the catalog", () => {
-    assert.equal(m.total, 1939);
-    assert.equal(m.picturedCount + m.unpicturedCount, 1939);
+    assert.equal(m.total, 1949);
+    assert.equal(m.picturedCount + m.unpicturedCount, 1949);
     assert.equal(m.picturedCount, doc.entries.length, "every filed entry pictures a real figure");
     assert.equal(m.orphans, 0, "no orphan entries in the filed manifest");
     assert(m.picturedCount >= 25, `pictured core holds ${m.picturedCount}`);

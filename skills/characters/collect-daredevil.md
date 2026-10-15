@@ -1,13 +1,13 @@
 ---
 name: collect-daredevil
-description: Complete a Daredevil collection: all 22 Marvel Legends releases, chronological.
+description: Complete a Daredevil collection: all 23 Marvel Legends releases, chronological.
 ---
 
 # Collect every Daredevil
 
 ## Use when
 
-You collect Daredevil. 22 releases are catalogued from 2002 to 2026.
+You collect Daredevil. 23 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -28,10 +28,10 @@ You collect Daredevil. 22 releases are catalogued from 2002 to 2026.
   - 2015, Hobgoblin Wave: Daredevil
   - 2015, Store & Convention Exclusives: Daredevil (Walgreens)
   - 2017, Man-Thing Wave (Netflix): Daredevil
+  - 2017, 12-Inch Legends (2017): Daredevil
   - 2018, SP//dr Wave: Daredevil
   - 2018, Store & Convention Exclusives: Daredevil (San Diego Comic-Con)
-  - 2021, Store & Convention Exclusives: Daredevil
-  - …and 8 more
+  - …and 9 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

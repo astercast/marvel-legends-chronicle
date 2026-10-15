@@ -1,13 +1,13 @@
 ---
 name: collect-captain-america
-description: Complete a Captain America collection: all 54 Marvel Legends releases, chronological.
+description: Complete a Captain America collection: all 55 Marvel Legends releases, chronological.
 ---
 
 # Collect every Captain America
 
 ## Use when
 
-You collect Captain America. 54 releases are catalogued from 2002 to 2026.
+You collect Captain America. 55 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -31,7 +31,7 @@ You collect Captain America. 54 releases are catalogued from 2002 to 2026.
   - 2014, Mandroid Wave (Infinite Series): Captain America
   - 2015, Thanos Wave: Captain America
   - 2015, Store & Convention Exclusives: Captain America (Disney Store)
-  - …and 40 more
+  - …and 41 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

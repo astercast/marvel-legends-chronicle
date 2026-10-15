@@ -1,13 +1,13 @@
 ---
 name: collect-thor
-description: Complete a Thor collection: all 29 Marvel Legends releases, chronological.
+description: Complete a Thor collection: all 30 Marvel Legends releases, chronological.
 ---
 
 # Collect every Thor
 
 ## Use when
 
-You collect Thor. 29 releases are catalogued from 2002 to 2026.
+You collect Thor. 30 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -31,7 +31,7 @@ You collect Thor. 29 releases are catalogued from 2002 to 2026.
   - 2017, Gladiator Hulk Wave: Thor (Jane Foster)
   - 2017, Store & Convention Exclusives: Thor (Jane Foster) (San Diego Comic-Con)
   - 2017, Store & Convention Exclusives: Thor (Target)
-  - …and 15 more
+  - …and 16 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

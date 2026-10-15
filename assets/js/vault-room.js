@@ -480,7 +480,7 @@ function showError(err) {
   p.innerHTML =
     `<strong>The vault door jammed.</strong> The figure archive could not be loaded ` +
     `(${escapeHtml(err.message)}). The collection is still browsable: ` +
-    `<a href="waves/index.html">all 167 waves</a> · <a href="timeline.html">the 2002–2026 timeline</a>.`;
+    `<a href="waves/index.html">all 170 waves</a> · <a href="timeline.html">the 2002–2026 timeline</a>.`;
   els.years.appendChild(p);
 }
 

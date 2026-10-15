@@ -269,7 +269,7 @@ def home():
         f'<li><a href="{href}"><span>{escape(k)}</span><span class="count">{v:,}</span></a></li>'
         for k, (v, href) in counts.items())
     body = f"""
-<h1 class="claim">1,939 figures · 167 waves · 2002–2026</h1>
+<h1 class="claim">1,949 figures · 170 waves · 2002–2026</h1>
 <form class="bigsearch" action="visual-database.html" method="get" role="search">
 <input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required>
 <button type="submit">Search</button></form>
@@ -291,7 +291,7 @@ def home():
 <p><a href="visual-database.html?picture=Pictured">See all {len(pictured):,} pictured figures</a></p>
 <h2>Latest waves</h2>
 <ul class="wavedoors">{doors}</ul>
-<p><a href="waves/index.html">All 167 waves</a></p>
+<p><a href="waves/index.html">All 170 waves</a></p>
 <h2>Upcoming</h2>
 <ul class="rows">{up_rows}</ul>
 <p><a href="radar.html">All upcoming releases</a></p>
@@ -301,7 +301,7 @@ def home():
 <ul class="rows">{''.join(row_html(r) for r in newest)}</ul>
 """
     write("index.html", chrome("Marvel Legends Chronicle",
-          "1,939 Marvel Legends figures, 167 waves, 2002–2026. Search the catalog.", "Home") + body + wire("") + foot())
+          "1,949 Marvel Legends figures, 170 waves, 2002–2026. Search the catalog.", "Home") + body + wire("") + foot())
 
 # ---------- Surface 2: Catalog browse ----------
 def browse():
@@ -334,7 +334,7 @@ def browse():
 <button class="plain" id="filtersBtn" type="button">Filters</button>
 <button class="plain" id="viewBtn" type="button">List view</button>
 </div>
-<p class="resultsline" id="results">1,939 figures</p>
+<p class="resultsline" id="results">1,949 figures</p>
 <div class="layout">
 <div class="facets" id="facets">{facets}<button type="button" id="applyBtn">Show results</button></div>
 <div><ul class="rows tiles" id="rows"></ul>
@@ -343,7 +343,7 @@ def browse():
 </div>
 <script>
 // First-paint truth for linked views: a filtered or sorted URL must never
-// sit under the unfiltered 1,939 heading with an empty results area while
+// sit under the unfiltered 1,949 heading with an empty results area while
 // the catalog loads. This runs during parsing, before the module below;
 // counts for the home-linked filters are computed by the generator.
 (function(){{
@@ -447,7 +447,7 @@ function renderMore(){{
   }}
   const first=await getJSON("data/v1/browse/chunk-000.json");
   view=first; renderMore();
-  document.getElementById("shown").textContent=`Showing 50 of 1,939 · 1,889 remain`;
+  document.getElementById("shown").textContent=`Showing 50 of 1,949 · 1,889 remain`;
   document.getElementById("more").style.display="";
 }})();
 document.getElementById("more").addEventListener("click", async()=>{{ if(!all){{ view=await loadAll(); }} renderMore(); }});
@@ -463,7 +463,7 @@ wireState(document);
 </script>
 """
     write("visual-database.html", chrome("Catalog | Marvel Legends Chronicle",
-          "Browse 1,939 Marvel Legends figures by year, wave, character, maker, and picture.", "Catalog") + body + foot())
+          "Browse 1,949 Marvel Legends figures by year, wave, character, maker, and picture.", "Catalog") + body + foot())
 
 # ---------- Surface 3: Figure page (spec-sheet pattern) ----------
 def figure_page():
@@ -571,7 +571,7 @@ Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
 <ul class="rows">{''.join(index_rows)}</ul>
 """
     write("waves/index.html", chrome("Waves | Marvel Legends Chronicle",
-          "167 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../") + body + foot("../"))
+          "170 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../") + body + foot("../"))
 
 def character_pages():
     by_base = defaultdict(list)
@@ -805,7 +805,7 @@ def help_page():
 <form class="bigsearch" action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Character name" aria-label="Character name" required><button type="submit">Search</button></form>
 <h2>What the census covers</h2>
 <ul>
-<li>1,939 figures in 167 waves, released 2002–2026.</li>
+<li>1,949 figures in 170 waves, released 2002–2026.</li>
 <li>Two makers: Toy Biz (229 figures) and Hasbro (1,710 figures).</li>
 <li>66 character pages cover the most-collected characters; every figure is in the catalog and on its wave page.</li>
 <li>Pictures: {len(IMAGES):,} figures have a verified retailer photograph. The other {len(FIGS)-len(IMAGES):,} are listed without a picture and are never shown with a substitute image.</li>
@@ -831,7 +831,7 @@ def developers():
 <p>Static data endpoints, version 1, under <span class="num">data/v1/</span>. Live functions: <span class="num">/api/health</span>, <span class="num">/api/reveals</span>, <span class="num">/api/preorders</span>, and the daily Radar cron at <span class="num">/api/cron/radar</span>.</p>
 <ul>{ep_rows}</ul>
 <h2>Agent procedures</h2>
-<p>Start at the manifest endpoint above. Read the schema beside each endpoint before parsing it. Counts in the manifest are the census: 1,939 figures, 167 waves, 66 characters.</p>
+<p>Start at the manifest endpoint above. Read the schema beside each endpoint before parsing it. Counts in the manifest are the census: 1,949 figures, 170 waves, 66 characters.</p>
 <h2>Skills</h2>
 <p>The skills manifest is published with the API documentation in this repository (skills/ and data/v1/index.json). Procedures that change data run through the generator, scripts/build_r23.py, and the result is verified against the census before it is committed.</p>
 </div>

@@ -175,7 +175,7 @@ suite("year-shelf commissions", () => {
     assert.equal(shelves[0].year, 2002);
     assert.equal(shelves[24].year, 2026);
     const total = shelves.reduce((n, s) => n + s.total, 0);
-    assert.equal(total, 1939, "every figure on exactly one shelf");
+    assert.equal(total, 1949, "every figure on exactly one shelf");
   });
 });
 

@@ -316,10 +316,10 @@ suite("share card", () => {
     const watchlist = [];
     const recs = recommendNext(figures, waves, ownedIds, watchlist);
     const text = shareCardText({
-      level, ownedCount: ownedIds.length, archiveCount: 1939, completedBafs: 0,
+      level, ownedCount: ownedIds.length, archiveCount: 1949, completedBafs: 0,
       achievements, quests, latestAchievement: null, recs,
     });
-    assert(text.includes("5 figures owned (0% of the 1,939-figure archive)"), "archive progress present");
+    assert(text.includes("5 figures owned (0% of the 1,949-figure archive)"), "archive progress present");
     assert(text.includes("Next quests:"), "next-quest section present");
     assert(text.includes("Closest BAF:"), "closest-BAF rec present");
     const textNoRecs = shareCardText({

@@ -16,9 +16,9 @@ for (const w of waves) {
 }
 
 suite("data integrity (data/figures.json)", () => {
-  test("archive has 167 waves and 1939 figures", () => {
-    assert.equal(waves.length, 167);
-    assert.equal(figures.length, 1939);
+  test("archive has 170 waves and 1949 figures", () => {
+    assert.equal(waves.length, 170);
+    assert.equal(figures.length, 1949);
   });
 
   test("figure ids are well-formed (waveId::name)", () => {

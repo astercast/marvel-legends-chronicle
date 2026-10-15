@@ -1,13 +1,13 @@
 ---
 name: collect-deadpool
-description: Complete a Deadpool collection: all 22 Marvel Legends releases, chronological.
+description: Complete a Deadpool collection: all 23 Marvel Legends releases, chronological.
 ---
 
 # Collect every Deadpool
 
 ## Use when
 
-You collect Deadpool. 22 releases are catalogued from 2010 to 2026.
+You collect Deadpool. 23 releases are catalogued from 2010 to 2026.
 
 ## Inputs
 
@@ -23,6 +23,7 @@ You collect Deadpool. 22 releases are catalogued from 2010 to 2026.
   - 2013, Epic Heroes: Deadpool [Uncanny X-Force]
   - 2016, Juggernaut Wave: Deadpool
   - 2017, Store & Convention Exclusives: Deadpool (HASCON)
+  - 2017, 12-Inch Legends (2017): Deadpool
   - 2018, Sasquatch Wave: Deadpool
   - 2018, Sasquatch Wave: Deadpool
   - 2018, Sauron Wave: Deadpool
@@ -30,8 +31,7 @@ You collect Deadpool. 22 releases are catalogued from 2010 to 2026.
   - 2018, Sauron Wave: Deadpool
   - 2018, Store & Convention Exclusives: Deadpool (GameStop)
   - 2018, Store & Convention Exclusives: Deadpool
-  - 2019, Store & Convention Exclusives: Deadpool (Movie Comic Media London)
-  - …and 8 more
+  - …and 9 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

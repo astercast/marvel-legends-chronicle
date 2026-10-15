@@ -30,7 +30,7 @@ locally. Nothing is connected to Vercel yet. Do not run the hookup steps in
 
 One Vercel project containing:
 
-- **Static frontend** — the whole repo root: 275 pages (42 root + 167 waves +
+- **Static frontend** — the whole repo root: 275 pages (42 root + 170 waves +
   66 characters), `assets/`, `data/`, `skills/`, `data/v1/*.json` (static
   fallback data).
 - **4 serverless functions** (service `marvel-radar`, zero npm dependencies,

@@ -123,9 +123,9 @@ suite("vault room — real-data integrity", () => {
   const waves = JSON.parse(read("data/v1/waves.json"));
   const timeline = JSON.parse(read("data/v1/timeline.json"));
 
-  test("archive scale: 1,939 figures, 167 waves, 25 years", () => {
-    assert(figures.length === 1939, `figures: ${figures.length}`);
-    assert(waves.length === 167, `waves: ${waves.length}`);
+  test("archive scale: 1,949 figures, 170 waves, 25 years", () => {
+    assert(figures.length === 1949, `figures: ${figures.length}`);
+    assert(waves.length === 170, `waves: ${waves.length}`);
     assert(timeline.years.length === 25, `years: ${timeline.years.length}`);
   });
 

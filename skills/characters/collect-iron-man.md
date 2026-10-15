@@ -1,13 +1,13 @@
 ---
 name: collect-iron-man
-description: Complete a Iron Man collection: all 77 Marvel Legends releases, chronological.
+description: Complete a Iron Man collection: all 78 Marvel Legends releases, chronological.
 ---
 
 # Collect every Iron Man
 
 ## Use when
 
-You collect Iron Man. 77 releases are catalogued from 2002 to 2026.
+You collect Iron Man. 78 releases are catalogued from 2002 to 2026.
 
 ## Inputs
 
@@ -31,7 +31,7 @@ You collect Iron Man. 77 releases are catalogued from 2002 to 2026.
   - 2006, Face-Off Series 2: Iron Man
   - 2006, Icons Series 1: Iron Man
   - 2006, Icons Series 1: Iron Man [Gold]
-  - …and 63 more
+  - …and 64 more
 3. Mark owned/wanted in the Chronicle tracker as you go.
 4. Toy Biz-era releases: authenticate hard (bootlegs concentrate here).
 5. Exclusives and variants: decide your completion rule NOW (all variants? one per sculpt?).

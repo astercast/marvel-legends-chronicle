@@ -1,7 +1,7 @@
 /* The Roll Call — the returns census (rotation 17 flagship).
    Guards:
    - a character is the debut ledger's rule (name minus
-     parenthetical): 700 distinct across 1,939 figures
+     parenthetical): 700 distinct across 1,949 figures
    - the roll's shape: 427 characters called exactly once, 273
      returners holding 1,512 figures, the seven fixed bands
      summing back to both totals
@@ -62,7 +62,7 @@ suite("roll-call — the real catalog", () => {
 
   test("the waves cross-check: every figure's wave exists, counts sum to the catalog", () => {
     const byId = new Map(waves.map((w) => [w.id, w]));
-    assert.equal(waves.length, 167);
+    assert.equal(waves.length, 170);
     for (const f of figures) assert(byId.has(f.waveId), `${f.id}: wave ${f.waveId} in waves.json`);
     assert.equal(waves.reduce((n, w) => n + w.figureCount, 0), figures.length,
       "waves.json figureCounts sum to the flat list");
@@ -72,15 +72,15 @@ suite("roll-call — the real catalog", () => {
     }
   });
 
-  test("the census: 700 characters across 1,939 figures, the tail at its true size", () => {
-    assert.equal(m.figureCount, 1939);
+  test("the census: 700 characters across 1,949 figures, the tail at its true size", () => {
+    assert.equal(m.figureCount, 1949);
     assert.equal(m.characterCount, 700);
     assert.equal(m.singletons.characters, 427, "427 characters called exactly once");
     assert.equal(m.singletons.figures, 427);
     assert.equal(m.returners.characters, 273);
     assert.equal(m.returners.figures, 1512);
     assert.equal(m.singletons.characters + m.returners.characters, 700);
-    assert.equal(m.singletons.figures + m.returners.figures, 1939);
+    assert.equal(m.singletons.figures + m.returners.figures, 1949);
   });
 
   test("the bands land true, band by band", () => {

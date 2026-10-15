@@ -292,10 +292,10 @@ def main():
             notes="Hand-maintained, build_api.py reads it for the record count but never rewrites it."),
         "compare": ep(
             "data/v1/compare.json",
-            "VS-mode figure profiles: one per archive figure, stable `deepLink` "
-            "(waves/<waveId>.html#fig-<slug>), shareable `compareUrl` (compare.html?a=<id>), "
-            "`rarity` tier cross-ref, `priceSignals` (reported ranges, never live prices), "
-            "`koWatch` note, and `upgradePaths` (documented other releases of the same character). "
+            "VS-mode figure profiles: one for every figure in the census, each with a stable deep link "
+            "(waves/<waveId>.html#fig-<slug>), a shareable compare link (compare.html?a=<id>), "
+            "a rarity tier cross-reference, price signals (reported ranges, never live prices), "
+            "a knock-off watch note, and upgrade paths (documented other releases of the same character). "
             "Powers the Figure Compare page; derived from committed data by scripts/compare_lib.py.",
             schema="data/v1/schema/compare.json", item_schema="data/v1/schema/compare-profile.json",
             records=len(compare_profiles)),
