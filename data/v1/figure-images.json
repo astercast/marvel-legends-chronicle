@@ -3276,6 +3276,226 @@
    "priceSeen": "2026-10-15",
    "verifiedAt": "2026-10-15",
    "verify": "og:image == structured Product image asserted in ee_probe32 (second-source method, built r32); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-xemnu::God Emperor Doom",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/77857/7d873a1e-3618-463d-826b-0a197ab288a1/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-super-villains-dr-doom-action-figure-xemnu-baf-77857?variation=152899",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-xemnu::Dormammu",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/77858/e5391b57-601c-4d07-970f-ee0816f2838b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-super-villains-dormammu-action-figure-xemnu-baf-77858?variation=152905",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-xemnu::The Hood",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/77860/091e0eb6-b70f-4989-90cd-2d73ff9ea634/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-super-villains-marvels-hood-action-figure-xemnu-baf-77860?variation=152908",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 11.5,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-xemnu::Lady Deathstrike",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/77862/1b231f17-2f07-4124-8780-fd4bf1459374/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-super-villains-lady-deathstrike-action-figure-xemnu-baf-77862?variation=152914",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-xemnu::Arcade",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/77864/e0601203-087a-4317-94cb-6999d405b5c5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-super-villains-marvels-arcade-action-figure-xemnu-baf-77864?variation=152917",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 16.09,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-xemnu::A.I.M. Scientist Supreme",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/77865/ed65e047-19e6-4710-9565-2cc8abbcef76/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-super-villains-aim-scientist-supreme-action-figure-xemnu-baf-77865?variation=152921",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 17.24,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-xemnu::Red Skull",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/77867/0cf1b6ce-d5a8-4cf9-b048-76145b9419c6/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-super-villains-red-skull-action-figure-xemnu-baf-77867?variation=152924",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 32.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-mr-hyde::Shang-Chi",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/80813/80f18cb9-507c-4c3e-adfd-84d85e2f9d09/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/shang-chi-marvel-legends-shang-chi-action-figure-marvels-mr-hyde-baf-80813?variation=158623",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-mr-hyde::The Mandarin",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/80814/b1f952d5-7462-4974-850f-bc458ec3c20e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/shang-chi-marvel-legends-wenwu-action-figure-marvels-mr-hyde-baf-80814?variation=158629",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-mr-hyde::Xialing",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/80815/fda193bc-b466-466a-b6e4-256afb0c3016/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/shang-chi-marvel-legends-xialing-action-figure-marvels-mr-hyde-baf-80815?variation=158632",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 17.24,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-mr-hyde::Death Dealer",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/80816/c3645de0-70c0-44bf-8abb-c4cdcf3a7f63/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/shang-chi-marvel-legends-death-dealer-action-figure-marvels-mr-hyde-baf-80816?variation=158635",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-mr-hyde::Civil Warrior",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/80817/9517890b-e5b5-4d53-99a3-c911f5408c25/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-contest-champions-marvel-legends-civil-warrior-action-figure-marvels-mr-hyde-baf-80817?variation=158639",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-mr-hyde::Iron Man",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/80818/3f4461ec-4fd3-482b-8a34-350be76d8c9b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/iron-man-marvel-legends-tony-stark-ai-action-figure-marvels-mr-hyde-baf-80818?variation=158622",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.94,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-theta-sentinel::Wolverine",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/73526/66f73c3f-a47d-4de8-a15e-592fb64537ad/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-wolverine-action-figure-73526?variation=142907",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-theta-sentinel::Cyclops",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/73527/197e6e27-8931-4485-a1cf-fce3db2154bd/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-cyclops-action-figure-tri-sentinel-baf-73527?variation=142910",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-theta-sentinel::Magneto",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/73528/b4a99437-0e0d-4db9-9540-7702b852cc23/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-magneto-action-figure-tri-sentinel-baf-73528?variation=142914",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 17.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-theta-sentinel::Moira MacTaggert",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/73529/2d2f8129-62c3-42c8-a59a-69b38373e013/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-moira-mactaggert-action-figure-tri-sentinel-baf-73529?variation=142919",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-theta-sentinel::Jean Grey",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/73537/83a1a801-28c0-4a39-9a97-ffa118ae9788/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvel-girl-action-figure-tri-sentinel-baf-73537?variation=142930",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-theta-sentinel::Omega Sentinel",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/73538/a9670063-1189-4268-9776-04aded92c4fb/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-omega-sentinel-action-figure-tri-sentinel-baf-73538?variation=142936",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 20.69,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
+  },
+  {
+   "figureId": "hasbro-2021-theta-sentinel::Professor X",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/73539/49b3381e-88f3-4ed4-9eab-7d060ed24eda/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-professor-x-action-figure-tri-sentinel-baf-73539?variation=142939",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 18.39,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in probe33 (r33); image downloaded and read firsthand against census identity"
   }
  ]
 }
