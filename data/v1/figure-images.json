@@ -4604,6 +4604,90 @@
    "verifiedAt": "2026-10-15",
    "verify": "og:image == structured Product image asserted in probe39 chain and prior probe38/probe37 evidence; image downloaded and read firsthand against census identity (r39)",
    "_rotation39": "8d4197a0-dbbe-5cb3-85b1-7791f1225d08"
+  },
+  {
+   "figureId": "hasbro-2018-cull-obsidian::Thor",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/44260/87ef0413-ade5-49aa-ac36-cb0be652c4d5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-infinity-war-marvel-legends-thor-cull-obsidian-baf-44260",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
+   "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
+  },
+  {
+   "figureId": "hasbro-2018-cull-obsidian::Black Widow",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/44237/39bd03d1-c3a9-423b-896c-d877a411f488/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/avengers-infinity-war-marvel-legends-black-widow-cull-obsidian-baf-44237",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 28.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
+   "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
+  },
+  {
+   "figureId": "hasbro-2018-cull-obsidian::Black Knight (Dane Whitman)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/44240/54a646d5-ab15-4564-8525-67443217935a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-black-knight-cull-obsidian-baf-44240",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
+   "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
+  },
+  {
+   "figureId": "hasbro-2017-gladiator-hulk::Hela",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/44175/9bab587b-ce0e-47e1-9ea5-dbc06d9e9b87/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-ragnarok-marvel-legends-hela-hulk-baf-44175",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 54.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
+   "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
+  },
+  {
+   "figureId": "hasbro-2017-gladiator-hulk::Ares",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/44178/65c95310-12f3-4a53-8cc2-44421cd3d785/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-marvel-legends-ares-hulk-baf-44178",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
+   "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
+  },
+  {
+   "figureId": "hasbro-2017-gladiator-hulk::Thor (Jane Foster)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/44181/5663be1e-5982-4feb-8cfe-4dedbdebe58d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/thor-marvel-legends-thor-hulk-baf-44181",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
+   "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
+  },
+  {
+   "figureId": "hasbro-2016-space-knight-venom::Silk",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/44269/71330f00-6cad-4616-8522-a9860ae9b55e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-marvel-legends-web-slinging-heroines-silk-space-venom-baf-44269",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 59.99,
+   "priceSeen": "2026-10-15",
+   "verifiedAt": "2026-10-15",
+   "verify": "og:image == structured Product image asserted in r37 pb-abs probe evidence; image downloaded into r40 img40/ and read firsthand against census identity (r40)",
+   "_rotation40": "395ca35f-01aa-53af-b9ac-e5cf0dbb0f55"
   }
  ]
 }
