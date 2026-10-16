@@ -7220,6 +7220,90 @@
    "verifiedAt": "2026-10-16",
    "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r72 apply72; priced offer is the figure's own BBTS Offer record; photo downloaded into r72 img72/ and read firsthand against census identity",
    "_rotation72": "d688f8be-0fa6-584b-90af-99a235a3d133"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Magik",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/40323/06f09662-30ec-4f2f-9548-79cea3dc11f5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/x-men-marvel-legends-marvels-magik-action-figure-40323?variation=82427",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r73 apply73; priced offer is the figure's own BBTS Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
+   "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Silver Surfer",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/138736/7979dc5f-46d2-41f2-8b43-6d154183a269/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/silver-surfer-comic-marvel-legends-silver-surfer-action-figure-138736?variation=273553",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 25.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r73 apply73; priced offer is the figure's own BBTS Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
+   "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Iron Man (Model 4)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/46948/8723a8c4-fe0b-4a82-8a70-1716827bc184/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-comics-80th-anniversary-marvel-legends-iron-man-46948?variation=97251",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 34.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r73 apply73; priced offer is the figure's own BBTS Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
+   "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Thor (80th Anniversary)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/46949/d5f992de-dfb5-4df8-97df-7ac335029b4e/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-comics-80th-anniversary-marvel-legends-thor-46949?variation=97254",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r73 apply73; priced offer is the figure's own BBTS Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
+   "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Captain America (Alex Ross)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509833573_a.jpg?v=1571609357&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-80th-anniversary-series-captain-america-walmart-exclusive-action-figure",
+   "buyLabel": "ToyArena",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r73 apply73; priced offer is the figure's own ToyArena Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
+   "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Punisher (War Machine armor)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/1070946657841b.jpg?v=1605836136&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-80th-anniversary-punisher-war-machine-exclusive-action-figure",
+   "buyLabel": "ToyArena",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r73 apply73; priced offer is the figure's own ToyArena Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
+   "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Deadpool (Back in Black)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509632015.JPG?v=1571609219&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-deadpool-back-in-black-6-gamestop-exclusive-2017",
+   "buyLabel": "ToyArena",
+   "priceUSD": 49.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r73 apply73; priced offer is the figure's own ToyArena Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
+   "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
   }
  ]
 }
