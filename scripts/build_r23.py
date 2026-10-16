@@ -27,6 +27,12 @@ IMAGES = {e["figureId"]: e for e in load("figure-images.json")["entries"]}
 CLASSICS = load("classics.json")
 CWAVES = CLASSICS["waves"]
 CFIG_COUNT = CLASSICS["figuresCount"]
+# The Classics family's own photo manifest (data/v1/classics-images.json),
+# apart from the main-line figure-images.json: Classics pictures are
+# counted inside the family only, never in the main-line totals.
+CIMG = {}
+if (D / "classics-images.json").exists():
+    CIMG = {e["figureId"]: e for e in load("classics-images.json")["entries"]}
 SIGNALS = load("price-signals.json")["signals"]
 STATS = load("stats.json")
 PREORDERS = load("preorders.json")["items"]
@@ -635,19 +641,22 @@ def classics_pages():
     """The Classics family section: one index page plus one page per
     Classics wave, through the same chrome() as every other page, so
     the canonical and social-meta layer covers them identically.
-    Figures carry no photographs yet: pictures join this family only
-    from lawful retailer photography, so absence here is by design."""
+    Pictures join this family only from lawful retailer photography
+    (its own manifest, classics-images.json), so absence is by design."""
     by_wave = defaultdict(list)
     for f in CLASSICS["figures"]: by_wave[f["waveId"]].append(f)
     lines = {}
     for w in CWAVES: lines.setdefault(w["line"], []).append(w)
     sections = ""
     for line in sorted(lines):
+        def pic_note(w):
+            n = sum(1 for f in by_wave[w["id"]] if f["id"] in CIMG)
+            return f", {n} pictured" if n else ""
         rows = "".join(
             f'<li class="row"><span class="notpic">{w["year"]}</span><div>'
             f'<div class="pid">{w["year"]} · {escape(w["manufacturer"])}</div>'
             f'<div class="name"><a href="waves/{w["id"]}.html">{escape(w["series"])}</a></div>'
-            f'<div class="fact">{escape(w["manufacturer"])}, {w["year"]}, {w["figureCount"]} figures</div></div></li>'
+            f'<div class="fact">{escape(w["manufacturer"])}, {w["year"]}, {w["figureCount"]} figures{pic_note(w)}</div></div></li>'
             for w in sorted(lines[line], key=lambda w: (w["year"], w["series"])))
         sections += f'<h2>{escape(line)}</h2><ul class="rows">{rows}</ul>'
     body = f"""
@@ -659,10 +668,10 @@ Legends: Spider-Man Classics and its successor Spider-Man Classic, X-Men
 Classics, Hulk Classics, and Fantastic Four Classics. They are a separate
 census family in this Chronicle. Their counts stand apart from the Marvel
 Legends census of 1,949 figures in 170 waves and are never merged into it.</p>
-<p>No Classics figure carries a photograph yet. Pictures join this family
-only from lawful retailer photography of the kind the main census uses;
-until then the absence is by design, the same standard the main line
-applies to its own unpictured figures.</p>
+<p>{len(CIMG)} of the {CFIG_COUNT} Classics figures carry a photograph so
+far. Pictures join this family only from lawful retailer photography of
+the kind the main census uses; the rest are absence by design, the same
+standard the main line applies to its own unpictured figures.</p>
 {sections}
 <p class="sourceline">Source: Chronicle Classics family record, compiled
 figure for figure from the era line tables; checked {CHECKED}.</p>
@@ -671,16 +680,21 @@ figure for figure from the era line tables; checked {CHECKED}.</p>
           f"The Toy Biz Classics sister lines: {CFIG_COUNT} figures in {len(CWAVES)} waves, 2001 to 2006, a separate census family beside Marvel Legends.",
           "", rel="classics.html") + body + wire("") + foot())
     for w in CWAVES:
-        rows = "".join(
-            f'<li class="row"><div><div class="name">{escape(f["name"])}</div>'
-            f'<div class="fact">{escape(f.get("notes") or "Classics family record")}</div></div></li>'
-            for f in by_wave[w["id"]])
+        def crow(f):
+            img = CIMG.get(f["id"])
+            thumb = (f'<img class="thumb" src="{escape(img["imageUrl"])}" alt="" loading="lazy" referrerpolicy="no-referrer">'
+                     if img else "")
+            src = (f' · Product photograph, {escape(img["imageSource"])}' if img else "")
+            return (f'<li class="row">{thumb}<div><div class="name">{escape(f["name"])}</div>'
+                    f'<div class="fact">{escape(f.get("notes") or "Classics family record")}{src}</div></div></li>')
+        rows = "".join(crow(f) for f in by_wave[w["id"]])
+        n_pic = sum(1 for f in by_wave[w["id"]] if f["id"] in CIMG)
         body = f"""
 {crumbs("../", [("Home", "index.html"), ("Classics", "classics.html"), (w["series"], None)])}
 <h1>{escape(w["series"])}</h1>
 <p class="factline">{escape(w["manufacturer"])}, {w["year"]}, {w["figureCount"]} figures · Classics family: {escape(w["line"])}</p>
 <ul class="rows">{rows}</ul>
-<p class="sourceline">Summary: {w["figureCount"]} figures · 0 pictured (photographs join only from lawful retailer photography)<br>
+<p class="sourceline">Summary: {w["figureCount"]} figures · {n_pic} pictured (photographs join only from lawful retailer photography)<br>
 Source: Chronicle Classics family record for this wave; checked {CHECKED}.</p>
 """
         write(f'waves/{w["id"]}.html', chrome(f'{w["series"]} ({w["year"]}) | Marvel Legends Chronicle',

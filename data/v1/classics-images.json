@@ -1,0 +1,65 @@
+{
+ "version": 1,
+ "updatedAt": "2026-10-15",
+ "family": "Classics",
+ "doctrine": "Embeds only: retailer product photography referenced by URL, never copied, never AI-generated. The Classics family's own manifest, apart from the main-line figure-images.json: Classics figures are a separate census family and are never counted in the main-line pictured totals. Every entry was verified live on verifiedAt at the same bar as the main line. A figure with no entry renders in the typographic treatment, never a broken-image box.",
+ "entries": [
+  {
+   "figureId": "spider-man-classics-2001-1::Spider-Man (Todd McFarlane art)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/products/230523/images/524077/smcsm301__15556.1611549846.500.750.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/spider-man-classics-series-ii-spider-man-action-figure-301/",
+   "rightsHolder": "Toy Biz (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "ToyWiz",
+     "url": "https://toywiz.com/spider-man-classics-series-ii-spider-man-action-figure-301/",
+     "priceUSD": 104.49,
+     "priceSeen": "2026-10-15"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-15",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same BigCommerce asset (identical product/image IDs and filename, size renditions only); the page's own priced USD Offer record asserted in r50 tw50 evidence; photo downloaded into r50 classics-img/ and read firsthand against census identity",
+   "_rotation50": "dce197d2-d028-51e4-815d-d3e1dd119341"
+  },
+  {
+   "figureId": "spider-man-classics-2001-2::Spider-Man (First appearance)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/products/230524/images/707320/smccsm__31144.1698368724.500.750.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/spider-man-classics-series-ii-classic-spider-man-action-figure-15/",
+   "rightsHolder": "Toy Biz (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "ToyWiz",
+     "url": "https://toywiz.com/spider-man-classics-series-ii-classic-spider-man-action-figure-15/",
+     "priceUSD": 54.99,
+     "priceSeen": "2026-10-15"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-15",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same BigCommerce asset (identical product/image IDs and filename, size renditions only); the page's own priced USD Offer record asserted in r50 tw50 evidence; photo downloaded into r50 classics-img/ and read firsthand against census identity",
+   "_rotation50": "dce197d2-d028-51e4-815d-d3e1dd119341"
+  },
+  {
+   "figureId": "spider-man-classics-2001-2::Spider-Man (Battle ravaged)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/products/230525/images/524078/csmbrs5__86910.1611549846.500.750.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/spider-man-classics-series-ii-battle-ravaged-spider-man-action-figure-5/",
+   "rightsHolder": "Toy Biz (product photography via retailer)",
+   "buy": [
+    {
+     "retailer": "ToyWiz",
+     "url": "https://toywiz.com/spider-man-classics-series-ii-battle-ravaged-spider-man-action-figure-5/",
+     "priceUSD": 61.74,
+     "priceSeen": "2026-10-15"
+    }
+   ],
+   "fallback": "typographic",
+   "verifiedAt": "2026-10-15",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same BigCommerce asset (identical product/image IDs and filename, size renditions only); the page's own priced USD Offer record asserted in r50 tw50 evidence; photo downloaded into r50 classics-img/ and read firsthand against census identity",
+   "_rotation50": "dce197d2-d028-51e4-815d-d3e1dd119341"
+  }
+ ]
+}
