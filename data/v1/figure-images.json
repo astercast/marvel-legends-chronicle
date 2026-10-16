@@ -5780,6 +5780,18 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
    "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
+  },
+  {
+   "figureId": "hasbro-2013-epic-heroes::U.S. Agent",
+   "imageUrl": "https://gofigure.toys/media/usagent-ml-eh.jpg",
+   "imageSource": "GoFigure.Toys",
+   "sourceUrl": "https://gofigure.toys/us-agent-marvel-legends-epic-heroes-action-figure.html",
+   "buyLabel": "GoFigure.Toys",
+   "priceUSD": 199.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "GoFigure.Toys own product photography; og:image and the structured Product image are the same asset (identical URL), asserted in r56 apply56; priced offer is the figure's own GoFigure Offer record (USD, InStock); photo downloaded into r56 img56/ and read firsthand against census identity",
+   "_rotation56": "52b6bbbb-8995-5eaa-a2ed-2d9c86ccf817"
   }
  ]
 }
