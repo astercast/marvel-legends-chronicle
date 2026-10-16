@@ -6332,6 +6332,78 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r62 apply62; priced offer is the figure's own ToyArena Offer record; photo downloaded into r62 img62/ and read firsthand against census identity",
    "_rotation62": "ac1d5d28-9937-5d39-9659-ac250dd82351"
+  },
+  {
+   "figureId": "hasbro-2016-abomination::Scarlet Witch",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/43591/861fe324-84f9-4c62-a7bf-93191301c982/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/captain-america-civil-war-marvel-legends-scarlet-witch-abomination-baf-43591?variation=89924",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 49.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r63 apply63; priced offer is the figure's own BBTS Offer record; photo downloaded into r63 img63/ and read firsthand against census identity",
+   "_rotation63": "e5e47d66-8b22-55b6-a3c6-8d7286a6bf2f"
+  },
+  {
+   "figureId": "hasbro-2016-abomination::Captain Britain",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/ec1eb503-c99d-40ed-a698-c01a6c3eb9c8_1.41ef2c1a170029be65e48cc65d41af7f.jpeg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-civil-war-captain-britain-action-figure?variant=6983251034156",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r63 apply63; priced offer is the figure's own ToyArena Offer record; photo downloaded into r63 img63/ and read firsthand against census identity",
+   "_rotation63": "e5e47d66-8b22-55b6-a3c6-8d7286a6bf2f"
+  },
+  {
+   "figureId": "hasbro-2016-abomination::Eel (Edward Lavell)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/apimkgji7__96345.1465625754.jpg?v=1571609221&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-abomination-series-marvels-eel-action-figure?variant=6983419789356",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r63 apply63; priced offer is the figure's own ToyArena Offer record; photo downloaded into r63 img63/ and read firsthand against census identity",
+   "_rotation63": "e5e47d66-8b22-55b6-a3c6-8d7286a6bf2f"
+  },
+  {
+   "figureId": "hasbro-2016-abomination::Red Skull",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/apiuoibm6__81923.1465625745.jpg?v=1571609221&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-abomination-series-iron-skull-action-figure?variant=6983411171372",
+   "buyLabel": "ToyArena",
+   "priceUSD": 50.0,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r63 apply63; priced offer is the figure's own ToyArena Offer record; photo downloaded into r63 img63/ and read firsthand against census identity",
+   "_rotation63": "e5e47d66-8b22-55b6-a3c6-8d7286a6bf2f"
+  },
+  {
+   "figureId": "hasbro-2016-abomination::Captain America",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509401857.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-captain-america-secret-war-captain-america?variant=6983284097068",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r63 apply63; priced offer is the figure's own ToyArena Offer record; photo downloaded into r63 img63/ and read firsthand against census identity",
+   "_rotation63": "e5e47d66-8b22-55b6-a3c6-8d7286a6bf2f"
+  },
+  {
+   "figureId": "hasbro-2016-abomination::Wonder Man",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/51OmkyRMn9L.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-wonder-man-captain-america-civil-war-baf?variant=6983238451244",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r63 apply63; priced offer is the figure's own ToyArena Offer record; photo downloaded into r63 img63/ and read firsthand against census identity",
+   "_rotation63": "e5e47d66-8b22-55b6-a3c6-8d7286a6bf2f"
   }
  ]
 }
