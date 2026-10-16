@@ -7304,6 +7304,42 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r73 apply73; priced offer is the figure's own ToyArena Offer record; photo downloaded into r73 img73/ and read firsthand against census identity",
    "_rotation73": "512563fe-c3d3-5243-b49c-852ea3bab202"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Mister Fantastic",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509631032.JPG?v=1571609226&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-fantastic-four-mr-fantastic-walgreens-exclusive-6-action-figure",
+   "buyLabel": "ToyArena",
+   "priceUSD": 34.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r74 apply74; priced offer is the figure's own ToyArena Offer record; photo downloaded into r74 img74/ and read firsthand against census identity",
+   "_rotation74": "dd2c18a1-6585-5a41-a776-db5c42c14680"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Archangel",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509773442a.jpg?v=1571609248&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-x-men-archangel-action-figure",
+   "buyLabel": "ToyArena",
+   "priceUSD": 34.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r74 apply74; priced offer is the figure's own ToyArena Offer record; photo downloaded into r74 img74/ and read firsthand against census identity",
+   "_rotation74": "dd2c18a1-6585-5a41-a776-db5c42c14680"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Red Skull (Light-up Tesseract)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/6305097355761.jpg?v=1572978284&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/sdcc-2018-hasbro-marvel-legends-series-red-skull-and-electronic-tesseract-action-figure-set",
+   "buyLabel": "ToyArena",
+   "priceUSD": 84.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r74 apply74; priced offer is the figure's own ToyArena Offer record; photo downloaded into r74 img74/ and read firsthand against census identity",
+   "_rotation74": "dd2c18a1-6585-5a41-a776-db5c42c14680"
   }
  ]
 }
