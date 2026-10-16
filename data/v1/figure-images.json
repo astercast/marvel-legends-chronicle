@@ -7592,6 +7592,18 @@
    "verifiedAt": "2026-10-16",
    "verify": "Zapp Comics own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset, the proven Zapp form from r52), asserted in r79 apply79; priced offer is the figure's own Zapp Comics Offer record; photo downloaded into r79 img79/ and read firsthand against census identity (Marvel Gamerverse box, code E5072 visible in the photo, Spider-Man in the Advanced Suit with the large white spider from Marvel's Spider-Man (PS4) with web accessories - the 2018 video-game Spider-Man)",
    "_rotation79": "ac4dda47-758e-54f4-b80a-620a86215416"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Red Skull (First Ten Years)",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-studios-10th-anniversary-series-6-inch-action-figure-red-skull-2.gif?v=1723121740&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-studios-10th-anniversary-series-6-inch-action-figure-red-skull-2?variant=35206923813030",
+   "buyLabel": "CMDStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r80 apply80; priced offer is the figure's own CMDStore Offer record; photo downloaded into r80 img80/ and read firsthand against census identity (Marvel Studios The First Ten Years Legends Series single-figure box, Red Skull in the black Hydra uniform with red piping, alternate heads and weapons in pack, Captain America: The First Avenger branding on the box - the First Ten Years Red Skull)",
+   "_rotation80": "8eaa3b2f-7b46-585f-b565-fe569de7f88e"
   }
  ]
 }
