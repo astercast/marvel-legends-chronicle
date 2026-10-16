@@ -8192,6 +8192,30 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset under the proven ToyArena width=1920 form (og carries no width parameter, the structured image carries width=1920; asset-stem equality after width normalization asserted in r82 apply82f); priced offer is the figure's own ToyArena Offer record; photo downloaded into r82 img82/ and read firsthand against census identity (Captain Marvel Legends box reading CAPTAIN MARVEL (STARFORCE), Carol Danvers in the teal Starforce uniform with rifle and Carol and Minn-Erva alternate heads - the Starforce uniform version (Target exclusive))",
    "_rotation82": "8d97a398-348e-54e9-9f59-657871b0e3ff"
+  },
+  {
+   "figureId": "hasbro-2019-exclusives::Mystique",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-infinite-exclusive-6-inch-action-figure-mystique.jpg?v=1723133942&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-infinite-exclusive-6-inch-action-figure-mystique?variant=35207577043110",
+   "buyLabel": "CMDStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r83 apply83; priced offer is the figure's own CMDStore Offer record; photo downloaded into r83 img83/ and read firsthand against census identity (Legends box reading MARVEL'S MYSTIQUE (E5073), Mystique in the classic white dress with the gold skull belt, gold blaster and rifle, and Rogue and Lilandra alternate heads - the Classic version (Walgreens exclusive))",
+   "_rotation83": "f3b737ab-dc4a-511d-888b-76186c34045c"
+  },
+  {
+   "figureId": "hasbro-2019-exclusives::Emma Frost",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509818853.jpg?v=1571609331&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-x-men-emma-frost-2019-walgreen-exclusive-action-figure?variant=29463711809580",
+   "buyLabel": "ToyArena",
+   "priceUSD": 54.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset under the proven ToyArena width=1920 form (og carries no width parameter, the structured image carries width=1920; asset-stem equality after width normalization asserted in r83 apply83); priced offer is the figure's own ToyArena Offer record; photo downloaded into r83 img83/ and read firsthand against census identity (X-Men Legends box reading EMMA FROST (E5179), Emma Frost in the black Marvel NOW! costume with cape and alternate head - the Marvel NOW! version (Walgreens exclusive))",
+   "_rotation83": "f3b737ab-dc4a-511d-888b-76186c34045c"
   }
  ]
 }
