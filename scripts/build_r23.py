@@ -20,6 +20,13 @@ FIGS = load("figures.json")
 WAVES = {w["id"]: w for w in load("waves.json")}
 CHARS = load("characters.json")["characters"]
 IMAGES = {e["figureId"]: e for e in load("figure-images.json")["entries"]}
+# The Classics family (data/v1/classics.json, built by build_api.py from
+# data/classics.json): a separate census family beside the main line.
+# It is presented on its own pages and counted distinctly; it never
+# enters FIGS/WAVES or the main-line totals.
+CLASSICS = load("classics.json")
+CWAVES = CLASSICS["waves"]
+CFIG_COUNT = CLASSICS["figuresCount"]
 SIGNALS = load("price-signals.json")["signals"]
 STATS = load("stats.json")
 PREORDERS = load("preorders.json")["items"]
@@ -337,6 +344,7 @@ def home():
 <h2>Latest waves</h2>
 <ul class="wavedoors">{doors}</ul>
 <p><a href="waves/index.html">All 170 waves</a></p>
+<p><a href="classics.html">The Classics family: {CFIG_COUNT} figures in {len(CWAVES)} waves, counted separately</a></p>
 <h2>Upcoming</h2>
 <ul class="rows">{up_rows}</ul>
 <p><a href="radar.html">All upcoming releases</a></p>
@@ -615,8 +623,69 @@ Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
 <form class="bigsearch" action="../visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required><button type="submit">Search</button></form>
 <ul class="rows">{''.join(index_rows)}</ul>
 """
+    body += f"""
+<h2>The Classics family</h2>
+<p>The Toy Biz Classics sister lines are a separate census family, counted
+apart from the Marvel Legends waves above: <a href="../classics.html">{CFIG_COUNT} figures in {len(CWAVES)} waves, 2001 to 2006</a>.</p>
+"""
     write("waves/index.html", chrome("Waves | Marvel Legends Chronicle",
           "170 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../", rel="waves/index.html") + body + foot("../"))
+
+def classics_pages():
+    """The Classics family section: one index page plus one page per
+    Classics wave, through the same chrome() as every other page, so
+    the canonical and social-meta layer covers them identically.
+    Figures carry no photographs yet: pictures join this family only
+    from lawful retailer photography, so absence here is by design."""
+    by_wave = defaultdict(list)
+    for f in CLASSICS["figures"]: by_wave[f["waveId"]].append(f)
+    lines = {}
+    for w in CWAVES: lines.setdefault(w["line"], []).append(w)
+    sections = ""
+    for line in sorted(lines):
+        rows = "".join(
+            f'<li class="row"><span class="notpic">{w["year"]}</span><div>'
+            f'<div class="pid">{w["year"]} · {escape(w["manufacturer"])}</div>'
+            f'<div class="name"><a href="waves/{w["id"]}.html">{escape(w["series"])}</a></div>'
+            f'<div class="fact">{escape(w["manufacturer"])}, {w["year"]}, {w["figureCount"]} figures</div></div></li>'
+            for w in sorted(lines[line], key=lambda w: (w["year"], w["series"])))
+        sections += f'<h2>{escape(line)}</h2><ul class="rows">{rows}</ul>'
+    body = f"""
+{crumbs("", [("Home", "index.html"), ("Classics", None)])}
+<h1>The Classics family</h1>
+<p class="factline">Toy Biz, 2001 to 2006, {CFIG_COUNT} figures in {len(CWAVES)} waves</p>
+<p>The Classics lines are the Toy Biz sister lines that grew up beside Marvel
+Legends: Spider-Man Classics and its successor Spider-Man Classic, X-Men
+Classics, Hulk Classics, and Fantastic Four Classics. They are a separate
+census family in this Chronicle. Their counts stand apart from the Marvel
+Legends census of 1,949 figures in 170 waves and are never merged into it.</p>
+<p>No Classics figure carries a photograph yet. Pictures join this family
+only from lawful retailer photography of the kind the main census uses;
+until then the absence is by design, the same standard the main line
+applies to its own unpictured figures.</p>
+{sections}
+<p class="sourceline">Source: Chronicle Classics family record, compiled
+figure for figure from the era line tables; checked {CHECKED}.</p>
+"""
+    write("classics.html", chrome("The Classics Family | Marvel Legends Chronicle",
+          f"The Toy Biz Classics sister lines: {CFIG_COUNT} figures in {len(CWAVES)} waves, 2001 to 2006, a separate census family beside Marvel Legends.",
+          "", rel="classics.html") + body + wire("") + foot())
+    for w in CWAVES:
+        rows = "".join(
+            f'<li class="row"><div><div class="name">{escape(f["name"])}</div>'
+            f'<div class="fact">{escape(f.get("notes") or "Classics family record")}</div></div></li>'
+            for f in by_wave[w["id"]])
+        body = f"""
+{crumbs("../", [("Home", "index.html"), ("Classics", "classics.html"), (w["series"], None)])}
+<h1>{escape(w["series"])}</h1>
+<p class="factline">{escape(w["manufacturer"])}, {w["year"]}, {w["figureCount"]} figures · Classics family: {escape(w["line"])}</p>
+<ul class="rows">{rows}</ul>
+<p class="sourceline">Summary: {w["figureCount"]} figures · 0 pictured (photographs join only from lawful retailer photography)<br>
+Source: Chronicle Classics family record for this wave; checked {CHECKED}.</p>
+"""
+        write(f'waves/{w["id"]}.html', chrome(f'{w["series"]} ({w["year"]}) | Marvel Legends Chronicle',
+              f'Every figure in {w["series"]} ({w["year"]}, {w["manufacturer"]}), from the Classics family of Toy Biz sister lines.',
+              "", prefix="../", rel=f'waves/{w["id"]}.html') + body + wire("../") + foot("../"))
 
 def character_pages():
     by_base = defaultdict(list)
@@ -893,7 +962,7 @@ def not_found():
     write("404.html", chrome("Page not found | Marvel Legends Chronicle", "Page not found.", "", rel="404.html") + body + foot())
 
 KEEP_TOP = {"index.html", "visual-database.html", "spec-sheet.html", "radar.html", "compare.html",
-            "my-vault.html", "encyclopedia.html", "api.html", "404.html"}
+            "my-vault.html", "encyclopedia.html", "api.html", "404.html", "classics.html"}
 REDIRECTS = {
     "timeline.html": "/visual-database.html", "explore.html": "/visual-database.html",
     "retro.html": "/visual-database.html", "exclusives.html": "/visual-database.html?exclusive=1",
@@ -922,7 +991,7 @@ REDIRECTS = {
 
 def main():
     gen_data()
-    home(); browse(); figure_page(); wave_pages(); character_pages()
+    home(); browse(); figure_page(); wave_pages(); classics_pages(); character_pages()
     upcoming(); compare(); my_collection(); help_page(); developers(); not_found()
     # remove merged/cut top-level pages; redirects in vercel.json carry their URLs
     for p in ROOT.glob("*.html"):

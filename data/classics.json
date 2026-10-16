@@ -1,0 +1,814 @@
+{
+ "family": "Classics",
+ "note": "The Toy Biz Classics sister lines, a separate census family beside the Marvel Legends main line (owner scope ruling, 2026-10-15). Counted and labeled distinctly; never merged into the main-line census totals.",
+ "waves": [
+  {
+   "id": "spider-man-classics-2001-1",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classics Series 1",
+   "year": 2001,
+   "family": "Classics",
+   "line": "Spider-Man Classics",
+   "figures": [
+    {
+     "name": "Spider-Man (Todd McFarlane art)",
+     "notes": "Round display base of Spider-Man's mask"
+    },
+    {
+     "name": "Spider-Man (Symbiote costume)",
+     "notes": "Brick wall base with symbiote"
+    },
+    {
+     "name": "Spider-Man (Man-Spider)",
+     "notes": "River base; mutated Man-Spider form"
+    },
+    {
+     "name": "Venom (Mid-transformation)",
+     "notes": "Defeated Sentry of the Jury base"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classics-2001-2",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classics Series 2",
+   "year": 2001,
+   "family": "Classics",
+   "line": "Spider-Man Classics",
+   "figures": [
+    {
+     "name": "Spider-Man (First appearance)",
+     "notes": "Daily Bugle billboard base"
+    },
+    {
+     "name": "Spider-Man (Battle ravaged)",
+     "notes": "Defeated Lizard base"
+    },
+    {
+     "name": "Daredevil",
+     "notes": "Church window base; red costume"
+    },
+    {
+     "name": "Daredevil (First appearance)",
+     "notes": "Brown and yellow first-appearance costume variant"
+    },
+    {
+     "name": "Rhino",
+     "notes": "Torn-up street base"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classics-2001-kaybee",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classics KayBee Toys Exclusive",
+   "year": 2001,
+   "family": "Classics",
+   "line": "Spider-Man Classics",
+   "figures": [
+    {
+     "name": "Spider-Man 2099",
+     "notes": "Brick wall base with graffiti",
+     "exclusive": "KayBee Toys"
+    },
+    {
+     "name": "Scarlet Spider",
+     "notes": "Shares the Series 1 Spider-Man base",
+     "exclusive": "KayBee Toys"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2002-1",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 1",
+   "year": 2002,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Doctor Octopus"
+    },
+    {
+     "name": "Lizard"
+    },
+    {
+     "name": "Spider-Man (Magnetic)",
+     "notes": "J. Jonah Jameson display base"
+    },
+    {
+     "name": "Spider-Man (Web Splasher)",
+     "notes": "Working float"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2003-2",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 2",
+   "year": 2003,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Hobgoblin",
+     "notes": "Glider, removable cape and hood; Jason Macendale version"
+    },
+    {
+     "name": "Spider-Man (Catapult)"
+    },
+    {
+     "name": "Spider-Man (Water squirting)",
+     "notes": "Water webs"
+    },
+    {
+     "name": "Spider-Man (Web climbing)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2003-3",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 3",
+   "year": 2003,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Spider-Man (Super-poseable)",
+     "notes": "Sticky web"
+    },
+    {
+     "name": "Spider-Man (Flip and swing)",
+     "notes": "Crate-kicking action"
+    },
+    {
+     "name": "Spider-Man (Spider-Sense)",
+     "notes": "Drop Attack Web Swing; light-up eyes"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2003-4",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 4",
+   "year": 2003,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Spider-Man (Wall-crawling)"
+    },
+    {
+     "name": "Spider-Man (Spider-Sense)"
+    },
+    {
+     "name": "Spider-Man (Spider-Strength)"
+    },
+    {
+     "name": "Venom",
+     "notes": "Alien Ooze accessory"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2003-5",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 5",
+   "year": 2003,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Morbius"
+    },
+    {
+     "name": "Spider-Man (Manga)"
+    },
+    {
+     "name": "Spider-Man (SCUBA Splash)",
+     "notes": "SCUBA equipment"
+    },
+    {
+     "name": "Spider-Man (Super-poseable)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2003-6",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 6",
+   "year": 2003,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Daredevil (Stunt)"
+    },
+    {
+     "name": "Kraven the Hunter"
+    },
+    {
+     "name": "Spider-Man (Parachute)"
+    },
+    {
+     "name": "Spider-Man (Rocket launcher)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2004-7",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 7",
+   "year": 2004,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Green Goblin",
+     "notes": "Based on the art of Humberto Ramos"
+    },
+    {
+     "name": "Peter Parker",
+     "notes": "Spider-Man identity"
+    },
+    {
+     "name": "Spider-Man (Flip-N-Zip)",
+     "notes": "Based on the art of Humberto Ramos"
+    },
+    {
+     "name": "Spider-Man (Magnetic)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2004-8",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 8",
+   "year": 2004,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Carnage"
+    },
+    {
+     "name": "Ben Reilly",
+     "notes": "Web Attack; Spider-Man 2 costume"
+    },
+    {
+     "name": "Spider-Man (Spider-Sense attack)"
+    },
+    {
+     "name": "Spider-Man (Street fighting)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2004-9",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 9",
+   "year": 2004,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Ultimate Rhino"
+    },
+    {
+     "name": "Spider-Man (Cyber)"
+    },
+    {
+     "name": "Spider-Man (Secret Identity)",
+     "notes": "Ultimate incarnation"
+    },
+    {
+     "name": "Spider-Man (Symbiote costume)",
+     "notes": "Missile-launching glider"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2004-10",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 10",
+   "year": 2004,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Lizard",
+     "notes": "Tail attack; roughly the Ultimate incarnation"
+    },
+    {
+     "name": "Spider-Man (Snap-Shot)",
+     "notes": "Based on the art of John Romita Sr."
+    },
+    {
+     "name": "Spider-Man (Super Jab)"
+    },
+    {
+     "name": "Spider-Man (Web Line)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2005-11",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 11",
+   "year": 2005,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Scorpion",
+     "notes": "Tail strike; modern appearances"
+    },
+    {
+     "name": "Spider-Man (Shoot-N-Trap)"
+    },
+    {
+     "name": "Spider-Man (Sneak attack)"
+    },
+    {
+     "name": "Spider-Man (Triple Web Threat)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2005-12",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 12",
+   "year": 2005,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Lizard",
+     "notes": "Traditional appearance; rerelease"
+    },
+    {
+     "name": "Sandman"
+    },
+    {
+     "name": "Spider-Man (Dual-Web swinging)"
+    },
+    {
+     "name": "Spider-Man (Hydro-Blast)"
+    },
+    {
+     "name": "Spider-Man (Super-poseable wall-crawling)",
+     "notes": "Based on the art of J. Scott Campbell"
+    },
+    {
+     "name": "Venom",
+     "notes": "Rerelease"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2005-13",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 13",
+   "year": 2005,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Mysterio"
+    },
+    {
+     "name": "Spider-Man (Aqua Blast)"
+    },
+    {
+     "name": "Spider-Man (Flip and Stick)"
+    },
+    {
+     "name": "Spider-Man (Soak and Toss)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2005-14",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 14",
+   "year": 2005,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Beetle",
+     "notes": "Leila Davis"
+    },
+    {
+     "name": "Scorpion (First appearance)",
+     "notes": "Metallic suit"
+    },
+    {
+     "name": "Spider-Man (Spin and Trap)",
+     "notes": "Spider-Man Unlimited costume"
+    },
+    {
+     "name": "Spider-Man (Spider-Armor)",
+     "notes": "Web Trap accessory"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2005-15",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 15",
+   "year": 2005,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Doctor Octopus (Ultimate)",
+     "notes": "Web Splasher; Ultimate incarnation"
+    },
+    {
+     "name": "Ultimate Rhino",
+     "notes": "Rerelease"
+    },
+    {
+     "name": "Spider-Man (Hurricane Kick)"
+    },
+    {
+     "name": "Spider-Man (Rocket Blast)"
+    },
+    {
+     "name": "Spider-Man (Super Stunt)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2006-16",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 16",
+   "year": 2006,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Man-Wolf",
+     "notes": "Backpack; jaw snarl and electronic sounds"
+    },
+    {
+     "name": "Spider-Man (Battle Action)"
+    },
+    {
+     "name": "Spider-Man (Shark Trap)"
+    },
+    {
+     "name": "Spider-Man (Super Strength)"
+    },
+    {
+     "name": "Venom (Symbiote Blast)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2006-17",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 17",
+   "year": 2006,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Hobgoblin",
+     "notes": "Roderick Kingsley version"
+    },
+    {
+     "name": "Hydro-Man",
+     "notes": "Interchangeable water spout legs"
+    },
+    {
+     "name": "Sandman",
+     "notes": "Rerelease"
+    },
+    {
+     "name": "Spider-Hulk",
+     "notes": "Breakable girder"
+    },
+    {
+     "name": "Spider-Man (Shoot 'n Spin)"
+    },
+    {
+     "name": "Spider-Man (Web Splasher)"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2006-18",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 18",
+   "year": 2006,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Mad Jack",
+     "notes": "Flame and Launch; Jack O'Lantern III's second costume"
+    },
+    {
+     "name": "Shocker",
+     "notes": "Missile projectiles"
+    },
+    {
+     "name": "Spider-Man (Spider-Sense, House of M)",
+     "notes": "House of M version"
+    },
+    {
+     "name": "Spider-Man (Super Kick)"
+    },
+    {
+     "name": "Venom (Stealth)",
+     "notes": "Clear coloring"
+    }
+   ]
+  },
+  {
+   "id": "spider-man-classic-2006-19",
+   "manufacturer": "Toy Biz",
+   "series": "Spider-Man Classic Series 19",
+   "year": 2006,
+   "family": "Classics",
+   "line": "Spider-Man Classic",
+   "figures": [
+    {
+     "name": "Electro",
+     "notes": "Lightning missiles"
+    },
+    {
+     "name": "Spider-Man (Quick Change)"
+    },
+    {
+     "name": "Spider-Man (Sneak Attack)"
+    },
+    {
+     "name": "Spider-Man (Web Climbing)"
+    },
+    {
+     "name": "Toxin"
+    }
+   ]
+  },
+  {
+   "id": "x-men-classics-2004-1",
+   "manufacturer": "Toy Biz",
+   "series": "X-Men Classics Series 1",
+   "year": 2004,
+   "family": "Classics",
+   "line": "X-Men Classics",
+   "figures": [
+    {
+     "name": "Archangel",
+     "notes": "Missile-firing wings"
+    },
+    {
+     "name": "Cyclops",
+     "notes": "Jim Lee costume; light-up visor"
+    },
+    {
+     "name": "Gambit",
+     "notes": "Disk shooter; light-up eyes"
+    },
+    {
+     "name": "Wolverine (New X-Men)",
+     "notes": "Wild Sentinel accessory"
+    },
+    {
+     "name": "Wolverine (Tiger Stripe)"
+    }
+   ]
+  },
+  {
+   "id": "x-men-classics-2005-2",
+   "manufacturer": "Toy Biz",
+   "series": "X-Men Classics Series 2",
+   "year": 2005,
+   "family": "Classics",
+   "line": "X-Men Classics",
+   "figures": [
+    {
+     "name": "Archangel",
+     "notes": "Series 1 repaint"
+    },
+    {
+     "name": "Gambit",
+     "notes": "Disk shooter; Series 1 repaint"
+    },
+    {
+     "name": "Magneto",
+     "notes": "Light-up backpack"
+    },
+    {
+     "name": "Wolverine (Ninja Strike)"
+    },
+    {
+     "name": "Cyclops (Ruby quartz armor)",
+     "notes": "Missile-firing cannon; light-up visor"
+    },
+    {
+     "name": "Beast (Stealth)"
+    },
+    {
+     "name": "Beast (Stealth, cat-faced)",
+     "notes": "Cat-faced variant of the Stealth figure"
+    },
+    {
+     "name": "Wolverine (Stealth)"
+    },
+    {
+     "name": "Storm",
+     "notes": "White repaint of the Marvel Legends Series 8 figure"
+    }
+   ]
+  },
+  {
+   "id": "x-men-classics-2005-3",
+   "manufacturer": "Toy Biz",
+   "series": "X-Men Classics Series 3",
+   "year": 2005,
+   "family": "Classics",
+   "line": "X-Men Classics",
+   "figures": [
+    {
+     "name": "Wolverine (Air Strike)",
+     "notes": "Jetpack; House of M S.H.I.E.L.D. costume"
+    },
+    {
+     "name": "Angel (Bird of Prey)"
+    },
+    {
+     "name": "Juggernaut",
+     "notes": "Pound 'n Punch action"
+    },
+    {
+     "name": "Cyclops (Stealth)",
+     "notes": "Cannon; light-up visor"
+    },
+    {
+     "name": "Beast (Tech gear)"
+    }
+   ]
+  },
+  {
+   "id": "x-men-classics-2005-4",
+   "manufacturer": "Toy Biz",
+   "series": "X-Men Classics Series 4",
+   "year": 2005,
+   "family": "Classics",
+   "line": "X-Men Classics",
+   "figures": [
+    {
+     "name": "Avalanche",
+     "notes": "Vibrating rockslide base"
+    },
+    {
+     "name": "Colossus",
+     "notes": "Retooled repaint of the Marvel Legends Series 5 figure"
+    },
+    {
+     "name": "Iceman",
+     "notes": "Rolling iceslide; normal"
+    },
+    {
+     "name": "Iceman (Ultimate)",
+     "notes": "Ultimate variant"
+    },
+    {
+     "name": "Iceman (Ice-off Bobby Drake)",
+     "notes": "Ice-off variant"
+    },
+    {
+     "name": "Jean Grey (Phoenix)",
+     "notes": "Flame display base; the era table reports only 3 made, a rarity claim carried as reported, not verified"
+    },
+    {
+     "name": "Rogue (X-Treme X-Men)",
+     "notes": "Short hair and jacket"
+    },
+    {
+     "name": "Rogue (X-Treme X-Men, long hair)",
+     "notes": "Long hair, no jacket variant"
+    },
+    {
+     "name": "Nightcrawler (Ultimate)",
+     "notes": "Two swords; light-up eyes and mouth"
+    },
+    {
+     "name": "Sabretooth (Ultimate)",
+     "notes": "Interchangeable hands; slashing action"
+    }
+   ]
+  },
+  {
+   "id": "hulk-classics-2003-1",
+   "manufacturer": "Toy Biz",
+   "series": "Hulk Classics Series 1",
+   "year": 2003,
+   "family": "Classics",
+   "line": "Hulk Classics",
+   "figures": [
+    {
+     "name": "Abomination"
+    },
+    {
+     "name": "Joe Fixit"
+    },
+    {
+     "name": "Smart Hulk"
+    },
+    {
+     "name": "Savage Hulk",
+     "notes": "Super poseable"
+    }
+   ]
+  },
+  {
+   "id": "hulk-classics-2003-2",
+   "manufacturer": "Toy Biz",
+   "series": "Hulk Classics Series 2",
+   "year": 2003,
+   "family": "Classics",
+   "line": "Hulk Classics",
+   "figures": [
+    {
+     "name": "Absorbing Man"
+    },
+    {
+     "name": "Gamma Punch Hulk",
+     "notes": "Packaged with a Bruce Banner figure"
+    },
+    {
+     "name": "Mecha Hulk",
+     "notes": "Packaged with a Gremlin figure"
+    },
+    {
+     "name": "War Hulk"
+    }
+   ]
+  },
+  {
+   "id": "fantastic-four-classics-2006-1",
+   "manufacturer": "Toy Biz",
+   "series": "Fantastic Four Classics Series 1",
+   "year": 2006,
+   "family": "Classics",
+   "line": "Fantastic Four Classics",
+   "figures": [
+    {
+     "name": "Human Torch",
+     "notes": "Packaged with an Impossible Man figure"
+    },
+    {
+     "name": "Mr. Fantastic"
+    },
+    {
+     "name": "Super Skrull (Transforming)"
+    },
+    {
+     "name": "Super Skrull (Clear)",
+     "notes": "Clear variant of the Transforming figure"
+    },
+    {
+     "name": "Super Skrull (Translucent Orange)",
+     "notes": "Translucent orange variant of the Transforming figure"
+    },
+    {
+     "name": "Thing (Thunder Launch)"
+    }
+   ]
+  },
+  {
+   "id": "fantastic-four-classics-2006-2",
+   "manufacturer": "Toy Biz",
+   "series": "Fantastic Four Classics Series 2",
+   "year": 2006,
+   "family": "Classics",
+   "line": "Fantastic Four Classics",
+   "figures": [
+    {
+     "name": "Dragon Man"
+    },
+    {
+     "name": "Invisible Woman (Clear)"
+    },
+    {
+     "name": "Invisible Woman (Painted)"
+    },
+    {
+     "name": "Johnny Storm (Transforming)"
+    },
+    {
+     "name": "Kang"
+    },
+    {
+     "name": "Thing (Twist 'N Slam)"
+    }
+   ]
+  }
+ ]
+}

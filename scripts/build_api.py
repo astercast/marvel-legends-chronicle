@@ -104,6 +104,48 @@ def main():
         "byManufacturer": by_mfr,
     }
 
+    # The Classics family: a separate census family beside the main line
+    # (owner scope ruling, 2026-10-15). Source: data/classics.json. Its
+    # waves and figures are emitted ONLY in the classics endpoint and in
+    # stats.families; the main-line waves/figures/stats totals above are
+    # never merged with it.
+    classics_raw = load_json(ROOT / "data" / "classics.json")
+    classics_waves = []
+    classics_figures = []
+    for w in classics_raw["waves"]:
+        classics_waves.append({
+            "id": w["id"], "year": w["year"], "manufacturer": w["manufacturer"],
+            "series": w["series"], "baf": w.get("baf"), "source": w.get("source"),
+            "family": w.get("family"), "line": w.get("line"),
+            "figureCount": len(w["figures"]),
+        })
+        for f in w["figures"]:
+            classics_figures.append({
+                "id": f"{w['id']}::{f['name']}", "name": f["name"],
+                "variant": f.get("variant"), "exclusive": f.get("exclusive"),
+                "bafPiece": f.get("bafPiece"), "notes": f.get("notes"),
+                "waveId": w["id"], "waveSeries": w["series"], "year": w["year"],
+                "manufacturer": w["manufacturer"], "waveBaf": w.get("baf"),
+                "source": w.get("source"), "family": w.get("family"),
+                "line": w.get("line"),
+            })
+    # "waves" is the first list in the envelope: the manifest-driven
+    # validator takes the first list value as the item array.
+    classics_envelope = {
+        "version": VERSION,
+        "observed": OBSERVED,
+        "family": classics_raw.get("family"),
+        "note": classics_raw.get("note"),
+        "wavesCount": len(classics_waves),
+        "figuresCount": len(classics_figures),
+        "waves": classics_waves,
+        "figures": classics_figures,
+    }
+    stats["families"] = {
+        "main": {"waves": len(wave_summaries), "figures": len(figures)},
+        "classics": {"waves": len(classics_waves), "figures": len(classics_figures)},
+    }
+
     characters = [
         {
             "slug": c["slug"],
@@ -222,6 +264,15 @@ def main():
             "Filter client-side by year, manufacturer, waveId, exclusive, variant, bafPiece.",
             schema="data/v1/schema/figures.json", item_schema="data/v1/schema/figure.json",
             records=len(figures)),
+        "classics": ep(
+            "data/v1/classics.json",
+            "The Classics family: the Toy Biz Classics sister lines (Spider-Man Classics, "
+            "Spider-Man Classic, X-Men Classics, Hulk Classics, Fantastic Four Classics), "
+            "a separate census family beside the Marvel Legends main line. Its waves and "
+            "figures are counted and labeled distinctly and are NOT part of the main-line "
+            "waves.json / figures.json totals.",
+            schema="data/v1/schema/classics.json", item_schema="data/v1/schema/wave.json",
+            records=len(classics_waves)),
         "encyclopedia": ep(
             "data/v1/encyclopedia.json",
             "Collector encyclopedia: line history, packaging evolution, variant/chase/exclusive "
@@ -347,6 +398,10 @@ def main():
             "baf": {"type": ["string", "null"]},
             "source": {"type": ["string", "null"],
                        "description": "Story source when the wave name names it: mcu|animated|videogame, else null"},
+            "family": {"type": ["string", "null"],
+                       "description": "Census family when the wave belongs to one (Classics), else null (main line)"},
+            "line": {"type": ["string", "null"],
+                     "description": "Family line name for family waves (e.g. Spider-Man Classics), else null"},
             "figureCount": {"type": "integer"},
         },
     }
@@ -366,6 +421,10 @@ def main():
             "manufacturer": {"type": "string", "enum": ["Toy Biz", "Hasbro"]},
             "waveBaf": {"type": ["string", "null"]},
             "source": {"type": ["string", "null"]},
+            "family": {"type": ["string", "null"],
+                       "description": "Census family when the figure belongs to one (Classics), else null (main line)"},
+            "line": {"type": ["string", "null"],
+                     "description": "Family line name for family figures (e.g. X-Men Classics), else null"},
         },
     }
     preorder_item = {
@@ -549,6 +608,21 @@ def main():
                 "variantFigures": {"type": "integer"},
                 "byYear": {"type": "object"},
                 "byManufacturer": {"type": "object"},
+                "families": {"type": "object",
+                             "description": "Per-family census totals: main (the Marvel Legends line) and classics (the Toy Biz Classics sister lines), counted distinctly, never merged"},
+            }}),
+        "schema/classics.json": schema_doc("ClassicsFamily", {
+            "type": "object",
+            "required": ["version", "observed", "family", "wavesCount", "figuresCount", "waves", "figures"],
+            "properties": {
+                "version": {"type": "string"},
+                "observed": {"type": "string"},
+                "family": {"type": "string"},
+                "note": {"type": ["string", "null"]},
+                "wavesCount": {"type": "integer"},
+                "figuresCount": {"type": "integer"},
+                "waves": {"type": "array", "items": wave_item},
+                "figures": {"type": "array", "items": figure_item},
             }}),
         "schema/encyclopedia.json": schema_doc("CollectorEncyclopedia", {
             "type": "object",
@@ -590,6 +664,7 @@ def main():
         "stats.json": stats,
         "waves.json": wave_summaries,
         "figures.json": figures,
+        "classics.json": classics_envelope,
         "encyclopedia.json": encyc,
         "preorders.json": preorders_envelope,
         "characters.json": characters_envelope,
