@@ -7436,6 +7436,18 @@
    "verifiedAt": "2026-10-16",
    "verify": "Zapp Comics own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset, the proven Zapp form from r52), asserted in r76 apply76; priced offer is the figure's own Zapp Comics Offer record; photo downloaded into r76 img76/ and read firsthand against census identity",
    "_rotation76": "5f261233-6068-5860-9418-3eff65ff07fe"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Black Widow (Natalia Romanova)",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-infinite-riders-series-6-inch-action-figure-black-widow-with-motorcycle_image.gif?v=1723115005&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-infinite-riders-series-6-inch-action-figure-black-widow-with-motorcycle?variant=35206582337702",
+   "buyLabel": "CMDStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r77 apply77; priced offer is the figure's own CMDStore Offer record; photo downloaded into r77 img77/ and read firsthand against census identity (Hasbro Legends Series box, E1375, the 2018 Ultimate Riders Black Widow with motorcycle)",
+   "_rotation77": "c1d8e68c-3a34-5582-9aa3-4f19a2d28877"
   }
  ]
 }
