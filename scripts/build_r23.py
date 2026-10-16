@@ -98,7 +98,52 @@ def tile_html(r, prefix=""):
 NAV = [("Catalog", "visual-database.html"), ("Upcoming", "radar.html"), ("Compare", "compare.html"),
        ("My Collection", "my-vault.html"), ("Guide", "encyclopedia.html")]
 
-def chrome(title, desc, current, prefix="", extra_head=""):
+SITE_ORIGIN = "https://marvel-legends-chronicle-live.vercel.app"
+OG_IMAGE = SITE_ORIGIN + "/assets/og-card.png"
+
+
+def canonical_url(rel):
+    """Absolute cleanUrls canonical for a generated page path.
+    Same rule as scripts/build_waves.py (vercel.json: cleanUrls,
+    no trailing slash)."""
+    p = rel[:-len(".html")] if rel.endswith(".html") else rel
+    if p == "index":
+        p = ""
+    elif p.endswith("/index"):
+        p = p[:-len("index")]
+    return f"{SITE_ORIGIN}/{p}" if p else f"{SITE_ORIGIN}/"
+
+
+def social_meta(title, desc, rel, prefix=""):
+    """Canonical + Open Graph / Twitter card block, ported from the
+    head_meta() implementation in scripts/build_waves.py (which the
+    shipped R23 pages never used: Foundry Item 1, R48). og:title is
+    the page's own <title> text verbatim; og:description mirrors the
+    page's meta description. theme-color is the current paper token
+    from assets/css/r23.css (--paper: #FAF6EC, verified R48)."""
+    url = canonical_url(rel)
+    lines = [
+        f'  <link rel="canonical" href="{url}">',
+        '  <meta property="og:type" content="website">',
+        f'  <meta property="og:title" content="{escape(title)}">',
+        f'  <meta property="og:description" content="{escape(desc)}">',
+        f'  <meta property="og:url" content="{url}">',
+        f'  <meta property="og:image" content="{OG_IMAGE}">',
+        '  <meta property="og:image:width" content="1200">',
+        '  <meta property="og:image:height" content="630">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{escape(title)}">',
+        f'  <meta name="twitter:description" content="{escape(desc)}">',
+        f'  <meta name="twitter:image" content="{OG_IMAGE}">',
+        '  <meta name="theme-color" content="#FAF6EC">',
+        f'  <link rel="icon" href="{prefix}favicon.svg" type="image/svg+xml">',
+        f'  <link rel="apple-touch-icon" href="{prefix}apple-touch-icon.png">',
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def chrome(title, desc, current, prefix="", extra_head="", rel=""):
+    social = social_meta(title, desc, rel, prefix) if rel else ""
     nav = "".join(
         f'<a href="{prefix}{href}"{" aria-current=\"page\"" if label == current else ""}>{label}</a>'
         for label, href in NAV)
@@ -110,7 +155,7 @@ def chrome(title, desc, current, prefix="", extra_head=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(desc)}">
-<link rel="icon" href="{prefix}favicon.ico" sizes="48x48">
+{social}<link rel="icon" href="{prefix}favicon.ico" sizes="48x48">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{prefix}assets/css/r23.css">
@@ -301,7 +346,7 @@ def home():
 <ul class="rows">{''.join(row_html(r) for r in newest)}</ul>
 """
     write("index.html", chrome("Marvel Legends Chronicle",
-          "1,949 Marvel Legends figures, 170 waves, 2002–2026. Search the catalog.", "Home") + body + wire("") + foot())
+          "1,949 Marvel Legends figures, 170 waves, 2002–2026. Search the catalog.", "Home", rel="index.html") + body + wire("") + foot())
 
 # ---------- Surface 2: Catalog browse ----------
 def browse():
@@ -463,7 +508,7 @@ wireState(document);
 </script>
 """
     write("visual-database.html", chrome("Catalog | Marvel Legends Chronicle",
-          "Browse 1,949 Marvel Legends figures by year, wave, character, maker, and picture.", "Catalog") + body + foot())
+          "Browse 1,949 Marvel Legends figures by year, wave, character, maker, and picture.", "Catalog", rel="visual-database.html") + body + foot())
 
 # ---------- Surface 3: Figure page (spec-sheet pattern) ----------
 def figure_page():
@@ -520,7 +565,7 @@ try{
 </script>
 """
     write("spec-sheet.html", chrome("Figure | Marvel Legends Chronicle",
-          "The figure record: wave, year, maker, reported prices, and where to buy it.", "") + body + foot())
+          "The figure record: wave, year, maker, reported prices, and where to buy it.", "", rel="spec-sheet.html") + body + foot())
 
 # ---------- Surface 4: Waves and Characters ----------
 def wave_pages():
@@ -563,7 +608,7 @@ Source: Chronicle census record for this wave; checked {CHECKED}.<br>
 Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
 """
         write(f'waves/{w["id"]}.html', chrome(f'{w["series"]} ({w["year"]}) | Marvel Legends Chronicle',
-              f'Every figure in {w["series"]} ({w["year"]}, {w["manufacturer"]}).', "", prefix="../") + body + wire("../") + foot("../"))
+              f'Every figure in {w["series"]} ({w["year"]}, {w["manufacturer"]}).', "", prefix="../", rel=f'waves/{w["id"]}.html') + body + wire("../") + foot("../"))
     body = f"""
 {crumbs("../", [("Home", "index.html"), ("Waves", None)])}
 <h1>Waves</h1>
@@ -571,7 +616,7 @@ Credit: figure records compiled in the Chronicle census, 2002–2026.</p>
 <ul class="rows">{''.join(index_rows)}</ul>
 """
     write("waves/index.html", chrome("Waves | Marvel Legends Chronicle",
-          "170 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../") + body + foot("../"))
+          "170 Marvel Legends waves, 2002–2026, grouped by year.", "", prefix="../", rel="waves/index.html") + body + foot("../"))
 
 def character_pages():
     by_base = defaultdict(list)
@@ -580,7 +625,7 @@ def character_pages():
         f'<li><a href="{c["slug"]}.html"><span>{escape(c["name"])}</span><span class="count">{c["count"]} figures · {c["first"]}–{c["last"]}</span></a></li>'
         for c in sorted(CHARS, key=lambda c: c["name"]))
     write("characters/index.html", chrome("Characters | Marvel Legends Chronicle",
-          "66 characters, counted: figures, first and latest release years.", "", prefix="../") +
+          "66 characters, counted: figures, first and latest release years.", "", prefix="../", rel="characters/index.html") +
           crumbs("../", [("Home", "index.html"), ("Characters", None)]) +
           f'<h1>Characters</h1><ul class="indexlines">{lines}</ul>' + foot("../"))
     for c in CHARS:
@@ -601,7 +646,7 @@ if(n) document.getElementById("completion").textContent=`You have ${{n}} of ${{s
 </script>
 """
         write(f'characters/{c["slug"]}.html', chrome(f'{c["name"]} | Marvel Legends Chronicle',
-              f'{len(rows)} {c["name"]} figures, {c["first"]} to {c["last"]}.', "", prefix="../") + body + wire("../") + foot("../"))
+              f'{len(rows)} {c["name"]} figures, {c["first"]} to {c["last"]}.', "", prefix="../", rel=f'characters/{c["slug"]}.html') + body + wire("../") + foot("../"))
 
 # ---------- Surface 5: Upcoming ----------
 def upcoming():
@@ -642,7 +687,7 @@ def upcoming():
 <p><a href="visual-database.html">Past releases: browse the current year</a></p>
 """
     write("radar.html", chrome("Upcoming | Marvel Legends Chronicle",
-          "Announced Marvel Legends figures, expected dates, and unconfirmed reports, kept apart.", "Upcoming") + body + foot())
+          "Announced Marvel Legends figures, expected dates, and unconfirmed reports, kept apart.", "Upcoming", rel="radar.html") + body + foot())
 
 # ---------- Surface 6: Compare ----------
 def compare():
@@ -688,7 +733,7 @@ render();
 </script>
 """
     write("compare.html", chrome("Compare | Marvel Legends Chronicle",
-          "Two to four figures side by side on the same fields, in the same order.", "Compare") + body + foot())
+          "Two to four figures side by side on the same fields, in the same order.", "Compare", rel="compare.html") + body + foot())
 
 # ---------- Surface 7: My Collection ----------
 def my_collection():
@@ -758,7 +803,7 @@ document.getElementById("printarea").innerHTML=`<h2>Checklist: Owned and Wanted 
 </script>
 """
     write("my-vault.html", chrome("My Collection | Marvel Legends Chronicle",
-          "Your own figures and numbers: owned, wanted, Build A Figure progress, spending, and your top 10. Stored in your browser only.", "My Collection") + body + foot())
+          "Your own figures and numbers: owned, wanted, Build A Figure progress, spending, and your top 10. Stored in your browser only.", "My Collection", rel="my-vault.html") + body + foot())
 
 # ---------- Surface 8: Help ----------
 def help_page():
@@ -814,7 +859,7 @@ def help_page():
 </div>
 """
     write("encyclopedia.html", chrome("Guide | Marvel Legends Chronicle",
-          "Start here, how reported prices work, rarity words, spotting fakes, grading, and line history.", "Guide") + body + foot())
+          "Start here, how reported prices work, rarity words, spotting fakes, grading, and line history.", "Guide", rel="encyclopedia.html") + body + foot())
 
 # ---------- Surface 9: Developers ----------
 def developers():
@@ -837,7 +882,7 @@ def developers():
 </div>
 """
     write("api.html", chrome("Developers | Marvel Legends Chronicle",
-          "API endpoints, data schemas, agent procedures, and the skills manifest.", "") + body + foot())
+          "API endpoints, data schemas, agent procedures, and the skills manifest.", "", rel="api.html") + body + foot())
 
 def not_found():
     body = """
@@ -845,7 +890,7 @@ def not_found():
 <h1>Page not found</h1>
 <form class="bigsearch" action="/visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required><button type="submit">Search</button></form>
 """
-    write("404.html", chrome("Page not found | Marvel Legends Chronicle", "Page not found.", "") + body + foot())
+    write("404.html", chrome("Page not found | Marvel Legends Chronicle", "Page not found.", "", rel="404.html") + body + foot())
 
 KEEP_TOP = {"index.html", "visual-database.html", "spec-sheet.html", "radar.html", "compare.html",
             "my-vault.html", "encyclopedia.html", "api.html", "404.html"}
