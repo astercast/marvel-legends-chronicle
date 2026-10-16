@@ -7076,6 +7076,78 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r70 apply70; priced offer is the figure's own ToyArena Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
    "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
+  },
+  {
+   "figureId": "hasbro-2018-monster-venom::Venom",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/37204/5a8ca2e7-bc67-4a4d-b5c4-95769f85af42/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-venom-monster-venom-baf-37204?variation=75601",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r71 apply71; priced offer is the figure's own BBTS Offer record; photo downloaded into r71 img71/ and read firsthand against census identity",
+   "_rotation71": "d5ad5bea-4f08-550e-9669-9b8577d4705f"
+  },
+  {
+   "figureId": "hasbro-2018-monster-venom::Carnage",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/37205/eab82f7b-79b7-4652-916d-5919894c7ff9/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-carnage-monster-venom-baf-37205?variation=75604",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r71 apply71; priced offer is the figure's own BBTS Offer record; photo downloaded into r71 img71/ and read firsthand against census identity",
+   "_rotation71": "d5ad5bea-4f08-550e-9669-9b8577d4705f"
+  },
+  {
+   "figureId": "hasbro-2018-monster-venom::Poison",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/37206/88f22bb0-4611-4c14-90b1-eba9f535e13f/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-poison-monster-venom-baf-37206?variation=75607",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 21.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r71 apply71; priced offer is the figure's own BBTS Offer record; photo downloaded into r71 img71/ and read firsthand against census identity",
+   "_rotation71": "d5ad5bea-4f08-550e-9669-9b8577d4705f"
+  },
+  {
+   "figureId": "hasbro-2018-monster-venom::Spider-Ham",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/37207/59977935-6470-4cde-9442-0a860a4db71d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-spider-ham-monster-venom-baf-37207?variation=75610",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r71 apply71; priced offer is the figure's own BBTS Offer record; photo downloaded into r71 img71/ and read firsthand against census identity",
+   "_rotation71": "d5ad5bea-4f08-550e-9669-9b8577d4705f"
+  },
+  {
+   "figureId": "hasbro-2018-monster-venom::Scream",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/37208/355d85dc-1318-4117-94b3-398cb362a150/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-scream-monster-venom-baf-37208?variation=75615",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r71 apply71; priced offer is the figure's own BBTS Offer record; photo downloaded into r71 img71/ and read firsthand against census identity",
+   "_rotation71": "d5ad5bea-4f08-550e-9669-9b8577d4705f"
+  },
+  {
+   "figureId": "hasbro-2018-monster-venom::Typhoid Mary",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/37209/2864dbfb-3184-40c3-9459-2933f617ca04/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/venom-marvel-legends-typhoid-mary-monster-venom-baf-37209?variation=75618",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 21.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r71 apply71; priced offer is the figure's own BBTS Offer record; photo downloaded into r71 img71/ and read firsthand against census identity",
+   "_rotation71": "d5ad5bea-4f08-550e-9669-9b8577d4705f"
   }
  ]
 }
