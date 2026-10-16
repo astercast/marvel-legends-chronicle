@@ -6212,6 +6212,66 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r59 apply59; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r59 img59/ and read firsthand against census identity",
    "_rotation59": "1f12df1f-6148-5548-bfaf-7e0b17da5a97"
+  },
+  {
+   "figureId": "hasbro-2015-ultron-prime::Ant-Man",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/apiunkjz8__69711.1461377602.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-infinite-series-ant-man-ant-man?variant=6983267483692",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r61 apply61; priced offer is the figure's own ToyArena Offer record; photo downloaded into r61 img61/ and read firsthand against census identity",
+   "_rotation61": "37d5ed48-e939-5b05-b052-8a876c9c028e"
+  },
+  {
+   "figureId": "hasbro-2015-ultron-prime::Wasp",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/5e18b632-9b4a-48ff-ad98-8104dff79a24_1.9f9cc89d89df68701d0e5a9a8d3021df.jpeg?v=1637629972&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-infinite-series-marvels-wasp?variant=6983227572268",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r61 apply61; priced offer is the figure's own ToyArena Offer record; photo downloaded into r61 img61/ and read firsthand against census identity",
+   "_rotation61": "37d5ed48-e939-5b05-b052-8a876c9c028e"
+  },
+  {
+   "figureId": "hasbro-2015-ultron-prime::Grim Reaper",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/HBR-31984-CA_600x_18e39717-ecb4-450b-98ca-d5e39777e04d.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-infinite-series-6-action-figure-grim-reaper?variant=6982841958444",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r61 apply61; priced offer is the figure's own ToyArena Offer record; photo downloaded into r61 img61/ and read firsthand against census identity",
+   "_rotation61": "37d5ed48-e939-5b05-b052-8a876c9c028e"
+  },
+  {
+   "figureId": "hasbro-2015-ultron-prime::Giant-Man (Hank Pym)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/marvel-legends-infinite-series-giant-man--5F0C6638.pt01.zoom.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-infinite-series-giant-man?variant=6982885179436",
+   "buyLabel": "ToyArena",
+   "priceUSD": 54.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r61 apply61; priced offer is the figure's own ToyArena Offer record; photo downloaded into r61 img61/ and read firsthand against census identity",
+   "_rotation61": "37d5ed48-e939-5b05-b052-8a876c9c028e"
+  },
+  {
+   "figureId": "hasbro-2015-ultron-prime::Tiger Shark",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509319862.JPG?v=1571609221&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-infinite-series-marvels-tigershark-w-ultron-baf-ant-man-action-figure?variant=6983601881132",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r61 apply61; priced offer is the figure's own ToyArena Offer record; photo downloaded into r61 img61/ and read firsthand against census identity",
+   "_rotation61": "37d5ed48-e939-5b05-b052-8a876c9c028e"
   }
  ]
 }
