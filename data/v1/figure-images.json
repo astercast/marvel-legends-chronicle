@@ -6056,6 +6056,90 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
    "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
+  },
+  {
+   "figureId": "hasbro-2015-hobgoblin::Spider-Man 2099",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/100960/112816/apipjv429__78387.1550284039.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-hobgoblin-series-spider-man-2099-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 114.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r58 apply58; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r58 img58/ and read firsthand against census identity",
+   "_rotation58": "d418f850-af32-5e8b-a698-d8db82a7e7f3"
+  },
+  {
+   "figureId": "hasbro-2015-hobgoblin::Spider-Man",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/100959/112813/api1piir9__35990.1550284039.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-hobgoblin-series-spider-man-action-figure-classic/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 154.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r58 apply58; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r58 img58/ and read firsthand against census identity",
+   "_rotation58": "d418f850-af32-5e8b-a698-d8db82a7e7f3"
+  },
+  {
+   "figureId": "hasbro-2015-hobgoblin::Spider-Girl (Mayday Parker)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/100961/112817/api1vpsmw__90803.1550284039.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/spider-man-marvel-legends-hobgoblin-series-spider-girl-action-figure-warriors-of-the-web/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 111.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r58 apply58; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r58 img58/ and read firsthand against census identity",
+   "_rotation58": "d418f850-af32-5e8b-a698-d8db82a7e7f3"
+  },
+  {
+   "figureId": "hasbro-2015-hobgoblin::Anti-Venom",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/8217/8eabfbb5-f413-4994-bcb6-e140183e53c3/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-marvel-legends-infinite-series-anti-venom-hobgoblin-baf-8217?variation=14565",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 14.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r58 apply58; priced offer is the figure's own BBTS Offer record; photo downloaded into r58 img58/ and read firsthand against census identity",
+   "_rotation58": "d418f850-af32-5e8b-a698-d8db82a7e7f3"
+  },
+  {
+   "figureId": "hasbro-2015-hobgoblin::Ultimate Spider-Woman",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/32145/12aa376d-ef4e-4022-ad94-27a6f57097a7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-marvel-legends-infinite-series-warriors-web-spider-woman-hobgoblin-baf-32145?variation=64797",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 18.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r58 apply58; priced offer is the figure's own BBTS Offer record; photo downloaded into r58 img58/ and read firsthand against census identity",
+   "_rotation58": "d418f850-af32-5e8b-a698-d8db82a7e7f3"
+  },
+  {
+   "figureId": "hasbro-2013-iron-monger::Iron Man (Mark 42)",
+   "imageUrl": "https://media.entertainmentearth.com/assets/images/663ce3c31b6047b3b9239a2d76bce73flg.jpg",
+   "imageSource": "Entertainment Earth",
+   "sourceUrl": "https://www.entertainmentearth.com/product/iron-man-3-marvel-legends-mark-42-suit-action-figure/hmva3950",
+   "buyLabel": "Entertainment Earth",
+   "priceUSD": 16.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "Entertainment Earth own product photography; og:image exactly equals the structured Product image, asserted in r58 apply58; priced offer is the figure's own Entertainment Earth Offer record; photo downloaded into r58 img58/ and read firsthand against census identity",
+   "_rotation58": "d418f850-af32-5e8b-a698-d8db82a7e7f3"
+  },
+  {
+   "figureId": "hasbro-2013-iron-monger::Iron Patriot (James Rhodes)",
+   "imageUrl": "https://media.entertainmentearth.com/assets/images/10f4013387de417b9a4ee8c865373d87lg.jpg",
+   "imageSource": "Entertainment Earth",
+   "sourceUrl": "https://www.entertainmentearth.com/product/iron-man-3-marvel-legends-iron-patriot-action-figure/hmva3951",
+   "buyLabel": "Entertainment Earth",
+   "priceUSD": 16.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "Entertainment Earth own product photography; og:image exactly equals the structured Product image, asserted in r58 apply58; priced offer is the figure's own Entertainment Earth Offer record; photo downloaded into r58 img58/ and read firsthand against census identity",
+   "_rotation58": "d418f850-af32-5e8b-a698-d8db82a7e7f3"
   }
  ]
 }
