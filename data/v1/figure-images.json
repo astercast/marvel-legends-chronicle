@@ -6404,6 +6404,114 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r63 apply63; priced offer is the figure's own ToyArena Offer record; photo downloaded into r63 img63/ and read firsthand against census identity",
    "_rotation63": "e5e47d66-8b22-55b6-a3c6-8d7286a6bf2f"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Doctor Strange (Film)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/b81d7c73-5dc7-4327-bdf5-0dbbdfd1d2b0.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-doctor-strange-marvel-legends-wave-1-doctor-strange?variant=6983174455340",
+   "buyLabel": "ToyArena",
+   "priceUSD": 49.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Karl Mordo",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/c220526e-1c93-4c47-918e-78c8a2c3f0be.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-doctor-strange-marvel-legends-wave-1-karl-mordo?variant=6983117668396",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Nico Minoru",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/6057eda0-647c-4e0d-9fbb-f4a9a3aad019.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-doctor-strange-marvel-legends-wave-1-nico-minoru?variant=6983156236332",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Enchantress",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/283c998b-e3b1-4877-8df5-38a3d2428a08.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-doctor-strange-marvel-legends-wave-1-mystic-rivals-echantress?variant=6983134183468",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Astral Doctor Strange",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/45bc3cbf-d48b-482a-93ea-5a38bb3305e5.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-doctor-strange-marvel-legends-wave-1-astral-doctor-strange?variant=6983145357356",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Brother Voodoo",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/0239ad1f-1a84-42a0-b187-7719c0a0ae0b.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-doctor-strange-marvel-legends-wave-1-masters-of-magic-brother-voodoo?variant=6983184121900",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Iron Fist",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/21098/6ecfbb3b-3a1b-45a0-8942-5189f64b658a/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/doctor-strange-marvel-legends-iron-fist-dormammu-baf-21098?variation=40289",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r64 apply64; priced offer is the figure's own BBTS Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2016-dormammu::Doctor Strange (Illuminati)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/21110/5fc35f32-9625-4084-9de7-a424c5b7a9a7/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/doctor-strange-marvel-legends-masters-magic-doctor-strange-dormammu-baf-21110?variation=40317",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r64 apply64; priced offer is the figure's own BBTS Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2017-man-thing::Elektra",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/52457033.jpg?v=1571609218&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-series-elektra-action-figure-6?variant=6981567512620",
+   "buyLabel": "ToyArena",
+   "priceUSD": 50.0,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
+   "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
   }
  ]
 }
