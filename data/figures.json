@@ -2221,20 +2221,20 @@
      "notes": "Modern version"
     },
     {
-     "name": "Punisher",
+     "name": "Punisher (Trenchcoat)",
      "notes": "Trenchcoat version"
     },
     {
-     "name": "Punisher",
+     "name": "Punisher (Thunderbolts)",
      "notes": "Variant",
      "variant": "Thunderbolts red logo"
     },
     {
-     "name": "Deadpool",
+     "name": "Deadpool (Classic)",
      "notes": "Classic version"
     },
     {
-     "name": "Deadpool",
+     "name": "Deadpool (Uncanny X-Force)",
      "notes": "Variant",
      "variant": "Uncanny X-Force"
     },
@@ -2243,11 +2243,11 @@
      "notes": "Neo-Classic armor (Model 9)"
     },
     {
-     "name": "Doctor Doom",
+     "name": "Doctor Doom (Classic)",
      "notes": "Classic"
     },
     {
-     "name": "Doctor Doom",
+     "name": "Doctor Doom (Future Foundation)",
      "notes": "Variant",
      "variant": "Future Foundation"
     }
@@ -2262,7 +2262,7 @@
    "figures": [
     {
      "bafPiece": "Right leg",
-     "name": "Iron Man",
+     "name": "Iron Man (Bleeding Edge)",
      "notes": "Bleeding Edge (Model 37) armor"
     },
     {
@@ -2272,7 +2272,7 @@
     },
     {
      "bafPiece": "Left leg",
-     "name": "Iron Man",
+     "name": "Iron Man (Model 2 Hornhead)",
      "notes": "Model 2 Hornhead armor with alternate Model 2 head"
     },
     {
@@ -2287,7 +2287,7 @@
     },
     {
      "bafPiece": "Right arm",
-     "name": "Iron Man",
+     "name": "Iron Man (Mark 42)",
      "notes": "Iron Man 3 (Mark 42) version"
     }
    ],

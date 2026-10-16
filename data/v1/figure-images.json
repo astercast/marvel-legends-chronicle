@@ -5696,6 +5696,90 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r54 apply54; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r54 img54/ and read firsthand against census identity",
    "_rotation54": "3279dde3-07cd-56a6-8eed-e18f979bfc93"
+  },
+  {
+   "figureId": "hasbro-2013-iron-monger::Iron Patriot (Norman Osborn)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/122570/85499/apiu4qgum__14003.1550283938.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-avengers-iron-patriot-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 74.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
+   "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
+  },
+  {
+   "figureId": "hasbro-2013-iron-monger::Ultron",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/122897/85829/apikyc2qb__68076.1550283948.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-iron-man-3-series-2-ultron-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 74.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
+   "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
+  },
+  {
+   "figureId": "hasbro-2013-epic-heroes::Punisher (Trenchcoat)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/121781/84715/apiiidfmz__47053.1516122562.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2012-series-3-epic-heroes-marvels-knights-punisher-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 84.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
+   "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
+  },
+  {
+   "figureId": "hasbro-2013-epic-heroes::Deadpool (Uncanny X-Force)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/121778/84712/api7psked__22173.1550283915.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2012-series-3-epic-heroes-deadpool-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 69.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
+   "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
+  },
+  {
+   "figureId": "hasbro-2013-epic-heroes::Iron Man",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/121780/84714/apiypzbpp__79906.1550283915.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2012-series-3-epic-heroes-iron-man-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 44.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
+   "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
+  },
+  {
+   "figureId": "hasbro-2013-epic-heroes::Doctor Doom (Classic)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/343849/503727/apimlrzq4__89491.1609868377.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2012-series-3-epic-heroes-dr-doom-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 134.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
+   "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
+  },
+  {
+   "figureId": "hasbro-2013-epic-heroes::Mystique",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/121777/84711/apizvrasv__85093.1516122563.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2012-series-3-epic-heroes-x-mutants-action-figure-mystique/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 119.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r55 apply55; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r55 img55/ and read firsthand against census identity",
+   "_rotation55": "df99e0b6-d85b-5a37-b842-fe6b0d4ae254"
   }
  ]
 }
