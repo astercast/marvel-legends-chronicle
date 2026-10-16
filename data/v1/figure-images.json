@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-10-15",
+ "updatedAt": "2026-10-16",
  "doctrine": "Embeds only: manufacturer/retailer product photography referenced by URL, never copied, never AI-generated. Every entry was verified live (HTTP 200, image content-type, cross-origin referer accepted) on verifiedAt. A figure with no entry renders in the typographic museum-vault treatment, never a broken-image box. Buy links are outbound only; this archive sells nothing.",
  "entries": [
   {
@@ -5372,6 +5372,54 @@
    "verifiedAt": "2026-10-15",
    "verify": "og:image == structured Product image asserted exactly in r50 walk50 evidence (probe50h range walk); priced offer is the product's own BBTS first Offer record (Mint Packaging); photo downloaded into r50 img50/ and read firsthand against census identity",
    "_rotation50": "b3397ab7-3cbe-5cf8-9882-e774d799bcfa"
+  },
+  {
+   "figureId": "hasbro-2013-rocket-raccoon::Jean Grey",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/251406/346333/api1djsjv__14848.1550283952.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2013-rocket-raccoon-series-2-jean-grey-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 79.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r51 apply51; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r51 img51/ and read firsthand against census identity",
+   "_rotation51": "6f24e9b4-d81d-5d32-b3c2-d657d1649910"
+  },
+  {
+   "figureId": "hasbro-2013-rocket-raccoon::Black Panther",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/251405/346328/apiqq1n05__68730.1520004542.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2013-rocket-raccoon-series-2-black-panther-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 74.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r51 apply51; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r51 img51/ and read firsthand against census identity",
+   "_rotation51": "6f24e9b4-d81d-5d32-b3c2-d657d1649910"
+  },
+  {
+   "figureId": "hasbro-2013-rocket-raccoon::Scarlet Spider (Kaine Parker)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/251414/346352/api8zfzac__56775.1550283952.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2013-rocket-raccoon-series-2-scarlet-spider-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 149.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r51 apply51; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r51 img51/ and read firsthand against census identity",
+   "_rotation51": "6f24e9b4-d81d-5d32-b3c2-d657d1649910"
+  },
+  {
+   "figureId": "hasbro-2013-rocket-raccoon::Hawkeye",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/251407/346335/apiidsbjf__03308.1550283952.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-2013-rocket-raccoon-series-2-hawkeye-action-figure-modern-costume/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 99.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r51 apply51; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r51 img51/ and read firsthand against census identity",
+   "_rotation51": "6f24e9b4-d81d-5d32-b3c2-d657d1649910"
   }
  ]
 }
