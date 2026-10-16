@@ -5972,6 +5972,90 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyHideout own product photography; og:image is string-identical to the structured Product image's first contentUrl, asserted in r56 apply56c; priced offer is the figure's own ToyHideout Offer record; photo downloaded into r56 img56/ and read firsthand against census identity",
    "_rotation56": "82e0a893-b58b-500a-b8c2-09c08133877a"
+  },
+  {
+   "figureId": "hasbro-2015-allfather::Captain Marvel (Carol Danvers)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/94848/105186/api5hfdst__29586.1550284028.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-avengers-allfather-series-captain-marvel-carol-danvers-action-figure-maidens-of-might/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
+   "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
+  },
+  {
+   "figureId": "hasbro-2015-allfather::Machine Man",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/94850/105188/apiepxflt__17327.1550284029.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-avengers-allfather-series-machine-man-action-figure-avenging-allies/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 54.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
+   "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
+  },
+  {
+   "figureId": "hasbro-2015-allfather::Scarlet Witch",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/94851/105189/apidi9grc__35924.1550284028.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-avengers-allfather-series-scarlet-witch-action-figure-maidens-of-might/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 56.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
+   "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
+  },
+  {
+   "figureId": "hasbro-2015-allfather::Thor",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/129764/181648/apiuaweih__64428.1541524292.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-avengers-allfather-series-thor-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 59.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
+   "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
+  },
+  {
+   "figureId": "hasbro-2015-allfather::Sentry",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/94852/105190/apiychvm2__88013.1550284030.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-avengers-allfather-series-sentry-action-figure-avenging-allies/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 64.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
+   "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
+  },
+  {
+   "figureId": "hasbro-2015-allfather::Hawkeye",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/129765/184810/apigsezsj__13459.1550284028.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-avengers-allfather-series-hawkeye-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 59.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
+   "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
+  },
+  {
+   "figureId": "hasbro-2015-allfather::Iron Fist",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/94849/105187/apiedno7e__11364.1550284028.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-avengers-allfather-series-iron-fist-action-figure-white-costume/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 49.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r57 apply57; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r57 img57/ and read firsthand against census identity",
+   "_rotation57": "8ad734a1-d0da-551e-9512-3a1270d53353"
   }
  ]
 }
