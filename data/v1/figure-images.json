@@ -6272,6 +6272,66 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r61 apply61; priced offer is the figure's own ToyArena Offer record; photo downloaded into r61 img61/ and read firsthand against census identity",
    "_rotation61": "37d5ed48-e939-5b05-b052-8a876c9c028e"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Sharon Carter",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/Sharon_Carter_Legends_figure.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-agents-of-shield-sharon-carter-figure?variant=6982806601772",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r62 apply62; priced offer is the figure's own ToyArena Offer record; photo downloaded into r62 img62/ and read firsthand against census identity",
+   "_rotation62": "ac1d5d28-9937-5d39-9659-ac250dd82351"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Mockingbird",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/HBR-39664-CB_600x_54b8d10e-8aba-47fb-9803-38d875dcf6b2.jpg?v=1571609219&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-6-captain-america-action-figure-mockingbird?variant=6982320783404",
+   "buyLabel": "ToyArena",
+   "priceUSD": 50.0,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r62 apply62; priced offer is the figure's own ToyArena Offer record; photo downloaded into r62 img62/ and read firsthand against census identity",
+   "_rotation62": "ac1d5d28-9937-5d39-9659-ac250dd82351"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Taskmaster",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/eb6aa73c-4ec5-4964-ba70-4e080d2eac7d_1.8fed209cf34de619512255d7e0d721f5.jpeg?v=1598485536&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legend-series-taskmaster-mercenaries-of-mayhem-figure?variant=6981506170924",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r62 apply62; priced offer is the figure's own ToyArena Offer record; photo downloaded into r62 img62/ and read firsthand against census identity",
+   "_rotation62": "ac1d5d28-9937-5d39-9659-ac250dd82351"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Cottonmouth (Burchell Clemens)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/marvel-legends-series-forces-evil-cottonmouth--DFCEBF4D.zoom.jpg?v=1637629710&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-series-forces-of-evil-cottonmouth?variant=6982790250540",
+   "buyLabel": "ToyArena",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r62 apply62; priced offer is the figure's own ToyArena Offer record; photo downloaded into r62 img62/ and read firsthand against census identity",
+   "_rotation62": "ac1d5d28-9937-5d39-9659-ac250dd82351"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Whirlwind",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/HBR-39662-CA_600x_79d13252-c6c0-4940-a651-393e3b31d4c5.jpg?v=1571609220&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-series-forces-of-evil-whirlwind?variant=6982945505324",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r62 apply62; priced offer is the figure's own ToyArena Offer record; photo downloaded into r62 img62/ and read firsthand against census identity",
+   "_rotation62": "ac1d5d28-9937-5d39-9659-ac250dd82351"
   }
  ]
 }
