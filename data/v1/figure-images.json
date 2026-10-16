@@ -7400,6 +7400,42 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r75 apply75; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r75 img75/ and read firsthand against census identity",
    "_rotation75": "9fb71f51-5b5b-5cd9-b82e-51411eed7cdd"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Iron Man (Mark VII)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/183845/264519/apimrmllp__17286.1529522869.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-studios-marvel-legends-the-first-ten-years-iron-man-mark-vii-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 59.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r76 apply76; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r76 img76/ and read firsthand against census identity",
+   "_rotation76": "5f261233-6068-5860-9418-3eff65ff07fe"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::The Thing",
+   "imageUrl": "https://zappcomics.com/cdn/shop/files/thing.jpg?v=1686158057&width=1920",
+   "imageSource": "Zapp Comics",
+   "sourceUrl": "https://zappcomics.com/products/marvel-legends-walgreens-exclusive-the-thing?variant=45233163469120",
+   "buyLabel": "Zapp Comics",
+   "priceUSD": 79.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "Zapp Comics own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset, the proven Zapp form from r52), asserted in r76 apply76; priced offer is the figure's own Zapp Comics Offer record; photo downloaded into r76 img76/ and read firsthand against census identity",
+   "_rotation76": "5f261233-6068-5860-9418-3eff65ff07fe"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Punisher (Camouflage)",
+   "imageUrl": "https://zappcomics.com/cdn/shop/files/punisher-1426.jpg?v=1693691140&width=1920",
+   "imageSource": "Zapp Comics",
+   "sourceUrl": "https://zappcomics.com/products/marvel-legends-80th-anniversary-punisher?variant=46599767818560",
+   "buyLabel": "Zapp Comics",
+   "priceUSD": 44.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "Zapp Comics own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset, the proven Zapp form from r52), asserted in r76 apply76; priced offer is the figure's own Zapp Comics Offer record; photo downloaded into r76 img76/ and read firsthand against census identity",
+   "_rotation76": "5f261233-6068-5860-9418-3eff65ff07fe"
   }
  ]
 }
