@@ -5624,6 +5624,78 @@
    "verifiedAt": "2026-10-16",
    "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; Shopify renditions of one asset), asserted in r53 apply53; priced offer is the figure's own CmdStore Offer record; photo downloaded into r53 img53/ and read firsthand against census identity",
    "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2014-groot::Star-Lord",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/85067/93190/apitvplyi__47795.1516122808.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/guardians-of-the-galaxy-marvel-legends-groot-series-star-lord-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 59.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r54 apply54; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r54 img54/ and read firsthand against census identity",
+   "_rotation54": "3279dde3-07cd-56a6-8eed-e18f979bfc93"
+  },
+  {
+   "figureId": "hasbro-2014-groot::Gamora",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/85065/93188/apidn0lze__64631.1550283995.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/guardians-of-the-galaxy-marvel-legends-groot-series-gamora-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 49.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r54 apply54; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r54 img54/ and read firsthand against census identity",
+   "_rotation54": "3279dde3-07cd-56a6-8eed-e18f979bfc93"
+  },
+  {
+   "figureId": "hasbro-2014-groot::Drax",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/85068/93191/apiuwhyvh__70807.1516122808.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/guardians-of-the-galaxy-marvel-legends-groot-series-drax-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 103.49,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r54 apply54; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r54 img54/ and read firsthand against census identity",
+   "_rotation54": "3279dde3-07cd-56a6-8eed-e18f979bfc93"
+  },
+  {
+   "figureId": "hasbro-2014-groot::Rocket",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/85066/93189/apiyl40mv__71832.1550283995.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/guardians-of-the-galaxy-marvel-legends-groot-series-rocket-raccoon-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 44.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r54 apply54; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r54 img54/ and read firsthand against census identity",
+   "_rotation54": "3279dde3-07cd-56a6-8eed-e18f979bfc93"
+  },
+  {
+   "figureId": "hasbro-2014-groot::Nova (Richard Rider)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/85069/93192/apijpjrq5__08962.1550283995.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-groot-series-marvels-nova-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 54.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r54 apply54; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r54 img54/ and read firsthand against census identity",
+   "_rotation54": "3279dde3-07cd-56a6-8eed-e18f979bfc93"
+  },
+  {
+   "figureId": "hasbro-2014-groot::Iron Man",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/85070/93193/apizfwpo4__49956.1550283995.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-groot-series-iron-man-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 24.69,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r54 apply54; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r54 img54/ and read firsthand against census identity",
+   "_rotation54": "3279dde3-07cd-56a6-8eed-e18f979bfc93"
   }
  ]
 }
