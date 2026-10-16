@@ -8216,6 +8216,30 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset under the proven ToyArena width=1920 form (og carries no width parameter, the structured image carries width=1920; asset-stem equality after width normalization asserted in r83 apply83); priced offer is the figure's own ToyArena Offer record; photo downloaded into r83 img83/ and read firsthand against census identity (X-Men Legends box reading EMMA FROST (E5179), Emma Frost in the black Marvel NOW! costume with cape and alternate head - the Marvel NOW! version (Walgreens exclusive))",
    "_rotation83": "f3b737ab-dc4a-511d-888b-76186c34045c"
+  },
+  {
+   "figureId": "hasbro-2019-exclusives::Danielle Moonstar",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509856725a.jpg?v=1571689017&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-dani-moonstar-new-mutants-2019-walgreen-exclusive-action-figure?variant=30894608973960",
+   "buyLabel": "ToyArena",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset under the proven ToyArena width=1920 form (og carries no width parameter, the structured image carries width=1920; asset-stem equality after width normalization asserted in r84 apply84); priced offer is the figure's own ToyArena Offer record; photo downloaded into r84 img84/ and read firsthand against census identity (New Mutants Legends box reading DANI MOONSTAR (E5181), Dani Moonstar in the yellow/black New Mutants costume with bow and arrow and Wolfsbane and Karma alternate heads - the New Mutants version (Walgreens exclusive); the Zapp page for the same figure ($29.99) carries the same E5181 box photo, downloaded and read firsthand in r84, corroborating identity)",
+   "_rotation84": "a408fa01-ea75-5e61-a6b7-b6da168fc21c"
+  },
+  {
+   "figureId": "hasbro-2019-exclusives::Deathlok Prime",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-exclusive-6-inch-action-figure-stealth-deathlok-variant.jpg?v=1723115085&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-exclusive-6-inch-action-figure-stealth-deathlok-variant?variant=35206845137062",
+   "buyLabel": "CMDStore",
+   "priceUSD": 22.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r84 apply84; priced offer is the figure's own CMDStore Offer record; photo downloaded into r84 img84/ and read firsthand against census identity (Legends box reading DEATHLOK under the UNCANNY X-FORCE banner (E8847), Deathlok in the light blue/grey Uncanny X-Force costume with red X emblem, gatling cannon, rifle and energy effect - the Uncanny X-Force version (Amazon exclusive); the ToyWiz page for the same figure ($24.99, BigCommerce form) carries the same E8847 box photo, downloaded and read firsthand in r84, corroborating identity)",
+   "_rotation84": "a408fa01-ea75-5e61-a6b7-b6da168fc21c"
   }
  ]
 }
