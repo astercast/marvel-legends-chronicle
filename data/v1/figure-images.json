@@ -5420,6 +5420,78 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r51 apply51; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r51 img51/ and read firsthand against census identity",
    "_rotation51": "6f24e9b4-d81d-5d32-b3c2-d657d1649910"
+  },
+  {
+   "figureId": "hasbro-2013-rocket-raccoon::Wrecker",
+   "imageUrl": "https://zappcomics.com/cdn/shop/files/wrecker.jpg?v=1686756042&width=1920",
+   "imageSource": "Zapp Comics",
+   "sourceUrl": "https://zappcomics.com/products/marvel-legends-rocket-raccoon-baf-wave-wrecker-wrecking-crew?variant=45300741931328",
+   "buyLabel": "Zapp Comics",
+   "priceUSD": 119.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "Zapp Comics own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset), asserted in r52 apply52; priced offer is the figure's own Zapp Comics Offer record; photo downloaded into r52 img52/ and read firsthand against census identity",
+   "_rotation52": "aa1144d4-13f2-5ae5-81a5-f8629af58c3c"
+  },
+  {
+   "figureId": "hasbro-2013-hit-monkey::Noh-Varr",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-2013-wave-1-protector_image.gif?v=1723128282&width=1920",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-2013-wave-1-protector?variant=35209613672614",
+   "buyLabel": "CmdStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset), asserted in r52 apply52; priced offer is the figure's own CmdStore Offer record; photo downloaded into r52 img52/ and read firsthand against census identity",
+   "_rotation52": "aa1144d4-13f2-5ae5-81a5-f8629af58c3c"
+  },
+  {
+   "figureId": "hasbro-2013-hit-monkey::Red She-Hulk",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-2013-wave-1-red-she-hulk_image.gif?v=1723128300&width=1920",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-2013-wave-1-red-she-hulk?variant=35209610920102",
+   "buyLabel": "CmdStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset), asserted in r52 apply52; priced offer is the figure's own CmdStore Offer record; photo downloaded into r52 img52/ and read firsthand against census identity",
+   "_rotation52": "aa1144d4-13f2-5ae5-81a5-f8629af58c3c"
+  },
+  {
+   "figureId": "hasbro-2013-hit-monkey::Hyperion",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-2013-wave-1-hyperion_image.gif?v=1723127300&width=1920",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-2013-wave-1-hyperion?variant=35209616851110",
+   "buyLabel": "CmdStore",
+   "priceUSD": 32.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset), asserted in r52 apply52; priced offer is the figure's own CmdStore Offer record; photo downloaded into r52 img52/ and read firsthand against census identity",
+   "_rotation52": "aa1144d4-13f2-5ae5-81a5-f8629af58c3c"
+  },
+  {
+   "figureId": "hasbro-2013-hit-monkey::Ultimate Captain America",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-2013-wave-1-captain-america_image.gif?v=1784751007&width=1920",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-2013-wave-1-captain-america?variant=35207828177062",
+   "buyLabel": "CmdStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset), asserted in r52 apply52; priced offer is the figure's own CmdStore Offer record; photo downloaded into r52 img52/ and read firsthand against census identity",
+   "_rotation52": "aa1144d4-13f2-5ae5-81a5-f8629af58c3c"
+  },
+  {
+   "figureId": "hasbro-2013-hit-monkey::Archangel",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-2013-wave-1-archangel_image.gif?v=1723124712&width=1920",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-2013-wave-1-archangel?variant=35209613770918",
+   "buyLabel": "CmdStore",
+   "priceUSD": 54.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset), asserted in r52 apply52; priced offer is the figure's own CmdStore Offer record; photo downloaded into r52 img52/ and read firsthand against census identity",
+   "_rotation52": "aa1144d4-13f2-5ae5-81a5-f8629af58c3c"
   }
  ]
 }
