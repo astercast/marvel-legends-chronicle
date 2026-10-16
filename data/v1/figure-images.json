@@ -6512,6 +6512,138 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r64 apply64; priced offer is the figure's own ToyArena Offer record; photo downloaded into r64 img64/ and read firsthand against census identity",
    "_rotation64": "d347675d-725c-52ae-bbfb-0151df6d86f0"
+  },
+  {
+   "figureId": "hasbro-2017-man-thing::Jessica Jones",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/48985/d81c62eb-90ee-4094-838b-3d860c818d9b/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-legends-jessica-jones-man-thing-baf-48985?variation=102656",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r65 apply65; priced offer is the figure's own BBTS Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-man-thing::Daredevil",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/pTRUCA1-26412917_alternate1_dt.jpg?v=1571609218&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-knights-legends-series-6-inch-daredevil?variant=6981535465516",
+   "buyLabel": "ToyArena",
+   "priceUSD": 50.0,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r65 apply65; priced offer is the figure's own ToyArena Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-man-thing::Bullseye",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/48984/781c0c72-e025-48e6-9d4d-b2d04f4b48fc/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-legends-bullseye-man-thing-baf-48984?variation=102654",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r65 apply65; priced offer is the figure's own BBTS Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-man-thing::Blade",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/48986/0948ce38-41b6-4838-a29f-2c0980024a59/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-knights-legends-blade-man-thing-baf-48986?variation=102659",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r65 apply65; priced offer is the figure's own BBTS Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-vulture::Beetle",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/marvel-spider-man-legends-series-6-inch-action-figure-sinister-villains_-ma--37C9EAE0.zoom.jpg?v=1571609218&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-spider-man-legends-series-6-inch-action-figure-sinister-villains-marvel-s-beetle?variant=6981455052844",
+   "buyLabel": "ToyArena",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r65 apply65; priced offer is the figure's own ToyArena Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-vulture::Tombstone",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/file_96f15255.jpeg?v=1571609219&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-tombstone-action-figure-legends-build-a-figure-collection-spider-man-6?variant=6982274285612",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r65 apply65; priced offer is the figure's own ToyArena Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-vulture::Cosmic Spider-Man",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/Marvel-Spiderman-6-inch-Infinite-Legends-Series-Figure-Cosmic-Spider-Man-630509517404-A6655.jpg?v=1571609218&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-spider-man-legends-series-6-inch-action-figure-spider-man-cosmic?variant=6981392334892",
+   "buyLabel": "ToyArena",
+   "priceUSD": 29.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r65 apply65; priced offer is the figure's own ToyArena Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-vulture::Vulture",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/marvel-spider-man-homecoming-legends-series-6-inch-action-figure-marvel_s-v--F2F9C0E2.pt01.zoom.jpg?v=1571609218&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-spider-man-homecoming-legends-series-6-inch-action-figure-marvel-s-vulture?variant=6981430149164",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r65 apply65; priced offer is the figure's own ToyArena Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-vulture::Spider-Man (Film)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/marvel-spider-man-homecoming-legends-series-6-inch-action-figure-spider-man--2FE8925D.pt01.zoom.jpg?v=1571609218&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-spider-man-homecoming-legends-series-6-inch-action-figure-spider-man?variant=6981478449196",
+   "buyLabel": "ToyArena",
+   "priceUSD": 50.0,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r65 apply65; priced offer is the figure's own ToyArena Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-vulture::Moon Knight",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/27321/12137d6b-74cc-4d96-ba85-5e89de0d21e3/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/marvel-legends-moon-knight-flight-gear-baf-27321?variation=54457",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 44.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r65 apply65; priced offer is the figure's own BBTS Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
+  },
+  {
+   "figureId": "hasbro-2017-vulture::Spider-Man (Proto-Suit)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/27324/3fb190d4-104e-4863-aa26-a8a20e01ef32/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/spider-man-homecoming-marvel-legends-spider-man-homemade-suit-flight-gear-baf-27324?variation=54464",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 59.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r65 apply65; priced offer is the figure's own BBTS Offer record; photo downloaded into r65 img65/ and read firsthand against census identity",
+   "_rotation65": "220f81c3-882d-57ec-9323-7f2a4f5c93bc"
   }
  ]
 }
