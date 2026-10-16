@@ -7340,6 +7340,66 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r74 apply74; priced offer is the figure's own ToyArena Offer record; photo downloaded into r74 img74/ and read firsthand against census identity",
    "_rotation74": "dd2c18a1-6585-5a41-a776-db5c42c14680"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Agent Anti-Venom",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/299359/424024/marvel80venom__76344.1712903956.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-80th-anniversary-anti-venom-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 139.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r75 apply75; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r75 img75/ and read firsthand against census identity",
+   "_rotation75": "9fb71f51-5b5b-5cd9-b82e-51411eed7cdd"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Spider-Man (Big Time)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/295770/418832/apik5rf6c__07848.1564331359.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-80th-anniversary-big-time-spider-man-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 99.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r75 apply75; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r75 img75/ and read firsthand against census identity",
+   "_rotation75": "9fb71f51-5b5b-5cd9-b82e-51411eed7cdd"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Logan (Cowboy hat)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/295752/417551/apiltxaqv__86414.1570669635.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-80th-anniversary-cowboy-logan-action-figure-comic/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r75 apply75; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r75 img75/ and read firsthand against census identity",
+   "_rotation75": "9fb71f51-5b5b-5cd9-b82e-51411eed7cdd"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Ronan the Accuser",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/183844/264518/apiv39gze__65392.1550284382.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-studios-marvel-legends-the-first-ten-years-ronan-the-accuser-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 33.24,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r75 apply75; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r75 img75/ and read firsthand against census identity",
+   "_rotation75": "9fb71f51-5b5b-5cd9-b82e-51411eed7cdd"
+  },
+  {
+   "figureId": "hasbro-2018-exclusives::Thanos (Repaint)",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/253485/352928/apixxwjuh__89243.1550284392.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/avengers-infinity-war-marvel-legends-thanos-exclusive-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 74.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r75 apply75; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r75 img75/ and read firsthand against census identity",
+   "_rotation75": "9fb71f51-5b5b-5cd9-b82e-51411eed7cdd"
   }
  ]
 }
