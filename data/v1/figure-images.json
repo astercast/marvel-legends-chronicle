@@ -6992,6 +6992,90 @@
    "verifiedAt": "2026-10-16",
    "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r69 apply69; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
    "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
+  },
+  {
+   "figureId": "hasbro-2018-spdr::Spider-Man",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509689453.jpg?v=1574127043&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-spider-man-series-spiderman-sp-dr-spider-baf-wave-action-figure?variant=31274876010632",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r70 apply70; priced offer is the figure's own ToyArena Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
+   "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
+  },
+  {
+   "figureId": "hasbro-2018-spdr::Cloak",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509689446_a.jpg?v=1571609356&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-spider-man-series-cloak-sp-dr-spider-baf-wave-action-figure?variant=30231039934508",
+   "buyLabel": "ToyArena",
+   "priceUSD": 19.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r70 apply70; priced offer is the figure's own ToyArena Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
+   "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
+  },
+  {
+   "figureId": "hasbro-2018-spdr::Dagger",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509689415_a.jpg?v=1571609356&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-spider-man-series-dagger-sp-dr-spider-baf-wave-action-figure?variant=30231029973036",
+   "buyLabel": "ToyArena",
+   "priceUSD": 18.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r70 apply70; priced offer is the figure's own ToyArena Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
+   "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
+  },
+  {
+   "figureId": "hasbro-2018-spdr::Daredevil",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/261453/364430/apikkumex__13554.1553013587.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/spider-man-marvel-legends-infinite-series-daredevil-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 199.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r70 apply70; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
+   "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
+  },
+  {
+   "figureId": "hasbro-2018-spdr::Doctor Octopus",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509689422_a.jpg?v=1571609355&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-spider-man-series-doc-ock-sp-dr-spider-baf-wave-action-figure?variant=30230938714156",
+   "buyLabel": "ToyArena",
+   "priceUSD": 21.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r70 apply70; priced offer is the figure's own ToyArena Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
+   "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
+  },
+  {
+   "figureId": "hasbro-2018-spdr::Elektra",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509689439_a.jpg?v=1571609356&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-spider-man-series-elektra-sp-dr-spider-baf-wave-action-figure?variant=30231053795372",
+   "buyLabel": "ToyArena",
+   "priceUSD": 18.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r70 apply70; priced offer is the figure's own ToyArena Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
+   "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
+  },
+  {
+   "figureId": "hasbro-2018-spdr::Scarlet Spider (Kaine Parker)",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509689460_a.jpg?v=1571609356&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-spider-man-series-scarlet-spider-sp-dr-spider-baf-wave-action-figure?variant=30231020994604",
+   "buyLabel": "ToyArena",
+   "priceUSD": 33.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r70 apply70; priced offer is the figure's own ToyArena Offer record; photo downloaded into r70 img70/ and read firsthand against census identity",
+   "_rotation70": "812e907f-7947-5438-8294-345b5a57268c"
   }
  ]
 }
