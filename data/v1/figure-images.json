@@ -5492,6 +5492,138 @@
    "verifiedAt": "2026-10-16",
    "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; size renditions of one asset), asserted in r52 apply52; priced offer is the figure's own CmdStore Offer record; photo downloaded into r52 img52/ and read firsthand against census identity",
    "_rotation52": "aa1144d4-13f2-5ae5-81a5-f8629af58c3c"
+  },
+  {
+   "figureId": "hasbro-2026-deadpool-wolverine-2::Wolverine (Battle-damaged)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/177339/e3d7e54a-9f70-46cb-b5b8-9bcc285e1edc/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/deadpool-wolverine-marvel-legends-wolverine-sleeveless-action-figure-177339?variation=348090",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image == structured Product image asserted exactly in r53 apply53; priced offer is the figure's own BBTS Offer record for its variation; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2026-deadpool-wolverine-2::Wolverine (Brown suit)",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/177340/adea7730-64e1-4f25-a098-8196a0eccc68/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/deadpool-wolverine-marvel-legends-wolverine-brown-suit-action-figure-177340?variation=348091",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image == structured Product image asserted exactly in r53 apply53; priced offer is the figure's own BBTS Offer record for its variation; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2026-deadpool-wolverine-2::Blade",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/177341/9135fb31-a5a4-4117-84e3-4c487795fcc2/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/deadpool-wolverine-marvel-legends-blade-action-figure-177341?variation=348092",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image == structured Product image asserted exactly in r53 apply53; priced offer is the figure's own BBTS Offer record for its variation; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2026-deadpool-wolverine-2::X-23",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/177343/eab473b3-760d-442f-a14e-ba496c3eec2d/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/deadpool-wolverine-marvel-legends-x-23-action-figure-177343?variation=348093",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image == structured Product image asserted exactly in r53 apply53; priced offer is the figure's own BBTS Offer record for its variation; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2026-deadpool-wolverine-2::Cowboypool",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/177345/fc9d01e6-14e6-4aa8-82d7-48f010fae813/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/deadpool-wolverine-marvel-legends-cowboypool-action-figure-177345?variation=348095",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image == structured Product image asserted exactly in r53 apply53; priced offer is the figure's own BBTS Offer record for its variation; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2026-deadpool-wolverine-2::Cassandra Nova",
+   "imageUrl": "https://images.bigbadtoystore.com/images/product/177346/cc45388f-fc3d-43f5-9560-247b3b3435d5/original.jpg",
+   "imageSource": "BigBadToyStore",
+   "sourceUrl": "https://www.bigbadtoystore.com/product/deadpool-wolverine-marvel-legends-cassandra-nova-action-figure-177346?variation=348097",
+   "buyLabel": "BigBadToyStore",
+   "priceUSD": 27.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "BigBadToyStore own product photography; og:image == structured Product image asserted exactly in r53 apply53; priced offer is the figure's own BBTS Offer record for its variation; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2013-hit-monkey::Wolverine",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/247893/341236/apieyy2xp__50257.1520004508.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-hit-monkey-series-x-force-wolverine-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 49.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r53 apply53; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2013-puck::Cyclops",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/78216/76272/apiytmyho__17930.1550283958.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/wolverine-marvel-legends-puck-series-cyclops-exclusive-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 94.04,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r53 apply53; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2013-puck::Emma Frost",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/78217/76273/apif8wxpj__33584.1550283958.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/wolverine-marvel-legends-puck-series-emma-frost-exclusive-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 249.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r53 apply53; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2013-puck::Wolverine",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/276288/386066/api3jvqjt__73234.1579541888.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/marvel-legends-puck-series-wolverine-exclusive-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 124.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; BigCommerce size renditions of one asset), asserted in r53 apply53; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
+  },
+  {
+   "figureId": "hasbro-2013-puck::Sabretooth",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/wolverine-marvel-legends-exclusive-series-sabretooth_image.gif?v=1723128361&width=1920",
+   "imageSource": "CmdStore",
+   "sourceUrl": "https://cmdstore.com/products/wolverine-marvel-legends-exclusive-series-sabretooth?variant=35209605808294",
+   "buyLabel": "CmdStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CmdStore own product photography; og:image and the structured Product image are the same asset (identical file path, filename and version; Shopify renditions of one asset), asserted in r53 apply53; priced offer is the figure's own CmdStore Offer record; photo downloaded into r53 img53/ and read firsthand against census identity",
+   "_rotation53": "57b61800-8724-5bb9-8ae6-2eb688da342a"
   }
  ]
 }
