@@ -7448,6 +7448,54 @@
    "verifiedAt": "2026-10-16",
    "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r77 apply77; priced offer is the figure's own CMDStore Offer record; photo downloaded into r77 img77/ and read firsthand against census identity (Hasbro Legends Series box, E1375, the 2018 Ultimate Riders Black Widow with motorcycle)",
    "_rotation77": "c1d8e68c-3a34-5582-9aa3-4f19a2d28877"
+  },
+  {
+   "figureId": "hasbro-2015-ultron-prime::Bulldozer",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-infinite-ant-man-series-6-inch-bulldozer_image.gif?v=1723133806&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-infinite-ant-man-series-6-inch-bulldozer?variant=35208038940838",
+   "buyLabel": "CMDStore",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r78 apply78; priced offer is the figure's own CMDStore Offer record; photo downloaded into r78 img78/ and read firsthand against census identity (Ant-Man box, MARVEL'S BULLDOZER nameplate, orange classic costume with black riveted harness, Ultron BAF arm in pack - the classic Bulldozer of the Ultron Prime wave)",
+   "_rotation78": "ba61f2b2-02f0-5848-94b8-b84e94f65bf2"
+  },
+  {
+   "figureId": "hasbro-2015-hobgoblin::Daredevil",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-infinite-spider-man-wave-3-6-inch-daredevil_image.gif?v=1705953358&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-infinite-spider-man-wave-3-6-inch-daredevil?variant=35209630679206",
+   "buyLabel": "CMDStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r78 apply78; priced offer is the figure's own CMDStore Offer record; photo downloaded into r78 img78/ and read firsthand against census identity (Hobgoblin Build-A-Figure header, red-costume Daredevil with billy clubs and the Hobgoblin BAF piece in pack - the red-costume Daredevil of the Hobgoblin wave)",
+   "_rotation78": "ba61f2b2-02f0-5848-94b8-b84e94f65bf2"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Captain America",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-captain-america-red-skull-onslaught-6-inch-captain-america_image.gif?v=1705953435&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-captain-america-red-skull-onslaught-6-inch-captain-america?variant=35207564001446",
+   "buyLabel": "CMDStore",
+   "priceUSD": 39.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r78 apply78; priced offer is the figure's own CMDStore Offer record; photo downloaded into r78 img78/ and read firsthand against census identity (classic Captain America with the Capwolf alternate head visible in the pack (the census notes' distinguishing accessory), Red Skull BAF piece - the Red Onslaught wave Captain America)",
+   "_rotation78": "ba61f2b2-02f0-5848-94b8-b84e94f65bf2"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Scourge of the Underworld (Dennis Dunphy)",
+   "imageUrl": "https://cmdstore.com/cdn/shop/files/marvel-legends-captain-america-red-skull-onslaught-6-inch-scourge_image.gif?v=1705953603&width=1920",
+   "imageSource": "CMDStore",
+   "sourceUrl": "https://cmdstore.com/products/marvel-legends-captain-america-red-skull-onslaught-6-inch-scourge?variant=35208170504358",
+   "buyLabel": "CMDStore",
+   "priceUSD": 42.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "CMDStore own product photography; og:image is the _1200x1200 rendition and the structured Product image the width=1920 rendition of the same asset - the pairing admitted by parent ruling (8) - with asset-stem equality after rendition normalization asserted in r78 apply78; priced offer is the figure's own CMDStore Offer record; photo downloaded into r78 img78/ and read firsthand against census identity (Mercenaries of Mayhem box, skull-masked Scourge with rifle and the Red Skull BAF piece in pack - Scourge of the Underworld of the Red Onslaught wave)",
+   "_rotation78": "ba61f2b2-02f0-5848-94b8-b84e94f65bf2"
   }
  ]
 }
