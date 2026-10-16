@@ -6908,6 +6908,90 @@
    "verifiedAt": "2026-10-16",
    "verify": "BigBadToyStore own product photography; og:image exactly equals the structured Product image, asserted in r68 apply68; priced offer is the figure's own BBTS Offer record; photo downloaded into r68 img68/ and read firsthand against census identity",
    "_rotation68": "a3b261c5-3e47-5759-b525-b2af75e4bcbe"
+  },
+  {
+   "figureId": "hasbro-2018-apocalypse::Wolverine",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509678068.jpg?v=1571609248&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-x-men-wolverine-action-figure-baf-apocalypse?variant=12476430811180",
+   "buyLabel": "ToyArena",
+   "priceUSD": 21.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r69 apply69; priced offer is the figure's own ToyArena Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
+   "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
+  },
+  {
+   "figureId": "hasbro-2018-apocalypse::Storm",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509678020a.jpg?v=1571609248&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-x-men-storm-action-figure-baf-apocalypse?variant=12476392046636",
+   "buyLabel": "ToyArena",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r69 apply69; priced offer is the figure's own ToyArena Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
+   "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
+  },
+  {
+   "figureId": "hasbro-2018-apocalypse::Magneto",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509678051a.jpg?v=1571609248&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-x-men-magneto-baf-apocalpyse-action-figure?variant=12476592619564",
+   "buyLabel": "ToyArena",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r69 apply69; priced offer is the figure's own ToyArena Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
+   "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
+  },
+  {
+   "figureId": "hasbro-2018-apocalypse::Psylocke",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509678181a.jpg?v=1571609248&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-x-men-psylocke-baf-apocalpyse-action-figure?variant=12476674703404",
+   "buyLabel": "ToyArena",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r69 apply69; priced offer is the figure's own ToyArena Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
+   "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
+  },
+  {
+   "figureId": "hasbro-2018-apocalypse::Sabretooth",
+   "imageUrl": "https://toyarena.com/cdn/shop/products/630509678044a.jpg?v=1571609248&width=1920",
+   "imageSource": "ToyArena",
+   "sourceUrl": "https://toyarena.com/products/marvel-legends-x-men-sabertooth-baf-apocalpyse-action-figure?variant=12476632170540",
+   "buyLabel": "ToyArena",
+   "priceUSD": 24.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyArena own product photography; og:image and the structured Product image are the same asset (identical CDN path and filename; the structured form carries only the width=1920 rendition parameter), asserted in r69 apply69; priced offer is the figure's own ToyArena Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
+   "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
+  },
+  {
+   "figureId": "hasbro-2018-apocalypse::Gladiator",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/261897/365100/apig8imgy__31614.1550284414.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/x-men-marvel-legends-apocalypse-series-marvels-gladiator-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 74.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r69 apply69; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
+   "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
+  },
+  {
+   "figureId": "hasbro-2018-apocalypse::Multiple Man",
+   "imageUrl": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/257307/358640/apibpl7sh__59835.1550284414.jpg?c=2",
+   "imageSource": "ToyWiz",
+   "sourceUrl": "https://toywiz.com/x-men-marvel-legends-multiple-man-action-figure/",
+   "buyLabel": "ToyWiz",
+   "priceUSD": 94.99,
+   "priceSeen": "2026-10-16",
+   "verifiedAt": "2026-10-16",
+   "verify": "ToyWiz own product photography; og:image and the structured Product image are the same asset (identical product ID, image ID and filename; size renditions of one asset), asserted in r69 apply69; priced offer is the figure's own ToyWiz Offer record; photo downloaded into r69 img69/ and read firsthand against census identity",
+   "_rotation69": "813c0bb6-a0c5-5f46-92d4-fd25fcb0d432"
   }
  ]
 }
