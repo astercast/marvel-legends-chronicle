@@ -1,0 +1,173 @@
+/* ============ 1. TOKENS: Model Numbers, after dark ============ */
+:root {
+  color-scheme: dark;
+  --ground: #0F1011;
+  --raise: #1A1B1D;
+  --line: #2C2D30;
+  --text: #F4F4F2;
+  --sub: #8C8D91;
+  --on: #34C77B;
+  --line-soft: color-mix(in oklab, var(--line) 60%, var(--ground));
+  --font: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --narrow: 82%;
+  --fs-census: clamp(3rem, 1.2rem + 7.6vw, 8.75rem);
+  --fs-census-sub: clamp(1.5rem, 1rem + 2.6vw, 3.75rem);
+  --fs-h2: clamp(1.6rem, 1.1rem + 2vw, 2.75rem);
+  --fs-name: clamp(.98rem, .9rem + .35vw, 1.2rem);
+  --fs-body: clamp(1rem, .96rem + .2vw, 1.125rem);
+  --fs-small: .875rem;
+  --fs-id: .75rem;
+  /* space: 8px unit, steps 1 2 3 4 6 10 16 */
+  --s-1: .5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2rem;
+  --s-5: 3rem;
+  --s-6: 5rem;
+  --s-7: 8rem;
+  --gutter: clamp(1rem, .2rem + 3.4vw, 3.5rem);
+  --page: 80rem;
+  --fig-w: clamp(9.5rem, 15.5vw, 14.375rem); /* never past the 345px source */
+  --radius-field: 12px;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --dur-on: 700ms;
+  --stagger: 80ms;
+  /* the r23 names, so every page goes graphite */
+  --paper: var(--ground);
+  --paper2: var(--raise);
+  --ink: var(--text);
+  --muted: var(--sub);
+  --red: var(--text);
+  --blue: var(--text);
+  --serif: var(--font);
+  --sans: var(--font);
+  --r: 0px;
+}
+
+/* ============ 2. BASE ============ */
+html, body { background: var(--ground); color: var(--text); }
+body { font-family: var(--font); font-size: var(--fs-body); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: var(--text); text-decoration-thickness: 1px; text-underline-offset: .22em; text-decoration-color: var(--sub); }
+a:hover { text-decoration-color: var(--text); }
+:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.vh { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+main { max-width: none; padding: 0; }
+/* r23 leftovers that hard-code white */
+input[type=search] { background: var(--raise); color: var(--text); border-color: var(--line); }
+.row .thumb { background: var(--raise); border-color: var(--line); }
+
+/* ============ 3. HEADER ============ */
+.mast {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--s-4);
+  padding: 0 var(--gutter); background: var(--ground); border-bottom: 1px solid var(--line);
+}
+.mast-mark {
+  margin-inline-end: auto; padding-block: 1rem;
+  font: 650 1rem/1 var(--font); font-stretch: var(--narrow); letter-spacing: -.01em;
+  text-decoration: none; white-space: nowrap;
+}
+.mast-nav { display: flex; gap: var(--s-3); overflow-x: auto; scrollbar-width: none; }
+.mast-nav a {
+  display: inline-flex; align-items: center; gap: .45em; min-height: 44px;
+  font: 500 var(--fs-small)/1 var(--font); color: var(--sub);
+  text-decoration: none; white-space: nowrap;
+}
+.mast-nav a:hover, .mast-nav a[aria-current] { color: var(--text); }
+.mast-mine::before { content: ""; inline-size: .45rem; block-size: .45rem; border-radius: 50%; background: var(--on); }
+@media (width < 46rem) {
+  .mast-nav { flex-basis: 100%; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+}
+
+/* ============ 4. FRONT: the census and the search ============ */
+.front { max-inline-size: var(--page); margin-inline: auto; padding: var(--s-6) var(--gutter) var(--s-5); }
+.census { margin: 0; font-weight: 650; line-height: .95; letter-spacing: -.035em; }
+.census-n { display: block; font-size: var(--fs-census); font-variant-numeric: lining-nums; transform-origin: left bottom; }
+.census-sub {
+  display: block; margin-block-start: .3em; max-inline-size: 18ch;
+  font-size: var(--fs-census-sub); line-height: 1.05; letter-spacing: -.02em;
+  color: var(--sub); text-wrap: balance;
+}
+.find {
+  display: flex; align-items: center; max-inline-size: 46rem;
+  margin-block-start: var(--s-5); padding: .375rem .375rem .375rem 1.25rem;
+  background: var(--raise); border: 1px solid var(--line); border-radius: var(--radius-field);
+}
+.find:has(input:focus-visible) { outline: 2px solid var(--text); outline-offset: 2px; }
+.find input[type=search] {
+  flex: 1; min-inline-size: 0; min-height: 0; padding: .9rem 0;
+  font: 450 clamp(1.1rem, 1rem + .5vw, 1.35rem)/1.2 var(--font);
+  color: var(--text); background: none; border: 0; outline: none;
+}
+.find input::placeholder { color: var(--sub); }
+.find button {
+  min-height: 0; padding: .95rem 1.4rem;
+  font: 600 1rem/1 var(--font); color: var(--ground); background: var(--text);
+  border: 0; border-radius: calc(var(--radius-field) - 4px); cursor: pointer;
+}
+.browse { margin: var(--s-2) 0; font-size: var(--fs-small); color: var(--sub); }
+
+/* ============ 5. THE LINEUP: one wave, one continuous stage ============ */
+.lineup { padding-block: var(--s-3) var(--s-7); }
+.lineup-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end;
+  gap: .35rem var(--s-3); max-inline-size: var(--page);
+  margin-inline: auto; padding-inline: var(--gutter);
+}
+.lineup-kicker {
+  grid-column: 1 / -1; margin: 0;
+  font: 500 var(--fs-id)/1 var(--font); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--sub);
+}
+.lineup-head h2 { margin: 0; padding: 0; border: 0; font: 650 var(--fs-h2)/1.05 var(--font); letter-spacing: -.025em; text-transform: none; }
+.lineup-more { font-size: var(--fs-small); white-space: nowrap; }
+.stage {
+  list-style: none; display: flex; margin: var(--s-4) 0;
+  padding: 0 max(var(--gutter), calc((100% - var(--page)) / 2));
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.fig { position: relative; flex: 0 var(--fig-w); scroll-snap-align: start; }
+.fig + .fig { margin-inline-start: calc(var(--fig-w) * -.06); }
+.fig-shot { display: block; }
+.fig-shot img {
+  display: block; inline-size: 100%; block-size: auto; aspect-ratio: 3/4; object-fit: cover;
+  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%), linear-gradient(to bottom, #000 62%, transparent 97%);
+  mask-composite: intersect;
+}
+.stage:has(.fig:hover) .fig:not(:hover) img { filter: brightness(.55); }
+.fig-no, .fig-name, .fig .state { position: relative; padding-inline: 12%; }
+.fig-no { margin: -2.6rem 0 0; font: 500 var(--fs-id)/1 var(--font); letter-spacing: .06em; font-variant-numeric: tabular-nums; color: var(--sub); }
+.fig-name { margin: .35rem 0 0; font: 600 var(--fs-name)/1.15 var(--font); font-stretch: var(--narrow); letter-spacing: -.01em; text-wrap: balance; }
+.fig-name a { text-decoration: none; }
+.fig-name a:hover { text-decoration: underline; }
+
+/* the one color: green dot = owned, green ring = wanted */
+.fig .state { display: flex; gap: var(--s-2); margin-block-start: .1rem; }
+.statebtn {
+  display: inline-flex; align-items: center; gap: .4em; min-height: 44px; padding: 0;
+  font: 500 .8rem/1 var(--font); color: var(--sub);
+  background: none; border: 0; border-radius: 0; cursor: pointer;
+}
+.statebtn::before { content: ""; inline-size: .55rem; block-size: .55rem; border-radius: 50%; box-shadow: inset 0 0 0 1.5px currentColor; }
+.statebtn:hover, .statebtn[aria-pressed="true"] { color: var(--text); }
+.statebtn[data-state="owned"][aria-pressed="true"]::before { background: var(--on); box-shadow: none; }
+.statebtn[data-state="wanted"][aria-pressed="true"]::before { box-shadow: inset 0 0 0 2px var(--on); }
+
+/* the designed fallback from guardImages() */
+.stage .notplate { display: grid; align-content: end; aspect-ratio: 3/4; padding: 12%; background: var(--raise); }
+.stage .np-name { font-weight: 600; font-stretch: var(--narrow); }
+
+/* ============ 6. MOTION ============ */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-group(*) { animation-duration: 420ms; animation-timing-function: var(--ease-out); }
+  .fig-shot img { animation: power-on var(--dur-on) var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * var(--stagger) + 120ms); transition: filter 300ms var(--ease-out); }
+  .statebtn::before { transition: background-color 180ms, box-shadow 180ms; }
+  .statebtn[aria-pressed="true"]::before { animation: dot-pop 220ms var(--ease-out); }
+}
+@supports (animation-timeline: scroll()) {
+  .census-n { animation: recede linear both; animation-timeline: scroll(root); animation-range: 0 50vh; }
+}
+@keyframes power-on { from { opacity: 0; filter: brightness(.2); translate: 0 1.5%; } }
+@keyframes dot-pop { 50% { scale: 1.35; } }
+@keyframes recede { to { opacity: .35; scale: .96; } }

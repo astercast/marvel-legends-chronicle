@@ -148,7 +148,7 @@ def social_meta(title, desc, rel, prefix=""):
         f'  <meta name="twitter:title" content="{escape(title)}">',
         f'  <meta name="twitter:description" content="{escape(desc)}">',
         f'  <meta name="twitter:image" content="{OG_IMAGE}">',
-        '  <meta name="theme-color" content="#FAF6EC">',
+        '  <meta name="theme-color" content="#0F1011">',
         f'  <link rel="icon" href="{prefix}favicon.svg" type="image/svg+xml">',
         f'  <link rel="apple-touch-icon" href="{prefix}apple-touch-icon.png">',
     ]
@@ -161,6 +161,9 @@ def chrome(title, desc, current, prefix="", extra_head="", rel=""):
         f'<a href="{prefix}{href}"{" aria-current=\"page\"" if label == current else ""}>{label}</a>'
         for label, href in NAV)
     wm_current = ' aria-current="page"' if current == "Home" else ""
+    mast_nav = "".join(
+        f'<a{" class=\"mast-mine\"" if label == "My Collection" else ""} href="{prefix}{href}"{" aria-current=\"page\"" if label == current else ""}>{label}</a>'
+        for label, href in NAV)
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,15 +171,17 @@ def chrome(title, desc, current, prefix="", extra_head="", rel=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(desc)}">
+<meta name="theme-color" content="#0F1011">
 {social}<link rel="icon" href="{prefix}favicon.ico" sizes="48x48">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap">
 <link rel="stylesheet" href="{prefix}assets/css/r23.css">
+<link rel="stylesheet" href="{prefix}assets/css/legend.css">
 {extra_head}</head>
 <body>
-<header class="topbar"><a class="wordmark" href="{prefix}index.html"{wm_current}>Marvel Legends Chronicle</a>
-<nav>{nav}</nav>
-<form action="{prefix}visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures" required></form></header>
+<header class="mast"><a class="mast-mark" href="{prefix}index.html"{wm_current}>Marvel Legends Chronicle</a>
+<nav class="mast-nav" aria-label="Primary">{mast_nav}</nav>
+</header>
 <main>
 """
 
@@ -268,28 +273,30 @@ def gen_data():
 # ---------- Surface 1: Catalog home ----------
 def home():
     pictured = [r for r in ROWS if r["pictured"]]
-    # The featured figure demonstrates the whole record on the first screen:
-    # the newest pictured figure that also carries buy doors (photograph,
-    # price door, state). Falls back to the newest pictured figure.
-    with_buy = [i for i, f in enumerate(FIGS)
-                if f["id"] in IMAGES and IMAGES[f["id"]].get("buy")]
-    pool = with_buy or [i for i, r in enumerate(ROWS) if r["pictured"]]
-    lead_i = max(pool, key=lambda i: ROWS[i]["year"])
-    lead, lead_f = ROWS[lead_i], FIGS[lead_i]
-    lead_img = IMAGES[lead_f["id"]]
-    lead_sold = "".join(
-        f'<div class="priceline"><span>Reported sold: {escape(s["display"])}</span>'
-        f'<span class="num">{escape(s["asOf"])} · {escape(s["source"])}</span></div>'
-        for s in SIGNALS if s["figId"] == lead_f["id"])
-    lead_buy = "".join(
-        f'<div class="buyrow"><span>{escape(b["retailer"])}</span>'
-        f'<a href="{escape(b["url"])}" rel="noopener">Buy</a></div>'
-        f'<div class="priceline"><span>Asking at {escape(b["retailer"])}</span>'
-        f'<span class="num">${b["priceUSD"]} · seen {escape(b["priceSeen"])}</span></div>'
-        for b in lead_img.get("buy", []))
-    wall = sorted((r for r in pictured if r["slug"] != lead["slug"]),
-                  key=lambda r: (-r["year"], r["name"]))[:12]
+    wall = sorted(pictured, key=lambda r: (-r["year"], r["name"]))[:12]
     wall_tiles = "".join(tile_html(r) for r in wall)
+    # Consult build (R133, "Model Numbers, after dark"): the lineup is the
+    # newest wave generated from the census rows in wave order. Fleet law:
+    # a figure shows its repo-hosted photo only when one exists (a non-http
+    # image path); retailer CDN hotlinks are never emitted here, and a
+    # figure with no local photo takes the design's .notplate fallback.
+    dd_wave = WAVES["hasbro-2026-doomsday-1"]
+    dd_rows = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == "hasbro-2026-doomsday-1"]
+    def lineup_fig(i, r):
+        if r["img"] and not r["img"].startswith("http"):
+            shot = (f'<img src="{escape(r["img"])}" alt="{escape(r["name"])} figure photograph" '
+                    f'width="345" height="460" referrerpolicy="no-referrer"'
+                    f'{" fetchpriority=\"high\"" if i < 3 else ""} '
+                    f'style="view-transition-name: fig-{r["slug"]}">')
+        else:
+            shot = f'<span class="notplate"><span class="np-name">{escape(r["name"])}</span></span>'
+        return (f'<li class="fig" style="--i:{i}">'
+                f'<a class="fig-shot" href="spec-sheet.html?f={r["slug"]}" tabindex="-1" aria-hidden="true">{shot}</a>'
+                f'<p class="fig-no">No. {i + 1}</p>'
+                f'<h3 class="fig-name"><a href="spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></h3>'
+                f'{state_btns(r["slug"])}</li>')
+    lineup = "".join(lineup_fig(i, r) for i, r in enumerate(dd_rows))
+    year_lo = min(r["year"] for r in ROWS); year_hi = max(r["year"] for r in ROWS)
     def wave_door(w):
         rows_w = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == w["id"]]
         pic = next((r for r in rows_w if r["pictured"]), None)
@@ -327,22 +334,22 @@ def home():
         f'<li><a href="{href}"><span>{escape(k)}</span><span class="count">{v:,}</span></a></li>'
         for k, (v, href) in counts.items())
     body = f"""
-<h1 class="claim">1,949 figures · 170 waves · 2002–2026</h1>
-<form class="bigsearch" action="visual-database.html" method="get" role="search">
-<input type="search" name="q" placeholder="Search figures" aria-label="Search figures" required>
+<section class="front" aria-labelledby="census">
+<h1 class="census" id="census"><span class="census-n">{len(ROWS):,} figures.</span>
+<span class="census-sub">{len(WAVES)} waves of Marvel Legends, {year_lo} to {year_hi}.</span></h1>
+<form class="find" action="visual-database.html" method="get" role="search">
+<label class="vh" for="q">Search the catalog</label>
+<input id="q" type="search" name="q" placeholder="Try Gambit, X-Men or Toy Biz" required>
 <button type="submit">Search</button></form>
-<section class="hero">
-<figure class="plate"><div class="frame"><img src="{escape(lead["img"])}" alt="{escape(lead["name"])} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>
-<div class="heroside">
-<p class="micro">Featured figure</p>
-<div class="pid">{escape(lead["pid"])}</div>
-<h2 class="heroname"><a href="spec-sheet.html?f={lead["slug"]}">{escape(lead["name"])}</a></h2>
-<p class="factline">{escape(lead["fact"])}</p>
-{lead_sold}
-{lead_buy}
-<div class="ownwant">{state_btns(lead["slug"])}</div>
-<p><a href="spec-sheet.html?f={lead["slug"]}">Full record for {escape(lead["name"])}</a></p>
+<p class="browse">Or browse by <a href="characters/index.html">character</a> · <a href="waves/index.html">wave</a> · <a href="visual-database.html?sort=year">year</a></p>
+</section>
+<section class="lineup" aria-labelledby="lineup-title">
+<div class="lineup-head">
+<p class="lineup-kicker">Newest wave · {dd_wave["year"]} · {len(dd_rows)} figures</p>
+<h2 id="lineup-title">{escape(dd_wave["series"])}</h2>
+<a class="lineup-more" href="waves/hasbro-2026-doomsday-1.html">See the wave <span aria-hidden="true">→</span></a>
 </div>
+<ol class="stage">{lineup}</ol>
 </section>
 <h2>Pictured figures</h2>
 <ul class="tiles">{wall_tiles}</ul>
@@ -574,6 +581,8 @@ try{
   </ul>
   ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=o.img?`<a class="platewrap" href="spec-sheet.html?f=${esc(o.slug)}"><img src='${esc(o.img)}' alt="${esc(o.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${esc(o.slug)}"><span class="absname">${esc(o.name)}</span><span class="micro">Not pictured</span></a>`; return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
   <p class="sourceline">${esc(s.sourceLine)}</p>`;
+  const big=el.querySelector(".plate img");
+  if (big) big.style.viewTransitionName="fig-"+slug;
   wireState(el);
 }catch(e){ el.innerHTML=`<h1>Figure not found</h1><p>Search the <a href="visual-database.html">catalog</a>.</p>`; }
 </script>

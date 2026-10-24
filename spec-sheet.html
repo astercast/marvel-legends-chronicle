@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Figure | Marvel Legends Chronicle</title>
 <meta name="description" content="The figure record: wave, year, maker, reported prices, and where to buy it.">
+<meta name="theme-color" content="#0F1011">
   <link rel="canonical" href="https://marvel-legends-chronicle-live.vercel.app/spec-sheet">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Figure | Marvel Legends Chronicle">
@@ -17,18 +18,19 @@
   <meta name="twitter:title" content="Figure | Marvel Legends Chronicle">
   <meta name="twitter:description" content="The figure record: wave, year, maker, reported prices, and where to buy it.">
   <meta name="twitter:image" content="https://marvel-legends-chronicle-live.vercel.app/assets/og-card.png">
-  <meta name="theme-color" content="#FAF6EC">
+  <meta name="theme-color" content="#0F1011">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap">
 <link rel="stylesheet" href="assets/css/r23.css">
+<link rel="stylesheet" href="assets/css/legend.css">
 </head>
 <body>
-<header class="topbar"><a class="wordmark" href="index.html">Marvel Legends Chronicle</a>
-<nav><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
-<form action="visual-database.html" method="get" role="search"><input type="search" name="q" placeholder="Search" aria-label="Search figures" required></form></header>
+<header class="mast"><a class="mast-mark" href="index.html">Marvel Legends Chronicle</a>
+<nav class="mast-nav" aria-label="Primary"><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a class="mast-mine" href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
+</header>
 <main>
 
 <nav class="backline crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> · <a href="visual-database.html">Catalog</a> · <span aria-current="page">Figure record</span></nav>
@@ -78,6 +80,8 @@ try{
   </ul>
   ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=o.img?`<a class="platewrap" href="spec-sheet.html?f=${esc(o.slug)}"><img src='${esc(o.img)}' alt="${esc(o.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${esc(o.slug)}"><span class="absname">${esc(o.name)}</span><span class="micro">Not pictured</span></a>`; return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
   <p class="sourceline">${esc(s.sourceLine)}</p>`;
+  const big=el.querySelector(".plate img");
+  if (big) big.style.viewTransitionName="fig-"+slug;
   wireState(el);
 }catch(e){ el.innerHTML=`<h1>Figure not found</h1><p>Search the <a href="visual-database.html">catalog</a>.</p>`; }
 </script>
