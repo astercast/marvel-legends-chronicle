@@ -78,25 +78,49 @@ def rowdata(f, slug, pid):
 ROWS = [rowdata(f, m["slug"], m["pid"]) for f, m in zip(FIGS, META)]
 BY_SLUG = {r["slug"]: r for r in ROWS}
 
+# Fleet law (Round 2 consult, fix E, fleet override): retailer hotlinks
+# are FORBIDDEN. A figure photo is emitted only when the census carries a
+# repo-hosted (non-http) path; every hotlinked URL falls back to the
+# design's absence plate (.notplate / "Not pictured"). The census today
+# holds zero repo-hosted photos, so the home page renders on the fallback
+# until local photos with hosting rights land. One switch, one place.
+ALLOW_HOTLINK = False
+
+def hotlink(url):
+    return bool(url) and url.startswith("http")
+
+def shown_img(r, local_only=False):
+    """The photo a surface may show for a row, or None for the fallback.
+    Surfaces that enforce the no-hotlink law pass local_only=True (the
+    home page passes local_only=not ALLOW_HOTLINK, so the fleet switch
+    above decides its behaviour in one place)."""
+    if not r["img"]:
+        return None
+    if hotlink(r["img"]) and local_only:
+        return None
+    return r["img"]
+
 def state_btns(slug):
     return (f'<div class="state">'
             f'<button class="statebtn" data-state="owned" data-slug="{slug}" aria-pressed="false">Owned</button>'
             f'<button class="statebtn" data-state="wanted" data-slug="{slug}" aria-pressed="false">Wanted</button></div>')
 
-def row_html(r, prefix=""):
-    media = (f'<img class="thumb" src="{escape(r["img"])}" alt="" loading="lazy" referrerpolicy="no-referrer">' if r["img"]
+def row_html(r, prefix="", local=False):
+    img = shown_img(r, local_only=local)
+    media = (f'<img class="thumb" src="{escape(img)}" alt="" loading="lazy" referrerpolicy="no-referrer">' if img
              else '<span class="notpic">Not pictured</span>')
     return (f'<li class="row">{media}<div><div class="pid">{escape(r["pid"])}</div>'
             f'<div class="name"><a href="{prefix}spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></div>'
             f'<div class="fact">{escape(r["fact"])}</div></div>{state_btns(r["slug"])}</li>')
 
-def tile_html(r, prefix=""):
+def tile_html(r, prefix="", local=False):
     """The wall's unit: the plate is the largest element; name under it; one
     fact line; the state pair on one row. Absence is the same 4:5 plate in
     typographic form, so pictured and unpictured hold one rhythm."""
-    if r["img"]:
+    img = shown_img(r, local_only=local)
+    if img:
         media = (f'<a class="platewrap" href="{prefix}spec-sheet.html?f={r["slug"]}">'
-                 f'<img src="{escape(r["img"])}" alt="{escape(r["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>')
+                 f'<img src="{escape(img)}" alt="{escape(r["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>')
     else:
         media = (f'<a class="platewrap absence" href="{prefix}spec-sheet.html?f={r["slug"]}">'
                  f'<span class="absname">{escape(r["name"])}</span><span class="micro">Not pictured</span></a>')
@@ -173,8 +197,7 @@ def chrome(title, desc, current, prefix="", extra_head="", rel=""):
 <meta name="description" content="{escape(desc)}">
 <meta name="theme-color" content="#0F1011">
 {social}<link rel="icon" href="{prefix}favicon.ico" sizes="48x48">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap">
+<link rel="stylesheet" href="{prefix}assets/css/fonts.css">
 <link rel="stylesheet" href="{prefix}assets/css/r23.css">
 <link rel="stylesheet" href="{prefix}assets/css/legend.css">
 {extra_head}</head>
@@ -274,17 +297,21 @@ def gen_data():
 def home():
     pictured = [r for r in ROWS if r["pictured"]]
     wall = sorted(pictured, key=lambda r: (-r["year"], r["name"]))[:12]
-    wall_tiles = "".join(tile_html(r) for r in wall)
+    wall_tiles = "".join(tile_html(r, local=not ALLOW_HOTLINK) for r in wall)
     # Consult build (R133, "Model Numbers, after dark"): the lineup is the
-    # newest wave generated from the census rows in wave order. Fleet law:
+    # newest wave generated from the census rows in wave order. Fleet law
+    # (Round 2, fix E with the fleet override): ALLOW_HOTLINK is False, so
     # a figure shows its repo-hosted photo only when one exists (a non-http
-    # image path); retailer CDN hotlinks are never emitted here, and a
+    # image path); retailer CDN hotlinks are never emitted on this page,
+    # in the lineup, the wall, the wave doors or the newest rows, and a
     # figure with no local photo takes the design's .notplate fallback.
-    dd_wave = WAVES["hasbro-2026-doomsday-1"]
-    dd_rows = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == "hasbro-2026-doomsday-1"]
+    wave_id = "hasbro-2026-doomsday-1"
+    dd_wave = WAVES[wave_id]
+    dd_rows = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == wave_id]
     def lineup_fig(i, r):
-        if r["img"] and not r["img"].startswith("http"):
-            shot = (f'<img src="{escape(r["img"])}" alt="{escape(r["name"])} figure photograph" '
+        img = shown_img(r, local_only=not ALLOW_HOTLINK)
+        if img:
+            shot = (f'<img src="{escape(img)}" alt="{escape(r["name"])} figure photograph" '
                     f'width="345" height="460" referrerpolicy="no-referrer"'
                     f'{" fetchpriority=\"high\"" if i < 3 else ""} '
                     f'style="view-transition-name: fig-{r["slug"]}">')
@@ -299,10 +326,10 @@ def home():
     year_lo = min(r["year"] for r in ROWS); year_hi = max(r["year"] for r in ROWS)
     def wave_door(w):
         rows_w = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == w["id"]]
-        pic = next((r for r in rows_w if r["pictured"]), None)
+        pic = next((r for r in rows_w if shown_img(r, local_only=not ALLOW_HOTLINK)), None)
         n_pic = sum(1 for r in rows_w if r["pictured"])
         if pic:
-            media = (f'<span class="wdplate"><img src="{escape(pic["img"])}" '
+            media = (f'<span class="wdplate"><img src="{escape(shown_img(pic, local_only=not ALLOW_HOTLINK))}" '
                      f'alt="{escape(pic["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></span>')
         else:
             media = f'<span class="wdplate absence"><span class="micro">Not pictured yet</span></span>'
@@ -347,7 +374,7 @@ def home():
 <div class="lineup-head">
 <p class="lineup-kicker">Newest wave · {dd_wave["year"]} · {len(dd_rows)} figures</p>
 <h2 id="lineup-title">{escape(dd_wave["series"])}</h2>
-<a class="lineup-more" href="waves/hasbro-2026-doomsday-1.html">See the wave <span aria-hidden="true">→</span></a>
+<a class="lineup-more" href="waves/{wave_id}.html">See the wave <span aria-hidden="true">→</span></a>
 </div>
 <ol class="stage">{lineup}</ol>
 </section>
@@ -364,7 +391,7 @@ def home():
 <h2>Browse</h2>
 <ul class="indexlines">{index_lines}</ul>
 <h2>Newest additions</h2>
-<ul class="rows">{''.join(row_html(r) for r in newest)}</ul>
+<ul class="rows">{''.join(row_html(r, local=not ALLOW_HOTLINK) for r in newest)}</ul>
 """
     write("index.html", chrome("Marvel Legends Chronicle",
           "1,949 Marvel Legends figures, 170 waves, 2002–2026. Search the catalog.", "Home", rel="index.html") + body + wire("") + foot())
@@ -821,6 +848,14 @@ async function render(){
     <li><span class="k">Buy</span><span><a href="spec-sheet.html?f=${esc(slug)}">Figure record and buy doors</a></span></li></ul></section>`;
   }).join("");
 }
+async function warmPickers(){
+  await ensure();
+  const dl=document.getElementById("figs");
+  if(dl) dl.innerHTML=index.slice(0,4000).map(r=>`<option value="${esc(r.name)}">`).join("");
+}
+document.addEventListener("focusin", e=>{
+  if(e.target.matches('input[list="figs"]')) warmPickers();
+}, { once: true });
 render();
 </script>
 """

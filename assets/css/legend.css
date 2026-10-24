@@ -171,3 +171,91 @@ input[type=search] { background: var(--raise); color: var(--text); border-color:
 @keyframes power-on { from { opacity: 0; filter: brightness(.2); translate: 0 1.5%; } }
 @keyframes dot-pop { 50% { scale: 1.35; } }
 @keyframes recede { to { opacity: .35; scale: .96; } }
+
+/* ============ 7. ROUND 2 CONSULT FIXES (2026-10-24) ============ */
+/* A. Restore the page frame on every page. The extract's footer
+   selector was "footer .site"; the generated markup is a single
+   <footer class="site"> element, so the selector is adapted to match. */
+main > :not(.front):not(.lineup) {
+  max-inline-size: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  box-sizing: border-box;
+}
+main > :first-child:not(.front):not(.lineup) {
+  padding-block-start: var(--s-5);
+}
+footer.site {
+  max-inline-size: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  box-sizing: border-box;
+}
+.footmap { padding-inline: 0; }
+
+/* B. Dark form fields that match the site. The second block repeats
+   r23.css's own selectors at equal specificity; legend.css loads
+   after r23.css, so these win over its hard-coded #fff backgrounds. */
+input, select, textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--raise);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: .6rem .75rem;
+  min-block-size: 44px;
+  color-scheme: dark;
+}
+input::placeholder { color: var(--sub); }
+input[type=checkbox], input[type=radio] {
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+  min-block-size: 0;
+  padding: 0;
+  accent-color: var(--text);
+}
+input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+.topbar input[type=search],
+.bigsearch input,
+.controls input[type=search],
+.controls select,
+input[type=text], input[type=number], input[type=date] {
+  background: var(--raise);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+/* C. Take the white mats off the photos. */
+.platewrap, .wdplate, .stripplate, .plate .frame, .panelplate {
+  background: var(--raise);
+  border: 0;
+  padding: 0;
+}
+.platewrap img, .wdplate img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+}
+.plate .frame { padding: var(--s-3); }
+
+/* D. A figure can sit on the first screen: the numeral is full white
+   (r23.css's .census sets it to muted grey) and a step smaller, and
+   the front matter ends sooner so the lineup rises. */
+.census-n {
+  color: var(--text);
+  font-size: clamp(3rem, 1rem + 6vw, 6.5rem);
+}
+.census-sub { color: var(--sub); }
+.front { padding-block-end: var(--s-3); }
+.stage {
+  margin-block: var(--s-3);
+  padding-inline: max(var(--gutter), calc((100% - var(--page)) / 2));
+}
+
+/* H. The phone nav shows it scrolls. */
+@media (max-width: 40rem) {
+  .mast-nav { mask-image: linear-gradient(90deg, #000 88%, transparent); }
+}

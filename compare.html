@@ -22,8 +22,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap">
+<link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/r23.css">
 <link rel="stylesheet" href="assets/css/legend.css">
 </head>
@@ -70,6 +69,14 @@ async function render(){
     <li><span class="k">Buy</span><span><a href="spec-sheet.html?f=${esc(slug)}">Figure record and buy doors</a></span></li></ul></section>`;
   }).join("");
 }
+async function warmPickers(){
+  await ensure();
+  const dl=document.getElementById("figs");
+  if(dl) dl.innerHTML=index.slice(0,4000).map(r=>`<option value="${esc(r.name)}">`).join("");
+}
+document.addEventListener("focusin", e=>{
+  if(e.target.matches('input[list="figs"]')) warmPickers();
+}, { once: true });
 render();
 </script>
 </main>
