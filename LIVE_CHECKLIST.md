@@ -25,7 +25,7 @@ frontend live timeout and the 10s function budget.
   sources (Toyark, MarvelousNews, aggregators; 4s per source), dedupes vs
   `radar-seen.json`, appends candidates to `radar-candidates.json` (90-day
   prune), commits on change via content-hash (no change → no commit).
-- Without `GITHUB_REPO_TOKEN`: read-only mode — returns fresh data in the
+Retired 2026-10-24 (fleet-data migration): no GITHUB_REPO_TOKEN is used anywhere. Live data refreshes through the astercast/fleet-data repo; the fleet watchdog does the checking.
   response envelope, commits nothing (`committed:false, reason:'no-token'`).
 
 ## Environment variables (Vercel dashboard only — never in the repo)
@@ -33,7 +33,7 @@ frontend live timeout and the 10s function budget.
 | name | required | notes |
 |---|---|---|
 | `CRON_SECRET` | yes for cron | 32+ hex chars; Vercel sends as `Authorization: Bearer`. `/api/cron/radar` 401s without it (fail closed). |
-| `GITHUB_REPO_TOKEN` | optional | fine-grained PAT, `contents:write` on the -live repo only. Cron commits wait on it. |
+Retired 2026-10-24 (fleet-data migration): no GITHUB_REPO_TOKEN is used anywhere. Live data refreshes through the astercast/fleet-data repo; the fleet watchdog does the checking.
 | `GITHUB_REPO` | yes for cron commits | `owner/name` of the -live repo. |
 | `GITHUB_BRANCH` | no | defaults to production branch. |
 | `REPO_STATIC_PREFIX` | yes | empty string (root-served). |
@@ -93,7 +93,7 @@ Measured on the working repo with the real handlers under local Node 24
   (2) At ~20× the assumed traffic, the invocation cap pauses the live
   probes — pages keep serving the committed static JSON in full, with
   the badge honestly reading "cached". (3) The GitHub commit-back path:
-  without `GITHUB_REPO_TOKEN` the cron is read-only by design, so the
+Retired 2026-10-24 (fleet-data migration): no GITHUB_REPO_TOKEN is used anywhere. Live data refreshes through the astercast/fleet-data repo; the fleet watchdog does the checking.
   candidates file only moves when the wave engine polls — a freshness
   limit, not a failure.
 

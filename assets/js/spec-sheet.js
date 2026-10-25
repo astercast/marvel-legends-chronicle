@@ -97,7 +97,7 @@ function renderSheet(r) {
   const chain = [];
   if (r.source) chain.push(`filed from ${escapeHtml(r.source)}`);
   if (r.exclusive) chain.push(`offered through ${escapeHtml(r.exclusive)}`);
-  if (entry) chain.push(`photographed by ${escapeHtml(entry.imageSource)}, embedded from the retailer, never copied into this archive`);
+  if (entry) chain.push(`Photo at ${escapeHtml(entry.imageSource)}, never copied into this archive`);
   if (r.capture) chain.push(`with a Drop Week capture on file`);
   const provenance = chain.length
     ? `<p class="record-provenance">Provenance: this record was ${chain.join("; ")}.</p>`
@@ -119,7 +119,7 @@ function renderSheet(r) {
     ${recordSection("Creation", `<p>${escapeHtml(r.manufacturer)}, ${r.year}</p><p>Wave: <a href="waves/${escapeHtml(r.wave.id)}.html">${escapeHtml(r.wave.series)}</a></p><p>Build-A-Figure: ${buildValue}</p>`)}
     ${recordSection("Material and technique", `<p>Not recorded: the catalog holds no material or technique field for any figure, and this sheet names that absence rather than inventing one.</p>`)}
     ${recordSection("Subject", `<p>${escapeHtml(r.character)}</p>`)}
-    ${recordSection("Acquisition and rights", `<p>${r.exclusive ? `Exclusive: ${escapeHtml(r.exclusive)}` : "No exclusive channel recorded for this figure."}</p>${entry ? buyLinksHtml(entry) : ""}<p>Photography, where pictured, is the manufacturer's own, embedded from its retailer source with the source recorded on the plate.</p>`)}
+    ${recordSection("Acquisition and rights", `<p>${r.exclusive ? `Exclusive: ${escapeHtml(r.exclusive)}` : "No exclusive channel recorded for this figure."}</p>${entry ? buyLinksHtml(entry) : ""}<p>${entry ? `Photo at ${escapeHtml(entry.imageSource)}: the manufacturer's own photography stays at the retailer, linked from this sheet, never copied into this archive.` : "No photo yet for this figure."}</p>`)}
     ${recordSection("Documentation", `<p>${r.source ? `Source: ${escapeHtml(r.source)}` : "The catalog names no source for this figure."}</p><p>${r.capture ? `Capture: ${escapeHtml(JSON.stringify(r.capture))}` : "Capture: awaiting capture, no asking price, limit or ship date has been captured for this figure yet."}</p>${SPEC_ABSENT_FIELDS.map((f) => `<p>${escapeHtml(f.label)}: not recorded, ${escapeHtml(f.note)}</p>`).join("")}`)}
     ${recordSection("Persistent URL", `<p><a href="${escapeHtml(persistentUrl(r.id))}">${escapeHtml(persistentUrl(r.id))}</a></p>`)}
   </div>`;

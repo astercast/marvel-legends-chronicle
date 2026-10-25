@@ -22,9 +22,14 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
+<meta name="built" content="2026-10-24T15:14:32Z">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/r23.css">
 <link rel="stylesheet" href="assets/css/legend.css">
+<link rel="stylesheet" href="assets/css/plate2.css">
+<link rel="stylesheet" href="assets/css/shelf.css">
+<link rel="stylesheet" href="assets/css/pulse.css">
+<script src="assets/js/plate2.js" defer></script>
 </head>
 <body>
 <header class="mast"><a class="mast-mark" href="index.html">Marvel Legends Chronicle</a>
@@ -36,7 +41,7 @@
 <p class="census" id="summary">Owned 0 · Wanted 0 · Waves complete 0 · Build A Figures complete 0</p>
 <h2>Owned</h2>
 <div id="owned"><p class="method">Nothing marked Owned yet. Mark figures Owned in the <a href="visual-database.html">catalog</a>.</p></div>
-<p><button class="plain" type="button" onclick="window.print()">Print checklist</button></p>
+<p><button class="plain" type="button" id="posterBtn">Download My Shelf poster</button> <button class="plain" type="button" onclick="window.print()">Print checklist</button></p>
 <h2>Wanted</h2>
 <div id="wanted"><p class="method">Nothing marked Wanted yet.</p></div>
 <p><button class="plain" type="button" onclick="window.print()">Print hunt list</button></p>
@@ -64,7 +69,14 @@ const completeWaves=[...waves.values()].filter(ws=>ws.every(r=>loadSet("owned").
 const bafWaves=[...waves.entries()].filter(([,ws])=>ws.some(r=>r.baf));
 const bafDone=bafWaves.filter(([,ws])=>ws.filter(r=>r.baf).every(r=>loadSet("owned").has(r.slug))).length;
 document.getElementById("summary").innerHTML=`Owned <b>${owned.length}</b> · Wanted <b>${wanted.length}</b> · Waves complete <b>${completeWaves}</b> · Build A Figures complete <b>${bafDone}</b>`;
-function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${r.img?`<img class="thumb" src="${esc(r.img)}" alt="" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
+function plate2Thumb(r){
+  const e=r.entry; const floor=`<span class="p-floor"><span class="p-name">${esc(r.name)}</span><span class="p-micro">Not pictured</span></span>`;
+  if(!e||!e.imageUrl||e.status==="dead") return `<a class="plate2 is-thumb" data-state="none" href="spec-sheet.html?f=${r.slug}">${floor}</a>`;
+  const style=e.matte?` style="--matte:${esc(e.matte)}"`:""; const fit=e.fit?` data-fit="${esc(e.fit)}"`:"";
+  const alts=(e.alts||[]).map(a=>a.imageUrl).filter(u=>u.startsWith("https://")).join(" ");
+  return `<a class="plate2 is-thumb" data-state="wait"${fit}${style} href="spec-sheet.html?f=${r.slug}">${floor}<img src="${esc(e.imageUrl)}" alt="${esc(r.name)} figure photograph" width="${e.w||345}" height="${e.h||460}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${alts?` data-alts="${esc(alts)}"`:""}></a>`;
+}
+function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${plate2Thumb(r)}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
 const targets=JSON.parse(localStorage.getItem("mlc_targets_r23")||"{}");
 document.getElementById("owned").innerHTML=rowList(owned)||document.getElementById("owned").innerHTML;
 document.getElementById("wanted").innerHTML=rowList(wanted, r=>`<p><label>Target price ($) <input type="number" step="0.01" min="0" data-target="${r.slug}" value="${targets[r.slug]??""}"></label></p>`)||document.getElementById("wanted").innerHTML;
@@ -91,12 +103,57 @@ function renderTop(){
   document.querySelectorAll("[data-rm]").forEach(b=>b.addEventListener("click",()=>{ top.splice(+b.dataset.rm,1); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); }));
   const ab=document.getElementById("addbtn"); if(ab) ab.addEventListener("click",()=>{ top.push(document.getElementById("addtop").value); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); });
 }
+/* My Shelf poster (2026-10-24 bundle): a canvas of the owned figures,
+   drawn on this device from the same hotlinked shop photos the plates use.
+   A photo that will not load (or will not share its pixels) becomes a
+   typographic cell with the figure's name, never a hole. */
+async function shelfPoster(){
+  const W=1240, cols=4, cellW=W/cols, cellH=cellW*1.25, head=150, foot=70;
+  const rowsN=Math.max(1, Math.ceil(owned.length/cols));
+  const cv=document.createElement("canvas"); cv.width=W; cv.height=head+rowsN*cellH+foot;
+  const cx=cv.getContext("2d");
+  function frame(withPhotos){
+    cx.fillStyle="#0d0d0e"; cx.fillRect(0,0,cv.width,cv.height);
+    cx.fillStyle="#f4f4f2"; cx.font="700 54px system-ui"; cx.fillText("My Shelf", 48, 78);
+    cx.font="400 26px system-ui"; cx.fillStyle="#8c8d91";
+    cx.fillText(owned.length? owned.length+" figures · Marvel Legends Chronicle" : "No figures marked Owned yet", 48, 122);
+    cx.strokeStyle="#3a3a3d"; cx.beginPath(); cx.moveTo(0,head+rowsN*cellH+1); cx.lineTo(W,head+rowsN*cellH+1); cx.stroke();
+    cx.font="400 22px system-ui"; cx.fillStyle="#8c8d91";
+    cx.fillText("Product photographs belong to the shops named on each figure's page.", 48, cv.height-26);
+  }
+  function cell(i, r, img){
+    const x=(i%cols)*cellW, y=head+Math.floor(i/cols)*cellH;
+    cx.fillStyle="#1a1b1d"; cx.fillRect(x+6,y+6,cellW-12,cellH-12);
+    if(img){ const s=Math.min((cellW-36)/img.width,(cellH-90)/img.height); const w=img.width*s, h=img.height*s;
+      cx.drawImage(img, x+(cellW-w)/2, y+14+(cellH-90-h)/2, w, h); }
+    cx.fillStyle="#f4f4f2"; cx.font="600 21px system-ui";
+    const name=r.name.length>30? r.name.slice(0,29)+"…" : r.name;
+    cx.fillText(name, x+18, y+cellH-42);
+    cx.fillStyle="#8c8d91"; cx.font="400 18px system-ui"; cx.fillText(r.wave+" · "+r.year, x+18, y+cellH-16);
+  }
+  frame(true);
+  await Promise.all(owned.map((r,i)=>new Promise(res=>{
+    if(!r.img){ cell(i,r,null); return res(); }
+    const im=new Image(); im.crossOrigin="anonymous"; im.referrerPolicy="no-referrer";
+    im.onload=()=>{ cell(i,r,im); res(); };
+    im.onerror=()=>{ cell(i,r,null); res(); };
+    im.src=r.img;
+  })));
+  function save(){ const a=document.createElement("a"); a.download="my-shelf.png"; a.href=cv.toDataURL("image/png"); a.click(); }
+  try{ save(); }
+  catch(e){ /* a shop photo shared its pixels read-only (tainted canvas):
+               redraw names-only and save that instead of failing */
+    frame(false); owned.forEach((r,i)=>cell(i,r,null)); save(); }
+}
+document.getElementById("posterBtn").addEventListener("click", shelfPoster);
 renderTop();
 document.getElementById("printarea").innerHTML=`<h2>Checklist: Owned and Wanted by wave</h2>`+
  [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} · ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
 </script>
 </main>
 <footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
-<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p>
+<p class="picnote">Figure photos are product photographs from the shops named on each figure's page. They belong to those shops, to Hasbro and to Marvel. This site only points at them and sells nothing. If a photo is yours and you want it gone, tell the owner on the <a href="https://github.com/astercast/marvel-legends-chronicle/issues" rel="noopener">issues page</a> and it comes down the same day.</p></footer>
+<script type="module" src="assets/js/pulse.js"></script>
 </body>
 </html>

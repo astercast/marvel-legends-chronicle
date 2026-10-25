@@ -1,0 +1,19 @@
+{
+ "checkedAt": "2026-10-24",
+ "checked": 613,
+ "ok": 611,
+ "dead": 2,
+ "promoted": [],
+ "deadList": [
+  {
+   "figureId": "hasbro-2017-gladiator-hulk::Odinson",
+   "host": "cmdstore.com",
+   "why": "too small 158x269"
+  },
+  {
+   "figureId": "hasbro-2016-red-onslaught::Sharon Carter",
+   "host": "toyarena.com",
+   "why": "too small 143x249"
+  }
+ ]
+}

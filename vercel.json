@@ -1,24 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "python3 scripts/build_r23.py",
+  "buildCommand": "python3 scripts/build_r23.py && python3 scripts/write_health.py",
   "cleanUrls": true,
-  "crons": [
-    {
-      "path": "/api/cron/radar",
-      "schedule": "0 15 * * *"
-    }
-  ],
   "functions": {
-    "api/health.js": {
-      "maxDuration": 10
-    },
     "api/reveals.js": {
       "maxDuration": 10
     },
     "api/preorders.js": {
-      "maxDuration": 10
-    },
-    "api/cron/radar.js": {
       "maxDuration": 10
     }
   },
@@ -45,6 +33,10 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "img-src 'self' data: https:"
         }
       ],
       "source": "/(.*)"

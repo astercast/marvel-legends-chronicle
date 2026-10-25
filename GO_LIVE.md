@@ -65,7 +65,7 @@ Do not "fix" this by reordering; the builds are intentionally independent.
       never in the repo):
   - `CRON_SECRET` — 32+ random hex chars:
     `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
-  - `GITHUB_REPO_TOKEN` — **pending decision** (spec §14 open decision 1):
+Retired 2026-10-24 (fleet-data migration): no GITHUB_REPO_TOKEN is used anywhere. Live data refreshes through the astercast/fleet-data repo; the fleet watchdog does the checking.
     fine-grained PAT, `contents:write` on **this repo only**, no other
     scopes. Until the user creates it, the cron job runs in **read-only
     mode**: it computes and returns fresh data in its response envelope but
@@ -83,7 +83,7 @@ Do not "fix" this by reordering; the builds are intentionally independent.
    - Output Directory: *(leave empty — repo root is the Vercel default)*
    - Install Command: `echo 'no dependencies'`
 3. **Environment Variables** (Production scope):
-   `CRON_SECRET`, `GITHUB_REPO_TOKEN` (pending §3 decision), `GITHUB_REPO`,
+Retired 2026-10-24 (fleet-data migration): no GITHUB_REPO_TOKEN is used anywhere. Live data refreshes through the astercast/fleet-data repo; the fleet watchdog does the checking.
    `REPO_STATIC_PREFIX` (empty).
 4. **Build machine: Standard.** Settings → Build & Deployment → Build Machine
    → **Standard**. **Never Turbo** — September 2026 Turbo CPU billed
@@ -115,7 +115,7 @@ Do not "fix" this by reordering; the builds are intentionally independent.
 | Name | Required? | Where set | Notes / rotation |
 |---|---|---|---|
 | `CRON_SECRET` | Yes | Vercel → Settings → Environment Variables (Production) | 32+ hex chars. Vercel auto-sends it as `Authorization: Bearer` on cron invocations. Rotate by regenerating + updating the var + redeploying. Without it, `/api/cron/radar` 401s (fail closed). |
-| `GITHUB_REPO_TOKEN` | Pending decision (§3) | Same | Fine-grained PAT, contents:write on this repo only. Cron runs read-only without it. Rotate like any PAT; old tokens die with the PAT, nothing else to change. |
+Retired 2026-10-24 (fleet-data migration): no GITHUB_REPO_TOKEN is used anywhere. Live data refreshes through the astercast/fleet-data repo; the fleet watchdog does the checking.
 | `GITHUB_REPO` | Yes for cron commits | Same | `owner/name`. Used by `lib/github.js` commit path. |
 | `REPO_STATIC_PREFIX` | Yes | Same | Empty string for this repo (root-served). Other sites use `site/`. |
 

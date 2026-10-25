@@ -17,6 +17,15 @@ import { escapeHtml } from "./figure-dialog.js";
 
 export const FIGURE_IMAGES_PATH = "data/v1/figure-images.json";
 
+/* Picture policy (OWNER REVERSAL 2026-10-24): pictures are pulled from
+   stores and other sites and shown as the primary source; the seller
+   plate below renders only where no picture exists from any source. */
+const isHotlink = (url) => /^https?:/i.test(url || "");
+
+function sellerPlateHtml(entry) {
+  return `<figure class="fig-plate"><div class="notplate"><p class="micro"><a href="${escapeHtml(entry.sourceUrl)}" rel="noopener nofollow" target="_blank">Photo at ${escapeHtml(entry.imageSource)}</a></p></div></figure>`;
+}
+
 export async function loadFigureImages(path = FIGURE_IMAGES_PATH) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`figure images manifest: HTTP ${res.status}`);
@@ -25,44 +34,53 @@ export async function loadFigureImages(path = FIGURE_IMAGES_PATH) {
   return new Map(entries.map((e) => [e.figureId, e]));
 }
 
-/* The plate: the picture itself, linked out to its source product
-   page, with the source named. If the embed dies, the plate removes
-   itself and the typographic treatment underneath stands alone. */
-export function plateHtml(entry, name) {
-  if (!entry || !entry.imageUrl) return "";
-  return `<figure class="fig-plate">
-      <a href="${escapeHtml(entry.sourceUrl)}" target="_blank" rel="noopener noreferrer" title="Product page at ${escapeHtml(entry.imageSource)}">
-        <img src="${escapeHtml(entry.imageUrl)}" alt="${escapeHtml(name)}, product photograph from ${escapeHtml(entry.imageSource)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.fig-plate').remove()">
-      </a>
-      <figcaption>Product photograph, ${escapeHtml(entry.imageSource)} · Hasbro product photography, embedded from the retailer</figcaption>
-    </figure>`;
+/* plate2 (2026-10-24 bundle): the JS twin of scripts/plate2.py. One 4:5
+   plate everywhere: the typographic floor under a photo that fades in over
+   it (assets/js/plate2.js settles load/error and alt second chances), the
+   matte from the photo's measured corners, fill for tight busts, contain
+   for boxes and loose figures so watermarks are never cropped, and the
+   round-3 credit wording, "Photo at <shop>". */
+const HEX = /^#[0-9a-fA-F]{6}$/;
+export function usableEntry(entry) {
+  return Boolean(entry && entry.imageUrl && entry.status !== "dead");
+}
+function altsAttr(entry) {
+  const urls = (entry.alts || []).map((a) => a.imageUrl).filter((u) => /^https:\/\//.test(u));
+  return urls.length ? ` data-alts="${escapeHtml(urls.join(" "))}"` : "";
+}
+export function plate2Html(entry, name, href, opts = {}) {
+  const floor = `<span class="p-floor"><span class="p-name">${escapeHtml(name)}</span><span class="p-micro">Not pictured</span></span>`;
+  const cls = `plate2${opts.thumb ? " is-thumb" : ""}`;
+  if (!usableEntry(entry)) {
+    return href
+      ? `<a class="${cls}" data-state="none" href="${escapeHtml(href)}">${floor}</a>`
+      : `<div class="${cls}" data-state="none">${floor}</div>`;
+  }
+  const fit = ["fill", "box", "square"].includes(entry.fit) ? ` data-fit="${entry.fit}"` : "";
+  const style = HEX.test(entry.matte || "") ? ` style="--matte:${entry.matte}"` : "";
+  const w = Number(entry.w) || 345;
+  const h = Number(entry.h) || 460;
+  const img = `<img src="${escapeHtml(entry.imageUrl)}" alt="${escapeHtml(name)} figure photograph" width="${w}" height="${h}" decoding="async" referrerpolicy="no-referrer"${opts.eager ? ' fetchpriority="high"' : ' loading="lazy"'}${altsAttr(entry)}>`;
+  const credit = opts.thumb ? "" : `<span class="p-credit">Photo at ${escapeHtml(entry.imageSource)}</span>`;
+  return href
+    ? `<a class="${cls}" data-state="wait"${fit}${style} href="${escapeHtml(href)}">${floor}${img}${credit}</a>`
+    : `<div class="${cls}" data-state="wait"${fit}${style}>${floor}${img}${credit}</div>`;
 }
 
-/* The PLATE (MARVEL-LIGHT 3.4): the one featured figure per
-   surface group, presented as a printed plate. The photograph
-   centers on a Mat of true white inside a thin Ink keyline; a
-   Plate Red plate mark stands at the mat's lower right; the
-   caption under the mat runs in the Rijksmuseum order (maker,
-   title, date) and closes with the catalog number in blue.
-   A plate is printed, not lit: it never animates. If the embed
-   fails, the whole plate removes itself (the fallback law) and
-   the listing or typographic treatment stands alone. */
+/* The plate: the picture itself as a plate2 plate, linked out to its
+   source product page. Kept as a named export for existing callers. */
+export function plateHtml(entry, name) {
+  if (!entry || !entry.imageUrl) return "";
+  return plate2Html(entry, name, entry.sourceUrl);
+}
+
+/* The featured plate on a figure's own surface: plate2 with the view
+   transition name the spec sheet assigns. The Rijksmuseum caption the old
+   plate carried moves to the page's own tombstone text; the plate itself
+   is the same 4:5 plate as everywhere else. */
 export function plateFigureHtml(entry, name, opts = {}) {
   if (!entry || !entry.imageUrl) return "";
-  const mark = opts.mark || "PLATE 1";
-  const captionParts = [opts.maker, name, opts.year].filter(Boolean).map((s) => escapeHtml(String(s)));
-  const caption = captionParts.length
-    ? `<figcaption class="plate-caption">${captionParts.join(", ")}${opts.id ? `<span class="cat-no">${escapeHtml(opts.id)}</span>` : ""}</figcaption>`
-    : "";
-  return `<figure class="plate">
-      <div class="plate-mat">
-        <a href="${escapeHtml(entry.sourceUrl)}" target="_blank" rel="noopener noreferrer" title="Product page at ${escapeHtml(entry.imageSource)}">
-          <img src="${escapeHtml(entry.imageUrl)}" alt="${escapeHtml(name)}, product photograph from ${escapeHtml(entry.imageSource)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.plate').remove()">
-        </a>
-        <span class="plate-mark" aria-hidden="true">${escapeHtml(mark)}</span>
-      </div>
-      ${caption}
-    </figure>`;
+  return plate2Html(entry, name, entry.sourceUrl, { eager: true });
 }
 
 /* Places to buy: outbound links only. The price shown is the price

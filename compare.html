@@ -22,9 +22,14 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
+<meta name="built" content="2026-10-24T15:14:32Z">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/r23.css">
 <link rel="stylesheet" href="assets/css/legend.css">
+<link rel="stylesheet" href="assets/css/plate2.css">
+<link rel="stylesheet" href="assets/css/shelf.css">
+<link rel="stylesheet" href="assets/css/pulse.css">
+<script src="assets/js/plate2.js" defer></script>
 </head>
 <body>
 <header class="mast"><a class="mast-mark" href="index.html">Marvel Legends Chronicle</a>
@@ -46,12 +51,19 @@ async function ensure(){ if(!index) index=await getJSON("data/v1/search-index.js
 function renderPickers(){
   document.getElementById("pickers").innerHTML=slots.map((s,i)=>`<div><label class="f" for="pick${i}">Figure ${i+1}</label><input type="text" id="pick${i}" list="figs" value="${esc(nameFor(s))}" placeholder="Search a figure" style="width:100%"></div>`).join("")+`<datalist id="figs"></datalist>`;
   slots.forEach((s,i)=>document.getElementById("pick"+i).addEventListener("change", async e=>{
-    await ensure(); const hit=index.find(r=>r.name===e.target.value||r.slug===e.target.value);
+    await ensure(); const v=e.target.value; const hit=index.find(r => (r.name + " · " + r.pid) === v || r.slug === v || r.name.toLowerCase() === v.trim().toLowerCase());
     if(hit){ slots[i]=hit.slug; render(); }
   }));
-  if(index) document.getElementById("figs").innerHTML=index.slice(0,4000).map(r=>`<option value="${esc(r.name)}">`).join("");
+  if(index) document.getElementById("figs").innerHTML=index.map(r => `<option value="${esc(r.name + " · " + r.pid)}">`).join("");
 }
-function nameFor(slug){ if(!slug||!index) return slug?slug.replaceAll("-"," "):""; const r=index.find(x=>x.slug===slug); return r?r.name:""; }
+function nameFor(slug){ if(!slug||!index) return slug?slug.replaceAll("-"," "):""; const r=index.find(x=>x.slug===slug); return r?r.name + " · " + r.pid:""; }
+function plate2Panel(r){
+  const e=r.entry; const floor=`<span class="p-floor"><span class="p-name">${esc(r.name)}</span><span class="p-micro">Not pictured</span></span>`;
+  if(!e||!e.imageUrl||e.status==="dead") return `<div class="plate2" data-state="none">${floor}</div>`;
+  const style=e.matte?` style="--matte:${esc(e.matte)}"`:""; const fit=e.fit?` data-fit="${esc(e.fit)}"`:"";
+  const alts=(e.alts||[]).map(a=>a.imageUrl).filter(u=>u.startsWith("https://")).join(" ");
+  return `<div class="plate2" data-state="wait"${fit}${style}>${floor}<img src="${esc(e.imageUrl)}" alt="${esc(r.name)} figure photograph" width="${e.w||345}" height="${e.h||460}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${alts?` data-alts="${esc(alts)}"`:""}><span class="p-credit">Photo at ${esc(e.imageSource)}</span></div>`;
+}
 async function render(){
   renderPickers();
   const chosen=slots.filter(Boolean);
@@ -62,7 +74,7 @@ async function render(){
     const r=index.find(x=>x.slug===slug); const p=bySlug.get(slug);
     const price=p&&p.priceSignals&&p.priceSignals.length? p.priceSignals.map(x=>`Reported: ${esc(x.display||"")} (${esc(x.asOf||"")})`).join("<br>") : "No reported sales recorded for this figure.";
     const rows=FIELDS.map(([k,key])=>{ const v=(p&&p[key])||((key!=="bafPiece"&&key!=="variant"&&key!=="notes"&&r)?r[key]:null)||(key==="maker"&&p?p.manufacturer:null); return `<li><span class="k">${k}</span><span>${v?esc(v):(key==="exclusive"?"General release":key==="bafPiece"?"None":key==="variant"?"Standard release":"No notes recorded")}</span></li>`; }).join("");
-    const media=r&&r.img?`<img class="panelplate" src='${esc(r.img)}' alt="${esc(r.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer">`:r?`<div class="panelplate absence"><span class="absname">${esc(r.name)}</span><span class="micro">Not pictured</span></div>`:"";
+    const media=r?plate2Panel(r):"";
     return `<section class="panel">${media}<p class="pid micro">${esc(r?r.pid:"")}</p><h3>${esc(r?r.name:slug)}</h3>
     <p class="factline">${esc(r?r.fact:"")}</p><ul class="details">${rows}
     <li><span class="k">Reported sold</span><span>${price}</span></li>
@@ -72,7 +84,7 @@ async function render(){
 async function warmPickers(){
   await ensure();
   const dl=document.getElementById("figs");
-  if(dl) dl.innerHTML=index.slice(0,4000).map(r=>`<option value="${esc(r.name)}">`).join("");
+  if(dl) dl.innerHTML=index.map(r => `<option value="${esc(r.name + " · " + r.pid)}">`).join("");
 }
 document.addEventListener("focusin", e=>{
   if(e.target.matches('input[list="figs"]')) warmPickers();
@@ -81,6 +93,8 @@ render();
 </script>
 </main>
 <footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
-<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p>
+<p class="picnote">Figure photos are product photographs from the shops named on each figure's page. They belong to those shops, to Hasbro and to Marvel. This site only points at them and sells nothing. If a photo is yours and you want it gone, tell the owner on the <a href="https://github.com/astercast/marvel-legends-chronicle/issues" rel="noopener">issues page</a> and it comes down the same day.</p></footer>
+<script type="module" src="assets/js/pulse.js"></script>
 </body>
 </html>

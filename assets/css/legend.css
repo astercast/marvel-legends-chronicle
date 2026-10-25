@@ -259,3 +259,23 @@ input[type=text], input[type=number], input[type=date] {
 @media (max-width: 40rem) {
   .mast-nav { mask-image: linear-gradient(90deg, #000 88%, transparent); }
 }
+
+/* ROUND 3: the unpictured plate */
+.notplate { position: relative; display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 4/5; padding: 14px; background: color-mix(in oklab, var(--ink, #f2f2f2) 7%, var(--bg, #111)); overflow: hidden }
+.notplate .np-num { position: absolute; top: 6px; left: 14px; font-size: clamp(56px, 9vw, 96px); font-weight: 700; line-height: 1; color: color-mix(in oklab, var(--ink, #f2f2f2) 18%, transparent); font-variant-numeric: tabular-nums }
+.notplate .micro { margin: 0; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: color-mix(in oklab, var(--ink, #f2f2f2) 62%, transparent) }
+.notplate .micro a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor }
+.nomatch { list-style: none; padding: 32px 0; color: color-mix(in oklab, var(--ink, #f2f2f2) 70%, transparent) }
+/* Round 3 scoping: the plate keeps its 4/5 aspect in tile and row slots
+   (r23.css sets a 320px min-height on .notplate for the spec sheet,
+   where that floor stays in force). */
+.tile .notplate, .row .notplate { min-height: 0; inline-size: 100%; }
+/* Owner reversal 2026-10-24: the plate stacks under a store photo; a photo
+   that fails to load removes itself and the plate stands, never an
+   empty box. */
+.mediastack { display: grid; }
+.mediastack > * { grid-area: 1 / 1; }
+.mediastack .platewrap { inline-size: 100%; }
+.row .notplate { padding: 8px; }
+.row .notplate .np-num { font-size: 32px; left: 8px; top: 4px; }
+.figmedia .notplate { inline-size: 100%; }

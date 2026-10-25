@@ -22,9 +22,14 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.ico" sizes="48x48">
+<meta name="built" content="2026-10-24T15:14:32Z">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/r23.css">
 <link rel="stylesheet" href="assets/css/legend.css">
+<link rel="stylesheet" href="assets/css/plate2.css">
+<link rel="stylesheet" href="assets/css/shelf.css">
+<link rel="stylesheet" href="assets/css/pulse.css">
+<script src="assets/js/plate2.js" defer></script>
 </head>
 <body>
 <header class="mast"><a class="mast-mark" href="index.html">Marvel Legends Chronicle</a>
@@ -40,12 +45,33 @@ guardImages(document);
 const slug=new URLSearchParams(location.search).get("f");
 const el=document.getElementById("fig");
 function detail(k,v){ return v?`<li><span class="k">${k}</span><span>${v}</span></li>`:""; }
-try{
+if(!slug){
+  el.innerHTML=`<h1>Pick a figure</h1><p>Search the <a href="visual-database.html">catalog</a> and open a figure to see its record.</p>`;
+} else try{
   const s=await getJSON(`data/v1/figures/${slug}.json`);
   document.title=`${s.name} | Marvel Legends Chronicle`;
-  const media=s.img
-    ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>`
-    : `<div class="notplate"><div class="np-name">${esc(s.name)}</div><p class="micro">Not pictured</p></div>`;
+  const angles = s.img && s.img.status!=="dead" && s.img.url ? [{url:s.img.url, source:s.img.source}, ...(s.img.alts||[]).map(a=>({url:a.imageUrl, source:a.imageSource}))] : [];
+  const mine = angles.length>0;
+  function plate2For(url, source, rest){
+    const style=s.img.matte?` style="--matte:${esc(s.img.matte)}"`:"";
+    const fit=s.img.fit?` data-fit="${esc(s.img.fit)}"`:"";
+    const altAttr=rest&&rest.length?` data-alts="${esc(rest.map(a=>a.url).join(" "))}"`:"";
+    return `<div class="plate2" data-state="wait"${fit}${style}><span class="p-floor"><span class="p-name">${esc(s.name)}</span><span class="p-micro">Not pictured</span></span><img src="${esc(url)}" alt="${esc(s.name)} figure photograph" width="${s.img.w||345}" height="${s.img.h||460}" decoding="async" referrerpolicy="no-referrer" fetchpriority="high"${altAttr}><span class="p-credit">Photo at ${esc(source)}</span></div>`;
+  }
+  function plate2Link(o){
+    const e=o.entry; const floor=`<span class="p-floor"><span class="p-name">${esc(o.name)}</span><span class="p-micro">Not pictured</span></span>`;
+    if(!e||!e.imageUrl||e.status==="dead") return `<a class="plate2" data-state="none" href="spec-sheet.html?f=${esc(o.slug)}">${floor}</a>`;
+    const style=e.matte?` style="--matte:${esc(e.matte)}"`:""; const fit=e.fit?` data-fit="${esc(e.fit)}"`:"";
+    const alts=(e.alts||[]).map(a=>a.imageUrl).filter(u=>u.startsWith("https://")).join(" ");
+    return `<a class="plate2" data-state="wait"${fit}${style} href="spec-sheet.html?f=${esc(o.slug)}">${floor}<img src="${esc(e.imageUrl)}" alt="${esc(o.name)} figure photograph" width="${e.w||345}" height="${e.h||460}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${alts?` data-alts="${esc(alts)}"`:""}><span class="p-credit">Photo at ${esc(e.imageSource)}</span></a>`;
+  }
+  const media = mine
+    ? plate2For(angles[0].url, angles[0].source, angles.slice(1))
+    : `<div class="plate2" data-state="none"><span class="p-floor"><span class="p-name">${esc(s.name)}</span><span class="p-micro">Not pictured</span></span></div>`;
+  /* Gallery: extra angle/source URLs the manifest already carries for this
+     figure (entry alts). With none on file, no gallery renders. */
+  const gallery = angles.length>1 ? `<div class="angles" role="group" aria-label="More photos of this figure">${angles.map((a,i)=>`<button type="button" class="anglebtn" data-angle="${i}" aria-pressed="${i===0}">Photo ${i+1} · ${esc(a.source)}</button>`).join("")}</div>` : "";
+  const missing = !mine ? `<p class="micro"><a href="https://github.com/astercast/marvel-legends-chronicle/issues/new?title=${encodeURIComponent("Photo source: "+s.name)}&body=${encodeURIComponent("A photo source for "+s.name+" ("+s.pid+").\nShop/manufacturer product page or image URL:\n")}" rel="noopener" target="_blank">Know a photo source?</a></p>` : "";
   const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold: ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
     : `<p> No reported sales recorded for this figure.</p>`.replace(" ","");
   const buy=s.buy.length? s.buy.map(b=>`<div class="buyrow"><span>${esc(b.retailer)}</span><a href="${esc(b.url)}" rel="noopener">Buy</a></div><div class="priceline"><span>Asking at ${esc(b.retailer)}</span><span class="num">$${b.priceUSD} · seen ${esc(b.priceSeen)}</span></div>`).join("")
@@ -53,7 +79,7 @@ try{
   el.innerHTML=`
   <p class="backline"><a href="waves/${esc(s.waveSlug)}.html">← ${esc(s.wave)}</a></p>
   <div class="figlayout">
-  <div class="figmedia">${media}</div>
+  <div class="figmedia">${media}${gallery}${missing}</div>
   <div class="figside">
   <h1>${esc(s.name)}</h1>
   <p class="factline">${esc(s.wave)}, ${s.year}, ${esc(s.maker)}</p>
@@ -77,15 +103,23 @@ try{
     ${detail("Variant", s.variant?esc(s.variant):"")}
     ${detail("Note", s.notes?esc(s.notes):"")}
   </ul>
-  ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=o.img?`<a class="platewrap" href="spec-sheet.html?f=${esc(o.slug)}"><img src='${esc(o.img)}' alt="${esc(o.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${esc(o.slug)}"><span class="absname">${esc(o.name)}</span><span class="micro">Not pictured</span></a>`; return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
+  ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=plate2Link(o); return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
   <p class="sourceline">${esc(s.sourceLine)}</p>`;
-  const big=el.querySelector(".plate img");
+  const big=el.querySelector(".plate2 img");
   if (big) big.style.viewTransitionName="fig-"+slug;
+  el.querySelectorAll("[data-angle]").forEach(b=>b.addEventListener("click",()=>{
+    const a=angles[+b.dataset.angle]; const img=el.querySelector(".plate2 img"); if(!img||!a) return;
+    img.classList.remove("is-in"); img.src=a.url;
+    el.querySelectorAll("[data-angle]").forEach(x=>x.setAttribute("aria-pressed", x===b?"true":"false"));
+    const credit=el.querySelector(".plate2 .p-credit"); if(credit) credit.textContent="Photo at "+a.source;
+  }));
   wireState(el);
 }catch(e){ el.innerHTML=`<h1>Figure not found</h1><p>Search the <a href="visual-database.html">catalog</a>.</p>`; }
 </script>
 </main>
 <footer class="site"><nav class="footmap" aria-label="Site map"><a href="index.html">Home</a><a href="visual-database.html">Catalog</a><a href="radar.html">Upcoming</a><a href="compare.html">Compare</a><a href="my-vault.html">My Collection</a><a href="encyclopedia.html">Guide</a></nav>
-<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p>
+<p class="picnote">Figure photos are product photographs from the shops named on each figure's page. They belong to those shops, to Hasbro and to Marvel. This site only points at them and sells nothing. If a photo is yours and you want it gone, tell the owner on the <a href="https://github.com/astercast/marvel-legends-chronicle/issues" rel="noopener">issues page</a> and it comes down the same day.</p></footer>
+<script type="module" src="assets/js/pulse.js"></script>
 </body>
 </html>

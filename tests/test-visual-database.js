@@ -5,8 +5,9 @@
    - the census lands true against the real catalog + manifest:
      pictured + unpictured = 1,949, every entry's figure exists,
      every URL is https, every pictured figure has a buy link
-   - the fallback law is in the renderer: the plate's img removes
-     its own plate on error; unpictured figures get no plate
+   - the fallback law is in the renderer: a dead photo is removed by
+     plate2.js and the plate's typographic floor stands; unpictured
+     figures get the floor alone
    - the page wiring: mounts, module, registry — and no checkout,
      cart or on-site transaction anywhere on the desk */
 import { readFileSync } from "node:fs";
@@ -88,8 +89,14 @@ suite("visual-database — the fallback law and the wiring", () => {
   const script = read("assets/js/visual-database.js");
 
   test("a dead embed removes its own plate — no broken-image state exists", () => {
-    assert(kit.includes("onerror=\"this.closest('.fig-plate').remove()\""),
-      "the plate carries the self-removal handler");
+    // plate2 (2026-10-24 bundle): the inline onerror of the old .fig-plate
+    // is replaced by plate2.js's capture-phase settle — a dead photo is
+    // removed and the typographic floor that was always underneath stands.
+    // Same fallback law, stronger mechanism (alts get a second chance).
+    assert(kit.includes("plate2"), "the renderer emits plate2 plates");
+    const settle = read("assets/js/plate2.js");
+    assert(settle.includes("img.remove()"), "a dead photo is removed, leaving the floor");
+    assert(settle.includes('setAttribute("data-state", "dead")'), "the plate records the dead state");
     assert(kit.includes('loading="lazy"'), "pictures lazy-load");
     assert(!/placehold.co|via.placeholder|dummyimage/.test(kit), "no placeholder graphic service is ever substituted");
   });

@@ -1,0 +1,48 @@
+/* shelf.css — THE SHELF (2026-10-24 bundle §11.2) + photo coverage meter.
+   The home lineup stands on a black stage (#0d0d0e) with a hairline floor;
+   figures are plate2 plates aligned to that floor. Blend treatment is by
+   backdrop class, measured from each photo's own matte (build_r23.py
+   matte_class): dark-backdrop photos blend with lighten so their black
+   corners fall away into the stage. Light and mixed photos keep their
+   measured matte — on a black stage, multiply would black out the figure
+   itself, so blending there would lie about the photograph. */
+.shelf {
+  background: #0d0d0e;
+  color: var(--text);
+  border-block: 1px solid var(--line);
+}
+.shelf .stage { align-items: end; margin-block-end: 0; }
+.shelf .fig-shot .plate2 { border-color: #2c2d30; }
+.shelf-floor {
+  block-size: 1px;
+  background: #3a3a3d;
+  margin-inline: max(var(--gutter), calc((100% - var(--page)) / 2));
+}
+/* dark backdrop: the photo's own black corners become the stage */
+.shelf .fig.bg-dark .plate2 {
+  --matte: transparent;
+  background: transparent;
+  border-color: transparent;
+}
+.shelf .fig.bg-dark .plate2 .p-floor { background: transparent; }
+.shelf .fig.bg-dark .plate2 img { background: transparent; mix-blend-mode: lighten; }
+/* the stage dims siblings on hover, as the lineup always has */
+.shelf .stage:has(.fig:hover) .fig:not(:hover) .plate2 { filter: brightness(.55); }
+
+/* photo coverage meter (home): counted from the manifest at build time */
+.coverage { max-inline-size: var(--page); margin-inline: auto; padding-inline: var(--gutter); }
+.coverage-line { font-size: var(--fs-body); }
+.coverage-n { font-weight: 700; }
+.coverage .meter {
+  block-size: 6px; background: var(--raise); border: 1px solid var(--line);
+  margin-block: .5rem .75rem;
+}
+.coverage .meter span { display: block; block-size: 100%; background: var(--text); }
+
+/* figure page: angle gallery + My Shelf poster helpers */
+.angles { display: flex; flex-wrap: wrap; gap: .5rem; margin-block-start: .75rem; }
+.anglebtn {
+  font: 500 .8rem/1 var(--font); color: var(--sub); background: none;
+  border: 1px solid var(--line); padding: .5rem .7rem; cursor: pointer;
+}
+.anglebtn[aria-pressed="true"] { color: var(--text); border-color: var(--text); }

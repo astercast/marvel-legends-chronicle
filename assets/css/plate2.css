@@ -1,0 +1,65 @@
+/* plate2: one plate for every figure picture.
+   The typographic "not pictured" plate is the FLOOR; the photograph is laid on
+   top of it and fades in when it loads. If the photograph dies, the floor is
+   simply what was always underneath, so pictured and unpictured figures hold
+   one rhythm and nothing ever shows a broken-image box.
+   Every plate has the same 4:5 frame and the same hairline. What varies is the
+   matte (the photo's own corner colour, measured by scripts/verify_images.py)
+   and the fit (fill, box or square), so mixed shop photography reads as one
+   catalogue instead of a scrape. No gradients, no glow, no radius. */
+.plate2 {
+  --matte: var(--raise);
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--matte);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  isolation: isolate;
+  color: inherit;
+  text-decoration: none;
+  contain: layout paint;
+}
+.plate2 .p-floor {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 12%;
+  background: var(--raise);
+}
+.plate2 .p-name { font-size: var(--fs-name); font-weight: 600; line-height: 1.15; text-wrap: balance; }
+.plate2 .p-micro { font-size: var(--fs-id); letter-spacing: .06em; text-transform: uppercase; color: var(--sub); }
+.plate2 img {
+  position: absolute; inset: 0;
+  inline-size: 100%; block-size: 100%;
+  object-fit: contain;
+  background: var(--matte);
+  opacity: 0;
+  transition: opacity .35s var(--ease-out);
+}
+.plate2 img.is-in { opacity: 1; }
+.plate2[data-state="ok"] .p-floor { visibility: hidden; }
+/* fit: tight bust crops fill the frame, boxed packaging gets air, squares sit centred */
+.plate2[data-fit="fill"] img { object-fit: cover; object-position: 50% 18%; }
+.plate2[data-fit="box"] img { padding: 4% 7%; box-sizing: border-box; }
+.plate2[data-fit="square"] img { padding: 3%; box-sizing: border-box; }
+/* credit: a flat bar that rises on hover or focus; the full credit is always
+   on the figure's own page and in the footer note */
+.plate2 .p-credit {
+  position: absolute; inset: auto 0 0 0;
+  padding: .4rem .6rem;
+  font-size: .6875rem; letter-spacing: .04em; line-height: 1.2;
+  background: rgb(15 16 17 / .88); color: var(--sub);
+  transform: translateY(101%);
+  transition: transform .2s var(--ease-out);
+}
+.plate2:hover .p-credit, .plate2:focus-visible .p-credit { transform: none; }
+.plate2:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+/* sizes */
+.plate2.is-thumb { inline-size: 88px; }
+.plate2.is-thumb .p-floor { padding: 8%; }
+.plate2.is-thumb .p-name, .plate2.is-thumb .p-credit, .plate2.is-thumb .p-micro { display: none; }
+@media (width < 40rem) { .plate2.is-thumb { inline-size: 72px; } }
+@media (prefers-reduced-motion: reduce) {
+  .plate2 img, .plate2 .p-credit { transition: none; }
+}

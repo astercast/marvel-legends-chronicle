@@ -1,0 +1,331 @@
+{
+ "format": "pulse/1",
+ "generated_at": "2026-10-24T13:41:09Z",
+ "healthy": true,
+ "sources_ok": 4,
+ "sources_total": 4,
+ "sources": [
+  {
+   "id": "cmdstore",
+   "label": "CMDStore catalog",
+   "url": "https://cmdstore.com/products.json?limit=250",
+   "ok": true,
+   "items": 19,
+   "checked_at": "2026-10-24T13:40:58Z",
+   "last_ok_at": "2026-10-24T13:40:58Z",
+   "error": null,
+   "fails_in_a_row": 0
+  },
+  {
+   "id": "gnews",
+   "label": "Google News: Marvel Legends",
+   "url": "https://news.google.com/rss/search?q=%22Marvel+Legends%22&hl=en-US&gl=US&ceid=US:en",
+   "ok": true,
+   "items": 62,
+   "checked_at": "2026-10-24T13:41:09Z",
+   "last_ok_at": "2026-10-24T13:41:09Z",
+   "error": null,
+   "fails_in_a_row": 0
+  },
+  {
+   "id": "preorders",
+   "label": "Preorder + drop windows",
+   "url": null,
+   "ok": true,
+   "items": 28,
+   "checked_at": "2026-10-24T13:41:09Z",
+   "last_ok_at": "2026-10-24T13:41:09Z",
+   "error": null,
+   "fails_in_a_row": 0
+  },
+  {
+   "id": "toyarena",
+   "label": "ToyArena catalog",
+   "url": "https://toyarena.com/products.json?limit=250",
+   "ok": true,
+   "items": 16,
+   "checked_at": "2026-10-24T13:41:04Z",
+   "last_ok_at": "2026-10-24T13:41:04Z",
+   "error": null,
+   "fails_in_a_row": 0
+  }
+ ],
+ "changes": [
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Retro 6 Inch Action Figure X-Men '97 Wave 4 - Death Gambit (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-retro-x-men-97-wave-4-death-gambit-5010996407627"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Retro 6 Inch Action Figure X-Men '97 Wave 4 - Havok (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-retro-x-men-97-wave-4-havok-5010996407665"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Retro 6 Inch Action Figure X-Men '97 Wave 4 - Set of 6 (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-retro-x-men-97-wave-4-set-of-6-g20375l00"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Retro 6 Inch Action Figure X-Men '97 Wave 4 - Jean Grey (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-retro-x-men-97-wave-4-jean-grey-5010996407641"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Retro 6 Inch Action Figure X-Men '97 Wave 4 - Cyclops (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-retro-x-men-97-wave-4-cyclops-5010996407610"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Retro 6 Inch Action Figure X-Men '97 Wave 4 - Vindicator (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-retro-x-men-97-wave-4-vindicator-5010996407634"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Retro 6 Inch Action Figure X-Men '97 Wave 4 - Polaris (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-retro-x-men-97-wave-4-polaris-5010996407658"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Avengers Doomsday 6 Inch Action Figure Wave 2 - Lord Doom (Pre-Order Ships April 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-avengers-doomsday-wave-2-lord-doom-5010996407474"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Avengers Doomsday 6 Inch Action Figure Wave 2 - Nightcrawler (Pre-Order Ships April 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-avengers-doomsday-wave-2-nightcrawler-5010996407498"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Avengers Doomsday 6 Inch Action Figure Wave 2 - Beast (Pre-Order Ships April 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-avengers-doomsday-wave-2-beast-5010996407481"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Comics Inspired 6 Inch Action Figure Wave 3 - Set of 6 (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-comics-inspired-wave-3-g20345l00"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Comics Inspired 6 Inch Action Figure Wave 3 - Elsa Bloodstone (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-comics-inspired-wave-3-elsa-bloodstone-5010996407436"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Comics Inspired 6 Inch Action Figure Wave 3 - Acroyear (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-comics-inspired-wave-3-acroyear-5010996407429"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Comics Inspired 6 Inch Action Figure Wave 3 - Spider-Man Doom Suit (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-comics-inspired-wave-3-spider-man-doom-suit-5010996407405"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Comics Inspired 6 Inch Action Figure Wave 3 - Elektra (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-comics-inspired-wave-3-elektra-5010996407412"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Comics Inspired 6 Inch Action Figure Wave 3 - Captain America Earth X (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-comics-inspired-wave-3-captain-america-earth-x-5010996407399"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Comics Inspired 6 Inch Action Figure Wave 3 - Hawkeye (Pre-Order Ships Jan. 2027)",
+   "ref": "https://cmdstore.com/products/marvel-legends-comics-inspired-wave-3-hawkeye-5010996407382"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends Gear Life Size Prop Replica Spider-Man Homecoming - Spider-Man Electronic Expressive Mask (Open Box Return Sub-Standard Packaging) (Sub-Standard Packaging)",
+   "ref": "https://cmdstore.com/products/marvel-legends-gear-spider-man-homecoming-spider-man-electronic-expressive-mask-5010996313188dmg"
+  },
+  {
+   "at": "2026-10-24T13:40:58Z",
+   "kind": "catalog",
+   "title": "CMDStore: Marvel Legends 85 years 6 Inch Action & Vehicle Figure - Ghost Rider (Danny Ketch) with Motorcycle (Open Box Sub-Standard Packaging)",
+   "ref": "https://cmdstore.com/products/marvel-legends-85-years-ghost-rider-danny-ketch-with-motorcycle-5010996246158dmg"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Maximum Series Symbiote Spider-Man Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-maximum-series-symbiote-spider-man-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Vintage Retro Series Spider-Man (Cel-Shading Comic Ver.) Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-vintage-retro-series-spider-man-cel-shading-comic-ver-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends '97 X-Men Beast Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-97-x-men-beast-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Gamerverse Iron Man vs Spiral 2 Pack Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-gamerverse-iron-man-vs-spiral-2-pack-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Avengers Doomsday Cyclops Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-avengers-doomsday-cyclops-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Avengers Doomsday Shang-Chi Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-avengers-doomsday-shang-chi-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Avengers Doomsday Captain America Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-avengers-doomsday-captain-america-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Avengers Doomsday Thor Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-avengers-doomsday-thor-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Avengers Doomsday Gambit Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-avengers-doomsday-gambit-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Magic The Gathering Captain America (Avengers: Twilight) Action Figure W/ MTG Card",
+   "ref": "https://toyarena.com/products/marvel-legends-magic-the-gathering-captain-america-avengers-twilight-action-figure-w-mtg-card"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Magic The Gathering Doctor Doom 2099 Action Figure W/ MTG Card",
+   "ref": "https://toyarena.com/products/marvel-legends-magic-the-gathering-doctor-doom-2099-action-figure-w-mtg-card"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Magic The Gathering Malice (Sue Storm) Action Figure W/ MTG Card",
+   "ref": "https://toyarena.com/products/marvel-legends-magic-the-gathering-malice-sue-storm-action-figure-w-mtg-card"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Deadpool & Wolverine The Cavillrine Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-deadpool-wolverine-the-cavillrine-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Deadpool & Wolverine Deadpool (Concept Art) Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-deadpool-wolverine-deadpool-concept-art-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Deadpool & Wolverine Wolverinepool (Concept Art) Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-deadpool-wolverine-wolverinepool-concept-art-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:04Z",
+   "kind": "catalog",
+   "title": "ToyArena: Marvel Legends Spider-Man: No Way Home Green Goblin Action Figure",
+   "ref": "https://toyarena.com/products/marvel-legends-spider-man-no-way-home-green-goblin-action-figure"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "Hasbro's Marvel Legends Series X-Men '97 line expands with Death Gambit, Cyclops, Jean Grey, Polaris, Havok and Vindicator - Flickering Myth",
+   "ref": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPcmJ2V3dXUm4wZmxWOGg1bWp0YVV1NktobXFMVmd5NE1hdEswalFqbFhWY1B3TDNBUFRwVENoTkNJRWl0M0RVeUEtdi1FUlpvREdITXE3VEFTcThFNGdXZFl3S1AyWVdIbHRFNm9pZnVnQ2RVYlFyOEoyQmVrQTFpcWlRaHg4LXhkRXlON1JtSGNlOVRWLXhuNzBTS0ZuWkVzRzY1SVJ5Um9NZHFpX3IwQVBzQXdKNmF5RzlKVTJuQmhPdTE1alVUVXV4NUx5SmdzV2tCR3J2ajRRcFcxdGxnNw?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "New Marvel Comics Vindicator Marvel Legends Figure Coming Soon - Bleeding Cool News",
+   "ref": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQXo3ZjdjSElDMWhkNDNVR0JQWVUwMklpQTI0U2xqblNlSmJLRGJrX0JFR3BTTjFydDdSWW5hYkFpN0VzYWFZbU4ySUNLanoxOWhuNFlzbERxVUdEZW5ya3pHenBXblpaZVlsS2RJNXhWRUsxVjRnb3ZZZUs0aXFXenVmYU9fUlVlUVR3UWFuOVUxWU5YR1RVdUQ4cnBTb0RtRnBB?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "Hasbro Pulse Fanstream Unveils New Marvel Legends Figures Series Action Figures - Laughing Place",
+   "ref": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPcGFMb2lNZnB0UGhPMHJJSzFRZy1DN0IzTThHV2l4NkNucXgxaWYwV1A0TDUwdlUxUVdlNER3bG1uQUpTSlBRUlEzajlOY3ZybEdjQkVNVzZ0eklOUDVqY2kxdFlnUzJrdTd0UjF2cjgtQUpPQ1pZTUdMU082Q1RsbkVoTE1LNkl0dzlWTVFxZll1UQ?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "Check out the Marvel Legends September 2026 reveals - Lyles Movie Files",
+   "ref": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOa1kwYmJPTkh2Wi1QdXRnSkcxVTRnUzJqeDdjYzhqOWh2LUJMWW9WRWRoN3V3NW9IenJGR2hnbmtaSnFFQ0F6WEhZSmNQQ0NfNWctd1FyVkw4dTdQUEc4WlJyM1p2c2J1RE9WQllpazdkMjdwMVR4ZHdvcXQ0cndRUw?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "Avengers: Doomsday Photo Unveils Redesign For Joseph Quinn's Human Torch - The Direct",
+   "ref": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9fMEtxeDN1UW1JTjZHQkM5RVFvTVVmNlVYbGNUZzhLaDJMSi1XSXRqVTdFcUlDeDFMcXQ5TTlBYlVrdnRxV0dua2Y2Yzg1aEtRVGJWejZWZjlhMEc3TnNvNHNvT1l1VVE1YzdibkxrYTBNWnB0VDlMZ2Rua1o?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "New Friendly Neighborhood Spider-Man vs. Rhino Marvel Legends Debuts - Bleeding Cool News",
+   "ref": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNeWVNaEVrS0NZd1h2UG5CR2NRTkpQZHpxRXdIMzhqTFdDOXVzNkk5MHZVUm5FOUpYWk5JVFB0OFphQXJFV005cVYtancyUmpjSjZLOGRxN3ZDSFNTVFRmNngwX1VYbEJpcE5QWDZVdmIxZHRTeTA4R0pLZmQtSURPSXY4aTNPc3g2M0xqcHpudnpTR3ZkTlJNSVZhTy1xTm5vbi1fV2dWdTd0Zw?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "Hasbro unveils new comic book-inspired Marvel Legends Series action figures - Flickering Myth",
+   "ref": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPSy1uNFp3NzgycFpUUTNXZVZzVnpNdk9ZOXZPSzNBX0U1ems2a3Z4ZllxVmhXRkRER3JENTZwVVc0OWNQR1owOVJsdFA2VTRSQ29ZRGpvRTdadXg4RkQxNkhyczVxX1FhTXlxV0RLeEpsYzVfcWw0M1NqbFVhU0pzVEEtenZMWmkzODJIYko2Z0RNMFZnZ1hnSmRmYXdHOHJ5YkFoOEtwQURhSTg?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "Wolverinepool, Cavillrine, Valentina, Void, and More: Hasbro's Marvel Legends Announcements for June 2026 - LaughingPlace.com",
+   "ref": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOUURoc1h2UkNYZlRjd0gwTEdfUHl4MnA3WUp5QmtpdUtFM1hjUld0VXRZdXZqd1RuMEppRDJEWEI0VEN5VURnNzUwOUp0Sl85Yi1Kb3c2OFIxM1hsb25DNFA2UVR6RzRUVEwtTnFZYUF4eENYcGpEOG5IZWM4UnYxend2WFhJWW8wWjlVV3JlS01vRUE?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "SDCC ’26: Avengers Doomsday takes over Marvel Legends! - Comics Beat",
+   "ref": "https://news.google.com/rss/articles/CBMihgFBVV95cUxON2dNZnBCTW5zMTFneXp5NlE4U2wzdzBDc0xWS0N3TGVzcTFBZ015Tmt3N2dkZy1HbHV2TkhqZHRiOVQwSmVzQU9PYUg3bUt1cnlHbUxXcVctMmgzMDBJNUNOcWZZX0Y5TnRVbjJrNVJONE0zbTJJVU1fc0RUMzdWZ1BCdWQ3UQ?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "story",
+   "title": "Astonishing X-Men Marvel Legends Wolverine & Cyclops 2-Pack Debuts - Bleeding Cool News",
+   "ref": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNMjdNT01sS1dkdDJFLWx4QllaZm85ZkxhbFdLQWxLSTBoYXFETTJXOV8ydi1XdVBGZzUxdGRmTFctYlMwZWVGVjcwbnlMeGs2cUlFNlBEcmR0dkJmRFdYNlVkSW5fMVlJdmZwMXZDQS03MUNKcTI0TzJSTV9mZElkd3NRYU5udWtLM0NYSnIzZkVDYlRDakxhd2d2UlhrYkozajdqaklR?oc=5"
+  },
+  {
+   "at": "2026-10-24T13:41:09Z",
+   "kind": "preorder",
+   "title": "Drop window opens soon: Astonishing X-Men, Cyclops & Wolverine 2-pack (reissue)",
+   "ref": "radar.html"
+  }
+ ]
+}

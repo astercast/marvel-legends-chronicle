@@ -1,0 +1,91 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Marvel Legends Chronicle//Drops//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Marvel Legends drops
+BEGIN:VEVENT
+UID:doomsday-wave-2@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART:20261014T170000Z
+SUMMARY:Avengers: Doomsday\, Wave 2
+DESCRIPTION:Pre-order window · Reported Spring 2027 in Oct 11 coverage (Mephitsu et al.)\; NYCC showcase coverage said Fall 2026\, unconfirmed. Treated as unconfirmed.
+END:VEVENT
+BEGIN:VEVENT
+UID:xmen97-wave@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART:20261021T170000Z
+SUMMARY:X-Men '97\, retro blister wave
+DESCRIPTION:Pre-order window · Fall 2026 (per NYCC panel coverage).
+END:VEVENT
+BEGIN:VEVENT
+UID:astonishing-2pack@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART:20261028T170000Z
+SUMMARY:Astonishing X-Men\, Cyclops & Wolverine 2-pack (reissue)
+DESCRIPTION:Pre-order window · Fall 2026 (per coverage).
+END:VEVENT
+BEGIN:VEVENT
+UID:yfns-rhino@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20261101
+SUMMARY:Your Friendly Neighborhood Spider-Man\, Spider-Man vs. Rhino 2-pack
+DESCRIPTION:On-sale day (no pre-order) · Fall 2026 (per coverage).
+END:VEVENT
+BEGIN:VEVENT
+UID:trask-bastion-mto@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART:20261121T045900Z
+SUMMARY:X-Men '97\, Bolivar Trask & Marvel's Bastion Nimrod 2-pack
+DESCRIPTION:Made-to-order deadline · Ships ~Nov 2027 (Fall 2027 per press copy).
+END:VEVENT
+BEGIN:VEVENT
+UID:mini-comics-wave-3@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20261006
+SUMMARY:Mini Comics Wave 3
+DESCRIPTION:Pre-order date · Expected Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:xmen97-retro-wave@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20261021
+SUMMARY:X-Men '97 retro wave
+DESCRIPTION:Pre-order date · Expected Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:tas-retro-wave@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20260929
+SUMMARY:Spider-Man: The Animated Series retro wave
+DESCRIPTION:Pre-order date · Expected Dec 2026–Jan 2027
+END:VEVENT
+BEGIN:VEVENT
+UID:bastion-trask-2pack@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20261007
+SUMMARY:X-Men '97 Bastion & Bolivar Trask 2-pack
+DESCRIPTION:Pre-order date · Expected Nov 2027
+END:VEVENT
+BEGIN:VEVENT
+UID:doomsday-wave-2@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20261014
+SUMMARY:Avengers: Doomsday Wave 2
+DESCRIPTION:Pre-order date · Expected Spring 2027
+END:VEVENT
+BEGIN:VEVENT
+UID:astonishing-cyclops-wolverine-2pack@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20261028
+SUMMARY:Astonishing X-Men Cyclops & Wolverine 2-pack (reissue)
+DESCRIPTION:Pre-order date · Expected Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:holiday-spidey-2026@marvel-legends-chronicle
+DTSTAMP:20261024T151432Z
+DTSTART;VALUE=DATE:20260923
+SUMMARY:Spider-Man (Marvel Holiday Special)
+DESCRIPTION:Pre-order date · Expected Fall 2026
+END:VEVENT
+END:VCALENDAR

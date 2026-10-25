@@ -4,14 +4,28 @@ the wave and character families from data/v1, in the R23 design system.
 Presented catalogue identifiers are derived here; the raw census key never
 reaches a generated page (the schema-as-prose ban). Run: python3 scripts/build_r23.py
 """
-import json, re, shutil
+import json, re, shutil, sys
 from collections import Counter, defaultdict
+from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from plate2 import plate2, usable
 
 ROOT = Path(__file__).resolve().parent.parent
 D = ROOT / "data" / "v1"
 CHECKED = "14 October 2026"
+BUILT = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+# GitHub issue link for a missing photo, prefilled with the figure's name.
+ISSUES = "https://github.com/astercast/marvel-legends-chronicle/issues/new"
+
+def photo_source_link(name):
+    from urllib.parse import quote
+    title = quote(f"Photo source: {name}")
+    body = quote(f"A photo source for {name} (Marvel Legends Chronicle figure record).\n"
+                 "Shop/manufacturer product page or image URL:\n")
+    return f"{ISSUES}?title={title}&body={body}"
 
 def load(name):
     return json.loads((D / name).read_text())
@@ -59,8 +73,21 @@ for f in FIGS:
 assert len(set(m["pid"] for m in META)) == len(FIGS), "presented id collision"
 assert len(set(m["slug"] for m in META)) == len(FIGS), "slug collision"
 
+ALLOW_HOTLINK = True
+# OWNER REVERSAL 2026-10-24: the owner reversed the no-hotlink direction —
+# pictures are pulled from stores and other sites ("use pictures from
+# wherever you can") and shown as the primary source on every surface.
+# The designed plate remains ONLY where no picture exists from any source.
+# Seller links and honest credits stay. This supersedes the round-3 gate.
+def hotlink(url):
+    return bool(url) and url.startswith("http")
+
 def rowdata(f, slug, pid):
     img = IMAGES.get(f["id"])
+    # plate2 (2026-10-24 bundle): an entry the checker marked dead is not
+    # pictured; the plate floor stands instead. The full entry travels with
+    # the row so every surface can render the same plate (fit, matte, alts).
+    entry = img if usable(img) else None
     facts = [f["waveSeries"], str(f["year"]), f["manufacturer"]]
     if f.get("exclusive"): facts.append(f'{f["exclusive"]} exclusive')
     if f.get("bafPiece"): facts.append(f'Build A Figure piece: {f["bafPiece"]}')
@@ -68,37 +95,60 @@ def rowdata(f, slug, pid):
         "slug": slug, "pid": pid, "name": f["name"],
         "fact": ", ".join(facts),
         "path": f'{base_name(f["name"])} · {f["waveSeries"]} · {f["year"]}',
-        "img": img["imageUrl"] if img else None,
+        "img": entry["imageUrl"] if entry and (ALLOW_HOTLINK or not hotlink(entry["imageUrl"])) else None,
+        "entry": entry,
+        "seller": img["imageSource"] if img else None,
+        "sellerUrl": img["sourceUrl"] if img else None,
         "year": f["year"], "wave": f["waveSeries"], "waveId": f["waveId"],
         "character": base_name(f["name"]), "maker": f["manufacturer"],
         "exclusive": f.get("exclusive") or "", "baf": bool(f.get("bafPiece")),
-        "pictured": bool(img),
+        "pictured": bool(entry),
     }
 
 ROWS = [rowdata(f, m["slug"], m["pid"]) for f, m in zip(FIGS, META)]
 BY_SLUG = {r["slug"]: r for r in ROWS}
 
-# Fleet law (Round 2 consult, fix E, fleet override): retailer hotlinks
-# are FORBIDDEN. A figure photo is emitted only when the census carries a
-# repo-hosted (non-http) path; every hotlinked URL falls back to the
-# design's absence plate (.notplate / "Not pictured"). The census today
-# holds zero repo-hosted photos, so the home page renders on the fallback
-# until local photos with hosting rights land. One switch, one place.
-ALLOW_HOTLINK = False
-
-def hotlink(url):
-    return bool(url) and url.startswith("http")
-
+# Picture policy (OWNER REVERSAL 2026-10-24, supersedes the round-2/3
+# no-hotlink enforcement): a figure's picture URL — store, manufacturer
+# or repo-hosted — is the primary thing every surface shows. The
+# designed absence plate (.notplate, with a seller link) renders ONLY
+# when the census carries no picture for the figure from any source.
 def shown_img(r, local_only=False):
-    """The photo a surface may show for a row, or None for the fallback.
-    Surfaces that enforce the no-hotlink law pass local_only=True (the
-    home page passes local_only=not ALLOW_HOTLINK, so the fleet switch
-    above decides its behaviour in one place)."""
+    """The photo a surface may show for a row, or None for the plate.
+    Pictures from any source are shown (owner order 2026-10-24); the
+    local_only argument is retained for call-site compatibility."""
     if not r["img"]:
         return None
     if hotlink(r["img"]) and local_only:
         return None
+    if hotlink(r["img"]) and not ALLOW_HOTLINK:
+        return None
     return r["img"]
+
+def plate_num(pid):
+    return str(pid).split("No. ").pop()
+
+def plate_html(r):
+    """Round 3 plate for a row with no repo-hosted photo: the large
+    low-contrast figure number, then a micro seller link (or the plain
+    no-photo line when the census names no seller)."""
+    if r.get("seller") and r.get("sellerUrl"):
+        micro = (f'<p class="micro"><a href="{escape(r["sellerUrl"])}" rel="noopener nofollow" '
+                 f'target="_blank">See the photo at {escape(r["seller"])}</a></p>')
+    else:
+        micro = '<p class="micro">No photo yet</p>'
+    return (f'<div class="notplate"><div class="np-num" aria-hidden="true">'
+            f'{escape(plate_num(r["pid"]))}</div>{micro}</div>')
+
+def matte_class(entry):
+    """Backdrop class from the measured matte (verify_images.py): the shelf
+    blends only dark-backdrop photos (see assets/css/shelf.css)."""
+    m = (entry or {}).get("matte") or ""
+    if not re.fullmatch(r"#[0-9a-fA-F]{6}", m):
+        return "mixed"
+    r, g, b = (int(m[i:i + 2], 16) for i in (1, 3, 5))
+    lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return "dark" if lum < 60 else "light" if lum > 200 else "mixed"
 
 def state_btns(slug):
     return (f'<div class="state">'
@@ -106,9 +156,11 @@ def state_btns(slug):
             f'<button class="statebtn" data-state="wanted" data-slug="{slug}" aria-pressed="false">Wanted</button></div>')
 
 def row_html(r, prefix="", local=False):
-    img = shown_img(r, local_only=local)
-    media = (f'<img class="thumb" src="{escape(img)}" alt="" loading="lazy" referrerpolicy="no-referrer">' if img
-             else '<span class="notpic">Not pictured</span>')
+    # plate2 (2026-10-24 bundle): one 4:5 plate everywhere. The typographic
+    # floor is stacked under the photo, so a dead load reveals the plate,
+    # never an empty box; plate2.js gives a listed alt a second chance first.
+    media = plate2(r.get("entry") if shown_img(r, local_only=local) else None, r["name"],
+                   f'{prefix}spec-sheet.html?f={r["slug"]}', thumb=True)
     return (f'<li class="row">{media}<div><div class="pid">{escape(r["pid"])}</div>'
             f'<div class="name"><a href="{prefix}spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></div>'
             f'<div class="fact">{escape(r["fact"])}</div></div>{state_btns(r["slug"])}</li>')
@@ -117,13 +169,8 @@ def tile_html(r, prefix="", local=False):
     """The wall's unit: the plate is the largest element; name under it; one
     fact line; the state pair on one row. Absence is the same 4:5 plate in
     typographic form, so pictured and unpictured hold one rhythm."""
-    img = shown_img(r, local_only=local)
-    if img:
-        media = (f'<a class="platewrap" href="{prefix}spec-sheet.html?f={r["slug"]}">'
-                 f'<img src="{escape(img)}" alt="{escape(r["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>')
-    else:
-        media = (f'<a class="platewrap absence" href="{prefix}spec-sheet.html?f={r["slug"]}">'
-                 f'<span class="absname">{escape(r["name"])}</span><span class="micro">Not pictured</span></a>')
+    media = plate2(r.get("entry") if shown_img(r, local_only=local) else None, r["name"],
+                   f'{prefix}spec-sheet.html?f={r["slug"]}')
     marks = []
     if r["exclusive"]: marks.append(f'{r["exclusive"]} exclusive')
     if r["baf"]: marks.append("Build A Figure piece")
@@ -197,9 +244,14 @@ def chrome(title, desc, current, prefix="", extra_head="", rel=""):
 <meta name="description" content="{escape(desc)}">
 <meta name="theme-color" content="#0F1011">
 {social}<link rel="icon" href="{prefix}favicon.ico" sizes="48x48">
+<meta name="built" content="{BUILT}">
 <link rel="stylesheet" href="{prefix}assets/css/fonts.css">
 <link rel="stylesheet" href="{prefix}assets/css/r23.css">
 <link rel="stylesheet" href="{prefix}assets/css/legend.css">
+<link rel="stylesheet" href="{prefix}assets/css/plate2.css">
+<link rel="stylesheet" href="{prefix}assets/css/shelf.css">
+<link rel="stylesheet" href="{prefix}assets/css/pulse.css">
+<script src="{prefix}assets/js/plate2.js" defer></script>
 {extra_head}</head>
 <body>
 <header class="mast"><a class="mast-mark" href="{prefix}index.html"{wm_current}>Marvel Legends Chronicle</a>
@@ -214,7 +266,9 @@ def foot(prefix=""):
     links = "".join(f'<a href="{prefix}{href}">{label}</a>' for label, href in FOOT_LINKS)
     return f"""</main>
 <footer class="site"><nav class="footmap" aria-label="Site map">{links}</nav>
-<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p></footer>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p>
+<p class="picnote">Figure photos are product photographs from the shops named on each figure's page. They belong to those shops, to Hasbro and to Marvel. This site only points at them and sells nothing. If a photo is yours and you want it gone, tell the owner on the <a href="https://github.com/astercast/marvel-legends-chronicle/issues" rel="noopener">issues page</a> and it comes down the same day.</p></footer>
+<script type="module" src="{prefix}assets/js/pulse.js"></script>
 </body>
 </html>
 """
@@ -263,7 +317,7 @@ def gen_data():
     for i in range(0, len(browse_rows), 50):
         (bdir / f"chunk-{i//50:03d}.json").write_text(json.dumps(browse_rows[i:i+50]))
     (D / "search-index.json").write_text(json.dumps(
-        [{k: r[k] for k in ("slug", "pid", "name", "fact", "path", "img", "year", "wave", "character", "maker", "exclusive", "baf", "pictured")} for r in ROWS]))
+        [{k: r[k] for k in ("slug", "pid", "name", "fact", "path", "img", "entry", "seller", "sellerUrl", "year", "wave", "character", "maker", "exclusive", "baf", "pictured")} for r in ROWS]))
     sdir = D / "figures"; shutil.rmtree(sdir, ignore_errors=True); sdir.mkdir(parents=True)
     sig_by_fig = defaultdict(list)
     for s in SIGNALS: sig_by_fig[s["figId"]].append(s)
@@ -272,7 +326,8 @@ def gen_data():
     for i, f in enumerate(FIGS):
         r = ROWS[i]; img = IMAGES.get(f["id"])
         others = [{"slug": ROWS[j]["slug"], "pid": ROWS[j]["pid"], "name": ROWS[j]["name"],
-                   "fact": ROWS[j]["fact"], "img": ROWS[j]["img"]} for j in by_base[base_name(f["name"])] if j != i]
+                   "fact": ROWS[j]["fact"], "img": ROWS[j]["img"], "entry": ROWS[j]["entry"],
+                   "seller": ROWS[j]["seller"], "sellerUrl": ROWS[j]["sellerUrl"]} for j in by_base[base_name(f["name"])] if j != i]
         others.sort(key=lambda o: o["fact"])
         shard = {
             "slug": r["slug"], "pid": r["pid"], "name": f["name"], "wave": f["waveSeries"],
@@ -282,7 +337,12 @@ def gen_data():
             "exclusive": f.get("exclusive"), "bafPiece": f.get("bafPiece"),
             "variant": f.get("variant"), "notes": f.get("notes"), "waveBaf": f.get("waveBaf"),
             "img": ({"url": img["imageUrl"], "source": img["imageSource"], "sourceUrl": img["sourceUrl"],
-                     "verifiedAt": img["verifiedAt"]} if img else None),
+                     "verifiedAt": img["verifiedAt"],
+                     # plate2 fields (2026-10-24): measured by scripts/verify_images.py;
+                     # alts are the extra angle/source URLs a figure's gallery shows.
+                     "w": img.get("w"), "h": img.get("h"), "fit": img.get("fit"),
+                     "matte": img.get("matte"), "status": img.get("status"),
+                     "alts": img.get("alts") or []} if img else None),
             "buy": (img.get("buy", []) if img else []),
             "sold": [{"display": s["display"], "asOf": s["asOf"], "source": s["source"], "kind": s["kind"]}
                      for s in sig_by_fig.get(f["id"], [])],
@@ -296,8 +356,15 @@ def gen_data():
 # ---------- Surface 1: Catalog home ----------
 def home():
     pictured = [r for r in ROWS if r["pictured"]]
-    wall = sorted(pictured, key=lambda r: (-r["year"], r["name"]))[:12]
-    wall_tiles = "".join(tile_html(r, local=not ALLOW_HOTLINK) for r in wall)
+    # Round 3, fix 8: the wall shows figures with a photo actually shown
+    # on this site (a repo-hosted photo via shown_img), and only when at
+    # least 12 are shown; the heading names that honestly.
+    wall_shown = sorted((r for r in ROWS if shown_img(r)), key=lambda r: (-r["year"], r["name"]))
+    wall_block = ""
+    if len(wall_shown) >= 12:
+        wall_tiles = "".join(tile_html(r, local=not ALLOW_HOTLINK) for r in wall_shown[:12])
+        wall_block = (f'<h2>Figures with a photo</h2>\n<ul class="tiles">{wall_tiles}</ul>\n'
+                      f'<p><a href="visual-database.html?picture=Pictured">See all {len(pictured):,} pictured figures</a></p>')
     # Consult build (R133, "Model Numbers, after dark"): the lineup is the
     # newest wave generated from the census rows in wave order. Fleet law
     # (Round 2, fix E with the fleet override): ALLOW_HOTLINK is False, so
@@ -309,16 +376,14 @@ def home():
     dd_wave = WAVES[wave_id]
     dd_rows = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == wave_id]
     def lineup_fig(i, r):
-        img = shown_img(r, local_only=not ALLOW_HOTLINK)
-        if img:
-            shot = (f'<img src="{escape(img)}" alt="{escape(r["name"])} figure photograph" '
-                    f'width="345" height="460" referrerpolicy="no-referrer"'
-                    f'{" fetchpriority=\"high\"" if i < 3 else ""} '
-                    f'style="view-transition-name: fig-{r["slug"]}">')
-        else:
-            shot = f'<span class="notplate"><span class="np-name">{escape(r["name"])}</span></span>'
-        return (f'<li class="fig" style="--i:{i}">'
-                f'<a class="fig-shot" href="spec-sheet.html?f={r["slug"]}" tabindex="-1" aria-hidden="true">{shot}</a>'
+        # THE SHELF (2026-10-24 bundle §11.2): the home lineup stands on a
+        # black stage with a hairline floor; each figure is a plate2 plate,
+        # blended by backdrop class where the matte allows (shelf.css).
+        entry = r.get("entry") if shown_img(r, local_only=not ALLOW_HOTLINK) else None
+        shot = plate2(entry, r["name"], f'spec-sheet.html?f={r["slug"]}',
+                      eager=(i < 3), vt=f'fig-{r["slug"]}')
+        return (f'<li class="fig bg-{matte_class(entry)}" style="--i:{i}">'
+                f'<div class="fig-shot">{shot}</div>'
                 f'<p class="fig-no">No. {i + 1}</p>'
                 f'<h3 class="fig-name"><a href="spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></h3>'
                 f'{state_btns(r["slug"])}</li>')
@@ -328,11 +393,7 @@ def home():
         rows_w = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == w["id"]]
         pic = next((r for r in rows_w if shown_img(r, local_only=not ALLOW_HOTLINK)), None)
         n_pic = sum(1 for r in rows_w if r["pictured"])
-        if pic:
-            media = (f'<span class="wdplate"><img src="{escape(shown_img(pic, local_only=not ALLOW_HOTLINK))}" '
-                     f'alt="{escape(pic["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></span>')
-        else:
-            media = f'<span class="wdplate absence"><span class="micro">Not pictured yet</span></span>'
+        media = plate2(pic.get("entry") if pic else None, pic["name"] if pic else w["series"], "#", tag="span")
         return (f'<li class="wavedoor"><a href="waves/{w["id"]}.html">{media}'
                 f'<span class="wd-name">{escape(w["series"])}</span>'
                 f'<span class="wd-fact">{w["year"]} · {len(rows_w)} figures · {n_pic} pictured</span></a></li>')
@@ -370,24 +431,29 @@ def home():
 <button type="submit">Search</button></form>
 <p class="browse">Or browse by <a href="characters/index.html">character</a> · <a href="waves/index.html">wave</a> · <a href="visual-database.html?sort=year">year</a></p>
 </section>
-<section class="lineup" aria-labelledby="lineup-title">
+<section class="lineup shelf" aria-labelledby="lineup-title">
 <div class="lineup-head">
 <p class="lineup-kicker">Newest wave · {dd_wave["year"]} · {len(dd_rows)} figures</p>
 <h2 id="lineup-title">{escape(dd_wave["series"])}</h2>
 <a class="lineup-more" href="waves/{wave_id}.html">See the wave <span aria-hidden="true">→</span></a>
 </div>
-<ol class="stage">{lineup}</ol>
+<ol class="stage shelf-stage">{lineup}</ol>
+<div class="shelf-floor" aria-hidden="true"></div>
 </section>
-<h2>Pictured figures</h2>
-<ul class="tiles">{wall_tiles}</ul>
-<p><a href="visual-database.html?picture=Pictured">See all {len(pictured):,} pictured figures</a></p>
+<section class="coverage" aria-labelledby="coverage-title">
+<h2 id="coverage-title">Photo coverage</h2>
+<p class="coverage-line"><span class="coverage-n">{len(pictured):,}</span> of {len(ROWS):,} figures pictured · {round(100 * len(pictured) / len(ROWS))}%</p>
+<div class="meter" role="img" aria-label="Photo coverage {round(100 * len(pictured) / len(ROWS))} percent"><span style="inline-size:{100 * len(pictured) / len(ROWS):.1f}%"></span></div>
+<p class="micro">Counted from the photo manifest at build time. Photos are shop product photographs, shown by reference with their credit. <a href="{photo_source_link("a figure with no photo")}" rel="noopener" target="_blank">Know a photo source?</a></p>
+</section>
+{wall_block}
 <h2>Latest waves</h2>
 <ul class="wavedoors">{doors}</ul>
 <p><a href="waves/index.html">All 170 waves</a></p>
 <p><a href="classics.html">The Classics family: {CFIG_COUNT} figures in {len(CWAVES)} waves, counted separately</a></p>
 <h2>Upcoming</h2>
 <ul class="rows">{up_rows}</ul>
-<p><a href="radar.html">All upcoming releases</a></p>
+<p><a href="radar.html">All upcoming releases</a> · <a href="drops.ics">Drops calendar (.ics)</a></p>
 <h2>Browse</h2>
 <ul class="indexlines">{index_lines}</ul>
 <h2>Newest additions</h2>
@@ -500,17 +566,30 @@ async function apply(){{
   const s=document.getElementById("sort").value;
   view.sort((a,b)=> s==="new"? b.year-a.year||(b.pictured-a.pictured)||a.name.localeCompare(b.name) : s==="year"? a.year-b.year||a.name.localeCompare(b.name) : s==="wave"? a.wave.localeCompare(b.wave)||a.pid.localeCompare(b.pid) : a.name.localeCompare(b.name));
   shown=0; document.getElementById("rows").innerHTML=""; renderMore();
+  if (!view.length) document.getElementById("rows").innerHTML = `<li class="nomatch"><p><strong>No figures match.</strong></p><p>Try a shorter word, or <a href="visual-database.html">clear the filters</a>.</p></li>`;
   const n=Object.values(f).flat().length+(q?1:0);
   document.getElementById("filtersBtn").textContent=`Filters${{n?` (${{n}})`:""}}`;
   document.getElementById("results").innerHTML=`${{view.length.toLocaleString()}} figures · ${{esc(describe(f,q))}} <a class="clear" href="visual-database.html">Clear</a>`;
 }}
+function plate2HTML(r, thumb){{
+  // JS twin of scripts/plate2.py (plate2 presentation, 2026-10-24 bundle):
+  // the typographic floor under a fading photo, matte from the photo's
+  // corners, fit class, alt second chances handled by assets/js/plate2.js.
+  const e=r.entry; const floor=`<span class="p-floor"><span class="p-name">${{esc(r.name)}}</span><span class="p-micro">Not pictured</span></span>`;
+  const cls=`plate2${{thumb?" is-thumb":""}}`;
+  if(!e||!e.imageUrl||e.status==="dead") return `<a class="${{cls}}" data-state="none" href="spec-sheet.html?f=${{r.slug}}">${{floor}}</a>`;
+  const style=e.matte?` style="--matte:${{esc(e.matte)}}"`:"";
+  const fit=e.fit?` data-fit="${{esc(e.fit)}}"`:"";
+  const alts=(e.alts||[]).map(a=>a.imageUrl).filter(u=>u.startsWith("https://")).join(" ");
+  return `<a class="${{cls}}" data-state="wait"${{fit}}${{style}} href="spec-sheet.html?f=${{r.slug}}">${{floor}}<img src="${{esc(e.imageUrl)}}" alt="${{esc(r.name)}} figure photograph" width="${{e.w||345}}" height="${{e.h||460}}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${{alts?` data-alts="${{esc(alts)}}"`:""}}>${{thumb?"":`<span class="p-credit">Photo at ${{esc(e.imageSource)}}</span>`}}</a>`;
+}}
 function tileHTML(r){{
   const marks=(r.exclusive?` · ${{esc(r.exclusive)}} exclusive`:"")+(r.baf?` · Build A Figure piece`:"");
-  const media=r.img?`<a class="platewrap" href="spec-sheet.html?f=${{r.slug}}"><img src="${{esc(r.img)}}" alt="${{esc(r.name)}} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${{r.slug}}"><span class="absname">${{esc(r.name)}}</span><span class="micro">Not pictured</span></a>`;
+  const media=plate2HTML(r,false);
   return `<li class="tile">${{media}}<div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.wave)}} · ${{r.year}}${{marks}}</div>${{stateButtons(r.slug)}}</li>`;
 }}
 function rowHTML(r){{
-  return `<li class="row">${{r.img?`<img class="thumb" src="${{esc(r.img)}}" alt="" loading="lazy" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}}<div><div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.fact)}}</div></div>${{stateButtons(r.slug)}}</li>`;
+  return `<li class="row">${{plate2HTML(r,true)}}<div><div class="pid">${{esc(r.pid)}}</div><div class="name"><a href="spec-sheet.html?f=${{r.slug}}">${{esc(r.name)}}</a></div><div class="fact">${{esc(r.fact)}}</div></div>${{stateButtons(r.slug)}}</li>`;
 }}
 function renderMore(){{
   const ul=document.getElementById("rows"); const next=view.slice(shown,shown+50);
@@ -569,12 +648,33 @@ guardImages(document);
 const slug=new URLSearchParams(location.search).get("f");
 const el=document.getElementById("fig");
 function detail(k,v){ return v?`<li><span class="k">${k}</span><span>${v}</span></li>`:""; }
-try{
+if(!slug){
+  el.innerHTML=`<h1>Pick a figure</h1><p>Search the <a href="visual-database.html">catalog</a> and open a figure to see its record.</p>`;
+} else try{
   const s=await getJSON(`data/v1/figures/${slug}.json`);
   document.title=`${s.name} | Marvel Legends Chronicle`;
-  const media=s.img
-    ? `<figure class="plate"><div class="frame"><img src="${esc(s.img.url)}" alt="${esc(s.name)} figure photograph" referrerpolicy="no-referrer" fetchpriority="high"></div></figure>`
-    : `<div class="notplate"><div class="np-name">${esc(s.name)}</div><p class="micro">Not pictured</p></div>`;
+  const angles = s.img && s.img.status!=="dead" && s.img.url ? [{url:s.img.url, source:s.img.source}, ...(s.img.alts||[]).map(a=>({url:a.imageUrl, source:a.imageSource}))] : [];
+  const mine = angles.length>0;
+  function plate2For(url, source, rest){
+    const style=s.img.matte?` style="--matte:${esc(s.img.matte)}"`:"";
+    const fit=s.img.fit?` data-fit="${esc(s.img.fit)}"`:"";
+    const altAttr=rest&&rest.length?` data-alts="${esc(rest.map(a=>a.url).join(" "))}"`:"";
+    return `<div class="plate2" data-state="wait"${fit}${style}><span class="p-floor"><span class="p-name">${esc(s.name)}</span><span class="p-micro">Not pictured</span></span><img src="${esc(url)}" alt="${esc(s.name)} figure photograph" width="${s.img.w||345}" height="${s.img.h||460}" decoding="async" referrerpolicy="no-referrer" fetchpriority="high"${altAttr}><span class="p-credit">Photo at ${esc(source)}</span></div>`;
+  }
+  function plate2Link(o){
+    const e=o.entry; const floor=`<span class="p-floor"><span class="p-name">${esc(o.name)}</span><span class="p-micro">Not pictured</span></span>`;
+    if(!e||!e.imageUrl||e.status==="dead") return `<a class="plate2" data-state="none" href="spec-sheet.html?f=${esc(o.slug)}">${floor}</a>`;
+    const style=e.matte?` style="--matte:${esc(e.matte)}"`:""; const fit=e.fit?` data-fit="${esc(e.fit)}"`:"";
+    const alts=(e.alts||[]).map(a=>a.imageUrl).filter(u=>u.startsWith("https://")).join(" ");
+    return `<a class="plate2" data-state="wait"${fit}${style} href="spec-sheet.html?f=${esc(o.slug)}">${floor}<img src="${esc(e.imageUrl)}" alt="${esc(o.name)} figure photograph" width="${e.w||345}" height="${e.h||460}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${alts?` data-alts="${esc(alts)}"`:""}><span class="p-credit">Photo at ${esc(e.imageSource)}</span></a>`;
+  }
+  const media = mine
+    ? plate2For(angles[0].url, angles[0].source, angles.slice(1))
+    : `<div class="plate2" data-state="none"><span class="p-floor"><span class="p-name">${esc(s.name)}</span><span class="p-micro">Not pictured</span></span></div>`;
+  /* Gallery: extra angle/source URLs the manifest already carries for this
+     figure (entry alts). With none on file, no gallery renders. */
+  const gallery = angles.length>1 ? `<div class="angles" role="group" aria-label="More photos of this figure">${angles.map((a,i)=>`<button type="button" class="anglebtn" data-angle="${i}" aria-pressed="${i===0}">Photo ${i+1} · ${esc(a.source)}</button>`).join("")}</div>` : "";
+  const missing = !mine ? `<p class="micro"><a href="https://github.com/astercast/marvel-legends-chronicle/issues/new?title=${encodeURIComponent("Photo source: "+s.name)}&body=${encodeURIComponent("A photo source for "+s.name+" ("+s.pid+").\\nShop/manufacturer product page or image URL:\\n")}" rel="noopener" target="_blank">Know a photo source?</a></p>` : "";
   const sold=s.sold.length? s.sold.map(x=>`<div class="priceline"><span>Reported sold: ${esc(x.display)}</span><span class="num">${esc(x.asOf)} · ${esc(x.source)}</span></div>`).join("")
     : `<p> No reported sales recorded for this figure.</p>`.replace(" ","");
   const buy=s.buy.length? s.buy.map(b=>`<div class="buyrow"><span>${esc(b.retailer)}</span><a href="${esc(b.url)}" rel="noopener">Buy</a></div><div class="priceline"><span>Asking at ${esc(b.retailer)}</span><span class="num">$${b.priceUSD} · seen ${esc(b.priceSeen)}</span></div>`).join("")
@@ -582,7 +682,7 @@ try{
   el.innerHTML=`
   <p class="backline"><a href="waves/${esc(s.waveSlug)}.html">← ${esc(s.wave)}</a></p>
   <div class="figlayout">
-  <div class="figmedia">${media}</div>
+  <div class="figmedia">${media}${gallery}${missing}</div>
   <div class="figside">
   <h1>${esc(s.name)}</h1>
   <p class="factline">${esc(s.wave)}, ${s.year}, ${esc(s.maker)}</p>
@@ -606,10 +706,16 @@ try{
     ${detail("Variant", s.variant?esc(s.variant):"")}
     ${detail("Note", s.notes?esc(s.notes):"")}
   </ul>
-  ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=o.img?`<a class="platewrap" href="spec-sheet.html?f=${esc(o.slug)}"><img src='${esc(o.img)}' alt="${esc(o.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>`:`<a class="platewrap absence" href="spec-sheet.html?f=${esc(o.slug)}"><span class="absname">${esc(o.name)}</span><span class="micro">Not pictured</span></a>`; return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
+  ${s.others.length?`<h2>Other versions</h2><ul class="tiles">${s.others.map(o=>{ const m=plate2Link(o); return `<li class="tile">${m}<div class="pid">${esc(o.pid)}</div><div class="name"><a href="spec-sheet.html?f=${esc(o.slug)}">${esc(o.name)}</a></div><div class="fact">${esc(o.fact)}</div><p class="tilelink"><a href="compare.html?a=${esc(s.slug)}&b=${esc(o.slug)}">Compare with this figure</a></p></li>`; }).join("")}</ul>`:""}
   <p class="sourceline">${esc(s.sourceLine)}</p>`;
-  const big=el.querySelector(".plate img");
+  const big=el.querySelector(".plate2 img");
   if (big) big.style.viewTransitionName="fig-"+slug;
+  el.querySelectorAll("[data-angle]").forEach(b=>b.addEventListener("click",()=>{
+    const a=angles[+b.dataset.angle]; const img=el.querySelector(".plate2 img"); if(!img||!a) return;
+    img.classList.remove("is-in"); img.src=a.url;
+    el.querySelectorAll("[data-angle]").forEach(x=>x.setAttribute("aria-pressed", x===b?"true":"false"));
+    const credit=el.querySelector(".plate2 .p-credit"); if(credit) credit.textContent="Photo at "+a.source;
+  }));
   wireState(el);
 }catch(e){ el.innerHTML=`<h1>Figure not found</h1><p>Search the <a href="visual-database.html">catalog</a>.</p>`; }
 </script>
@@ -633,13 +739,13 @@ def wave_pages():
         contents = "".join(tile_html(r, prefix="../") for _, r in rows)
         pictured = sum(1 for _, r in rows if r["pictured"])
         strip = ""
-        pic_rows = [r for _, r in rows if r["pictured"]]
+        pic_rows = [r for _, r in rows if shown_img(r)]
         # The strip is the at-a-glance photo index for LONG waves only; on a
-        # short wave the tile wall below already shows every figure.
+        # short wave the tile wall below already shows every figure. Only
+        # photos shown_img may show (repo-hosted) enter the strip.
         if pic_rows and len(rows) > 12:
             strip = ('<div class="strip" aria-label="Pictured figures in this wave">' + "".join(
-                f'<a class="stripplate" href="../spec-sheet.html?f={r["slug"]}">'
-                f'<img src="{escape(r["img"])}" alt="{escape(r["name"])} figure photograph" loading="lazy" referrerpolicy="no-referrer"></a>'
+                plate2(r.get("entry"), r["name"], f'../spec-sheet.html?f={r["slug"]}', thumb=True)
                 for r in pic_rows) + "</div>")
         excl = sum(1 for f, _ in rows if f.get("exclusive"))
         bafsec = ""
@@ -704,10 +810,10 @@ Legends: Spider-Man Classics and its successor Spider-Man Classic, X-Men
 Classics, Hulk Classics, and Fantastic Four Classics. They are a separate
 census family in this Chronicle. Their counts stand apart from the Marvel
 Legends census of 1,949 figures in 170 waves and are never merged into it.</p>
-<p>{len(CIMG)} of the {CFIG_COUNT} Classics figures carry a photograph so
-far. Pictures join this family only from lawful retailer photography of
-the kind the main census uses; the rest are absence by design, the same
-standard the main line applies to its own unpictured figures.</p>
+<p>{len(CIMG)} of the {CFIG_COUNT} Classics figures have a photo at the
+seller, linked from the plate on their wave page. No retailer photo is
+hotlinked here; the rest are absence by design, the same standard the
+main line applies to its own unpictured figures.</p>
 {sections}
 <p class="sourceline">Source: Chronicle Classics family record, compiled
 figure for figure from the era line tables; checked {CHECKED}.</p>
@@ -716,21 +822,32 @@ figure for figure from the era line tables; checked {CHECKED}.</p>
           f"The Toy Biz Classics sister lines: {CFIG_COUNT} figures in {len(CWAVES)} waves, 2001 to 2006, a separate census family beside Marvel Legends.",
           "", rel="classics.html") + body + wire("") + foot())
     for w in CWAVES:
-        def crow(f):
+        def crow(f, pos):
             img = CIMG.get(f["id"])
-            thumb = (f'<img class="thumb" src="{escape(img["imageUrl"])}" alt="" loading="lazy" referrerpolicy="no-referrer">'
-                     if img else "")
-            src = (f' · Product photograph, {escape(img["imageSource"])}' if img else "")
-            return (f'<li class="row">{thumb}<div><div class="name">{escape(f["name"])}</div>'
-                    f'<div class="fact">{escape(f.get("notes") or "Classics family record")}{src}</div></div></li>')
-        rows = "".join(crow(f) for f in by_wave[w["id"]])
+            # Fleet law applies to the Classics family too: a retailer
+            # image URL is never emitted. Repo-hosted only, otherwise
+            # the Round 3 plate with a seller link.
+            if img and not (hotlink(img["imageUrl"]) and not ALLOW_HOTLINK):
+                thumb = plate2(img, f["name"], "#", thumb=True, tag="span")
+                src = f' · Product photograph, {escape(img["imageSource"])}'
+                return (f'<li class="row">{thumb}<div><div class="name">{escape(f["name"])}</div>'
+                        f'<div class="fact">{escape(f.get("notes") or "Classics family record")}{src}</div></div></li>')
+            if img:
+                micro = (f'<p class="micro"><a href="{escape(img["sourceUrl"])}" rel="noopener nofollow" '
+                         f'target="_blank">See the photo at {escape(img["imageSource"])}</a></p>')
+            else:
+                micro = '<p class="micro">No photo yet</p>'
+            plate = (f'<div class="notplate"><div class="np-num" aria-hidden="true">{pos}</div>{micro}</div>')
+            return (f'<li class="row">{plate}<div><div class="name">{escape(f["name"])}</div>'
+                    f'<div class="fact">{escape(f.get("notes") or "Classics family record")}</div></div></li>')
+        rows = "".join(crow(f, i + 1) for i, f in enumerate(by_wave[w["id"]]))
         n_pic = sum(1 for f in by_wave[w["id"]] if f["id"] in CIMG)
         body = f"""
 {crumbs("../", [("Home", "index.html"), ("Classics", "classics.html"), (w["series"], None)])}
 <h1>{escape(w["series"])}</h1>
 <p class="factline">{escape(w["manufacturer"])}, {w["year"]}, {w["figureCount"]} figures · Classics family: {escape(w["line"])}</p>
 <ul class="rows">{rows}</ul>
-<p class="sourceline">Summary: {w["figureCount"]} figures · {n_pic} pictured (photographs join only from lawful retailer photography)<br>
+<p class="sourceline">Summary: {w["figureCount"]} figures · {n_pic} with a photo at the seller; no retailer photo is hotlinked on this page<br>
 Source: Chronicle Classics family record for this wave; checked {CHECKED}.</p>
 """
         write(f'waves/{w["id"]}.html', chrome(f'{w["series"]} ({w["year"]}) | Marvel Legends Chronicle',
@@ -803,7 +920,7 @@ def upcoming():
 {announced}
 <h2>Unconfirmed reports</h2>
 <ul class="rows">{unconf}</ul>
-<p><a href="visual-database.html">Past releases: browse the current year</a></p>
+<p><a href="drops.ics">Drops calendar (.ics)</a> · <a href="visual-database.html">Past releases: browse the current year</a></p>
 """
     write("radar.html", chrome("Upcoming | Marvel Legends Chronicle",
           "Announced Marvel Legends figures, expected dates, and unconfirmed reports, kept apart.", "Upcoming", rel="radar.html") + body + foot())
@@ -825,12 +942,19 @@ async function ensure(){ if(!index) index=await getJSON("data/v1/search-index.js
 function renderPickers(){
   document.getElementById("pickers").innerHTML=slots.map((s,i)=>`<div><label class="f" for="pick${i}">Figure ${i+1}</label><input type="text" id="pick${i}" list="figs" value="${esc(nameFor(s))}" placeholder="Search a figure" style="width:100%"></div>`).join("")+`<datalist id="figs"></datalist>`;
   slots.forEach((s,i)=>document.getElementById("pick"+i).addEventListener("change", async e=>{
-    await ensure(); const hit=index.find(r=>r.name===e.target.value||r.slug===e.target.value);
+    await ensure(); const v=e.target.value; const hit=index.find(r => (r.name + " · " + r.pid) === v || r.slug === v || r.name.toLowerCase() === v.trim().toLowerCase());
     if(hit){ slots[i]=hit.slug; render(); }
   }));
-  if(index) document.getElementById("figs").innerHTML=index.slice(0,4000).map(r=>`<option value="${esc(r.name)}">`).join("");
+  if(index) document.getElementById("figs").innerHTML=index.map(r => `<option value="${esc(r.name + " · " + r.pid)}">`).join("");
 }
-function nameFor(slug){ if(!slug||!index) return slug?slug.replaceAll("-"," "):""; const r=index.find(x=>x.slug===slug); return r?r.name:""; }
+function nameFor(slug){ if(!slug||!index) return slug?slug.replaceAll("-"," "):""; const r=index.find(x=>x.slug===slug); return r?r.name + " · " + r.pid:""; }
+function plate2Panel(r){
+  const e=r.entry; const floor=`<span class="p-floor"><span class="p-name">${esc(r.name)}</span><span class="p-micro">Not pictured</span></span>`;
+  if(!e||!e.imageUrl||e.status==="dead") return `<div class="plate2" data-state="none">${floor}</div>`;
+  const style=e.matte?` style="--matte:${esc(e.matte)}"`:""; const fit=e.fit?` data-fit="${esc(e.fit)}"`:"";
+  const alts=(e.alts||[]).map(a=>a.imageUrl).filter(u=>u.startsWith("https://")).join(" ");
+  return `<div class="plate2" data-state="wait"${fit}${style}>${floor}<img src="${esc(e.imageUrl)}" alt="${esc(r.name)} figure photograph" width="${e.w||345}" height="${e.h||460}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${alts?` data-alts="${esc(alts)}"`:""}><span class="p-credit">Photo at ${esc(e.imageSource)}</span></div>`;
+}
 async function render(){
   renderPickers();
   const chosen=slots.filter(Boolean);
@@ -841,7 +965,7 @@ async function render(){
     const r=index.find(x=>x.slug===slug); const p=bySlug.get(slug);
     const price=p&&p.priceSignals&&p.priceSignals.length? p.priceSignals.map(x=>`Reported: ${esc(x.display||"")} (${esc(x.asOf||"")})`).join("<br>") : "No reported sales recorded for this figure.";
     const rows=FIELDS.map(([k,key])=>{ const v=(p&&p[key])||((key!=="bafPiece"&&key!=="variant"&&key!=="notes"&&r)?r[key]:null)||(key==="maker"&&p?p.manufacturer:null); return `<li><span class="k">${k}</span><span>${v?esc(v):(key==="exclusive"?"General release":key==="bafPiece"?"None":key==="variant"?"Standard release":"No notes recorded")}</span></li>`; }).join("");
-    const media=r&&r.img?`<img class="panelplate" src='${esc(r.img)}' alt="${esc(r.name)} figure photograph" loading="lazy" referrerpolicy="no-referrer">`:r?`<div class="panelplate absence"><span class="absname">${esc(r.name)}</span><span class="micro">Not pictured</span></div>`:"";
+    const media=r?plate2Panel(r):"";
     return `<section class="panel">${media}<p class="pid micro">${esc(r?r.pid:"")}</p><h3>${esc(r?r.name:slug)}</h3>
     <p class="factline">${esc(r?r.fact:"")}</p><ul class="details">${rows}
     <li><span class="k">Reported sold</span><span>${price}</span></li>
@@ -851,7 +975,7 @@ async function render(){
 async function warmPickers(){
   await ensure();
   const dl=document.getElementById("figs");
-  if(dl) dl.innerHTML=index.slice(0,4000).map(r=>`<option value="${esc(r.name)}">`).join("");
+  if(dl) dl.innerHTML=index.map(r => `<option value="${esc(r.name + " · " + r.pid)}">`).join("");
 }
 document.addEventListener("focusin", e=>{
   if(e.target.matches('input[list="figs"]')) warmPickers();
@@ -869,7 +993,7 @@ def my_collection():
 <p class="census" id="summary">Owned 0 · Wanted 0 · Waves complete 0 · Build A Figures complete 0</p>
 <h2>Owned</h2>
 <div id="owned"><p class="method">Nothing marked Owned yet. Mark figures Owned in the <a href="visual-database.html">catalog</a>.</p></div>
-<p><button class="plain" type="button" onclick="window.print()">Print checklist</button></p>
+<p><button class="plain" type="button" id="posterBtn">Download My Shelf poster</button> <button class="plain" type="button" onclick="window.print()">Print checklist</button></p>
 <h2>Wanted</h2>
 <div id="wanted"><p class="method">Nothing marked Wanted yet.</p></div>
 <p><button class="plain" type="button" onclick="window.print()">Print hunt list</button></p>
@@ -897,7 +1021,14 @@ const completeWaves=[...waves.values()].filter(ws=>ws.every(r=>loadSet("owned").
 const bafWaves=[...waves.entries()].filter(([,ws])=>ws.some(r=>r.baf));
 const bafDone=bafWaves.filter(([,ws])=>ws.filter(r=>r.baf).every(r=>loadSet("owned").has(r.slug))).length;
 document.getElementById("summary").innerHTML=`Owned <b>${owned.length}</b> · Wanted <b>${wanted.length}</b> · Waves complete <b>${completeWaves}</b> · Build A Figures complete <b>${bafDone}</b>`;
-function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${r.img?`<img class="thumb" src="${esc(r.img)}" alt="" referrerpolicy="no-referrer">`:`<span class="notpic">Not pictured</span>`}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
+function plate2Thumb(r){
+  const e=r.entry; const floor=`<span class="p-floor"><span class="p-name">${esc(r.name)}</span><span class="p-micro">Not pictured</span></span>`;
+  if(!e||!e.imageUrl||e.status==="dead") return `<a class="plate2 is-thumb" data-state="none" href="spec-sheet.html?f=${r.slug}">${floor}</a>`;
+  const style=e.matte?` style="--matte:${esc(e.matte)}"`:""; const fit=e.fit?` data-fit="${esc(e.fit)}"`:"";
+  const alts=(e.alts||[]).map(a=>a.imageUrl).filter(u=>u.startsWith("https://")).join(" ");
+  return `<a class="plate2 is-thumb" data-state="wait"${fit}${style} href="spec-sheet.html?f=${r.slug}">${floor}<img src="${esc(e.imageUrl)}" alt="${esc(r.name)} figure photograph" width="${e.w||345}" height="${e.h||460}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${alts?` data-alts="${esc(alts)}"`:""}></a>`;
+}
+function rowList(list, extra=()=>""){ if(!list.length) return ""; return `<ul class="rows">${list.map(r=>`<li class="row">${plate2Thumb(r)}<div><div class="pid">${esc(r.pid)}</div><div class="name"><a href="spec-sheet.html?f=${r.slug}">${esc(r.name)}</a></div><div class="fact">${esc(r.fact)}</div>${extra(r)}</div></li>`).join("")}</ul>`; }
 const targets=JSON.parse(localStorage.getItem("mlc_targets_r23")||"{}");
 document.getElementById("owned").innerHTML=rowList(owned)||document.getElementById("owned").innerHTML;
 document.getElementById("wanted").innerHTML=rowList(wanted, r=>`<p><label>Target price ($) <input type="number" step="0.01" min="0" data-target="${r.slug}" value="${targets[r.slug]??""}"></label></p>`)||document.getElementById("wanted").innerHTML;
@@ -924,6 +1055,49 @@ function renderTop(){
   document.querySelectorAll("[data-rm]").forEach(b=>b.addEventListener("click",()=>{ top.splice(+b.dataset.rm,1); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); }));
   const ab=document.getElementById("addbtn"); if(ab) ab.addEventListener("click",()=>{ top.push(document.getElementById("addtop").value); localStorage.setItem("mlc_top10_r23",JSON.stringify(top)); renderTop(); });
 }
+/* My Shelf poster (2026-10-24 bundle): a canvas of the owned figures,
+   drawn on this device from the same hotlinked shop photos the plates use.
+   A photo that will not load (or will not share its pixels) becomes a
+   typographic cell with the figure's name, never a hole. */
+async function shelfPoster(){
+  const W=1240, cols=4, cellW=W/cols, cellH=cellW*1.25, head=150, foot=70;
+  const rowsN=Math.max(1, Math.ceil(owned.length/cols));
+  const cv=document.createElement("canvas"); cv.width=W; cv.height=head+rowsN*cellH+foot;
+  const cx=cv.getContext("2d");
+  function frame(withPhotos){
+    cx.fillStyle="#0d0d0e"; cx.fillRect(0,0,cv.width,cv.height);
+    cx.fillStyle="#f4f4f2"; cx.font="700 54px system-ui"; cx.fillText("My Shelf", 48, 78);
+    cx.font="400 26px system-ui"; cx.fillStyle="#8c8d91";
+    cx.fillText(owned.length? owned.length+" figures · Marvel Legends Chronicle" : "No figures marked Owned yet", 48, 122);
+    cx.strokeStyle="#3a3a3d"; cx.beginPath(); cx.moveTo(0,head+rowsN*cellH+1); cx.lineTo(W,head+rowsN*cellH+1); cx.stroke();
+    cx.font="400 22px system-ui"; cx.fillStyle="#8c8d91";
+    cx.fillText("Product photographs belong to the shops named on each figure's page.", 48, cv.height-26);
+  }
+  function cell(i, r, img){
+    const x=(i%cols)*cellW, y=head+Math.floor(i/cols)*cellH;
+    cx.fillStyle="#1a1b1d"; cx.fillRect(x+6,y+6,cellW-12,cellH-12);
+    if(img){ const s=Math.min((cellW-36)/img.width,(cellH-90)/img.height); const w=img.width*s, h=img.height*s;
+      cx.drawImage(img, x+(cellW-w)/2, y+14+(cellH-90-h)/2, w, h); }
+    cx.fillStyle="#f4f4f2"; cx.font="600 21px system-ui";
+    const name=r.name.length>30? r.name.slice(0,29)+"…" : r.name;
+    cx.fillText(name, x+18, y+cellH-42);
+    cx.fillStyle="#8c8d91"; cx.font="400 18px system-ui"; cx.fillText(r.wave+" · "+r.year, x+18, y+cellH-16);
+  }
+  frame(true);
+  await Promise.all(owned.map((r,i)=>new Promise(res=>{
+    if(!r.img){ cell(i,r,null); return res(); }
+    const im=new Image(); im.crossOrigin="anonymous"; im.referrerPolicy="no-referrer";
+    im.onload=()=>{ cell(i,r,im); res(); };
+    im.onerror=()=>{ cell(i,r,null); res(); };
+    im.src=r.img;
+  })));
+  function save(){ const a=document.createElement("a"); a.download="my-shelf.png"; a.href=cv.toDataURL("image/png"); a.click(); }
+  try{ save(); }
+  catch(e){ /* a shop photo shared its pixels read-only (tainted canvas):
+               redraw names-only and save that instead of failing */
+    frame(false); owned.forEach((r,i)=>cell(i,r,null)); save(); }
+}
+document.getElementById("posterBtn").addEventListener("click", shelfPoster);
 renderTop();
 document.getElementById("printarea").innerHTML=`<h2>Checklist: Owned and Wanted by wave</h2>`+
  [...waves.entries()].map(([w,ws])=>{ const rel=ws.filter(r=>loadSet("owned").has(r.slug)||loadSet("wanted").has(r.slug)); return rel.length?`<h3>${esc(w)}</h3><ul>${rel.map(r=>`<li>${loadSet("owned").has(r.slug)?"Owned":"Wanted"} · ${esc(r.name)}</li>`).join("")}</ul>`:""; }).join("");
@@ -980,7 +1154,7 @@ def help_page():
 <li>1,949 figures in 170 waves, released 2002–2026.</li>
 <li>Two makers: Toy Biz (229 figures) and Hasbro (1,710 figures).</li>
 <li>66 character pages cover the most-collected characters; every figure is in the catalog and on its wave page.</li>
-<li>Pictures: {len(IMAGES):,} figures have a verified retailer photograph. The other {len(FIGS)-len(IMAGES):,} are listed without a picture and are never shown with a substitute image.</li>
+<li>Pictures: {sum(1 for e in IMAGES.values() if usable(e)):,} figures have a verified retailer photograph. The other {len(FIGS)-sum(1 for e in IMAGES.values() if usable(e)):,} are listed without a picture and are never shown with a substitute image.</li>
 <li>Prices: reported sales are partial: 10 figures carry a reported sold range. A figure with no reported sales says so on its page.</li>
 </ul>
 </div>
@@ -1047,8 +1221,51 @@ REDIRECTS = {
     "market-briefing.html": "/encyclopedia.html", "launch-curve.html": "/spec-sheet.html",
 }
 
+def gen_drops_ics():
+    """drops.ics (2026-10-24 bundle §11.2): a calendar built only from dates
+    the data actually carries — drop windows (drop-week.json windowAt /
+    windowDate) and pre-order dates (preorders.json preorderDate). A release
+    window in words ("Fall 2026") is not a date and never becomes one."""
+    def esc_ics(s):
+        out = str(s or "")
+        for a, b in (("\\", "\\\\"), (";", "\\;"), (",", "\\,"), ("\n", " ")):
+            out = out.replace(a, b)
+        return out
+    events = []
+    for d in DROPWEEK.get("drops", []):
+        stamp = None
+        if d.get("windowAt"):
+            try:
+                dt = datetime.fromisoformat(d["windowAt"])
+                stamp = "DTSTART:" + dt.astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            except Exception:
+                stamp = None
+        if stamp is None and d.get("windowDate"):
+            stamp = "DTSTART;VALUE=DATE:" + str(d["windowDate"]).replace("-", "")
+        if stamp:
+            desc = " · ".join(x for x in [d.get("kindLabel") or "", d.get("shipWindow") or ""] if x)
+            events.append((d.get("id") or d.get("title"), stamp,
+                           d.get("title") or d.get("id"), desc))
+    for u in PREORDERS:
+        if u.get("preorderDate"):
+            desc = " · ".join(x for x in ["Pre-order date",
+                                          f'Expected {u["releaseWindow"]}' if u.get("releaseWindow") else ""] if x)
+            events.append((u.get("id") or u["name"],
+                           "DTSTART;VALUE=DATE:" + str(u["preorderDate"]).replace("-", ""),
+                           u["name"], desc))
+    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Marvel Legends Chronicle//Drops//EN",
+             "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:Marvel Legends drops"]
+    for uid, dtstart, summary, desc in events:
+        lines += ["BEGIN:VEVENT", f"UID:{uid}@marvel-legends-chronicle",
+                  f"DTSTAMP:{BUILT.replace('-', '').replace(':', '')}",
+                  dtstart, f"SUMMARY:{esc_ics(summary)}", f"DESCRIPTION:{esc_ics(desc)}", "END:VEVENT"]
+    lines.append("END:VCALENDAR")
+    (ROOT / "drops.ics").write_text("\r\n".join(lines) + "\r\n")
+    return len(events)
+
 def main():
     gen_data()
+    n_ics = gen_drops_ics()
     home(); browse(); figure_page(); wave_pages(); classics_pages(); character_pages()
     upcoming(); compare(); my_collection(); help_page(); developers(); not_found()
     # remove merged/cut top-level pages; redirects in vercel.json carry their URLs
@@ -1060,7 +1277,7 @@ def main():
     v["redirects"] = [{"source": f"/{k}", "destination": dest, "permanent": False}
                       for k, dest in sorted(REDIRECTS.items())]
     (ROOT / "vercel.json").write_text(json.dumps(v, indent=2) + "\n")
-    print(f"figures={len(FIGS)} waves={len(WAVES)} characters={len(CHARS)} pictured={len(IMAGES)}")
+    print(f"figures={len(FIGS)} waves={len(WAVES)} characters={len(CHARS)} pictured={len(IMAGES)} drops_ics_events={n_ics}")
 
 if __name__ == "__main__":
     main()

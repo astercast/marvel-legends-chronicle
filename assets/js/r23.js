@@ -41,6 +41,7 @@ export function guardImages(root=document){
   root.addEventListener("error", e=>{
     const t=e.target;
     if(!(t instanceof HTMLImageElement) || t.dataset.guarded) return;
+    if(t.closest && t.closest(".plate2")) return; /* plate2.js owns plate failures: alt second chance, then the floor */
     t.dataset.guarded="1";
     const alt=t.getAttribute("alt")||"";
     if(t.classList.contains("thumb")){
