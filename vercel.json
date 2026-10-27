@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "python3 scripts/build_r23.py && python3 scripts/write_health.py",
+  "buildCommand": "python3 scripts/build_r23.py",
   "cleanUrls": true,
   "functions": {
     "api/reveals.js": {

@@ -1,0 +1,298 @@
+/* ATLAS: "The Showroom". Marvel Legends Chronicle, design round 3.
+   One idea: every figure is lit by its own backdrop. The page is pure black,
+   so a black-matte photograph simply stands in the room; a green or red matte
+   becomes a coloured tile of its own. Nothing else on the page is coloured.
+   Loads after legend.css, shelf.css and pulse.css and overrides them. */
+
+/* ============ 1. TOKENS ============ */
+:root {
+  color-scheme: dark;
+  /* colour: five neutrals and one signal, each with a job */
+  --ground: #000000;   /* the room. Pure black so black-matte photos need no frame */
+  --raise:  #1C1C1E;   /* a tile with no photo, a field, a pressed state. 15.6:1 with text */
+  --line:   #2C2C2E;   /* hairlines only, never a box */
+  --text:   #F5F5F7;   /* names and numbers. 19.3:1 on the room */
+  --sub:    #98989D;   /* facts and labels. 7.3:1 on the room, 5.9:1 on a raised tile */
+  --on:     #30D158;   /* the one signal: Owned / Wanted, and nothing else. 10.4:1 */
+  --line-soft: color-mix(in oklab, var(--line) 60%, var(--ground));
+  --glass: color-mix(in oklab, var(--ground) 72%, transparent);
+
+  /* type: one family, Instrument Sans (self-hosted), width axis for names */
+  --font: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --narrow: 88%;
+  --fs-hero:  clamp(2.5rem, 1rem + 5.6vw, 5.5rem);    /* 40 to 88 */
+  --fs-h2:    clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem); /* 24 to 36 */
+  --fs-num:   clamp(2rem, 1.4rem + 2.4vw, 3.25rem);   /* ledger numerals */
+  --fs-body:  clamp(1rem, .96rem + .2vw, 1.0625rem);
+  --fs-name:  clamp(.9375rem, .9rem + .15vw, 1rem);
+  --fs-small: .8125rem;                               /* 13 */
+  --fs-id:    .75rem;                                 /* 12 */
+
+  /* space: 8 px unit. 8 16 24 40 64 96. One step between related things,
+     two steps between groups, never the same gap twice in a row */
+  --s-1: .5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2.5rem; --s-5: 4rem; --s-6: 6rem;
+  --s-7: 6rem;
+  --gap: 1rem;
+  --gutter: clamp(1rem, .4rem + 2.8vw, 3rem);
+  --page: 80rem;
+  /* the one left edge every section on every page hangs from.
+     100cqw is the width of <main>, so a scrollbar cannot shift it */
+  --edge: max(var(--gutter), calc((100cqw - var(--page)) / 2));
+
+  /* shape: one family of corners */
+  --radius-tile: 1.25rem;
+  --radius-small: .875rem;
+  --radius-field: .875rem;
+  --r: .625rem;
+
+  /* motion: three durations, one curve */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --t-1: 160ms; --t-2: 320ms; --t-3: 640ms;
+  --stagger: 60ms;
+}
+
+/* ============ 2. BASE ============ */
+html, body { background: var(--ground); color: var(--text); }
+body { font-size: var(--fs-body); }
+body { container-type: inline-size; }
+a { text-decoration-color: color-mix(in oklab, var(--sub) 70%, transparent); }
+::selection { background: color-mix(in oklab, var(--on) 35%, var(--ground)); }
+
+/* one left edge: rules and text now start at the same x on every page.
+   (legend.css padded each section, so its hairlines began 48px left of its text) */
+main > :not(.front):not(.lineup) {
+  max-inline-size: none;
+  margin-inline: var(--edge);
+  padding-inline: 0;
+}
+main > :first-child:not(.front):not(.lineup) { padding-block-start: 0; }
+main > :not(.home):first-child { margin-block-start: var(--s-5); }
+footer.site { max-inline-size: none; margin-inline: var(--edge); padding-inline: 0; }
+main > h2, .home h2 { border-top: 0; }
+main > h2 { margin-block: var(--s-5) var(--s-2); padding: 0; font: 650 var(--fs-h2)/1.1 var(--font); letter-spacing: -.02em; text-transform: none; }
+
+/* ============ 3. HEADER ============ */
+.mast {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--s-4);
+  padding: 0 var(--gutter);
+  background: var(--glass);
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+          backdrop-filter: saturate(160%) blur(18px);
+  border-bottom: 1px solid transparent;
+}
+.mast-mark {
+  display: inline-flex; align-items: center; gap: .625rem;
+  margin-inline-end: auto; padding-block: .875rem;
+  font: 650 .9375rem/1 var(--font); font-stretch: var(--narrow); letter-spacing: -.005em;
+  text-decoration: none; white-space: nowrap;
+}
+.mast-mark .mark { flex: none; inline-size: 1.375rem; block-size: 1.375rem; }
+.mast-nav a { color: var(--sub); transition: color var(--t-1); }
+.mast-nav a:hover, .mast-nav a[aria-current] { color: var(--text); }
+.mast-nav a[aria-current] { text-decoration: underline; text-underline-offset: .55em; text-decoration-thickness: 1.5px; }
+.mast-mine::before { background: var(--on); }
+@media (width < 46rem) {
+  .mast-mark { padding-block: .75rem .25rem; }
+  .mast-nav { gap: var(--s-3); }
+}
+/* the hairline appears only once the page has moved */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .mast { animation: mast-line linear both; animation-timeline: scroll(root); animation-range: 0 64px; }
+  }
+}
+@keyframes mast-line { to { border-bottom-color: var(--line); } }
+
+/* ============ 4. HOME: hero ============ */
+.home { display: block; }
+.cover { padding-block: var(--s-5) var(--s-4); }
+.cover h1 {
+  margin: 0; max-inline-size: 13ch;
+  font: 680 var(--fs-hero)/.98 var(--font); font-stretch: var(--narrow);
+  letter-spacing: -.035em; text-wrap: balance;
+}
+.cover .find {
+  max-inline-size: 40rem; margin-block-start: var(--s-3);
+  padding: .3125rem .3125rem .3125rem 1.125rem;
+  background: var(--raise); border: 1px solid var(--line); border-radius: var(--radius-field);
+  transition: border-color var(--t-1);
+}
+.cover .find:hover { border-color: color-mix(in oklab, var(--sub) 50%, var(--line)); }
+.cover .find input[type=search] {
+  flex: 1; min-inline-size: 0; min-block-size: 0; padding: .8125rem 0;
+  font: 450 1.125rem/1.2 var(--font); background: none; border: 0; outline: 0; border-radius: 0;
+}
+.cover .find button {
+  min-block-size: 0; padding: .8125rem 1.25rem;
+  font: 600 .9375rem/1 var(--font); color: var(--ground); background: var(--text);
+  border: 0; border-radius: calc(var(--radius-field) - .25rem); cursor: pointer;
+  transition: background-color var(--t-1);
+}
+.cover .find button:hover { background: #fff; }
+.quick { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--s-2); margin: var(--s-1) 0 0; font-size: var(--fs-small); color: var(--sub); }
+.quick a { display: inline-flex; align-items: center; min-block-size: 44px; color: var(--text); text-decoration: none; }
+.quick a:hover { text-decoration: underline; }
+
+/* ============ 5. HOME: the newest wave, one full-bleed rail ============ */
+.newest-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: .25rem var(--s-3);
+  margin-block-end: var(--s-2);
+}
+.newest-tag {
+  grid-column: 1 / -1; margin: 0; font: 600 var(--fs-id)/1 var(--font);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--sub);
+}
+.newest-head h2 { margin: 0; padding: 0; border: 0; font: 650 var(--fs-h2)/1.05 var(--font); letter-spacing: -.02em; text-transform: none; }
+.newest-more { font-size: var(--fs-small); white-space: nowrap; }
+
+.rail {
+  --col: calc((100cqw - 2 * var(--edge) - 5 * var(--gap)) / 6);
+  list-style: none; margin: 0 calc(var(--edge) * -1); padding: 0 var(--edge) var(--s-2);
+  display: grid; grid-auto-flow: column; grid-auto-columns: var(--col); gap: var(--gap);
+  overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: var(--edge);
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail > .unit { scroll-snap-align: start; }
+@media (width < 48rem) { .rail { --col: 46cqw; } }
+
+/* ============ 6. HOME: the ledger (four counts, four doors) ============ */
+.ledger {
+  list-style: none; margin: var(--s-4) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid var(--line);
+}
+.ledger li + li { border-inline-start: 1px solid var(--line); }
+.ledger a {
+  display: grid; gap: .25rem; padding: var(--s-3) var(--s-3) var(--s-3) 0;
+  color: var(--text); text-decoration: none;
+}
+.ledger li + li a { padding-inline-start: var(--s-3); }
+.ledger b {
+  font: 650 var(--fs-num)/1 var(--font); font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.03em;
+}
+.ledger span { font-size: var(--fs-small); color: var(--sub); transition: color var(--t-1); }
+.ledger a:hover span, .ledger a:focus-visible span { color: var(--text); }
+@media (width < 40rem) {
+  .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ledger li:nth-child(3) { border-inline-start: 0; }
+  .ledger li:nth-child(n+3) { border-block-start: 1px solid var(--line); }
+  .ledger li:nth-child(3) a { padding-inline-start: 0; }
+}
+
+/* ============ 7. THE UNIT: one figure, everywhere on the home page ============ */
+.unit { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: .375rem; min-inline-size: 0; }
+.unit .plate2 {
+  border: 0; border-radius: var(--radius-tile);
+  transition: transform var(--t-2) var(--ease-out);
+}
+.unit .plate2 .p-floor { background: var(--raise); }
+.unit .plate2 .p-credit { background: color-mix(in oklab, var(--ground) 82%, transparent); }
+.unit-no { margin: var(--s-1) 0 0; font: 500 var(--fs-id)/1 var(--font); letter-spacing: .04em; font-variant-numeric: tabular-nums; color: var(--sub); }
+.unit-name { margin: 0; font: 600 var(--fs-name)/1.2 var(--font); font-stretch: var(--narrow); letter-spacing: -.005em; text-wrap: balance; }
+.unit-name a { text-decoration: none; }
+.unit-name a::after { content: ""; position: absolute; inset: 0 0 auto 0; aspect-ratio: 4 / 5; }   /* the whole tile is the link */
+.unit-fact { margin: 0; font-size: var(--fs-small); line-height: 1.3; color: var(--sub); }
+.unit .state { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0 var(--s-2); margin-block-start: -.125rem; }
+.statebtn, .statebtn[aria-pressed="true"] {
+  display: inline-flex; align-items: center; gap: .45em; min-block-size: 44px; min-inline-size: 0; padding: 0;
+  font: 500 var(--fs-small)/1 var(--font); background: none; border: 0; border-radius: 0; color: var(--sub); cursor: pointer;
+}
+.statebtn:hover, .statebtn[aria-pressed="true"] { color: var(--text); }
+.statebtn:focus-visible { outline-offset: 2px; border-radius: .25rem; }
+.statebtn[data-state="owned"][aria-pressed="true"]::before { background: var(--on); }
+.statebtn[data-state="wanted"][aria-pressed="true"]::before { box-shadow: inset 0 0 0 2px var(--on); }
+/* with a mouse the pair lives on the tile and appears when the figure is touched;
+   on touch screens it sits under the name, always there, 44 px tall */
+@media (hover: hover) {
+  .unit .state {
+    position: absolute; inset: 0 0 auto 0; aspect-ratio: 4 / 5; margin: 0; padding: .625rem;
+    align-items: flex-end; gap: 0 var(--s-2); pointer-events: none; opacity: 0;
+    border-radius: var(--radius-tile);
+    background: linear-gradient(to top, rgb(0 0 0 / .72), transparent 38%);
+    transition: opacity var(--t-1);
+  }
+  .contact .unit .state { border-radius: var(--radius-small); }
+  .unit .statebtn { pointer-events: auto; min-block-size: 2.25rem; color: color-mix(in oklab, var(--text) 78%, transparent); }
+  .unit:hover .state, .unit:focus-within .state, .unit .state:has([aria-pressed="true"]) { opacity: 1; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .unit:hover .plate2 { transform: translateY(-4px); }
+}
+
+/* contact sheet: the same unit, smaller, with no number */
+.contact {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--s-3) var(--gap);
+}
+@media (width < 64rem) { .contact { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (width < 40rem) { .contact { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.contact .plate2 { border-radius: var(--radius-small); }
+.contact-note { margin: var(--s-2) 0 0; font-size: var(--fs-small); color: var(--sub); }
+.contact-note a { color: var(--text); }
+
+/* ============ 8. HOME: the rest, each in its own shape ============ */
+.home > section + section { margin-block-start: var(--s-6); }
+.home > section:first-of-type + section { margin-block-start: 0; }
+.home > .ledger + section { margin-block-start: var(--s-6); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem var(--s-3); margin-block-end: var(--s-3); }
+.sec-head h2 { margin: 0; padding: 0; border: 0; font: 650 var(--fs-h2)/1.1 var(--font); letter-spacing: -.02em; text-transform: none; }
+.sec-head a { font-size: var(--fs-small); }
+
+.doors { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--s-5); border-block-start: 1px solid var(--line); }
+.doors li { border-block-end: 1px solid var(--line); }
+.doors a { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 var(--s-2); align-items: center; padding-block: var(--s-2); text-decoration: none; }
+.doors .plate2 { grid-row: 1 / 3; border: 0; border-radius: .75rem; transition: transform var(--t-2) var(--ease-out); }
+.doors .plate2 .p-floor { padding: 10%; }
+.door-name { align-self: end; font: 600 1.0625rem/1.2 var(--font); font-stretch: var(--narrow); }
+.door-fact { align-self: start; font-size: var(--fs-small); color: var(--sub); }
+.doors a:hover .door-name { text-decoration: underline; }
+@media (width < 48rem) { .doors { grid-template-columns: 1fr; } }
+
+.soon { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
+.soon li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: var(--s-2); align-items: baseline; padding-block: var(--s-2); border-block-end: 1px solid var(--line); }
+.soon time { font-size: var(--fs-small); color: var(--sub); font-variant-numeric: tabular-nums; }
+.soon strong { font: 600 1.125rem/1.25 var(--font); font-stretch: var(--narrow); }
+.soon small { display: block; margin-block-start: .125rem; font-size: var(--fs-small); color: var(--sub); }
+@media (width < 40rem) { .soon li { grid-template-columns: 1fr; gap: .25rem; } }
+.more-links { margin: var(--s-2) 0 0; display: flex; flex-wrap: wrap; gap: 0 var(--s-3); font-size: var(--fs-small); }
+.more-links a { display: inline-flex; align-items: center; min-block-size: 44px; }
+
+.home .indexlines { border-block-start: 1px solid var(--line); }
+.home .indexlines li { border-block-end: 1px solid var(--line); }
+.home .indexlines a { padding-block: .875rem; font-size: 1.0625rem; min-block-size: 48px; }
+.home .indexlines .count { font-size: var(--fs-small); color: var(--sub); }
+
+/* ============ 9. PLATES ON EVERY PAGE share the corner family ============ */
+.plate2 { border-radius: var(--radius-small); }
+.plate2.is-thumb { border-radius: .5rem; }
+
+/* ============ 10. THE FLEET CHIP: quiet, small, out of the way ============ */
+.pulse {
+  inset: auto auto 1rem 1rem; max-inline-size: min(92vw, 22rem);
+  padding: .5rem .875rem; gap: .25rem .75rem;
+  background: var(--glass); color: var(--sub);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid var(--line); border-radius: 999px;
+  font: 500 var(--fs-small)/1.3 var(--font);
+}
+.pulse-dot { inline-size: .4375rem; block-size: .4375rem; border-radius: 50%; background: var(--on); }
+.pulse button { color: var(--text); border-color: var(--line); border-radius: 999px; }
+@media (width < 40rem) { .pulse { inset-inline-start: .75rem; inset-block-end: .75rem; } }
+
+/* ============ 11. MOTION ============ */
+@media (prefers-reduced-motion: no-preference) {
+  .rail .plate2, .cover h1, .cover .find { animation: rise var(--t-3) var(--ease-out) backwards; }
+  .cover .find { animation-delay: 80ms; }
+  .rail .unit .plate2 { animation-delay: calc(var(--i, 0) * var(--stagger) + 160ms); }
+  .statebtn[aria-pressed="true"]::before { animation: dot-pop var(--t-2) var(--ease-out); }
+}
+@keyframes rise { from { opacity: 0; translate: 0 14px; } }
+@keyframes dot-pop { 50% { scale: 1.35; } }
+
+/* ============ 12. FOOTER ============ */
+.footmap { gap: 0 var(--s-3); border-bottom-color: var(--line); }
+.footmap a { min-inline-size: 0; padding: 0; color: var(--sub); text-decoration: none; }
+.footmap a:hover { color: var(--text); }
+footer.site { padding-block: var(--s-4) var(--s-5); }

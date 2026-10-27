@@ -226,6 +226,10 @@ def social_meta(title, desc, rel, prefix=""):
     return "\n".join(lines) + "\n"
 
 
+MARK = ('<svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" '
+        'fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.5" fill="currentColor"/>'
+        '<path d="M6.5 18.5c0-3.2 2.4-5 5.5-5s5.5 1.8 5.5 5z" fill="currentColor"/></svg>')
+
 def chrome(title, desc, current, prefix="", extra_head="", rel=""):
     social = social_meta(title, desc, rel, prefix) if rel else ""
     nav = "".join(
@@ -251,22 +255,24 @@ def chrome(title, desc, current, prefix="", extra_head="", rel=""):
 <link rel="stylesheet" href="{prefix}assets/css/plate2.css">
 <link rel="stylesheet" href="{prefix}assets/css/shelf.css">
 <link rel="stylesheet" href="{prefix}assets/css/pulse.css">
+<link rel="stylesheet" href="{prefix}assets/css/atlas.css">
 <script src="{prefix}assets/js/plate2.js" defer></script>
 {extra_head}</head>
 <body>
-<header class="mast"><a class="mast-mark" href="{prefix}index.html"{wm_current}>Marvel Legends Chronicle</a>
+<header class="mast"><a class="mast-mark" href="{prefix}index.html"{wm_current}>{MARK}<span>Marvel Legends Chronicle</span></a>
 <nav class="mast-nav" aria-label="Primary">{mast_nav}</nav>
 </header>
 <main>
 """
 
+BUILT_DAY = f"{int(BUILT[8:10])} " + datetime.strptime(BUILT[:10], "%Y-%m-%d").strftime("%B %Y")
 FOOT_LINKS = [("Home", "index.html")] + NAV
 
 def foot(prefix=""):
     links = "".join(f'<a href="{prefix}{href}">{label}</a>' for label, href in FOOT_LINKS)
     return f"""</main>
 <footer class="site"><nav class="footmap" aria-label="Site map">{links}</nav>
-<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Updated 14 October 2026</p>
+<p>Marvel Legends Chronicle · Figure data from the Chronicle census, 2002–2026 · Built {BUILT_DAY}</p>
 <p class="picnote">Figure photos are product photographs from the shops named on each figure's page. They belong to those shops, to Hasbro and to Marvel. This site only points at them and sells nothing. If a photo is yours and you want it gone, tell the owner on the <a href="https://github.com/astercast/marvel-legends-chronicle/issues" rel="noopener">issues page</a> and it comes down the same day.</p></footer>
 <script type="module" src="{prefix}assets/js/pulse.js"></script>
 </body>
@@ -354,113 +360,126 @@ def gen_data():
         (sdir / f'{r["slug"]}.json').write_text(json.dumps(shard))
 
 # ---------- Surface 1: Catalog home ----------
+def fmt_day(iso):
+    """2026-10-06 -> '6 Oct'. Falls back to the raw text."""
+    try:
+        d = datetime.strptime(iso, "%Y-%m-%d")
+        return f"{d.day} {d.strftime('%b')}"
+    except (TypeError, ValueError):
+        return iso or ""
+
+def unit_html(r, i=None, eager=False, with_no=True, with_fact=True):
+    """The home page's one figure unit: a plate that is the link, a name, one
+    plain fact, and the Owned / Wanted pair. The plate wears its own matte."""
+    entry = r.get("entry") if shown_img(r) else None
+    shot = plate2(entry, r["name"], f'spec-sheet.html?f={r["slug"]}', eager=eager, vt=f'fig-{r["slug"]}')
+    no = f'<p class="unit-no">No. {i + 1}</p>' if (with_no and i is not None) else ""
+    fact = f'<p class="unit-fact">{escape(r["wave"])} · {r["year"]}</p>' if with_fact else ""
+    st = f' style="--i:{i}"' if i is not None else ""
+    return (f'<li class="unit"{st}>{shot}{no}'
+            f'<h3 class="unit-name"><a href="spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></h3>'
+            f'{fact}{state_btns(r["slug"])}</li>')
+
 def home():
     pictured = [r for r in ROWS if r["pictured"]]
-    # Round 3, fix 8: the wall shows figures with a photo actually shown
-    # on this site (a repo-hosted photo via shown_img), and only when at
-    # least 12 are shown; the heading names that honestly.
-    wall_shown = sorted((r for r in ROWS if shown_img(r)), key=lambda r: (-r["year"], r["name"]))
-    wall_block = ""
-    if len(wall_shown) >= 12:
-        wall_tiles = "".join(tile_html(r, local=not ALLOW_HOTLINK) for r in wall_shown[:12])
-        wall_block = (f'<h2>Figures with a photo</h2>\n<ul class="tiles">{wall_tiles}</ul>\n'
-                      f'<p><a href="visual-database.html?picture=Pictured">See all {len(pictured):,} pictured figures</a></p>')
-    # Consult build (R133, "Model Numbers, after dark"): the lineup is the
-    # newest wave generated from the census rows in wave order. Fleet law
-    # (Round 2, fix E with the fleet override): ALLOW_HOTLINK is False, so
-    # a figure shows its repo-hosted photo only when one exists (a non-http
-    # image path); retailer CDN hotlinks are never emitted on this page,
-    # in the lineup, the wall, the wave doors or the newest rows, and a
-    # figure with no local photo takes the design's .notplate fallback.
     wave_id = "hasbro-2026-doomsday-1"
     dd_wave = WAVES[wave_id]
     dd_rows = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == wave_id]
-    def lineup_fig(i, r):
-        # THE SHELF (2026-10-24 bundle §11.2): the home lineup stands on a
-        # black stage with a hairline floor; each figure is a plate2 plate,
-        # blended by backdrop class where the matte allows (shelf.css).
-        entry = r.get("entry") if shown_img(r, local_only=not ALLOW_HOTLINK) else None
-        shot = plate2(entry, r["name"], f'spec-sheet.html?f={r["slug"]}',
-                      eager=(i < 3), vt=f'fig-{r["slug"]}')
-        return (f'<li class="fig bg-{matte_class(entry)}" style="--i:{i}">'
-                f'<div class="fig-shot">{shot}</div>'
-                f'<p class="fig-no">No. {i + 1}</p>'
-                f'<h3 class="fig-name"><a href="spec-sheet.html?f={r["slug"]}">{escape(r["name"])}</a></h3>'
-                f'{state_btns(r["slug"])}</li>')
-    lineup = "".join(lineup_fig(i, r) for i, r in enumerate(dd_rows))
+    rail = "".join(unit_html(r, i, eager=(i < 6), with_fact=False) for i, r in enumerate(dd_rows))
     year_lo = min(r["year"] for r in ROWS); year_hi = max(r["year"] for r in ROWS)
+
+    # The contact sheet: newest pictured figures, never the six already on the rail.
+    on_rail = {r["slug"] for r in dd_rows}
+    wall = [r for r in sorted((r for r in ROWS if shown_img(r)), key=lambda r: (-r["year"], r["name"]))
+            if r["slug"] not in on_rail][:12]
+    wall_tiles = "".join(unit_html(r, with_no=False) for r in wall)
+
+    # Wave doors: only waves that have a photograph to show.
     def wave_door(w):
         rows_w = [r for f, r in zip(FIGS, ROWS) if f["waveId"] == w["id"]]
-        pic = next((r for r in rows_w if shown_img(r, local_only=not ALLOW_HOTLINK)), None)
+        pic = next((r for r in rows_w if shown_img(r)), None)
+        if not pic: return ""
         n_pic = sum(1 for r in rows_w if r["pictured"])
-        media = plate2(pic.get("entry") if pic else None, pic["name"] if pic else w["series"], "#", tag="span")
-        return (f'<li class="wavedoor"><a href="waves/{w["id"]}.html">{media}'
-                f'<span class="wd-name">{escape(w["series"])}</span>'
-                f'<span class="wd-fact">{w["year"]} · {len(rows_w)} figures · {n_pic} pictured</span></a></li>')
-    doors = "".join(wave_door(w) for w in
-                    sorted(WAVES.values(), key=lambda w: (-w["year"], w["series"]))[:6])
-    newest = sorted(ROWS, key=lambda r: (-r["year"], r["name"]))[:10]
-    up = PREORDERS[:3]
-    up_rows = "".join(
-        f'<li class="row compact"><div>'
-        f'<div class="pid">{escape(u.get("preorderDate") or u.get("releaseWindow") or "")}</div>'
-        f'<div class="name">{escape(u["name"])}</div>'
-        f'<div class="fact"><span class="micro red">Announced</span> · {escape(u.get("releaseWindow") or "")}</div></div></li>'
+        media = plate2(pic.get("entry"), pic["name"], "#", tag="span")
+        return (f'<li><a href="waves/{w["id"]}.html">{media}'
+                f'<span class="door-name">{escape(w["series"])}</span>'
+                f'<span class="door-fact">{w["year"]} · {len(rows_w)} figures</span></a></li>')
+    door_list = (wave_door(w) for w in sorted(WAVES.values(), key=lambda w: (-w["year"], w["series"]))
+                 if w["id"] != wave_id)
+    doors = "".join([d for d in door_list if d][:8])
+
+    up = sorted(PREORDERS, key=lambda u: u.get("preorderDate") or "", reverse=True)[:3]
+    soon = "".join(
+        f'<li><time datetime="{escape(u.get("preorderDate") or "")}">Pre-orders {"opened" if (u.get("preorderDate") or "9") <= BUILT[:10] else "open"} {escape(fmt_day(u.get("preorderDate")))}</time>'
+        f'<div><strong>{escape(u["name"])}</strong>'
+        f'<small>Arrives {escape(u.get("releaseWindow") or "to be announced")}</small></div></li>'
         for u in up)
+
+    n_char, n_wave = len(CHARS), len(WAVES)
+    n_year = len(set(r["year"] for r in ROWS))
+    ledger = "".join(
+        f'<li><a href="{href}"><b>{n:,}</b><span>{label}</span></a></li>'
+        for n, label, href in (
+            (len(ROWS), "Figures", "visual-database.html"),
+            (n_wave, "Waves", "waves/index.html"),
+            (n_char, "Characters", "characters/index.html"),
+            (n_year, "Years", "visual-database.html?sort=year")))
     counts = {
-        "By character": (len(CHARS), "characters/index.html"),
-        "By wave": (len(WAVES), "waves/index.html"),
-        "By year": (len(set(r["year"] for r in ROWS)), "visual-database.html?sort=year"),
         "Toy Biz": (sum(1 for r in ROWS if r["maker"] == "Toy Biz"), "visual-database.html?maker=Toy+Biz"),
         "Hasbro": (sum(1 for r in ROWS if r["maker"] == "Hasbro"), "visual-database.html?maker=Hasbro"),
         "Exclusives": (sum(1 for r in ROWS if r["exclusive"]), "visual-database.html?exclusive=1"),
         "Build A Figure waves": (STATS["bafWaves"], "visual-database.html?baf=1"),
-        "Pictured": (len(pictured), "visual-database.html?picture=Pictured"),
-        "Not pictured": (len(ROWS) - len(pictured), "visual-database.html?picture=Not+pictured"),
+        "With a photo": (len(pictured), "visual-database.html?picture=Pictured"),
+        "Still waiting for a photo": (len(ROWS) - len(pictured), "visual-database.html?picture=Not+pictured"),
     }
     index_lines = "".join(
         f'<li><a href="{href}"><span>{escape(k)}</span><span class="count">{v:,}</span></a></li>'
         for k, (v, href) in counts.items())
+    pct = round(100 * len(pictured) / len(ROWS))
     body = f"""
-<section class="front" aria-labelledby="census">
-<h1 class="census" id="census"><span class="census-n">{len(ROWS):,} figures.</span>
-<span class="census-sub">{len(WAVES)} waves of Marvel Legends, {year_lo} to {year_hi}.</span></h1>
+<div class="home">
+<section class="cover" aria-labelledby="census">
+<h1 id="census">Every Marvel Legends figure.</h1>
 <form class="find" action="visual-database.html" method="get" role="search">
 <label class="vh" for="q">Search the catalog</label>
-<input id="q" type="search" name="q" placeholder="Try Gambit, X-Men or Toy Biz" required>
+<input id="q" type="search" name="q" placeholder="Search a character, a wave or a maker" required>
 <button type="submit">Search</button></form>
-<p class="browse">Or browse by <a href="characters/index.html">character</a> · <a href="waves/index.html">wave</a> · <a href="visual-database.html?sort=year">year</a></p>
+<p class="quick">Try <a href="visual-database.html?q=Gambit">Gambit</a> <a href="visual-database.html?q=X-Men">X-Men</a> <a href="visual-database.html?q=Toy+Biz">Toy Biz</a></p>
 </section>
-<section class="lineup shelf" aria-labelledby="lineup-title">
-<div class="lineup-head">
-<p class="lineup-kicker">Newest wave · {dd_wave["year"]} · {len(dd_rows)} figures</p>
-<h2 id="lineup-title">{escape(dd_wave["series"])}</h2>
-<a class="lineup-more" href="waves/{wave_id}.html">See the wave <span aria-hidden="true">→</span></a>
+<section class="newest" aria-labelledby="newest-t">
+<div class="newest-head">
+<p class="newest-tag">Newest wave · {dd_wave["year"]} · {len(dd_rows)} figures</p>
+<h2 id="newest-t">{escape(dd_wave["series"])}</h2>
+<a class="newest-more" href="waves/{wave_id}.html">See the wave <span aria-hidden="true">→</span></a>
 </div>
-<ol class="stage shelf-stage">{lineup}</ol>
-<div class="shelf-floor" aria-hidden="true"></div>
+<ol class="rail">{rail}</ol>
 </section>
-<section class="coverage" aria-labelledby="coverage-title">
-<h2 id="coverage-title">Photo coverage</h2>
-<p class="coverage-line"><span class="coverage-n">{len(pictured):,}</span> of {len(ROWS):,} figures pictured · {round(100 * len(pictured) / len(ROWS))}%</p>
-<div class="meter" role="img" aria-label="Photo coverage {round(100 * len(pictured) / len(ROWS))} percent"><span style="inline-size:{100 * len(pictured) / len(ROWS):.1f}%"></span></div>
-<p class="micro">Counted from the photo manifest at build time. Photos are shop product photographs, shown by reference with their credit. <a href="{photo_source_link("a figure with no photo")}" rel="noopener" target="_blank">Know a photo source?</a></p>
+<ul class="ledger" aria-label="The catalog in numbers">{ledger}</ul>
+<section aria-labelledby="wall-t">
+<div class="sec-head"><h2 id="wall-t">Recently photographed</h2><a href="visual-database.html?picture=Pictured">All {len(pictured):,} with a photo</a></div>
+<ul class="contact">{wall_tiles}</ul>
+<p class="contact-note">{pct}% of the catalog has a photo so far. Photos are shop product photographs, shown with their credit. <a href="{photo_source_link("a figure with no photo")}" rel="noopener" target="_blank">Know a photo source?</a></p>
 </section>
-{wall_block}
-<h2>Latest waves</h2>
-<ul class="wavedoors">{doors}</ul>
-<p><a href="waves/index.html">All 170 waves</a></p>
-<p><a href="classics.html">The Classics family: {CFIG_COUNT} figures in {len(CWAVES)} waves, counted separately</a></p>
-<h2>Upcoming</h2>
-<ul class="rows">{up_rows}</ul>
-<p><a href="radar.html">All upcoming releases</a> · <a href="drops.ics">Drops calendar (.ics)</a></p>
-<h2>Browse</h2>
+<section aria-labelledby="doors-t">
+<div class="sec-head"><h2 id="doors-t">Waves</h2><a href="waves/index.html">All {n_wave} waves</a></div>
+<ul class="doors">{doors}</ul>
+<p class="more-links"><a href="classics.html">Classics: {CFIG_COUNT} figures in {len(CWAVES)} waves, counted separately</a></p>
+</section>
+<section aria-labelledby="soon-t">
+<div class="sec-head"><h2 id="soon-t">Coming up</h2><a href="radar.html">All upcoming releases</a></div>
+<ul class="soon">{soon}</ul>
+<p class="more-links"><a href="drops.ics">Add the drops calendar (.ics)</a></p>
+</section>
+<section aria-labelledby="browse-t">
+<div class="sec-head"><h2 id="browse-t">Browse</h2></div>
 <ul class="indexlines">{index_lines}</ul>
-<h2>Newest additions</h2>
-<ul class="rows">{''.join(row_html(r, local=not ALLOW_HOTLINK) for r in newest)}</ul>
+</section>
+</div>
 """
     write("index.html", chrome("Marvel Legends Chronicle",
-          "1,949 Marvel Legends figures, 170 waves, 2002–2026. Search the catalog.", "Home", rel="index.html") + body + wire("") + foot())
+          f"Every Marvel Legends figure: {len(ROWS):,} figures, {n_wave} waves, {year_lo} to {year_hi}. Search the catalog.",
+          "Home", rel="index.html") + body + wire("") + foot())
+
 
 # ---------- Surface 2: Catalog browse ----------
 def browse():
